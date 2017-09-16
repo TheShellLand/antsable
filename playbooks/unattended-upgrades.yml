@@ -1,0 +1,17 @@
+---
+- hosts: world0
+  tasks:
+  - name: Install unattended-upgrades
+    apt:
+      name: unattended-upgrades
+      update_cache: yes
+  - debconf:
+      name: unattended-upgrades
+      question: unattended-upgrades/origins_pattern
+      vtype: string
+      value: "origin=Debian,codename=${distro_codename},label=Debian-Security"
+  - debconf:
+      name: unattended-upgrades
+      question: unattended-upgrades/enable_auto_updates
+      vtype: boolean
+      value: true

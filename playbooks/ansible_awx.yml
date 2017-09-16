@@ -1,50 +1,39 @@
 ---
-- hosts: ansible
+- hosts: awx
   tasks:
-    - name: Install Ansible AWX
-        apt:
-          update_cache: yes
-          autoclean: yes
+  - apt_repository:
+      repo: 'ppa:ansible/ansible'
 
-        apt_repository:
-          repo: 'ppa:ansible/ansible'
+  - apt_repository:
+      # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
 
-        apt_repository:
-          repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+  - apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
 
-        apt_key:
-          url: https://download.docker.com/linux/ubuntu/gpg
-          state: present
+  - name: Install ansible, docker-ce, make, git, python-setuptools, python-pip, python3-pip
+    apt:
+      update_cache: yes
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'ansible'
+      - 'docker-ce'
+      - 'make'
+      - 'git'
+      - 'python-setuptools'
+      - 'python-pip'
+      - 'python3-pip'
 
-        apt:
-          name: "{{ item }}"
-          update_cache: yes
-          autoclean: yes
-          state: present
-        with_items:
-          - 'ansible'
-          - 'docker-ce'
-          - 'make'
-          - 'git'
-          - 'python-setuptools'
-          - 'python-pip'
-          - 'python3-pip'
+  - pip:
+      name: "{{ item }}"
+    with_items:
+      - 'pip'
+      - 'docker'
 
-        pip:
-          name: "{{ item }}"
-        with_items:
-          - 'pip'
-          - 'docker'
-
-        pip:
-          name: "{{ item }}"
-          executable: pip3
-        with_items:
-          - 'pip'
-          - 'docker'
-
-        git:
-          repo: https://github.com/ansible/awx.git
-          dest: /root/awx
-          clone: yes
-          update: yes
+  - git:
+      repo: https://github.com/ansible/awx.git
+      dest: /root/awx
+      clone: yes
+      update: yes

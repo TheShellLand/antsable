@@ -1,8 +1,27 @@
 ---
 - hosts: radius
   tasks:
-  - name: Install freeradius
+  - name: Remove old freeradius versions
+    apt:
+      name: freeradius
+      state: absent
+  - name: add-apt-repository
+    apt:
+      name: software-properties-common
+      state: present
+  - name: Add freeradius ppa
+    apt_repository:
+      repo: 'ppa:freeradius/stable-3.0'
+  - name: Install libfreeradius3=3.0.15-ppa1~xenial
     apt:
       update_cache: yes
+      name: libfreeradius3=3.0.15-ppa1~xenial
+      state: present
+  - name: Install freeradius-utils
+    apt:
+      name: freeradius-utils
+      state: present
+  - name: Install freeradius
+    apt:
       name: freeradius
       state: present

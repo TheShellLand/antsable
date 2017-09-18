@@ -1,0 +1,6 @@
+---
+- hosts: all
+
+  tasks:
+  - name: install python 2
+    ping:

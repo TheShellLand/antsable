@@ -1,0 +1,8 @@
+---
+- hosts: radius
+  tasks:
+  - name: Install freeradius
+    apt:
+      update_cache: yes
+      name: freeradius
+      state: present

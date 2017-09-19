@@ -5,3 +5,11 @@
   - name: Install Splunk Light
     apt:
       deb: https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.3&product=splunk_light&filename=splunklight-6.6.3-e21ee54bc796-linux-2.6-amd64.deb&wget=true
+
+  - name: unsupported filesystem configuration bypass
+    shell: |
+      echo "OPTIMISTIC_ABOUT_FILE_LOCKING = 1" >> /opt/splunk/etc/splunk-launch.conf
+  - name: @reboot	/opt/splunk/bin/splunk start
+    cron:
+      special_time: reboot
+      job: '/opt/splunk/bin/splunk start'

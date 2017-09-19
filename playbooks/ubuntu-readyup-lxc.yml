@@ -1,11 +1,16 @@
 ---
 - hosts: gui
   tasks:
+#  - name: Create user
+#    shell: |
+#      useradd -m -s /bin/bash eric
 
   - name: /tmp/apps
     file:
       path: /tmp/apps
       state: directory
+  - name: chdir
+    shell: cd /tmp/apps
 
   - name: Ubuntu 16.04 appstream bugfix
     apt:
@@ -31,6 +36,11 @@
   - name: git
     apt:
       name: git
+      state: present
+
+  - name: unzip
+    apt:
+      name: unzip
       state: present
 
 
@@ -92,10 +102,11 @@
       name: macbuntu-os-plank-theme-lts-v7
       state: present
 
-  - name: macbuntu-os-icons-lts-v7
-    apt:
-      name: macbuntu-os-icons-lts-v7
-      state: present
+# Doesn't work, needs gsettings
+#  - name: macbuntu-os-icons-lts-v7
+#    apt:
+#      name: macbuntu-os-icons-lts-v7
+#      state: present
 
   - name: macbuntu-os-ithemes-lts-v7
     apt:
@@ -120,7 +131,10 @@
 
   - name: Put buttons on left side
     shell: |
+      cat >> /home/eric/.profile <<EOF
       gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+
+      EOF
     become: yes
     become_user: eric
 
@@ -179,6 +193,11 @@
       fc-cache -f -v
 
   - name: Disable Mouse Acceleration for X server
+    file: >
+      path=/usr/share/X11/xorg.conf.d/
+      recurse=yes
+      state=directory
+  - name: Disable Mouse Acceleration for X server
     shell: |
       cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
       Section "InputClass"
@@ -190,9 +209,9 @@
       EndSection
       EOF
 
-#        - name: Fix Nautilus recent files bug
-#          shell: | 
-#            echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
+#  - name: Fix Nautilus recent files bug
+#    shell: |
+#      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
 
   - name: OpenVPN
     apt:
@@ -324,7 +343,7 @@
 
   - name: npm
     apt:
-      name: nmp
+      name: npm
       state: present
 
   - name: exfat
@@ -406,6 +425,7 @@
       echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
   - name: skypeforlinux
     apt:
+      update_cache: yes
       name: skypeforlinux
       state: present
 
@@ -493,6 +513,7 @@
 
   - name: NetBeans IDE
     shell: |
+      apps=/tmp/apps
       cat > $apps/state.xml <<EOF
       <?xml version="1.0" encoding="UTF-8"?><!--
         DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.

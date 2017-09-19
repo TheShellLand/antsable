@@ -1,0 +1,6 @@
+---
+- hosts: splunk
+  tasks:
+  - name: Install Splunk Enterprise
+    apt:
+      deb: https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.3&product=splunk&filename=splunk-6.6.3-e21ee54bc796-linux-2.6-amd64.deb&wget=true

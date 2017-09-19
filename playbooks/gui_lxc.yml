@@ -20,3 +20,8 @@
     apt:
       name: x2goserver-xsession
       state: present
+
+  - name: mate
+    apt:
+      name: mate
+      state: present

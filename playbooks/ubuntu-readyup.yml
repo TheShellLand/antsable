@@ -1,309 +1,314 @@
 ---
-- hosts:
-  - tasks:
+- hosts: gui
+  tasks:
 
-    - name: /tmp/apps
-      file:
-        path: /tmp/apps
-        state: directory
+  - name: /tmp/apps
+    file:
+      path: /tmp/apps
+      state: directory
 
-    - name: Ubuntu 16.04 appstream bugfix
-      apt:
-        name: appstream
-        purge: yes
+  - name: Ubuntu 16.04 appstream bugfix
+    apt:
+      name: appstream
+      purge: yes
 
-    - name: Disable Ubuntu 16.04 console switch keys
-      shell: |
-        dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
+#  - name: Disable Ubuntu 16.04 console switch keys
+#    shell: |
+#      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
-    - name: Updating repository
-      apt:
-        update_cache: yes
+  - name: Updating repository
+    apt:
+      update_cache: yes
 
-    - name: Installing missing dependencies
-      shell: |
-        apt install -f -y
+  - name: Install Missing Packages
+    shell: apt install -f -y
 
-    - name: software-properties-common
-      apt:
-        name: software-properties-common
-        state: present
+  - name: software-properties-common
+    apt:
+      name: software-properties-common
+      state: present
 
-    - name: git
-      apt:
-        name: git
-        state: present
+  - name: git
+    apt:
+      name: git
+      state: present
 
 
 #    - name: Macbuntu for 16.10 install
-      # echo "[*] [ $progress/$total ] Installing cerebro"
-      # cerebro=cerebro.deb
-      # if [ ! -f $apps/mac-fonts.zip ]; then
-      #     wget -q -O $apps/$cerebro https://github.com/KELiON/cerebro/releases/download/0.2.6/cerebro_0.2.6_amd64.deb
-      #     dpkg -i $apps/$cerebro
-      #     #rm $apps/$cerebro
-      # else
-      #     dpkg -i $apps/$cerebro
-      # fi
+    # echo "[*] [ $progress/$total ] Installing cerebro"
+    # cerebro=cerebro.deb
+    # if [ ! -f $apps/mac-fonts.zip ]; then
+    #     wget -q -O $apps/$cerebro https://github.com/KELiON/cerebro/releases/download/0.2.6/cerebro_0.2.6_amd64.deb
+    #     dpkg -i $apps/$cerebro
+    #     #rm $apps/$cerebro
+    # else
+    #     dpkg -i $apps/$cerebro
+    # fi
 
 
-    - name: Installing Macbuntu - ppa:noobslab/macbuntu
-      apt_repository:
-        repo: ppa:noobslab/macbuntu
+  - name: Installing Macbuntu - ppa:noobslab/macbuntu
+    apt_repository:
+      repo: ppa:noobslab/macbuntu
 
-    - name: gnome-tweak-tool
-      apt:
-        name: gnome-tweak-tool
-        state: present
+  - name: gnome-tweak-tool
+    apt:
+      name: gnome-tweak-tool
+      state: present
 
 #      - name: lightdm
 #        apt:
 #          name: lightdm
 #          state: absent
 
-    - name: ubuntu-gnome-desktop
-      apt:
-        name: ubuntu-gnome-desktop
-        state: present
+  - name: ubuntu-gnome-desktop
+    apt:
+      name: ubuntu-gnome-desktop
+      state: present
 
-    - name: plank
-      apt:
-        name: plank
-        state: present
+  - name: plank
+    apt:
+      name: plank
+      state: present
 
-    - name: Installing Plank themes
-      shell: |
-        apps=/tmp/apps
-        theme=plank-themes.zip
-        if [ ! -f $apps/$theme ]; then
-            wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
-            unzip $apps/$theme -d $apps
-            cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-            cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-            cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-        else
-            unzip $apps/$theme -d $apps
-            cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-            cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-            cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-        fi
+  - name: Installing Plank themes
+    shell: |
+      apps=/tmp/apps
+      theme=plank-themes.zip
+      if [ ! -f $apps/$theme ]; then
+          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
+          unzip $apps/$theme -d $apps
+          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+      else
+          unzip $apps/$theme -d $apps
+          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+      fi
 
-    - name: macbuntu-os-plank-theme-lts-v7
-      apt:
-        name: macbuntu-os-plank-theme-lts-v7
-        state: present
+  - name: macbuntu-os-plank-theme-lts-v7
+    apt:
+      name: macbuntu-os-plank-theme-lts-v7
+      state: present
 
-    - name: macbuntu-os-icons-lts-v7
-      apt:
-        name: macbuntu-os-icons-lts-v7
-        state: present
+  - name: macbuntu-os-icons-lts-v7
+    apt:
+      name: macbuntu-os-icons-lts-v7
+      state: present
 
-    - name: macbuntu-os-ithemes-lts-v7
-      apt:
-        name: macbuntu-os-ithemes-lts-v7
-        state: present
+  - name: macbuntu-os-ithemes-lts-v7
+    apt:
+      name: macbuntu-os-ithemes-lts-v7
+      state: present
 
-    - name: libreoffice-style-sifr
-      apt:
-        name: libreoffice-style-sifr
-        state: present
+  - name: libreoffice-style-sifr
+    apt:
+      name: libreoffice-style-sifr
+      state: present
 
-    - name: Installing OSX Arc Collection
-      shell: |
-        apps=/tmp/apps
-        theme=osx-arc-collection.deb
-        if [ ! -f $apps/$theme ]; then
-            wget -q -O $apps/$theme 'https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb'
-            dpkg -i $apps/$theme
-        else
-            dpkg -i $apps/$theme
-        fi
+  - name: Installing OSX Arc Collection
+    shell: |
+      apps=/tmp/apps
+      theme=osx-arc-collection.deb
+      if [ ! -f $apps/$theme ]; then
+          wget -q -O $apps/$theme 'https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb'
+          dpkg -i $apps/$theme
+      else
+          dpkg -i $apps/$theme
+      fi
 
-    - name: Put buttons on left side
-      shell: |
-        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-      become: yes
-      become_user: eric
+  - name: Put buttons on left side
+    shell: |
+      gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+    become: yes
+    become_user: eric
 
-    - name: oranchelo-icon-theme
-      apt_repository:
-        repo: 'ppa:oranchelo/oranchelo-icon-theme'
-      apt:
-        update_cache: yes
-        name: oranchelo-icon-theme
-        state: present
+  - name: oranchelo-icon-theme repo
+    apt_repository:
+      repo: 'ppa:oranchelo/oranchelo-icon-theme'
+  - name: oranchelo-icon-theme
+    apt:
+      update_cache: yes
+      name: oranchelo-icon-theme
+      state: present
 
-    - name: arc-icon-theme
-      shell: |
-        apps=/tmp/apps
-        if [ ! -d "$apps/arc-icon-theme" ]; then mkdir "$apps/arc-icon-theme"; fi
-        if [ ! -d $apps/arc-icon-theme/Arc ]; then
-            git clone https://github.com/horst3180/arc-icon-theme.git "$apps/arc-icon-theme"
-            cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-        else
-            cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-        fi
+  - name: arc-icon-theme
+    shell: |
+      apps=/tmp/apps
+      if [ ! -d "$apps/arc-icon-theme" ]; then mkdir "$apps/arc-icon-theme"; fi
+      if [ ! -d $apps/arc-icon-theme/Arc ]; then
+          git clone https://github.com/horst3180/arc-icon-theme.git "$apps/arc-icon-theme"
+          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
+      else
+          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
+      fi
 
-    - name: capitaine-cursors
-      shell: |
-        apps=/tmp/apps
-        file=capitaine-cursors.tgz
-        if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
-        if [ ! -f $apps/$file ]; then
-            wget -q -O $apps/$file https://dl.opendesktop.org/api/files/download/id/1489948557/capitaine-cursors-r2.tar.gz
-            tar zxf $apps/$file -C $apps/capitaine-cursors
-            mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-            cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
-        else
-            tar zxf $apps/$file -C $apps/capitaine-cursors
-            mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-            cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
-        fi
+  - name: capitaine-cursors
+    shell: |
+      apps=/tmp/apps
+      file=capitaine-cursors.tgz
+      if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
+      if [ ! -f $apps/$file ]; then
+          wget -q -O $apps/$file https://dl.opendesktop.org/api/files/download/id/1489948557/capitaine-cursors-r2.tar.gz
+          tar zxf $apps/$file -C $apps/capitaine-cursors
+          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+      else
+          tar zxf $apps/$file -C $apps/capitaine-cursors
+          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+      fi
 
-    - name: libreoffice-style-sifr
-      apt:
-        name: libreoffice-style-sifr
-        state: present
+  - name: libreoffice-style-sifr
+    apt:
+      name: libreoffice-style-sifr
+      state: present
 
-    - name: mac fonts
-      shell: |
-        apps=/tmp/apps
-        fonts=mac-fonts.zip
-        if [ ! -f $apps/$fonts ]; then
-            wget -q -O $apps/$fonts http://drive.noobslab.com/data/Mac/macfonts.zip
-            unzip $apps/$fonts -d /usr/share/fonts
-            #rm $apps/$fonts
-        else
-            unzip -o $apps/mac-fonts.zip -d /usr/share/fonts
-        fi
-        fc-cache -f -v
+  - name: mac fonts
+    shell: |
+      apps=/tmp/apps
+      fonts=mac-fonts.zip
+      if [ ! -f $apps/$fonts ]; then
+          wget -q -O $apps/$fonts http://drive.noobslab.com/data/Mac/macfonts.zip
+          unzip $apps/$fonts -d /usr/share/fonts
+          #rm $apps/$fonts
+      else
+          unzip -o $apps/mac-fonts.zip -d /usr/share/fonts
+      fi
+      fc-cache -f -v
 
-    - name: Disable Mouse Acceleration for X server
-      shell: |
-        cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
-        Section "InputClass"
-            Identifier "My Mouse"
-            MatchIsPointer "yes"
-            Option "AccelerationProfile" "-1"
-            Option "AccelerationScheme" "none"
-            Option "AccelSpeed" "-1"
-        EndSection
-        EOF
+  - name: Disable Mouse Acceleration for X server
+    shell: |
+      cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
+      Section "InputClass"
+          Identifier "My Mouse"
+          MatchIsPointer "yes"
+          Option "AccelerationProfile" "-1"
+          Option "AccelerationScheme" "none"
+          Option "AccelSpeed" "-1"
+      EndSection
+      EOF
 
 #        - name: Fix Nautilus recent files bug
 #          shell: | 
 #            echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
 
-    - name: OpenVPN
-      apt:
-        name: openvpn
-        state: present
+  - name: OpenVPN
+    apt:
+      name: openvpn
+      state: present
 
-    - name: Virt-Viewer
-      apt:
-        name: virt-viewer
-        state: present
+  - name: Virt-Viewer
+    apt:
+      name: virt-viewer
+      state: present
 
-    - name: x11vnc
-      apt:
-        name: x11vnc
-        state: present
+  - name: x11vnc
+    apt:
+      name: x11vnc
+      state: present
 
-    - name: x2go
-      apt:
-        name: x2goclient
-        state: present
+  - name: x2go
+    apt:
+      name: x2goclient
+      state: present
 
-    - name: tmux
-      apt:
-        name: tmux
-        state: present
+  - name: tmux
+    apt:
+      name: tmux
+      state: present
 
-    - name: CIFS
-      apt:
-        name: cifs-utils
-        state: present
+  - name: CIFS
+    apt:
+      name: cifs-utils
+      state: present
 
-    - name: remmina
-      apt:
-        name: remmina
-        state: present
+  - name: remmina
+    apt:
+      name: remmina
+      state: present
 
-    - name: Chrome
-      shell: |
-        apps=/tmp/apps
-        chrome=chrome.deb
-        if [ ! -f $apps/$chrome ]; then
-            wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-            dpkg -i $apps/$chrome
-            #rm $apps/$chrome
-        else
-            dpkg -i $apps/$chrome
-        fi
-        apt install -f -y
+  - name: Chrome
+    shell: |
+      apps=/tmp/apps
+      chrome=chrome.deb
+      if [ ! -f $apps/$chrome ]; then
+          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+          dpkg -i $apps/$chrome
+          #rm $apps/$chrome
+      else
+          dpkg -i $apps/$chrome
+      fi
+      apt install -f -y
 
-    - name: PlayOnLinux
-      shell: |
-        apps=/tmp/apps
-        pol=PlayOnLinux.deb
-        if [ ! -f $apps/$pol ]; then
-            wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
-            dpkg -i $apps/$pol
-        else
-            dpkg -i $apps/$pol
-        fi
-        if [ -d usr ]; then
-            rsync -rti usr /
-        fi
-        apt install -f -y
-        dpkg --add-architecture i386
-      apt:
-        update_cache: yes
-        name: wine
-        state: present
-      apt:
-        name: winbind
-        state: present
-      shell: |
-        apt install -f -y
+  - name: PlayOnLinux
+    shell: |
+      apps=/tmp/apps
+      pol=PlayOnLinux.deb
+      if [ ! -f $apps/$pol ]; then
+          wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
+          dpkg -i $apps/$pol
+      else
+          dpkg -i $apps/$pol
+      fi
+      if [ -d usr ]; then
+          rsync -rti usr /
+      fi
+      apt install -f -y
+      dpkg --add-architecture i386
+  - name: wine
+    apt:
+      update_cache: yes
+      name: wine
+      state: present
+  - name: winbind
+    apt:
+      name: winbind
+      state: present
+  - name: update missing packages
+    shell: |
+      apt install -f -y
 
-    - name: Pycharm
-      shell: |
-        apps=/tmp/apps
-        pycharm=pycharm.tgz
-        if [ ! -d '/opt/pycharm' ]; then mkdir /opt/pycharm; fi
-        if [ ! -f $apps/$pycharm ]; then
-            wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2017.2.tar.gz'
-            tar zxf $apps/$pycharm -C /opt/pycharm
-        else
-            tar zxf $apps/$pycharm -C /opt
-        fi
+  - name: Pycharm
+    shell: |
+      apps=/tmp/apps
+      pycharm=pycharm.tgz
+      if [ ! -d '/opt/pycharm' ]; then mkdir /opt/pycharm; fi
+      if [ ! -f $apps/$pycharm ]; then
+          wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2017.2.tar.gz'
+          tar zxf $apps/$pycharm -C /opt/pycharm
+      else
+          tar zxf $apps/$pycharm -C /opt
+      fi
 
-        cat > /usr/share/applications/pycharm.desktop << EOF
-        [Desktop Entry]
-        Encoding=UTF-8
-        Name=Pycharm IDE
-        Comment=The Smarter Way to Code
-        Exec=/bin/sh "/opt/pycharm/pycharm-community-2017.2/bin/pycharm.sh"
-        Icon=/opt/pycharm/pycharm-community-2017.2/bin/pycharm.png
-        Categories=Application;Development;Python;IDE
-        Version=1.0
-        Type=Application
-        Terminal=0
-        EOF
-      apt:
-        name: python3-pip
-        state: present
+      cat > /usr/share/applications/pycharm.desktop << EOF
+      [Desktop Entry]
+      Encoding=UTF-8
+      Name=Pycharm IDE
+      Comment=The Smarter Way to Code
+      Exec=/bin/sh "/opt/pycharm/pycharm-community-2017.2/bin/pycharm.sh"
+      Icon=/opt/pycharm/pycharm-community-2017.2/bin/pycharm.png
+      Categories=Application;Development;Python;IDE
+      Version=1.0
+      Type=Application
+      Terminal=0
+      EOF
+  - name: python3-pip
+    apt:
+      name: python3-pip
+      state: present
 
-    - name: Visual Studio Code
-      shell: |
-        curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-        mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-        sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-      apt:
-        update_cache: yes
+  - name: Visual Studio Code
+    shell: |
+      curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+      mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+      sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  - name: code-insiders
+    apt:
+      update_cache: yes
 #            name: code
-        name: code-insiders
+      name: code-insiders
 
 #        - name: GitKraken
 #          shell: |
@@ -317,92 +322,92 @@
 #            fi
 #            apt-get install -f -y
 
-    - name: npm
-      apt:
-        name: nmp
-        state: present
+  - name: npm
+    apt:
+      name: nmp
+      state: present
 
-    - name: exfat
-      apt:
-        name: exfat-utils
-        state: present
+  - name: exfat
+    apt:
+      name: exfat-utils
+      state: present
 
-    - name: nmap
-      apt:
-        name: nmap
-        state: present
+  - name: nmap
+    apt:
+      name: nmap
+      state: present
 
-    - name: wireshark
-      apt:
-        name: wireshark
-        state: present
+  - name: wireshark
+    apt:
+      name: wireshark
+      state: present
 
-    - name: lm-sensors
-      apt:
-        name: lm-sensors
-        state: present
+  - name: lm-sensors
+    apt:
+      name: lm-sensors
+      state: present
 
-    - name: QTQR
-      apt:
-        name: qtqr
-        state: present
+  - name: QTQR
+    apt:
+      name: qtqr
+      state: present
 
-    - name: VLC
-      apt:
-        name: vlc
-        state: present
+  - name: VLC
+    apt:
+      name: vlc
+      state: present
 
-    - name: Virtualbox
-      apt:
-        name: virtualbox
-        state: present
-        # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
-        # Unable to install dependencies even with yakkety contrib branch
-        #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
-        #        virtualbox-5.1 depends on libqt5core5a (>= 5.6.0~beta); however:
-        #        Version of libqt5core5a:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
-        #        virtualbox-5.1 depends on libqt5widgets5 (>= 5.6.0~beta); however:
-        #        Version of libqt5widgets5:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
-        #        virtualbox-5.1 depends on libqt5x11extras5 (>= 5.6.0); however:
-        #        Version of libqt5x11extras5:amd64 on system is 5.5.1-3build1.
-        #
-        #echo "deb http://download.virtualbox.org/virtualbox/debian yakkety contrib" >> /etc/apt/sources.list
-        #wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-        #apt update
-        #file=vbox.deb
-        #if [ ! -f $apps/$file ]; then
-        #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/virtualbox-5.1_5.1.26-117224~Ubuntu~xenial_amd64.deb"
-        #    dpkg -i $apps/$file
-        #else
-        #    dpkg -i $apps/$file
-        #fi
-        #file=vbox-extpack
-        #if [ ! -f $apps/$file ]; then
-        #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack"
-        #	VBoxManage extpack install --replace $apps/$file
-        #else
-        #	VBoxManage extpack install --replace $apps/$file
-        #fi
+  - name: Virtualbox
+    apt:
+      name: virtualbox
+      state: present
+      # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
+      # Unable to install dependencies even with yakkety contrib branch
+      #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
+      #        virtualbox-5.1 depends on libqt5core5a (>= 5.6.0~beta); however:
+      #        Version of libqt5core5a:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
+      #        virtualbox-5.1 depends on libqt5widgets5 (>= 5.6.0~beta); however:
+      #        Version of libqt5widgets5:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
+      #        virtualbox-5.1 depends on libqt5x11extras5 (>= 5.6.0); however:
+      #        Version of libqt5x11extras5:amd64 on system is 5.5.1-3build1.
+      #
+      #echo "deb http://download.virtualbox.org/virtualbox/debian yakkety contrib" >> /etc/apt/sources.list
+      #wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+      #apt update
+      #file=vbox.deb
+      #if [ ! -f $apps/$file ]; then
+      #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/virtualbox-5.1_5.1.26-117224~Ubuntu~xenial_amd64.deb"
+      #    dpkg -i $apps/$file
+      #else
+      #    dpkg -i $apps/$file
+      #fi
+      #file=vbox-extpack
+      #if [ ! -f $apps/$file ]; then
+      #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack"
+      #	VBoxManage extpack install --replace $apps/$file
+      #else
+      #	VBoxManage extpack install --replace $apps/$file
+      #fi
 
-    - name: Emacs
-      apt:
-        name: emacs
-        state: present
+  - name: Emacs
+    apt:
+      name: emacs
+      state: present
 
-    - name: Skype
-      shell: |
-        dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
-
-      apt_key:
-        url: https://repo.skype.com/data/SKYPE-GPG-KEY
-        state: present
-
-      shell: |
-        echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
-
-      apt:
-        name: skypeforlinux
-        state: present
+  - name: Skype
+    shell: |
+      dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+  - name: skype repo key
+    apt_key:
+      url: https://repo.skype.com/data/SKYPE-GPG-KEY
+      state: present
+  - name: skype repo
+    shell: |
+      echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
+  - name: skypeforlinux
+    apt:
+      name: skypeforlinux
+      state: present
 
 #          - name: iotop
 #            apt:
@@ -415,10 +420,10 @@
 #              state: present
 
 
-    - name: glances
-      apt:
-        name: glances
-        state: present
+  - name: glances
+    apt:
+      name: glances
+      state: present
 
 
 ## Stacer
@@ -431,186 +436,188 @@
 #	dpkg -i $apps/$stacer
 #fi
 
-    - name: aircrack
-      apt:
-        name: aircrack-ng
-        state: present
+  - name: aircrack
+    apt:
+      name: aircrack-ng
+      state: present
 
-    - name: flux
-      apt_repository:
-        repo: 'ppa:nathan-renniewaldock/flux'
-      apt:
-        update_cache: yes
-        name: fluxgui
-        state: present
+  - name: flux
+    apt_repository:
+      repo: 'ppa:nathan-renniewaldock/flux'
+  - name: fluxgui
+    apt:
+      update_cache: yes
+      name: fluxgui
+      state: present
 
-    - name: darktable
-      apt_repository:
-        repo: 'ppa:pmjdebruijn/darktable-release'
+  - name: darktable
+    apt_repository:
+      repo: 'ppa:pmjdebruijn/darktable-release'
+  - name: darktable
+    apt:
+      update_cache: yes
+      name: darktable
+      state: present
 
-      apt:
-        update_cache: yes
-        name: darktable
-        state: present
+  - name: audacity
+    apt:
+      name: audacity
+      state: present
 
-    - name: audacity
-      apt:
-        name: audacity
-        state: present
+  - name: Veracrypt
+    apt_repository:
+      repo: 'ppa:unit193/encryption'
+  - name: veracrypt
+    apt:
+      update_cache: yes
+      name: veracrypt
+      state: present
 
-    - name: Veracrypt
-      apt_repository:
-        repo: 'ppa:unit193/encryption'
-      apt:
-        update_cache: yes
-        name: veracrypt
-        state: present
+  - name: Java JDK 8 for NetBeans IDE
+    shell: |
+      apps=/tmp/apps
+      file=jdk.tgz
+      if [ ! -d '/opt/jdk' ]; then mkdir /opt/jdk; fi
+      if [ ! -f $apps/$file ]; then
+          wget -q -O $apps/$file -c --header "Cookie: oraclelicense=accept-securebackup-cookie" 'http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz'
+          tar zxf $apps/$file -C /opt/jdk
+      else
+          tar zxf $apps/$file -C /opt/jdk
+      fi
+      if [ ! -f /usr/local/bin/javajdk ]; then
+          ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
+      else
+          rm /usr/local/bin/javajdk
+          ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
+      fi
 
-    - name: Java JDK 8 for NetBeans IDE
-      shell: |
-        apps=/tmp/apps
-        file=jdk.tgz
-        if [ ! -d '/opt/jdk' ]; then mkdir /opt/jdk; fi
-        if [ ! -f $apps/$file ]; then
-            wget -q -O $apps/$file -c --header "Cookie: oraclelicense=accept-securebackup-cookie" 'http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz'
-            tar zxf $apps/$file -C /opt/jdk
-        else
-            tar zxf $apps/$file -C /opt/jdk
-        fi
-        if [ ! -f /usr/local/bin/javajdk ]; then
-            ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
-        else
-            rm /usr/local/bin/javajdk
-            ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
-        fi
+  - name: NetBeans IDE
+    shell: |
+      cat > $apps/state.xml <<EOF
+      <?xml version="1.0" encoding="UTF-8"?><!--
+        DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
-    - name: NetBeans IDE
-      shell: |
-        cat > $apps/state.xml <<EOF
-        <?xml version="1.0" encoding="UTF-8"?><!--
-          DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+        Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
 
-          Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
+        Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+        Other names may be trademarks of their respective owners.
 
-          Oracle and Java are registered trademarks of Oracle and/or its affiliates.
-          Other names may be trademarks of their respective owners.
+        The contents of this file are subject to the terms of either the GNU General Public
+        License Version 2 only ("GPL") or the Common Development and Distribution
+        License("CDDL") (collectively, the "License"). You may not use this file except in
+        compliance with the License. You can obtain a copy of the License at
+        http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
+        License for the specific language governing permissions and limitations under the
+        License.  When distributing the software, include this License Header Notice in
+        each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
+        designates this particular file as subject to the "Classpath" exception as provided
+        by Oracle in the GPL Version 2 section of the License file that accompanied this code.
+        If applicable, add the following below the License Header, with the fields enclosed
+        by brackets [] replaced by your own identifying information:
+        "Portions Copyrighted [year] [name of copyright owner]"
 
-          The contents of this file are subject to the terms of either the GNU General Public
-          License Version 2 only ("GPL") or the Common Development and Distribution
-          License("CDDL") (collectively, the "License"). You may not use this file except in
-          compliance with the License. You can obtain a copy of the License at
-          http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
-          License for the specific language governing permissions and limitations under the
-          License.  When distributing the software, include this License Header Notice in
-          each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
-          designates this particular file as subject to the "Classpath" exception as provided
-          by Oracle in the GPL Version 2 section of the License file that accompanied this code.
-          If applicable, add the following below the License Header, with the fields enclosed
-          by brackets [] replaced by your own identifying information:
-          "Portions Copyrighted [year] [name of copyright owner]"
+        Contributor(s):
 
-          Contributor(s):
+        The Original Software is NetBeans. The Initial Developer of the Original Software
+        is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
+        Rights Reserved.
 
-          The Original Software is NetBeans. The Initial Developer of the Original Software
-          is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
-          Rights Reserved.
+        If you wish your version of this file to be governed by only the CDDL or only the
+        GPL Version 2, indicate your decision by adding "[Contributor] elects to include
+        this software in this distribution under the [CDDL or GPL Version 2] license." If
+        you do not indicate a single choice of license, a recipient has the option to
+        distribute your version of this file under either the CDDL, the GPL Version 2 or
+        to extend the choice of license to its licensees as provided above. However, if you
+        add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
+        option applies only if the new code is made subject to such option by the copyright
+        holder.
+      --><state xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
+      <components>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
+                      <property name="minimum.jdk.version">1.8.0</property>
+                      <property name="jdk.location">/opt/jdk/jdk1.8.0_144</property>
+                      <property name="installation.timestamp">1501283949078</property>
+                      <property name="start.menu.shortcut.location">all.users</property>
+                      <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                      <property name="desktop.shortcut.location">all.users</property>
+                      <property name="netbeans.summary.message.text">115 updates successfully installed.
 
-          If you wish your version of this file to be governed by only the CDDL or only the
-          GPL Version 2, indicate your decision by adding "[Contributor] elects to include
-          this software in this distribution under the [CDDL or GPL Version 2] license." If
-          you do not indicate a single choice of license, a recipient has the option to
-          distribute your version of this file under either the CDDL, the GPL Version 2 or
-          to extend the choice of license to its licensees as provided above. However, if you
-          add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
-          option applies only if the new code is made subject to such option by the copyright
-          holder.
-        --><state xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
-        <components>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
-                        <property name="minimum.jdk.version">1.8.0</property>
-                        <property name="jdk.location">/opt/jdk/jdk1.8.0_144</property>
-                        <property name="installation.timestamp">1501283949078</property>
-                        <property name="start.menu.shortcut.location">all.users</property>
-                        <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                        <property name="desktop.shortcut.location">all.users</property>
-                        <property name="netbeans.summary.message.text">115 updates successfully installed.
+      </property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="show-in-wizard">false</property>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="jre.allowed">false</property>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
+                  <properties>
+                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
+                  <properties>
+                      <property name="jdk.location"/>
+                      <property name="installation.location">/usr/local/glassfish-4.1.1</property>
+                  </properties>
+              </product>
+              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
+                  <properties>
+                      <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
+                      <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
+                  </properties>
+              </product>
+          </components>
+      </state>
+      EOF
 
-        </property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="show-in-wizard">false</property>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="jre.allowed">false</property>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
-                    <properties>
-                        <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
-                    <properties>
-                        <property name="jdk.location"/>
-                        <property name="installation.location">/usr/local/glassfish-4.1.1</property>
-                    </properties>
-                </product>
-                <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
-                    <properties>
-                        <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
-                        <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
-                    </properties>
-                </product>
-            </components>
-        </state>
-        EOF
-
-        file=netbeans.sh
-        if [ ! -f $apps/$file ]; then
-            wget -q -O $apps/$file 'http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh'
-            chmod +x $apps/$file
-            $apps/$file --silent --state $apps/state.xml
-        else
-            chmod +x $apps/$file
-            $apps/$file --silent --state $apps/state.xml
-        fi
+      file=netbeans.sh
+      if [ ! -f $apps/$file ]; then
+          wget -q -O $apps/$file 'http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh'
+          chmod +x $apps/$file
+          $apps/$file --silent --state $apps/state.xml
+      else
+          chmod +x $apps/$file
+          $apps/$file --silent --state $apps/state.xml
+      fi
 

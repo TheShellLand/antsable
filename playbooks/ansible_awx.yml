@@ -26,12 +26,12 @@
       - 'python-pip'
       - 'python3-pip'
 
-  - name: python packages
+  - name: pip, docker
     pip:
         name: "{{ item }}"
-      with_items:
-        - 'pip'
-        - 'docker'
+    with_items:
+      - 'pip'
+      - 'docker'
 
   - name: awx git
     git:
@@ -39,10 +39,46 @@
       dest: /root/awx
       clone: yes
       update: yes
+      force: yes
 
   - name: awx-logos git
     git:
       repo: https://github.com/ansible/awx-logos.git
-      dest: /root/awx/awx-logos
+      dest: /root/awx-logos
       clone: yes
       update: yes
+      force: yes
+
+  - name: ansible playbooks dir
+    file: >
+      path=/var/lib/awx/projects
+      recurse=yes
+      state=directory
+
+  - name: git clone playbooks
+    git:
+      repo: https://github.com/TheShellLand/antsable.git
+      dest: /var/lib/awx/projects/antsable
+      clone: yes
+      update: yes
+      force: yes
+
+  - name:
+    copy:
+      dest: /root/awx/installer/inventory
+      content: |
+        localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+
+        [all:vars]
+        use_container_for_build=true
+        awx_official=true
+
+        postgres_data_dir=/opt/pgdocker
+        host_port=80
+
+        pg_username=awx
+        pg_password=
+        pg_database=awx
+        pg_port=5432
+
+        awx_secret_key=

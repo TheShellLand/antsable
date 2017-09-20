@@ -26,14 +26,23 @@
       - 'python-pip'
       - 'python3-pip'
 
-  - pip:
-      name: "{{ item }}"
-    with_items:
-      - 'pip'
-      - 'docker'
+  - name: python packages
+    pip:
+        name: "{{ item }}"
+      with_items:
+        - 'pip'
+        - 'docker'
 
-  - git:
+  - name: awx git
+    git:
       repo: https://github.com/ansible/awx.git
       dest: /root/awx
+      clone: yes
+      update: yes
+
+  - name: awx-logos git
+    git:
+      repo: https://github.com/ansible/awx-logos.git
+      dest: /root/awx/awx-logos
       clone: yes
       update: yes

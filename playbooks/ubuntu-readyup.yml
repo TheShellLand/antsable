@@ -120,8 +120,9 @@
 
   - name: Put buttons on left side
     shell: |
-      gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-    become: yes
+      if [ ! $(grep gsettings ~/.profile) ]; then
+        cat >> ~/.profile <<EOF
+        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"    become: yes
     become_user: eric
 
   - name: oranchelo-icon-theme repo

@@ -131,10 +131,9 @@
 
   - name: Put buttons on left side
     shell: |
-      cat >> /home/eric/.profile <<EOF
-      gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-
-      EOF
+      if [ ! $(grep gsettings ~/.profile) ]; then
+        cat >> ~/.profile <<EOF
+        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
     become: yes
     become_user: eric
 

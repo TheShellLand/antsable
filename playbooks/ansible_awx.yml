@@ -58,10 +58,13 @@
   - name: git clone playbooks
     git:
       repo: https://github.com/TheShellLand/antsable.git
-      dest: /var/lib/awx/projects/antsable
+      dest: /tmp/antsable
       clone: yes
       update: yes
       force: yes
+
+  - name: Download existing playbooks
+    shell: mv -v /tmp/antsable/playbooks/* /var/lib/awx/projects
 
   - name:
     copy:
@@ -82,3 +85,10 @@
         pg_port=5432
 
         awx_secret_key=
+
+  - name: Add cron job
+    cron:
+      name: Re-deploy AWX at reboot
+      special_time: reboot
+      state: present
+      job: "ansible-playbook -i /root/awx/installer/inventory /root/awx/installer/install.yml"

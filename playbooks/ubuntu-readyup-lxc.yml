@@ -65,6 +65,14 @@
       name: gnome-tweak-tool
       state: present
 
+  - name:
+    shell: |
+      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
+      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+
+      unzip extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
+      unzip extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+
 #      - name: lightdm
 #        apt:
 #          name: lightdm
@@ -131,8 +139,8 @@
 
   - name: Put buttons on left side
     shell: |
-      if [ ! $(grep gsettings ~/.profile) ]; then
-        cat >> ~/.profile <<EOF
+      if [ ! $(grep gsettings /home/eric/.profile) ]; then
+        cat >> /home/eric/.profile <<EOF
         gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
     become: yes
     become_user: eric

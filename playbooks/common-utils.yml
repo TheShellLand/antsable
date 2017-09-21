@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: Install tmux
+    apt:
+      update_cache: yes
+      name: tmux
+      state: present
+  - name: Install vim
+    apt:
+      name: vim
+      state: present

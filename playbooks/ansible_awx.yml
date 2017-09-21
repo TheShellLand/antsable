@@ -49,23 +49,6 @@
       update: yes
       force: yes
 
-  - name: ansible playbooks dir
-    file: >
-      path=/var/lib/awx/projects
-      recurse=yes
-      state=directory
-
-  - name: git clone playbooks
-    git:
-      repo: https://github.com/TheShellLand/antsable.git
-      dest: /tmp/antsable
-      clone: yes
-      update: yes
-      force: yes
-
-  - name: Download existing playbooks
-    shell: mv -v /tmp/antsable/playbooks/* /var/lib/awx/projects
-
   - name:
     copy:
       dest: /root/awx/installer/inventory

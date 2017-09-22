@@ -500,6 +500,15 @@
       name: veracrypt
       state: present
 
+  - name: OBS-Studio Screen Recorder
+    apt_repository:
+      repo: 'ppa:obsproject/obs-studio'
+  - name: obs-studio
+    apt:
+      update_cache: yes
+      name: obs-studio
+      state: present
+
   - name: Java JDK 8 for NetBeans IDE
     shell: |
       apps=/tmp/apps

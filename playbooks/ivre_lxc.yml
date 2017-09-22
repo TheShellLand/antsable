@@ -1,0 +1,36 @@
+---
+- hosts: ivre
+  tasks:
+  - name: Install pip
+    apt:
+      name: python3-pip
+      state: latest
+
+  - name: Update pip
+    pip:
+      name: pip
+      state: latest
+      executabe: pip3
+
+  - name: Install IVRE pip package
+    pip:
+      name: ivre
+      state: latest
+      executable: pip3
+
+  - name: Install IVRE pip dependencies
+    pip:
+      name: "{{ item }}"
+      state: latest
+      executabe: pip3
+    with_items:
+      - 'Crypto'
+      - 'pymongo'
+      - 'py2neo'
+      - 'sqlalchemy'
+      - 'psycopg2'
+      - 'krbV'
+      - 'PIL'
+      - 'MySQLdb'
+      - 'dbus'
+      - 'matplotlib'

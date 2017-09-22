@@ -509,6 +509,19 @@
       name: obs-studio
       state: present
 
+  - name: Peek screen recorder
+    shell: |
+      apps=/tmp/apps
+      file=peek.deb
+      if [ ! -f $apps/$file ]; then
+        wget -q -O $apps/$file https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
+        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        dpkg -i $apps/$file
+      else
+        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        dpkg -i $apps/$file
+      fi
+
   - name: Java JDK 8 for NetBeans IDE
     shell: |
       apps=/tmp/apps

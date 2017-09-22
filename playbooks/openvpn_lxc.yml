@@ -1,7 +1,6 @@
 ---
-- hosts:
+- hosts: all
   tasks:
-
   - name: Update cache
     apt:
       update_cache: yes
@@ -56,6 +55,8 @@
 
   - name: Set iptables
     shell: iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+  - name: Install iptables-persistent
     apt:
       name: iptables-persistent
       state: present

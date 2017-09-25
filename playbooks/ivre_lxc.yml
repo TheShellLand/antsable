@@ -10,19 +10,16 @@
     pip:
       name: pip
       state: latest
-      executabe: pip3
 
   - name: Install IVRE pip package
     pip:
       name: ivre
       state: latest
-      executable: pip3
 
   - name: Install IVRE pip dependencies
     pip:
       name: "{{ item }}"
       state: latest
-      executabe: pip3
     with_items:
       - 'Crypto'
       - 'pymongo'

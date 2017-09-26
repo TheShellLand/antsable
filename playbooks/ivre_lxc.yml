@@ -29,5 +29,5 @@
       - 'krbV'
       - 'PIL'
       - 'MySQLdb'
-      - 'dbus'
+#      - 'dbus'
       - 'matplotlib'

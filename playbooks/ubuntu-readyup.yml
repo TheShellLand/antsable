@@ -1,5 +1,5 @@
 ---
-- hosts: gui
+- hosts: readingrainbow
   tasks:
 
   - name: /tmp/apps
@@ -72,13 +72,13 @@
       name: ubuntu-gnome-desktop
       state: present
 
-  - name:
+  - name: Gnome Extensions
     shell: |
       wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
       wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
 
-      unzip extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
-      unzip extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+      unzip -f -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
+      unzip -f -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
 
   - name: plank
     apt:
@@ -136,8 +136,8 @@
   - name: Put buttons on left side
     shell: |
       if [ ! $(grep gsettings /home/eric/.profile) ]; then
-        cat >> /home/eric/.profile <<EOF
-        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+        echo 'gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"' >> /home/eric/.profile
+      fi
     become: yes
     become_user: eric
 
@@ -205,7 +205,6 @@
           Option "AccelerationScheme" "none"
           Option "AccelSpeed" "-1"
       EndSection
-      EOF
 
 #  - name: Fix Nautilus recent files bug
 #    shell: |
@@ -310,7 +309,6 @@
       Version=1.0
       Type=Application
       Terminal=0
-      EOF
   - name: python3-pip
     apt:
       name: python3-pip
@@ -650,7 +648,6 @@
               </product>
           </components>
       </state>
-      EOF
 
       file=netbeans.sh
       if [ ! -f $apps/$file ]; then

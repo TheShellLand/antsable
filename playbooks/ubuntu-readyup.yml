@@ -6,6 +6,8 @@
     file:
       path: /tmp/apps
       state: directory
+  - name: chdir
+    shell: cd /tmp/apps
 
   - name: Ubuntu 16.04 appstream bugfix
     apt:
@@ -31,6 +33,11 @@
   - name: git
     apt:
       name: git
+      state: present
+
+  - name: unzip
+    apt:
+      name: unzip
       state: present
 
 
@@ -128,9 +135,10 @@
 
   - name: Put buttons on left side
     shell: |
-      if [ ! $(grep gsettings ~/.profile) ]; then
-        cat >> ~/.profile <<EOF
-        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"    become: yes
+      if [ ! $(grep gsettings /home/eric/.profile) ]; then
+        cat >> /home/eric/.profile <<EOF
+        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+    become: yes
     become_user: eric
 
   - name: oranchelo-icon-theme repo
@@ -199,9 +207,9 @@
       EndSection
       EOF
 
-#        - name: Fix Nautilus recent files bug
-#          shell: | 
-#            echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
+#  - name: Fix Nautilus recent files bug
+#    shell: |
+#      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
 
   - name: OpenVPN
     apt:
@@ -333,7 +341,7 @@
 
   - name: npm
     apt:
-      name: nmp
+      name: npm
       state: present
 
   - name: exfat
@@ -415,6 +423,7 @@
       echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
   - name: skypeforlinux
     apt:
+      update_cache: yes
       name: skypeforlinux
       state: present
 
@@ -482,6 +491,28 @@
       name: veracrypt
       state: present
 
+  - name: OBS-Studio Screen Recorder
+    apt_repository:
+      repo: 'ppa:obsproject/obs-studio'
+  - name: obs-studio
+    apt:
+      update_cache: yes
+      name: obs-studio
+      state: present
+
+  - name: Peek screen recorder
+    shell: |
+      apps=/tmp/apps
+      file=peek.deb
+      if [ ! -f $apps/$file ]; then
+        wget -q -O $apps/$file https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
+        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        dpkg -i $apps/$file
+      else
+        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        dpkg -i $apps/$file
+      fi
+
   - name: Java JDK 8 for NetBeans IDE
     shell: |
       apps=/tmp/apps
@@ -502,6 +533,7 @@
 
   - name: NetBeans IDE
     shell: |
+      apps=/tmp/apps
       cat > $apps/state.xml <<EOF
       <?xml version="1.0" encoding="UTF-8"?><!--
         DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.

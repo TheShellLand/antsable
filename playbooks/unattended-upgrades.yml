@@ -1,6 +1,7 @@
 ---
 - hosts: all
   tasks:
+    # use debconf-show to see questions/settings available
   - name: Install unattended-upgrades
     apt:
       name: unattended-upgrades

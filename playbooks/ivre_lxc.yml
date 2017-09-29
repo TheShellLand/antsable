@@ -17,6 +17,25 @@
       - 'python-pip'
       - 'python3-pip'
 
+  - name: dokuwiki conf
+    debconf:
+      name: dokuwiki
+      question: dokuwiki/wiki/password
+      vtype: password
+      # change to ansible-vault
+      value: xthmuZKGiWBQA6Cp8X2R
+    debconf:
+      name: dokuwiki
+      question: dokuwiki/wiki/confirm
+      vtype: password
+      # change to ansible-vault
+      value: xthmuZKGiWBQA6Cp8X2R
+    debconf:
+      name: dokuwiki
+      question: dokuwiki/system/purgepages
+      vtype: boolean
+      value: false
+
   - name: Update pip
     pip:
       name: pip

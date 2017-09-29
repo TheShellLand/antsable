@@ -4,6 +4,7 @@
   # https://github.com/cea-sec/ivre/blob/master/doc/FAST-INSTALL-AND-FIRST-RUN.md
   - name: Install IVRE dependencies
     apt:
+      update_cache: yes
       name: "{{ item }}"
       state: latest
     with_items:

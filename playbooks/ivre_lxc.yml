@@ -13,6 +13,7 @@
       - 'python-crypto'
       - 'apache2'
       - 'dokuwiki'
+      - 'python-pip'
       - 'python3-pip'
 
   - name: Update pip
@@ -33,12 +34,45 @@
       chmod +x setup.py
 
   - name: setup.py build
-    shell: |
-      cd ivre
-      setup.py build
+    command: ./setup.py build
+    args:
+      chdir: /root/ivre
 
   - name: setup.py install
-    shell: |
-      cd ivre
-      setup.py install
+    command: ./setup.py install
+    args:
+      chdir: /root/ivre
 
+  - name: ivre setup
+    shell: |
+      cd /var/www/html ## or depending on your version /var/www
+      rm index.html
+      ln -s /usr/local/share/ivre/web/static/* .
+      cd /usr/lib/cgi-bin
+      ln -s /usr/local/share/ivre/web/cgi-bin/* .
+      cd /var/lib/dokuwiki/data/pages
+      ln -s /usr/local/share/ivre/dokuwiki/doc
+      cd /var/lib/dokuwiki/data/media
+      ln -s /usr/local/share/ivre/dokuwiki/media/logo.png
+      ln -s /usr/local/share/ivre/dokuwiki/media/doc
+      cd /usr/share/dokuwiki
+      patch -f -p0 < /usr/local/share/ivre/dokuwiki/backlinks.patch
+      cd /etc/apache2/mods-enabled
+      for m in cgi rewrite ; do [ -L $m.load ] || ln -s ../mods-available/$m.load ; done
+      cd /usr/local/share/ivre/web/cgi-bin
+      sed -i 's/^\(\s*\)#Rewrite/\1Rewrite/' /etc/dokuwiki/apache.conf
+      service apache2 reload
+
+  - name: Database init, data download & importation
+    shell: |
+      ivre scancli --init < /dev/null
+      ivre ipinfo --init < /dev/null
+      ivre ipdata --init < /dev/null
+      sudo ivre runscansagentdb --init < /dev/null
+      sudo ivre ipdata --download < /dev/null
+      ivre ipdata --import-all --no-update-passive-db < /dev/null
+
+  - name: Getting IP data
+    shell: |
+      ivre ipdata --download
+      ivre ipdata --import-all --no-update-passive-db

@@ -1,33 +1,44 @@
 ---
 - hosts: ivre
   tasks:
-  - name: Install pip
+  # https://github.com/cea-sec/ivre/blob/master/doc/FAST-INSTALL-AND-FIRST-RUN.md
+  - name: Install IVRE dependencies
     apt:
-      name: python3-pip
+      name: "{{ item }}"
       state: latest
+    with_items:
+      - 'git'
+      - 'mongodb'
+      - 'python-pymongo'
+      - 'python-crypto'
+      - 'apache2'
+      - 'dokuwiki'
+      - 'python3-pip'
 
   - name: Update pip
     pip:
       name: pip
       state: latest
 
-  - name: Install IVRE pip package
-    pip:
-      name: ivre
-      state: latest
+  - name: Clone ivre
+    git:
+      repo: 'https://github.com/cea-sec/ivre'
+      dest: /root/ivre
+      update: yes
+      clone: yes
 
-  - name: Install IVRE pip dependencies
-    pip:
-      name: "{{ item }}"
-      state: latest
-    with_items:
-      - 'Crypto'
-      - 'pymongo'
-      - 'py2neo'
-      - 'sqlalchemy'
-      - 'psycopg2'
-      - 'krbV'
-      - 'PIL'
-      - 'MySQLdb'
-#      - 'dbus'
-      - 'matplotlib'
+  - name: cd ivre
+    shell: |
+      cd ivre
+      chmod +x setup.py
+
+  - name: setup.py build
+    shell: |
+      cd ivre
+      setup.py build
+
+  - name: setup.py install
+    shell: |
+      cd ivre
+      setup.py install
+

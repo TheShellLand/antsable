@@ -16,6 +16,35 @@
       - 'dokuwiki'
       - 'python-pip'
       - 'python3-pip'
+      - 'nmap'
+      - 'zmap'
+
+  - name: Bro - IVRE dependencies
+    shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/Debian_8.0/ /' >> /etc/apt/sources.list.d/bro.list
+
+  - name: Bro - IVRE dependencies
+    shell: wget -q -O - http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add —
+
+  - name: Bro - IVRE dependencies
+    apt:
+      update_cache: yes
+      name: bro
+      state: latest
+
+  - name: Neo4j apt key - IVRE dependencies
+    apt_key:
+      url: https://debian.neo4j.org/neotechnology.gpg.key
+      state: present
+  - name: Install neo4j - IVRE dependencies
+    apt:
+      update_cache: yes
+      name: neo4j
+      state: latest
+
+  - name: tesseract-ocr - IVRE dependencies
+    apt:
+      name: tesseract-ocr
+      state: latest
 
   - name: Install IVRE python dependencies
     pip:

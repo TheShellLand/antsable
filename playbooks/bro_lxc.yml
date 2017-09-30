@@ -1,0 +1,15 @@
+---
+- hosts: bro
+  tasks:
+
+  - name: Bro - sources
+    shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/Debian_8.0/ /' >> /etc/apt/sources.list.d/bro.list
+
+  - name: Bro - apt-key
+    shell: wget -q -O - http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add —
+
+  - name: Bro - install
+    apt:
+      update_cache: yes
+      name: bro
+      state: latest

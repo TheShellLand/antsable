@@ -17,6 +17,44 @@
       - 'python-pip'
       - 'python3-pip'
 
+  - name: Install IVRE python dependencies
+    pip:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - 'pymongo>=2.7.2'
+      - 'py2neo>=3'
+      - 'pycrypto'
+      - 'sqlalchemy'
+      - 'psycopg2'
+      - 'future'
+  - name: Install mongo python dependencies
+    pip:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - 'pymongo>=2.7.2'
+      - 'pycrypto'
+      - 'future'
+  - name: Install neo4j python dependencies
+    pip:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - 'py2neo>=3'
+      - 'pycrypto'
+      - 'future'
+  - name: Install postgres python dependencies
+    pip:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - 'pycrypto'
+      - 'sqlalchemy'
+      - 'psycopg2'
+      - 'future'
+
+
   - name: dokuwiki conf
     debconf:
       name: dokuwiki

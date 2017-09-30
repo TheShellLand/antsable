@@ -2,8 +2,12 @@
 - hosts: nmap
   tasks:
 
-  - name: nmap
-    apt:
-      update_cache: yes
-      name: nmap
-      state: latest
+  - name: nmap 7.60
+    shell: |
+      nmap=nmap.bz2
+      wget -O $nmap https://nmap.org/dist/nmap-7.60.tar.bz2
+      bzip2 -cd $nmap | tar xvf -
+      cd nmap-7.60
+      ./configure
+      make
+      make install

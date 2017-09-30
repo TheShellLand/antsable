@@ -16,8 +16,17 @@
       - 'dokuwiki'
       - 'python-pip'
       - 'python3-pip'
-      - 'nmap'
       - 'zmap'
+
+  - name: nmap 7.60
+    shell: |
+      nmap=nmap.bz2
+      wget -O $nmap https://nmap.org/dist/nmap-7.60.tar.bz2
+      bzip2 -cd $nmap | tar xvf -
+      cd nmap-7.60
+      ./configure
+      make
+      make install
 
   - name: Bro - IVRE dependencies
     shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/bro.list

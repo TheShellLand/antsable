@@ -27,6 +27,7 @@
       ./configure
       make
       make install
+      ln -s /usr/local/bin/nmap /usr/bin/nmap
 
   - name: Bro - IVRE dependencies
     shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/bro.list

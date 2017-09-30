@@ -63,11 +63,13 @@
         host_port=80
 
         pg_username=awx
-        pg_password=
+        # change to ansible-vault
+        pg_password=jhvWkBiH9EAVePbT84tnKRCgyaJQsLDczrFd523mpwYXS7ZofG
         pg_database=awx
         pg_port=5432
 
-        awx_secret_key=
+        # change to ansible-vault
+        awx_secret_key=Dp2B3LFUPc9Cdh8EAHy6aQMbvKV75tgSuYnWjir4NZkqzRTJwm
 
   - name: Add cron job
     cron:

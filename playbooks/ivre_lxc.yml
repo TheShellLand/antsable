@@ -20,10 +20,11 @@
       - 'zmap'
 
   - name: Bro - IVRE dependencies
-    shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/Debian_8.0/ /' >> /etc/apt/sources.list.d/bro.list
+    shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/bro.list
+
 
   - name: Bro - IVRE dependencies
-    shell: wget -q -O - http://download.opensuse.org/repositories/network:bro/Debian_8.0/Release.key | apt-key add —
+    shell: wget -q -O - http://download.opensuse.org/repositories/network:bro/xUbuntu_16.04/Release.key | apt-key add -
 
   - name: Bro - IVRE dependencies
     apt:

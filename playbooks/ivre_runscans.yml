@@ -1,0 +1,8 @@
+ivre runscans --routable --limit 1000
+
+---
+- hosts: ivre
+  tasks:
+
+  - name: ivre runscans --routable --limit 1000
+    shell: ivre runscans --routable --limit 1000

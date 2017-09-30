@@ -127,8 +127,8 @@
       ivre ipinfo --init < /dev/null
       ivre ipdata --init < /dev/null
       sudo ivre runscansagentdb --init < /dev/null
-      sudo ivre ipdata --download < /dev/null
-      ivre ipdata --import-all --no-update-passive-db < /dev/null
+#      sudo ivre ipdata --download
+#      ivre ipdata --import-all --no-update-passive-db
 
   - name: Getting IP data
     shell: |

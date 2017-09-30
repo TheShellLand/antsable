@@ -36,6 +36,8 @@
     apt_key:
       url: https://debian.neo4j.org/neotechnology.gpg.key
       state: present
+  - name: neo4j repo
+    shell: echo 'deb https://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
   - name: Install neo4j - IVRE dependencies
     apt:
       update_cache: yes

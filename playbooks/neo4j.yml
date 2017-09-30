@@ -6,6 +6,9 @@
       url: https://debian.neo4j.org/neotechnology.gpg.key
       state: present
 
+  - name: neo4j repo
+    shell: echo 'deb https://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
+
   - name: apt update
     apt:
       update_cache: yes
@@ -13,7 +16,7 @@
   - name: Install neo4j
     apt:
       name: neo4j
-      state: present
+      state: latest
 
   - name: Configure network and heap
     shell: |

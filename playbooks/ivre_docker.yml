@@ -3,16 +3,19 @@
   tasks:
   # https://github.com/cea-sec/ivre/blob/master/doc/FAST-INSTALL-AND-FIRST-RUN.md
 
-  - name: docker repo
+  - name: Add docker repo
     apt_repository:
       # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
       repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+
+  - name: Add docker repository key
+    shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
   - name: Install docker-ce
     apt:
       update_cache: yes
       name: docker-ce
-      state: present
+      state: latest
 
   - name: ivre docker image download
     shell: |

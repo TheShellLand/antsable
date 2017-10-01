@@ -9,5 +9,5 @@
     apt:
       update_cache: yes
       name: ansible
-      state: present
+      state: latest
     become: yes

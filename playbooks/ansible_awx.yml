@@ -52,24 +52,33 @@
   - name:
     copy:
       dest: /root/awx/installer/inventory
-      content: |
-        localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+      # ansible-vault encrypt_string awx-password  --name 'content'
+      content: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30393238653731363939643237666532343637353239383238656634396632643762653864653961
+          3330393639626638373035393837303334633531643737650a333763313832393539313032363362
+          62616264613036616438366462376638333432343831306438363536336461323766633730666630
+          3663633065633537320a666339633533323261363436303133373536393964663566313763316136
+          3231
 
-        [all:vars]
-        use_container_for_build=true
-        awx_official=true
-
-        postgres_data_dir=/opt/pgdocker
-        host_port=80
-
-        pg_username=awx
-        # change to ansible-vault
-        pg_password=jhvWkBiH9EAVePbT84tnKRCgyaJQsLDczrFd523mpwYXS7ZofG
-        pg_database=awx
-        pg_port=5432
-
-        # change to ansible-vault
-        awx_secret_key=Dp2B3LFUPc9Cdh8EAHy6aQMbvKV75tgSuYnWjir4NZkqzRTJwm
+#      content: |
+#        localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python"
+#
+#        [all:vars]
+#        use_container_for_build=true
+#        awx_official=true
+#
+#        postgres_data_dir=/opt/pgdocker
+#        host_port=80
+#
+#        pg_username=awx
+#        # change to ansible-vault
+#        pg_password=F3Wmc2DHxfE7veAbG8noQVgYywTq9UkL5JaiBut6dzpSXhr4PZ
+#        pg_database=awx
+#        pg_port=5432
+#
+#        # change to ansible-vault
+#        awx_secret_key=UkMwieha6y7RDF8fZLEmJB5SWCdgzX9GTrnYj2pQAHuocxvqsP
 
   - name: Add cron job
     cron:

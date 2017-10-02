@@ -1,0 +1,31 @@
+---
+- hosts: ivre
+  tasks:
+
+  - name: python3-pip
+    apt:
+      update_cache: yes
+      name: python3-pip
+      state: latest
+
+  - name: pip3 packages
+    shell: |
+      pip3 install --upgrade pip
+      pip3 install gunicorn
+      pip3 install flask
+      pip3 install flask-login
+      pip3 install flask_wtf
+      pip3 install neo4j-driver
+      pip3 install bcrypt
+
+  - name: Configure logging
+    shell: |
+      touch '/var/log/gunicorn.log'
+      touch '/var/log/gunicorn-error.log'
+      chown nobody:nogroup '/var/log/gunicorn.log'
+      chown nobody:nogroup '/var/log/gunicorn-error.log'
+
+  - name: Install supervisor
+    apt:
+      name: supervisor
+      state: latest

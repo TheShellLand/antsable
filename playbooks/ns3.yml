@@ -1,0 +1,25 @@
+---
+- hosts: ns3
+  tasks:
+
+    # https://www.nsnam.org/wiki/Installation#Operating_system_and_compiler_support
+  - name: Install all requirements
+    shell: |
+      apt update
+      apt install -y autoconf bison bzr cmake cvs dia doxygen dvipng flex g++ g++-multilib gcc gdb git graphviz gsl-bin imagemagick ipython libboost-filesystem-dev libboost-signals-dev libc6-dev libc6-dev-i386 libfl-dev libgoocanvas-dev libgsl-dev libgsl2 libgtk2.0-0 libgtk2.0-dev libopenmpi-dev libqt4-dev libsqlite3-dev libxml2 libxml2-dev lxc mercurial openmpi-bin openmpi-common openmpi-doc python python-dev python-kiwi python-pygoocanvas python-pygraphviz python-setuptools python-sphinx qt4-dev-tools sqlite sqlite3 tcpdump texlive texlive-extra-utils texlive-font-utils texlive-lang-portuguese texlive-latex-extra uncrustify unrar valgrind vtun
+
+  - name: Download NS-3 source
+    get_url:
+      url: https://www.nsnam.org/release/ns-allinone-3.26.tar.bz2
+      dest: /root/ns.tar.bz2
+
+  - name: Build NS-3
+    shell: |
+      tar -jxf ns.tar.bz2
+      cd ns-allinone-3.26
+      ./build.py --enable-examples --enable-tests
+      cd ns-3.26
+      ./waf clean
+      ./waf configure --build-profile=optimized --enable-examples --enable-tests
+      ./waf --check-profile
+      ln -s $(pwd)/waf /usr/local/bin/waf

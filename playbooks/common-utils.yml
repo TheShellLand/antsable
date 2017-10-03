@@ -8,9 +8,9 @@
   - name: Install tmux
     apt:
       name: tmux
-      state: present
+      state: latest
 
   - name: Install vim
     apt:
       name: vim
-      state: present
+      state: latest

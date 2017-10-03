@@ -62,6 +62,18 @@
       name: gnome-tweak-tool
       state: present
 
+  - name: Gnome Extensions
+    shell: |
+      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
+      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+      wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+
+      mkdir -p /usr/share/gnome-shell/extensions
+
+      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
+      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/No_Title_bar
+
 #      - name: lightdm
 #        apt:
 #          name: lightdm
@@ -72,13 +84,12 @@
       name: ubuntu-gnome-desktop
       state: present
 
-  - name: Gnome Extensions
-    shell: |
-      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
-      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
-
-      unzip -f -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
-      unzip -f -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+  - name: Configure for gdm
+    debconf:
+      name: gdm3
+      question: shared/default-x-display-manager
+      vtype: select
+      value: gdm3
 
   - name: plank
     apt:
@@ -135,11 +146,8 @@
 
   - name: Put buttons on left side
     shell: |
-      if [ ! $(grep gsettings /home/eric/.profile) ]; then
-        echo 'gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"' >> /home/eric/.profile
-      fi
-    become: yes
-    become_user: eric
+        cat > /tmp/profile <<EOF
+        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
 
   - name: oranchelo-icon-theme repo
     apt_repository:

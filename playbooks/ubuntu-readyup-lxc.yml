@@ -65,13 +65,18 @@
       name: gnome-tweak-tool
       state: present
 
-  - name:
+  - name: Gnome Extensions
     shell: |
       wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
       wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+      wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
 
-      unzip extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
-      unzip extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+      mkdir -p /usr/share/gnome-shell/extensions
+
+      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
+      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/No_Title_bar
+
 
 #      - name: lightdm
 #        apt:
@@ -139,11 +144,8 @@
 
   - name: Put buttons on left side
     shell: |
-      if [ ! $(grep gsettings /home/eric/.profile) ]; then
-        cat >> /home/eric/.profile <<EOF
+        cat > /tmp/profile <<EOF
         gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-    become: yes
-    become_user: eric
 
   - name: oranchelo-icon-theme repo
     apt_repository:

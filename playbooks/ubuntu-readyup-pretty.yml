@@ -1,0 +1,245 @@
+---
+- hosts: gui
+  tasks:
+#  - name: Create user
+#    shell: |
+#      useradd -m -s /bin/bash eric
+
+  - name: /tmp/apps
+    file:
+      path: /tmp/apps
+      state: directory
+  - name: chdir
+    shell: cd /tmp/apps
+
+  - name: Ubuntu 16.04 appstream bugfix
+    apt:
+      name: appstream
+      purge: yes
+
+  - name: Disable Ubuntu 16.04 console switch keys
+    shell: |
+      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
+
+  - name: Updating repository
+    apt:
+      update_cache: yes
+
+  - name: Install Missing Packages
+    shell: apt install -f -y
+
+  - name: software-properties-common
+    apt:
+      name: software-properties-common
+      state: present
+
+  - name: git
+    apt:
+      name: git
+      state: present
+
+  - name: unzip
+    apt:
+      name: unzip
+      state: present
+
+
+  - name: Installing Macbuntu - ppa:noobslab/macbuntu
+    apt_repository:
+      repo: ppa:noobslab/macbuntu
+
+  - name: gnome-tweak-tool
+    apt:
+      name: gnome-tweak-tool
+      state: present
+
+  - name: Gnome Extensions
+    shell: |
+      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
+      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+      wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+
+      mkdir -p /usr/share/gnome-shell/extensions
+
+      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
+      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
+      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/No_Title_bar
+
+
+#      - name: lightdm
+#        apt:
+#          name: lightdm
+#          state: absent
+
+  - name: ubuntu-gnome-desktop
+    apt:
+      name: ubuntu-gnome-desktop
+      state: present
+
+  - name: Configure for gdm
+    debconf:
+      name: gdm3
+      question: shared/default-x-display-manager
+      vtype: select
+      value: gdm3
+
+  - name: plank
+    apt:
+      name: plank
+      state: present
+
+  - name: Installing Plank themes
+    shell: |
+      apps=/tmp/apps
+      theme=plank-themes.zip
+      if [ ! -f $apps/$theme ]; then
+          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
+          unzip $apps/$theme -d $apps
+          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+      else
+          unzip $apps/$theme -d $apps
+          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+      fi
+
+  - name: macbuntu-os-plank-theme-lts-v7
+    apt:
+      name: macbuntu-os-plank-theme-lts-v7
+      state: present
+
+  - name: macbuntu-os-icons-lts-v7
+    apt:
+      name: macbuntu-os-icons-lts-v7
+      state: present
+
+  - name: macbuntu-os-ithemes-lts-v7
+    apt:
+      name: macbuntu-os-ithemes-lts-v7
+      state: present
+
+  - name: Installing OSX Arc Collection
+    shell: |
+      apps=/tmp/apps
+      theme=osx-arc-collection.deb
+      if [ ! -f $apps/$theme ]; then
+          wget -q -O $apps/$theme 'https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb'
+          dpkg -i $apps/$theme
+      else
+          dpkg -i $apps/$theme
+      fi
+
+  - name: Put buttons on left side
+    shell: |
+        cat > /tmp/profile <<EOF
+        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+
+  - name: oranchelo-icon-theme repo
+    apt_repository:
+      repo: 'ppa:oranchelo/oranchelo-icon-theme'
+  - name: oranchelo-icon-theme
+    apt:
+      update_cache: yes
+      name: oranchelo-icon-theme
+      state: present
+
+  - name: arc-icon-theme
+    shell: |
+      apps=/tmp/apps
+      if [ ! -d "$apps/arc-icon-theme" ]; then mkdir "$apps/arc-icon-theme"; fi
+      if [ ! -d $apps/arc-icon-theme/Arc ]; then
+          git clone https://github.com/horst3180/arc-icon-theme.git "$apps/arc-icon-theme"
+          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
+      else
+          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
+      fi
+
+  - name: capitaine-cursors
+    shell: |
+      apps=/tmp/apps
+      file=capitaine-cursors.tgz
+      if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
+      if [ ! -f $apps/$file ]; then
+          wget -q -O $apps/$file https://dl.opendesktop.org/api/files/download/id/1489948557/capitaine-cursors-r2.tar.gz
+          tar zxf $apps/$file -C $apps/capitaine-cursors
+          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+      else
+          tar zxf $apps/$file -C $apps/capitaine-cursors
+          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+      fi
+
+  - name: libreoffice-style-sifr
+    apt:
+      name: libreoffice-style-sifr
+      state: present
+
+  - name: mac fonts
+    shell: |
+      apps=/tmp/apps
+      fonts=mac-fonts.zip
+      if [ ! -f $apps/$fonts ]; then
+          wget -q -O $apps/$fonts http://drive.noobslab.com/data/Mac/macfonts.zip
+          unzip $apps/$fonts -d /usr/share/fonts
+          #rm $apps/$fonts
+      else
+          unzip -o $apps/mac-fonts.zip -d /usr/share/fonts
+      fi
+      fc-cache -f -v
+
+  - name: Disable Mouse Acceleration for X server
+    file: >
+      path=/usr/share/X11/xorg.conf.d/
+      recurse=yes
+      state=directory
+  - name: Disable Mouse Acceleration for X server
+    shell: |
+      cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
+      Section "InputClass"
+          Identifier "My Mouse"
+          MatchIsPointer "yes"
+          Option "AccelerationProfile" "-1"
+          Option "AccelerationScheme" "none"
+          Option "AccelSpeed" "-1"
+      EndSection
+      EOF
+
+#  - name: Fix Nautilus recent files bug
+#    shell: |
+#      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
+
+  - name: tmux
+    apt:
+      name: tmux
+      state: present
+
+  - name: Chrome
+    shell: |
+      apps=/tmp/apps
+      chrome=chrome.deb
+      if [ ! -f $apps/$chrome ]; then
+          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+          dpkg -i $apps/$chrome
+          #rm $apps/$chrome
+      else
+          dpkg -i $apps/$chrome
+      fi
+      apt install -f -y
+
+  - name: QTQR
+    apt:
+      name: qtqr
+      state: present
+
+  - name: Emacs
+    apt:
+      name: emacs
+      state: present
+
+  - name: Vim
+    apt:
+      name: vim
+      state: present

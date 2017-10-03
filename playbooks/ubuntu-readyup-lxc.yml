@@ -13,9 +13,8 @@
     shell: cd /tmp/apps
 
   - name: Ubuntu 16.04 appstream bugfix
-    apt:
-      name: appstream
-      purge: yes
+    shell: |
+      apt purge -y appstream
 
 #  - name: Disable Ubuntu 16.04 console switch keys
 #    shell: |
@@ -73,9 +72,11 @@
 
       mkdir -p /usr/share/gnome-shell/extensions
 
-      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock
-      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/Taskbar
-      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/No_Title_bar
+      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
+      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
+      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
+
+      chmod -R +r /usr/share/gnome-shell/extensions
 
 
 #      - name: lightdm
@@ -216,7 +217,6 @@
           Option "AccelerationScheme" "none"
           Option "AccelSpeed" "-1"
       EndSection
-      EOF
 
 #  - name: Fix Nautilus recent files bug
 #    shell: |

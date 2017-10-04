@@ -92,14 +92,14 @@
       name: dokuwiki
       question: dokuwiki/wiki/password
       vtype: password
-      value: 4366664660a31313065333438363361613
+      value:
 
   - name: dokuwiki password 2
     debconf:
       name: dokuwiki
       question: dokuwiki/wiki/confirm
       vtype: password
-      value: 3039313939386232303639373130533343
+      value:
 
   - name: dokuwiki purgepages
     debconf: name=dokuwiki question=dokuwiki/system/purgepages vtype=boolean value=false

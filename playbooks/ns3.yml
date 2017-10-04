@@ -18,8 +18,15 @@
       tar -jxf ns.tar.bz2
       cd ns-allinone-3.26
       ./build.py --enable-examples --enable-tests
-      cd ns-3.26
+
+  - name: waf
+    shell: |
+      cd ns-allinone-3.26/ns-3.26
       ./waf clean
       ./waf configure --build-profile=optimized --enable-examples --enable-tests
       ./waf --check-profile
+
+  - name: symlink
+    shell: |
+      rm /usr/local/bin/waf
       ln -s $(pwd)/waf /usr/local/bin/waf

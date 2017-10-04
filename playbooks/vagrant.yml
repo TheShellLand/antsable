@@ -1,0 +1,12 @@
+---
+- hosts: vagrant
+  tasks:
+
+  - name: Download NS-3 source
+    get_url:
+      url: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
+      dest: /tmp/vagrant_2.0.0_x86_64.deb
+
+  - name: Build NS-3
+    shell: |
+      dpkg -i /tmp/vagrant_2.0.0_x86_64.deb

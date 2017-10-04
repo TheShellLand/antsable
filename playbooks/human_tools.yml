@@ -2,15 +2,10 @@
 - hosts: all
   tasks:
   - name: Update cache
-    apt:
-      update_cache: yes
+    apt: update_cache=yes
 
   - name: Install tmux
-    apt:
-      name: tmux
-      state: latest
+    apt: name=tmux state=latest
 
   - name: Install vim
-    apt:
-      name: vim
-      state: latest
+    apt: name=vim state=latest

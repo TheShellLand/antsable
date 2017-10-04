@@ -5,8 +5,8 @@
   - name: Install IVRE dependencies
     apt:
       update_cache: yes
-      name: "{{ item }}"
       state: latest
+      name: "{{ item }}"
     with_items:
       - 'git'
       - 'mongodb'
@@ -19,7 +19,7 @@
       - 'zmap'
       - 'p0f'
 
-  - name: nmap 7.60
+  - name: build nmap 7.60
     shell: |
       nmap=nmap.bz2
       wget -O $nmap https://nmap.org/dist/nmap-7.60.tar.bz2
@@ -28,42 +28,31 @@
       ./configure
       make
       make install
-      ln -s /usr/local/bin/nmap /usr/bin/nmap
 
   - name: Bro - IVRE dependencies
-    shell: echo 'deb http://download.opensuse.org/repositories/network:/bro/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/bro.list
+    shell: |
+      echo 'deb http://download.opensuse.org/repositories/network:/bro/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/bro.list
+      wget -q -O - http://download.opensuse.org/repositories/network:bro/xUbuntu_16.04/Release.key | apt-key add -
 
-
-  - name: Bro - IVRE dependencies
-    shell: wget -q -O - http://download.opensuse.org/repositories/network:bro/xUbuntu_16.04/Release.key | apt-key add -
-
-  - name: Bro - IVRE dependencies
-    apt:
-      update_cache: yes
-      name: bro
-      state: latest
+  - name: Install bro
+    apt: update_cache=yes name=bro state=latest
 
   - name: Neo4j apt key - IVRE dependencies
-    apt_key:
-      url: https://debian.neo4j.org/neotechnology.gpg.key
-      state: present
-  - name: neo4j repo
+    apt_key: url=https://debian.neo4j.org/neotechnology.gpg.key state=present
+
+  - name: Neo4j repo - IVRE dependencies
     shell: echo 'deb https://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
+
   - name: Install neo4j - IVRE dependencies
-    apt:
-      update_cache: yes
-      name: neo4j
-      state: latest
+    apt: update_cache=yes name=neo4j state=latest
 
   - name: tesseract-ocr - IVRE dependencies
-    apt:
-      name: tesseract-ocr
-      state: latest
+    apt: name=tesseract-ocr state=latest
 
   - name: Install IVRE python dependencies
     pip:
-      name: "{{ item }}"
       state: latest
+      name: "{{ item }}"
     with_items:
       - 'pymongo>=2.7.2'
       - 'py2neo>=3'
@@ -73,24 +62,24 @@
       - 'future'
   - name: Install mongo python dependencies
     pip:
-      name: "{{ item }}"
       state: latest
+      name: "{{ item }}"
     with_items:
       - 'pymongo>=2.7.2'
       - 'pycrypto'
       - 'future'
   - name: Install neo4j python dependencies
     pip:
-      name: "{{ item }}"
       state: latest
+      name: "{{ item }}"
     with_items:
       - 'py2neo>=3'
       - 'pycrypto'
       - 'future'
   - name: Install postgres python dependencies
     pip:
-      name: "{{ item }}"
       state: latest
+      name: "{{ item }}"
     with_items:
       - 'pycrypto'
       - 'sqlalchemy'
@@ -98,38 +87,25 @@
       - 'future'
 
 
-  - name: dokuwiki conf
+  - name: dokuwiki password
     debconf:
       name: dokuwiki
       question: dokuwiki/wiki/password
       vtype: password
-      value: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          30393139393862323036393731303139626261303266333831656530373363626364333933663132
-          3239633537663632643932656332643564383531373535640a323565636362363336616262613234
-          65333666616333323733343533366461623161663065353932346233386464326238383062303363
-          3039636634366664660a313130653334383633616130613965643661623863373936303664336538
-          3936
+      value: 4366664660a31313065333438363361613
 
-  - debconf:
+  - name: dokuwiki password 2
+    debconf:
       name: dokuwiki
       question: dokuwiki/wiki/confirm
       vtype: password
-      value: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          30393139393862323036393731303139626261303266333831656530373363626364333933663132
-          3239633537663632643932656332643564383531373535640a323565636362363336616262613234
-          65333666616333323733343533366461623161663065353932346233386464326238383062303363
-          3039636634366664660a313130653334383633616130613965643661623863373936303664336538
-          3936
+      value: 3039313939386232303639373130533343
 
-  - debconf:
-      name: dokuwiki
-      question: dokuwiki/system/purgepages
-      vtype: boolean
-      value: false
+  - name: dokuwiki purgepages
+    debconf: name=dokuwiki question=dokuwiki/system/purgepages vtype=boolean value=false
 
-  - shell: |
+  - name: /etc/apache2/conf-available/dokuwiki.conf
+    shell: |
       cat > /etc/apache2/conf-available/dokuwiki.conf <<EOF
       AliasMatch ^/dokuwiki/sites/[^/]+$      /usr/share/dokuwiki/
       AliasMatch ^/dokuwiki/sites/[^/]+/(.*)$ /usr/share/dokuwiki/$1
@@ -171,16 +147,10 @@
 
 
   - name: Update pip
-    pip:
-      name: pip
-      state: latest
+    pip: name=pip state=latest
 
   - name: Clone ivre
-    git:
-      repo: 'https://github.com/cea-sec/ivre'
-      dest: /root/ivre
-      update: yes
-      clone: yes
+    git: repo='https://github.com/cea-sec/ivre' dest=/root/ivre update=yes clone=yes
 
   - name: cd ivre
     shell: |
@@ -201,18 +171,18 @@
     shell: |
       cd /var/www/html ## or depending on your version /var/www
       rm index.html
-      ln -s /usr/local/share/ivre/web/static/* .
+      ln -fs /usr/local/share/ivre/web/static/* .
       cd /usr/lib/cgi-bin
-      ln -s /usr/local/share/ivre/web/cgi-bin/* .
+      ln -fs /usr/local/share/ivre/web/cgi-bin/* .
       cd /var/lib/dokuwiki/data/pages
-      ln -s /usr/local/share/ivre/dokuwiki/doc
+      ln -fs /usr/local/share/ivre/dokuwiki/doc
       cd /var/lib/dokuwiki/data/media
-      ln -s /usr/local/share/ivre/dokuwiki/media/logo.png
-      ln -s /usr/local/share/ivre/dokuwiki/media/doc
+      ln -fs /usr/local/share/ivre/dokuwiki/media/logo.png
+      ln -fs /usr/local/share/ivre/dokuwiki/media/doc
       cd /usr/share/dokuwiki
       patch -f -p0 < /usr/local/share/ivre/dokuwiki/backlinks.patch
       cd /etc/apache2/mods-enabled
-      for m in cgi rewrite ; do [ -L $m.load ] || ln -s ../mods-available/$m.load ; done
+      for m in cgi rewrite ; do [ -L $m.load ] || ln -fs ../mods-available/$m.load ; done
       cd /usr/local/share/ivre/web/cgi-bin
       sed -i 's/^\(\s*\)#Rewrite/\1Rewrite/' /etc/dokuwiki/apache.conf
       service apache2 reload

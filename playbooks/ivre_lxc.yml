@@ -111,7 +111,7 @@
           3039636634366664660a313130653334383633616130613965643661623863373936303664336538
           3936
 
-    debconf:
+  - debconf:
       name: dokuwiki
       question: dokuwiki/wiki/confirm
       vtype: password
@@ -123,12 +123,13 @@
           3039636634366664660a313130653334383633616130613965643661623863373936303664336538
           3936
 
-    debconf:
+  - debconf:
       name: dokuwiki
       question: dokuwiki/system/purgepages
       vtype: boolean
       value: false
-    shell: |
+
+  - shell: |
       cat > /etc/apache2/conf-available/dokuwiki.conf <<EOF
       AliasMatch ^/dokuwiki/sites/[^/]+$      /usr/share/dokuwiki/
       AliasMatch ^/dokuwiki/sites/[^/]+/(.*)$ /usr/share/dokuwiki/$1

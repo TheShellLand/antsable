@@ -3,7 +3,4 @@
   tasks:
 
   - name: nmap
-    apt:
-      update_cache: yes
-      name: nmap
-      state: latest
+    apt: update_cache=yes name=nmap state=latest

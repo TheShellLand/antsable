@@ -8,5 +8,4 @@
       dest: /tmp/vagrant_2.0.0_x86_64.deb
 
   - name: Build NS-3
-    shell: |
-      dpkg -i /tmp/vagrant_2.0.0_x86_64.deb
+    shell: dpkg -i /tmp/vagrant_2.0.0_x86_64.deb

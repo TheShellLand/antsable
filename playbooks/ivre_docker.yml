@@ -12,10 +12,7 @@
     shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
   - name: Install docker-ce
-    apt:
-      update_cache: yes
-      name: docker-ce
-      state: latest
+    apt: update_cache=yes name=docker-ce state=latest
 
   - name: ivre docker image download
     shell: |

@@ -1,11 +1,10 @@
 ---
-- hosts: readingrainbow
+- hosts: gui
   tasks:
 
   - name: /tmp/apps
-    file:
-      path: /tmp/apps
-      state: directory
+    file: path=/tmp/apps state=directory
+
   - name: chdir
     shell: cd /tmp/apps
 
@@ -19,26 +18,19 @@
 #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
   - name: Updating repository
-    apt:
-      update_cache: yes
+    apt: update_cache=yes
 
   - name: Install Missing Packages
     shell: apt install -f -y
 
   - name: software-properties-common
-    apt:
-      name: software-properties-common
-      state: present
+    apt: name=software-properties-common state=latest
 
   - name: git
-    apt:
-      name: git
-      state: present
+    apt: name=git state=latest
 
   - name: unzip
-    apt:
-      name: unzip
-      state: present
+    apt: name=unzip state=latest
 
 
 #    - name: Macbuntu for 16.10 install
@@ -54,13 +46,10 @@
 
 
   - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository:
-      repo: ppa:noobslab/macbuntu
+    apt_repository: repo=ppa:noobslab/macbuntu
 
   - name: gnome-tweak-tool
-    apt:
-      name: gnome-tweak-tool
-      state: present
+    apt: name=gnome-tweak-tool state=latest
 
   - name: Gnome Extensions
     shell: |
@@ -94,9 +83,7 @@
       value: gdm3
 
   - name: plank
-    apt:
-      name: plank
-      state: present
+    apt: name=plank state=latest
 
   - name: Installing Plank themes
     shell: |
@@ -116,24 +103,18 @@
       fi
 
   - name: macbuntu-os-plank-theme-lts-v7
-    apt:
-      name: macbuntu-os-plank-theme-lts-v7
-      state: present
+    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
 
   - name: macbuntu-os-icons-lts-v7
     apt:
       name: macbuntu-os-icons-lts-v7
-      state: present
+      state: latest
 
   - name: macbuntu-os-ithemes-lts-v7
-    apt:
-      name: macbuntu-os-ithemes-lts-v7
-      state: present
+    apt: name=macbuntu-os-ithemes-lts-v7 state=latest
 
   - name: libreoffice-style-sifr
-    apt:
-      name: libreoffice-style-sifr
-      state: present
+    apt: name=libreoffice-style-sifr state=latest
 
   - name: Installing OSX Arc Collection
     shell: |
@@ -152,13 +133,9 @@
         gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
 
   - name: oranchelo-icon-theme repo
-    apt_repository:
-      repo: 'ppa:oranchelo/oranchelo-icon-theme'
+    apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
   - name: oranchelo-icon-theme
-    apt:
-      update_cache: yes
-      name: oranchelo-icon-theme
-      state: present
+    apt: update_cache=yes name=oranchelo-icon-theme state=latest
 
   - name: arc-icon-theme
     shell: |
@@ -188,9 +165,7 @@
       fi
 
   - name: libreoffice-style-sifr
-    apt:
-      name: libreoffice-style-sifr
-      state: present
+    apt: name=libreoffice-style-sifr state=latest
 
   - name: mac fonts
     shell: |
@@ -205,6 +180,11 @@
       fi
       fc-cache -f -v
 
+  - name: Disable Mouse Acceleration for X server
+    file: >
+      path=/usr/share/X11/xorg.conf.d/
+      recurse=yes
+      state=directory
   - name: Disable Mouse Acceleration for X server
     shell: |
       cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
@@ -221,39 +201,25 @@
 #      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
 
   - name: OpenVPN
-    apt:
-      name: openvpn
-      state: present
+    apt: name=openvpn state=latest
 
   - name: Virt-Viewer
-    apt:
-      name: virt-viewer
-      state: present
+    apt: name=virt-viewer state=latest
 
   - name: x11vnc
-    apt:
-      name: x11vnc
-      state: present
+    apt: name=x11vnc state=latest
 
   - name: x2go
-    apt:
-      name: x2goclient
-      state: present
+    apt: name=x2goclient state=latest
 
   - name: tmux
-    apt:
-      name: tmux
-      state: present
+    apt: name=tmux state=latest
 
   - name: CIFS
-    apt:
-      name: cifs-utils
-      state: present
+    apt: name=cifs-utils state=latest
 
   - name: remmina
-    apt:
-      name: remmina
-      state: present
+    apt: name=remmina state=latest
 
   - name: Chrome
     shell: |
@@ -284,17 +250,11 @@
       apt install -f -y
       dpkg --add-architecture i386
   - name: wine
-    apt:
-      update_cache: yes
-      name: wine
-      state: present
+    apt: update_cache=yes name=wine state=present
   - name: winbind
-    apt:
-      name: winbind
-      state: present
+    apt: name=winbind state=present
   - name: update missing packages
-    shell: |
-      apt install -f -y
+    shell: apt install -f -y
 
   - name: Pycharm
     shell: |
@@ -319,10 +279,9 @@
       Version=1.0
       Type=Application
       Terminal=0
+
   - name: python3-pip
-    apt:
-      name: python3-pip
-      state: present
+    apt: name=python3-pip state=latest
 
   - name: Visual Studio Code
     shell: |
@@ -330,10 +289,7 @@
       mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
       sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
   - name: code-insiders
-    apt:
-      update_cache: yes
-#            name: code
-      name: code-insiders
+    apt: update_cache=yes name=code-insiders
 
 #        - name: GitKraken
 #          shell: |
@@ -348,44 +304,28 @@
 #            apt-get install -f -y
 
   - name: npm
-    apt:
-      name: npm
-      state: present
+    apt: name=npm state=latest
 
   - name: exfat
-    apt:
-      name: exfat-utils
-      state: present
+    apt: name=exfat-utils state=latest
 
   - name: nmap
-    apt:
-      name: nmap
-      state: present
+    apt: name=nmap state=latest
 
   - name: wireshark
-    apt:
-      name: wireshark
-      state: present
+    apt: name=wireshark state=latest
 
   - name: lm-sensors
-    apt:
-      name: lm-sensors
-      state: present
+    apt: name=lm-sensors state=latest
 
   - name: QTQR
-    apt:
-      name: qtqr
-      state: present
+    apt: name=qtqr state=latest
 
   - name: VLC
-    apt:
-      name: vlc
-      state: present
+    apt: name=vlc state=latest
 
   - name: Virtualbox
-    apt:
-      name: virtualbox
-      state: present
+    apt: name=virtualbox state=latest
       # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
       # Unable to install dependencies even with yakkety contrib branch
       #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
@@ -415,25 +355,16 @@
       #fi
 
   - name: Emacs
-    apt:
-      name: emacs
-      state: present
+    apt: name=emacs state=latest
 
   - name: Skype
-    shell: |
-      dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
   - name: skype repo key
-    apt_key:
-      url: https://repo.skype.com/data/SKYPE-GPG-KEY
-      state: present
+    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
   - name: skype repo
-    shell: |
-      echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
+    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
   - name: skypeforlinux
-    apt:
-      update_cache: yes
-      name: skypeforlinux
-      state: present
+    apt: update_cache=yes name=skypeforlinux state=latest
 
 #          - name: iotop
 #            apt:
@@ -447,9 +378,7 @@
 
 
   - name: glances
-    apt:
-      name: glances
-      state: present
+    apt: name=glances state=latest
 
 
 ## Stacer
@@ -463,50 +392,30 @@
 #fi
 
   - name: aircrack
-    apt:
-      name: aircrack-ng
-      state: present
+    apt: name=aircrack-ng state=latest
 
   - name: flux
-    apt_repository:
-      repo: 'ppa:nathan-renniewaldock/flux'
+    apt_repository: repo='ppa:nathan-renniewaldock/flux'
   - name: fluxgui
-    apt:
-      update_cache: yes
-      name: fluxgui
-      state: present
+    apt: update_cache=yes name=fluxgui state=latest
 
   - name: darktable
-    apt_repository:
-      repo: 'ppa:pmjdebruijn/darktable-release'
+    apt_repository: repo='ppa:pmjdebruijn/darktable-release'
   - name: darktable
-    apt:
-      update_cache: yes
-      name: darktable
-      state: present
+    apt: update_cache=yes name=darktable state=latest
 
   - name: audacity
-    apt:
-      name: audacity
-      state: present
+    apt: name=audacity state=latest
 
   - name: Veracrypt
-    apt_repository:
-      repo: 'ppa:unit193/encryption'
+    apt_repository: repo='ppa:unit193/encryption'
   - name: veracrypt
-    apt:
-      update_cache: yes
-      name: veracrypt
-      state: present
+    apt: update_cache=yes name=veracrypt state=latest
 
   - name: OBS-Studio Screen Recorder
-    apt_repository:
-      repo: 'ppa:obsproject/obs-studio'
+    apt_repository: repo='ppa:obsproject/obs-studio'
   - name: obs-studio
-    apt:
-      update_cache: yes
-      name: obs-studio
-      state: present
+    apt: update_cache=yes name=obs-studio state=latest
 
   - name: Peek screen recorder
     shell: |
@@ -540,7 +449,7 @@
       fi
 
   - name: NetBeans IDE
-    shell: |
+    raw: |
       apps=/tmp/apps
       cat > $apps/state.xml <<EOF
       <?xml version="1.0" encoding="UTF-8"?><!--
@@ -668,4 +577,3 @@
           chmod +x $apps/$file
           $apps/$file --silent --state $apps/state.xml
       fi
-

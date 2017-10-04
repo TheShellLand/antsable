@@ -3,10 +3,7 @@
   tasks:
 
   - name: python3-pip
-    apt:
-      update_cache: yes
-      name: python3-pip
-      state: latest
+    apt: update_cache=yes name=python3-pip state=latest
 
   - name: pip3 packages
     shell: |
@@ -26,6 +23,4 @@
       chown nobody:nogroup '/var/log/gunicorn-error.log'
 
   - name: Install supervisor
-    apt:
-      name: supervisor
-      state: latest
+    apt: name=supervisor state=latest

@@ -2,26 +2,16 @@
 - hosts: gui
   tasks:
   - name: software-properties-common
-    apt:
-      name: software-properties-common
-      update_cache: yes
-      state: present
+    apt: name=software-properties-common update_cache=yes state=latest
 
   - name: ppa:x2go/stable
-    apt_repository:
-      repo: 'ppa:x2go/stable'
+    apt_repository: repo='ppa:x2go/stable'
 
   - name: x2goserver
-    apt:
-      name: x2goserver
-      state: present
+    apt: name=x2goserver state=latest
 
   - name: x2goserver-xsession
-    apt:
-      name: x2goserver-xsession
-      state: present
+    apt: name=x2goserver-xsession state=latest
 
   - name: mate
-    apt:
-      name: mate
-      state: present
+    apt: name=mate state=latest

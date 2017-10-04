@@ -1,0 +1,21 @@
+---
+- hosts: suricata
+  tasks:
+  - name: software-properties-common
+    apt:
+      name: software-properties-common
+      update_cache: yes
+      state: present
+
+  - name: ppa:oisf/suricata-beta
+    apt_repository:
+      repo: 'ppa:oisf/suricata-beta'
+
+  - name: update
+    apt:
+      update_cache: yes
+
+  - name: suricata
+    apt:
+      name: suricata
+      state: latest

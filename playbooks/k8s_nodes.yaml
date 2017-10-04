@@ -1,0 +1,36 @@
+---
+- hosts: k8snodes
+  tasks:
+
+  - name: Add k8s key
+    shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+  - name: Add k8s deb source
+    shell: echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+
+  - name: Add docker repo
+    apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
+      # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+
+  - name: Add docker repository key
+    shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+  - name: Install docker-ce
+    apt: update_cache=yes name=docker-ce state=latest
+
+  - name: Install Install kubelet kubeadm kubectl kubernetes-cni
+    apt:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - 'kubelet'
+      - 'kubeadm'
+      - 'kubectl'
+      - 'kubernetes-cni'
+
+  - name: Enable Docker service
+    shell: systemctl enable docker.service
+
+#  - name: kubeadm init
+#    from k8smaster kubeadm-init.log
+#    shell: kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash>

@@ -1,0 +1,6 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: kubectl create k8s dashboard
+    shell: kubectl apply -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml

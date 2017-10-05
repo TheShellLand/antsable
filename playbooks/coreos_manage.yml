@@ -1,0 +1,7 @@
+---
+- hosts: coreos
+  gather_facts: no
+  tasks:
+
+  - name: free
+    raw: free -mh

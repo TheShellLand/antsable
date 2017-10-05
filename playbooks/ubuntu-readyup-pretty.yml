@@ -6,9 +6,8 @@
 #      useradd -m -s /bin/bash eric
 
   - name: /tmp/apps
-    file:
-      path: /tmp/apps
-      state: directory
+    file: path=/tmp/apps state=directory
+
   - name: chdir
     shell: cd /tmp/apps
 
@@ -22,36 +21,25 @@
       dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
   - name: Updating repository
-    apt:
-      update_cache: yes
+    apt: update_cache=yes
 
   - name: Install Missing Packages
     shell: apt install -f -y
 
   - name: software-properties-common
-    apt:
-      name: software-properties-common
-      state: present
+    apt: name=software-properties-common state=latest
 
   - name: git
-    apt:
-      name: git
-      state: present
+    apt: name=git state=latest
 
   - name: unzip
-    apt:
-      name: unzip
-      state: present
-
+    apt: name=unzip state=latest
 
   - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository:
-      repo: ppa:noobslab/macbuntu
+    apt_repository: repo='ppa:noobslab/macbuntu'
 
   - name: gnome-tweak-tool
-    apt:
-      name: gnome-tweak-tool
-      state: present
+    apt: name=gnome-tweak-tool state=latest
 
   - name: Gnome Extensions
     shell: |
@@ -66,7 +54,6 @@
       unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
-
 
 #      - name: lightdm
 #        apt:
@@ -86,9 +73,7 @@
       value: gdm3
 
   - name: plank
-    apt:
-      name: plank
-      state: present
+    apt: name=plank state=latest
 
   - name: Installing Plank themes
     shell: |
@@ -108,19 +93,18 @@
       fi
 
   - name: macbuntu-os-plank-theme-lts-v7
-    apt:
-      name: macbuntu-os-plank-theme-lts-v7
-      state: present
+    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
 
   - name: macbuntu-os-icons-lts-v7
     apt:
       name: macbuntu-os-icons-lts-v7
-      state: present
+      state: latest
 
   - name: macbuntu-os-ithemes-lts-v7
-    apt:
-      name: macbuntu-os-ithemes-lts-v7
-      state: present
+    apt: name=macbuntu-os-ithemes-lts-v7 state=latest
+
+  - name: libreoffice-style-sifr
+    apt: name=libreoffice-style-sifr state=latest
 
   - name: Installing OSX Arc Collection
     shell: |
@@ -135,17 +119,13 @@
 
   - name: Put buttons on left side
     shell: |
-        cat > /tmp/profile <<EOF
+        cat > /tmp/apps/left <<EOF
         gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
 
   - name: oranchelo-icon-theme repo
-    apt_repository:
-      repo: 'ppa:oranchelo/oranchelo-icon-theme'
+    apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
   - name: oranchelo-icon-theme
-    apt:
-      update_cache: yes
-      name: oranchelo-icon-theme
-      state: present
+    apt: update_cache=yes name=oranchelo-icon-theme state=latest
 
   - name: arc-icon-theme
     shell: |
@@ -173,11 +153,6 @@
           mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
           cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
       fi
-
-  - name: libreoffice-style-sifr
-    apt:
-      name: libreoffice-style-sifr
-      state: present
 
   - name: mac fonts
     shell: |
@@ -213,9 +188,7 @@
 #      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
 
   - name: tmux
-    apt:
-      name: tmux
-      state: present
+    apt: name=tmux state=latest
 
   - name: Chrome
     shell: |
@@ -231,16 +204,10 @@
       apt install -f -y
 
   - name: QTQR
-    apt:
-      name: qtqr
-      state: present
+    apt: name=qtqr state=latest
 
   - name: Emacs
-    apt:
-      name: emacs
-      state: present
+    apt: name=emacs state=latest
 
   - name: Vim
-    apt:
-      name: vim
-      state: present
+    apt: name=vim state=latest

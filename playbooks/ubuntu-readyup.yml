@@ -46,7 +46,7 @@
 
 
   - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository: repo=ppa:noobslab/macbuntu
+    apt_repository: repo='ppa:noobslab/macbuntu'
 
   - name: gnome-tweak-tool
     apt: name=gnome-tweak-tool state=latest
@@ -163,9 +163,6 @@
           mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
           cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
       fi
-
-  - name: libreoffice-style-sifr
-    apt: name=libreoffice-style-sifr state=latest
 
   - name: mac fonts
     shell: |
@@ -356,6 +353,9 @@
 
   - name: Emacs
     apt: name=emacs state=latest
+
+  - name: Vim
+    apt: name=vim state=latest
 
   - name: Skype
     shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"

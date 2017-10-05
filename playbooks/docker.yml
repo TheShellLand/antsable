@@ -3,7 +3,7 @@
   tasks:
 
   - name: Add docker repo
-    apt_repository: repo=deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
       # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
 
   - name: Add docker repository key

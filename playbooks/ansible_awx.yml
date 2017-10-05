@@ -1,12 +1,11 @@
 ---
 - hosts: awx
   tasks:
-  - apt_repository:
-      repo: 'ppa:ansible/ansible'
+  - apt_repository: repo='ppa:ansible/ansible'
 
-  - apt_repository:
+  - apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
       # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+
 
   - apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg

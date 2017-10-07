@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Add IP address to login terminal
+    shell: |
+      cp /etc/issue /etc/issue-base
+
+      cat > /etc/issue-cmd.sh <<EOF
+      #!/bin/bash
+
+      cat /etc/issue-base > /tmp/issue
+      echo "" >> /tmp/issue
+      echo "Address: $(ip r | grep -Po '(?<=src ).*')" >> /tmp/issue
+      echo "" >> /tmp/issue
+      cp /tmp/issue /etc/issue
+
+  - name: chmod
+    shell: chmod +x /etc/issue-cmd.sh
+
+  - name: Add cron job
+    cron:
+      name: "Login IP"
+      special_time: reboot
+      job: "/etc/issue-cmd.sh"

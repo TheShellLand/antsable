@@ -43,15 +43,6 @@
   - name: kubeadm init
     shell: kubeadm init --pod-network-cidr 10.244.0.0/16 | tee kubeadm-init.log
 
-  - name: kubectl create canal
-    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml
-
-#  - name: K8s schedule pods on master
-#    shell: kubectl taint nodes --all node-role.kubernetes.io/master-
-
-  - name: kubectl create k8s dashboard
-    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
-
   - name: Show kubeadm join
     shell: grep 'kubeadm join --token' kubeadm-init.log
     register: token
@@ -59,3 +50,17 @@
   - debug:
       var: token
       verbosity: 0
+
+  - name: Canal - rbac.yaml
+    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/rbac.yaml
+
+  - name: Canal - canal.yaml
+    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml
+
+#  - name:
+#    shell: kubectl taint nodes --all node-role.kubernetes.io/master-
+
+# kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/certs -n kube-system
+
+  - name: kubectl create k8s dashboard
+    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml

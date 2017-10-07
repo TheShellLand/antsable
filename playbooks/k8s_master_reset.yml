@@ -1,5 +1,5 @@
 ---
-- hosts: k8smaster
+- hosts: k8s
   tasks:
 
   - name: Reset k8s

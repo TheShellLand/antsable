@@ -18,7 +18,7 @@
   - name: Install docker-ce
     apt: update_cache=yes name=docker-ce state=latest
 
-  - name: Install Install kubelet kubeadm kubectl kubernetes-cni
+  - name: Install kubelet kubeadm kubectl kubernetes-cni
     apt:
       name: "{{ item }}"
       state: latest
@@ -39,3 +39,7 @@
       name: "Disable swap"
       special_time: reboot
       job: "swapoff -a"
+
+  - name: kubeadm reset
+    # https://github.com/kubernetes/kubernetes/issues/53356
+    shell: kubeadm reset

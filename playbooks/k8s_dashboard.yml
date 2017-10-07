@@ -1,0 +1,9 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: kubectl create k8s dashboard
+    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+  - name: Start dashboard
+    shell: kubectl proxy

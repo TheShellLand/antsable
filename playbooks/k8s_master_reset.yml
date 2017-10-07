@@ -1,0 +1,10 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: Add k8s key
+    shell: |
+      swapoff -a
+      service kubelet stop
+      rm -rf /var/lib/kubelet
+      rm -rf /etc/kubernetes/manifests

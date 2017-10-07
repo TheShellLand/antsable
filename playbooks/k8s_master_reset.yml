@@ -2,9 +2,15 @@
 - hosts: k8smaster
   tasks:
 
-  - name: Add k8s key
+  - name: Reset k8s
     shell: |
       swapoff -a
-      service kubelet stop
-      rm -rf /var/lib/kubelet
+      kubeadm reset
       rm -rf /etc/kubernetes/manifests
+      rm -rf /var/lib/kubelet
+      rm -rf /var/lib/etcd
+    register: stdout
+
+  - debug:
+      var: stdout
+      verbosity: 0

@@ -31,6 +31,11 @@
   - name: Enable Docker service
     shell: systemctl enable docker.service
 
-#  - name: kubeadm init
-#    from k8smaster kubeadm-init.log
-#    shell: kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash>
+  - name: Turn off swap
+    shell: swapoff -a
+
+  - name: Disable swap in cron
+    cron:
+      name: "Disable swap"
+      special_time: reboot
+      job: "swapoff -a"

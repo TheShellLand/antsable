@@ -1,0 +1,11 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: Show kubeadm join
+    shell: grep 'kubeadm join --token' kubeadm-init.log
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0

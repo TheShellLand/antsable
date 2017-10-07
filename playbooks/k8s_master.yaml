@@ -31,6 +31,15 @@
   - name: Enable Docker service
     shell: systemctl enable docker.service
 
+  - name: Turn off swap
+    shell: swapoff -a
+
+  - name: Disable swap in cron
+    cron:
+      name: "Disable swap"
+      special_time: reboot
+      job: "swapoff -a"
+
   - name: kubeadm init
     shell: kubeadm init --pod-network-cidr 10.244.0.0/16 | tee kubeadm-init.log
 
@@ -42,3 +51,11 @@
 
   - name: kubectl create k8s dashboard
     shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+  - name: Show kubeadm join
+    shell: grep 'kubeadm join --token' kubeadm-init.log
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0

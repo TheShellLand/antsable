@@ -40,6 +40,9 @@
       special_time: reboot
       job: "swapoff -a"
 
+  - name: Bugfix for initializing kubeadm
+    shell: kubeadm reset
+
   - name: kubeadm init
     shell: kubeadm init --pod-network-cidr 10.244.0.0/16 | tee kubeadm-init.log
 

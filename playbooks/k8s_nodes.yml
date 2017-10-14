@@ -40,6 +40,6 @@
       special_time: reboot
       job: "swapoff -a"
 
-  - name: kubeadm reset
+  - name: Bugfix for initializing kubeadm
     # https://github.com/kubernetes/kubernetes/issues/53356
     shell: kubeadm reset

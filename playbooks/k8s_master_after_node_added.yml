@@ -1,0 +1,31 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: Create dashboard
+    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+    become: yes
+    become_user: admin
+    become_method:  su
+
+  - name: kubectl get nodes
+    shell: kubectl get nodes
+    become: yes
+    become_user: admin
+    become_method:  su
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0
+
+  - name: kubectl get pods
+    shell: kubectl get pods --namespace=kube-system
+    become: yes
+    become_user: admin
+    become_method:  su
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0

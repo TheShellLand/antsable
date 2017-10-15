@@ -6,6 +6,7 @@
     shell: |
       swapoff -a
       kubeadm reset
+      rm -rf .kube
       rm -rf /etc/kubernetes/manifests
       rm -rf /var/lib/kubelet
       rm -rf /var/lib/etcd

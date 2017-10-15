@@ -1,5 +1,10 @@
 ---
 - hosts: k8smaster
+  vars:
+    admin_user: admin
+    admin_group: admin
+    admin_home: /home/admin
+
   tasks:
 
   - name: Add k8s key
@@ -54,16 +59,26 @@
       var: token
       verbosity: 0
 
-  - name: Canal - rbac.yaml
-    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/rbac.yaml
+  - name: Create admin user
+    user:
+      name: admin
+      createhome: yes
+      shell: /bin/bash
+      comment: kubernetes cluster admin
+      state: present
 
-  - name: Canal - canal.yaml
-    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml
+  - name: Configure kubeconfig
+    shell: |
+      mv {{ admin_home }}/.kube {{ admin_home }}/.kube.bak
+      mkdir -p {{ admin_home }}/.kube
+      cp /etc/kubernetes/admin.conf {{ admin_home }}/.kube/config
+      chown {{ admin_user }}:{{ admin_group }} {{ admin_home }}/.kube/config
 
-#  - name:
-#    shell: kubectl taint nodes --all node-role.kubernetes.io/master-
+  - name: Create canal rbac
+    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/rbac.yaml"
 
-# kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/certs -n kube-system
+  - name: Create canal
+    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml"
 
-  - name: kubectl create k8s dashboard
-    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+  - name: Create dashboard
+    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml"

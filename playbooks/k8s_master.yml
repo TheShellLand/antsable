@@ -45,7 +45,7 @@
       special_time: reboot
       job: "swapoff -a"
 
-  - name: Bugfix for initializing kubeadm
+  - name: Bugfix for pre-kubeadm init
     shell: kubeadm reset
 
   - name: kubeadm init
@@ -72,13 +72,44 @@
       mv {{ admin_home }}/.kube {{ admin_home }}/.kube.bak
       mkdir -p {{ admin_home }}/.kube
       cp /etc/kubernetes/admin.conf {{ admin_home }}/.kube/config
-      chown {{ admin_user }}:{{ admin_group }} {{ admin_home }}/.kube/config
+      chown -R {{ admin_user }}:{{ admin_group }} {{ admin_home }}
 
   - name: Create canal rbac
-    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/rbac.yaml"
+    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/rbac.yaml
+    become: yes
+    become_user: admin
+    become_method:  su
 
   - name: Create canal
-    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml"
+    shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/canal/master/k8s-install/1.6/canal.yaml
+    become: yes
+    become_user: admin
+    become_method:  su
 
-  - name: Create dashboard
-    shell: su - {{ admin_user }} -c "kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml"
+#  - name: Create dashboard
+#    shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+#    become: yes
+#    become_user: admin
+#    become_method:  su
+
+  - name: kubectl get nodes
+    shell: kubectl get nodes
+    become: yes
+    become_user: admin
+    become_method:  su
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0
+
+  - name: kubectl get pods
+    shell: kubectl get pods --namespace=kube-system
+    become: yes
+    become_user: admin
+    become_method:  su
+    register: token
+
+  - debug:
+      var: token
+      verbosity: 0

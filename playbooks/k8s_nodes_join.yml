@@ -1,0 +1,6 @@
+---
+- hosts: k8snodes
+  tasks:
+
+  - name: Join node to master
+    shell:

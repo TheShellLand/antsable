@@ -14,4 +14,4 @@
 
   - debug:
       var: stdout
-      verbosity: 0
+      verbosity: 1

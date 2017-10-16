@@ -13,8 +13,8 @@
       var: token
       verbosity: 0
 
-  - name: Pods - kube-system
-    shell: kubectl get pods --namespace=kube-system
+  - name: Get - all
+    shell: kubectl get all --all-namespaces
     become: yes
     become_user: admin
     become_method:  su
@@ -24,7 +24,7 @@
       var: token
       verbosity: 0
 
-  - name: Pods - all-namespaces
+  - name: Pods - all
     shell: kubectl get pods --all-namespaces
     become: yes
     become_user: admin

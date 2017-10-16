@@ -1,0 +1,16 @@
+---
+- hosts: k8sclient
+  tasks:
+
+  - name: Add k8s key
+    shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+  - name: Add k8s deb source
+    shell: echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+
+  - name: Install kubelet kubeadm kubectl kubernetes-cni
+    apt:
+      state: latest
+      name: "{{ item }}"
+    with_items:
+      - 'kubectl'

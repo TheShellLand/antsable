@@ -4,3 +4,8 @@
 
   - name: Join node to master
     shell:
+    register: join
+
+  - debug:
+      var: join
+      verbosity: 0

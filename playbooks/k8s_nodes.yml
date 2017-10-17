@@ -1,5 +1,10 @@
 ---
 - hosts: k8snodes
+  vars:
+    admin_user: admin
+    admin_group: admin
+    admin_home: /home/admin
+
   tasks:
 
   - name: Add k8s key
@@ -43,3 +48,18 @@
   - name: Bugfix for initializing kubeadm
     # https://github.com/kubernetes/kubernetes/issues/53356
     shell: kubeadm reset
+
+  - name: Create admin user
+    user:
+      name: admin
+      createhome: yes
+      shell: /bin/bash
+      comment: kubernetes cluster admin
+      state: present
+
+  - name: Configure kubeconfig
+    shell: |
+      mv {{ admin_home }}/.kube {{ admin_home }}/.kube.bak
+      mkdir -p {{ admin_home }}/.kube
+      cp /etc/kubernetes/admin.conf {{ admin_home }}/.kube/config
+      chown -R {{ admin_user }}:{{ admin_group }} {{ admin_home }}

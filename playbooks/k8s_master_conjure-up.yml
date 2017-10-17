@@ -1,0 +1,81 @@
+---
+- hosts: k8smaster
+  tasks:
+
+  - name: Create lxd group
+    group:
+      name: lxd
+      system: yes
+      state: present
+
+  - name: Create admin user
+    user:
+      name: admin
+      createhome: yes
+      shell: /bin/bash
+      comment: kubernetes cluster admin
+      state: present
+      append: yes
+      groups: lxd
+
+  - name: Pre-setup - purge packaged LXD
+    apt:
+      name: "{{ item }}"
+      purge: yes
+      state: absent
+    with_items:
+      - 'lxd'
+      - 'lxd-client'
+
+  - name: Pre-setup - install snapd
+    apt:
+      update_cache: yes
+      name: snapd
+      state: latest
+
+  - name: Pre-setup - snapd - install lxd
+    shell: snap install lxd
+    register: result
+    changed_when: "'from \\\'canonical\\\' installed' in result.stdout"
+    ignore_errors: yes
+
+  - name: Bugfix - wait for lxc socket to spawn
+    wait_for:
+      path: /var/snap/lxd/common/lxd/unix.socket
+      state: present
+      timeout: 20
+
+  - name: Pre-setup - initialize LXD
+  # Show network: /snap/bin/lxc network list
+  # Show storage: /snap/bin/lxc storage list
+  # Disable IPV6: /snap/bin/lxc network set lxdbr0 ipv6.address none ipv6.nat false
+    shell: /snap/bin/lxd init --auto
+    register: result
+    failed_when: "'LXD has been successfully configured.' not in result.stderr"
+
+  - name: Pre-setup - remove old bridge
+    shell: /snap/bin/lxc network show lxdbr0 && /snap/bin/lxc network delete lxdbr0 || true
+    register: result
+    changed_when: "'Network lxdbr0 deleted' in result.stdout"
+
+  - name: Pre-setup - initialize LXC network
+  # /snap/bin/lxc network create lxdbr0 ipv4.address=auto ipv4.nat=true ipv6.address=none ipv6.nat=false
+    shell: /snap/bin/lxc network create lxdbr0 ipv4.address=auto ipv4.nat=true ipv6.address=none ipv6.nat=false
+    register: result
+    changed_when: "'Network lxdbr0 created' in result.stdout"
+    failed_when: "'The network already exists' in result.stderr"
+
+  - name: Pre-setup - snapd - install conjure-up
+    shell: snap install conjure-up --classic
+    register: result
+    changed_when: "'from \\\'canonical\\\' installed' in result.stdout"
+    ignore_errors: yes
+
+  # TODO: get a scriptable method for conjure-up
+  - name: You need to run conjure-up manually as admin user
+    shell: exit 0
+    become: yes
+    become_user: admin
+    become_method: sudo
+    register: result
+    changed_when: "'AAABBB' in result.stderr"

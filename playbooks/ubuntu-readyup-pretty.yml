@@ -41,17 +41,28 @@
   - name: gnome-tweak-tool
     apt: name=gnome-tweak-tool state=latest
 
+  - name: system-monitor prerequisite
+    apt:
+      name: {{ item }}
+      state: present
+    with_items:
+      - 'gir1.2-gtop-2.0 '
+      - 'gir1.2-networkmanager-1.0'
+      - 'gir1.2-clutter-1.0'
+
   - name: Gnome Extensions
     shell: |
       wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
       wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
       wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+      wget -O system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
 
       mkdir -p /usr/share/gnome-shell/extensions
 
       unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
       unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
       unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
+      unzip -o system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
 

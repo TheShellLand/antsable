@@ -43,7 +43,6 @@
     wait_for:
       path: /var/snap/lxd/common/lxd/unix.socket
       state: present
-      timeout: 20
 
   - name: Pre-setup - initialize LXD
   # Show network: /snap/bin/lxc network list
@@ -71,11 +70,18 @@
     changed_when: "'from \\\'canonical\\\' installed' in result.stdout"
     ignore_errors: yes
 
-  # TODO: get a scriptable method for conjure-up
-  - name: You need to run conjure-up manually as admin user
-    shell: exit 0
-    become: yes
-    become_user: admin
-    become_method: sudo
-    register: result
-    changed_when: "'AAABBB' in result.stderr"
+#  - name: conjure-up
+#    shell: conjure-up canonical-kubernetes localhost
+#    become: yes
+#    become_user: admin
+#    become_method: sudo
+#    register: result
+#    changed_when: "'AAABBB' in result.stderr"
+
+#  - name: conjure-up
+#    shell: conjure-up kubernetes-core localhost
+#    become: yes
+#    become_user: admin
+#    become_method: sudo
+#    register: result
+#    changed_when: "'AAABBB' in result.stderr"

@@ -3,6 +3,8 @@
   tasks:
 
   - name: Download NS-3 source
+    # No PPA, need to download and install manually
+    # https://www.vagrantup.com/downloads.html
     get_url:
       url: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
       dest: /tmp/vagrant_2.0.0_x86_64.deb

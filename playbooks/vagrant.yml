@@ -1,13 +1,46 @@
 ---
-- hosts: vagrant
+- hosts: all
   tasks:
 
-  - name: Download NS-3 source
+  - name: Vagrant - Download
     # No PPA, need to download and install manually
     # https://www.vagrantup.com/downloads.html
     get_url:
       url: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
       dest: /tmp/vagrant_2.0.0_x86_64.deb
 
-  - name: Build NS-3
-    shell: dpkg -i /tmp/vagrant_2.0.0_x86_64.deb
+  - name: Vagrant - Install
+    apt:
+      deb: /tmp/vagrant_2.0.0_x86_64.deb
+    become: yes
+    become_user: root
+    become_method: sudo
+
+  - name: Vagrant - clear directory
+    file:
+      path: ~/Vagrant/ubuntu
+      state: absent
+
+    register: out
+    change_when: "'removed' in out.stdout"
+    ignore_errors: yes
+
+  - name: Vagrant - create directory
+    file:
+      path: ~/Vagrant/ubuntu
+      recurse: yes
+      state: directory
+
+  - name: Vagrant - init ubuntu/xenial64
+    command: vagrant init ubuntu/xenial64
+    args:
+      chdir: ~/Vagrant/ubuntu
+    register: out
+    changed_when: "'A `Vagrantfile` has been placed in this directory. You are now\nready' in out.stdout"
+    failed_when: "'A `Vagrantfile` has been placed in this directory. You are now\nready' not in out.stdout"
+
+  - name: Vagrant - enable private network
+    replace:
+      path: ~/Vagrant/ubuntu/Vagrantfile
+      regexp: '#config.vm.network "private_network", ip: "192.168.33.10"'
+      replace: 'config.vm.network "private_network", ip: "192.168.33.10"'

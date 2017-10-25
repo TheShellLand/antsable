@@ -201,8 +201,8 @@
   - name: tmux
     apt: name=tmux state=latest
 
-  - name: tmux - config
-    shell: echo "setw -g mouse on" > ~/.tmux.conf
+#  - name: tmux - config
+#    shell: echo "setw -g mouse on" > ~/.tmux.conf
 
   - name: Chrome
     shell: |

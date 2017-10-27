@@ -66,6 +66,7 @@
       wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
       wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
       wget -O system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
+      wget -O windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
 
       mkdir -p /usr/share/gnome-shell/extensions
 
@@ -73,6 +74,7 @@
       unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
       unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
       unzip -o system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
+      unzip -o monitor-list-up-top -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
 

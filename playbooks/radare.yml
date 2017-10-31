@@ -27,12 +27,19 @@
       clone: yes
       update: yes
 
-  - name: Radare2 - make source
-    make:
-      chdir: /tmp/radare2
+  - name: Radare2 - install
+    shell: |
+      cd /tmp/radare2
+      sys/install.sh
+    become: yes
+    become_user: root
+    become_method: sudo
 
   - name: chmod
     file:
       path: /tmp/radare2
       recurse: yes
       mode: 0555
+    become: yes
+    become_user: root
+    become_method: sudo

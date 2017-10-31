@@ -53,10 +53,10 @@
 
   - name: system-monitor prerequisite
     apt:
-      name: {{ item }}
+      name: '{{ item }}'
       state: present
     with_items:
-      - 'gir1.2-gtop-2.0 '
+      - 'gir1.2-gtop-2.0'
       - 'gir1.2-networkmanager-1.0'
       - 'gir1.2-clutter-1.0'
 

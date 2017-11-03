@@ -74,7 +74,7 @@
       unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
       unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
       unzip -o system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
-      unzip -o monitor-list-up-top -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
+      unzip -o windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
 

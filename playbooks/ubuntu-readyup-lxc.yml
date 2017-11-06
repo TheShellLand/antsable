@@ -455,10 +455,10 @@
           tar zxf $apps/$file -C /opt/jdk
       fi
       if [ ! -f /usr/local/bin/javajdk ]; then
-          ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
+          ln -sf /opt/jdk/jdk1.8.0_151/bin/java /usr/local/bin/javajdk
       else
           rm /usr/local/bin/javajdk
-          ln -s /opt/jdk/jdk1.8.0_144/bin/java /usr/local/bin/javajdk
+          ln -sf /opt/jdk/jdk1.8.0_151/bin/java /usr/local/bin/javajdk
       fi
 
   - name: NetBeans IDE
@@ -508,7 +508,7 @@
                   <properties>
                       <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
                       <property name="minimum.jdk.version">1.8.0</property>
-                      <property name="jdk.location">/opt/jdk/jdk1.8.0_144</property>
+                      <property name="jdk.location">/opt/jdk/jdk1.8.0_151</property>
                       <property name="installation.timestamp">1501283949078</property>
                       <property name="start.menu.shortcut.location">all.users</property>
                       <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>

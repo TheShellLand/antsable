@@ -9,9 +9,15 @@
 
   - name: Add k8s key
     shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Add k8s deb source
     shell: echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Install kubelet kubeadm kubectl kubernetes-cni
     apt:
@@ -22,42 +28,75 @@
       - 'kubeadm'
       - 'kubectl'
       - 'kubernetes-cni'
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Add docker repo
     apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
       # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Add docker repository key
     shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Install docker-ce
     apt: update_cache=yes name=docker-ce state=latest
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Enable Docker service
     shell: systemctl enable docker.service
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Turn off swap
     shell: swapoff -a
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Disable swap in cron
     cron:
       name: "Disable swap"
       special_time: reboot
       job: "swapoff -a"
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Bugfix for pre-kubeadm init
     shell: kubeadm reset
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: kubeadm init
     shell: kubeadm init --pod-network-cidr=10.244.0.0/16 | tee kubeadm-init.log
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Show kubeadm join
     shell: grep 'kubeadm join --token' kubeadm-init.log
     register: token
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - debug:
       var: token
       verbosity: 0
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Create admin user
     user:
@@ -66,6 +105,9 @@
       shell: /bin/bash
       comment: kubernetes cluster admin
       state: present
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Configure kubeconfig for admin
     shell: |
@@ -73,22 +115,31 @@
       mkdir -p {{ admin_home }}/.kube
       cp /etc/kubernetes/admin.conf {{ admin_home }}/.kube/config
       chown -R {{ admin_user }}:{{ admin_group }} {{ admin_home }}
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Configure kubeconfig for root
     shell: |
       mv /root/.kube /root/.kube.bak
       mkdir -p /root/.kube
       cp /etc/kubernetes/admin.conf /root/.kube/config
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Taint master node for pod provisioning
     shell: kubectl taint nodes --all node-role.kubernetes.io/master-
+    become: yes
+    become_user: root
+    become_method:  sudo
 
   - name: Create flannel pod network
     # --pod-network-cidr=10.244.0.0/16
     shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
 
 #  - name: Create canal rbac
     # --pod-network-cidr=10.244.0.0/16
@@ -107,13 +158,13 @@
     shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
 
   - name: kubectl get nodes
     shell: kubectl get nodes
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
     register: token
 
   - debug:
@@ -124,7 +175,7 @@
     shell: kubectl get pods --namespace=kube-system
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
     register: token
 
   - debug:

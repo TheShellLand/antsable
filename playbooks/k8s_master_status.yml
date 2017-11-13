@@ -6,7 +6,7 @@
     shell: kubectl get nodes
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
     register: token
 
   - debug:
@@ -17,7 +17,7 @@
     shell: kubectl get all --all-namespaces
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
     register: token
 
   - debug:
@@ -28,7 +28,7 @@
     shell: kubectl get pods --all-namespaces
     become: yes
     become_user: admin
-    become_method:  su
+    become_method:  sudo
     register: token
 
   - debug:

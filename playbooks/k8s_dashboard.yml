@@ -4,6 +4,12 @@
 
   - name: kubectl create k8s dashboard
     shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+    become: yes
+    become_user: admin
+    become_method:  sudo
 
-  - name: Start dashboard
-    shell: kubectl proxy
+#  - name: Start dashboard
+#    shell: kubectl proxy
+#    become: yes
+#    become_user: admin
+#    become_method:  sudo

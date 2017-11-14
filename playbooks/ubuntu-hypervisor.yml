@@ -3,35 +3,35 @@
   tasks:
 
     # https://platform9.com/support/setup-linux-network-bridges-on-ubuntu-nova-networking/
-  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-ip6tables
-    sysctl:
-      name: net.bridge.bridge-nf-call-ip6tables
-      value: 0
-      state: present
-      reload: yes
-    become: yes
-    become_user: root
-    become_method: sudo
-
-  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-iptables
-    sysctl:
-      name: net.bridge.bridge-nf-call-iptables
-      value: 0
-      state: present
-      reload: yes
-    become: yes
-    become_user: root
-    become_method: sudo
-
-  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-arptables
-    sysctl:
-      name: net.bridge.bridge-nf-call-arptables
-      value: 0
-      state: present
-      reload: yes
-    become: yes
-    become_user: root
-    become_method: sudo
+#  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-ip6tables
+#    sysctl:
+#      name: net.bridge.bridge-nf-call-ip6tables
+#      value: 0
+#      state: present
+#      reload: yes
+#    become: yes
+#    become_user: root
+#    become_method: sudo
+#
+#  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-iptables
+#    sysctl:
+#      name: net.bridge.bridge-nf-call-iptables
+#      value: 0
+#      state: present
+#      reload: yes
+#    become: yes
+#    become_user: root
+#    become_method: sudo
+#
+#  - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-arptables
+#    sysctl:
+#      name: net.bridge.bridge-nf-call-arptables
+#      value: 0
+#      state: present
+#      reload: yes
+#    become: yes
+#    become_user: root
+#    become_method: sudo
 
   # https://github.com/lxc/lxd/blob/master/doc/production-setup.md
   - name: Fix for Linux open files count - fs.inotify.max_queued_events

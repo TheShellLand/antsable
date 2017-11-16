@@ -3,15 +3,16 @@
   tasks:
 
   - name: Reset k8s
-    shell: |
-      swapoff -a
-      kubeadm reset
+    shell: kubeadm reset
 #      rm -rf .kube
 #      rm -rf /etc/kubernetes/manifests
 #      rm -rf /var/lib/kubelet
 #      rm -rf /var/lib/etcd
+    become: yes
+    become_user: root
+    become_method: sudo
     register: stdout
 
   - debug:
       var: stdout
-      verbosity: 1
+      verbosity: 0

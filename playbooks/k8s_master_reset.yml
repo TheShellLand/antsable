@@ -3,11 +3,13 @@
   tasks:
 
   - name: Reset k8s
-    shell: kubeadm reset
-#      rm -rf .kube
-#      rm -rf /etc/kubernetes/manifests
-#      rm -rf /var/lib/kubelet
-#      rm -rf /var/lib/etcd
+    shell: |
+      kubeadm reset
+      rm -rf .kube
+      rm -rf /etc/kubernetes
+      # rm -rf /etc/kubernetes/manifests
+      rm -rf /var/lib/kubelet
+      rm -rf /var/lib/etcd
     become: yes
     become_user: root
     become_method: sudo

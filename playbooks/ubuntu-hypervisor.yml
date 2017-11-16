@@ -6,7 +6,7 @@
   - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-ip6tables
     sysctl:
       name: net.bridge.bridge-nf-call-ip6tables
-      value: 0
+      value: 1
       state: present
       reload: yes
     become: yes
@@ -16,7 +16,7 @@
   - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-iptables
     sysctl:
       name: net.bridge.bridge-nf-call-iptables
-      value: 0
+      value: 1
       state: present
       reload: yes
     become: yes
@@ -26,7 +26,7 @@
   - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-arptables
     sysctl:
       name: net.bridge.bridge-nf-call-arptables
-      value: 0
+      value: 1
       state: present
       reload: yes
     become: yes

@@ -19,10 +19,25 @@
     become_user: root
     become_method:  sudo
 
+  - name: Uninstall kubelet kubeadm kubectl kubernetes-cni
+    apt:
+      name: "{{ item }}"
+      state: absent
+      update_cache: yes
+    with_items:
+      - 'kubelet'
+      - 'kubeadm'
+      - 'kubectl'
+      - 'kubernetes-cni'
+    become: yes
+    become_user: root
+    become_method:  sudo
+
   - name: Install kubelet kubeadm kubectl kubernetes-cni
     apt:
       name: "{{ item }}"
       state: latest
+      update_cache: yes
     with_items:
       - 'kubelet'
       - 'kubeadm'
@@ -40,7 +55,14 @@
     become_method:  sudo
 
   - name: Add docker repository key
-    shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+#    shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+    become: yes
+    become_user: root
+    become_method:  sudo
+
+  - name: Uninstall docker-ce
+    apt: update_cache=yes name=docker-ce state=absent
     become: yes
     become_user: root
     become_method:  sudo
@@ -52,10 +74,31 @@
     become_method:  sudo
 
   - name: Enable Docker service
-    shell: systemctl enable docker.service
+    systemd:
+      name: docker
+      enabled: yes
+#    shell: systemctl enable docker.service
     become: yes
     become_user: root
     become_method:  sudo
+
+# WARNING: disable fail-swap-on flag in /etc/systemd/system/kubelet.service
+# KUBELET_EXTRA_ARGS=--fail-swap-on=false
+
+#  - name: Turn off swap
+#    shell: swapoff -a
+#    become: yes
+#    become_user: root
+#    become_method:  sudo
+#
+#  - name: Disable swap in cron
+#    cron:
+#      name: "Disable swap"
+#      special_time: reboot
+#      job: "swapoff -a"
+#    become: yes
+#    become_user: root
+#    become_method:  sudo
 
   - name: Turn off swap
     shell: swapoff -a
@@ -181,3 +224,29 @@
   - debug:
       var: token
       verbosity: 0
+
+  - name: Install iptables-persistent
+    apt: update_cache=yes name=iptables-persistent state=latest
+    become: yes
+    become_user: root
+    become_method:  sudo
+
+  - name: Save iptables ipv4
+    debconf:
+      name: dokuwiki
+      question: iptables-persistent/autosave_v4
+      vtype: boolean
+      value: true
+    become: yes
+    become_user: root
+    become_method:  sudo
+
+  - name: Save iptables ipv6
+    debconf:
+      name: dokuwiki
+      question: iptables-persistent/autosave_v6
+      vtype: boolean
+      value: true
+    become: yes
+    become_user: root
+    become_method:  sudo

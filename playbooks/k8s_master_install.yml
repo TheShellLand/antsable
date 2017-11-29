@@ -1,5 +1,5 @@
 ---
-- hosts: k8smaster
+- hosts: 10.0.2.4
   vars:
     admin_user: admin
     admin_group: admin
@@ -33,7 +33,7 @@
     become_user: root
     become_method:  sudo
 
-  - name: Install kubelet kubeadm kubectl kubernetes-cni
+  - name: Install a
     apt:
       name: "{{ item }}"
       state: latest
@@ -82,8 +82,15 @@
     become_user: root
     become_method:  sudo
 
-# WARNING: disable fail-swap-on flag in /etc/systemd/system/kubelet.service
-# KUBELET_EXTRA_ARGS=--fail-swap-on=false
+# WARNING: disable fail-swap-on flag in /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+# Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"
+  - name: Check swap flag in service
+    command: grep 'Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    register: result
+  
+  - name: Turn off swap in service environment
+    shell: echo 'Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    when: result.rc == 1
 
 #  - name: Turn off swap
 #    shell: swapoff -a

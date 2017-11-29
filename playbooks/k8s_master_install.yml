@@ -122,7 +122,7 @@
     become_method:  sudo
 
   - name: kubeadm init
-    shell: kubeadm init --pod-network-cidr=10.244.0.0/16 | tee kubeadm-init.log
+    shell: kubeadm init --skip-preflight-checks --pod-network-cidr=10.244.0.0/16 | tee kubeadm-init.log
     become: yes
     become_user: root
     become_method:  sudo

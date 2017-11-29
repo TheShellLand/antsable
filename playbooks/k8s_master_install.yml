@@ -33,7 +33,7 @@
     become_user: root
     become_method:  sudo
 
-  - name: Install a
+  - name: Install kubelet kubeadm kubectl kubernetes-cni
     apt:
       name: "{{ item }}"
       state: latest
@@ -87,10 +87,16 @@
   - name: Check swap flag in service
     command: grep 'Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
     register: result
+    become: yes
+    become_user: root
+    become_method:  sudo
   
   - name: Turn off swap in service environment
     shell: echo 'Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
     when: result.rc == 1
+    become: yes
+    become_user: root
+    become_method:  sudo
 
 #  - name: Turn off swap
 #    shell: swapoff -a

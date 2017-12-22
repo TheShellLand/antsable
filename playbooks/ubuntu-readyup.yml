@@ -62,21 +62,22 @@
 
   - name: Gnome Extensions
     shell: |
-      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
-      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
-      wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
-      wget -O system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
-      wget -O windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
-      wget -O dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
+      apps=/tmp/apps
+      wget -O $apps/extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
+      wget -O $apps/extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+      wget -O $apps/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+      wget -O $apps/system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
+      wget -O $apps/windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
+      wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
 
       mkdir -p /usr/share/gnome-shell/extensions
 
-      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
-      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
-      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
-      unzip -o system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
-      unzip -o windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
-      unzip -o dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+      unzip -o $apps/extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
+      unzip -o $apps/extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
+      unzip -o $apps/no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
+      unzip -o $apps/system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
+      unzip -o $apps/windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
+      unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
 

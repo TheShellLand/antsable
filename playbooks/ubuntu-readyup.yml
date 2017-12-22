@@ -170,14 +170,12 @@
       file=capitaine-cursors.tgz
       if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
       if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file https://dl.opendesktop.org/api/files/download/id/1489948557/capitaine-cursors-r2.tar.gz
+          wget -q -O $apps/$file https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
           tar zxf $apps/$file -C $apps/capitaine-cursors
-          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
       else
           tar zxf $apps/$file -C $apps/capitaine-cursors
-          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
       fi
 
   - name: mac fonts

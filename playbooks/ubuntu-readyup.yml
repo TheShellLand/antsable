@@ -81,22 +81,30 @@
 
       chmod -R +r /usr/share/gnome-shell/extensions
 
-#      - name: lightdm
-#        apt:
-#          name: lightdm
-#          state: absent
 
   - name: ubuntu-gnome-desktop
     apt:
       name: ubuntu-gnome-desktop
       state: present
 
-  - name: Configure for gdm
+  - name: Configure for gdm - debconf
     debconf:
       name: gdm3
       question: shared/default-x-display-manager
       vtype: select
       value: gdm3
+
+  - name: Configure for gdm - file
+    replace:
+      path: /etc/X11/default-display-manager
+      regexp: '.*'
+      replace: /usr/sbin/gdm
+      backup: yes
+
+- name: lightdm
+    apt:
+      name: lightdm
+      state: absent
 
   - name: plank
     apt: name=plank state=latest

@@ -101,10 +101,10 @@
       replace: /usr/sbin/gdm
       backup: yes
 
-- name: lightdm
-    apt:
-      name: lightdm
-      state: absent
+#  - name: lightdm
+#    apt:
+#      name: lightdm
+#      state: absent
 
   - name: plank
     apt: name=plank state=latest

@@ -69,6 +69,7 @@
       wget -O $apps/system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
       wget -O $apps/windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
       wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
+      wget -O $apps/topIcons.zip https://extensions.gnome.org/download-extension/topIcons%40adel.gadllah%40gmail.com.shell-extension.zip?version_tag=7417
 
       mkdir -p /usr/share/gnome-shell/extensions
 
@@ -78,6 +79,7 @@
       unzip -o $apps/system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
       unzip -o $apps/windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
       unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+      unzip -o $apps/topIcons.zip -d /usr/share/gnome-shell/extensions/topIcons@adel.gadllah@gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
 

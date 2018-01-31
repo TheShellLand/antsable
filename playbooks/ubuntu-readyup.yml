@@ -460,147 +460,160 @@
   - name: Java JDK 8 for NetBeans IDE
     shell: |
       apps=/tmp/apps
+      version="jdk1.8.0_162"
       file=jdk.tgz
       if [ ! -d '/opt/jdk' ]; then mkdir /opt/jdk; fi
       if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file -c --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz"
+          wget -q -O $apps/$file -c --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz"
           tar zxf $apps/$file -C /opt/jdk
       else
           tar zxf $apps/$file -C /opt/jdk
       fi
       if [ ! -f /usr/local/bin/javajdk ]; then
-          ln -sf /opt/jdk/jdk1.8.0_151/bin/java /usr/local/bin/javajdk
+          ln -sf /opt/jdk/"$version"/bin/java /usr/local/bin/javajdk
       else
           rm /usr/local/bin/javajdk
-          ln -sf /opt/jdk/jdk1.8.0_151/bin/java /usr/local/bin/javajdk
+          ln -sf /opt/jdk/"$version"/bin/java /usr/local/bin/javajdk
       fi
 
-  - name: NetBeans IDE
+  - name: NetBeans IDE state configuration
     raw: |
       apps=/tmp/apps
       cat > $apps/state.xml <<EOF
-      <?xml version="1.0" encoding="UTF-8"?><!--
-        DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!--
+          DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
-        Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
+          Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
 
-        Oracle and Java are registered trademarks of Oracle and/or its affiliates.
-        Other names may be trademarks of their respective owners.
+          Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+          Other names may be trademarks of their respective owners.
 
-        The contents of this file are subject to the terms of either the GNU General Public
-        License Version 2 only ("GPL") or the Common Development and Distribution
-        License("CDDL") (collectively, the "License"). You may not use this file except in
-        compliance with the License. You can obtain a copy of the License at
-        http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
-        License for the specific language governing permissions and limitations under the
-        License.  When distributing the software, include this License Header Notice in
-        each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
-        designates this particular file as subject to the "Classpath" exception as provided
-        by Oracle in the GPL Version 2 section of the License file that accompanied this code.
-        If applicable, add the following below the License Header, with the fields enclosed
-        by brackets [] replaced by your own identifying information:
-        "Portions Copyrighted [year] [name of copyright owner]"
+          The contents of this file are subject to the terms of either the GNU General Public
+          License Version 2 only ("GPL") or the Common Development and Distribution
+          License("CDDL") (collectively, the "License"). You may not use this file except in
+          compliance with the License. You can obtain a copy of the License at
+          http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
+          License for the specific language governing permissions and limitations under the
+          License.  When distributing the software, include this License Header Notice in
+          each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
+          designates this particular file as subject to the "Classpath" exception as provided
+          by Oracle in the GPL Version 2 section of the License file that accompanied this code.
+          If applicable, add the following below the License Header, with the fields enclosed
+          by brackets [] replaced by your own identifying information:
+          "Portions Copyrighted [year] [name of copyright owner]"
 
-        Contributor(s):
+          Contributor(s):
 
-        The Original Software is NetBeans. The Initial Developer of the Original Software
-        is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
-        Rights Reserved.
+          The Original Software is NetBeans. The Initial Developer of the Original Software
+          is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
+          Rights Reserved.
 
-        If you wish your version of this file to be governed by only the CDDL or only the
-        GPL Version 2, indicate your decision by adding "[Contributor] elects to include
-        this software in this distribution under the [CDDL or GPL Version 2] license." If
-        you do not indicate a single choice of license, a recipient has the option to
-        distribute your version of this file under either the CDDL, the GPL Version 2 or
-        to extend the choice of license to its licensees as provided above. However, if you
-        add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
-        option applies only if the new code is made subject to such option by the copyright
-        holder.
-      --><state xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
-      <components>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
-                      <property name="minimum.jdk.version">1.8.0</property>
-                      <property name="jdk.location">/opt/jdk/jdk1.8.0_151</property>
-                      <property name="installation.timestamp">1501283949078</property>
-                      <property name="start.menu.shortcut.location">all.users</property>
-                      <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                      <property name="desktop.shortcut.location">all.users</property>
-                      <property name="netbeans.summary.message.text">115 updates successfully installed.
+          If you wish your version of this file to be governed by only the CDDL or only the
+          GPL Version 2, indicate your decision by adding "[Contributor] elects to include
+          this software in this distribution under the [CDDL or GPL Version 2] license." If
+          you do not indicate a single choice of license, a recipient has the option to
+          distribute your version of this file under either the CDDL, the GPL Version 2 or
+          to extend the choice of license to its licensees as provided above. However, if you
+          add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
+          option applies only if the new code is made subject to such option by the copyright
+          holder.
+      -->
+      <state
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
+       <components>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
+          <property name="minimum.jdk.version">1.8.0</property>
+          <property name="jdk.location">/opt/jdk/jdk1.8.0_162</property>
+          <property name="installation.timestamp">1517359318685</property>
+          <property name="start.menu.shortcut.location">all.users</property>
+          <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+          <property name="desktop.shortcut.location">all.users</property>
+          <property name="netbeans.summary.message.text">115 updates successfully installed.
 
       </property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="show-in-wizard">false</property>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="jre.allowed">false</property>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
-                  <properties>
-                      <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
-                  <properties>
-                      <property name="jdk.location"/>
-                      <property name="installation.location">/usr/local/glassfish-4.1.1</property>
-                  </properties>
-              </product>
-              <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
-                  <properties>
-                      <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
-                      <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
-                  </properties>
-              </product>
-          </components>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="show-in-wizard">false</property>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="jre.allowed">false</property>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
+         <properties>
+          <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
+         <properties>
+          <property name="jdk.location"/>
+          <property name="installation.location">/usr/local/glassfish-4.1.1</property>
+         </properties>
+        </product>
+        <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
+         <properties>
+          <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
+          <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
+         </properties>
+        </product>
+       </components>
       </state>
 
+  - name: Fix ansible's stupid module
+    raw: |
+      apps=/tmp/apps
+      sed -i 's/^ //' $apps/state.xml
+
+  - name: NetBeans IDE install
+    raw: |
+      apps=/tmp/apps
+      state=$apps/state.xml
       file=netbeans.sh
       if [ ! -f $apps/$file ]; then
           wget -q -O $apps/$file 'http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh'
           chmod +x $apps/$file
-          $apps/$file --silent --state $apps/state.xml
+          $apps/$file --silent --state $state
       else
           chmod +x $apps/$file
-          $apps/$file --silent --state $apps/state.xml
+          $apps/$file --silent --state $state
       fi

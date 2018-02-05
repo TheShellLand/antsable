@@ -108,28 +108,28 @@
 #      name: lightdm
 #      state: absent
 
-  - name: plank
-    apt: name=plank state=latest
+#  - name: plank
+#    apt: name=plank state=latest
 
-  - name: Installing Plank themes
-    shell: |
-      apps=/tmp/apps
-      theme=plank-themes.zip
-      if [ ! -f $apps/$theme ]; then
-          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
-          unzip $apps/$theme -d $apps
-          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-      else
-          unzip $apps/$theme -d $apps
-          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-      fi
+#  - name: Installing Plank themes
+#    shell: |
+#      apps=/tmp/apps
+#      theme=plank-themes.zip
+#      if [ ! -f $apps/$theme ]; then
+#          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
+#          unzip $apps/$theme -d $apps
+#          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+#          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+#          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+#      else
+#          unzip $apps/$theme -d $apps
+#          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
+#          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
+#          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
+#      fi
 
-  - name: macbuntu-os-plank-theme-lts-v7
-    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
+#  - name: macbuntu-os-plank-theme-lts-v7
+#    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
 
   - name: macbuntu-os-icons-lts-v7
     apt:

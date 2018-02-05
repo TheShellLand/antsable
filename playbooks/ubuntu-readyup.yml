@@ -11,7 +11,6 @@
   - name: Ubuntu 16.04 appstream bugfix
     shell: |
       apt purge -y appstream
-      apt purge -y appstream
 
 #  - name: Disable Ubuntu 16.04 console switch keys
 #    shell: |
@@ -82,7 +81,6 @@
       unzip -o $apps/topIcons.zip -d /usr/share/gnome-shell/extensions/topIcons@adel.gadllah@gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
-
 
   - name: ubuntu-gnome-desktop
     apt:
@@ -273,11 +271,11 @@
       fi
       apt install -f -y
       dpkg --add-architecture i386
-  - name: wine
+  - name: PlayOnLinux - wine
     apt: update_cache=yes name=wine state=present
-  - name: winbind
+  - name: PlayOnLinux - winbind
     apt: name=winbind state=present
-  - name: update missing packages
+  - name: PlayOnLinux - update missing packages
     shell: apt install -f -y
 
   - name: Pycharm
@@ -315,17 +313,17 @@
   - name: code-insiders
     apt: update_cache=yes name=code-insiders
 
-#        - name: GitKraken
-#          shell: |
-#            apps=/tmp/apps
-#            gitk=gitkraken.deb
-#            if [ ! -f $apps/$gitk ]; then
-#                wget -q -O $apps/$gitk "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-#                dpkg -i $apps/$gitk
-#            else
-#                dpkg -i $apps/$gitk
-#            fi
-#            apt-get install -f -y
+#  - name: GitKraken
+#    shell: |
+#      apps=/tmp/apps
+#      gitk=gitkraken.deb
+#      if [ ! -f $apps/$gitk ]; then
+#          wget -q -O $apps/$gitk "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
+#          dpkg -i $apps/$gitk
+#      else
+#          dpkg -i $apps/$gitk
+#      fi
+#      apt-get install -f -y
 
   - name: npm
     apt: name=npm state=latest
@@ -393,30 +391,29 @@
   - name: skypeforlinux
     apt: update_cache=yes name=skypeforlinux state=latest
 
-#          - name: iotop
-#            apt:
-#              name: iotop
-#              state: present
+#  - name: iotop
+#    apt:
+#      name: iotop
+#      state: present
 
-#          - name: iftop
-#            apt:
-#              name: iftop
-#              state: present
-
+#  - name: iftop
+#    apt:
+#      name: iftop
+#      state: present
 
   - name: glances
     apt: name=glances state=latest
 
-
-## Stacer
-#echo "[*] [ $progress/$total ] Installing Stacer"
-#stacer=stacer.deb
-#if [ ! -f $apps/$stacer ]; then
-#	wget -q -O $apps/$stacer 'https://github.com/oguzhaninan/Stacer/releases/download/v1.0.7/stacer_1.0.7_amd64.deb'
-#	dpkg -i $apps/$stacer
-#else
-#	dpkg -i $apps/$stacer
-#fi
+#  - name: Stacer
+#    shell: |
+#      echo "[*] [ $progress/$total ] Installing Stacer"
+#      stacer=stacer.deb
+#      if [ ! -f $apps/$stacer ]; then
+#          wget -q -O $apps/$stacer 'https://github.com/oguzhaninan/Stacer/releases/download/v1.0.7/stacer_1.0.7_amd64.deb'
+#          dpkg -i $apps/$stacer
+#      else
+#          dpkg -i $apps/$stacer
+#      fi
 
   - name: aircrack
     apt: name=aircrack-ng state=latest

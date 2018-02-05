@@ -31,19 +31,6 @@
   - name: unzip
     apt: name=unzip state=latest
 
-
-#    - name: Macbuntu for 16.10 install
-    # echo "[*] [ $progress/$total ] Installing cerebro"
-    # cerebro=cerebro.deb
-    # if [ ! -f $apps/mac-fonts.zip ]; then
-    #     wget -q -O $apps/$cerebro https://github.com/KELiON/cerebro/releases/download/0.2.6/cerebro_0.2.6_amd64.deb
-    #     dpkg -i $apps/$cerebro
-    #     #rm $apps/$cerebro
-    # else
-    #     dpkg -i $apps/$cerebro
-    # fi
-
-
   - name: Installing Macbuntu - ppa:noobslab/macbuntu
     apt_repository: repo='ppa:noobslab/macbuntu'
 

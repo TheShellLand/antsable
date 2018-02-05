@@ -8,10 +8,6 @@
   - name: chdir
     shell: cd /tmp/apps
 
-  - name: Ubuntu 16.04 appstream bugfix
-    shell: |
-      apt purge -y appstream
-
 #  - name: Disable Ubuntu 16.04 console switch keys
 #    shell: |
 #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
@@ -88,41 +84,13 @@
       replace: /usr/sbin/gdm
       backup: yes
 
-#  - name: lightdm
-#    apt:
-#      name: lightdm
-#      state: absent
-
-#  - name: plank
-#    apt: name=plank state=latest
-
-#  - name: Installing Plank themes
-#    shell: |
-#      apps=/tmp/apps
-#      theme=plank-themes.zip
-#      if [ ! -f $apps/$theme ]; then
-#          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
-#          unzip $apps/$theme -d $apps
-#          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-#          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-#          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-#      else
-#          unzip $apps/$theme -d $apps
-#          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-#          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-#          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-#      fi
-
-#  - name: macbuntu-os-plank-theme-lts-v7
-#    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
-
-  - name: macbuntu-os-icons-lts-v7
+  - name: macbuntu-os-icons-v10
     apt:
-      name: macbuntu-os-icons-lts-v7
+      name: macbuntu-os-icons-v10
       state: latest
 
-  - name: macbuntu-os-ithemes-lts-v7
-    apt: name=macbuntu-os-ithemes-lts-v7 state=latest
+  - name: macbuntu-os-ithemes-v10
+    apt: name=macbuntu-os-ithemes-v10 state=latest
 
   - name: libreoffice-style-sifr
     apt: name=libreoffice-style-sifr state=latest
@@ -202,10 +170,6 @@
           Option "AccelSpeed" "-1"
       EndSection
 
-#  - name: Fix Nautilus recent files bug
-#    shell: |
-#      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
-
   - name: OpenVPN
     apt: name=openvpn state=latest
 
@@ -221,11 +185,11 @@
   - name: tmux
     apt: name=tmux state=latest
 
-#  - name: tmux - config
-#    shell: echo "setw -g mouse on" > ~/.tmux.conf
-
   - name: CIFS
     apt: name=cifs-utils state=latest
+
+  - name: duplicity
+    apt: name=duplicity state=latest
 
   - name: remmina
     apt: name=remmina state=latest
@@ -259,7 +223,7 @@
       apt install -f -y
       dpkg --add-architecture i386
   - name: PlayOnLinux - wine
-    apt: update_cache=yes name=wine state=present
+    apt: update_cache=yes name=wine-development state=present
   - name: PlayOnLinux - winbind
     apt: name=winbind state=present
   - name: PlayOnLinux - update missing packages
@@ -405,10 +369,10 @@
   - name: aircrack
     apt: name=aircrack-ng state=latest
 
-  - name: flux
-    apt_repository: repo='ppa:nathan-renniewaldock/flux'
-  - name: fluxgui
-    apt: update_cache=yes name=fluxgui state=latest
+#  - name: flux
+#    apt_repository: repo='ppa:nathan-renniewaldock/flux'
+#  - name: fluxgui
+#    apt: update_cache=yes name=fluxgui state=latest
 
   - name: darktable
     apt_repository: repo='ppa:pmjdebruijn/darktable-release'
@@ -434,10 +398,10 @@
       file=peek.deb
       if [ ! -f $apps/$file ]; then
         wget -q -O $apps/$file https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
-        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        apt install -y libsdl1.2debian ffmpeg
         dpkg -i $apps/$file
       else
-        apt install -y libsdl1.2debian ffmpeg libavdevice-ffmpeg56
+        apt install -y libsdl1.2debian ffmpeg
         dpkg -i $apps/$file
       fi
 

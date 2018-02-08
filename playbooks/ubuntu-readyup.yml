@@ -21,6 +21,12 @@
   - name: software-properties-common
     apt: name=software-properties-common state=latest
 
+  - name: X299 Realtek ALC1220 time drift fix
+    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
+    apt: name=adjtimex state=latest
+  - name: Fix timing drift
+    shell: adjtimexconfig
+
   - name: git
     apt: name=git state=latest
 

@@ -395,6 +395,9 @@
   - name: veracrypt
     apt: update_cache=yes name=veracrypt state=latest
 
+  - name: kazam
+    apt: name=kazam state=latest
+
   - name: OBS-Studio Screen Recorder
     apt_repository: repo='ppa:obsproject/obs-studio'
   - name: obs-studio

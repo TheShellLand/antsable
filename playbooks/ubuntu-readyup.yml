@@ -170,7 +170,7 @@
       recurse=yes
       state=directory
   - name: Disable Mouse Acceleration for X server
-    shell: echo -en 'Section "InputClass"\n    Identifier "My Mouse"\n    MatchIsPointer "yes"\n    Option "AccelerationProfile" "-1"\n    Option "AccelerationScheme" "none"\n    Option "AccelSpeed" "-1"\nEndSection\n' > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
+    shell: echo -n 'Section "InputClass"\n    Identifier "My Mouse"\n    MatchIsPointer "yes"\n    Option "AccelerationProfile" "-1"\n    Option "AccelerationScheme" "none"\n    Option "AccelSpeed" "-1"\nEndSection\n' > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf
 
   - name: OpenVPN
     apt: name=openvpn state=latest

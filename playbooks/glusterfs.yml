@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: Install glusterfs 3.10 stable repository
+    apt_repository: repo='ppa:gluster/glusterfs-3.10'
+
+  - name: Install glusterfs 3.10 stable server
+    apt: update_cache=yes name=glusterfs-server state=latest
+
+  - name: Install glusterfs 3.10 stable client
+    apt: update_cache=yes name=glusterfs-client state=latest
+

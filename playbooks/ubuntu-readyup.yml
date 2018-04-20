@@ -411,7 +411,7 @@
 
   - name: Veracrypt
     apt_repository: repo='ppa:unit193/encryption'
-  - name: veracrypt
+  - name: Veracrypt
     apt: update_cache=yes name=veracrypt state=latest
 
   - name: kazam

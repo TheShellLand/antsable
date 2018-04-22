@@ -262,6 +262,8 @@
           tar zxf $apps/$pycharm -C /opt
       fi
 
+      ln -s /opt/pycharm/pycharm-community-2018.1/bin/pycharm.sh /usr/local/bin/pycharm
+
       cat > /usr/share/applications/pycharm.desktop << EOF
       [Desktop Entry]
       Encoding=UTF-8
@@ -300,8 +302,12 @@
 #      fi
 #      apt-get install -f -y
 
-  - name: npm
-    apt: name=npm state=latest
+  - name: nodejs
+    shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+    args:
+      executable: /bin/bash
+  - name: nodejs
+    apt: update_cache=yes name=nodejs state=latest
 
   - name: exfat
     apt: name=exfat-utils state=latest

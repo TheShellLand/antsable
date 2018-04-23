@@ -1,9 +1,6 @@
 ---
-- hosts: gui
+- hosts: all
   tasks:
-#  - name: Create user
-#    shell: |
-#      useradd -m -s /bin/bash eric
 
   - name: /tmp/apps
     file: path=/tmp/apps state=directory
@@ -11,14 +8,9 @@
   - name: chdir
     shell: cd /tmp/apps
 
-  - name: Ubuntu 16.04 appstream bugfix
-    shell: |
-      apt purge -y appstream
-      apt purge -y appstream
-
-  - name: Disable Ubuntu 16.04 console switch keys
-    shell: |
-      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
+#  - name: Disable Ubuntu 16.04 console switch keys
+#    shell: |
+#      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
   - name: Updating repository
     apt: update_cache=yes
@@ -28,6 +20,12 @@
 
   - name: software-properties-common
     apt: name=software-properties-common state=latest
+
+  - name: X299 Realtek ALC1220 time drift fix
+    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
+    apt: name=adjtimex state=latest
+  - name: Fix timing drift
+    shell: adjtimexconfig
 
   - name: git
     apt: name=git state=latest
@@ -43,70 +41,60 @@
 
   - name: system-monitor prerequisite
     apt:
-      name: {{ item }}
+      name: '{{ item }}'
       state: present
     with_items:
-      - 'gir1.2-gtop-2.0 '
+      - 'gir1.2-gtop-2.0'
       - 'gir1.2-networkmanager-1.0'
       - 'gir1.2-clutter-1.0'
 
   - name: Gnome Extensions
     shell: |
-      wget -O extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
-      wget -O extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
-      wget -O no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
-      wget -O system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
-      wget -O windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
+      apps=/tmp/apps
+      wget -O $apps/extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
+      wget -O $apps/extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
+      wget -O $apps/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+      wget -O $apps/system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
+      wget -O $apps/windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
+      wget -O $apps/topIcons.zip https://extensions.gnome.org/download-extension/topIcons%40adel.gadllah%40gmail.com.shell-extension.zip?version_tag=7417
+      wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
+      wget -O $apps/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
+      wget -O $apps/workspaces-to-dock.zip https://extensions.gnome.org/extension-data/workspaces-to-dock%40passingthru67.gmail.com.v44.shell-extension.zip
 
       mkdir -p /usr/share/gnome-shell/extensions
 
-      unzip -o extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
-      unzip -o extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
-      unzip -o no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
-      unzip -o system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
-      unzip -o monitor-list-up-top -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
+      unzip -o $apps/extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
+      unzip -o $apps/extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
+      unzip -o $apps/no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
+      unzip -o $apps/system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
+      unzip -o $apps/windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
+      unzip -o $apps/topIcons.zip -d /usr/share/gnome-shell/extensions/topIcons@adel.gadllah@gmail.com
+      unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+      unzip -o $apps/shell-extension.zip -d /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
+      unzip -o $apps/workspaces-to-dock.zip -d /usr/share/gnome-shell/extensions/workspaces-to-dock@passingthru67.gmail.com
 
       chmod -R +r /usr/share/gnome-shell/extensions
-
-#      - name: lightdm
-#        apt:
-#          name: lightdm
-#          state: absent
+    args:
+      executable: /bin/bash
 
   - name: ubuntu-gnome-desktop
     apt:
       name: ubuntu-gnome-desktop
       state: present
 
-  - name: Configure for gdm
+  - name: Configure for gdm - debconf
     debconf:
       name: gdm3
       question: shared/default-x-display-manager
       vtype: select
       value: gdm3
 
-  - name: plank
-    apt: name=plank state=latest
-
-  - name: Installing Plank themes
-    shell: |
-      apps=/tmp/apps
-      theme=plank-themes.zip
-      if [ ! -f $apps/$theme ]; then
-          wget -q -O $apps/$theme "https://github.com/KenHarkey/plank-themes/archive/master.zip"
-          unzip $apps/$theme -d $apps
-          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-      else
-          unzip $apps/$theme -d $apps
-          cp -r $apps/plank-themes-master/anti-shade /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/paperterial /usr/share/plank/themes
-          cp -r $apps/plank-themes-master/shade /usr/share/plank/themes
-      fi
-
-  - name: macbuntu-os-plank-theme-lts-v7
-    apt: name=macbuntu-os-plank-theme-lts-v7 state=latest
+  - name: Configure for gdm - file
+    replace:
+      path: /etc/X11/default-display-manager
+      regexp: '.*'
+      replace: /usr/sbin/gdm
+      backup: yes
 
   - name: macbuntu-os-icons-lts-v7
     apt:
@@ -131,9 +119,13 @@
       fi
 
   - name: Put buttons on left side
-    shell: |
+    shell:
+      cmd: |
         cat > /tmp/apps/left <<EOF
         gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+        EOF
+    args:
+      executable: /bin/bash
 
   - name: oranchelo-icon-theme repo
     apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
@@ -157,14 +149,12 @@
       file=capitaine-cursors.tgz
       if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
       if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file https://dl.opendesktop.org/api/files/download/id/1489948557/capitaine-cursors-r2.tar.gz
+          wget -q -O $apps/$file https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
           tar zxf $apps/$file -C $apps/capitaine-cursors
-          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
       else
           tar zxf $apps/$file -C $apps/capitaine-cursors
-          mv $apps/capitaine-cursors/capitaine-cursors-r2/bin/xcursors $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2/bin/capitaine-cursors /usr/share/icons
+          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
       fi
 
   - name: mac fonts
@@ -186,25 +176,46 @@
       recurse=yes
       state=directory
   - name: Disable Mouse Acceleration for X server
-    shell: |
-      cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
-      Section "InputClass"
-          Identifier "My Mouse"
-          MatchIsPointer "yes"
-          Option "AccelerationProfile" "-1"
-          Option "AccelerationScheme" "none"
-          Option "AccelSpeed" "-1"
-      EndSection
+    shell:
+      cmd: |
+        cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
+        Section "InputClass"
+            Identifier "My Mouse"
+            MatchIsPointer "yes"
+            Option "AccelerationProfile" "-1"
+            Option "AccelerationScheme" "none"
+            Option "AccelSpeed" "-1"
+        EndSection
+        EOF
+    args:
+      executable: /bin/bash
 
-#  - name: Fix Nautilus recent files bug
-#    shell: |
-#      echo 'Environment=DISPLAY=:0' >> /usr/lib/systemd/user/gvfs-daemon.service
+  - name: OpenVPN
+    apt: name=openvpn state=latest
+
+  - name: Virt-Viewer
+    apt: name=virt-viewer state=latest
+
+  - name: x11vnc
+    apt: name=x11vnc state=latest
+
+  - name: x2go
+    apt: name=x2goclient state=latest
 
   - name: tmux
     apt: name=tmux state=latest
 
-#  - name: tmux - config
-#    shell: echo "setw -g mouse on" > ~/.tmux.conf
+  - name: CIFS
+    apt: name=cifs-utils state=latest
+
+  - name: sshfs
+    apt: name=sshfs state=latest
+
+  - name: duplicity
+    apt: name=duplicity state=latest
+
+  - name: remmina
+    apt: name=remmina state=latest
 
   - name: Chrome
     shell: |

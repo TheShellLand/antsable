@@ -228,28 +228,6 @@
       fi
       apt install -f -y
 
-  - name: PlayOnLinux
-    shell: |
-      apps=/tmp/apps
-      pol=PlayOnLinux.deb
-      if [ ! -f $apps/$pol ]; then
-          wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
-          dpkg -i $apps/$pol
-      else
-          dpkg -i $apps/$pol
-      fi
-      if [ -d usr ]; then
-          rsync -rti usr /
-      fi
-      apt install -f -y
-      dpkg --add-architecture i386
-  - name: PlayOnLinux - wine
-    apt: update_cache=yes name=wine-development state=present
-  - name: PlayOnLinux - winbind
-    apt: name=winbind state=present
-  - name: PlayOnLinux - update missing packages
-    shell: apt install -f -y
-
   - name: Pycharm
     shell: |
       apps=/tmp/apps
@@ -289,6 +267,28 @@
       sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
   - name: code-insiders
     apt: update_cache=yes name=code-insiders
+
+  - name: PlayOnLinux
+    shell: |
+      apps=/tmp/apps
+      pol=PlayOnLinux.deb
+      if [ ! -f $apps/$pol ]; then
+          wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
+          dpkg -i $apps/$pol
+      else
+          dpkg -i $apps/$pol
+      fi
+      if [ -d usr ]; then
+          rsync -rti usr /
+      fi
+      apt install -f -y
+      dpkg --add-architecture i386
+  - name: PlayOnLinux - wine
+    apt: update_cache=yes name=wine-development state=present
+  - name: PlayOnLinux - winbind
+    apt: name=winbind state=present
+  - name: PlayOnLinux - update missing packages
+    shell: apt install -f -y
 
 #  - name: GitKraken
 #    shell: |

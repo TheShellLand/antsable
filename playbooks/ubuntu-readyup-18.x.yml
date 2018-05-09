@@ -17,20 +17,14 @@
   - name: software-properties-common
     apt: name=software-properties-common state=latest
 
-  - name: X299 Realtek ALC1220 time drift fix
-    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
-    apt: name=adjtimex state=latest
-  - name: Fix timing drift
-    shell: adjtimexconfig
-
   - name: git
     apt: name=git state=latest
 
+  - name: curl
+    apt: name=curl state=latest
+
   - name: unzip
     apt: name=unzip state=latest
-
-  - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository: repo='ppa:noobslab/macbuntu'
 
   - name: gnome-tweak-tool
     apt: name=gnome-tweak-tool state=latest
@@ -50,20 +44,14 @@
     args:
       executable: /bin/bash
 
-  - name: ubuntu-gnome-desktop
-    apt:
-      name: ubuntu-gnome-desktop
-      state: present
+  - name: Ubuntu CommuniThemes repo
+    apt_repository: repo='ppa:communitheme/ppa'
+  - name: ubuntu-communitheme-session
+    apt: update_cache=yes name=ubuntu-communitheme-session state=latest
 
-  - name: macbuntu-os-icons-v10
-    apt:
-      name: macbuntu-os-icons-v10
-      state: latest
-
-  - name: macbuntu-os-ithemes-v10
-    apt: name=macbuntu-os-ithemes-v10 state=latest
-
-  - name: Installing OSX Arc Collection
+  - name: OSX Arc Collection dependencies
+    apt: update_cache=yes name=gnome-themes-standard state=latest
+  - name: OSX Arc Collection
     shell: |
       apps=/tmp/apps
       theme=osx-arc-collection.deb
@@ -315,10 +303,26 @@
   - name: Veracrypt
     apt: update_cache=yes name=veracrypt state=latest
 
+  - name: kazam
+    apt: name=kazam state=latest
+
   - name: OBS-Studio Screen Recorder
     apt_repository: repo='ppa:obsproject/obs-studio'
   - name: obs-studio
     apt: update_cache=yes name=obs-studio state=latest
+
+  - name: Peek screen recorder
+    shell: |
+      apps=/tmp/apps
+      file=peek.deb
+      if [ ! -f $apps/$file ]; then
+        wget -q -O $apps/$file https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
+        apt install -y libsdl1.2debian ffmpeg
+        dpkg -i $apps/$file
+      else
+        apt install -y libsdl1.2debian ffmpeg
+        dpkg -i $apps/$file
+      fi
 
   - name: green recorder
     apt_repository: repo='ppa:fossproject/ppa'
@@ -334,6 +338,12 @@
       executable: /bin/bash
   - name: Sublime 3
     apt: update_cache=yes name=sublime-text state=latest
+
+  - name: X299 Realtek ALC1220 time drift fix
+    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
+    apt: name=adjtimex state=latest
+  - name: Fix timing drift
+    shell: adjtimexconfig
 
   - name: Java JDK 8 for NetBeans IDE
     shell: |

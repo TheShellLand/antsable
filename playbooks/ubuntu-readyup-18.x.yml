@@ -29,6 +29,9 @@
   - name: gnome-tweak-tool
     apt: name=gnome-tweak-tool state=latest
 
+  - name: chrome-gnome-shell
+    apt: name=chrome-gnome-shell state=latest
+
   - name: Gnome Extensions
     shell: |
       apps=/tmp/apps

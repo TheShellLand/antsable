@@ -60,6 +60,7 @@
       wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
       wget -O $apps/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
       wget -O $apps/workspaces-to-dock.zip https://extensions.gnome.org/extension-data/workspaces-to-dock%40passingthru67.gmail.com.v44.shell-extension.zip
+      wget -O $apps/hidetopbar.zip https://extensions.gnome.org/download-extension/hidetopbar%40mathieu.bidon.ca.shell-extension.zip?version_tag=7714
 
       mkdir -p /usr/share/gnome-shell/extensions
 
@@ -72,6 +73,7 @@
       unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
       unzip -o $apps/shell-extension.zip -d /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
       unzip -o $apps/workspaces-to-dock.zip -d /usr/share/gnome-shell/extensions/workspaces-to-dock@passingthru67.gmail.com
+      unzip -o $apps/hidetopbar.zip -d /usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca
 
       chmod -R +r /usr/share/gnome-shell/extensions
     args:

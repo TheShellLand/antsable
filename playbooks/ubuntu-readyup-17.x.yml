@@ -252,21 +252,21 @@
         pycharm=pycharm.tgz
         if [ ! -d '/opt/pycharm' ]; then mkdir /opt/pycharm; fi
         if [ ! -f $apps/$pycharm ]; then
-            wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2018.1.2.tar.gz'
+            wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2018.1.4.tar.gz'
             tar zxf $apps/$pycharm -C /opt/pycharm
         else
             tar zxf $apps/$pycharm -C /opt
         fi
 
-        ln -s /opt/pycharm/pycharm-community-2018.1.2/bin/pycharm.sh /usr/local/bin/pycharm
+        ln -s /opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh /usr/local/bin/pycharm
 
         cat > /usr/share/applications/pycharm.desktop << EOF
         [Desktop Entry]
         Encoding=UTF-8
         Name=Pycharm IDE
         Comment=The Smarter Way to Code
-        Exec=/bin/sh "/opt/pycharm/pycharm-community-2018.1.2/bin/pycharm.sh"
-        Icon=/opt/pycharm/pycharm-community-2018.1.2/bin/pycharm.png
+        Exec=/bin/sh "/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh"
+        Icon=/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.png
         Categories=Application;Development;Python;IDE
         Version=1.0
         Type=Application

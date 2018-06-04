@@ -32,6 +32,85 @@
   - name: chrome-gnome-shell
     apt: name=chrome-gnome-shell state=latest
 
+  - name: tmux
+    apt: name=tmux state=latest
+
+  - name: CIFS
+    apt: name=cifs-utils state=latest
+
+  - name: sshfs
+    apt: name=sshfs state=latest
+
+  - name: gnome-backup duplicity
+    apt: name=duplicity state=latest
+
+  - name: Chrome
+    shell: |
+      apps=/tmp/apps
+      chrome=chrome.deb
+      if [ ! -f $apps/$chrome ]; then
+          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+          dpkg -i $apps/$chrome
+          #rm $apps/$chrome
+      else
+          dpkg -i $apps/$chrome
+      fi
+      apt install -f -y
+
+  - name: Chrome beta
+    shell: |
+      apps=/tmp/apps
+      chromeBeta=chromebeta.deb
+      if [ ! -f $apps/$chromeBeta ]; then
+          wget -q -O $apps/$chromeBeta 'https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb'
+          dpkg -i $apps/$chromeBeta
+          #rm $apps/$chromeBeta
+      else
+          dpkg -i $apps/$chromeBeta
+      fi
+      apt install -f -y
+
+  - name: Pycharm
+    shell:
+      cmd: |
+        apps=/tmp/apps
+        pycharm=pycharm.tgz
+        if [ ! -d '/opt/pycharm' ]; then mkdir /opt/pycharm; fi
+        if [ ! -f $apps/$pycharm ]; then
+            wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2018.1.4.tar.gz'
+            tar zxf $apps/$pycharm -C /opt/pycharm
+        else
+            tar zxf $apps/$pycharm -C /opt
+        fi
+
+        ln -s /opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh /usr/local/bin/pycharm
+
+        cat > /usr/share/applications/pycharm.desktop << EOF
+        [Desktop Entry]
+        Encoding=UTF-8
+        Name=Pycharm IDE
+        Comment=The Smarter Way to Code
+        Exec=/bin/sh "/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh"
+        Icon=/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.png
+        Categories=Application;Development;Python;IDE
+        Version=1.0
+        Type=Application
+        Terminal=0
+        EOF
+    args:
+      executable: /bin/bash
+
+  - name: python3-pip
+    apt: name=python3-pip state=latest
+
+  - name: Visual Studio Code
+    shell: |
+      curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+      mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+      sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  - name: code-insiders
+    apt: update_cache=yes name=code-insiders
+
   - name: Gnome Extensions
     shell: |
       apps=/tmp/apps
@@ -142,87 +221,8 @@
   - name: x2go
     apt: name=x2goclient state=latest
 
-  - name: tmux
-    apt: name=tmux state=latest
-
-  - name: CIFS
-    apt: name=cifs-utils state=latest
-
-  - name: sshfs
-    apt: name=sshfs state=latest
-
-  - name: duplicity
-    apt: name=duplicity state=latest
-
   - name: remmina
     apt: name=remmina state=latest
-
-  - name: Chrome
-    shell: |
-      apps=/tmp/apps
-      chrome=chrome.deb
-      if [ ! -f $apps/$chrome ]; then
-          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-          dpkg -i $apps/$chrome
-          #rm $apps/$chrome
-      else
-          dpkg -i $apps/$chrome
-      fi
-      apt install -f -y
-
-  - name: Chrome beta
-    shell: |
-      apps=/tmp/apps
-      chromeBeta=chromebeta.deb
-      if [ ! -f $apps/$chromeBeta ]; then
-          wget -q -O $apps/$chromeBeta 'https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb'
-          dpkg -i $apps/$chromeBeta
-          #rm $apps/$chromeBeta
-      else
-          dpkg -i $apps/$chromeBeta
-      fi
-      apt install -f -y
-
-  - name: Pycharm
-    shell:
-      cmd: |
-        apps=/tmp/apps
-        pycharm=pycharm.tgz
-        if [ ! -d '/opt/pycharm' ]; then mkdir /opt/pycharm; fi
-        if [ ! -f $apps/$pycharm ]; then
-            wget -q -O $apps/$pycharm 'https://download.jetbrains.com/python/pycharm-community-2018.1.4.tar.gz'
-            tar zxf $apps/$pycharm -C /opt/pycharm
-        else
-            tar zxf $apps/$pycharm -C /opt
-        fi
-
-        ln -s /opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh /usr/local/bin/pycharm
-
-        cat > /usr/share/applications/pycharm.desktop << EOF
-        [Desktop Entry]
-        Encoding=UTF-8
-        Name=Pycharm IDE
-        Comment=The Smarter Way to Code
-        Exec=/bin/sh "/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.sh"
-        Icon=/opt/pycharm/pycharm-community-2018.1.4/bin/pycharm.png
-        Categories=Application;Development;Python;IDE
-        Version=1.0
-        Type=Application
-        Terminal=0
-        EOF
-    args:
-      executable: /bin/bash
-
-  - name: python3-pip
-    apt: name=python3-pip state=latest
-
-  - name: Visual Studio Code
-    shell: |
-      curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-      mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-      sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-  - name: code-insiders
-    apt: update_cache=yes name=code-insiders
 
   - name: PlayOnLinux
     shell: |

@@ -133,19 +133,6 @@
   - name: ubuntu-communitheme-session
     apt: update_cache=yes name=ubuntu-communitheme-session state=latest
 
-  - name: OSX Arc Collection dependencies
-    apt: update_cache=yes name=gnome-themes-standard state=latest
-  - name: OSX Arc Collection
-    shell: |
-      apps=/tmp/apps
-      theme=osx-arc-collection.deb
-      if [ ! -f $apps/$theme ]; then
-          wget -q -O $apps/$theme 'https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb'
-          dpkg -i $apps/$theme
-      else
-          dpkg -i $apps/$theme
-      fi
-
   - name: oranchelo-icon-theme repo
     apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
   - name: oranchelo-icon-theme

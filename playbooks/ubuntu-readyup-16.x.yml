@@ -188,17 +188,6 @@
   - name: libreoffice-style-sifr
     apt: name=libreoffice-style-sifr state=latest
 
-  - name: Installing OSX Arc Collection
-    shell: |
-      apps=/tmp/apps
-      theme=osx-arc-collection.deb
-      if [ ! -f $apps/$theme ]; then
-          wget -q -O $apps/$theme 'https://github.com/LinxGem33/OSX-Arc-White/releases/download/v1.4.3/osx-arc-collection_1.4.3_amd64.deb'
-          dpkg -i $apps/$theme
-      else
-          dpkg -i $apps/$theme
-      fi
-
   - name: Put buttons on left side
     shell:
       cmd: |

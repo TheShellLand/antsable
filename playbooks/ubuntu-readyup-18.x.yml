@@ -44,6 +44,9 @@
   - name: gnome-backup duplicity
     apt: name=duplicity state=latest
 
+  - name: cryptsetup
+    apt: name=cryptsetup state=latest
+
   - name: Chrome
     shell: |
       apps=/tmp/apps

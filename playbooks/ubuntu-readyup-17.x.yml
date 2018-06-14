@@ -325,6 +325,9 @@
   - name: wireshark
     apt: name=wireshark state=latest
 
+  - name: macchanger
+    apt: name=macchanger state=latest
+
   - name: lm-sensors
     apt: name=lm-sensors state=latest
 

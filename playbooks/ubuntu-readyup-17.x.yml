@@ -71,6 +71,20 @@
       fi
       apt install -f -y
 
+  - name: Brave
+    shell: snap install brave
+    args:
+      executable: /bin/bash
+
+  - name: Brave beta
+    shell: |
+      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
+      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+      sudo apt update
+      sudo apt install brave-beta
+    args:
+      executable: /bin/bash
+
   - name: Pycharm
     shell:
       cmd: |

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Install Ansible
+# for Ubuntu 18.04
+
 
 echo -n "Installing ansible"
 apt update >/dev/null 2>&1 && echo -n "." && \
@@ -13,3 +15,4 @@ echo "done"
 if [ ! -z "$1" ]; then
      ansible-playbook -i localhost, -c local "$1"
 fi
+

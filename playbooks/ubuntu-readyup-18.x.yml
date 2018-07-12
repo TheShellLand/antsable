@@ -47,29 +47,42 @@
   - name: cryptsetup
     apt: name=cryptsetup state=latest
 
-  - name: Chrome
-    shell: |
-      apps=/tmp/apps
-      chrome=chrome.deb
-      if [ ! -f $apps/$chrome ]; then
-          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-          dpkg -i $apps/$chrome
-          #rm $apps/$chrome
-      else
-          dpkg -i $apps/$chrome
-      fi
-      apt install -f -y
+#  - name: Chrome
+#    shell: |
+#      apps=/tmp/apps
+#      chrome=chrome.deb
+#      if [ ! -f $apps/$chrome ]; then
+#          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+#          dpkg -i $apps/$chrome
+#          #rm $apps/$chrome
+#      else
+#          dpkg -i $apps/$chrome
+#      fi
+#      apt install -f -y
 
-  - name: Chrome beta
+#  - name: Chrome beta
+#    shell: |
+#      apps=/tmp/apps
+#      chromeDev=chromebeta.deb
+#      if [ ! -f $apps/$chromeBeta ]; then
+#          wget -q -O $apps/$chromeBeta 'https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb'
+#          dpkg -i $apps/$chromeBeta
+#          #rm $apps/$chromeBeta
+#      else
+#          dpkg -i $apps/$chromeBeta
+#      fi
+#      apt install -f -y
+
+  - name: Chrome dev
     shell: |
       apps=/tmp/apps
-      chromeBeta=chromebeta.deb
-      if [ ! -f $apps/$chromeBeta ]; then
-          wget -q -O $apps/$chromeBeta 'https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb'
-          dpkg -i $apps/$chromeBeta
-          #rm $apps/$chromeBeta
+      chromeDev=chromedev.deb
+      if [ ! -f $apps/$chromeDev ]; then
+          wget -q -O $apps/$chromeDev 'https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb'
+          dpkg -i $apps/$chromeDev
+          #rm $apps/$chromeDev
       else
-          dpkg -i $apps/$chromeBeta
+          dpkg -i $apps/$chromeDev
       fi
       apt install -f -y
 

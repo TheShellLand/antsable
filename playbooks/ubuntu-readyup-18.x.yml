@@ -309,6 +309,17 @@
   - name: skypeforlinux
     apt: update_cache=yes name=skypeforlinux state=latest
 
+  - name: Discord
+    shell: |
+      apps=/tmp/apps
+      file=discord.deb
+      if [ ! -f $apps/$file ]; then
+        wget -q -O $apps/$file https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
+        dpkg -i $apps/$file
+      else
+        dpkg -i $apps/$file
+      fi
+
   - name: aircrack
     apt: name=aircrack-ng state=latest
 

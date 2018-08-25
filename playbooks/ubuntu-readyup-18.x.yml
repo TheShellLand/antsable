@@ -274,6 +274,13 @@
       apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
       apt-get update
       apt-get install -y --install-recommends winehq-staging
+  
+  - name: Lutris (gaming)
+    shell: |
+      echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
+      wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | sudo apt-key add -
+      apt-get update
+      apt-get install -y lutris
 
   - name: nodejs
     shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -

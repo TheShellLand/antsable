@@ -323,6 +323,18 @@
     apt: name=winbind state=present
   - name: PlayOnLinux - update missing packages
     shell: apt install -f -y
+  
+  - name: Wine (staging)
+    shell: |
+      apps=/tmp/apps
+      wine=$apps/wine
+      mkdir -p $wine
+      cd $wine
+      wget -nc https://dl.winehq.org/wine-builds/Release.key
+      apt-key add Release.key
+      apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+      apt-get update
+      apt-get install -y --install-recommends winehq-staging
 
 #  - name: GitKraken
 #    shell: |

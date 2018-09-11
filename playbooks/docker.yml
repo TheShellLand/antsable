@@ -2,12 +2,24 @@
 - hosts: docker
   tasks:
 
+  - name: apt-transport-https
+    apt: update_cache=yes name=apt-transport-https state=latest
+
+  - name: ca-certificates
+    apt: update_cache=yes name=ca-certificates state=latest
+
+  - name: curl
+    apt: update_cache=yes name=curl state=latest
+
+  - name: software-properties-common
+    apt: update_cache=yes name=software-properties-common state=latest
+
+  - name: Add docker repository key
+    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
   - name: Add docker repo
     apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
       # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
-
-  - name: Add docker repository key
-    shell: wget -q -O - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
   - name: Install docker-ce
     apt: update_cache=yes name=docker-ce state=latest

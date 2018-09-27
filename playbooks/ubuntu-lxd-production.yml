@@ -1,4 +1,4 @@
------
+---
 - hosts: hypervisor
   tasks:
 
@@ -71,3 +71,7 @@
       limit_type: hard
       limit_item: memlock
       value: unlimited
+
+  - name: Reload all settings
+    shell: sysctl -p
+

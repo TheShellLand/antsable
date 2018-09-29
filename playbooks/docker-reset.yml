@@ -1,0 +1,9 @@
+---
+- hosts: docker
+  tasks:
+
+  - name: Reset Rancher and clean all docker containers
+    shell: |
+      docker stop $(docker ps -aq) 
+      docker rm $(docker ps -aq)
+

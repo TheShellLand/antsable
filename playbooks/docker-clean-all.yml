@@ -13,3 +13,7 @@
       docker rmi $(docker images -q)
     ignore_errors: yes
 
+  - name: Delete rancher directories
+    shell: rm -rf /var/lib/rancher/
+    ignore_errors: yes
+

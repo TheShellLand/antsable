@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+
+  - name: zfsutils-linux
+    apt: update_cache=yes name=zfsutils-linux state=latest
+
+  - name: zfs-initramfs
+    apt: update_cache=yes name=zfs-initramfs state=latest
+

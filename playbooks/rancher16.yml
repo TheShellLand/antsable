@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install rancher 1.x
+    shell: |
+        docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
+

@@ -24,6 +24,6 @@ if [ $failed == "yes" ]; then
 fi
 
 if [ ! -z "$1" ]; then
-     ansible-playbook -i localhost, -c local "$1"
+    ansible-playbook -v -i localhost, -c local "$1"
 fi
 

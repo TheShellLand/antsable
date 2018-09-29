@@ -6,10 +6,10 @@
     shell: |
       docker stop $(docker ps -aq) 
       docker rm $(docker ps -aq)
-    ignore_error: yes
+    ignore_errors: yes
 
   - name: Remove all docker images
     shell: |
       docker rmi $(docker images -q)
-    ignore_error: yes
+    ignore_errors: yes
 

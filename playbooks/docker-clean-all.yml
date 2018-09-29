@@ -1,13 +1,15 @@
 ---
-- hosts: docker
+- hosts: all
   tasks:
 
   - name: Reset Rancher and clean all docker containers
     shell: |
       docker stop $(docker ps -aq) 
       docker rm $(docker ps -aq)
+    ignore_error: yes
 
   - name: Remove all docker images
     shell: |
       docker rmi $(docker images -q)
+    ignore_error: yes
 

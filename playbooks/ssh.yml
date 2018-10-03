@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install openssh-server
+    apt: update_cache=yes name=openssh-server state=latest
+
+  - name: Start openssh-server
+    service:
+        name: ssh
+        state: started
+
+  - name: Enable persistence
+    systemd: 
+        name: ssh
+        state: started
+        enabled: yes

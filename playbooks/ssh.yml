@@ -11,7 +11,5 @@
         state: started
 
   - name: Enable persistence
-    systemd: 
-        name: ssh
-        state: started
-        enabled: yes
+    shell: systemctl enable ssh
+

@@ -4,26 +4,44 @@
 
 
 
-# Install ansible only if 
-failed="no"
-dpkg -l | grep ii | grep software-properties-common > /dev/null || failed="yes"
-dpkg -l | grep ii | grep python-software-properties > /dev/null || failed="yes"
-dpkg -l | grep ii | grep ansible > /dev/null || failed="yes"
+# Ubuntu 17.x and below
 
+grep "Ubuntu 17" /etc/issue
+if [ ! "$?" == 0 ]; then
 
-if [ $failed == "yes" ]; then
-	echo -n "Installing ansible"
-	apt purge -y appstream >/dev/null 2>&1 && echo -n "." && \
-	apt update >/dev/null 2>&1 && echo -n "." && \
-	apt-get install -y software-properties-common python-software-properties >/dev/null 2>&1 && echo -n "." && \
-	apt-get install -y apt-transport-https sudo >/dev/null 2>&1 && echo -n "." && \
-	apt-add-repository -y 'ppa:ansible/ansible' >/dev/null 2>&1 && echo -n "." && \
-	apt update >/dev/null 2>&1 && echo -n "." && \
-	apt install -y ansible >/dev/null 2>&1 && echo -n "." && \
-	echo "done"
+	which ansible 2>&1 >/dev/null
+	if [ ! "$?" == 0 ]; then
+			echo -n "Installing ansible"
+			apt purge -y appstream
+			apt update >/dev/null 2>&1 && echo -n "." && \
+			apt-get install -y software-properties-common python-software-properties >/dev/null 2>&1 && echo -n "." && \
+			apt-get install -y apt-transport-https sudo >/dev/null 2>&1 && echo -n "." && \
+			apt-add-repository -y 'ppa:ansible/ansible' >/dev/null 2>&1 && echo -n "." && \
+			apt update >/dev/null 2>&1 && echo -n "." && \
+			apt install -y ansible >/dev/null 2>&1 && echo -n "." && \
+			echo "done"
+	fi
 fi
+
+
+# Ubuntu 18.x and above
+
+grep "Ubuntu 18" /etc/issue
+if [ ! "$?" == 0 ]; then
+
+	which ansible 2>&1 >/dev/null
+	if [ ! "$?" == 0 ]; then
+			echo -n "Installing ansible"
+			apt update >/dev/null 2>&1 && echo -n "." && \
+			apt-get install -y apt-transport-https sudo >/dev/null 2>&1 && echo -n "." && \
+			apt-add-repository -y 'ppa:ansible/ansible' >/dev/null 2>&1 && echo -n "." && \
+			apt update >/dev/null 2>&1 && echo -n "." && \
+			apt install -y ansible >/dev/null 2>&1 && echo -n "." && \
+			echo "done"
+	fi
+fi
+
 
 if [ ! -z "$1" ]; then
-    ansible-playbook -v -i localhost, -c local "$1"
+	ansible-playbook -v -i localhost, -c local "$1"
 fi
-

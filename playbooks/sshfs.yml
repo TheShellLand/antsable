@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install sshfs
+    apt: update_cache=yes name=sshfs state=latest

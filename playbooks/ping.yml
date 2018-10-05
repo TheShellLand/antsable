@@ -2,5 +2,5 @@
 - hosts: all
   tasks:
 
-  - name: ping
-    ping:
+  - name: Install ping
+    apt: update_cache=yes name=iputils-ping state=latest

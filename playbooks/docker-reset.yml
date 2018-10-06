@@ -6,6 +6,17 @@
     shell: |
       docker stop $(docker ps -aq) 
       docker rm $(docker ps -aq)
-      find /etc/kubernetes/ -delete
+    ignore_errors: yes
+
+  - name: Clean up kubernetes 
+    shell: |
+      rm -rf /etc/kubernetes
+      rm -rf /etc/cni
+      rm -rf /var/lib/cni
+      rm -rf /var/lib/etcd
+      rm -rf /var/run/calico
+      rm -rf /var/etcd/backups
+      rm -rf /opt/cni
+      rm -rf /opt/rke
     ignore_errors: yes
 

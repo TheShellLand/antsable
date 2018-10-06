@@ -17,3 +17,15 @@
     shell: rm -rf /var/lib/rancher/
     ignore_errors: yes
 
+  - name: Delete kubernetes directories
+    shell: |
+      rm -rf /etc/kubernetes
+      rm -rf /etc/cni
+      rm -rf /var/lib/cni
+      rm -rf /var/lib/etcd
+      rm -rf /var/run/calico
+      rm -rf /var/etcd/backups
+      rm -rf /opt/cni
+      rm -rf /opt/rke
+    ignore_errors: yes
+

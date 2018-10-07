@@ -12,4 +12,3 @@
 
   - name: Enable persistence
     shell: systemctl enable ssh
-

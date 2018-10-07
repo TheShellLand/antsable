@@ -1,8 +1,6 @@
 ---
 - hosts: all
   tasks:
-  - name: Update cache
-    apt: update_cache=yes
 
   - name: Create tun device
     shell: |
@@ -47,13 +45,13 @@
     shell: chmod +x /root/vpn-start.sh
 
   - name: Install OpenVPN
-    apt: name=openvpn state=latest
+    apt: update_cache=yes name=openvpn state=latest
 
   - name: Set iptables
     shell: iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
   - name: Install iptables-persistent
-    apt: name=iptables-persistent state=latest
+    apt: update_cache=yes name=iptables-persistent state=latest
 
   - name: Set IPV4 forwarding
     shell: |

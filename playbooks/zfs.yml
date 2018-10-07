@@ -7,4 +7,3 @@
 
   - name: zfs-initramfs
     apt: update_cache=yes name=zfs-initramfs state=latest
-

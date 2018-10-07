@@ -12,38 +12,35 @@
 #    shell: |
 #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
-  - name: Updating repository
-    apt: update_cache=yes
-
   - name: Install Missing Packages
     shell: apt install -f -y
 
   - name: software-properties-common
-    apt: name=software-properties-common state=latest
+    apt: update_cache=yes name=software-properties-common state=latest
 
   - name: X299 Realtek ALC1220 time drift fix
     # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
-    apt: name=adjtimex state=latest
+    apt: update_cache=yes name=adjtimex state=latest
   - name: Fix timing drift
     shell: adjtimexconfig
 
   - name: git
-    apt: name=git state=latest
+    apt: update_cache=yes name=git state=latest
 
   - name: unzip
-    apt: name=unzip state=latest
+    apt: update_cache=yes name=unzip state=latest
 
   - name: tmux
-    apt: name=tmux state=latest
+    apt: update_cache=yes name=tmux state=latest
 
   - name: CIFS
-    apt: name=cifs-utils state=latest
+    apt: update_cache=yes name=cifs-utils state=latest
 
   - name: sshfs
-    apt: name=sshfs state=latest
+    apt: update_cache=yes name=sshfs state=latest
 
   - name: gnome-backup duplicity
-    apt: name=duplicity state=latest
+    apt: update_cache=yes name=duplicity state=latest
 
 #  - name: Chrome
 #    shell: |
@@ -129,7 +126,7 @@
       executable: /bin/bash
 
   - name: python3-pip
-    apt: name=python3-pip state=latest
+    apt: update_cache=yes name=python3-pip state=latest
 
   - name: Visual Studio Code
     shell: |
@@ -143,7 +140,7 @@
     apt_repository: repo='ppa:noobslab/macbuntu'
 
   - name: gnome-tweak-tool
-    apt: name=gnome-tweak-tool state=latest
+    apt: update_cache=yes name=gnome-tweak-tool state=latest
 
   - name: system-monitor prerequisite
     apt:
@@ -210,10 +207,10 @@
       state: latest
 
   - name: macbuntu-os-ithemes-v10
-    apt: name=macbuntu-os-ithemes-v10 state=latest
+    apt: update_cache=yes name=macbuntu-os-ithemes-v10 state=latest
 
   - name: libreoffice-style-sifr
-    apt: name=libreoffice-style-sifr state=latest
+    apt: update_cache=yes name=libreoffice-style-sifr state=latest
 
   - name: Put buttons on left side
     shell:
@@ -288,19 +285,19 @@
       executable: /bin/bash
 
   - name: OpenVPN
-    apt: name=openvpn state=latest
+    apt: update_cache=yes name=openvpn state=latest
 
   - name: Virt-Viewer
-    apt: name=virt-viewer state=latest
+    apt: update_cache=yes name=virt-viewer state=latest
 
   - name: x11vnc
-    apt: name=x11vnc state=latest
+    apt: update_cache=yes name=x11vnc state=latest
 
   - name: x2go
-    apt: name=x2goclient state=latest
+    apt: update_cache=yes name=x2goclient state=latest
 
   - name: remmina
-    apt: name=remmina state=latest
+    apt: update_cache=yes name=remmina state=latest
 
   - name: PlayOnLinux
     shell: |
@@ -320,7 +317,7 @@
   - name: PlayOnLinux - wine
     apt: update_cache=yes name=wine-development state=present
   - name: PlayOnLinux - winbind
-    apt: name=winbind state=present
+    apt: update_cache=yes name=winbind state=present
   - name: PlayOnLinux - update missing packages
     shell: apt install -f -y
   
@@ -363,28 +360,28 @@
     apt: update_cache=yes name=nodejs state=latest
 
   - name: exfat
-    apt: name=exfat-utils state=latest
+    apt: update_cache=yes name=exfat-utils state=latest
 
   - name: nmap
-    apt: name=nmap state=latest
+    apt: update_cache=yes name=nmap state=latest
 
   - name: wireshark
-    apt: name=wireshark state=latest
+    apt: update_cache=yes name=wireshark state=latest
 
   - name: macchanger
-    apt: name=macchanger state=latest
+    apt: update_cache=yes name=macchanger state=latest
 
   - name: lm-sensors
-    apt: name=lm-sensors state=latest
+    apt: update_cache=yes name=lm-sensors state=latest
 
   - name: QTQR
-    apt: name=qtqr state=latest
+    apt: update_cache=yes name=qtqr state=latest
 
   - name: VLC
-    apt: name=vlc state=latest
+    apt: update_cache=yes name=vlc state=latest
 
   - name: Virtualbox
-    apt: name=virtualbox state=latest
+    apt: update_cache=yes name=virtualbox state=latest
       # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
       # Unable to install dependencies even with yakkety contrib branch
       #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
@@ -414,10 +411,10 @@
       #fi
 
   - name: Emacs
-    apt: name=emacs state=latest
+    apt: update_cache=yes name=emacs state=latest
 
   - name: Vim
-    apt: name=vim state=latest
+    apt: update_cache=yes name=vim state=latest
 
   - name: Skype
     shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
@@ -450,7 +447,7 @@
 #      state: present
 
   - name: glances
-    apt: name=glances state=latest
+    apt: update_cache=yes name=glances state=latest
 
 #  - name: Stacer
 #    shell: |
@@ -464,7 +461,7 @@
 #      fi
 
   - name: aircrack
-    apt: name=aircrack-ng state=latest
+    apt: update_cache=yes name=aircrack-ng state=latest
 
 #  - name: flux
 #    apt_repository: repo='ppa:nathan-renniewaldock/flux'
@@ -477,10 +474,10 @@
     apt: update_cache=yes name=darktable state=latest
 
   - name: gimp
-    apt: name=gimp state=latest
+    apt: update_cache=yes name=gimp state=latest
 
   - name: audacity
-    apt: name=audacity state=latest
+    apt: update_cache=yes name=audacity state=latest
 
   - name: Veracrypt
     apt_repository: repo='ppa:unit193/encryption'
@@ -488,7 +485,7 @@
     apt: update_cache=yes name=veracrypt state=latest
 
   - name: kazam
-    apt: name=kazam state=latest
+    apt: update_cache=yes name=kazam state=latest
 
   - name: OBS-Studio Screen Recorder
     apt_repository: repo='ppa:obsproject/obs-studio'

@@ -7,13 +7,19 @@ cd $(dirname $0)
 which git
 if [ ! "$?" == 0 ]; then apt update && apt install -y git; fi
 
-antsable="antsable"
-if [ ! -d $antsable ]; then	
-	git clone https://github.com/TheShellLand/antsable.git $antsable
-else
-	cd $antsable
+
+git="../.git"
+antsable="../"
+playbooks="../playbooks"
+
+if [ -d "$git" ]; then	
+	git reset --hard
+	git clean -dff
 	git pull
-	cd ..
+else
+	echo "[error] Not a git repository"
+	echo "[error] Please try cloning repository again"
+	echo "[error] git clone git@github.com:TheShellLand/antsable.git"
 fi
 
 # Put running playbooks here
@@ -28,3 +34,4 @@ fi
 while true; do
   sleep infinity
 done
+

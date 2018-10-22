@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# ssh jumphost
+# install python3
 
 cd $(dirname $0)
 
@@ -12,7 +12,7 @@ git="../.git"
 antsable="../"
 playbooks="../playbooks"
 
-if [ -d "$git" ]; then	
+if [ -d "$git" ]; then
 	git reset --hard
 	git clean -dff
 	git pull
@@ -23,9 +23,8 @@ else
 fi
 
 # Put running playbooks here
-/bin/bash $antsable/ansible.sh $playbooks/ssh.yml
-/bin/bash $antsable/ansible.sh $playbooks/sshfs.yml
-/bin/bash $antsable/ansible.sh $playbooks/human_tools.yml
+/bin/bash $antsable/ansible.sh $antsable/playbooks/human_tools.yml
+
 
 # Put additional shell commands here
 

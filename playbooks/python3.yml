@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: install python 3
+    shell: |
+      apt update
+      apt install -y python3

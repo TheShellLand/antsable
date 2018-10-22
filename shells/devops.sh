@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # tools for devops
 
@@ -12,7 +12,7 @@ git="../.git"
 antsable="../"
 playbooks="../playbooks"
 
-if [ -d "$git" ]; then	
+if [ -d "$git" ]; then
 	git reset --hard
 	git clean -dff
 	git pull

@@ -23,6 +23,7 @@ else
 fi
 
 # Put running playbooks here
+/bin/bash $antsable/ansible.sh $antsable/playbooks/human_tools.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/python3.yml
 
 

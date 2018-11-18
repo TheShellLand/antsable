@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - name: Install wget
+    apt: update_cache=yes name=wget state=latest

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# entry template
+# Update git repository
 
 cd $(dirname $0)
 
@@ -25,16 +25,3 @@ else
 	echo "[error] Please try cloning repository again"
 	echo "[error] git clone git@github.com:TheShellLand/antsable.git"
 fi
-
-# Put running playbooks here
-/bin/bash $antsable/ansible.sh $antsable/playbooks/human_tools.yml
-
-
-# Put additional shell commands here
-
-
-
-# This keeps the pod alive
-while true; do
-  sleep infinity
-done

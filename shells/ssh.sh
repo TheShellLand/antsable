@@ -6,7 +6,7 @@ cd $(dirname $0)
 
 
 which apt
-if [ ! "$?" == 0 ]; then echo "apt not found. minimum requirement not met"; fi
+if [ ! "$?" == 0 ]; then echo "apt not found. minimum requirement not met"; exit 1; fi
 
 which git
 if [ ! "$?" == 0 ]; then apt update && apt install -y git; fi

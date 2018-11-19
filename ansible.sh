@@ -3,6 +3,14 @@
 # Install Ansible
 
 
+# Requires apt
+which apt
+if [ ! "$?" == 0 ]; then
+    echo "apt does not exist"
+    echo "minimum requirements not met"
+fi
+
+
 # Ubuntu 17.x and below
 
 grep "Ubuntu 16" /etc/issue
@@ -13,9 +21,9 @@ if [ "$?" == 0 ]; then
 			echo "Installing ansible"
 			apt purge -y appstream
 			apt update && \
-			apt-get install -y software-properties-common && \
-			apt-get install -y python-software-properties && \
-			apt-get install -y apt-transport-https && \
+			apt install -y software-properties-common && \
+			apt install -y python-software-properties && \
+			apt install -y apt-transport-https && \
 			apt-add-repository -y 'ppa:ansible/ansible' && \
 			apt update && \
 			apt install -y ansible && \
@@ -31,9 +39,9 @@ if [ "$?" == 0 ]; then
 			echo "Installing ansible"
 			apt purge -y appstream
 			apt update && \
-			apt-get install -y software-properties-common && \
-			apt-get install -y python-software-properties && \
-			apt-get install -y apt-transport-https && \
+			apt install -y software-properties-common && \
+			apt install -y python-software-properties && \
+			apt install -y apt-transport-https && \
 			apt-add-repository -y 'ppa:ansible/ansible' && \
 			apt update && \
 			apt install -y ansible && \
@@ -51,8 +59,8 @@ if [ "$?" == 0 ]; then
 	if [ ! "$?" == 0 ]; then
 			echo "Installing ansible"
 			apt update && \
-			apt-get install -y software-properties-common && \
-			apt-get install -y apt-transport-https && \
+			apt install -y software-properties-common && \
+			apt install -y apt-transport-https && \
 			apt-add-repository -y 'ppa:ansible/ansible' && \
 			apt update && \
 			apt install -y ansible && \

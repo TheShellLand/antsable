@@ -4,6 +4,10 @@
 
 cd $(dirname $0)
 
+
+which apt
+if [ ! "$?" == 0 ]; then echo "apt not found. minimum requirement not met"; fi
+
 which git
 if [ ! "$?" == 0 ]; then apt update && apt install -y git; fi
 
@@ -37,4 +41,3 @@ fi
 while true; do
   sleep infinity
 done
-

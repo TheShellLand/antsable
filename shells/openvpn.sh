@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# OpenVPN init script for kylemanna/openvpn
+# OpenVPN server init script for kylemanna/openvpn
 
 
 if [ -z "$1" ]; then

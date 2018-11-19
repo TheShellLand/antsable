@@ -4,9 +4,9 @@
 
 
 if [ -z "$1" ]; then
-    echo "Usage: openpvn.sh 'udp://VPN.SERVERNAME.COM'"
+    echo "Usage: openpvn.sh 'VPN.SERVERNAME.COM'"
     exit 1
 else
-    ovpn_genconfig -u "$1" && \
+    ovpn_genconfig -u "udp://$1" && \
     ovpn_initpki nopass
 fi

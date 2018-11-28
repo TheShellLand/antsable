@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 # OpenVPN server init script for kylemanna/openvpn
+#
+# By default uses only UDP
 
 
 if [ -z "$1" ]; then
-    echo "Usage: openpvn.sh 'VPN.SERVERNAME.COM'"
+    echo "Usage: openpvn-init-server.sh 'VPN.SERVERNAME.COM'"
     exit 1
 else
     ovpn_genconfig -u "udp://$1" && \

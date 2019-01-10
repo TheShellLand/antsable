@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Restart devstack
+    shell: ./root/devstack/unstack.sh
+    args:
+      executable: /bin/bash

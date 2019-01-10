@@ -1,0 +1,35 @@
+---
+- hosts: all
+  tasks:
+
+  - name: git
+    apt: update_cache=yes name=git state=latest
+
+  - name: Create stack user
+    shell: |
+      useradd -s /bin/bash -d /opt/stack -m stack
+      echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
+
+  - name: Clone devstack repo
+    git:
+      repo: https://git.openstack.org/openstack-dev/devstack
+
+  - name: Create devstack local.conf
+    copy:
+      dest: devstack/local.conf
+      content: |
+        [[local|localrc]]
+        ADMIN_PASSWORD=secret
+        DATABASE_PASSWORD=$ADMIN_PASSWORD
+        RABBIT_PASSWORD=$ADMIN_PASSWORD
+        SERVICE_PASSWORD=$ADMIN_PASSWORD
+
+  - name: Run devstack installation script
+    shell: ./devstack/stack.sh
+    args:
+      executable: /bin/bash
+
+  - name: Restart devstack
+    shell: ./root/devstack/unstack.sh && ./root/devstack/stack.sh
+    args:
+      executable: /bin/bash

@@ -1,0 +1,32 @@
+---
+- hosts: all
+  tasks:
+
+  - name: /tmp/apps
+    file: path=/tmp/apps state=directory
+
+  - name: chdir
+    shell: cd /tmp/apps
+
+  - name: Install Missing Packages
+    shell: apt install -f -y
+
+  - name: ubuntu-gnome-desktop
+    apt:
+      name: ubuntu-gnome-desktop
+      state: present
+
+      #  - name: Configure for gdm - debconf
+      #    debconf:
+      #      name: gdm3
+      #      question: shared/default-x-display-manager
+      #      vtype: select
+      #      value: gdm3
+      #
+      #  - name: Configure for gdm - file
+      #    replace:
+      #      path: /etc/X11/default-display-manager
+      #      regexp: '.*'
+      #      replace: /usr/sbin/gdm
+      #      backup: yes
+

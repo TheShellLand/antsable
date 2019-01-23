@@ -83,19 +83,19 @@
       fi
       apt install -f -y
 
-  - name: Brave
-    shell: snap install brave
-    args:
-      executable: /bin/bash
-
-  - name: Brave beta
-    shell: |
-      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
-      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
-      sudo apt update
-      sudo apt install -y brave-beta
-    args:
-      executable: /bin/bash
+#  - name: Brave
+#    shell: snap install brave
+#    args:
+#      executable: /bin/bash
+#
+#  - name: Brave beta
+#    shell: |
+#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
+#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+#      sudo apt update
+#      sudo apt install -y brave-beta
+#    args:
+#      executable: /bin/bash
 
   - name: Pycharm
     shell:
@@ -162,6 +162,30 @@
     args:
       executable: /bin/bash
 
+   - name: Arrongin theme
+     git:
+       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
+       dest: arrogin
+       update: yes
+   - name: install Arrongin
+     shell: |
+       cd arrogin
+       cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
+     args:
+       executable: /bin/bash
+
+   - name: Telinkrin theme
+     git:
+       repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
+       dest: telinkrin
+       update: yes
+   - name: install telinkrin
+     shell: |
+       cd telinkrin
+       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
+     args:
+       executable: /bin/bash
+
   - name: Ubuntu CommuniThemes repo
     apt_repository: repo='ppa:communitheme/ppa'
   - name: ubuntu-communitheme-session
@@ -210,25 +234,25 @@
       fi
       fc-cache -f -v
 
-  - name: Disable Mouse Acceleration for X server
-    file: >
-      path=/usr/share/X11/xorg.conf.d/
-      recurse=yes
-      state=directory
-  - name: Disable Mouse Acceleration for X server
-    shell:
-      cmd: |
-        cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
-        Section "InputClass"
-            Identifier "My Mouse"
-            MatchIsPointer "yes"
-            Option "AccelerationProfile" "-1"
-            Option "AccelerationScheme" "none"
-            Option "AccelSpeed" "-1"
-        EndSection
-        EOF
-    args:
-      executable: /bin/bash
+#  - name: Disable Mouse Acceleration for X server
+#    file: >
+#      path=/usr/share/X11/xorg.conf.d/
+#      recurse=yes
+#      state=directory
+#  - name: Disable Mouse Acceleration for X server
+#    shell:
+#      cmd: |
+#        cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
+#        Section "InputClass"
+#            Identifier "My Mouse"
+#            MatchIsPointer "yes"
+#            Option "AccelerationProfile" "-1"
+#            Option "AccelerationScheme" "none"
+#            Option "AccelSpeed" "-1"
+#        EndSection
+#        EOF
+#    args:
+#      executable: /bin/bash
 
   - name: OpenVPN
     apt: update_cache=yes name=openvpn state=latest
@@ -273,11 +297,13 @@
       wine=$apps/wine
       mkdir -p $wine
       cd $wine
-      wget -nc https://dl.winehq.org/wine-builds/Release.key
-      apt-key add Release.key
+      wget -nc https://dl.winehq.org/wine-builds/winehq.key
+      apt-key add winehq.key
       apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
       apt-get update
       apt-get install -y --install-recommends winehq-staging
+    args:
+      executable: /bin/bash
   
   - name: Lutris (gaming)
     shell: |
@@ -323,14 +349,14 @@
   - name: Vim
     apt: update_cache=yes name=vim state=latest
 
-  - name: Skype
-    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
-  - name: skype repo key
-    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
-  - name: skype repo
-    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
-  - name: skypeforlinux
-    apt: update_cache=yes name=skypeforlinux state=latest
+#  - name: Skype
+#    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+#  - name: skype repo key
+#    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
+#  - name: skype repo
+#    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
+#  - name: skypeforlinux
+#    apt: update_cache=yes name=skypeforlinux state=latest
 
   - name: Discord
     shell: |
@@ -398,11 +424,11 @@
   - name: Sublime 3
     apt: update_cache=yes name=sublime-text state=latest
 
-  - name: X299 Realtek ALC1220 time drift fix
-    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
-    apt: update_cache=yes name=adjtimex state=latest
-  - name: Fix timing drift
-    shell: adjtimexconfig
+    #  - name: X299 Realtek ALC1220 time drift fix
+    #    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
+    #    apt: update_cache=yes name=adjtimex state=latest
+    #  - name: Fix timing drift
+    #    shell: adjtimexconfig
 
   - name: Java JDK 8 for NetBeans IDE
     shell: |

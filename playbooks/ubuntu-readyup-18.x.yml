@@ -44,6 +44,9 @@
   - name: cryptsetup
     apt: update_cache=yes name=cryptsetup state=latest
 
+  - name: pass
+    apt: update_cache=yes name=pass state=latest
+
 #  - name: Chrome
 #    shell: |
 #      apps=/tmp/apps
@@ -326,7 +329,7 @@
     apt: update_cache=yes name=nmap state=latest
 
   - name: wireshark
-    apt: update_cache=yes name=wireshark state=latest
+c
 
   - name: macchanger
     apt: update_cache=yes name=macchanger state=latest

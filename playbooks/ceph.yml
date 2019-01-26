@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install wget
+    apt: update_cache=yes name=wget state=latest
+
+  - name: Add ceph release key
+    shell: wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
+    args:
+      executable: /bin/bash
+
+  - name: Add ceph repository
+    shell: echo deb https://download.ceph.com/debian-mimic/ $(lsb_release -sc) main | tee /etc/apt/sources.list.d/ceph.list
+    args:
+      executable: /bin/bash
+
+  - name: Install ceph-deploy
+    apt: update_cache=yes name=ceph-deploy state=latest
+

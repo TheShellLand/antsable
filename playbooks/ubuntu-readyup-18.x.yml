@@ -307,7 +307,7 @@
       apt-get install -y --install-recommends winehq-staging
     args:
       executable: /bin/bash
-  
+
   - name: Lutris (gaming)
     shell: |
       echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
@@ -329,7 +329,7 @@
     apt: update_cache=yes name=nmap state=latest
 
   - name: wireshark
-c
+    apt: update_cache=yes name=wireshark state=latest
 
   - name: macchanger
     apt: update_cache=yes name=macchanger state=latest

@@ -27,8 +27,17 @@
   - name: git
     apt: update_cache=yes name=git state=latest
 
+  - name: curl
+    apt: update_cache=yes name=curl state=latest
+
   - name: unzip
     apt: update_cache=yes name=unzip state=latest
+
+  - name: gnome-tweak-tool
+    apt: update_cache=yes name=gnome-tweak-tool state=latest
+
+  - name: chrome-gnome-shell
+    apt: update_cache=yes name=chrome-gnome-shell state=latest
 
   - name: tmux
     apt: update_cache=yes name=tmux state=latest
@@ -41,6 +50,12 @@
 
   - name: gnome-backup duplicity
     apt: update_cache=yes name=duplicity state=latest
+
+  - name: cryptsetup
+    apt: update_cache=yes name=cryptsetup state=latest
+
+  - name: pass
+    apt: update_cache=yes name=pass state=latest
 
 #  - name: Chrome
 #    shell: |
@@ -81,19 +96,19 @@
       fi
       apt install -f -y
 
-  - name: Brave
-    shell: snap install brave
-    args:
-      executable: /bin/bash
-
-  - name: Brave beta
-    shell: |
-      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
-      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
-      sudo apt update
-      sudo apt install -y brave-beta
-    args:
-      executable: /bin/bash
+#  - name: Brave
+#    shell: snap install brave
+#    args:
+#      executable: /bin/bash
+#
+#  - name: Brave beta
+#    shell: |
+#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
+#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+#      sudo apt update
+#      sudo apt install -y brave-beta
+#    args:
+#      executable: /bin/bash
 
   - name: Pycharm
     shell:
@@ -207,6 +222,30 @@
       regexp: '.*'
       replace: /usr/sbin/gdm
       backup: yes
+
+   - name: Arrongin theme
+     git:
+       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
+       dest: arrogin
+       update: yes
+   - name: install Arrongin
+     shell: |
+       cd arrogin
+       cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
+     args:
+       executable: /bin/bash
+
+   - name: Telinkrin theme
+     git:
+       repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
+       dest: telinkrin
+       update: yes
+   - name: install telinkrin
+     shell: |
+       cd telinkrin
+       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
+     args:
+       executable: /bin/bash
 
   - name: macbuntu-os-icons-lts-v7
     apt:
@@ -334,30 +373,20 @@
       wine=$apps/wine
       mkdir -p $wine
       cd $wine
-      wget -nc https://dl.winehq.org/wine-builds/Release.key
-      apt-key add Release.key
+      wget -nc https://dl.winehq.org/wine-builds/winehq.key
+      apt-key add winehq.key
       apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
       apt-get update
       apt-get install -y --install-recommends winehq-staging
-  
+    args:
+      executable: /bin/bash
+
   - name: Lutris (gaming)
     shell: |
       echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
       wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | sudo apt-key add -
       apt-get update
       apt-get install -y lutris
-
-#  - name: GitKraken
-#    shell: |
-#      apps=/tmp/apps
-#      gitk=gitkraken.deb
-#      if [ ! -f $apps/$gitk ]; then
-#          wget -q -O $apps/$gitk "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-#          dpkg -i $apps/$gitk
-#      else
-#          dpkg -i $apps/$gitk
-#      fi
-#      apt-get install -f -y
 
   - name: nodejs
     shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
@@ -423,14 +452,14 @@
   - name: Vim
     apt: update_cache=yes name=vim state=latest
 
-  - name: Skype
-    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
-  - name: skype repo key
-    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
-  - name: skype repo
-    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
-  - name: skypeforlinux
-    apt: update_cache=yes name=skypeforlinux state=latest
+#  - name: Skype
+#    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+#  - name: skype repo key
+#    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
+#  - name: skype repo
+#    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
+#  - name: skypeforlinux
+#    apt: update_cache=yes name=skypeforlinux state=latest
 
   - name: Discord
     shell: |
@@ -443,37 +472,8 @@
         dpkg -i $apps/$file
       fi
 
-#  - name: iotop
-#    apt:
-#      name: iotop
-#      state: present
-
-#  - name: iftop
-#    apt:
-#      name: iftop
-#      state: present
-
-  - name: glances
-    apt: update_cache=yes name=glances state=latest
-
-#  - name: Stacer
-#    shell: |
-#      echo "[*] [ $progress/$total ] Installing Stacer"
-#      stacer=stacer.deb
-#      if [ ! -f $apps/$stacer ]; then
-#          wget -q -O $apps/$stacer 'https://github.com/oguzhaninan/Stacer/releases/download/v1.0.7/stacer_1.0.7_amd64.deb'
-#          dpkg -i $apps/$stacer
-#      else
-#          dpkg -i $apps/$stacer
-#      fi
-
   - name: aircrack
     apt: update_cache=yes name=aircrack-ng state=latest
-
-#  - name: flux
-#    apt_repository: repo='ppa:nathan-renniewaldock/flux'
-#  - name: fluxgui
-#    apt: update_cache=yes name=fluxgui state=latest
 
   - name: darktable
     apt_repository: repo='ppa:pmjdebruijn/darktable-release'

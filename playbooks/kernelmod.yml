@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: Install kmod
+    apt: update_cache=yes name=kmod state=latest
+

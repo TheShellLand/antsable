@@ -204,43 +204,24 @@
     args:
       executable: /bin/bash
 
-  - name: ubuntu-gnome-desktop
-    apt:
-      name: ubuntu-gnome-desktop
-      state: present
-
-  - name: Configure for gdm - debconf
-    debconf:
-      name: gdm3
-      question: shared/default-x-display-manager
-      vtype: select
-      value: gdm3
-
-  - name: Configure for gdm - file
-    replace:
-      path: /etc/X11/default-display-manager
-      regexp: '.*'
-      replace: /usr/sbin/gdm
-      backup: yes
-
-   - name: Arrongin theme
+  - name: Arrongin theme
      git:
        repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
        dest: arrogin
        update: yes
-   - name: install Arrongin
+  - name: install Arrongin
      shell: |
        cd arrogin
        cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
      args:
        executable: /bin/bash
 
-   - name: Telinkrin theme
+  - name: Telinkrin theme
      git:
        repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
        dest: telinkrin
        update: yes
-   - name: install telinkrin
+  - name: install telinkrin
      shell: |
        cd telinkrin
        cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/

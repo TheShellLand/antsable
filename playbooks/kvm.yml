@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+  - name: Install qemu-kvm
+    apt: update_cache=yes name=qemu-kvm state=latest
+
+  - name: Install libvirt-bin
+    apt: update_cache=no name=libvirt-bin state=latest
+
+  - name: Install virtinst
+    apt: update_cache=no name=virtinst state=latest
+
+  - name: Install bridge-utils
+    apt: update_cache=no name=bridge-utils state=latest
+
+  - name: Install cpu-checker
+    apt: update_cache=no name=cpu-checker state=latest
+
+  # Ideally don't use root account for virt-manager
+

@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Packer binary downlaod
+    # No PPA, need to download and install manually
+    # https://www.packer.io/downloads.html
+    get_url:
+      url: https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_linux_amd64.zip
+      dest: /tmp/packer.zip
+
+  - name: Install unzip
+    apt: update_cache=yes name=unzip state=latest
+
+  - name: Packer install to /usr/local/bin
+    shell: sudo unzip -o /tmp/packer.zip -d /usr/local/bin/
+

@@ -3,3 +3,6 @@
   tasks:
   - name: Install maas
     apt: update_cache=yes name=maas state=latest
+
+  - name: Install sudo
+    apt: update_cache=yes name=sudo state=latest

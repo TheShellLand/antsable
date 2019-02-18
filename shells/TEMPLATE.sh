@@ -18,7 +18,7 @@ playbooks="../playbooks"
 
 if [ -d "$git" ]; then	
 	git reset --hard
-	git clean -dff
+	git clean -xdf
 	git pull
 else
 	echo "[error] Not a git repository"

@@ -37,5 +37,5 @@ fi
 
 # This keeps the pod alive
 while true; do
-  sleep infinity
+  regiond -w 1
 done

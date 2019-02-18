@@ -29,7 +29,6 @@ fi
 # Put running playbooks here
 /bin/bash $antsable/ansible.sh $playbooks/ssh.yml
 /bin/bash $antsable/ansible.sh $playbooks/maas.yml
-/bin/bash $antsable/ansible.sh $playbooks/human_tools.yml
 
 # Put additional shell commands here
 

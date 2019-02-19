@@ -166,28 +166,28 @@
       executable: /bin/bash
 
   - name: Arrongin theme
-     git:
-       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
-       dest: arrogin
-       update: yes
+    git:
+      repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
+      dest: arrogin
+      update: yes
   - name: install Arrongin
-     shell: |
-       cd arrogin
-       cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
-     args:
-       executable: /bin/bash
+    shell: |
+      cd arrogin
+      cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
+    args:
+      executable: /bin/bash
 
   - name: Telinkrin theme
-     git:
-       repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
-       dest: telinkrin
-       update: yes
+    git:
+      repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
+      dest: telinkrin
+      update: yes
   - name: install telinkrin
-     shell: |
-       cd telinkrin
-       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
-     args:
-       executable: /bin/bash
+    shell: |
+      cd telinkrin
+      cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
+    args:
+      executable: /bin/bash
 
   - name: Ubuntu CommuniThemes repo
     apt_repository: repo='ppa:communitheme/ppa'

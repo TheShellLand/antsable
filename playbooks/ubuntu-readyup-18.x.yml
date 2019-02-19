@@ -368,8 +368,10 @@
       if [ ! -f $apps/$file ]; then
         wget -q -O $apps/$file https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
         dpkg -i $apps/$file
+        apt install -f -y
       else
         dpkg -i $apps/$file
+        apt install -f -y
       fi
 
   - name: aircrack

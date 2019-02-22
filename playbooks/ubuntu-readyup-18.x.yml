@@ -272,27 +272,27 @@
   - name: remmina
     apt: update_cache=yes name=remmina state=latest
 
-#  - name: PlayOnLinux
-#    shell: |
-#      apps=/tmp/apps
-#      pol=PlayOnLinux.deb
-#      if [ ! -f $apps/$pol ]; then
-#          wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
-#          dpkg -i $apps/$pol
-#      else
-#          dpkg -i $apps/$pol
-#      fi
-#      if [ -d usr ]; then
-#          rsync -rti usr /
-#      fi
-#      apt install -f -y
-#      dpkg --add-architecture i386
-#  - name: PlayOnLinux - wine
-#    apt: update_cache=yes name=wine-development state=present
-#  - name: PlayOnLinux - winbind
-#    apt: update_cache=yes name=winbind state=present
-#  - name: PlayOnLinux - update missing packages
-#    shell: apt install -f -y
+  - name: PlayOnLinux
+    shell: |
+      apps=/tmp/apps
+      pol=PlayOnLinux.deb
+      if [ ! -f $apps/$pol ]; then
+          wget -q -O $apps/$pol 'https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb'
+          dpkg -i $apps/$pol
+      else
+          dpkg -i $apps/$pol
+      fi
+      if [ -d usr ]; then
+          rsync -rti usr /
+      fi
+      apt install -f -y
+      dpkg --add-architecture i386
+  - name: PlayOnLinux - wine
+    apt: update_cache=yes name=wine-development state=present
+  - name: PlayOnLinux - winbind
+    apt: update_cache=yes name=winbind state=present
+  - name: PlayOnLinux - update missing packages
+    shell: apt install -f -y
   
   - name: Wine (staging)
     shell: |

@@ -14,6 +14,9 @@
   - name: software-properties-common
     apt: update_cache=yes name=software-properties-common state=latest
 
+  - name: sudo
+    apt: update_cache=yes name=sudo state=latest
+
   - name: git
     apt: update_cache=yes name=git state=latest
 
@@ -314,6 +317,7 @@
       wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | sudo apt-key add -
       apt-get update
       apt-get install -y lutris
+      apt-get install -y -f
 
   - name: nodejs
     shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -

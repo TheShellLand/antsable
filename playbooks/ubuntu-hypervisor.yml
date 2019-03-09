@@ -12,6 +12,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-iptables
     sysctl:
@@ -22,6 +23,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-arptables
     sysctl:
@@ -32,6 +34,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   # https://github.com/lxc/lxd/blob/master/doc/production-setup.md
   - name: Fix for Linux open files count - fs.inotify.max_queued_events
@@ -43,6 +46,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux open files count - fs.inotify.max_user_instances
     sysctl:
@@ -53,6 +57,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux open files count - fs.inotify.max_user_watches
     sysctl:
@@ -63,6 +68,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux open files count - vm.max_map_count
     sysctl:
@@ -73,6 +79,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   # https://github.com/lxc/lxd/blob/master/doc/production-setup.md
   - name: Fix for Linux limits -  *  soft  nofile
@@ -84,6 +91,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux limits -  * hard  nofile
     pam_limits:
@@ -94,6 +102,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux limits -  root  soft  nofile
     pam_limits:
@@ -104,6 +113,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux limits -  root  hard  nofile
     pam_limits:
@@ -114,6 +124,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux limits -  * soft  memlock
     pam_limits:
@@ -124,6 +135,7 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes
 
   - name: Fix for Linux limits -  * hard  memlock
     pam_limits:
@@ -134,3 +146,4 @@
     become: yes
     become_user: root
     become_method: sudo
+    ignore_errors: yes

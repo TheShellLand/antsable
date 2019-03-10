@@ -6,8 +6,8 @@
 # Requires apt
 which apt
 if [ ! "$?" == 0 ]; then
-    echo "apt does not exist"
-    echo "minimum requirements not met"
+  echo "apt does not exist"
+  echo "minimum requirements not met"
 fi
 
 
@@ -18,16 +18,16 @@ if [ "$?" == 0 ]; then
 
 	which ansible
 	if [ ! "$?" == 0 ]; then
-			echo "Installing ansible"
-			apt purge -y appstream
-			apt update && \
-			apt install -y software-properties-common && \
-			apt install -y python-software-properties && \
-			apt install -y apt-transport-https && \
-			apt-add-repository -y 'ppa:ansible/ansible' && \
-			apt update && \
-			apt install -y ansible && \
-			echo "done"
+    echo "Installing ansible"
+    apt purge -y appstream
+    apt update && \
+    apt install -y software-properties-common && \
+    apt install -y python-software-properties && \
+    apt install -y apt-transport-https && \
+    apt-add-repository -y 'ppa:ansible/ansible' && \
+    apt update && \
+    apt install -y ansible && \
+    echo "done"
 	fi
 fi
 
@@ -36,16 +36,16 @@ if [ "$?" == 0 ]; then
 
 	which ansible
 	if [ ! "$?" == 0 ]; then
-			echo "Installing ansible"
-			apt purge -y appstream
-			apt update && \
-			apt install -y software-properties-common && \
-			apt install -y python-software-properties && \
-			apt install -y apt-transport-https && \
-			apt-add-repository -y 'ppa:ansible/ansible' && \
-			apt update && \
-			apt install -y ansible && \
-			echo "done"
+    echo "Installing ansible"
+    apt purge -y appstream
+    apt update && \
+    apt install -y software-properties-common && \
+    apt install -y python-software-properties && \
+    apt install -y apt-transport-https && \
+    apt-add-repository -y 'ppa:ansible/ansible' && \
+    apt update && \
+    apt install -y ansible && \
+    echo "done"
 	fi
 fi
 
@@ -57,14 +57,14 @@ if [ "$?" == 0 ]; then
 
 	which ansible
 	if [ ! "$?" == 0 ]; then
-			echo "Installing ansible"
-			apt update && \
-			apt install -y software-properties-common && \
-			apt install -y apt-transport-https && \
-			apt-add-repository -y 'ppa:ansible/ansible' && \
-			apt update && \
-			apt install -y ansible && \
-			echo "done"
+    echo "Installing ansible"
+    apt update && \
+    apt install -y software-properties-common && \
+    apt install -y apt-transport-https && \
+    apt-add-repository -y 'ppa:ansible/ansible' && \
+    apt update && \
+    apt install -y ansible && \
+    echo "done"
 	fi
 fi
 
@@ -72,3 +72,4 @@ fi
 if [ ! -z "$1" ]; then
 	ansible-playbook -v -i localhost, -c local "$1"
 fi
+

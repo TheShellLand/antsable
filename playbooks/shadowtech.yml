@@ -1,0 +1,31 @@
+---
+- hosts: all
+  tasks:
+
+  - name: /tmp/apps
+    file: path=/tmp/apps state=directory
+
+  - name: chdir
+    shell: cd /tmp/apps
+
+  - name: i965-va-driver
+    apt: update_cache=yes name=i965-va-driver state=latest
+
+  - name: Install Shadow
+    shell: |
+      apps=/tmp/apps
+      zip=shadow.zip
+      if [ ! -f $apps/$zip ]; then
+          wget -q -O $apps/$zip https://update.shadow.tech/renderer/preprod/linux/bionic/shadow-beta-bionic.zip
+          unzip -o $apps/$zip -d $app/shadow
+          dpkg -i $apps/shadow/shadow-beta-bionic-0.9.24.deb
+      else
+          dpkg -i $apps/shadow/shadow-beta-bionic-0.9.24.deb
+      fi
+
+  - name: Install Missing Packages
+    shell: apt install -f -y
+
+  - name: Add user to input group
+    shell: usermod -a -G input eric
+

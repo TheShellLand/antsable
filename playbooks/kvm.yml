@@ -17,4 +17,9 @@
     apt: update_cache=no name=cpu-checker state=latest
 
   # Ideally don't use root account for virt-manager
+  - name: Install virt-manager
+    apt: update_cache=no name=virt-manager state=latest
+
+  - name: Add this user to the libvirt group
+    shell: usermod -a -G libvirt eric
 

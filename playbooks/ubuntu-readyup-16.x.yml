@@ -24,38 +24,41 @@
   - name: Fix timing drift
     shell: adjtimexconfig
 
+  - name: sudo
+    apt: update_cache=no name=sudo state=latest
+
   - name: git
-    apt: update_cache=yes name=git state=latest
+    apt: update_cache=no name=git state=latest
 
   - name: curl
-    apt: update_cache=yes name=curl state=latest
+    apt: update_cache=no name=curl state=latest
 
   - name: unzip
-    apt: update_cache=yes name=unzip state=latest
+    apt: update_cache=no name=unzip state=latest
 
   - name: gnome-tweak-tool
-    apt: update_cache=yes name=gnome-tweak-tool state=latest
+    apt: update_cache=no name=gnome-tweak-tool state=latest
 
   - name: chrome-gnome-shell
-    apt: update_cache=yes name=chrome-gnome-shell state=latest
+    apt: update_cache=no name=chrome-gnome-shell state=latest
 
   - name: tmux
-    apt: update_cache=yes name=tmux state=latest
+    apt: update_cache=no name=tmux state=latest
 
   - name: CIFS
-    apt: update_cache=yes name=cifs-utils state=latest
+    apt: update_cache=no name=cifs-utils state=latest
 
   - name: sshfs
-    apt: update_cache=yes name=sshfs state=latest
+    apt: update_cache=no name=sshfs state=latest
 
   - name: gnome-backup duplicity
-    apt: update_cache=yes name=duplicity state=latest
+    apt: update_cache=no name=duplicity state=latest
 
   - name: cryptsetup
-    apt: update_cache=yes name=cryptsetup state=latest
+    apt: update_cache=no name=cryptsetup state=latest
 
   - name: pass
-    apt: update_cache=yes name=pass state=latest
+    apt: update_cache=no name=pass state=latest
 
 #  - name: Chrome
 #    shell: |
@@ -148,7 +151,7 @@
       executable: /bin/bash
 
   - name: python3-pip
-    apt: update_cache=yes name=python3-pip state=latest
+    apt: update_cache=no name=python3-pip state=latest
 
   - name: Visual Studio Code
     shell: |
@@ -222,11 +225,11 @@
       dest: telinkrin
       update: yes
   - name: install telinkrin
-     shell: |
-       cd telinkrin
-       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
-     args:
-       executable: /bin/bash
+    shell: |
+      cd telinkrin
+      cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
+    args:
+      executable: /bin/bash
 
   - name: macbuntu-os-icons-lts-v7
     apt:
@@ -312,19 +315,19 @@
       executable: /bin/bash
 
   - name: OpenVPN
-    apt: update_cache=yes name=openvpn state=latest
+    apt: update_cache=no name=openvpn state=latest
 
   - name: Virt-Viewer
-    apt: update_cache=yes name=virt-viewer state=latest
+    apt: update_cache=no name=virt-viewer state=latest
 
   - name: x11vnc
-    apt: update_cache=yes name=x11vnc state=latest
+    apt: update_cache=no name=x11vnc state=latest
 
   - name: x2go
-    apt: update_cache=yes name=x2goclient state=latest
+    apt: update_cache=no name=x2goclient state=latest
 
   - name: remmina
-    apt: update_cache=yes name=remmina state=latest
+    apt: update_cache=no name=remmina state=latest
 
   - name: PlayOnLinux
     shell: |
@@ -344,7 +347,7 @@
   - name: PlayOnLinux - wine
     apt: update_cache=yes name=wine-development state=present
   - name: PlayOnLinux - winbind
-    apt: update_cache=yes name=winbind state=present
+    apt: update_cache=no name=winbind state=present
   - name: PlayOnLinux - update missing packages
     shell: apt install -f -y
   
@@ -364,41 +367,42 @@
 
   - name: Lutris (gaming)
     shell: |
-      echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list
-      wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | sudo apt-key add -
+      echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | tee /etc/apt/sources.list.d/lutris.list
+      wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | apt-key add -
       apt-get update
       apt-get install -y lutris
+      apt-get install -y -f
 
   - name: nodejs
-    shell: curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+    shell: curl -sL https://deb.nodesource.com/setup_9.x | -E bash -
     args:
       executable: /bin/bash
   - name: nodejs
     apt: update_cache=yes name=nodejs state=latest
 
   - name: exfat
-    apt: update_cache=yes name=exfat-utils state=latest
+    apt: update_cache=no name=exfat-utils state=latest
 
   - name: nmap
-    apt: update_cache=yes name=nmap state=latest
+    apt: update_cache=no name=nmap state=latest
 
   - name: wireshark
-    apt: update_cache=yes name=wireshark state=latest
+    apt: update_cache=no name=wireshark state=latest
 
   - name: macchanger
-    apt: update_cache=yes name=macchanger state=latest
+    apt: update_cache=no name=macchanger state=latest
 
   - name: lm-sensors
-    apt: update_cache=yes name=lm-sensors state=latest
+    apt: update_cache=no name=lm-sensors state=latest
 
   - name: QTQR
-    apt: update_cache=yes name=qtqr state=latest
+    apt: update_cache=no name=qtqr state=latest
 
   - name: VLC
-    apt: update_cache=yes name=vlc state=latest
+    apt: update_cache=no name=vlc state=latest
 
   - name: Virtualbox
-    apt: update_cache=yes name=virtualbox state=latest
+    apt: update_cache=no name=virtualbox state=latest
       # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
       # Unable to install dependencies even with yakkety contrib branch
       #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
@@ -427,14 +431,33 @@
       #	VBoxManage extpack install --replace $apps/$file
       #fi
 
+  - name: Install qemu-kvm
+    apt: update_cache=no name=qemu-kvm state=latest
+
+  - name: Install libvirt-bin
+    apt: update_cache=no name=libvirt-bin state=latest
+
+  - name: Install virtinst
+    apt: update_cache=no name=virtinst state=latest
+
+  - name: Install bridge-utils
+    apt: update_cache=no name=bridge-utils state=latest
+
+  - name: Install cpu-checker
+    apt: update_cache=no name=cpu-checker state=latest
+
+  # Ideally don't use root account for virt-manager
+  - name: Install virt-manager
+    apt: update_cache=no name=virt-manager state=latest
+
   - name: Emacs
-    apt: update_cache=yes name=emacs state=latest
+    apt: update_cache=no name=emacs state=latest
 
   - name: Vim
-    apt: update_cache=yes name=vim state=latest
+    apt: update_cache=no name=vim state=latest
 
 #  - name: Skype
-#    shell: dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+#    shell: dpkg -s apt-transport-https > /dev/null || bash -c "apt-get update; apt-get install apt-transport-https -y"
 #  - name: skype repo key
 #    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
 #  - name: skype repo
@@ -449,8 +472,10 @@
       if [ ! -f $apps/$file ]; then
         wget -q -O $apps/$file https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
         dpkg -i $apps/$file
+        apt install -f -y
       else
         dpkg -i $apps/$file
+        apt install -f -y
       fi
 
   - name: aircrack
@@ -462,10 +487,10 @@
     apt: update_cache=yes name=darktable state=latest
 
   - name: gimp
-    apt: update_cache=yes name=gimp state=latest
+    apt: update_cache=no name=gimp state=latest
 
   - name: audacity
-    apt: update_cache=yes name=audacity state=latest
+    apt: update_cache=no name=audacity state=latest
 
   - name: Veracrypt
     apt_repository: repo='ppa:unit193/encryption'
@@ -473,7 +498,7 @@
     apt: update_cache=yes name=veracrypt state=latest
 
   - name: kazam
-    apt: update_cache=yes name=kazam state=latest
+    apt: update_cache=no name=kazam state=latest
 
   - name: OBS-Studio Screen Recorder
     apt_repository: repo='ppa:obsproject/obs-studio'
@@ -495,9 +520,9 @@
 
   - name: Sublime 3
     shell: |
-      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-      sudo apt-get install -y apt-transport-https
-      echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+      wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+      apt-get install -y apt-transport-https
+      echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
     args:
       executable: /bin/bash
   - name: Sublime 3
@@ -524,145 +549,145 @@
     args:
       executable: /bin/bash
 
-  - name: NetBeans IDE state configuration
-    shell:
-      cmd: |
-        apps=/tmp/apps
-        cat > $apps/state.xml <<EOF
-        <?xml version="1.0" encoding="UTF-8"?>
-        <!--
-            DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
-
-            Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
-
-            Oracle and Java are registered trademarks of Oracle and/or its affiliates.
-            Other names may be trademarks of their respective owners.
-
-            The contents of this file are subject to the terms of either the GNU General Public
-            License Version 2 only ("GPL") or the Common Development and Distribution
-            License("CDDL") (collectively, the "License"). You may not use this file except in
-            compliance with the License. You can obtain a copy of the License at
-            http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
-            License for the specific language governing permissions and limitations under the
-            License.  When distributing the software, include this License Header Notice in
-            each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
-            designates this particular file as subject to the "Classpath" exception as provided
-            by Oracle in the GPL Version 2 section of the License file that accompanied this code.
-            If applicable, add the following below the License Header, with the fields enclosed
-            by brackets [] replaced by your own identifying information:
-            "Portions Copyrighted [year] [name of copyright owner]"
-
-            Contributor(s):
-
-            The Original Software is NetBeans. The Initial Developer of the Original Software
-            is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
-            Rights Reserved.
-
-            If you wish your version of this file to be governed by only the CDDL or only the
-            GPL Version 2, indicate your decision by adding "[Contributor] elects to include
-            this software in this distribution under the [CDDL or GPL Version 2] license." If
-            you do not indicate a single choice of license, a recipient has the option to
-            distribute your version of this file under either the CDDL, the GPL Version 2 or
-            to extend the choice of license to its licensees as provided above. However, if you
-            add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
-            option applies only if the new code is made subject to such option by the copyright
-            holder.
-        -->
-        <state
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
-         <components>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
-            <property name="minimum.jdk.version">1.8.0</property>
-            <property name="jdk.location">/opt/jdk/jdk1.8.0_162</property>
-            <property name="installation.timestamp">1517359318685</property>
-            <property name="start.menu.shortcut.location">all.users</property>
-            <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-            <property name="desktop.shortcut.location">all.users</property>
-            <property name="netbeans.summary.message.text">115 updates successfully installed.
-
-        </property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="show-in-wizard">false</property>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="jre.allowed">false</property>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
-           <properties>
-            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
-           <properties>
-            <property name="jdk.location"/>
-            <property name="installation.location">/usr/local/glassfish-4.1.1</property>
-           </properties>
-          </product>
-          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
-           <properties>
-            <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
-            <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
-           </properties>
-          </product>
-         </components>
-        </state>
-        EOF
-    args:
-      executable: /bin/bash
-
-  - name: NetBeans IDE install
-    shell: |
-      apps=/tmp/apps
-      state=$apps/state.xml
-      file=netbeans.sh
-      if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file 'http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh'
-          chmod +x $apps/$file
-          $apps/$file --silent --state $state
-      else
-          chmod +x $apps/$file
-          $apps/$file --silent --state $state
-      fi
-    args:
-      executable: /bin/bash
+#  - name: NetBeans IDE state configuration
+#    shell:
+#      cmd: |
+#        apps=/tmp/apps
+#        cat > $apps/state.xml <<EOF
+#        <?xml version="1.0" encoding="UTF-8"?>
+#        <!--
+#            DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+#
+#            Copyright 1997-2010 Oracle and/or its affiliates. All rights reserved.
+#
+#            Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+#            Other names may be trademarks of their respective owners.
+#
+#            The contents of this file are subject to the terms of either the GNU General Public
+#            License Version 2 only ("GPL") or the Common Development and Distribution
+#            License("CDDL") (collectively, the "License"). You may not use this file except in
+#            compliance with the License. You can obtain a copy of the License at
+#            http://www.netbeans.org/cddl-gplv2.html or nbbuild/licenses/CDDL-GPL-2-CP. See the
+#            License for the specific language governing permissions and limitations under the
+#            License.  When distributing the software, include this License Header Notice in
+#            each file and include the License file at nbbuild/licenses/CDDL-GPL-2-CP.  Oracle
+#            designates this particular file as subject to the "Classpath" exception as provided
+#            by Oracle in the GPL Version 2 section of the License file that accompanied this code.
+#            If applicable, add the following below the License Header, with the fields enclosed
+#            by brackets [] replaced by your own identifying information:
+#            "Portions Copyrighted [year] [name of copyright owner]"
+#
+#            Contributor(s):
+#
+#            The Original Software is NetBeans. The Initial Developer of the Original Software
+#            is Sun Microsystems, Inc. Portions Copyright 1997-2007 Sun Microsystems, Inc. All
+#            Rights Reserved.
+#
+#            If you wish your version of this file to be governed by only the CDDL or only the
+#            GPL Version 2, indicate your decision by adding "[Contributor] elects to include
+#            this software in this distribution under the [CDDL or GPL Version 2] license." If
+#            you do not indicate a single choice of license, a recipient has the option to
+#            distribute your version of this file under either the CDDL, the GPL Version 2 or
+#            to extend the choice of license to its licensees as provided above. However, if you
+#            add GPL Version 2 code and therefore, elected the GPL Version 2 license, then the
+#            option applies only if the new code is made subject to such option by the copyright
+#            holder.
+#        -->
+#        <state
+#         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="state-file.xsd">
+#         <components>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-base" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location.windows">$N{install}/NetBeans 8.2</property>
+#            <property name="minimum.jdk.version">1.8.0</property>
+#            <property name="jdk.location">/opt/jdk/jdk1.8.0_162</property>
+#            <property name="installation.timestamp">1517359318685</property>
+#            <property name="start.menu.shortcut.location">all.users</property>
+#            <property name="installation.location.macosx">$N{install}/NetBeans/NetBeans 8.2.app</property>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#            <property name="desktop.shortcut.location">all.users</property>
+#            <property name="netbeans.summary.message.text">115 updates successfully installed.
+#
+#        </property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-extide" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="show-in-wizard">false</property>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javase" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="jre.allowed">false</property>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-javaee" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="linux" status="to-be-installed" uid="nb-javame" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-webcommon" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-php" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-cnd" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-groovy" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-installed" uid="nb-ergonomics" version="8.2.0.0.201609300101">
+#           <properties>
+#            <property name="installation.location">/opt/netbeans/netbeans-8.2</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="glassfish-mod" version="4.1.1.0.1">
+#           <properties>
+#            <property name="jdk.location"/>
+#            <property name="installation.location">/usr/local/glassfish-4.1.1</property>
+#           </properties>
+#          </product>
+#          <product platform="windows linux solaris-sparc solaris-x86 macosx-ppc macosx-x86" status="to-be-uninstalled" uid="tomcat" version="8.0.27.0.0">
+#           <properties>
+#            <property name="installation.location">$N{install}/apache-tomcat-8.0.27</property>
+#            <property name="installation.location.windows">$E{ProgramFiles}/Apache Software Foundation/Apache Tomcat 8.0.27</property>
+#           </properties>
+#          </product>
+#         </components>
+#        </state>
+#        EOF
+#    args:
+#      executable: /bin/bash
+#
+#  - name: NetBeans IDE install
+#    shell: |
+#      apps=/tmp/apps
+#      state=$apps/state.xml
+#      file=netbeans.sh
+#      if [ ! -f $apps/$file ]; then
+#          wget -q -O $apps/$file 'http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh'
+#          chmod +x $apps/$file
+#          $apps/$file --silent --state $state
+#      else
+#          chmod +x $apps/$file
+#          $apps/$file --silent --state $state
+#      fi
+#    args:
+#      executable: /bin/bash

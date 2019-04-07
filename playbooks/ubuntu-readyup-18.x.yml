@@ -320,7 +320,7 @@
       apt-get install -y -f
 
   - name: nodejs
-    shell: curl -sL https://deb.nodesource.com/setup_9.x | -E bash -
+    shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
     args:
       executable: /bin/bash
   - name: nodejs

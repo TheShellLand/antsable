@@ -19,6 +19,22 @@
     become_user: root
     become_method: sudo
 
+  - name: Install make
+    apt:
+      name: make
+      state: latest
+    become: yes
+    become_user: root
+    become_method: sudo
+
+  - name: Install gcc
+    apt:
+      name: gcc
+      state: latest
+    become: yes
+    become_user: root
+    become_method: sudo
+
   - name: Radare2 - git
     git:
       repo: https://github.com/radare/radare2.git

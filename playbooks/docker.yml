@@ -24,3 +24,7 @@
   - name: Clean install docker-ce
     apt: update_cache=yes name=docker-ce state=absent
     apt: update_cache=yes name=docker-ce state=latest
+
+  - name: Added user to docker group
+    shell: usermod -a -G docker ubuntu
+

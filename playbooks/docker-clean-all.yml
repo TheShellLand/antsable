@@ -10,7 +10,7 @@
 
   - name: Remove all docker images
     shell: |
-      docker rmi $(docker images -q)
+      docker rmi $(docker images -aq)
     ignore_errors: yes
 
   - name: Delete rancher directories

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Prune unused Docker objects
+    shell: |
+      docker stop $(docker ps -a -q)
+      docker system prune -f
+      docker volume prune -f
+    ignore_errors: yes
+

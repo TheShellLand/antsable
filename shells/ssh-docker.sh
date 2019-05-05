@@ -13,5 +13,4 @@ playbooks="../playbooks"
 /bin/bash $antsable/ansible.sh $playbooks/ssh.yml
 /bin/bash $antsable/ansible.sh $playbooks/sshfs.yml
 /bin/bash $antsable/ansible.sh $playbooks/ping.yml
-/bin/bash $antsable/ansible.sh $playbooks/human_tools.yml
 

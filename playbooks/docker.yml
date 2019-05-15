@@ -15,15 +15,18 @@
     apt: update_cache=yes name=software-properties-common state=latest
 
   - name: Add docker repository key
-    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
   - name: Add docker repo
-    apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
-      # deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+    shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
   - name: Clean install docker-ce
     apt: update_cache=yes name=docker-ce state=absent
     apt: update_cache=yes name=docker-ce state=latest
+
+  - name: Added user to docker group
+    shell: usermod -a -G docker vagrant
+    ignore_errors: yes
 
   - name: Added user to docker group
     shell: usermod -a -G docker ubuntu

@@ -4,5 +4,5 @@
 
   - name: Install rancher 2.x
     shell: |
-        docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 rancher/rancher:latest
+        docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name rancher_server rancher/rancher:latest
 

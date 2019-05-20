@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+
+  - name: /tmp/apps
+    file: path=/tmp/apps state=directory
+
+  - name: chdir
+    shell: cd /tmp/apps
+
+  - name: Download kubectl
+    shell: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+  - name: copy to /usr/local/bin
+    copy:
+      src: kubectl
+      dest: /usr/local/bin/kubectl
+      mode: +x
+
+  - name: cleanup
+    file:
+      path: /tmp/apps
+      state: absent
+

@@ -30,4 +30,3 @@ docker create --volumes-from $RANCHER_SERVER --name $RANCHER_DATA rancher/ranche
 docker rename $RANCHER_SERVER $RANCHER_SERVER_OLD
 docker run -d --volumes-from $RANCHER_DATA --restart=unless-stopped -p 8080:80 -p 8443:443 --name $RANCHER_SERVER rancher/rancher:$RANCHER_VER_NEW
 
-RANCHER_SERVER="rancher_server"

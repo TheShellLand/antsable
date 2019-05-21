@@ -1,11 +1,16 @@
 #!/bin/bash
 
 # Upgrade rancher
-#
-# Usage: upgrade_rancher.sh OLD_VER NEW_VER
 
 set -ex
 
+# Usage
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo "Usage: $0 OLD_VER NEW_VER"
+  exit 1
+fi
+
+# Vars
 RANCHER_SERVER="rancher_server"
 RANCHER_SERVER_OLD="rancher_server_old"
 RANCHER_DATA="rancher-data"
@@ -14,17 +19,12 @@ RANCHER_VER_OLD="$1"
 RANCHER_VER_NEW="$2"
 
 
-if [ -z "$RANCHER_VER_OLD" ]; then echo "missing old rancher version"; exit 1; fi
-if [ -z "$RANCHER_VER_NEW" ]; then echo "missing new rancher version"; exit 1; fi
-
+# Pull images
 docker pull $RANCHER_DOCKER:$RANCHER_VER_OLD
 docker pull $RANCHER_DOCKER:$RANCHER_VER_NEW
 
-if [ "$(docker image ls rancher/rancher | grep $RANCHER_VER_OLD)" == '' ]; then echo "can't find $RANCHER_VER_OLD"; exit 1; fi
-if [ "$(docker image ls rancher/rancher | grep $RANCHER_VER_NEW)" == '' ]; then echo "can't find $RANCHER_VER_NEW"; exit 1; fi
-
-exit 1
-
+# Stop server, backup volume, run new version
+# Requires version to match running version
 docker stop $RANCHER_SERVER
 docker create --volumes-from $RANCHER_SERVER --name $RANCHER_DATA rancher/rancher:$RANCHER_VER_OLD
 docker rename $RANCHER_SERVER $RANCHER_SERVER_OLD

@@ -34,7 +34,7 @@ rancher login "$HOST" --token "$TOKEN"
 # create cluster
 rancher cluster create "$CLUSTERNAME"
 # add node
-rancher cluster add-node --label $(hostname) --etcd --controlplane --worker "$CLUSTERNAME" > add-node.sh
+rancher cluster add-node --label $(hostname) --etcd --controlplane --worker "$CLUSTERNAME" | tail -1 > add-node.sh
 /bin/bash add-node.sh
 # defaults to Default namespace and the only cluster
 rancher context switch

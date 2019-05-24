@@ -15,7 +15,7 @@
     copy:
       src: kubectl
       dest: /usr/local/bin/kubectl
-      mode: +x
+      mode: +x,o+x
 
   - name: cleanup
     file:

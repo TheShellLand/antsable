@@ -11,13 +11,13 @@
   - name: Download and Extract rancher cli
     unarchive:
       src: https://github.com/rancher/cli/releases/download/v2.2.0/rancher-linux-amd64-v2.2.0.tar.gz
-      dest: ./
+      dest: /tmp/apps
       remote_src: yes
   - name: copy to /usr/local/bin
     copy:
-      src: rancher-v2.2.0/rancher
+      src: /tmp/apps/rancher-v2.2.0/rancher
       dest: /usr/local/bin/rancher
-      mode: +x
+      mode: +x,o+x
 
   - name: cleanup
     file:

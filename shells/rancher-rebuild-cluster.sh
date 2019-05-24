@@ -4,16 +4,15 @@
 
 set -ex
 
-HOST="$1"
-TOKEN="$2"
+HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
+TOKEN="$1"
 CLUSTERNAME="queen"
 NAMESPACES="ants"
 
-if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
-  echo "Usage: $0 HOST TOKEN"
-  echo ""
-  echo "first start rancher server"
-  echo "namespaces must exist as a directory"
+if [ "$TOKEN" == "" ]; then
+  echo "Usage: $0 TOKEN"
+  echo "* first start rancher server"
+  echo "* namespaces must exist as a directory"
   exit 1
 fi
 
@@ -38,6 +37,12 @@ rancher cluster add-node --label $(hostname) --etcd --controlplane --worker "$CL
 /bin/bash add-node.sh
 # defaults to Default namespace and the only cluster
 rancher context switch
+# start
+date
+# wait for cluster to start
+rancher wait "$CLUSTERNAME"
+# finish
+date
 
 # create namespaces
 for ns in "$NAMESPACES"; do

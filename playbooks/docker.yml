@@ -20,8 +20,8 @@
   - name: Add docker repo
     shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-  - name: Clean install docker-ce
-    apt: update_cache=yes name=docker-ce state=absent
+  - name: Install docker-ce
+    #apt: update_cache=yes name=docker-ce state=absent
     apt: update_cache=yes name=docker-ce state=latest
 
   - name: Added user to docker group

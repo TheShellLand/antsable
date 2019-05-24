@@ -30,7 +30,7 @@ fi
 
 
 # auth to rancher
-rancher login "$HOST" --token "$TOKEN"
+yes | rancher login "$HOST" --token "$TOKEN"
 # create cluster
 rancher cluster create "$CLUSTERNAME"
 # add node

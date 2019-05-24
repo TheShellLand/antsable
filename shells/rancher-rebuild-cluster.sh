@@ -11,6 +11,8 @@ NAMESPACES="ants"
 
 if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
   echo "Usage: $0 HOST TOKEN"
+  echo ""
+  echo "namespaces must exist as a directory"
   exit 1
 fi
 

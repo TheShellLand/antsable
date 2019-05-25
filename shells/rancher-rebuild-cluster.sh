@@ -6,8 +6,8 @@ set -ex
 
 HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
 TOKEN="$1"
-CLUSTERNAME="alexander"
-NAMESPACES="trawsasedsb01 trawsasedweb01"
+CLUSTERNAME="queen"
+NAMESPACES="ants"
 
 if [ "$TOKEN" == "" ]; then
   echo "Usage: $0 TOKEN"
@@ -16,7 +16,7 @@ if [ "$TOKEN" == "" ]; then
   exit 1
 fi
 
-for yaml in "$NAMESPACES="trawsasedsb01 trawsasedweb01"; do
+for yaml in "$NAMESPACES"; do
   if [ ! -d "$yaml" ]; then
     echo "*** backup configs not found ***"
     exit 1
@@ -32,10 +32,10 @@ fi
 yes | rancher login "$HOST" --token "$TOKEN"
 
 # create cluster
-rancher cluster create "$CLUSTERNAME="alexander"
+rancher cluster create "$CLUSTERNAME"
 
 # add node
-rancher cluster add-node --label $(hostname) --etcd --controlplane --worker "$CLUSTERNAME="alexander"
+rancher cluster add-node --label $(hostname) --etcd --controlplane --worker "$CLUSTERNAME"
 /bin/bash add-node.sh
 
 # defaults to Default namespace and the only cluster
@@ -45,18 +45,18 @@ rancher context switch
 date
 
 # wait for cluster to start
-rancher wait "$CLUSTERNAME="alexander"
+rancher wait "$CLUSTERNAME"
 
 # finish
 date
 
 # create namespaces
-for ns in "$NAMESPACES="trawsasedsb01 trawsasedweb01"; do
+for ns in "$NAMESPACES"; do
   rancher namespace create "$ns"
 done
 
 # import deployments
-for deploy in "$NAMESPACES="trawsasedsb01 trawsasedweb01"; do
+for deploy in "$NAMESPACES"; do
   rancher kubectl create -f "$deploy" --namespace "$deploy"
 done
 

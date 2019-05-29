@@ -16,7 +16,7 @@ if [ "$TOKEN" == "" ]; then
   exit 1
 fi
 
-for yaml in "$NAMESPACES"; do
+for yaml in $NAMESPACES; do
   if [ ! -d "$yaml" ]; then
     echo "*** backup configs not found ***"
     exit 1
@@ -49,12 +49,12 @@ rancher wait "$CLUSTERNAME"
 date
 
 # create namespaces
-for ns in "$NAMESPACES"; do
+for ns in $NAMESPACES; do
   rancher namespace create "$ns"
 done
 
 # import deployments
-for deploy in "$NAMESPACES"; do
+for deploy in $NAMESPACES; do
   rancher kubectl create -f "$deploy" --namespace "$deploy"
 done
 

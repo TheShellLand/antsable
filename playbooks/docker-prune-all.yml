@@ -6,5 +6,6 @@
     shell: |
       docker stop $(docker ps -a -q)
       docker system prune -a -f
+      docker volume prune -f
     ignore_errors: yes
 

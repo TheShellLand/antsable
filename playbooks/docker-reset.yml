@@ -3,11 +3,15 @@
   gather_facts: no
   tasks:
 
-  - name: Reset Rancher and clean all docker containers
+  - name: Clean up docker
     shell: |
       docker stop $(docker ps -aq) 
       docker system prune -fa
       docker volume prune -f
+    ignore_errors: yes
+
+  - name: Clean up rancher
+    shell: rm -rf /var/lib/rancher/
     ignore_errors: yes
 
   - name: Clean up kubernetes 
@@ -20,5 +24,9 @@
       rm -rf /var/etcd/backups
       rm -rf /opt/cni
       rm -rf /opt/rke
+    ignore_errors: yes
+
+  - name: Reconfigure docker
+    shell: dpkg-reconfigure docker-ce
     ignore_errors: yes
 

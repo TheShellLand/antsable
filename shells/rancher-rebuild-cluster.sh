@@ -35,7 +35,7 @@ yes | rancher login "$HOST" --token "$TOKEN"
 rancher cluster create "$CLUSTERNAME"
 
 # add node
-rancher cluster add-node --etcd --controlplane --worker "$CLUSTERNAME" -q | /bin/bash
+rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME" | /bin/bash
 # defaults to Default namespace and the only cluster
 rancher context switch
 
@@ -59,4 +59,7 @@ for ns in $NAMESPACES; do
     rancher kubectl create -f "$yaml" --namespace "$ns"
   done
 done
+
+echo "Add additional nodes with this command:
+echo "rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME""
 

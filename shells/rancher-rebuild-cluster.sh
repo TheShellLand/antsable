@@ -43,7 +43,7 @@ rancher context switch
 date
 
 # wait for cluster to start
-rancher wait "$CLUSTERNAME" --wait-timeout 1200
+rancher wait "$CLUSTERNAME" --wait-state healthy
 
 # finish
 date

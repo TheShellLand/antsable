@@ -5,7 +5,7 @@
   - name: Prune unused Docker objects
     shell: |
       docker stop $(docker ps -a -q)
-      docker system prune -a -f
+      docker system prune -f -a
       docker volume prune -f
     ignore_errors: yes
 

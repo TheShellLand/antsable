@@ -55,7 +55,7 @@ done
 
 # import deployments
 for ns in $NAMESPACES; do
-  for yaml in $(find -type f -name '*.yaml'); do
+  for yaml in $(find "$ns" -type f -name '*.yaml'); do
     rancher kubectl create -f "$yaml" --namespace "$ns"
   done
 done

@@ -6,8 +6,8 @@
   - name: Reset Rancher and clean all docker containers
     shell: |
       docker stop $(docker ps -aq) 
-      docker rm -f $(docker ps -aq)
-      docker volume rm -f $(docker volume ls -q)
+      docker system prune -fa
+      docker volume prune -f
     ignore_errors: yes
 
   - name: Clean up kubernetes 

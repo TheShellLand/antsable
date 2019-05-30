@@ -5,7 +5,8 @@
   - name: Reset Rancher and clean all docker containers
     shell: |
       docker stop $(docker ps -aq) 
-      docker rm $(docker ps -aq)
+      docker system prune -fa
+      docker volume prune -f
     ignore_errors: yes
 
   - name: Remove all docker images

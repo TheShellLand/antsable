@@ -11,7 +11,7 @@ if [ ! "$(which apt)" ]; then
 fi
 
 
-# Ubuntu 16.x and below
+# Ubuntu 16.x
 grep "Ubuntu 16" /etc/issue
 if [ "$?" == 0 ]; then
 
@@ -29,7 +29,7 @@ if [ "$?" == 0 ]; then
 fi
 
 
-# Ubuntu 17.x and below
+# Ubuntu 17.x
 grep "Ubuntu 17" /etc/issue
 if [ "$?" == 0 ]; then
 
@@ -47,7 +47,7 @@ if [ "$?" == 0 ]; then
 fi
 
 
-# Ubuntu 18.x and above
+# Ubuntu 18.x
 grep "Ubuntu 18" /etc/issue
 if [ "$?" == 0 ]; then
 

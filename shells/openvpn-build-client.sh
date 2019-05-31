@@ -10,3 +10,4 @@ if [ -z "$1" ]; then
 else
     easyrsa build-client-full "$1" nopass
 fi
+

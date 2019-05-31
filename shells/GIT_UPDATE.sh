@@ -9,7 +9,7 @@ if [ ! "$(which apt)" ]; then echo "apt not found. minimum requirement not met";
 if [ ! "$(which git)" ]; then apt update && apt install -y git; fi
 
 git="../.git"
-antsable="../"
+antsable=".."
 playbooks="../playbooks"
 
 if [ -d "$git" ]; then

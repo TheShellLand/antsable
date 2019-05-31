@@ -12,7 +12,6 @@ echo "Enabling IPv6 forwarding"
 echo "1" > /proc/sys/net/ipv6/ip_forward
 
 
-
 echo "Running openvpn iptables..."
 
 iptables -A INPUT -i eth0 -m state --state NEW -p udp --dport 1194 -j ACCEPT

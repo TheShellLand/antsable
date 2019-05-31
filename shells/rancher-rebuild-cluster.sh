@@ -6,8 +6,8 @@ set -ex
 
 HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
 TOKEN="$1"
-CLUSTERNAME="queen"
-NAMESPACES="ants"
+CLUSTERNAME="skynet"
+NAMESPACES="world0"
 
 if [ "$TOKEN" == "" ]; then
   echo "Usage: $0 TOKEN"
@@ -19,6 +19,9 @@ fi
 for yaml in $NAMESPACES; do
   if [ ! -d "$yaml" ]; then
     echo "*** backup configs not found ***"
+    mkdir -p "$yaml/deployments"
+    mkdir -p "$yaml/ingress"
+    echo "*** backup directories have been auto created ***"
     exit 1
   fi
 done

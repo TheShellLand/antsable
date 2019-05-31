@@ -2,7 +2,7 @@
 
 # Install Ansible
 
-set -xe
+set -x
 
 # Requires apt
 if [ ! "$(which apt)" ]; then

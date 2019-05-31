@@ -2,9 +2,10 @@
 
 # ssh jumphost
 
+set -xe
 cd $(dirname $0)
 
-if [ ! $(which apt) ]; then echo "*** apt not found. minimum requirement not met ***"; exit 1; fi
+if [ ! "$(which apt)" ]; then echo "*** apt not found. minimum requirement not met ***"; exit 1; fi
 
 antsable="../"
 playbooks="../playbooks"

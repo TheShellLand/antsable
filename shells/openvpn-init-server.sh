@@ -4,6 +4,7 @@
 #
 # By default uses only UDP
 
+set -xe
 
 if [ -z "$1" ]; then
     echo "Usage: openpvn-init-server.sh 'VPN.SERVERNAME.COM'"

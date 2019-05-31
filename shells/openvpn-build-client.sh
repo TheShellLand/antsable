@@ -2,6 +2,7 @@
 
 # Create OpenVPN client for kylemanna/openvpn
 
+set -xe
 
 if [ -z "$1" ]; then
     echo "Usage: openvpn-build-client.sh CLIENT"

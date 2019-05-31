@@ -2,6 +2,8 @@
 
 # Up script enable ip forwarding
 
+set -xe
+
 echo "Enabling IPv4 forwarding"
 echo "1" > /proc/sys/net/ipv4/ip_forward
 

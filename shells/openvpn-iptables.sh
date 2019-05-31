@@ -2,6 +2,7 @@
 
 # Up script setting up iptables for default openvpn
 
+set -xe
 
 echo "Running openvpn iptables..."
 

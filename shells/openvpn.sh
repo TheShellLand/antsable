@@ -2,6 +2,7 @@
 
 # OpenVPN server init script for kylemanna/openvpn
 
+set -xe
 
 if [ -z "$1" ]; then
     echo "Usage: openpvn.sh 'VPN.SERVERNAME.COM'"

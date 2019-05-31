@@ -2,21 +2,17 @@
 
 # Update git repository
 
+set -xe
 cd $(dirname $0)
 
-
-which apt
-if [ ! "$?" == 0 ]; then echo "apt not found. minimum requirement not met"; exit 1; fi
-
-which git
-if [ ! "$?" == 0 ]; then apt update && apt install -y git; fi
-
+if [ ! "$(which apt)" ]; then echo "apt not found. minimum requirement not met"; exit 1; fi
+if [ ! "$(which git)" ]; then apt update && apt install -y git; fi
 
 git="../.git"
 antsable="../"
 playbooks="../playbooks"
 
-if [ -d "$git" ]; then	
+if [ -d "$git" ]; then
 	git reset --hard
 	git clean -xdf
 	git pull

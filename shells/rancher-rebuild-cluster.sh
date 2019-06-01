@@ -66,6 +66,6 @@ for ns in $NAMESPACES; do
   done
 done
 
-echo "Add additional nodes with this command:
+echo "Add additional nodes with this command:"
 echo "rancher cluster add-node --etcd --controlplane --worker -q $CLUSTERNAME"
 

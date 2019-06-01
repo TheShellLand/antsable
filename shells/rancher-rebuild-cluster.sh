@@ -42,6 +42,9 @@ rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME" | /bin
 # defaults to Default namespace and the only cluster
 rancher context switch
 
+# add new worker nodes
+rancher cluster add-node --worker -q "$CLUSTERNAME"
+
 # start
 date
 

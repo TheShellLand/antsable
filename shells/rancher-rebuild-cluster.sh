@@ -4,13 +4,14 @@
 
 set -ex
 
-HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
-TOKEN="$1"
+#HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
+HOST="$1"
+TOKEN="$2"
 CLUSTERNAME="skynet"
 NAMESPACES="world0"
 
-if [ "$TOKEN" == "" ]; then
-  echo "Usage: $0 TOKEN"
+if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
+  echo "Usage: $0 HOST TOKEN"
   echo "* first start rancher server"
   echo "* namespaces must exist as a directory"
   exit 1

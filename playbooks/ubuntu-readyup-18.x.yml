@@ -168,6 +168,10 @@
     args:
       executable: /bin/bash
 
+###
+### PRETTY UI
+###
+
   - name: Arrongin theme
     git:
       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
@@ -369,8 +373,8 @@
   - name: Install virt-manager
     apt: update_cache=no name=virt-manager state=latest
 
-  - name: Emacs
-    apt: update_cache=no name=emacs state=latest
+#  - name: Emacs
+#    apt: update_cache=no name=emacs state=latest
 
   - name: Vim
     apt: update_cache=no name=vim state=latest

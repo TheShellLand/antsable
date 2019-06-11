@@ -155,52 +155,6 @@
   - name: code-insiders
     apt: update_cache=yes name=code-insiders
 
-  - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository: repo='ppa:noobslab/macbuntu'
-
-  - name: gnome-tweak-tool
-    apt: update_cache=yes name=gnome-tweak-tool state=latest
-
-  - name: system-monitor prerequisite
-    apt:
-      name: '{{ item }}'
-      state: present
-    with_items:
-      - 'gir1.2-gtop-2.0'
-      - 'gir1.2-networkmanager-1.0'
-      - 'gir1.2-clutter-1.0'
-
-  - name: Gnome Extensions
-    shell: |
-      apps=/tmp/apps
-      wget -O $apps/extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
-      wget -O $apps/extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
-      wget -O $apps/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
-      wget -O $apps/system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
-      wget -O $apps/windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
-      wget -O $apps/topIcons.zip https://extensions.gnome.org/download-extension/topIcons%40adel.gadllah%40gmail.com.shell-extension.zip?version_tag=7417
-      wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
-      wget -O $apps/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
-      wget -O $apps/workspaces-to-dock.zip https://extensions.gnome.org/extension-data/workspaces-to-dock%40passingthru67.gmail.com.v44.shell-extension.zip
-      wget -O $apps/hidetopbar.zip https://extensions.gnome.org/download-extension/hidetopbar%40mathieu.bidon.ca.shell-extension.zip?version_tag=7714
-
-      mkdir -p /usr/share/gnome-shell/extensions
-
-      unzip -o $apps/extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
-      unzip -o $apps/extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
-      unzip -o $apps/no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
-      unzip -o $apps/system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
-      unzip -o $apps/windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
-      unzip -o $apps/topIcons.zip -d /usr/share/gnome-shell/extensions/topIcons@adel.gadllah@gmail.com
-      unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
-      unzip -o $apps/shell-extension.zip -d /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
-      unzip -o $apps/workspaces-to-dock.zip -d /usr/share/gnome-shell/extensions/workspaces-to-dock@passingthru67.gmail.com
-      unzip -o $apps/hidetopbar.zip -d /usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca
-
-      chmod -R +r /usr/share/gnome-shell/extensions
-    args:
-      executable: /bin/bash
-
 #  - name: Disable Mouse Acceleration for X server
 #    file: >
 #      path=/usr/share/X11/xorg.conf.d/

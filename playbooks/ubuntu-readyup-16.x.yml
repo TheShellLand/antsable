@@ -106,10 +106,10 @@
 #
 #  - name: Brave beta
 #    shell: |
-#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | sudo apt-key add -
-#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | sudo tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
-#      sudo apt update
-#      sudo apt install -y brave-beta
+#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | apt-key add -
+#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+#      apt update
+#      apt install -y brave-beta
 #    args:
 #      executable: /bin/bash
 
@@ -287,7 +287,7 @@
       apt-get install -y -f
 
   - name: nodejs
-    shell: curl -sL https://deb.nodesource.com/setup_9.x | -E bash -
+    shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
     args:
       executable: /bin/bash
   - name: nodejs
@@ -363,8 +363,8 @@
   - name: Install virt-manager
     apt: update_cache=no name=virt-manager state=latest
 
-  - name: Emacs
-    apt: update_cache=no name=emacs state=latest
+#  - name: Emacs
+#    apt: update_cache=no name=emacs state=latest
 
   - name: Vim
     apt: update_cache=no name=vim state=latest

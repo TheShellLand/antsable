@@ -1,0 +1,23 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install Missing Packages
+    shell: apt install -f -y
+
+  - name: Add elementary os ppa (stable)
+    apt_repository:
+      repo: ppa:elementary-os/stable
+
+#  - name: Add elementary os ppa (daily)
+#    apt_repository:
+#      repo: ppa:elementary-os/daily
+#
+#  - name: Add elementary os ppa (os-patches)
+#    apt_repository:
+#      repo: ppa:elementary-os/os-patches
+
+  - name: elementary-desktop
+    apt:
+      name: elementary-desktop
+      state: present

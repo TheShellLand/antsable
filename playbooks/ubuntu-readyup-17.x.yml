@@ -12,8 +12,14 @@
 #    shell: |
 #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
 
+  - name: Update cache
+    apt: update_cache=yes
+
   - name: Install Missing Packages
     shell: apt install -f -y
+
+  - name: Install all upgrades
+    apt: upgrade=yes
 
   - name: software-properties-common
     apt: update_cache=yes name=software-properties-common state=latest

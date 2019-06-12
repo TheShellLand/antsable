@@ -8,8 +8,14 @@
   - name: chdir
     shell: cd /tmp/apps
 
+  - name: Update cache
+    apt: update_cache=yes
+
   - name: Install Missing Packages
     shell: apt install -f -y
+
+  - name: Install all upgrades
+    apt: upgrade=yes
 
   - name: software-properties-common
     apt: update_cache=yes name=software-properties-common state=latest

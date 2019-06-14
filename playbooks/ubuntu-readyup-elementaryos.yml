@@ -21,3 +21,7 @@
     apt:
       name: elementary-desktop
       state: present
+
+  - name: gsettings set io.elementary.terminal.settings natural-copy-paste false
+    shell: gsettings set io.elementary.terminal.settings natural-copy-paste false
+

@@ -23,5 +23,10 @@
       state: present
 
   - name: gsettings set io.elementary.terminal.settings natural-copy-paste false
-    shell: gsettings set io.elementary.terminal.settings natural-copy-paste false
+    shell: |
+      gsettings set io.elementary.terminal.settings natural-copy-paste false
+      su - vagrant -c 'gsettings set io.elementary.terminal.settings natural-copy-paste false'
+      su - ubuntu -c 'gsettings set io.elementary.terminal.settings natural-copy-paste false'
+      su - eric -c 'gsettings set io.elementary.terminal.settings natural-copy-paste false'
+    ignore_errors: yes
 

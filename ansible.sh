@@ -2,8 +2,6 @@
 
 # Install Ansible
 
-set -x
-
 # Requires apt
 if [ ! "$(which apt)" ]; then
   echo "*** apt does not exist ***"
@@ -65,6 +63,7 @@ fi
 
 # Run playbook
 if [ ! -z "$1" ]; then
+  set -x
   ansible-playbook -v -i localhost, -c local "$1"
 fi
 

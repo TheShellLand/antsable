@@ -153,13 +153,9 @@
   - name: Chrome dev
     apt:
       deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+    ignore_errors: yes
   - name: Chrome dev
-    shell: |
-      apt install -f -y
+    shell: apt install -f -y
     retries: 99
     delay: 3
     register: result
@@ -244,10 +240,7 @@
   - name: PlayOnLinux
     apt:
       deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+    ignore_errors: yes
   - name: PlayOnLinux
     shell: |
       apt install -f -y
@@ -479,10 +472,7 @@
   - name: Atom
     apt:
       deb: https://atom-installer.github.com/v1.38.2/atom-amd64.deb?s=1560782772&ext=.deb
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+    ignore_errors: yes
 
   - name: Visual Studio Code
     shell: |
@@ -530,10 +520,7 @@
   - name: Discord
     apt:
       deb: https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+    ignore_errors: yes
   - name: Discord
     shell: apt install -f -y
     retries: 99
@@ -632,10 +619,7 @@
   - name: Peek screen recorder
     apt:
       deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+    ignore_errors: yes
   - name: green recorder - libsdl1.2debian
     apt: update_cache=yes name=libsdl1.2debian state=latest
     retries: 99
@@ -829,3 +813,19 @@
 #      fi
 #    args:
 #      executable: /bin/bash
+
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes
+    retries: 99
+    delay: 3
+    register: result
+    until: result is succeeded
+
+  - name: Remove dependencies that are no longer required
+    apt:
+      autoremove: yes
+    retries: 99
+    delay: 3
+    register: result
+    until: result is succeeded

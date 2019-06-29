@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install tlp
+    apt: update_cache=yes name=tlp state=latest
+
+  - name: Install tlpgui repo
+    apt_repository:
+      repo: 'ppa:linuxuprising/apps'
+
+  - name: Install tlpgui
+    apt: update_cache=yes name=tlpui state=latest
+

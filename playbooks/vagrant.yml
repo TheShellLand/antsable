@@ -2,17 +2,7 @@
 - hosts: all
   tasks:
 
-  - name: Vagrant - Download
-    # No PPA, need to download and install manually
-    # https://www.vagrantup.com/downloads.html
-    get_url:
-      url: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
-      dest: /tmp/vagrant.deb
-
-  - name: Vagrant - Install
+  - name: Vagrant
     apt:
-      deb: /tmp/vagrant.deb
-    become: yes
-    become_user: root
-    become_method: sudo
+      deb: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
 

@@ -64,6 +64,13 @@
     register: result
     until: result is succeeded
 
+  - name: rsync
+    apt: update_cache=no name=rsync state=latest
+    retries: 99
+    delay: 3
+    register: result
+    until: result is succeeded
+
   - name: gnome-tweak-tool
     apt: update_cache=no name=gnome-tweak-tool state=latest
     retries: 99

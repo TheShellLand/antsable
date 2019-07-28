@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install git
+    apt: update_cache=yes name=git state=latest
+
+

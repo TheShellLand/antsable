@@ -53,14 +53,27 @@
     args:
       executable: /bin/bash
 
+  - name: capitaine-cursors - download
+    get_url:
+      url: https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
+      dest: /tmp/r2.1.tar.gz
+  - name: capitaine-cursors - extract
+    shell: mkdir /tmp/capitaine-cursors
+  - name: capitaine-cursors - extract
+    unarchive:
+      src: /tmp/r2.1.tar.gz
+      dest: /tmp/capitaine-cursors
+  - name: capitaine-cursors - install
+    shell: cp -r /tmp/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
+    
   - name: Arrongin theme
     git:
       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
-      dest: /tmp/apps/arrogin
+      dest: /tmp/arrogin
       update: yes
   - name: install Arrongin
     shell: |
-      cd /tmp/apps/arrogin
+      cd /tmp/arrogin
       cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
     args:
       executable: /bin/bash
@@ -68,59 +81,84 @@
   - name: Telinkrin theme
     git:
       repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
-      dest: /tmp/app/telinkrin
+      dest: /tmp/telinkrin
       update: yes
   - name: install telinkrin
     shell: |
-      cd /tmp/app/telinkrin
+      cd /tmp/telinkrin
       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
     args:
       executable: /bin/bash
 
-  - name: Ubuntu CommuniThemes repo
+  - name: Ubuntu CommuniThemes - repo
     apt_repository: repo='ppa:communitheme/ppa'
-  - name: ubuntu-communitheme-session
+  - name: ubuntu-communitheme-session - install
     apt: update_cache=no name=ubuntu-communitheme-session state=latest
 
-  - name: oranchelo-icon-theme repo
-    apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
-  - name: oranchelo-icon-theme
-    apt: update_cache=yes name=oranchelo-icon-theme state=latest
+  - name: obsidian-1-icons - repo
+    apt_repository: repo='ppa:noobslab/icons'
+  - name: obsidian-1-icons - install
+    apt: update_cache=yes name=obsidian-1-icons state=latest
 
-  - name: arc-icon-theme
-    shell: |
-      apps=/tmp/apps
-      if [ ! -d "$apps/arc-icon-theme" ]; then mkdir "$apps/arc-icon-theme"; fi
-      if [ ! -d $apps/arc-icon-theme/Arc ]; then
-          git clone https://github.com/horst3180/arc-icon-theme.git "$apps/arc-icon-theme"
-          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-      else
-          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-      fi
+  - name: shadow-icon-theme - repo
+    apt_repository: repo='ppa:noobslab/icons'
+  - name: shadow-icon-theme - install
+    apt: update_cache=yes name=shadow-icon-theme state=latest
 
-  - name: capitaine-cursors
-    shell: |
-      apps=/tmp/apps
-      file=capitaine-cursors.tgz
-      if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
-      if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
-          tar zxf $apps/$file -C $apps/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
-      else
-          tar zxf $apps/$file -C $apps/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
-      fi
+  - name: square-icons - repo
+    apt_repository: repo='ppa:noobslab/icons2'
+  - name: square-icons - install
+    apt: update_cache=yes name=square-icons state=latest
 
-  - name: mac fonts
-    shell: |
-      apps=/tmp/apps
-      fonts=mac-fonts.zip
-      if [ ! -f $apps/$fonts ]; then
-          wget -q -O $apps/$fonts http://drive.noobslab.com/data/Mac/macfonts.zip
-          unzip $apps/$fonts -d /usr/share/fonts
-          #rm $apps/$fonts
-      else
-          unzip -o $apps/mac-fonts.zip -d /usr/share/fonts
-      fi
-      fc-cache -f -v
+  - name: dalisha-icons - repo
+    apt_repository: repo='ppa:noobslab/icons'
+  - name: dalisha-icons - install
+    apt: update_cache=yes name=dalisha-icons state=latest
+
+  - name: uniform-icons - repo
+    apt_repository: repo='ppa:noobslab/icons2'
+  - name: uniform-icons - install
+    apt: update_cache=yes name=uniform-icons state=latest
+
+  - name: moka-icon-theme - repo
+    apt_repository: repo='ppa:moka/daily'
+  - name: moka-icon-theme - install
+    apt: update_cache=yes name=moka-icon-theme state=latest
+
+  - name: numix-icon-theme-circle - repo
+    apt_repository: repo='ppa:numix/ppa'
+  - name: numix-icon-theme-circle - install
+    apt: update_cache=yes name=numix-icon-theme-circle state=latest
+
+  - name: paper-icon-theme - repo
+    apt_repository: repo='ppa:snwh/pulp'
+  - name: paper-icon-theme - install
+    apt: update_cache=yes name=paper-icon-theme state=latest
+
+  - name: papirus-icon-theme - repo
+    apt_repository: repo='ppa:papirus/papirus'
+  - name: papirus-icon-theme - install
+    apt: update_cache=yes name=papirus-icon-theme state=latest
+
+  - name: pop-icon-theme - repo
+    apt_repository: repo='ppa:system76/pop'
+  - name: pop-icon-theme - install
+    apt: update_cache=yes name=pop-icon-theme state=latest
+
+  - name: arc-icon-theme - download
+    git:
+      repo: https://github.com/horst3180/arc-icon-theme.git
+      dest: /tmp/arc-icon-theme
+  - name: arc-icon-theme - install
+    shell: cp -r /tmp/arc-icon-theme/Arc /usr/share/icons
+
+  - name: mac fonts - download
+    get_url:
+      url: http://drive.noobslab.com/data/Mac/macfonts.zip
+      dest: /tmp/macfonts.zip
+  - name: mac fonts - install
+    unarchive:
+      src: /tmp/macfonts.zip
+      dest: /usr/share/fonts
+  - name: mac fonts - update
+    shell: fc-cache -f -v

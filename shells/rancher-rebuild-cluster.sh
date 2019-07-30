@@ -4,7 +4,6 @@
 
 set -ex
 
-#HOST="https://$(hostname -I | cut -d ' ' -f 1):8443/v3"
 HOST="$1"
 TOKEN="$2"
 CLUSTERNAME="skynet"

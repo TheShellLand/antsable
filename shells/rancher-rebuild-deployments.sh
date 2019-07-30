@@ -10,7 +10,7 @@ CLUSTERNAME="skynet"
 NAMESPACES="world0"
 
 if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
-  echo "Usage: $0 TOKEN"
+  echo "Usage: $0 HOST TOKEN"
   echo "* first start rancher server"
   echo "* namespaces must exist as a directory"
   exit 1

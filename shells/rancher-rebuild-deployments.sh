@@ -17,10 +17,10 @@ if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
 fi
 
 for yaml in $NAMESPACES; do
-  if [ ! -d "$yaml" ]; then
+  if [ ! -d "$CLUSTERNAME/$yaml" ]; then
     echo "*** backup configs not found ***"
-    mkdir -p "$yaml/deployments"
-    mkdir -p "$yaml/ingress"
+    mkdir -p "$CLUSTERNAME/$yaml/deployments"
+    mkdir -p "$CLUSTERNAME/$yaml/ingress"
     echo "*** backup directories have been auto created ***"
     exit 1
   fi

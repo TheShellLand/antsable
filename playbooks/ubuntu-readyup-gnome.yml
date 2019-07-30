@@ -12,9 +12,10 @@
     shell: apt install -f -y
 
   - name: ubuntu-gnome-desktop
-    apt:
-      name: ubuntu-gnome-desktop
-      state: present
+    apt: update_cache=no name=ubuntu-gnome-desktop state=latest
+
+  - name: dconf-editor
+    apt: update_cache=no name=dconf-editor state=latest
 
 #  - name: Configure for gdm - debconf
 #    debconf:
@@ -65,7 +66,7 @@
       dest: /tmp/capitaine-cursors
   - name: capitaine-cursors - install
     shell: cp -r /tmp/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
-    
+
   - name: Arrongin theme
     git:
       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git

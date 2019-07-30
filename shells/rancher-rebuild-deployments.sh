@@ -9,7 +9,6 @@ TOKEN="$2"
 CLUSTERNAME="skynet"
 NAMESPACES="world0"
 
-
 if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
   echo "Usage: $0 TOKEN"
   echo "* first start rancher server"
@@ -43,12 +42,12 @@ date
 
 # create namespaces
 for ns in $NAMESPACES; do
-  rancher namespace create "$ns"
+  rancher namespace create "$ns" || continue
 done
 
 # import deployments
 for ns in $NAMESPACES; do
-  for yaml in $(find "$ns" -type f -name '*.yaml'); do
+  for yaml in $(find "$CLUSTERNAME/$ns" -type f -name '*.yaml'); do
     rancher kubectl create -f "$yaml" --namespace "$ns"
   done
 done

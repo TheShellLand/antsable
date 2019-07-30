@@ -50,23 +50,22 @@ rancher cluster add-node --worker -q "$CLUSTERNAME"
 date
 
 # wait for cluster to start
-rancher wait --timeout 9999 "$CLUSTERNAME"
+rancher wait --timeout 999999999 "$CLUSTERNAME"
 
 # finish
 date
 
 # create namespaces
 for ns in $NAMESPACES; do
-  rancher namespace create "$ns"
+  rancher namespace create "$ns" || continue
 done
 
 # import deployments
 for ns in $NAMESPACES; do
-  for yaml in $(find "$ns" -type f -name '*.yaml'); do
+  for yaml in $(find "$CLUSTERNAME/$ns" -type f -name '*.yaml'); do
     rancher kubectl create -f "$yaml" --namespace "$ns"
   done
 done
 
 echo "Add additional nodes with this command:"
 echo "rancher cluster add-node --etcd --controlplane --worker -q $CLUSTERNAME"
-

@@ -625,7 +625,7 @@
     delay: 3
     register: result
     until: result is succeeded
-  - name: darktable
+  - name: ukuu
     apt: update_cache=yes name=ukuu state=latest
     retries: 99
     delay: 3

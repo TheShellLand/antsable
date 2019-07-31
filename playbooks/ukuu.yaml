@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+
+  - name: ukuu
+    apt_repository: repo='ppa:teejee2008/ppa'
+  - name: ukuu
+    apt: update_cache=yes name=ukuu state=latest

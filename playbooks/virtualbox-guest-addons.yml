@@ -7,7 +7,7 @@
 
   - name: Download VBox iso
     get_url: 
-      url: https://download.virtualbox.org/virtualbox/6.0.8/VBoxGuestAdditions_6.0.8.iso
+      url: https://download.virtualbox.org/virtualbox/6.0.8/VBoxGuestAdditions_6.0.10.iso
       dest: /tmp/apps/VBoxGuestAdditions.iso
       #validate_certs: no
 

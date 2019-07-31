@@ -618,6 +618,19 @@
     delay: 3
     register: result
     until: result is succeeded
+    
+  - name: ukuu
+    apt_repository: repo='ppa:teejee2008/ppa'
+    retries: 99
+    delay: 3
+    register: result
+    until: result is succeeded
+  - name: darktable
+    apt: update_cache=yes name=ukuu state=latest
+    retries: 99
+    delay: 3
+    register: result
+    until: result is succeeded    
 
     #  - name: X299 Realtek ALC1220 time drift fix
     #    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec

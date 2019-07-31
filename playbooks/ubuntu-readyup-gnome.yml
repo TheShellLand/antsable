@@ -5,9 +5,6 @@
   - name: /tmp/apps
     file: path=/tmp/apps state=directory
 
-  - name: chdir
-    shell: cd /tmp/apps
-
   - name: Install Missing Packages
     shell: apt install -f -y
 

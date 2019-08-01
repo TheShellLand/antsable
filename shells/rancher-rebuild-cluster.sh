@@ -2,8 +2,6 @@
 
 # rebuild rancher cluster
 
-set -ex
-
 HOST="$1"
 TOKEN="$2"
 CLUSTERNAME="skynet"
@@ -30,6 +28,7 @@ if [ ! $(which rancher) ] || [ ! $(which kubectl) ]; then
   echo "*** rancher-cli and kubectl are required ***"
 fi
 
+set -ex
 
 # auth to rancher
 yes | rancher login "$HOST" --token "$TOKEN"

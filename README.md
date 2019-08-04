@@ -2,7 +2,7 @@
 Ants that could. Ants that able. Ansible
 
 
-## Readyup Screenshots
+## Gnome Readyup Screenshots
 
 ![](https://i.imgur.com/psaL1os.png)
 ![](https://i.imgur.com/7A7C6zB.png)

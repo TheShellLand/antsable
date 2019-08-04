@@ -226,46 +226,13 @@
     register: result
     until: result is succeeded
 
-  - name: PlayOnLinux
-    apt:
-      deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
-    ignore_errors: yes
-  - name: PlayOnLinux
-    shell: |
-      apt install -f -y
-      dpkg --add-architecture i386
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
-  - name: PlayOnLinux - wine
-    apt: update_cache=yes name=wine-development state=present
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
-  - name: PlayOnLinux - winbind
-    apt: update_cache=no name=winbind state=present
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
-  - name: PlayOnLinux - update missing packages
-    shell: apt install -f -y
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
-
   - name: Wine (staging)
     shell: |
-      apps=/tmp/apps
-      wine=$apps/wine
-      mkdir -p $wine
-      cd $wine
-      wget -nc https://dl.winehq.org/wine-builds/winehq.key
-      apt-key add winehq.key
+      dpkg --add-architecture i386
+      curl -s https://dl.winehq.org/wine-builds/winehq.key | apt-key add
       apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+      # fix libfaudio0
+      add-apt-repository -y ppa:cybermax-dexter/sdl2-backport
       apt-get update
       apt-get install -y --install-recommends winehq-staging
     args:
@@ -274,6 +241,37 @@
     delay: 3
     register: result
     until: result is succeeded
+
+  # - name: PlayOnLinux
+  #   apt:
+  #     deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
+  #   ignore_errors: yes
+  # - name: PlayOnLinux
+  #   shell: |
+  #     apt install -f -y
+  #     dpkg --add-architecture i386
+  #   retries: 99
+  #   delay: 3
+  #   register: result
+  #   until: result is succeeded
+  # - name: PlayOnLinux - wine
+  #   apt: update_cache=yes name=wine-development state=present
+  #   retries: 99
+  #   delay: 3
+  #   register: result
+  #   until: result is succeeded
+  # - name: PlayOnLinux - winbind
+  #   apt: update_cache=no name=winbind state=present
+  #   retries: 99
+  #   delay: 3
+  #   register: result
+  #   until: result is succeeded
+  # - name: PlayOnLinux - update missing packages
+  #   shell: apt install -f -y
+  #   retries: 99
+  #   delay: 3
+  #   register: result
+  #   until: result is succeeded
 
   - name: Lutris (gaming)
     shell: |
@@ -611,7 +609,7 @@
     delay: 3
     register: result
     until: result is succeeded
-    
+
   - name: ukuu
     apt_repository: repo='ppa:teejee2008/ppa'
     retries: 99
@@ -623,7 +621,7 @@
     retries: 99
     delay: 3
     register: result
-    until: result is succeeded    
+    until: result is succeeded
 
     #  - name: X299 Realtek ALC1220 time drift fix
     #    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec

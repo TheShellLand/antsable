@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: glusterfs repository
+    apt_repository: repo='ppa:gluster/glusterfs-5'
+
+  - name: Install glusterfs server
+    apt: update_cache=yes name=glusterfs-server state=latest
+
+  - name: Install glusterfs client
+    apt: update_cache=yes name=glusterfs-client state=latest

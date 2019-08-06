@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+
+  - name: chkrootkit (run: chkrootkit)
+    apt: update_cache=yes name=chkrootkit state=latest
+
+  - name: rkhunter (run: rkhunter -c)
+    apt: update_cache=no name=rkhunter state=latest

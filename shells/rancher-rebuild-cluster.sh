@@ -14,11 +14,11 @@ if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
   exit 1
 fi
 
-for yaml in $NAMESPACES; do
-  if [ ! -d "$CLUSTERNAME/$yaml" ]; then
+for NAMESPACE in $NAMESPACES; do
+  if [ ! -d "$CLUSTERNAME/$NAMESPACE" ]; then
     echo "*** backup configs not found ***"
-    mkdir -p "$CLUSTERNAME/$yaml/deployments"
-    mkdir -p "$CLUSTERNAME/$yaml/ingress"
+    mkdir -p "$CLUSTERNAME/$NAMESPACE/deployments"
+    mkdir -p "$CLUSTERNAME/$NAMESPACE/ingress"
     echo "*** backup directories have been auto created ***"
     exit 1
   fi
@@ -54,14 +54,14 @@ rancher wait --timeout 999999999 "$CLUSTERNAME"
 date
 
 # create namespaces
-for ns in $NAMESPACES; do
-  rancher namespace create "$ns" || continue
+for NAMESPACE in $NAMESPACES; do
+  rancher namespace create "$NAMESPACE" || continue
 done
 
 # import deployments
-for ns in $NAMESPACES; do
-  for yaml in $(find "$CLUSTERNAME/$ns" -type f -name '*.yaml'); do
-    rancher kubectl create -f "$yaml" --namespace "$ns"
+for NAMESPACE in $NAMESPACES; do
+  for yaml in $(find "$CLUSTERNAME/$NAMESPACE" -type f -name '*.yaml'); do
+    rancher kubectl create -f "$yaml" --namespace "$NAMESPACE"
   done
 done
 

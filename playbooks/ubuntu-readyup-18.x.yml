@@ -388,7 +388,6 @@
       name: pycharm-community
       classic: yes
       state: present
-    shell:
     retries: 99
     delay: 3
     register: result

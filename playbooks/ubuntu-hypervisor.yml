@@ -1,5 +1,5 @@
 ---
-- hosts: hypervisor
+- hosts: all
   tasks:
 
     # https://platform9.com/support/setup-linux-network-bridges-on-ubuntu-nova-networking/

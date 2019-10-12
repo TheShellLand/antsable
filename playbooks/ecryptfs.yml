@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install ecryptfs-utils
+    apt: update_cache=yes name=ecryptfs-utils state=latest

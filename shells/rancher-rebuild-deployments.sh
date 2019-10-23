@@ -47,7 +47,7 @@ done
 # import deployments
 for NAMESPACE in $NAMESPACES; do
   for yaml in $(find "$CLUSTERNAME/$NAMESPACE" -type f -name '*.yaml'); do
-    rancher kubectl create -f "$yaml" --namespace "$NAMESPACE"
+    rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || continue
   done
 done
 

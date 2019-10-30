@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+
+  - name: s3ql
+    apt: update_cache=ye name=s3ql state=latest
+

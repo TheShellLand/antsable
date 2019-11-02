@@ -336,6 +336,14 @@
     register: result
     until: result is succeeded
 
+  - name: Virtualbox 6.0
+    shell: |
+      echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
+      wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+      wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+      apt update
+      apt install virtualbox-6.0
+
   - name: Install qemu-kvm
     apt: update_cache=no name=qemu-kvm state=latest
     retries: 99

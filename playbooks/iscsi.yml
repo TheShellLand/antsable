@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+
+  - name: open-iscsi
+    apt: update_cache=yes name=open-iscsi state=latest
+

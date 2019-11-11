@@ -95,10 +95,10 @@
     args:
       executable: /bin/bash
 
-  - name: Ubuntu CommuniThemes - repo
-    apt_repository: repo='ppa:communitheme/ppa'
-  - name: ubuntu-communitheme-session - install
-    apt: update_cache=no name=ubuntu-communitheme-session state=latest
+#   - name: Ubuntu CommuniThemes - repo
+#     apt_repository: repo='ppa:communitheme/ppa'
+#   - name: ubuntu-communitheme-session - install
+#     apt: update_cache=no name=ubuntu-communitheme-session state=latest
 
   - name: obsidian-1-icons - repo
     apt_repository: repo='ppa:noobslab/icons'

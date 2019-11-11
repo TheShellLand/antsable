@@ -61,6 +61,22 @@ if [ "$?" == 0 ]; then
 fi
 
 
+# Ubuntu 19.x
+grep "Ubuntu 19" /etc/issue
+if [ "$?" == 0 ]; then
+
+  if [ ! "$(which ansible)" ]; then
+    echo "Installing ansible"
+    apt update && \
+    apt install -y software-properties-common && \
+    apt install -y apt-transport-https && \
+    apt-add-repository -y 'ppa:ansible/ansible' && \
+    apt update && \
+    apt install -y ansible
+  fi
+fi
+
+
 # Run playbook
 if [ ! -z "$1" ]; then
   set -x

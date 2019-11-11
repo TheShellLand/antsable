@@ -61,24 +61,24 @@
   - name: capitaine-cursors - download
     get_url:
       url: https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
-      dest: /tmp/r2.1.tar.gz
+      dest: /tmp/apps/r2.1.tar.gz
   - name: capitaine-cursors - extract
-    shell: mkdir /tmp/capitaine-cursors
+    shell: mkdir /tmp/apps/capitaine-cursors
   - name: capitaine-cursors - extract
     unarchive:
-      src: /tmp/r2.1.tar.gz
-      dest: /tmp/capitaine-cursors
+      src: /tmp/apps/r2.1.tar.gz
+      dest: /tmp/apps/capitaine-cursors
   - name: capitaine-cursors - install
-    shell: cp -r /tmp/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
+    shell: cp -r /tmp/apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
 
   - name: Arrongin theme
     git:
       repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
-      dest: /tmp/arrogin
+      dest: /tmp/apps/arrogin
       update: yes
   - name: install Arrongin
     shell: |
-      cd /tmp/arrogin
+      cd /tmp/apps/arrogin
       cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
     args:
       executable: /bin/bash
@@ -86,11 +86,11 @@
   - name: Telinkrin theme
     git:
       repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
-      dest: /tmp/telinkrin
+      dest: /tmp/apps/telinkrin
       update: yes
   - name: install telinkrin
     shell: |
-      cd /tmp/telinkrin
+      cd /tmp/apps/telinkrin
       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
     args:
       executable: /bin/bash
@@ -153,17 +153,21 @@
   - name: arc-icon-theme - download
     git:
       repo: https://github.com/horst3180/arc-icon-theme.git
-      dest: /tmp/arc-icon-theme
+      dest: /tmp/apps/arc-icon-theme
   - name: arc-icon-theme - install
-    shell: cp -r /tmp/arc-icon-theme/Arc /usr/share/icons
+    shell: cp -r /tmp/apps/arc-icon-theme/Arc /usr/share/icons
 
   - name: mac fonts - download
     get_url:
       url: http://drive.noobslab.com/data/Mac/macfonts.zip
-      dest: /tmp/macfonts.zip
+      dest: /tmp/apps/macfonts.zip
   - name: mac fonts - install
     unarchive:
-      src: /tmp/macfonts.zip
+      src: /tmp/apps/macfonts.zip
       dest: /usr/share/fonts
   - name: mac fonts - update
     shell: fc-cache -f -v
+
+  - name: Cleanup
+    file: path=/tmp/apps state=absent
+    

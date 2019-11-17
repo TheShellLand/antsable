@@ -15,3 +15,6 @@
 
   - name: Install nslookup
     apt: update_cache=yes name=dnsutils state=latest
+
+  - name: Install rsync
+    apt: update_cache=yes name=rsync state=latest

@@ -39,7 +39,7 @@ yes | rancher login "$HOST" --token "$TOKEN"
 rancher cluster create "$CLUSTERNAME"
 
 # add node
-rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME" | /bin/bash
+rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME" | sed 's/sudo //' | /bin/bash
 # defaults to Default namespace and the only cluster
 rancher context switch
 

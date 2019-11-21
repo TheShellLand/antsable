@@ -2,8 +2,8 @@
 
 # rebuild rancher cluster
 
-HOST="$1"
-TOKEN="$2"
+HOST=$1
+TOKEN=$2
 
 CLUSTERNAME="skynet"
 NAMESPACES="world0"
@@ -34,7 +34,7 @@ fi
 set -ex
 
 # auth to rancher
-yes | rancher login "$HOST" --token "$TOKEN"
+yes | rancher login $HOST --token $TOKEN
 
 # create cluster
 rancher cluster create "$CLUSTERNAME"

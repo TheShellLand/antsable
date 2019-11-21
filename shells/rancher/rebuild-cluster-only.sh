@@ -28,9 +28,9 @@ sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-r
 if rancher cluster; then
 
   RANCHER_CONF=~/.rancher/cli2.json
-  RANCHER_CURRSVR=$(jq .CurrentServer $RANCHER_CONF)
-  RANCHER_SERVURL=$(jq .Servers.$RANCHER_CURRSVR.url $RANCHER_CONF)
-  RANCHER_SERVTKN=$(jq .Servers.$RANCHER_CURRSVR.tokenKey $RANCHER_CONF)
+  RANCHER_CURRSVR=$(jq -r .CurrentServer $RANCHER_CONF)
+  RANCHER_SERVURL=$(jq -r .Servers.$RANCHER_CURRSVR.url $RANCHER_CONF)
+  RANCHER_SERVTKN=$(jq -r .Servers.$RANCHER_CURRSVR.tokenKey $RANCHER_CONF)
 
   HOST=$RANCHER_SERVURL
   TOKEN=$RANCHER_SERVTKN

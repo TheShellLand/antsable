@@ -4,10 +4,11 @@
 
 HOST="$1"
 TOKEN="$2"
+
 CLUSTERNAME="skynet"
 NAMESPACES="world0"
 
-if [ ! $(rancher cluster) ]; then
+if rancher cluster; then
   if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
     echo "Usage: $0 HOST TOKEN"
     echo "* first start rancher server"
@@ -26,7 +27,7 @@ for NAMESPACE in $NAMESPACES; do
   fi
 done
 
-if [ ! $(which rancher) ] || [ ! $(which kubectl) ]; then
+if ! which rancher || ! which kubectl ; then
   echo "*** rancher-cli and kubectl are required ***"
 fi
 

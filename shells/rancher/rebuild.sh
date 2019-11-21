@@ -26,10 +26,21 @@ sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-r
 # ./shells/rancher.sh
 
 # rancher api
-HOST="$1"
-TOKEN="$2"
+if [ $(rancher cluster) ]; then
 
-if [ ! $(rancher cluster) ]; then
+  RANCHER_CONF=~/.rancher/cli2.json
+  RANCHER_CURRSVR=$(jq .CurrentServer $RANCHER_CONF)
+  RANCHER_SERVURL=$(jq .Servers.$RANCHER_CURRSVR.url $RANCHER_CONF)
+  RANCHER_SERVTKN=$(jq .Servers.$RANCHER_CURRSVR.tokenKey $RANCHER_CONF)
+
+  HOST=$RANCHER_CURRSVR
+  TOKEN=$RANCHER_SERVTKN
+
+else
+
+  HOST="$1"
+  TOKEN="$2"
+
   # get HHOST
   while [ "$HOST" == '' ]; do
     read -p "ENTER RANCHER API HOST: " HOST

@@ -20,7 +20,7 @@ git clean -xdff
 git reset --hard
 git pull --rebase
 sed -i 's/^CLUSTERNAME=.*/CLUSTERNAME="skynet"/' shells/rancher-rebuild-deployments.sh
-sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-rebuild-cluster.sh
+sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-rebuild-deployments.sh
 
 # rancher api
 if rancher cluster; then

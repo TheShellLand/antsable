@@ -19,7 +19,7 @@ cd antsable
 git clean -xdff
 git reset --hard
 git pull --rebase
-sed -i 's/^CLUSTERNAME=.*/CLUSTERNAME="skynet"/' shells/rancher-rebuild-deployments.sh
+sed -i 's/^CLUSTERNAME=.*/CLUSTERNAME="skynet"/' shells/rancher-rebuild-cluster.sh
 sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-rebuild-cluster.sh
 # run rancher.sh to install all required packages (internet connection required)
 # ./shells/rancher.sh

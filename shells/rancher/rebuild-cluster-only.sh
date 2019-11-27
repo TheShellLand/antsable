@@ -27,7 +27,7 @@ sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-r
 # ./shells/rancher.sh
 
 # rancher api
-if rancher cluster; then
+if rancher context switch; then
 
   RANCHER_CONF=~/.rancher/cli2.json
   RANCHER_CURRSVR=$(jq -r .CurrentServer $RANCHER_CONF)

@@ -20,8 +20,10 @@ fi
 for NAMESPACE in $NAMESPACES; do
   if [ ! -d "$CLUSTERNAME/$NAMESPACE" ]; then
     echo "*** backup configs not found ***"
+    set -x
     mkdir -p "$CLUSTERNAME/$NAMESPACE/deployments"
     mkdir -p "$CLUSTERNAME/$NAMESPACE/ingress"
+    set +x
     echo "*** backup directories have been auto created ***"
     exit 1
   fi
@@ -29,6 +31,7 @@ done
 
 if ! which rancher || ! which kubectl ; then
   echo "*** rancher-cli and kubectl are required ***"
+  exit 1
 fi
 
 set -ex

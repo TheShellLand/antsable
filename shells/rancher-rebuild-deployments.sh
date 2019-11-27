@@ -28,6 +28,7 @@ done
 
 if ! which rancher || ! which kubectl ; then
   echo "*** rancher-cli and kubectl are required ***"
+  exit 1
 fi
 
 set -ex

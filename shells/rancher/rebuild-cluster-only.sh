@@ -64,8 +64,7 @@ cd "$WORKDIR"
 # fi
 
 # s3://longhorn@us-east-1/
-# s3://longhorn@us-east-1/backupstore/
-# /wgsprod/app/longhorn/
+# /s3ql/mnt/rancher/longhorn/
 # longhorn-minio
 
 # deploy loonghorn

@@ -61,8 +61,9 @@ cd "$WORKDIR"
 #   rancher context switch Storage
 # fi
 
-# nfs://trawsdvopsneo01:/wgsprod/app/longhorn_backup
-# /wgsprod/app/longhorn/
+# s3://longhorn@us-east-1/
+# /s3ql/mnt/rancher/longhorn/
+# longhorn-minio
 
 # deploy loonghorn
 # rancher apps install \

@@ -15,7 +15,7 @@ if [ ! -d antsable ]; then
   git clone https://github.com/TheShellLand/antsable.git
 fi
 
-set -ex
+set -e
 
 cd antsable
 git clean -xdff
@@ -52,6 +52,8 @@ else
     read -p "ENTER RANCHER API TOKEN: " TOKEN
   done
 fi
+
+set -x
 
 # rebuild cluster
 cd "$WORKDIR"

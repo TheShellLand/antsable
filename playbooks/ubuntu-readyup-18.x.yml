@@ -342,7 +342,7 @@
       wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
       wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
       apt update
-      apt install virtualbox-6.0
+      apt install -y virtualbox-6.0
 
   - name: Install qemu-kvm
     apt: update_cache=no name=qemu-kvm state=latest

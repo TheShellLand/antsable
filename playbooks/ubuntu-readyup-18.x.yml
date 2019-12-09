@@ -329,12 +329,12 @@
     register: result
     until: result is succeeded
 
-  - name: Virtualbox
-    apt: update_cache=no name=virtualbox state=latest
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
+#   - name: Virtualbox
+#     apt: update_cache=no name=virtualbox state=latest
+#     retries: 99
+#     delay: 3
+#     register: result
+#     until: result is succeeded
 
   - name: Virtualbox 6.0
     shell: |

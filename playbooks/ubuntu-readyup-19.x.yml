@@ -189,8 +189,8 @@
   - name: VLC
     apt: update_cache=no name=vlc state=latest
 
-  - name: Virtualbox
-    apt: update_cache=no name=virtualbox state=latest
+#   - name: Virtualbox
+#     apt: update_cache=no name=virtualbox state=latest
 
   - name: Virtualbox 6.0
     shell: |

@@ -5,11 +5,13 @@
     apt: update_cache=yes name=tmux state=latest
 
   - name: Install vim
-    apt: update_cache=yes name=vim state=latest
+    apt: update_cache=no name=vim state=latest
 
   - name: Install git
-    apt: update_cache=yes name=git state=latest
+    apt: update_cache=no name=git state=latest
 
   - name: Install python3-pip
-    apt: update_cache=yes name=python3-pip state=latest
+    apt: update_cache=no name=python3-pip state=latest
 
+  - name: Install rsync
+    apt: update_cache=no name=rsync state=latest

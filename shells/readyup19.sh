@@ -17,5 +17,5 @@ playbooks="../playbooks"
 /bin/bash $antsable/ansible.sh $playbooks/nslookup.yml
 /bin/bash $antsable/ansible.sh $playbooks/ubuntu-readyup-gnome19.yml
 # /bin/bash $antsable/ansible.sh $playbooks/ubuntu-readyup-elementaryos.yml
-#/bin/bash $antsable/ansible.sh $playbooks/docker.yml
+/bin/bash $antsable/ansible.sh $playbooks/docker19.yml
 /bin/bash $antsable/ansible.sh $playbooks/ubuntu-readyup-19.x.yml

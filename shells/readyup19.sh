@@ -10,6 +10,7 @@ playbooks="../playbooks"
 
 # Put running playbooks here
 /bin/bash $antsable/ansible.sh $playbooks/git.yml
+/bin/bash $antsable/ansible.sh $playbooks/vim.yml
 /bin/bash $antsable/ansible.sh $playbooks/ssh.yml
 /bin/bash $antsable/ansible.sh $playbooks/sshfs.yml
 /bin/bash $antsable/ansible.sh $playbooks/ping.yml

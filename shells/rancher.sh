@@ -14,4 +14,4 @@ playbooks="../playbooks"
 /bin/bash $antsable/ansible.sh $antsable/playbooks/rancher-cli.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/kubectl.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/iscsi.yml
-
+/bin/bash $antsable/ansible.sh $antsable/playbooks/jq.yml

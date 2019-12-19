@@ -19,10 +19,6 @@
 
   - name: gnome-tweak-tool
     apt: update_cache=no name=gnome-tweak-tool state=latest
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
 
 #  - name: Configure for gdm - debconf
 #    debconf:
@@ -60,7 +56,13 @@
       chmod -R +r /usr/share/gnome-shell/extensions
     args:
       executable: /bin/bash
-
+      
+  - name: fix fonts-noto-color-emoji
+    apt: update_cache=no name=fonts-noto-color-emoji state=absent
+    
+  - name: fonts-noto-color-emoji
+    apt: update_cache=no name=fonts-noto-color-emoji state=latest
+    
   - name: capitaine-cursors - download
     get_url:
       url: https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
@@ -97,61 +99,6 @@
       cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
     args:
       executable: /bin/bash
-
-#   - name: Ubuntu CommuniThemes - repo
-#     apt_repository: repo='ppa:communitheme/ppa'
-#   - name: ubuntu-communitheme-session - install
-#     apt: update_cache=no name=ubuntu-communitheme-session state=latest
-
-  # - name: obsidian-1-icons - repo
-  #   apt_repository: repo='ppa:noobslab/icons'
-  # - name: obsidian-1-icons - install
-  #   apt: update_cache=yes name=obsidian-1-icons state=latest
-
-  # - name: shadow-icon-theme - repo
-  #   apt_repository: repo='ppa:noobslab/icons'
-  # - name: shadow-icon-theme - install
-  #   apt: update_cache=yes name=shadow-icon-theme state=latest
-
-  # - name: square-icons - repo
-  #   apt_repository: repo='ppa:noobslab/icons2'
-  # - name: square-icons - install
-  #   apt: update_cache=yes name=square-icons state=latest
-
-  # - name: dalisha-icons - repo
-  #   apt_repository: repo='ppa:noobslab/icons'
-  # - name: dalisha-icons - install
-  #   apt: update_cache=yes name=dalisha-icons state=latest
-
-  # - name: uniform-icons - repo
-  #   apt_repository: repo='ppa:noobslab/icons2'
-  # - name: uniform-icons - install
-  #   apt: update_cache=yes name=uniform-icons state=latest
-
-  # - name: moka-icon-theme - repo
-  #   apt_repository: repo='ppa:moka/daily'
-  # - name: moka-icon-theme - install
-  #   apt: update_cache=yes name=moka-icon-theme state=latest
-
-  # - name: numix-icon-theme-circle - repo
-  #   apt_repository: repo='ppa:numix/ppa'
-  # - name: numix-icon-theme-circle - install
-  #   apt: update_cache=yes name=numix-icon-theme-circle state=latest
-
-  # - name: paper-icon-theme - repo
-  #   apt_repository: repo='ppa:snwh/pulp'
-  # - name: paper-icon-theme - install
-  #   apt: update_cache=yes name=paper-icon-theme state=latest
-
-  # - name: papirus-icon-theme - repo
-  #   apt_repository: repo='ppa:papirus/papirus'
-  # - name: papirus-icon-theme - install
-  #   apt: update_cache=yes name=papirus-icon-theme state=latest
-
-  # - name: pop-icon-theme - repo
-  #   apt_repository: repo='ppa:system76/pop'
-  # - name: pop-icon-theme - install
-  #   apt: update_cache=yes name=pop-icon-theme state=latest
 
   - name: arc-icon-theme - download
     git:

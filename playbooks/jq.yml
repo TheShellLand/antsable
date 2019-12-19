@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  
+  - name: jq
+    apt: update_cache=yes name=jq state=latest

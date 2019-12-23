@@ -1,0 +1,42 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install libfuse-dev
+    apt: update_cache=yes name=libfuse-dev state=latest
+
+  - name: Install libcurl4-openssl-dev
+    apt: update_cache=no name=libcurl4-openssl-dev state=latest
+
+  - name: Install libexpat1-dev
+    apt: update_cache=no name=libexpat1-dev state=latest
+
+  - name: Install libssl-dev
+    apt: update_cache=no name=libssl-dev state=latest
+
+  - name: Install pkg-config
+    apt: update_cache=no name=pkg-config state=latest
+
+  - name: Install zlib1g-dev
+    apt: update_cache=no name=zlib1g-dev state=latest
+
+  - name: Install autoconf
+    apt: update_cache=no name=autoconf state=latest
+
+  - name: Install automake
+    apt: update_cache=no name=automake state=latest
+
+  - name: Install git
+    apt: update_cache=no name=git state=latest
+
+  - name: Install sudo
+    apt: update_cache=no name=sudo state=latest
+
+  - name: Install s3backer
+    shell: |
+      cd /tmp
+      git clone https://github.com/archiecobbs/s3backer
+      cd s3backer
+      ./autogen.sh
+      ./configure && make dist && make install
+      rm -rf /tmp/s3backer

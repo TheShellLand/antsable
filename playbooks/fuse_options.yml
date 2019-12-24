@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+
+  - name: user_allow_other
+    shell: echo user_allow_other >> /etc/fuse.conf

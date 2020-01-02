@@ -34,7 +34,7 @@ fi
 set -ex
 
 # auth to rancher
-yes | rancher login $HOST --token $TOKEN
+rancher login $HOST --token $TOKEN
 
 # defaults to Default namespace and the only cluster
 rancher context switch | grep "$CLUSTERNAME" | grep Default

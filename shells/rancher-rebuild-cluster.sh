@@ -42,7 +42,7 @@ rancher cluster create "$CLUSTERNAME"
 # add node
 rancher cluster add-node --etcd --controlplane --worker -q "$CLUSTERNAME" | sed 's/sudo //' | /bin/bash
 # defaults to Default namespace and the only cluster
-rancher context switch
+rancher context switch | grep "$CLUSTERNAME" | grep Default
 
 # add new worker nodes
 rancher cluster add-node --worker -q "$CLUSTERNAME"

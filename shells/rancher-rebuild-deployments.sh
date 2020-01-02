@@ -36,8 +36,9 @@ set -ex
 # auth to rancher
 rancher login $HOST --token $TOKEN
 
-# defaults to Default namespace and the only cluster
-rancher context switch | grep "$CLUSTERNAME" | grep Default
+# defaults to Default namespace
+CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep Default | awk '{print $1}')
+echo "$CONTEXT" | rancher context switch
 
 # start
 date

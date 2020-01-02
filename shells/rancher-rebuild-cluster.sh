@@ -34,7 +34,7 @@ fi
 set -ex
 
 # auth to rancher
-yes | rancher login $HOST --token $TOKEN
+rancher login $HOST --token $TOKEN
 
 # create cluster
 rancher cluster create "$CLUSTERNAME"

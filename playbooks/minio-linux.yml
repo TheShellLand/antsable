@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+
+  - name: download minio linux
+    shell:  wget https://dl.min.io/server/minio/release/linux-amd64/minio
+
+  - name: chmod +x minio
+    shell: chmod +x minio
+  
+  - name: move minio to /usr/local/bin
+    shell: mv -v minio /usr/local/bin/minio
+
+#  - name: start minio server
+#    shell: minio server /tmp/minio
+

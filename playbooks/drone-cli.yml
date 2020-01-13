@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
 
-  - name: Add ceph release key
+  - name: Install Drone client cli
     shell: |
       cd /tmp/
       curl -L https://github.com/drone/drone-cli/releases/latest/download/drone_linux_amd64.tar.gz | tar zx

@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
 
-  - name: Deploy rancher 2.x
+  - name: Deploy rancher v2.3.3
     shell: |
         docker rename rancher_server rancher_server_old
         docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name rancher_server rancher/rancher:v2.3.3

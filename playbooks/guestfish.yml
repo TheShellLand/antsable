@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - name: Install libguestfs-tools
+    apt: update_cache=yes name=libguestfs-tools state=latest

@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - name: Remove fonts-noto-color-emoji
+    apt: update_cache=yes name=fonts-noto-color-emoji state=absent
+
+  - name: Install fonts-noto-color-emoji
+    apt: update_cache=no name=fonts-noto-color-emoji state=latest

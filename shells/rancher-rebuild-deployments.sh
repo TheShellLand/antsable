@@ -6,7 +6,6 @@ HOST=$1
 TOKEN=$2
 
 CLUSTERNAME="skynet"
-NAMESPACES="world0"
 
 if rancher cluster; then
   if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
@@ -16,15 +15,6 @@ if rancher cluster; then
     exit 1
   fi
 fi
-
-for NAMESPACE in $NAMESPACES; do
-  if [ ! -d "$CLUSTERNAME/$NAMESPACE" ]; then
-    echo "*** backup configs not found ***"
-    mkdir -p "$CLUSTERNAME/$NAMESPACE"
-    echo "*** backup directories have been auto created ***"
-    exit 1
-  fi
-done
 
 if ! which rancher || ! which kubectl ; then
   echo "*** rancher-cli and kubectl are required ***"
@@ -43,15 +33,24 @@ echo "$CONTEXT" | rancher context switch
 # start
 date
 
-# create namespaces
-for NAMESPACE in $NAMESPACES; do
-  rancher namespace create "$NAMESPACE" || continue
-done
+# begin deploying out to cluster
+for PROJECT in $(ls "$CLUSTERNAME"); do
 
-# import deployments
-for NAMESPACE in $NAMESPACES; do
-  for yaml in $(find "$CLUSTERNAME/$NAMESPACE" -type f -name '*.yaml'); do
-    rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || continue
+  # create project
+  rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT"
+
+  # switch to the project
+  rancher context switch "$PROJECT"
+
+  for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
+    # create namespaces
+    rancher namespace create "$NAMESPACE" || echo exists
+
+    # create deployments
+    for yaml in $(find "$CLUSTERNAME/$PROJECT/$NAMESPACE" -type f -name '*.yaml'); do
+      rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || continue
+    done
+
   done
 done
 

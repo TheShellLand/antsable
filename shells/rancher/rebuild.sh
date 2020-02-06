@@ -6,7 +6,7 @@
 cd $(dirname $0)
 
 if [ ! "$(id -u)" == 0 ]; then echo "*** run as root ***"; exit 1; fi
-if ! which jq; then echo "*** missing jq ***"; exit 1; fi
+if ! which jq; then echo "*** missing jq ***"; echo "apt install jq"; exit 1; fi
 
 WORKDIR=$(pwd)
 
@@ -22,14 +22,14 @@ git clean -xdff
 git reset --hard
 git pull --rebase
 sed -i 's/^CLUSTERNAME=.*/CLUSTERNAME="skynet"/' shells/rancher-rebuild-cluster.sh
-sed -i 's/^NAMESPACES=.*/NAMESPACES="default longhorn-system"/' shells/rancher-rebuild-cluster.sh
 ./ansible.sh playbooks/docker-reset.yml
 ./ansible.sh playbooks/rancher2.yml
 # run rancher.sh to install all required packages (internet connection required)
 # ./shells/rancher.sh
 
 # rancher api
-if rancher context switch; then
+echo 0 | rancher context switch
+if $(rancher projects | grep Default > /dev/null); then
 
   RANCHER_CONF=~/.rancher/cli2.json
   RANCHER_CURRSVR=$(jq -r .CurrentServer $RANCHER_CONF)

@@ -25,7 +25,7 @@ CLUSTERNAME=$(hostname)
 sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 
 # rancher api
-echo 0 | rancher context switch
+echo 0 | rancher context switch || echo
 if $(rancher projects | grep Default > /dev/null); then
 
   RANCHER_CONF=~/.rancher/cli2.json

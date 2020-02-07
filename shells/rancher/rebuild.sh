@@ -21,7 +21,8 @@ cd antsable
 git clean -xdff
 git reset --hard
 git pull --rebase
-sed -i 's/^CLUSTERNAME=.*/CLUSTERNAME="skynet"/' shells/rancher-rebuild-cluster.sh
+CLUSTERNAME=$(hostname)
+sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 ./ansible.sh playbooks/docker-reset.yml
 ./ansible.sh playbooks/rancher2.yml
 # run rancher.sh to install all required packages (internet connection required)

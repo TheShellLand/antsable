@@ -10,6 +10,7 @@ playbooks="../playbooks"
 
 # Put running playbooks here
 /bin/bash $antsable/ansible.sh $antsable/playbooks/docker.yml
+/bin/bash $antsable/ansible.sh $antsable/playbooks/docker-reset.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/rancher2.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/rancher-cli.yml
 /bin/bash $antsable/ansible.sh $antsable/playbooks/kubectl.yml

@@ -40,7 +40,7 @@
     shell: dpkg-reconfigure docker-ce
     ignore_errors: yes
 
-  - name: Stop docker
+  - name: Start docker
     systemd:
       name: docker
       state: started

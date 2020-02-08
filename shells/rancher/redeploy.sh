@@ -25,7 +25,7 @@ export CLUSTERNAME=$(hostname)
 #sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 
 # rancher api
-if rancher settings; then
+if rancher settings >/dev/null; then
 
   RANCHER_CONF=~/.rancher/cli2.json
   RANCHER_CURRSVR=$(jq -r .CurrentServer $RANCHER_CONF)

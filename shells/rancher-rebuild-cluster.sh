@@ -5,8 +5,6 @@
 HOST=$1
 TOKEN=$2
 
-CLUSTERNAME="skynet"
-
 if rancher cluster; then
   if [ "$HOST" == "" ] || [ "$TOKEN" == "" ]; then
     echo "Usage: $0 HOST TOKEN"

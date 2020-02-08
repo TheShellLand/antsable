@@ -21,8 +21,8 @@ cd antsable
 git clean -xdff
 git reset --hard
 git pull --rebase
-CLUSTERNAME=$(hostname)
-sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
+export CLUSTERNAME=$(hostname)
+#sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 
 # rancher api
 echo 0 | rancher context switch || echo

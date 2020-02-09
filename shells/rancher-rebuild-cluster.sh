@@ -22,7 +22,7 @@ fi
 set -ex
 
 # auth to rancher
-rancher login $HOST --token $TOKEN --skip-verify
+rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME"
 
 # create cluster
 rancher cluster create "$CLUSTERNAME"
@@ -52,7 +52,7 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
   rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT"
 
   # switch to the project
-  CONTEXT=$($(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}'))
+  CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}')
   echo "$CONTEXT" | rancher context switch
 
   for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do

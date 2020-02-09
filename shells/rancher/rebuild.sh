@@ -21,7 +21,12 @@ cd antsable
 git clean -xdff
 git reset --hard
 git pull --rebase
-export CLUSTERNAME=$(hostname)
+
+if [ ! -z "$CLUSTERNAME" ]; then
+  export CLUSTERNAME=$CLUSTERNAME
+else
+  export CLUSTERNAME=$(hostname)
+fi
 #sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 ./ansible.sh playbooks/docker-reset.yml
 ./ansible.sh playbooks/rancher2.yml

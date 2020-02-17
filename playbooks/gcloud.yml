@@ -6,7 +6,7 @@
     apt: update_cache=yes name=curl state=latest
 
   - name: Add the Cloud SDK distribution URI as a package source
-    shell: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    shell: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
     args:
       executable: /bin/bash
 

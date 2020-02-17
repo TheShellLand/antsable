@@ -17,3 +17,8 @@
 
   - name: Install google-cloud-sdk
     apt: update_cache=yes name=google-cloud-sdk state=latest
+
+  # See https://cloud.google.com/sdk/docs/components#external_package_managers
+
+  - name: Install kubectl
+    apt: update_cache=no name=kubectl state=latest

@@ -1,0 +1,9 @@
+---
+NODE_USER: "{{ lookup('env','USER') }}"
+NODE_PUBLIC_ADDRESS: "{{ RANCHER_HOSTNAME }}"
+NODE_INTERNAL_ADDRESS:
+node_role: "controlplane, worker, etcd"
+
+RANCHER_HOSTNAME:
+ADMIN_EMAIL:
+RANCHER_REPLICAS: 1

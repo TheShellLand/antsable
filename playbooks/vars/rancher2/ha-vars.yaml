@@ -1,0 +1,20 @@
+---
+NODE_USER1: ubuntu
+NODE_USER2: ubuntu
+NODE_USER3: ubuntu
+
+NODE_PUBLIC_ADDRESS1:
+NODE_PUBLIC_ADDRESS2:
+NODE_PUBLIC_ADDRESS3:
+
+NODE_INTERNAL_ADDRESS1:
+NODE_INTERNAL_ADDRESS2:
+NODE_INTERNAL_ADDRESS3:
+
+node_role1: "controlplane, worker, etcd"
+node_role2: "controlplane, worker, etcd"
+node_role3: "controlplane, worker, etcd"
+
+RANCHER_HOSTNAME:
+ADMIN_EMAIL:
+RANCHER_REPLICAS: 3

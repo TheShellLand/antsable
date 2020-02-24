@@ -6,8 +6,7 @@ set -xe
 cd $(dirname $0)
 
 antsable=".."
-playbooks="../playbooks"
+cd $antsable
 
 # Put running playbooks here
-/bin/bash $antsable/ansible.sh $antsable/playbooks/human_tools.yml
-
+./ansible.sh playbooks/human_tools.yml

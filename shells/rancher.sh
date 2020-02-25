@@ -6,13 +6,13 @@ set -xe
 cd $(dirname $0)
 
 antsable=".."
-playbooks="../playbooks"
+cd $antsable
 
 # Put running playbooks here
-/bin/bash $antsable/ansible.sh $antsable/playbooks/docker.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/docker-reset.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/rancher2.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/rancher-cli.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/kubectl.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/iscsi.yml
-/bin/bash $antsable/ansible.sh $antsable/playbooks/jq.yml
+./antsable/ansible.sh playbooks/docker.yml
+./antsable/ansible.sh playbooks/docker-reset.yml
+./antsable/ansible.sh playbooks/rancher2.yml
+./antsable/ansible.sh playbooks/rancher-cli.yml
+./antsable/ansible.sh playbooks/kubectl.yml
+./antsable/ansible.sh playbooks/iscsi.yml
+./antsable/ansible.sh playbooks/jq.yml

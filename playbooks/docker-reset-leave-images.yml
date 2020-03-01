@@ -3,12 +3,12 @@
   gather_facts: no
   tasks:
 
-    # - name: Prune docker
-    #   shell: |
-    #     docker stop $(docker ps -aq)
-    #     docker system prune -f
-    #     docker volume prune -f
-    #   ignore_errors: yes
+#    - name: Prune docker
+#      shell: |
+#        docker stop $(docker ps -aq)
+#        docker system prune -f
+#        docker volume prune -f
+#      ignore_errors: yes
 
     - name: Stop docker
       systemd:
@@ -17,7 +17,19 @@
         # ignore_errors: yes
 
     - name: Clean up docker
-      shell: rm -rf /var/lib/docker/*
+      shell: |
+        rm -rf /var/lib/docker/builder
+        rm -rf /var/lib/docker/buildkit
+        rm -rf /var/lib/docker/containers
+        # rm -rf /var/lib/docker/image
+        rm -rf /var/lib/docker/network
+        # rm -rf /var/lib/docker/overlay2
+        rm -rf /var/lib/docker/plugins
+        rm -rf /var/lib/docker/runtimes
+        rm -rf /var/lib/docker/swarm
+        rm -rf /var/lib/docker/tmp
+        rm -rf /var/lib/docker/trust
+        rm -rf /var/lib/docker/volumes
       ignore_errors: yes
 
     - name: Clean up rancher

@@ -1,0 +1,31 @@
+---
+- hosts: all
+  tasks:
+
+  - set_fact:
+      helm_version: v3.1.1
+      helm_path: /tmp/helm
+      helm_bin: /tmp/helm/linux-amd64/helm
+      bin: /usr/local/bin/helm
+
+  - name: Create {{ helm_path }}
+    file:
+      path: "{{ helm_path }}"
+      state: directory
+
+  - name: Download helm {{ helm_version }}
+    unarchive:
+      src: https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz
+      dest: "{{ helm_path }}"
+      remote_src: yes
+
+  - name: Copy helm to {{ bin }}
+    copy:
+      src: "{{ helm_bin }}"
+      dest: "{{ bin }}"
+      mode: +x,o+x
+
+  - name: cleanup
+    file:
+      path: "{{ helm_path }}"
+      state: absent

@@ -29,7 +29,7 @@ else
 fi
 #sed -i "s/^CLUSTERNAME=.*/CLUSTERNAME=$CLUSTERNAME/" shells/rancher-rebuild-deployments.sh
 ./ansible.sh playbooks/docker-reset.yml
-./ansible.sh playbooks/rancher2.yml
+./ansible.sh playbooks/rancher2-docker.yml
 # run rancher.sh to install all required packages (internet connection required)
 # ./shells/rancher.sh
 

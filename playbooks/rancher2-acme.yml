@@ -2,7 +2,16 @@
 - hosts: all
   tasks:
 
-  - name: Deploy rancher with ACME_DOMAIN
-    shell: |
-        if [ ! -z "$ACME_DOMAIN" ]; then docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name rancher_server rancher/rancher:v2.3.5 --acme-domain $ACME_DOMAIN; fi
-        #if [ ! -z "$ACME_DOMAIN" ]; then docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --name rancher_server rancher/rancher:v2.3.5 --acme-domain $ACME_DOMAIN; fi
+    - name: Set environment variables
+      set_fact:
+        ACME_DOMAIN: "{{ lookup('env','ACME_DOMAIN') }}"
+        RANCHER_SERVER: rancher_server
+        DOCKER_VERSION: v2.3.5
+      failed_when: not ACME_DOMAIN or not RANCHER_SERVER or not DOCKER_VERSION
+
+    - name: Deploy rancher {{ ACME_DOMAIN }}
+      shell: |
+        docker rm -f {{ RANCHER_SERVER }}_old
+        docker stop {{ RANCHER_SERVER }}
+        docker rename {{ RANCHER_SERVER }} {{ RANCHER_SERVER }}_old
+        docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --name {{ RANCHER_SERVER }} rancher/rancher:{{ DOCKER_VERSION }} --acme-domain {{ ACME_DOMAIN }}

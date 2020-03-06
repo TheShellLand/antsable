@@ -2,8 +2,15 @@
 - hosts: all
   tasks:
 
-  - name: Deploy rancher
-    shell: |
-        docker rename rancher_server rancher_server_old
-        docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name rancher_server rancher/rancher:v2.3.5
-        docker ps -l
+    - name: Set environment variables
+      set_fact:
+        RANCHER_SERVER: rancher_server
+        DOCKER_VERSION: v2.3.5
+      failed_when: not RANCHER_SERVER or not DOCKER_VERSION
+
+    - name: Deploy rancher
+      shell: |
+        docker rm -f {{ RANCHER_SERVER }}_old
+        docker stop {{ RANCHER_SERVER }}
+        docker rename {{ RANCHER_SERVER }} {{ RANCHER_SERVER }}_old
+        docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name {{ RANCHER_SERVER }} rancher/rancher:{{ DOCKER_VERSION }}

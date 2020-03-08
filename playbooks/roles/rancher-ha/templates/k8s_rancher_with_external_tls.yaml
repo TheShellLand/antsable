@@ -1,0 +1,21 @@
+---
+nodes:
+  - address: {{ NODE_PUBLIC_ADDRESS }}
+    internal_address: {{ NODE_INTERNAL_ADDRESS }}
+    user: {{ NODE_USER }}
+    role: [{{ node_role }}]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
+
+ssh_agent_auth: true

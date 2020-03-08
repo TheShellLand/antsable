@@ -1,0 +1,5 @@
+---
+- import_tasks: tasks/update_cache.yml
+- import_tasks: tasks/ssh.yml
+- import_tasks: tasks/sshfs.yml
+- import_tasks: tasks/ping.yml

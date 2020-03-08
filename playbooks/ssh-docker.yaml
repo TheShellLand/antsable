@@ -1,0 +1,5 @@
+---
+- hosts: docker
+  # become: true
+  roles:
+    - ssh-docker

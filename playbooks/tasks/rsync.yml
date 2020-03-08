@@ -1,0 +1,3 @@
+---
+- name: Install rsync
+  apt: update_cache=no name=rsync state=latest

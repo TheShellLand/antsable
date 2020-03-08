@@ -1,0 +1,3 @@
+---
+- name: Install curl
+  apt: update_cache=no name=curl state=latest

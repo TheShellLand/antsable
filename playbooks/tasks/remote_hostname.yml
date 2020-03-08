@@ -1,0 +1,10 @@
+---
+- shell: cat /etc/hostname
+  register: shell
+
+- set_fact:
+    HOSTNAME: "{{ shell.stdout }}"
+
+- name: hostname
+  debug:
+    msg: "{{ HOSTNAME }}"

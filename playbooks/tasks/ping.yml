@@ -1,0 +1,3 @@
+---
+- name: Install ping
+  apt: update_cache=no name=iputils-ping state=latest

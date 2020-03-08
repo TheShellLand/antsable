@@ -1,0 +1,3 @@
+---
+- name: Install tmux
+  apt: update_cache=no name=tmux state=latest

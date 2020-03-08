@@ -1,0 +1,4 @@
+---
+- name: ansible_env
+  debug:
+    msg: "{{ ansible_env }}"

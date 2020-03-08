@@ -1,0 +1,3 @@
+---
+- name: Install nslookup
+  apt: update_cache=no name=dnsutils state=latest

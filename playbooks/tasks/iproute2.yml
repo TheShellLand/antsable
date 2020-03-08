@@ -1,0 +1,3 @@
+---
+- name: Install iproute2
+  apt: update_cache=no name=iproute2 state=latest

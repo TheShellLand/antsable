@@ -1,0 +1,24 @@
+---
+
+- set_fact:
+    version: v2.2.0
+
+- name: Download rancher cli
+  unarchive:
+    src: https://github.com/rancher/cli/releases/download/{{ version }}/rancher-linux-amd64-{{ version }}.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: Install rancher cli
+  copy:
+    src: /tmp/rancher-{{ version }}/rancher
+    dest: /usr/local/bin/rancher
+    mode: +x,o+x
+    force: yes
+    remote_src: yes
+  become: yes
+
+- name: cleanup
+  file:
+    path: /tmp/rancher-{{ version }}
+    state: absent

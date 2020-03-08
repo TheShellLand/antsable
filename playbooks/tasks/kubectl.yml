@@ -1,0 +1,12 @@
+---
+- name: Download kubectl
+  shell: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+
+- name: Install kubectl
+  copy:
+    src: kubectl
+    dest: /usr/local/bin/kubectl
+    mode: +x,o+x
+    force: yes
+    remote_src: yes
+  become: yes

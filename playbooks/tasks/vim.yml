@@ -1,0 +1,3 @@
+---
+- name: Install vim
+  apt: update_cache=no name=vim state=latest

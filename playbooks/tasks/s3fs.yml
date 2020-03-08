@@ -1,0 +1,3 @@
+---
+- name: Install s3fs
+  apt: update_cache=no name=s3fs state=latest

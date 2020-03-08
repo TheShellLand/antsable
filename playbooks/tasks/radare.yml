@@ -1,0 +1,42 @@
+---
+- name: Update repositories
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install git
+  apt:
+    name: git
+    state: latest
+  become: yes
+
+- name: Install make
+  apt:
+    name: make
+    state: latest
+  become: yes
+
+- name: Install gcc
+  apt:
+    name: gcc
+    state: latest
+  become: yes
+
+- name: Radare2 - git
+  git:
+    repo: https://github.com/radare/radare2.git
+    dest: radare2
+    force: yes
+    clone: yes
+    update: yes
+
+- name: Radare2 - install
+  shell: /bin/bash radare2/sys/install.sh
+  become: yes
+
+- name: chmod
+  file:
+    path: radare2
+    recurse: yes
+    mode: 0555
+  become: yes

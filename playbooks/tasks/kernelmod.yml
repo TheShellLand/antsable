@@ -1,0 +1,3 @@
+---
+- name: Install kernelmod
+  apt: update_cache=no name=kmod state=latest

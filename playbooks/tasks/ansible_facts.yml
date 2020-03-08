@@ -1,0 +1,4 @@
+---
+- name: ansible_facts
+  debug:
+    msg: "{{ ansible_facts }}"

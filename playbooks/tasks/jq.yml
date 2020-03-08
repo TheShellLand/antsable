@@ -1,0 +1,3 @@
+---
+- name: jq
+  apt: update_cache=no name=jq state=latest

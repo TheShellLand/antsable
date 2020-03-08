@@ -1,0 +1,13 @@
+---
+- name: Ubuntu
+  shell: cat /etc/hostname
+  register: shell
+  when: ansible_distribution == "Ubuntu"
+
+
+- set_fact:
+    HOSTNAME: "{{ shell.stdout }}"
+
+- name: {{ HOSTNAME }}
+  debug:
+    msg: "{{ HOSTNAME }}"

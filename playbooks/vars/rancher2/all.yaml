@@ -1,5 +1,5 @@
 ---
-user_home: "{{ lookup('env','HOME') }}"
+user_home: "{{ ansible_env.HOME }}"
 kube_home: "{{ user_home }}/.kube"
 kube_config_home: "{{ kube_home }}/config"
 kubeconfig: kube_config_home_{{ rancher_cluster }}

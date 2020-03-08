@@ -33,10 +33,18 @@
         content: |
           ---
           nodes:
-            - address: {{ NODE_PUBLIC_ADDRESS }}
-              internal_address: {{ NODE_INTERNAL_ADDRESS }}
-              user: {{ NODE_USER }}
-              role: [{{ node_role }}]
+            - address: {{ NODE_PUBLIC_ADDRESS1 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS1 }}
+              user: {{ NODE_USER1 }}
+              role: [{{ node_role1 }}]
+            - address: {{ NODE_PUBLIC_ADDRESS2 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS2 }}
+              user: {{ NODE_USER2 }}
+              role: [{{ node_role2 }}]
+            - address: {{ NODE_PUBLIC_ADDRESS3 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS3 }}
+              user: {{ NODE_USER3 }}
+              role: [ {{ node_role3 }}]
 
           services:
             etcd:
@@ -61,10 +69,18 @@
         content: |
           ---
           nodes:
-            - address: {{ NODE_PUBLIC_ADDRESS }}
-              internal_address: {{ NODE_INTERNAL_ADDRESS }}
-              user: {{ NODE_USER }}
-              role: [{{ node_role }}]
+            - address: {{ NODE_PUBLIC_ADDRESS1 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS1 }}
+              user: {{ NODE_USER1 }}
+              role: [{{ node_role1 }}]
+            - address: {{ NODE_PUBLIC_ADDRESS2 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS2 }}
+              user: {{ NODE_USER2 }}
+              role: [{{ node_role2 }}]
+            - address: {{ NODE_PUBLIC_ADDRESS3 }}
+              internal_address: {{ NODE_INTERNAL_ADDRESS3 }}
+              user: {{ NODE_USER3 }}
+              role: [ {{ node_role3 }}]
 
           services:
             etcd:

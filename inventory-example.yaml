@@ -1,7 +1,6 @@
 ---
 all:
   hosts:
-    localhost:
 
 localhost:
   hosts:

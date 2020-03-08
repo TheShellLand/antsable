@@ -1,0 +1,3 @@
+---
+- name: Install sshfs
+  apt: update_cache=no name=sshfs state=latest

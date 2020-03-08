@@ -1,0 +1,38 @@
+---
+all:
+  hosts:
+    localhost:
+
+localhost:
+  hosts:
+    localhost:
+
+hypervisor:
+  hosts:
+
+kubernetes:
+  hosts:
+
+rancher:
+  hosts:
+
+server:
+  hosts:
+
+gateway:
+  hosts:
+
+router:
+  hosts:
+
+firewall:
+  hosts:
+
+proxy:
+  hosts:
+
+iot:
+  hosts:
+
+lightbulbs:
+  hosts:

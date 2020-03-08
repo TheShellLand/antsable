@@ -1,6 +1,32 @@
 # antsable
 Ants that could. Ants that able. Ansible
 
+## Set Inventory
+
+```
+cp inventory-example.yaml inventory.yaml
+```
+
+Modify `inventory.yaml`
+
+## Run Playbooks
+
+Run
+```
+./ansible.sh playbooks/ubuntu-readyup-18.x.yml
+```
+
+Run locally without SSH
+```
+./ansible.sh playbooks/ubuntu-readyup-18.x.yml --connection local
+```
+
+Limit to localhost:
+```
+# -c --connection
+# -l --limit
+./ansible.sh playbooks/ubuntu-readyup-18.x.yml -c local -l localhost
+```
 
 ## Gnome Readyup Screenshots
 

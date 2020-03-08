@@ -77,9 +77,14 @@ if [ "$?" == 0 ]; then
 fi
 
 
-# Run playbook
-if [ ! -z "$1" ]; then
-  set -x
-  ansible-playbook -v -i localhost, -c local "$1"
+# Create inventory.yaml
+if [ ! -f inventory.yaml ]; then
+  cp -v inventory-example.yaml inventory.yaml
 fi
 
+# Run playbook
+if [ ! "$1" == "" ]; then
+  set -x
+  ansible-playbook -i inventory.yaml "$@"
+  # ansible-playbook -v -i inventory.yaml -c local "$1"
+fi

@@ -1,0 +1,4 @@
+---
+RANCHER_SERVER: rancher_server
+DOCKER_VERSION: v2.3.5
+ACME_DOMAIN: "{{ ansible_fqdn }}"

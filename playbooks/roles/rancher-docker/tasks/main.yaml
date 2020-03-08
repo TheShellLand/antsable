@@ -1,0 +1,23 @@
+---
+- import_tasks: tasks/ansible_facts-fqdn.yml
+- import_tasks: tasks/docker.yml
+  become: true
+- import_tasks: tasks/rancher-cli.yml
+  become: true
+- import_tasks: tasks/kubectl.yml
+  become: true
+- import_tasks: tasks/iscsi.yml
+  become: true
+- import_tasks: tasks/jq.yml
+  become: true
+
+- import_tasks: tasks/docker-reset-leave-images.yml
+  become: true
+# - import_tasks: tasks/docker-reset.yml
+#   become: true
+
+- import_tasks: acme.yml
+  when: ACME
+
+- import_tasks: docker.yml
+  when: not ACME

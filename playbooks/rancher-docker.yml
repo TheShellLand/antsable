@@ -1,0 +1,8 @@
+---
+- hosts: rancher
+  # become: yes
+  roles:
+    - rancher-docker
+  vars:
+    ACME: true
+    ACME_DOMAIN: "{{ ansible_fqdn }}"

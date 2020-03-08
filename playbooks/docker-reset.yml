@@ -14,15 +14,15 @@
       systemd:
         name: docker
         state: stopped
-        # ignore_errors: yes
+      become: yes
 
     - name: Clean up docker
       shell: rm -rf /var/lib/docker/*
-      ignore_errors: yes
+      become: yes
 
     - name: Clean up rancher
-      shell: rm -rf /var/lib/rancher/
-      ignore_errors: yes
+      shell: rm -rf /var/lib/rancher/*
+      become: yes
 
     - name: Clean up kubernetes
       shell: |
@@ -34,14 +34,14 @@
         rm -rf /var/etcd/backups
         rm -rf /opt/cni
         rm -rf /opt/rke
-      ignore_errors: yes
+      become: yes
 
     - name: Reconfigure docker
       shell: dpkg-reconfigure docker-ce
-      # ignore_errors: yes
+      become: yes
 
     - name: Start docker
       systemd:
         name: docker
         state: started
-        # ignore_errors: yes
+      become: yes

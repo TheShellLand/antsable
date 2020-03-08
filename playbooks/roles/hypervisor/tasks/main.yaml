@@ -1,0 +1,107 @@
+---
+  # https://platform9.com/support/setup-linux-network-bridges-on-ubuntu-nova-networking/
+- name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-ip6tables
+  sysctl:
+    name: net.bridge.bridge-nf-call-ip6tables
+    value: 1
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+- name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-iptables
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+- name: Disable iptables Filtering on Bridge Devices - net.bridge.bridge-nf-call-arptables
+  sysctl:
+    name: net.bridge.bridge-nf-call-arptables
+    value: 1
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+# https://github.com/lxc/lxd/blob/master/doc/production-setup.md
+- name: Fix for Linux open files count - fs.inotify.max_queued_events
+  sysctl:
+    name: fs.inotify.max_queued_events
+    value: 1048576
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+- name: Fix for Linux open files count - fs.inotify.max_user_instances
+  sysctl:
+    name: fs.inotify.max_user_instances
+    value: 1048576
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+- name: Fix for Linux open files count - fs.inotify.max_user_watches
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: 1048576
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+- name: Fix for Linux open files count - vm.max_map_count
+  sysctl:
+    name: vm.max_map_count
+    value: 262144
+    state: present
+    reload: yes
+  ignore_errors: yes
+
+# https://github.com/lxc/lxd/blob/master/doc/production-setup.md
+- name: Fix for Linux limits -  *  soft  nofile
+  pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: nofile
+    value: 1048576
+  ignore_errors: yes
+
+- name: Fix for Linux limits -  * hard  nofile
+  pam_limits:
+    domain: '*'
+    limit_type: hard
+    limit_item: nofile
+    value: 1048576
+  ignore_errors: yes
+
+- name: Fix for Linux limits -  root  soft  nofile
+  pam_limits:
+    domain: root
+    limit_type: soft
+    limit_item: nofile
+    value: 1048576
+  ignore_errors: yes
+
+- name: Fix for Linux limits -  root  hard  nofile
+  pam_limits:
+    domain: root
+    limit_type: hard
+    limit_item: nofile
+    value: 1048576
+  ignore_errors: yes
+
+- name: Fix for Linux limits -  * soft  memlock
+  pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: memlock
+    value: unlimited
+  ignore_errors: yes
+
+- name: Fix for Linux limits -  * hard  memlock
+  pam_limits:
+    domain: '*'
+    limit_type: hard
+    limit_item: memlock
+    value: unlimited
+  ignore_errors: yes

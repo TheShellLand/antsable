@@ -1,0 +1,11 @@
+---
+- name: Install openssh-server
+  apt: update_cache=no name=openssh-server state=latest
+
+- name: Start openssh-server
+  service:
+      name: ssh
+      state: started
+
+- name: Enable persistence
+  shell: systemctl enable ssh

@@ -1,0 +1,14 @@
+---
+- import_tasks: tasks/update_cache.yml
+- import_tasks: tasks/git.yml
+- import_tasks: tasks/tmux.yml
+- import_tasks: tasks/vim.yml
+- import_tasks: tasks/ping.yml
+- import_tasks: tasks/nslookup.yml
+- import_tasks: tasks/rsync.yml
+- import_tasks: tasks/s3fs.yml
+- import_tasks: tasks/wget.yml
+- import_tasks: tasks/curl.yml
+- import_tasks: tasks/iproute2.yml
+- import_tasks: tasks/kernelmod.yml
+- import_tasks: tasks/radare.yml

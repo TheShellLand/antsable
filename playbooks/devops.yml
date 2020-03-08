@@ -1,20 +1,6 @@
 ---
 - hosts: all
-  tasks:
-  - name: Install tmux
-    apt: update_cache=yes name=tmux state=latest
-
-  - name: Install vim
-    apt: update_cache=yes name=vim state=latest
-
-  - name: Install git
-    apt: update_cache=yes name=git state=latest
-
-  - name: Install ping
-    apt: update_cache=yes name=iputils-ping state=latest
-
-  - name: Install nslookup
-    apt: update_cache=yes name=dnsutils state=latest
-
-  - name: Install rsync
-    apt: update_cache=yes name=rsync state=latest
+  become: true
+  roles:
+    - devops
+  # connection: local

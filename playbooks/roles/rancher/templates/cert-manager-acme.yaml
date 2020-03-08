@@ -1,0 +1,33 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: {{ ACME_ISSUER_TYPE }}
+metadata:
+  name: letsencrypt-{{ LETSENCRYPT_STAGE_OR_PROD }}
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: {{ ADMIN_EMAIL }}
+    server: {{ LETSENCRYPT_SERVER }}
+    privateKeySecretRef:
+      # Secret resource used to store the account's private key.
+      name: {{ acme_account_key }}
+    # Add a single challenge solver, HTTP01 using nginx
+    solvers:
+      - http01:
+          serviceType: {{ ACME_SERVICE_TYPE }}
+          ingress:
+            class: nginx
+#                - dns01:
+#                    cloudflare:
+#                      email: {{ CLOUDFLARE_EMAIL }}
+#                      apiKeySecretRef:
+#                        name: cloudflare-apikey-secret
+#                        key: {{ CLOUDFLARE_APIKEY }}
+#                  selector:
+#                    dnsNames:
+#                    - 'a.example.com'
+#                    - 'b.example.com'
+#                    dnsZones:
+#                    - 'test.example.com'

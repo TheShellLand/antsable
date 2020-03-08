@@ -1,0 +1,8 @@
+---
+- hosts: rancher
+  # become: true
+  roles:
+    - rancher
+  vars:
+    PROD: false
+    ADMIN_EMAIL:

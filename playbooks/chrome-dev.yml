@@ -5,10 +5,10 @@
     - name: Update cache
       apt: update_cache=yes
 
-    - name: Chrome
+    - name: Chrome dev
       apt:
-        deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
       ignore_errors: yes
 
-    - name: Install missing dependencies
+    - name: Chrome dev
       shell: apt install -f -y

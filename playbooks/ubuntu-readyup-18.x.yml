@@ -114,41 +114,22 @@
     until: result is succeeded
 
 #  - name: Chrome
-#    shell: |
-#      apps=/tmp/apps
-#      chrome=chrome.deb
-#      if [ ! -f $apps/$chrome ]; then
-#          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-#          dpkg -i $apps/$chrome
-#          #rm $apps/$chrome
-#      else
-#          dpkg -i $apps/$chrome
-#      fi
-#      apt install -f -y
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#    ignore_errors: yes
 
-#  - name: Chrome beta
-#    shell: |
-#      apps=/tmp/apps
-#      chromeDev=chromebeta.deb
-#      if [ ! -f $apps/$chromeBeta ]; then
-#          wget -q -O $apps/$chromeBeta 'https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb'
-#          dpkg -i $apps/$chromeBeta
-#          #rm $apps/$chromeBeta
-#      else
-#          dpkg -i $apps/$chromeBeta
-#      fi
-#      apt install -f -y
-
-  - name: Chrome dev
+  - name: Chrome beta
     apt:
-      deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+      deb: https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
     ignore_errors: yes
-  - name: Chrome dev
+
+#  - name: Chrome dev
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+#    ignore_errors: yes
+
+  - name: Install missing dependencies
     shell: apt install -f -y
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
 
 #  - name: Brave
 #    shell: snap install brave

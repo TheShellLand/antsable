@@ -10,5 +10,5 @@
         deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
       ignore_errors: yes
 
-    - name: Chrome dev
+    - name: Install missing dependencies
       shell: apt install -f -y

@@ -76,6 +76,25 @@ if [ "$?" == 0 ]; then
   fi
 fi
 
+# Best effort
+grep "Ubuntu" /etc/issue
+if [ "$?" == 1 ]; then
+
+  if [ ! "$(which ansible)" ]; then
+    echo "Installing ansible"
+    apt update && \
+    apt install -y software-properties-common && \
+    apt install -y apt-transport-https && \
+    apt-add-repository -y 'ppa:ansible/ansible' && \
+    apt update && \
+    apt install -y ansible
+  fi
+fi
+
+if ! which ansible-playbook; then
+  echo "** ansible not able to be installed **"
+  exit 1
+fi
 
 # Create inventory.yaml
 if [ ! -f inventory.yaml ]; then

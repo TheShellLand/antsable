@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+
+    # use Google Chrome Stable to match driver
+    - name: Download Google Driver {{ version }}
+      vars:
+        version: 80.0.3987.106
+      unarchive:
+        # https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
+        src: https://chromedriver.storage.googleapis.com/{{ version }}/chromedriver_linux64.zip
+        dest: /usr/local/bin/chromedriver
+        remote_src: yes

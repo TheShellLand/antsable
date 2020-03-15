@@ -25,7 +25,7 @@ Limit to localhost:
 ```
 # -c --connection
 # -l --limit
-./ansible.sh playbooks/ubuntu-readyup-18.x.yml -c local -l localhost
+./ansible.sh playbooks/ubuntu-readyup-18.x.yml -c local -l local
 ```
 
 ## Gnome Readyup Screenshots

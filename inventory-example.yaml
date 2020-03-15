@@ -30,6 +30,9 @@ firewall:
 proxy:
   hosts:
 
+sensors:
+  hosts:
+
 iot:
   hosts:
 

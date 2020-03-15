@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+
+  - name: sync werk
+    shell: rsync ~/werk/ {{ inventory_hostname }}:werk/ -arvhyuiPD --delete --stats

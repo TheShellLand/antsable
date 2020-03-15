@@ -4,3 +4,4 @@
 
   - name: apt upgrade
     apt: update_cache=yes upgrade=yes
+    become: true

@@ -1,4 +1,4 @@
 ---
-- name: "{{ ansible_fqdn }}"
+- name: ansible_fqdn "{{ ansible_fqdn }}"
   debug:
     msg: "{{ ansible_fqdn }}"

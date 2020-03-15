@@ -1,0 +1,7 @@
+---
+- hosts: all
+
+  tasks:
+    - name: set python3 as default
+      shell: update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+      become: true

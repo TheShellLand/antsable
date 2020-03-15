@@ -101,6 +101,11 @@ if [ ! -f inventory.yaml ]; then
   cp -v inventory-example.yaml inventory.yaml
 fi
 
+# Create sshconfig
+if [ ! -f config ]; then
+  cp -v config-example config
+fi
+
 # Run playbook
 if [ ! "$1" == "" ]; then
   set -x

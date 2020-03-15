@@ -1,0 +1,21 @@
+# sshconfig
+ForwardAgent yes
+ServerAliveInterval 15
+
+Host world0
+  HostName world0
+  User ubuntu
+
+Host world1
+  HostName world1
+  IdentityFile ~/.ssh/keys/world1/id_rsa
+  LocalForward 2222 world2:22
+
+Host world2
+  HostName world2
+  ProxyJump proxy
+
+Host proxy
+  HostName proxy
+  Port 22
+  DynamicForward 8080

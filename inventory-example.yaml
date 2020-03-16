@@ -18,6 +18,17 @@ rancher:
 server:
   hosts:
 
+computers:
+  children:
+    pc:
+    laptop:
+
+pc:
+  hosts:
+
+laptop:
+  hosts:
+
 gateway:
   hosts:
 

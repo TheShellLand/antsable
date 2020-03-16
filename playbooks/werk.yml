@@ -2,5 +2,17 @@
 - hosts: all
   tasks:
 
-  - name: sync werk
-    shell: rsync ~/werk/ {{ inventory_hostname }}:werk/ -arvhyuiPD --delete --stats
+#    - name: sync werk
+#      shell: rsync ~/werk/ {{ inventory_hostname }}:werk/ -arvhyuiPD --delete --stats
+
+    - name: sync werk
+      vars:
+        home: "~"
+        folder: werk
+      synchronize:
+        src: "{{ home }}/{{ folder }}/"
+        dest: "{{ ansible_env.HOME }}/{{ folder }}/"
+        delete: yes
+        rsync_opts:
+          - "--stats"
+          #- "-n"

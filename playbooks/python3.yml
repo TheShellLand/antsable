@@ -8,6 +8,7 @@
       apt update
       apt install -y python3
       apt install -y curl
+      apt install -y python3-distutils
       # Install pip and pip3
       curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
       python3 "get-pip.py"

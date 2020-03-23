@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: install python 2
+    shell: |
+      apt update
+      apt install -y python
+      apt install -y curl
+      # Install pip or pip3
+      curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
+      python2 "get-pip.py"

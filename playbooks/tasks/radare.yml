@@ -32,7 +32,7 @@
 
 - name: Radare2 - install
   shell: /bin/bash radare2/sys/install.sh
-  become: yes
+  become: no
 
 - name: chmod
   file:

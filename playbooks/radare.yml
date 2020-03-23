@@ -36,10 +36,8 @@
         update: yes
 
     - name: Radare2 - install
-      shell: |
-        cd /tmp/radare2
-        sys/install.sh
-      become: yes
+      shell: /bin/bash /tmp/radare2/sys/install.sh
+      become: no
 
     - name: chmod
       file:

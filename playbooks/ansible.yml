@@ -1,7 +1,8 @@
 ---
 - hosts: all
   tasks:
-  - apt_repository: repo='ppa:ansible/ansible'
+  - name: Add ansible ppa
+    apt_repository: repo='ppa:ansible/ansible'
 
   - name: Install ansible
     apt: update_cache=yes name=ansible state=latest

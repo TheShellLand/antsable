@@ -1,6 +1,8 @@
 ---
-- name: add ansible apt
+- name: Add ansible ppa
   apt_repository: repo='ppa:ansible/ansible'
+  become: true
 
 - name: Install ansible
   apt: update_cache=yes name=ansible state=latest
+  become: true

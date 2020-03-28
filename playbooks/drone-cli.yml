@@ -9,3 +9,4 @@
       install -t /usr/local/bin drone
     args:
       executable: /bin/bash
+    become: true

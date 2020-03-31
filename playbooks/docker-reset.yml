@@ -1,28 +1,20 @@
 ---
 - hosts: all
+  become: true
   gather_facts: no
-  tasks:
 
-    # - name: Prune docker
-    #   shell: |
-    #     docker stop $(docker ps -aq)
-    #     docker system prune -f
-    #     docker volume prune -f
-    #   ignore_errors: yes
+  tasks:
 
     - name: Stop docker
       systemd:
         name: docker
         state: stopped
-      become: yes
 
     - name: Clean up docker
       shell: rm -rf /var/lib/docker/*
-      become: yes
 
     - name: Clean up rancher
       shell: rm -rf /var/lib/rancher/*
-      become: yes
 
     - name: Clean up kubernetes
       shell: |
@@ -34,14 +26,11 @@
         rm -rf /var/etcd/backups
         rm -rf /opt/cni
         rm -rf /opt/rke
-      become: yes
 
     - name: Reconfigure docker
       shell: dpkg-reconfigure docker-ce
-      become: yes
 
     - name: Start docker
       systemd:
         name: docker
         state: started
-      become: yes

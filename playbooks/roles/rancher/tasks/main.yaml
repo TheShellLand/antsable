@@ -1,7 +1,6 @@
 ---
 - import_tasks: tasks/ansible_facts-fqdn.yml
 - import_tasks: tasks/docker-reset-leave-images.yml
-  become: true
 
 - name: Set Letsencrypt staging
   set_fact:
@@ -16,17 +15,17 @@
 - name: Create yaml with external TLS
   template:
     src: k8s_rancher_with_external_tls.yaml
-    dest: "{{ kubernetes_cluster }}"
+    dest: "{{ kubernetes_cluster_yaml }}"
   when: USING_EXTERNAL_TLS
 
 - name: Create yaml without external TLS
   template:
     src: k8s_rancher_with_no_external_tls.yaml
-    dest: "{{ kubernetes_cluster }}"
+    dest: "{{ kubernetes_cluster_yaml }}"
   when: not USING_EXTERNAL_TLS
 
 - name: Create rke cluster
-  shell: rke up --config {{ kubernetes_cluster }}
+  shell: rke up --config {{ kubernetes_cluster_yaml }}
 
 - name: Make kubeconfig file default
   copy:
@@ -68,10 +67,10 @@
 - name: Create ACME - {{ ACME_ISSUER_TYPE }}
   template:
     src: cert-manager-acme.yaml
-    dest: "{{ acme_issuer }}"
+    dest: "{{ acme_issuer_yaml }}"
 
 - name: Install ACME Issuer
-  shell: kubectl apply --validate=false -f {{ acme_issuer }}
+  shell: kubectl apply --validate=false -f {{ acme_issuer_yaml }}
   register: acme
   until: '"failed calling webhook" not in acme.stderr'
   delay: 5

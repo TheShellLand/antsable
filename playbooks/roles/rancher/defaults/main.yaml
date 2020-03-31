@@ -2,7 +2,7 @@
 # kubernetes
 #USING_EXTERNAL_TLS: true
 USING_EXTERNAL_TLS: false
-kubernetes_cluster: rancher-cluster.yaml
+kubernetes_cluster_yaml: rancher-cluster.yaml
 
 # cert-manager
 CERT_MANAGER_VERSION: v0.13.1
@@ -16,7 +16,7 @@ CERT_MANAGER_INSTALL_TYPE: helm
 LETSENCRYPT_STAGE_OR_PROD: staging
 
 # cert-manager acme
-acme_issuer: acme-issuer.yaml
+acme_issuer_yaml: acme-issuer.yaml
 acme_account_key: acme-issuer-account-key
 ACME_ISSUER_TYPE: ClusterIssuer
 #ACME_ISSUER_TYPE: Issuer
@@ -33,7 +33,7 @@ RANCHER_NAMESPACE: cattle-system
 user_home: "{{ ansible_env.HOME }}"
 kube_home: "{{ user_home }}/.kube"
 kube_config_home: "{{ kube_home }}/config"
-kubeconfig: kube_config_{{ kubernetes_cluster }}
+kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
 
 # user vars
 NODE_PUBLIC_ADDRESS: "{{ ansible_fqdn }}"

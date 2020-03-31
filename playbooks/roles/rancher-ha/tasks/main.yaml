@@ -1,7 +1,6 @@
 ---
 - import_tasks: tasks/ansible_facts-fqdn.yml
 - import_tasks: tasks/docker-reset-leave-images.yml
-  become: true
 
 - name: Set Letsencrypt staging
   set_fact:
@@ -16,17 +15,17 @@
 - name: Create yaml with external TLS
   template:
     src: k8s_rancher_with_external_tls.yaml
-    dest: "{{ kubernetes_cluster }}"
+    dest: "{{ kubernetes_cluster_yaml }}"
   when: USING_EXTERNAL_TLS
 
 - name: Create yaml without external TLS
   template:
     src: k8s_rancher_with_no_external_tls.yaml
-    dest: "{{ kubernetes_cluster }}"
+    dest: "{{ kubernetes_cluster_yaml }}"
   when: not USING_EXTERNAL_TLS
 
 - name: Create rke cluster
-  shell: rke up --config {{ kubernetes_cluster }}
+  shell: rke up --config {{ kubernetes_cluster_yaml }}
 
 - name: Make kubeconfig file default
   copy:

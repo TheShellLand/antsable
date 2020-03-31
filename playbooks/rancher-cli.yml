@@ -1,26 +1,29 @@
 ---
 - hosts: all
+  become: true
+
+  vars:
+    cli_version: v2.2.0
+
   tasks:
 
-  - name: /tmp/apps
-    file: path=/tmp/apps state=directory
+    - name: /tmp/apps
+      file: path=/tmp/apps state=directory
 
-  - name: chdir
-    shell: cd /tmp/apps
+    - name: Download and Extract rancher cli {{ cli_version }}
+      unarchive:
+        src: https://github.com/rancher/cli/releases/download/{{ cli_version }}/rancher-linux-amd64-{{ cli_version }}.tar.gz
+        dest: /tmp/apps
+        remote_src: yes
 
-  - name: Download and Extract rancher cli
-    unarchive:
-      src: https://github.com/rancher/cli/releases/download/v2.2.0/rancher-linux-amd64-v2.2.0.tar.gz
-      dest: /tmp/apps
-      remote_src: yes
-  - name: copy to /usr/local/bin
-    copy:
-      src: /tmp/apps/rancher-v2.2.0/rancher
-      dest: /usr/local/bin/rancher
-      mode: +x,o+x
+    - name: Install rancher cli
+      copy:
+        src: /tmp/apps/rancher-{{ cli_version }}/rancher
+        dest: /usr/local/bin/rancher
+        mode: +x,o+x
+        remote_src: yes
 
-  - name: cleanup
-    file:
-      path: /tmp/apps
-      state: absent
-
+    - name: cleanup
+      file:
+        path: /tmp/apps
+        state: absent

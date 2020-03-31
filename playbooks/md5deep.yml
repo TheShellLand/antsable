@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+
+    - name: Install md5deep
+      apt: update_cache=yes name=md5deep state=latest

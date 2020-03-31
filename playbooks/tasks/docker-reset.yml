@@ -1,12 +1,5 @@
 ---
-gather_facts: no
-
-# - name: Prune docker
-#   shell: |
-#     docker stop $(docker ps -aq)
-#     docker system prune -f
-#     docker volume prune -f
-#   ignore_errors: yes
+#gather_facts: no
 
 - name: Stop docker
   systemd:

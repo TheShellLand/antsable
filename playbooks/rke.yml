@@ -1,9 +1,11 @@
 ---
 - hosts: all
+  become: true
+
   tasks:
 
-  - name: Install rke v1.0.4 from github
-    shell: |
-      wget https://github.com/rancher/rke/releases/download/v1.0.4/rke_linux-amd64 -O rke
-      chmod +x rke
-      mv -v rke /usr/local/bin/rke
+    - name: Install rke v1.0.4 from github
+      shell: |
+        wget https://github.com/rancher/rke/releases/download/v1.0.4/rke_linux-amd64 -O rke
+        chmod +x rke
+        mv -v rke /usr/local/bin/rke

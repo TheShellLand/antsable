@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Skype
+      apt:
+        deb: https://repo.skype.com/latest/skypeforlinux-64.deb
+      ignore_errors: yes
+
+    - name: Install missing dependencies
+      shell: apt install -f -y

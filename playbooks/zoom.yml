@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Zoom
+      apt:
+        deb: https://zoom.us/client/latest/zoom_amd64.deb
+
+    - name: Install dependencies
+      shell: apt install -y -f

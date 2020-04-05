@@ -86,6 +86,7 @@
 - name: Install Rancher with Letsencrypt
   shell: |
     helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
+      --set replicas={{ RANCHER_REPLICAS }} \
       --namespace {{ RANCHER_NAMESPACE }} \
       --set hostname={{ RANCHER_HOSTNAME }} \
       --set ingress.tls.source=letsEncrypt \

@@ -5,11 +5,13 @@
 - name: Set Letsencrypt staging
   set_fact:
     LETSENCRYPT_SERVER: https://acme-staging-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: production
   when: not PROD
 
 - name: Set Letsencrypt production
   set_fact:
     LETSENCRYPT_SERVER: https://acme-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: staging
   when: PROD
 
 - name: Create yaml with external TLS

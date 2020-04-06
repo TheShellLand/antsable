@@ -11,10 +11,6 @@ CERT_MANAGER_NAMESPACE: cert-manager
 #CERT_MANAGER_INSTALL_TYPE: manifests
 #CERT_MANAGER_INSTALL_TYPE: helm
 
-# letsencrypt
-#LETSENCRYPT_STAGE_OR_PROD: production
-#LETSENCRYPT_STAGE_OR_PROD: staging
-
 # cert-manager acme
 acme_issuer_yaml: acme-issuer.yaml
 acme_account_key: acme-issuer-account-key

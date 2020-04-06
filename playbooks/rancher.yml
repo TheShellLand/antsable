@@ -5,4 +5,5 @@
     - rancher
   vars:
     PROD: false
+    CERT_MANGER_HELM_INSTALL: true
     ADMIN_EMAIL:

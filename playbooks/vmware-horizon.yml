@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: required libgtk2.0-0
+    apt: update_cache=yes name=libgtk2.0-0 state=latest

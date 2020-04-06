@@ -5,11 +5,13 @@
 - name: Set Letsencrypt staging
   set_fact:
     LETSENCRYPT_SERVER: https://acme-staging-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: production
   when: not PROD
 
 - name: Set Letsencrypt production
   set_fact:
     LETSENCRYPT_SERVER: https://acme-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: staging
   when: PROD
 
 - name: Create yaml with external TLS
@@ -39,13 +41,13 @@
   ignore_errors: yes
 
 - name: Install cert-manager {{ CERT_MANAGER_VERSION }} with regular manifests
-  shell: kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/{{ CERT_MANAGER_VERSION }}/cert-manager.yaml
-  when: CERT_MANAGER_INSTALL_TYPE == "manifests"
+  shell: kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/{{ CERT_MANAGER_VERSION }}/cert-manager.yaml
+  when: not CERT_MANGER_HELM_INSTALL
 
 - name: Install cert-manager {{ CERT_MANAGER_VERSION }} with helm 3
   shell: |
     # install CustomResourceDefinition resources
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/{{ CERT_MANAGER_VERSION }}/deploy/manifests/00-crds.yaml
+    kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/{{ CERT_MANAGER_VERSION }}/deploy/manifests/00-crds.yaml
 
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
@@ -54,7 +56,7 @@
       cert-manager jetstack/cert-manager \
       --namespace {{ CERT_MANAGER_NAMESPACE }} \
       --version {{ CERT_MANAGER_VERSION }}
-  when: CERT_MANAGER_INSTALL_TYPE == "helm"
+  when: CERT_MANGER_HELM_INSTALL
 
 - name: Wait for cert-manager
   shell: kubectl -n cert-manager rollout status deploy/cert-manager
@@ -86,6 +88,7 @@
 - name: Install Rancher with Letsencrypt
   shell: |
     helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
+      --set replicas={{ RANCHER_REPLICAS }} \
       --namespace {{ RANCHER_NAMESPACE }} \
       --set hostname={{ RANCHER_HOSTNAME }} \
       --set ingress.tls.source=letsEncrypt \

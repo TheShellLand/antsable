@@ -5,3 +5,15 @@
   - name: apt upgrade
     apt: update_cache=yes upgrade=yes
     become: true
+
+  - name: apt autoremove
+    shell: apt -y autoremove
+    become: true
+
+  - name: apt autoclean
+    shell: apt autoclean
+    become: true
+
+  - name: apt clean
+    shell: apt clean
+    become: true

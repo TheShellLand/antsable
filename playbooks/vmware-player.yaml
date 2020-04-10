@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+
+    - set_fact:
+        version: 15.5.2-15785246
+
+    - set_fact:
+        player: http://download3.vmware.com/software/player/file/VMware-Player-{{ version }}.x86_64.bundle
+        bin: /tmp/vmware_player_install.sh
+
+    - name: Download vmware player
+      get_url:
+        url: "{{ player }}"
+        dest: "{{ bin }}"
+        mode: '0755'
+
+    - name: Install vmware player
+      shell: "{{ bin }}"
+      become: true

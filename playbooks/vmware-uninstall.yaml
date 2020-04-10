@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: check vmware installer exists
+      shell: which vmware-installer
+
+    - name: Remove vmware player
+      shell: echo "yes" | vmware-installer --ignore-errors -u vmware-player
+      ignore_errors: true
+
+    - name: Remove vmware workstation
+      shell: echo "yes" | vmware-installer --ignore-errors -u vmware-workstation
+      ignore_errors: true

@@ -5,3 +5,4 @@
 
     - name: shutdown
       shell: shutdown -h now
+      ignore_errors: true

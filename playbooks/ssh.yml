@@ -1,14 +1,15 @@
 ---
 - hosts: all
+  become: true
   tasks:
 
-  - name: Install openssh-server
-    apt: update_cache=yes name=openssh-server state=latest
+    - name: Install openssh-server
+      apt: update_cache=yes name=openssh-server state=latest
 
-  - name: Start openssh-server
-    service:
+    - name: Start openssh-server
+      service:
         name: ssh
         state: started
 
-  - name: Enable persistence
-    shell: systemctl enable ssh
+    - name: Enable persistence
+      shell: systemctl enable ssh

@@ -29,12 +29,6 @@ kube_home: "{{ user_home }}/.kube"
 kube_config_home: "{{ kube_home }}/config"
 kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
 
-# user vars
-NODE_PUBLIC_ADDRESS: "{{ ansible_fqdn }}"
-NODE_INTERNAL_ADDRESS:
-NODE_USER: "{{ ansible_env.USER }}"
-node_role: "controlplane, worker, etcd"
-
 RANCHER_HOSTNAME: "{{ ansible_fqdn }}"
 RANCHER_REPLICAS: 1
 
@@ -45,3 +39,9 @@ ADMIN_EMAIL: root@localhost
 # cloudflare dns
 CLOUDFLARE_EMAIL:
 CLOUDFLARE_APIKEY:
+
+# node vars
+NODE_PUBLIC_ADDRESS: "{{ ansible_fqdn }}"
+NODE_INTERNAL_ADDRESS:
+NODE_USER: "{{ ansible_env.USER }}"
+node_role: "controlplane, worker, etcd"

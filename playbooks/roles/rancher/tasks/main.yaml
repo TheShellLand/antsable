@@ -61,7 +61,7 @@
 - name: Wait for cert-manager
   shell: kubectl -n cert-manager rollout status deploy/cert-manager
   register: kubectl
-  until: kubectl.stdout == 'deployment "cert-manager" successfully rolled out'
+  changed_when: kubectl.stdout == 'deployment "cert-manager" successfully rolled out'
   delay: 5
   retries: 50
 
@@ -75,6 +75,7 @@
   shell: kubectl apply --validate=false -f {{ acme_issuer_yaml }}
   register: acme
   until: '"failed calling webhook" not in acme.stderr'
+  changed_when: '"failed calling webhook" not in acme.stderr'
   delay: 5
   retries: 50
 
@@ -96,6 +97,7 @@
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
   register: helm
   until: '"cannot re-use a name that is still in use" in helm.stderr'
+  changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
   ignore_errors: yes
@@ -107,5 +109,6 @@
   shell: kubectl -n cattle-system rollout status deploy/rancher
   register: kubectl
   until: kubectl.stdout == 'deployment "rancher" successfully rolled out'
+  changed_when: kubectl.stdout == 'deployment "rancher" successfully rolled out'
   delay: 5
   retries: 15

@@ -1,4 +1,8 @@
 ---
+# By default, the name of your cluster will be local
+# Set different Cluster name
+cluster_name: {{ LOCAL_CLUSTER_NAME }}
+
 nodes:
   - address: {{ NODE_PUBLIC_ADDRESS }}
     internal_address: {{ NODE_INTERNAL_ADDRESS }}
@@ -11,15 +15,4 @@ services:
     creation: 6h
     retention: 24h
 
-# By default, the name of your cluster will be local
-# Set different Cluster name
-cluster_name: {{ LOCAL_CLUSTER_NAME }}
-
 ssh_agent_auth: true
-
-# Required for external TLS termination with
-# ingress-nginx v0.22+
-ingress:
-  provider: nginx
-  options:
-    use-forwarded-headers: "true"

@@ -1,4 +1,8 @@
 ---
+# By default, the name of your cluster will be local
+# Set different Cluster name
+cluster_name: {{ LOCAL_CLUSTER_NAME }}
+
 nodes:
   - address: {{ NODE_PUBLIC_ADDRESS }}
     internal_address: {{ NODE_INTERNAL_ADDRESS }}
@@ -10,10 +14,6 @@ services:
     snapshot: true
     creation: 6h
     retention: 24h
-
-# By default, the name of your cluster will be local
-# Set different Cluster name
-cluster_name: {{ LOCAL_CLUSTER_NAME }}
 
 ssh_agent_auth: true
 

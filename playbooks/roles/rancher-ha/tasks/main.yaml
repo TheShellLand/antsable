@@ -96,11 +96,9 @@
       --set letsEncrypt.email={{ ADMIN_EMAIL }} \
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
   register: helm
-  until: '"cannot re-use a name that is still in use" in helm.stderr'
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
-  ignore_errors: yes
 
 - name: Scale rancher to {{ RANCHER_REPLICAS }}
   shell: kubectl scale -n {{ RANCHER_NAMESPACE }} deploy/rancher --replicas={{ RANCHER_REPLICAS }}
@@ -108,7 +106,6 @@
 - name: Wait for rancher
   shell: kubectl -n cattle-system rollout status deploy/rancher
   register: kubectl
-  until: kubectl.stdout == 'deployment "rancher" successfully rolled out'
   changed_when: kubectl.stdout == 'deployment "rancher" successfully rolled out'
   delay: 5
   retries: 15

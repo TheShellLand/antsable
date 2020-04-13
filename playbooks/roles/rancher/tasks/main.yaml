@@ -97,7 +97,6 @@
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
   when: not LETSENCRYPT
   register: helm
-  until: '"cannot re-use a name that is still in use" in helm.stderr'
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
@@ -121,7 +120,6 @@
 - name: Wait for rancher
   shell: kubectl -n cattle-system rollout status deploy/rancher
   register: kubectl
-  until: kubectl.stdout == 'deployment "rancher" successfully rolled out'
   changed_when: kubectl.stdout == 'deployment "rancher" successfully rolled out'
   delay: 5
   retries: 15

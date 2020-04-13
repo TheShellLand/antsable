@@ -85,7 +85,7 @@
   shell: kubectl create namespace {{ RANCHER_NAMESPACE }}
   ignore_errors: yes
 
-- name: Install Rancher with Letsencrypt
+- name: rancher - Install Rancher with Letsencrypt
   shell: |
     helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
       --set replicas={{ RANCHER_REPLICAS }} \
@@ -94,13 +94,13 @@
       --set ingress.tls.source=letsEncrypt \
       --set letsEncrypt.email={{ ADMIN_EMAIL }} \
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
-  when: not LETSENCRYPT
+  when: LETSENCRYPT
   register: helm
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
 
-- name: Install Rancher with Letsencrypt
+- name: rancher - Install Rancher
   shell: |
     helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
       --set replicas={{ RANCHER_REPLICAS }} \

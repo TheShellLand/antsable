@@ -26,7 +26,7 @@
   become: true
 
 - name: Clean up rancher
-  shell: rm -rf /var/lib/rancher/
+  shell: rm -rf /var/lib/rancher/*
   ignore_errors: yes
   become: true
 

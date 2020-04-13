@@ -1,37 +1,36 @@
 ---
-# kubernetes
+#### rke
+NODE_PUBLIC_ADDRESS: "{{ ansible_fqdn }}"
+NODE_INTERNAL_ADDRESS:
+NODE_USER: "{{ ansible_env.USER }}"
+node_role: "controlplane, worker, etcd"
+
+LOCAL_CLUSTER_NAME: "{{ ansible_hostname }}"
+
 #USING_EXTERNAL_TLS: true
 USING_EXTERNAL_TLS: false
 kubernetes_cluster_yaml: rancher-cluster.yaml
 
-# cert-manager
+
+#### kubectl
+user_home: "{{ ansible_env.HOME }}"
+kube_home: "{{ user_home }}/.kube"
+kube_config_home: "{{ kube_home }}/config"
+kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
+
+
+#### cert-manager
 CERT_MANGER_HELM_INSTALL: true
 CERT_MANAGER_VERSION: v0.13.1
 CERT_MANAGER: cert-manager.yaml
 CERT_MANAGER_NAMESPACE: cert-manager
 
-# cert-manager acme
 acme_issuer_yaml: acme-issuer.yaml
 acme_account_key: acme-issuer-account-key
 ACME_ISSUER_TYPE: ClusterIssuer
 #ACME_ISSUER_TYPE: Issuer
 ACME_SERVICE_TYPE: NodePort
 #ACME_SERVICE_TYPE: ClusterIP
-
-# rancher
-RANCHER_VERSION: latest
-#RANCHER_VERSION: stable
-#RANCHER_VERSION: alpha
-RANCHER_NAMESPACE: cattle-system
-
-# kubeconfig
-user_home: "{{ ansible_env.HOME }}"
-kube_home: "{{ user_home }}/.kube"
-kube_config_home: "{{ kube_home }}/config"
-kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
-
-RANCHER_HOSTNAME: "{{ ansible_nodename }}"
-RANCHER_REPLICAS: 1
 
 # used for rancher and letsencrypt
 # master playbook overwrites this var
@@ -41,8 +40,12 @@ ADMIN_EMAIL: root@localhost
 CLOUDFLARE_EMAIL:
 CLOUDFLARE_APIKEY:
 
-# node vars
-NODE_PUBLIC_ADDRESS: "{{ ansible_fqdn }}"
-NODE_INTERNAL_ADDRESS:
-NODE_USER: "{{ ansible_env.USER }}"
-node_role: "controlplane, worker, etcd"
+
+#### rancher
+RANCHER_VERSION: latest
+#RANCHER_VERSION: stable
+#RANCHER_VERSION: alpha
+RANCHER_NAMESPACE: cattle-system
+
+RANCHER_HOSTNAME: "{{ ansible_nodename }}"
+RANCHER_REPLICAS: 1

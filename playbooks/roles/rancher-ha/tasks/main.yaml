@@ -1,50 +1,49 @@
 ---
-- import_tasks: tasks/ansible_facts-fqdn.yml
 - import_tasks: tasks/docker-reset-leave-images.yml
 
-- name: Set Letsencrypt production
-  set_fact:
-    LETSENCRYPT_SERVER: https://acme-v02.api.letsencrypt.org/directory
-    LETSENCRYPT_STAGE_OR_PROD: prod
-  when: PROD
-
-- name: Set Letsencrypt staging
-  set_fact:
-    LETSENCRYPT_SERVER: https://acme-staging-v02.api.letsencrypt.org/directory
-    LETSENCRYPT_STAGE_OR_PROD: staging
-  when: not PROD
-
-- name: Create yaml with external TLS
+- name: rke - Create yaml with external TLS
   template:
     src: k8s_rancher_with_external_tls.yaml
     dest: "{{ kubernetes_cluster_yaml }}"
   when: USING_EXTERNAL_TLS
 
-- name: Create yaml without external TLS
+- name: rke - Create yaml without external TLS
   template:
     src: k8s_rancher_with_no_external_tls.yaml
     dest: "{{ kubernetes_cluster_yaml }}"
   when: not USING_EXTERNAL_TLS
 
-- name: Create rke cluster
+- name: rke - Create cluster
   shell: rke up --config {{ kubernetes_cluster_yaml }}
 
-- name: Make kubeconfig file default
+- name: kubectl - Make kubeconfig file default
   copy:
     src: "{{ kubeconfig }}"
     dest: "{{ kube_config_home }}"
     remote_src: yes
     force: yes
 
-- name: Create cert-manager namespace - {{ CERT_MANAGER_NAMESPACE }}
+- name: cert-manager - Set Letsencrypt production
+  set_fact:
+    LETSENCRYPT_SERVER: https://acme-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: prod
+  when: PROD
+
+- name: cert-manager - Set Letsencrypt staging
+  set_fact:
+    LETSENCRYPT_SERVER: https://acme-staging-v02.api.letsencrypt.org/directory
+    LETSENCRYPT_STAGE_OR_PROD: staging
+  when: not PROD
+
+- name: cert-manager - Create namespace - {{ CERT_MANAGER_NAMESPACE }}
   shell: kubectl create namespace {{ CERT_MANAGER_NAMESPACE }}
   ignore_errors: yes
 
-- name: Install cert-manager {{ CERT_MANAGER_VERSION }} with regular manifests
+- name: cert-manager - Install {{ CERT_MANAGER_VERSION }} with regular manifests
   shell: kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/{{ CERT_MANAGER_VERSION }}/cert-manager.yaml
   when: not CERT_MANGER_HELM_INSTALL
 
-- name: Install cert-manager {{ CERT_MANAGER_VERSION }} with helm 3
+- name: cert-manager - Install {{ CERT_MANAGER_VERSION }} with helm 3
   shell: |
     # install CustomResourceDefinition resources
     kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/{{ CERT_MANAGER_VERSION }}/deploy/manifests/00-crds.yaml
@@ -58,7 +57,7 @@
       --version {{ CERT_MANAGER_VERSION }}
   when: CERT_MANGER_HELM_INSTALL
 
-- name: Wait for cert-manager
+- name: cert-manager - Wait for cert-manager
   shell: kubectl -n cert-manager rollout status deploy/cert-manager
   register: kubectl
   changed_when: kubectl.stdout == 'deployment "cert-manager" successfully rolled out'
@@ -66,12 +65,12 @@
   retries: 50
 
 # https://cert-manager.io/docs/configuration/acme/
-- name: Create ACME - {{ ACME_ISSUER_TYPE }}
+- name: cert-manager - Create ACME - {{ ACME_ISSUER_TYPE }}
   template:
     src: cert-manager-acme.yaml
     dest: "{{ acme_issuer_yaml }}"
 
-- name: Install ACME Issuer
+- name: cert-manager - Install ACME Issuer
   shell: kubectl apply --validate=false -f {{ acme_issuer_yaml }}
   register: acme
   until: '"failed calling webhook" not in acme.stderr'
@@ -79,14 +78,14 @@
   delay: 5
   retries: 50
 
-- name: Add rancher helm {{ RANCHER_VERSION }}
+- name: rancher - Add rancher helm {{ RANCHER_VERSION }}
   shell: helm repo add rancher-{{ RANCHER_VERSION }} https://releases.rancher.com/server-charts/{{ RANCHER_VERSION }}
 
-- name: Create rancher namespace - {{ RANCHER_NAMESPACE }}
+- name: rancher - Create rancher namespace - {{ RANCHER_NAMESPACE }}
   shell: kubectl create namespace {{ RANCHER_NAMESPACE }}
   ignore_errors: yes
 
-- name: Install Rancher with Letsencrypt
+- name: rancher - Install Rancher with Letsencrypt
   shell: |
     helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
       --set replicas={{ RANCHER_REPLICAS }} \
@@ -95,15 +94,29 @@
       --set ingress.tls.source=letsEncrypt \
       --set letsEncrypt.email={{ ADMIN_EMAIL }} \
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
+  when: LETSENCRYPT
   register: helm
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
 
-- name: Scale rancher to {{ RANCHER_REPLICAS }}
+- name: rancher - Install Rancher
+  shell: |
+    helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
+      --set replicas={{ RANCHER_REPLICAS }} \
+      --namespace {{ RANCHER_NAMESPACE }} \
+      --set hostname={{ RANCHER_HOSTNAME }} \
+      --set ingress.tls.source=rancher
+  when: not LETSENCRYPT
+  register: helm
+  changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
+  delay: 5
+  retries: 10
+
+- name: rancher - Scale rancher to {{ RANCHER_REPLICAS }}
   shell: kubectl scale -n {{ RANCHER_NAMESPACE }} deploy/rancher --replicas={{ RANCHER_REPLICAS }}
 
-- name: Wait for rancher
+- name: rancher - Wait for rancher
   shell: kubectl -n cattle-system rollout status deploy/rancher
   register: kubectl
   changed_when: kubectl.stdout == 'deployment "rancher" successfully rolled out'

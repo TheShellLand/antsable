@@ -4,7 +4,7 @@
   roles:
     - rancher-ha
   vars:
+    LETSENCRYPT: true
     PROD: false
-    CERT_MANGER_HELM_INSTALL: true
     ADMIN_EMAIL:
-    LOCAL_CLUSTER_NAME: local
+    LOCAL_CLUSTER_NAME:

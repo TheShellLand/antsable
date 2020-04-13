@@ -6,4 +6,5 @@
 
     - name: shutdown
       shell: shutdown -h now
-      ignore_errors: true
+      register: shell
+      changed_when: shell.unreachable

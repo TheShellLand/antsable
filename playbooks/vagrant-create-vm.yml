@@ -23,7 +23,7 @@
       state: absent
 
     register: out
-    change_when: "'removed' in out.stdout"
+    changed_when: "'removed' in out.stdout"
     ignore_errors: yes
 
   - name: Vagrant - create directory

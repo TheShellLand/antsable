@@ -6,11 +6,9 @@
 
   - name: Clean up docker
     shell: rm -rf /var/lib/docker/*
-    ignore_errors: yes
 
   - name: Clean up rancher
-    shell: rm -rf /var/lib/rancher/
-    ignore_errors: yes
+    shell: rm -rf /var/lib/rancher/*
 
   - name: Clean up kubernetes 
     shell: |
@@ -22,8 +20,6 @@
       rm -rf /var/etcd/backups
       rm -rf /opt/cni
       rm -rf /opt/rke
-    ignore_errors: yes
 
   - name: Reconfigure docker
     shell: dpkg-reconfigure docker-ce
-    ignore_errors: yes

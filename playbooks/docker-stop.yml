@@ -4,5 +4,3 @@
 
   - name: Reset Rancher and clean all docker containers
     shell: docker stop $(docker ps -aq) 
-    ignore_errors: yes
-

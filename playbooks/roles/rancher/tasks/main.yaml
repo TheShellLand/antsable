@@ -95,12 +95,25 @@
       --set ingress.tls.source=letsEncrypt \
       --set letsEncrypt.email={{ ADMIN_EMAIL }} \
       --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
+  when: not LETSENCRYPT
   register: helm
   until: '"cannot re-use a name that is still in use" in helm.stderr'
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
-  ignore_errors: yes
+
+- name: Install Rancher with Letsencrypt
+  shell: |
+    helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
+      --set replicas={{ RANCHER_REPLICAS }} \
+      --namespace {{ RANCHER_NAMESPACE }} \
+      --set hostname={{ RANCHER_HOSTNAME }} \
+      --set ingress.tls.source=rancher
+  when: not LETSENCRYPT
+  register: helm
+  changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
+  delay: 5
+  retries: 10
 
 - name: Scale rancher to {{ RANCHER_REPLICAS }}
   shell: kubectl scale -n {{ RANCHER_NAMESPACE }} deploy/rancher --replicas={{ RANCHER_REPLICAS }}

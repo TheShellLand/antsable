@@ -4,6 +4,7 @@
   roles:
     - rancher
   vars:
+    LETSENCRYPT: true
     PROD: false
     ADMIN_EMAIL:
     LOCAL_CLUSTER_NAME: local

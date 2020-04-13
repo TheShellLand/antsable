@@ -1,5 +1,4 @@
 ---
-- import_tasks: tasks/ansible_facts-fqdn.yml
 - import_tasks: tasks/docker-reset-leave-images.yml
 
 - name: Set Letsencrypt production

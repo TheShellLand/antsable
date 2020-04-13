@@ -30,7 +30,7 @@ kube_home: "{{ user_home }}/.kube"
 kube_config_home: "{{ kube_home }}/config"
 kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
 
-RANCHER_HOSTNAME: "{{ ansible_fqdn }}"
+RANCHER_HOSTNAME: "{{ ansible_nodename }}"
 RANCHER_REPLICAS: 1
 
 # used for rancher and letsencrypt

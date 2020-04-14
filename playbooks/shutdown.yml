@@ -8,3 +8,4 @@
       shell: shutdown -h now
       register: shell
       changed_when: shell.unreachable
+      ignore_errors: yes

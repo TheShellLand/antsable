@@ -6,5 +6,5 @@
   vars:
     LETSENCRYPT: true
     PROD: false
-    ADMIN_EMAIL:
-    LOCAL_CLUSTER_NAME:
+    ADMIN_EMAIL: root@localhost
+    LOCAL_CLUSTER_NAME: "{{ ansible_hostname }}"

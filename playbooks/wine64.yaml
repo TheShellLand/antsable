@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+    -
+    - name: create wine 64 bit prefix
+      shell: WINEPREFIX="$HOME/.wine64" WINEARCH=win64 wine wineboot

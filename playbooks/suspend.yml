@@ -3,5 +3,5 @@
   become: true
   tasks:
 
-    - name: Install vim
+    - name: suspend system
       shell: systemctl suspend

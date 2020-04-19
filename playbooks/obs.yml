@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Install ffmpeg
+      apt: update_cache=yes name=ffmpeg state=latest
+
+    - name: ppa:obsproject/obs-studio
+      apt_repository: repo='ppa:obsproject/obs-studio'
+
+    - name: Install obs-studio
+      apt: update_cache=yes name=obs-studio state=latest

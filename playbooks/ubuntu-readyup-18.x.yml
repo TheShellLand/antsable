@@ -134,7 +134,7 @@
         repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
         state: present
 
-    - name: Wine - fix libfaudio0 (if needed)
+    - name: Wine - fix libfaudio0
       apt_repository:
         repo: ppa:cybermax-dexter/sdl2-backport
         state: present
@@ -199,7 +199,7 @@
         url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
         state: present
 
-    - name: Virtualbox rep
+    - name: Virtualbox repo
       apt_repository:
         repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
         state: present
@@ -210,23 +210,23 @@
         state: latest
         update_cache: yes
 
-    - name: Install qemu-kvm
+    - name: qemu-kvm
       apt: update_cache=no name=qemu-kvm state=latest
 
-    - name: Install libvirt-bin
+    - name: libvirt-bin
       apt: update_cache=no name=libvirt-bin state=latest
 
-    - name: Install virtinst
+    - name: virtinst
       apt: update_cache=no name=virtinst state=latest
 
-    - name: Install bridge-utils
+    - name: bridge-utils
       apt: update_cache=no name=bridge-utils state=latest
 
-    - name: Install cpu-checker
+    - name: cpu-checker
       apt: update_cache=no name=cpu-checker state=latest
 
     # Ideally don't use root account for virt-manager
-    - name: Install virt-manager
+    - name: virt-manager
       apt: update_cache=no name=virt-manager state=latest
 
     - name: Vagrant
@@ -296,8 +296,9 @@
     - name: aircrack
       apt: update_cache=no name=aircrack-ng state=latest
 
-    - name: darktable
+    - name: darktable ppa
       apt_repository: repo='ppa:pmjdebruijn/darktable-release'
+
     - name: darktable
       apt: update_cache=yes name=darktable state=latest
 
@@ -307,7 +308,7 @@
     - name: audacity
       apt: update_cache=no name=audacity state=latest
 
-    - name: Veracrypt repo
+    - name: Veracrypt ppa
       apt_repository: repo='ppa:unit193/encryption'
     - name: Veracrypt
       apt: update_cache=yes name=veracrypt state=latest
@@ -315,7 +316,7 @@
     - name: kazam
       apt: update_cache=no name=kazam state=latest
 
-    - name: OBS-Studio repo
+    - name: OBS-Studio ppa
       apt_repository: repo='ppa:obsproject/obs-studio'
     - name: obs-studio
       apt: update_cache=yes name=obs-studio state=latest
@@ -324,17 +325,17 @@
       apt:
         deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
       ignore_errors: yes
-    - name: green recorder - libsdl1.2debian
-      apt: update_cache=yes name=libsdl1.2debian state=latest
-    - name: green recorder - ffmpeg
-      apt: update_cache=yes name=ffmpeg state=latest
 
+    - name: green recorder - libsdl1.2debian
+      apt: update_cache=no name=libsdl1.2debian state=latest
+    - name: green recorder - ffmpeg
+      apt: update_cache=no name=ffmpeg state=latest
     - name: green recorder ppa
       apt_repository: repo='ppa:fossproject/ppa'
     - name: green recorder
       apt: update_cache=yes name=green-recorder state=latest
 
-    - name: ukuu
+    - name: ukuu ppa
       apt_repository: repo='ppa:teejee2008/ppa'
     - name: ukuu
       apt: update_cache=yes name=ukuu state=latest

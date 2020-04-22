@@ -6,9 +6,6 @@
     - name: /tmp/apps
       file: path=/tmp/apps state=directory
 
-    - name: chdir
-      shell: cd /tmp/apps
-
     - name: Update cache
       apt: update_cache=yes
 

@@ -151,10 +151,10 @@
     # - name: PlayOnLinux - update missing packages
     #   shell: apt install -f -y
 
-    - name: Lutris (gaming) - repo
-      apt_repository: repo='ppa:lutris-team/lutris'
-    - name: Lutris (gaming) - lutris
-      apt: update_cache=yes name=lutris state=latest
+#    - name: Lutris (gaming) - repo
+#      apt_repository: repo='ppa:lutris-team/lutris'
+#    - name: Lutris (gaming) - lutris
+#      apt: update_cache=yes name=lutris state=latest
 
     - name: nodejs
       shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -

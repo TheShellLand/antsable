@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+
+    - name: Remove fonts-noto-color-emoji
+      apt: update_cache=yes name=fonts-noto-color-emoji state=absent
+      become: true
+
+    - name: Install fonts-noto-color-emoji
+      apt: update_cache=no name=fonts-noto-color-emoji state=latest
+      become: true
+
+    - name: restart chrome
+      shell: killall chrome && google-chrome-beta

@@ -1,12 +1,10 @@
 ---
 - hosts: all
+  become: true
   tasks:
 
     - name: /tmp/apps
       file: path=/tmp/apps state=directory
-
-    - name: chdir
-      shell: cd /tmp/apps
 
     #  - name: Disable Ubuntu 16.04 console switch keys
     #    shell: |
@@ -116,46 +114,52 @@
     - name: remmina
       apt: update_cache=no name=remmina state=latest
 
-    - name: PlayOnLinux
+    #    - name: PlayOnLinux
+    #      apt:
+    #        deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
+    #      ignore_errors: yes
+    #    - name: PlayOnLinux
+    #      shell: |
+    #        apt install -f -y
+    #        dpkg --add-architecture i386
+    #    - name: PlayOnLinux - wine
+    #      apt: update_cache=yes name=wine-development state=present
+    #    - name: PlayOnLinux - winbind
+    #      apt: update_cache=no name=winbind state=present
+    #    - name: PlayOnLinux - update missing packages
+    #      shell: apt install -f -y
+
+    - name: Wine i386 architecture
+      shell: dpkg --add-architecture i386
+
+    - name: Wine apt key
+      apt_key:
+        url: https://dl.winehq.org/wine-builds/winehq.key
+        state: present
+
+    - name: Wine repo
+      apt_repository:
+        repo: deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main
+        state: present
+
+    - name: Wine staging
       apt:
-        deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
-      ignore_errors: yes
-    - name: PlayOnLinux
-      shell: |
-        apt install -f -y
-        dpkg --add-architecture i386
-    - name: PlayOnLinux - wine
-      apt: update_cache=yes name=wine-development state=present
-    - name: PlayOnLinux - winbind
-      apt: update_cache=no name=winbind state=present
-    - name: PlayOnLinux - update missing packages
-      shell: apt install -f -y
+        name: winehq-staging
+        state: latest
+        install_recommends: yes
+        update_cache: yes
 
-    - name: Wine (staging)
-      shell: |
-        apps=/tmp/apps
-        wine=$apps/wine
-        mkdir -p $wine
-        cd $wine
-        wget -nc https://dl.winehq.org/wine-builds/winehq.key
-        apt-key add winehq.key
-        apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
-        apt-get update
-        apt-get install -y --install-recommends winehq-staging
-      args:
-        executable: /bin/bash
-
-    - name: Lutris (gaming)
-      shell: |
-        echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | tee /etc/apt/sources.list.d/lutris.list
-        wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | apt-key add -
-        apt-get update
-        apt-get install -y lutris
-        apt-get install -y -f
-      retries: 99
-      delay: 3
-      register: result
-      until: result is succeeded
+    #    - name: Lutris (gaming)
+    #      shell: |
+    #        echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | tee /etc/apt/sources.list.d/lutris.list
+    #        wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | apt-key add -
+    #        apt-get update
+    #        apt-get install -y lutris
+    #        apt-get install -y -f
+    #      retries: 99
+    #      delay: 3
+    #      register: result
+    #      until: result is succeeded
 
     - name: nodejs
       shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
@@ -178,55 +182,24 @@
 
     - name: Virtualbox
       apt: update_cache=no name=virtualbox state=latest
-      retries: 99
-      delay: 3
-      register: result
-      until: result is succeeded
-        # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
-        # Unable to install dependencies even with yakkety contrib branch
-        #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
-        #        virtualbox-5.1 depends on libqt5core5a (>= 5.6.0~beta); however:
-        #        Version of libqt5core5a:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
-        #        virtualbox-5.1 depends on libqt5widgets5 (>= 5.6.0~beta); however:
-        #        Version of libqt5widgets5:amd64 on system is 5.5.1+dfsg-16ubuntu7.5.
-        #        virtualbox-5.1 depends on libqt5x11extras5 (>= 5.6.0); however:
-        #        Version of libqt5x11extras5:amd64 on system is 5.5.1-3build1.
-        #
-        #echo "deb http://download.virtualbox.org/virtualbox/debian yakkety contrib" >> /etc/apt/sources.list
-        #wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-        #apt update
-        #file=vbox.deb
-        #if [ ! -f $apps/$file ]; then
-        #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/virtualbox-5.1_5.1.26-117224~Ubuntu~xenial_amd64.deb"
-        #    dpkg -i $apps/$file
-        #else
-        #    dpkg -i $apps/$file
-        #fi
-        #file=vbox-extpack
-        #if [ ! -f $apps/$file ]; then
-        #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack"
-        #	VBoxManage extpack install --replace $apps/$file
-        #else
-        #	VBoxManage extpack install --replace $apps/$file
-      #fi
 
-    - name: Install qemu-kvm
+    - name: qemu-kvm
       apt: update_cache=no name=qemu-kvm state=latest
 
-    - name: Install libvirt-bin
+    - name: libvirt-bin
       apt: update_cache=no name=libvirt-bin state=latest
 
-    - name: Install virtinst
+    - name: virtinst
       apt: update_cache=no name=virtinst state=latest
 
-    - name: Install bridge-utils
+    - name: bridge-utils
       apt: update_cache=no name=bridge-utils state=latest
 
-    - name: Install cpu-checker
+    - name: cpu-checker
       apt: update_cache=no name=cpu-checker state=latest
 
     # Ideally don't use root account for virt-manager
-    - name: Install virt-manager
+    - name: virt-manager
       apt: update_cache=no name=virt-manager state=latest
 
     - name: Vagrant
@@ -331,8 +304,9 @@
     - name: aircrack
       apt: update_cache=no name=aircrack-ng state=latest
 
-    - name: darktable
+    - name: darktable ppa
       apt_repository: repo='ppa:pmjdebruijn/darktable-release'
+
     - name: darktable
       apt: update_cache=yes name=darktable state=latest
 
@@ -342,7 +316,7 @@
     - name: audacity
       apt: update_cache=no name=audacity state=latest
 
-    - name: Veracrypt repo
+    - name: Veracrypt ppa
       apt_repository: repo='ppa:unit193/encryption'
     - name: Veracrypt
       apt: update_cache=yes name=veracrypt state=latest
@@ -350,7 +324,7 @@
     - name: kazam
       apt: update_cache=no name=kazam state=latest
 
-    - name: OBS-Studio repo
+    - name: OBS-Studio ppa
       apt_repository: repo='ppa:obsproject/obs-studio'
     - name: obs-studio
       apt: update_cache=yes name=obs-studio state=latest
@@ -359,11 +333,11 @@
       apt:
         deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
       ignore_errors: yes
-    - name: green recorder - libsdl1.2debian
-      apt: update_cache=yes name=libsdl1.2debian state=latest
-    - name: green recorder - ffmpeg
-      apt: update_cache=yes name=ffmpeg state=latest
 
+    - name: green recorder - libsdl1.2debian
+      apt: update_cache=no name=libsdl1.2debian state=latest
+    - name: green recorder - ffmpeg
+      apt: update_cache=no name=ffmpeg state=latest
     - name: green recorder ppa
       apt_repository: repo='ppa:fossproject/ppa'
     - name: green recorder

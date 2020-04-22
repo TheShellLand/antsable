@@ -6,13 +6,6 @@
     - name: /tmp/apps
       file: path=/tmp/apps state=directory
 
-    - name: chdir
-      shell: cd /tmp/apps
-
-    #  - name: Disable Ubuntu 16.04 console switch keys
-    #    shell: |
-    #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
-
     - name: Update cache
       apt: update_cache=yes
 
@@ -142,17 +135,17 @@
       args:
         executable: /bin/bash
 
-    - name: Lutris (gaming)
-      shell: |
-        echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | tee /etc/apt/sources.list.d/lutris.list
-        wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | apt-key add -
-        apt-get update
-        apt-get install -y lutris
-        apt-get install -y -f
-      retries: 99
-      delay: 3
-      register: result
-      until: result is succeeded
+    #    - name: Lutris (gaming)
+    #      shell: |
+    #        echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/ ./" | tee /etc/apt/sources.list.d/lutris.list
+    #        wget -q http://download.opensuse.org/repositories/home:/strycore/Debian_9.0/Release.key -O- | apt-key add -
+    #        apt-get update
+    #        apt-get install -y lutris
+    #        apt-get install -y -f
+    #      retries: 99
+    #      delay: 3
+    #      register: result
+    #      until: result is succeeded
 
     - name: nodejs
       shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
@@ -175,10 +168,7 @@
 
     - name: Virtualbox
       apt: update_cache=no name=virtualbox state=latest
-      retries: 99
-      delay: 3
-      register: result
-      until: result is succeeded
+
         # TODO: VirtualBox 5.1.26 does not install on Ubuntu 16.04
         # Unable to install dependencies even with yakkety contrib branch
         #    dpkg: dependency problems prevent configuration of virtualbox-5.1:
@@ -204,26 +194,26 @@
         #	wget -q -O $apps/$file "http://download.virtualbox.org/virtualbox/5.1.26/Oracle_VM_VirtualBox_Extension_Pack-5.1.26-117224.vbox-extpack"
         #	VBoxManage extpack install --replace $apps/$file
         #else
-        #	VBoxManage extpack install --replace $apps/$file
+      #	VBoxManage extpack install --replace $apps/$file
       #fi
 
-    - name: Install qemu-kvm
+    - name: qemu-kvm
       apt: update_cache=no name=qemu-kvm state=latest
 
-    - name: Install libvirt-bin
+    - name: libvirt-bin
       apt: update_cache=no name=libvirt-bin state=latest
 
-    - name: Install virtinst
+    - name: virtinst
       apt: update_cache=no name=virtinst state=latest
 
-    - name: Install bridge-utils
+    - name: bridge-utils
       apt: update_cache=no name=bridge-utils state=latest
 
-    - name: Install cpu-checker
+    - name: cpu-checker
       apt: update_cache=no name=cpu-checker state=latest
 
     # Ideally don't use root account for virt-manager
-    - name: Install virt-manager
+    - name: virt-manager
       apt: update_cache=no name=virt-manager state=latest
 
     - name: Vagrant
@@ -293,8 +283,9 @@
     - name: aircrack
       apt: update_cache=no name=aircrack-ng state=latest
 
-    - name: darktable
+    - name: darktable ppa
       apt_repository: repo='ppa:pmjdebruijn/darktable-release'
+
     - name: darktable
       apt: update_cache=yes name=darktable state=latest
 
@@ -304,7 +295,7 @@
     - name: audacity
       apt: update_cache=no name=audacity state=latest
 
-    - name: Veracrypt repo
+    - name: Veracrypt ppa
       apt_repository: repo='ppa:unit193/encryption'
     - name: Veracrypt
       apt: update_cache=yes name=veracrypt state=latest
@@ -312,7 +303,7 @@
     - name: kazam
       apt: update_cache=no name=kazam state=latest
 
-    - name: OBS-Studio repo
+    - name: OBS-Studio ppa
       apt_repository: repo='ppa:obsproject/obs-studio'
     - name: obs-studio
       apt: update_cache=yes name=obs-studio state=latest
@@ -321,11 +312,11 @@
       apt:
         deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
       ignore_errors: yes
-    - name: green recorder - libsdl1.2debian
-      apt: update_cache=yes name=libsdl1.2debian state=latest
-    - name: green recorder - ffmpeg
-      apt: update_cache=yes name=ffmpeg state=latest
 
+    - name: green recorder - libsdl1.2debian
+      apt: update_cache=no name=libsdl1.2debian state=latest
+    - name: green recorder - ffmpeg
+      apt: update_cache=no name=ffmpeg state=latest
     - name: green recorder ppa
       apt_repository: repo='ppa:fossproject/ppa'
     - name: green recorder

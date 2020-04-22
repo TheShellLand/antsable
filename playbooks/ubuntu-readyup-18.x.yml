@@ -191,13 +191,26 @@
     #   - name: Virtualbox
     #     apt: update_cache=no name=virtualbox state=latest
 
+    - name: Virtualbox oracle_vbox apt key
+      apt_key:
+        url: https://www.virtualbox.org/download/oracle_vbox.asc
+        state: present
+
+    - name: Virtualbox oracle_vbox_2016 apt key
+      apt_key:
+        url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+        state: present
+
+    - name: Virtualbox rep
+      apt_repository:
+        repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
+        state: present
+
     - name: Virtualbox 6.0
-      shell: |
-        echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
-        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-        wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-        apt update
-        apt install -y virtualbox-6.0
+      apt:
+        name: virtualbox-6.0
+        state: latest
+        update_cache: yes
 
     - name: Install qemu-kvm
       apt: update_cache=no name=qemu-kvm state=latest

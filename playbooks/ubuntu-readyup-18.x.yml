@@ -131,7 +131,12 @@
 
     - name: Wine repo
       apt_repository:
-        repo: https://dl.winehq.org/wine-builds/ubuntu/
+        repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
+        state: present
+
+    - name: Wine - fix libfaudio0 (if needed)
+      apt_repository:
+        repo: ppa:cybermax-dexter/sdl2-backport
         state: present
 
     - name: Wine staging
@@ -141,10 +146,6 @@
         install_recommends: yes
         update_cache: yes
 
-    #    - name: Wine - fix libfaudio0 (if needed)
-    #      apt_repository:
-    #        repo: ppa:cybermax-dexter/sdl2-backport
-    #        state: present
 
     # - name: PlayOnLinux
     #   apt:

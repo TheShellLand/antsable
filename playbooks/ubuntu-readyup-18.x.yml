@@ -124,17 +124,30 @@
     - name: remmina
       apt: update_cache=no name=remmina state=latest
 
-    - name: Wine (staging)
-      shell: |
-        dpkg --add-architecture i386
-        curl -s https://dl.winehq.org/wine-builds/winehq.key | apt-key add
-        apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
-        # fix libfaudio0
-        add-apt-repository -y ppa:cybermax-dexter/sdl2-backport
-        apt-get update
-        apt-get install -y --install-recommends winehq-staging
-      args:
-        executable: /bin/bash
+    - name: Wine i386 architecture
+      shell: dpkg --add-architecture i386
+
+    - name: Wine apt key
+      apt_key:
+        url: https://dl.winehq.org/wine-builds/winehq.key
+        state: present
+
+    - name: Wine repo
+      apt_repository:
+        repo: https://dl.winehq.org/wine-builds/ubuntu/
+        state: present
+
+    - name: Wine staging
+      apt:
+        name: winehq-staging
+        state: latest
+        install_recommends: yes
+        update_cache: yes
+
+    #    - name: Wine - fix libfaudio0 (if needed)
+    #      apt_repository:
+    #        repo: ppa:cybermax-dexter/sdl2-backport
+    #        state: present
 
     # - name: PlayOnLinux
     #   apt:
@@ -151,10 +164,10 @@
     # - name: PlayOnLinux - update missing packages
     #   shell: apt install -f -y
 
-#    - name: Lutris (gaming) - repo
-#      apt_repository: repo='ppa:lutris-team/lutris'
-#    - name: Lutris (gaming) - lutris
-#      apt: update_cache=yes name=lutris state=latest
+    #    - name: Lutris (gaming) - repo
+    #      apt_repository: repo='ppa:lutris-team/lutris'
+    #    - name: Lutris (gaming) - lutris
+    #      apt: update_cache=yes name=lutris state=latest
 
     - name: nodejs
       shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -

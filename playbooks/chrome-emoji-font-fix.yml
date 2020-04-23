@@ -11,4 +11,4 @@
       become: true
 
     - name: restart chrome
-      shell: killall chrome && google-chrome-beta
+      shell: killall chrome && google-chrome-beta & disown

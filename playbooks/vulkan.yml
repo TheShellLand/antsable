@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Install libvulkan1
+      apt: update_cache=yes name=libvulkan1 state=latest
+
+    - name: Install libvulkan1:i386
+      apt: update_cache=no name=libvulkan1:i386 state=latest

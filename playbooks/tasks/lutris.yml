@@ -1,0 +1,6 @@
+---
+- name: Lutris - repo
+  apt_repository: repo='ppa:lutris-team/lutris'
+
+- name: Lutris
+  apt: update_cache=yes name=lutris state=latest

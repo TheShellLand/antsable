@@ -1,0 +1,5 @@
+---
+- import_tasks: tasks/update_cache.yml
+- import_tasks: tasks/games-support.yml
+- import_tasks: tasks/nvidia-ppa.yml
+- import_tasks: tasks/vulkan.yml

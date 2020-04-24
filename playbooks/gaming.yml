@@ -1,0 +1,5 @@
+---
+- hosts: gaming
+  become: true
+  roles:
+    - gaming

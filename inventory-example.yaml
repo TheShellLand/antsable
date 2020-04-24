@@ -29,6 +29,9 @@ pc:
 laptop:
   hosts:
 
+gaming:
+  hosts:
+
 gateway:
   hosts:
 

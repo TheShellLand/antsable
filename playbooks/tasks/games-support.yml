@@ -1,0 +1,19 @@
+---
+# support for 32-bit games
+- name: Install libgl1-mesa-dri:i386
+  apt: update_cache=yes name=libgl1-mesa-dri:i386 state=latest
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '19.10'
+
+# support for 32-bit games
+- name: add ppa kisak/kisak-mesa
+  apt_repository: repo='ppa:kisak/kisak-mesa'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+# support for 32-bit games
+- name: Install libgl1-mesa-glx:i386
+  apt: update_cache=yes name=libgl1-mesa-glx:i386 state=latest
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+# Enable 32 bit architecture
+- name: add dpkg architecture i386
+  shell: dpkg --add-architecture i386

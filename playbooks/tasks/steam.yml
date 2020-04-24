@@ -1,0 +1,4 @@
+---
+- name: Steam
+  apt:
+    deb: https://steamcdn-a.akamaihd.net/client/installer/steam.deb

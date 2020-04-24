@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Wine i386 architecture
+      shell: dpkg --add-architecture i386
+
+    - name: Wine apt key
+      apt_key:
+        url: https://dl.winehq.org/wine-builds/winehq.key
+        state: present
+
+    - name: Wine repo
+      apt_repository:
+        repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
+        state: present
+
+    - name: Wine - fix libfaudio0
+      apt_repository:
+        repo: ppa:cybermax-dexter/sdl2-backport
+        state: present
+
+    - name: Wine staging
+      apt:
+        name: winehq-staging
+        state: latest
+        install_recommends: yes
+        update_cache: yes
+
+    - name: create wine 64 bit prefix
+      shell: WINEPREFIX="$HOME/.wine" WINEARCH=win64 wine wineboot

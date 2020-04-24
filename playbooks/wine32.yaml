@@ -1,6 +1,6 @@
 ---
 - hosts: all
   tasks:
-    -
+
     - name: create wine 32 bit prefix
-      shell: WINEPREFIX="$HOME/.wine32" WINEARCH=win32 wine wineboot
+      shell: WINEPREFIX="$HOME/.wine" WINEARCH=win32 wine wineboot

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Install iostat
+      apt: update_cache=yes name=sysstat state=latest
+
+#    - name: Install ntop
+#      apt: update_cache=no name=ntop state=latest
+
+    - name: Install iftop
+      apt: update_cache=no name=iftop state=latest

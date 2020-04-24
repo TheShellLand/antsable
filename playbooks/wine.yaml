@@ -28,5 +28,10 @@
         install_recommends: yes
         update_cache: yes
 
+    - name: Wine fonts
+      apt:
+        name: fonts-wine
+        state: latest
+
     - name: create wine 64 bit prefix
       shell: WINEPREFIX="$HOME/.wine" WINEARCH=win64 wine wineboot

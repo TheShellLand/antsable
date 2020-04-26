@@ -3,6 +3,9 @@
   become: true
   tasks:
 
+  - name: Cleanup
+    file: path=/tmp/apps state=absent
+
   - name: /tmp/apps
     file: path=/tmp/apps state=directory
 
@@ -17,11 +20,7 @@
 
   - name: gnome-tweak-tool
     apt: update_cache=no name=gnome-tweak-tool state=latest
-    retries: 99
-    delay: 3
-    register: result
-    until: result is succeeded
-    
+
 #  - name: Configure for gdm - debconf
 #    debconf:
 #      name: gdm3

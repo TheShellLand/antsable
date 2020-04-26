@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: darling-dkms
+      apt:
+        deb: https://github.com/darlinghq/darling/releases/download/v0.1.20200331/darling-dkms_0.1.20200331.testing_amd64.deb
+
+    - name: darling
+      apt:
+        deb: https://github.com/darlinghq/darling/releases/download/v0.1.20200331/darling_0.1.20200331.testing_amd64.deb

@@ -11,5 +11,4 @@
 - import_tasks: tasks/curl.yml
 - import_tasks: tasks/iproute2.yml
 - import_tasks: tasks/kernelmod.yml
-# can't be installed as root
-#- import_tasks: tasks/radare.yml
+- import_tasks: tasks/radare.yml

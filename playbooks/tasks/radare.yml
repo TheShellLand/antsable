@@ -25,14 +25,14 @@
 - name: Radare2 - git
   git:
     repo: https://github.com/radare/radare2.git
-    dest: radare2
+    dest: /tmp/radare2
     force: yes
     clone: yes
     update: yes
 
 - name: Radare2 - install
-  shell: /bin/bash radare2/sys/install.sh
-  become: no
+  shell: /bin/bash /tmp/radare2/sys/install.sh
+  become: yes
 
 - name: chmod
   file:

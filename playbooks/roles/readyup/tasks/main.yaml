@@ -1,0 +1,15 @@
+---
+
+# Ubuntu 18
+- import_tasks: ubuntu-readyup-18.x.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+- import_tasks: ubuntu-readyup-gnome.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+# Ubuntu 19
+- import_tasks: ubuntu-readyup-19.x.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '19.10'
+
+- import_tasks: ubuntu-readyup-gnome19.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '19.10'

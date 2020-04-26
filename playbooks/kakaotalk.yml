@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+
+    - name: Download KakaoTalk
+      get_url:
+        url: http://app.pc.kakao.com/talk/win32/KakaoTalk_Setup.exe
+        dest: /tmp/KakaoTalk_Setup.exe
+
+    - name: Install KakaoTalk
+      shell: wine /tmp/KakaoTalk_Setup.exe

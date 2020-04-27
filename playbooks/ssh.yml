@@ -3,8 +3,11 @@
   become: true
   tasks:
 
+    - name: Remove openssh-server
+      apt: update_cache=no name=openssh-server state=absent
+
     - name: Install openssh-server
-      apt: update_cache=yes name=openssh-server state=latest
+      apt: update_cache=no name=openssh-server state=latest
 
     - name: Start openssh-server
       service:

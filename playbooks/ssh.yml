@@ -1,12 +1,10 @@
 ---
 - hosts: all
   become: true
-  gather_facts: no
   tasks:
 
     - name: Remove openssh-server
       apt: update_cache=no name=openssh-server state=absent
-      ignore_errors: true
 
     - name: Install openssh-server
       apt: update_cache=no name=openssh-server state=latest

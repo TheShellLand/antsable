@@ -16,5 +16,5 @@
         mode: '0755'
 
     - name: Install vmware workstation
-      shell: "{{ bin }}"
+      shell: "{{ bin }}" --deferred-gtk --eulas-agreed
       become: true

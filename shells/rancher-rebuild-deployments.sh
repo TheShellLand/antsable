@@ -14,7 +14,7 @@ if rancher cluster; then
   fi
 fi
 
-if ! which rancher || ! which kubectl ; then
+if ! which rancher || ! which kubectl; then
   echo "*** rancher-cli and kubectl are required ***"
   exit 1
 fi
@@ -22,39 +22,41 @@ fi
 set -e
 
 {
-# auth to rancher
-# Default context
-CONTEXT=$(echo 0 | rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" | grep Default | awk '{print $1}' || echo -ne)
-echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
+  # auth to rancher
+  # Default context
+  CONTEXT=$(echo 0 | rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" | grep Default | awk '{print $1}' || echo -ne)
+  echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
+}
 
 # start
 START=$(date)
 
-# begin deploying out to cluster
-for PROJECT in $(ls "$CLUSTERNAME"); do
+{
+  # begin deploying out to cluster
+  for PROJECT in $(ls "$CLUSTERNAME"); do
 
-  # create project
-  rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT"
+    # create project
+    rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT"
 
-  # switch to the project
-  CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}')
-  echo "$CONTEXT" | rancher context switch >/dev/null
+    # switch to the project
+    CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}')
+    echo "$CONTEXT" | rancher context switch >/dev/null
 
-  for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
-    # create namespaces
-    rancher namespace create "$NAMESPACE" || echo -ne
+    for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
+      # create namespaces
+      rancher namespace create "$NAMESPACE" || echo -ne
 
-    # create deployments
-    for yaml in $(find "$CLUSTERNAME/$PROJECT/$NAMESPACE" -type f -name '*.yaml'); do
-      rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || echo -ne
+      # create deployments
+      for yaml in $(find "$CLUSTERNAME/$PROJECT/$NAMESPACE" -type f -name '*.yaml'); do
+        rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || echo -ne
 
-      echo -ne "\r                                                                                            "
-      echo -ne "\rDeploying: $PROJECT::$NAMESPACE::$yaml"
+        echo -ne "\r                                                                                            "
+        echo -ne "\rDeploying: $PROJECT::$NAMESPACE::$yaml"
+
+      done
 
     done
-
   done
-done
 } 2>/dev/null
 
 # finish

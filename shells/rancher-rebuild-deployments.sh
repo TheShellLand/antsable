@@ -22,7 +22,7 @@ fi
 set -ex
 
 # auth to rancher
-rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME"
+rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" || echo -ne
 
 # defaults to Default namespace
 CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep Default | awk '{print $1}')

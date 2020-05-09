@@ -19,7 +19,7 @@ if ! which rancher || ! which kubectl ; then
   exit 1
 fi
 
-set -ex
+set -e
 
 # auth to rancher
 # Default context
@@ -28,6 +28,8 @@ echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
 
 # start
 START=$(date)
+
+echo "Deploying"
 
 # begin deploying out to cluster
 for PROJECT in $(ls "$CLUSTERNAME"); do
@@ -41,11 +43,14 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
 
   for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
     # create namespaces
-    rancher namespace create "$NAMESPACE" || echo exists
+    rancher namespace create "$NAMESPACE" || echo -ne
 
     # create deployments
     for yaml in $(find "$CLUSTERNAME/$PROJECT/$NAMESPACE" -type f -name '*.yaml'); do
-      rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || continue
+      rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || echo -ne
+
+      echo -ne "\r$PROJECT $NAMESPACE $yaml"
+
     done
 
   done

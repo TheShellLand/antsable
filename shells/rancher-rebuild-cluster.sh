@@ -43,7 +43,7 @@ date
 rancher wait --timeout 999999999 "$CLUSTERNAME"
 
 # finish
-date
+START=$(date)
 
 # begin deploying out to cluster
 for PROJECT in $(ls "$CLUSTERNAME"); do
@@ -68,7 +68,9 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
 done
 
 # finish
-date
+echo "Start: $START"
+echo "Finish: $(date)"
+
 
 echo "Add additional nodes with this command:"
 echo "rancher cluster add-node --etcd --controlplane --worker -q $CLUSTERNAME"

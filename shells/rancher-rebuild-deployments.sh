@@ -29,7 +29,7 @@ CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep Default |
 echo "$CONTEXT" | rancher context switch
 
 # start
-date
+START=$(date)
 
 # begin deploying out to cluster
 for PROJECT in $(ls "$CLUSTERNAME"); do
@@ -54,4 +54,5 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
 done
 
 # finish
-date
+echo "Start: $START"
+echo "Finish: $(date)"

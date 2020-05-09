@@ -38,7 +38,7 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
 
   # switch to the project
   CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}')
-  echo "$CONTEXT" | rancher context switch
+  echo "$CONTEXT" | rancher context switch >/dev/null
 
   for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
     # create namespaces

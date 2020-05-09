@@ -14,7 +14,7 @@ if rancher cluster; then
   fi
 fi
 
-if ! which rancher || ! which kubectl; then
+if ! which rancher >/dev/null || ! which kubectl >/dev/null; then
   echo "*** rancher-cli and kubectl are required ***"
   exit 1
 fi
@@ -26,7 +26,7 @@ set -e
   # Default context
   CONTEXT=$(echo 0 | rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" | grep Default | awk '{print $1}' || echo -ne)
   echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
-} 2>&1 >/dev/null
+} 2>/dev/null
 
 # start
 START=$(date)
@@ -36,11 +36,11 @@ START=$(date)
   for PROJECT in $(ls "$CLUSTERNAME"); do
 
     # create project
-    rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT"
+    rancher projects | grep "$PROJECT" || rancher projects create "$PROJECT" >&2
 
     # switch to the project
-    CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}')
-    echo "$CONTEXT" | rancher context switch >/dev/null
+    CONTEXT=$(echo 0 | rancher context switch | grep "$CLUSTERNAME" | grep "$PROJECT" | awk '{print $1}') >&2
+    echo "$CONTEXT" | rancher context switch >&2
 
     for NAMESPACE in $(ls "$CLUSTERNAME/$PROJECT"); do
       # create namespaces
@@ -60,5 +60,5 @@ START=$(date)
 } 2>/dev/null
 
 # finish
-echo "Start: $START"
+echo -e "\nStart: $START"
 echo "Finish: $(date)"

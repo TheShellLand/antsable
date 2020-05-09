@@ -26,7 +26,7 @@ set -e
   # Default context
   CONTEXT=$(echo 0 | rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" | grep Default | awk '{print $1}' || echo -ne)
   echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
-}
+} 2>&1 >/dev/null
 
 # start
 START=$(date)

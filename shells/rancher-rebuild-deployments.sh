@@ -21,6 +21,7 @@ fi
 
 set -e
 
+{
 # auth to rancher
 # Default context
 CONTEXT=$(echo 0 | rancher login $HOST --token $TOKEN --skip-verify | grep "$CLUSTERNAME" | grep Default | awk '{print $1}' || echo -ne)
@@ -28,8 +29,6 @@ echo $CONTEXT | rancher login $HOST --token $TOKEN --skip-verify
 
 # start
 START=$(date)
-
-echo "Deploying"
 
 # begin deploying out to cluster
 for PROJECT in $(ls "$CLUSTERNAME"); do
@@ -49,12 +48,14 @@ for PROJECT in $(ls "$CLUSTERNAME"); do
     for yaml in $(find "$CLUSTERNAME/$PROJECT/$NAMESPACE" -type f -name '*.yaml'); do
       rancher kubectl create -f "$yaml" --namespace "$NAMESPACE" || echo -ne
 
-      echo -ne "\r$PROJECT $NAMESPACE $yaml"
+      echo -ne "\r                                                                                            "
+      echo -ne "\rDeploying: $PROJECT::$NAMESPACE::$yaml"
 
     done
 
   done
 done
+} 2>/dev/null
 
 # finish
 echo "Start: $START"

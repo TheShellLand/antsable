@@ -1,35 +1,51 @@
 ---
 - import_tasks: tasks/docker-reset-leave-images.yml
 
+- name: delete .kube
+  file:
+    path: "{{ kube_home }}"
+    state: absent
+
+- name: create .kube
+  file:
+    path: "{{ kube_home }}"
+    state: directory
+    recurse: true
+
 - name: rke - Create yaml with external TLS
   template:
     src: k8s_rancher_with_external_tls.yaml
-    dest: "{{ kubernetes_cluster_yaml }}"
+    dest: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"
   when: USING_EXTERNAL_TLS
 
 - name: rke - Create yaml without external TLS
   template:
     src: k8s_rancher_with_no_external_tls.yaml
-    dest: "{{ kubernetes_cluster_yaml }}"
+    dest: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"
   when: not USING_EXTERNAL_TLS
 
 - name: rke - Create cluster
-  shell: rke up --config {{ kubernetes_cluster_yaml }}
+  shell: rke up --config {{ kube_home }}/{{ kubernetes_cluster_yaml }}
 
 - name: kubectl - Make kubeconfig file default
   copy:
-    src: "{{ kubeconfig }}"
-    dest: "{{ kube_config_home }}"
+    src: "{{ kube_home }}/{{ kubeconfig_yaml }}"
+    dest: "{{ kube_home }}/config"
     remote_src: yes
     force: yes
 
-- name: cert-manager - Set Letsencrypt production
+#- name: kubectl - remove {{ kubeconfig }}
+#  file:
+#    path: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"
+#    state: absent
+
+- name: letsencrypt - production
   set_fact:
     LETSENCRYPT_SERVER: https://acme-v02.api.letsencrypt.org/directory
     LETSENCRYPT_STAGE_OR_PROD: prod
   when: PROD
 
-- name: cert-manager - Set Letsencrypt staging
+- name: letsencrypt - staging
   set_fact:
     LETSENCRYPT_SERVER: https://acme-staging-v02.api.letsencrypt.org/directory
     LETSENCRYPT_STAGE_OR_PROD: staging
@@ -68,10 +84,10 @@
 - name: cert-manager - Create ACME - {{ ACME_ISSUER_TYPE }}
   template:
     src: cert-manager-acme.yaml
-    dest: "{{ acme_issuer_yaml }}"
+    dest: "{{ kube_home }}/{{ acme_issuer_yaml }}"
 
 - name: cert-manager - Install ACME Issuer
-  shell: kubectl apply --validate=false -f {{ acme_issuer_yaml }}
+  shell: kubectl apply --validate=false -f {{ kube_home }}/{{ acme_issuer_yaml }}
   register: acme
   until: '"failed calling webhook" not in acme.stderr'
   changed_when: '"failed calling webhook" not in acme.stderr'

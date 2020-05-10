@@ -15,8 +15,11 @@ kubernetes_cluster_yaml: rancher-cluster.yaml
 #### kubectl
 user_home: "{{ ansible_env.HOME }}"
 kube_home: "{{ user_home }}/.kube"
-kube_config_home: "{{ kube_home }}/config"
-kubeconfig: kube_config_{{ kubernetes_cluster_yaml }}
+kubeconfig: "{{ kube_home }}/config"
+kubeconfig_yaml: kube_config_{{ kubernetes_cluster_yaml }}
+
+
+#### letsencrypt
 
 
 #### cert-manager

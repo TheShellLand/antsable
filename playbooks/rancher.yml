@@ -8,3 +8,4 @@
     PROD: false
     ADMIN_EMAIL: root@localhost
     LOCAL_CLUSTER_NAME: "{{ ansible_hostname }}"
+    RANCHER_HOSTNAME: "{{ inventory_hostname }}"

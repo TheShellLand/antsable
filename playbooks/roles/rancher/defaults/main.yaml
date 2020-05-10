@@ -51,5 +51,5 @@ RANCHER_VERSION: latest
 #RANCHER_VERSION: alpha
 RANCHER_NAMESPACE: cattle-system
 
-RANCHER_HOSTNAME: "{{ ansible_nodename }}"
+RANCHER_HOSTNAME: "{{ inventory_hostname }}"
 RANCHER_REPLICAS: 1

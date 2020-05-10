@@ -34,6 +34,12 @@
     remote_src: yes
     force: yes
 
+- name: kubectl - Copy kubeconfig locally
+  fetch:
+    src: "{{ kube_home }}/{{ kubeconfig_yaml }}"
+    dest: "~/.kube/config"
+    flat: yes
+
 #- name: kubectl - remove {{ kubeconfig }}
 #  file:
 #    path: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"

@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: Delete vmware license
+      file:
+        path: /etc/vmware/license*
+        state: absent

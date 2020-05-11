@@ -20,8 +20,10 @@ exec 4<>fifo
 {
   docker rm -f filebeat >&2 || echo -ne
 
-  #docker run --rm -it --name filebeat docker.elastic.co/beats/filebeat-oss:7.6.2 setup -E setup.kibana.host=172.17.0.3:5601 \
-  #  -E output.elasticsearch.hosts=["172.17.0.2:9200"]
+  if [ ! -f filebeat_initialized ]; then
+    docker run --rm -it --name filebeat docker.elastic.co/beats/filebeat-oss:7.6.2 setup -E setup.kibana.host=172.17.0.3:5601 \
+      -E output.elasticsearch.hosts=["172.17.0.2:9200"] && touch filebeat_initialized
+  fi
 
   cat <&0 | docker run --rm -i --name filebeat -v $(pwd)/filebeat.yml:/usr/share/filebeat/filebeat.yml docker.elastic.co/beats/filebeat-oss:7.6.2 2>&4 &
 

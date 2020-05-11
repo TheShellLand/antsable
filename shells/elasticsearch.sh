@@ -4,6 +4,7 @@
 
 set -xe
 
+rm filebeat_initialized
 docker rm -f elasticsearch || echo -ne
 docker rm -f kibana || echo -ne
 docker run --rm -d -p 9200:9200 --name elasticsearch --hostname elasticsearch -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2

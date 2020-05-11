@@ -1,31 +1,33 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: true
   tasks:
 
-  - name: /tmp/apps
-    file: path=/tmp/apps state=directory
+    - name: /tmp/apps
+      file: path=/tmp/apps state=directory
 
-  - name: Download VBox iso
-    get_url:
-      url: https://download.virtualbox.org/virtualbox/6.0.10/VBoxGuestAdditions_6.0.10.iso
-      dest: /tmp/apps/VBoxGuestAdditions.iso
-      #validate_certs: no
+    - name: Download VBox iso
+      get_url:
+        url: https://download.virtualbox.org/virtualbox/6.0.10/VBoxGuestAdditions_6.0.10.iso
+        dest: /tmp/apps/VBoxGuestAdditions.iso
+        #validate_certs: no
 
-  - name: build-essential
-    apt: update_cache=yes name=build-essential state=latest
+    - name: build-essential
+      apt: update_cache=yes name=build-essential state=latest
 
-  - name: dkms
-    apt: update_cache=no name=dkms state=latest
+    - name: dkms
+      apt: update_cache=no name=dkms state=latest
 
-  - name: linux-headers
-    shell: apt install -y linux-headers-$(uname -r)
+    - name: linux-headers
+      shell: apt install -y linux-headers-$(uname -r)
 
-  - name: Install Guest Additions
-    shell: |
-      mkdir /tmp/apps/iso
-      mount -o loop /tmp/apps/VBoxGuestAdditions.iso /tmp/apps/iso
-      yes | bash /tmp/apps/iso/VBoxLinuxAdditions.run
-      umount /tmp/apps/iso
+    - name: Install Guest Additions
+      shell: |
+        mkdir /tmp/apps/iso
+        mount -o loop /tmp/apps/VBoxGuestAdditions.iso /tmp/apps/iso
+        yes | bash /tmp/apps/iso/VBoxLinuxAdditions.run
+        umount /tmp/apps/iso
 
-  - name: Cleanup
-    shell: rm -rf /tmp/apps
+    - name: Cleanup
+      shell: rm -rf /tmp/apps

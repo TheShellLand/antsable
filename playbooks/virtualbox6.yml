@@ -1,13 +1,9 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: true
   tasks:
-  
-  - name: Virtualbox 6.0
-    shell: |
-      echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib" > /etc/apt/sources.list.d/virtualbox.list
-      wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-      wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-      apt update
-      apt install -y virtualbox
-      
-      
+
+    - name: Virtualbox 6.0
+      apt:
+        deb: https://download.virtualbox.org/virtualbox/6.1.6/virtualbox-6.1_6.1.6-137129~Ubuntu~bionic_amd64.deb

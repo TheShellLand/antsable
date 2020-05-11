@@ -5,6 +5,7 @@
 - import_tasks: tasks/vim.yml
 - import_tasks: tasks/ping.yml
 - import_tasks: tasks/nslookup.yml
+- import_tasks: tasks/netcat.yml
 - import_tasks: tasks/rsync.yml
 - import_tasks: tasks/s3fs.yml
 - import_tasks: tasks/wget.yml

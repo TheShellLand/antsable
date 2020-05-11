@@ -30,9 +30,16 @@
     clone: yes
     update: yes
 
+- name: Radare2 - build
+  shell: |
+    cd /tmp/radare2
+    /bin/bash sys/install.sh
+
 - name: Radare2 - install
-  shell: /bin/bash /tmp/radare2/sys/install.sh
-  become: yes
+  shell: |
+    cd /tmp/radare2
+    make symstall
+  become: true
 
 - name: chmod
   file:

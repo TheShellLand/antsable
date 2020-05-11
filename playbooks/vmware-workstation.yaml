@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  connection: local
   tasks:
 
     - set_fact:

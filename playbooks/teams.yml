@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
-  become: true
   connection: local
+  become: true
   tasks:
 
     - name: Microsoft Teams

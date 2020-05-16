@@ -1,0 +1,31 @@
+---
+- name: required - dirmngr
+  apt: update_cache=yes name=dirmngr state=latest
+
+- name: required - gnupg
+  apt: update_cache=no name=gnupg state=latest
+
+- name: required - apt-transport-https
+  apt: update_cache=no name=apt-transport-https state=latest
+
+- name: required - ca-certificates
+  apt: update_cache=no name=ca-certificates state=latest
+
+- name: add mono key
+  shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+
+- name: add mono repo
+  apt_repository:
+    repo: deb https://download.mono-project.com/repo/ubuntu stable-bionic main
+    state: present
+
+# https://www.mono-project.com/download/stable/#download-lin-ubuntu
+
+#    - name: install mono-devel
+#      apt: update_cache=yes name=mono-devel state=latest
+
+- name: install mono-complete
+  apt: update_cache=yes name=mono-complete state=latest
+
+#    - name: install mono-dbg
+#      apt: update_cache=yes name=mono-dbg state=latest

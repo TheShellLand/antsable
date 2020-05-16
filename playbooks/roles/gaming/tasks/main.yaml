@@ -5,3 +5,4 @@
 - import_tasks: tasks/vulkan.yml
 - import_tasks: tasks/steam.yml
 - import_tasks: tasks/wine.yml
+- import_tasks: tasks/mono.yml

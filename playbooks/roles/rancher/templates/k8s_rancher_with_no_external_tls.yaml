@@ -16,3 +16,5 @@ services:
     retention: 24h
 
 ssh_agent_auth: true
+
+# https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate-recognizedca.yml

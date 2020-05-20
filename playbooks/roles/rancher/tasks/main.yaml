@@ -1,24 +1,25 @@
 ---
 - import_tasks: tasks/docker-reset-leave-images.yml
+- import_tasks: tasks/helm.yml
 
-- name: delete .kube
+- name: delete ~/.kube
   file:
     path: "{{ kube_home }}"
     state: absent
 
-- name: create .kube
+- name: create ~/.kube
   file:
     path: "{{ kube_home }}"
     state: directory
     recurse: true
 
-- name: rke - Create yaml with external TLS
+- name: rke - Create rke template with external TLS
   template:
     src: k8s_rancher_with_external_tls.yaml
     dest: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"
   when: USING_EXTERNAL_TLS
 
-- name: rke - Create yaml without external TLS
+- name: rke - Create rke template without external TLS
   template:
     src: k8s_rancher_with_no_external_tls.yaml
     dest: "{{ kube_home }}/{{ kubernetes_cluster_yaml }}"
@@ -57,15 +58,15 @@
     LETSENCRYPT_STAGE_OR_PROD: staging
   when: not PROD
 
-- name: cert-manager - Create namespace - {{ CERT_MANAGER_NAMESPACE }}
+- name: cert-manager - Create namespace ({{ CERT_MANAGER_NAMESPACE }})
   shell: kubectl create namespace {{ CERT_MANAGER_NAMESPACE }}
   ignore_errors: yes
 
-- name: cert-manager - Install {{ CERT_MANAGER_VERSION }} with regular manifests
+- name: cert-manager - Install with regular manifests ({{ CERT_MANAGER_VERSION }})
   shell: kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/{{ CERT_MANAGER_VERSION }}/cert-manager.yaml
   when: not CERT_MANGER_HELM_INSTALL
 
-- name: cert-manager - Install {{ CERT_MANAGER_VERSION }} with helm 3
+- name: cert-manager - Install with helm 3 ({{ CERT_MANAGER_VERSION }})
   shell: |
     # install CustomResourceDefinition resources
     kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/{{ CERT_MANAGER_VERSION }}/deploy/manifests/00-crds.yaml
@@ -73,8 +74,7 @@
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
 
-    helm install \
-      cert-manager jetstack/cert-manager \
+    helm install cert-manager jetstack/cert-manager \
       --namespace {{ CERT_MANAGER_NAMESPACE }} \
       --version {{ CERT_MANAGER_VERSION }}
   when: CERT_MANGER_HELM_INSTALL
@@ -86,8 +86,11 @@
   delay: 5
   retries: 50
 
+- name: cert-manager - Get pods
+  shell: kubectl get pods --namespace cert-manager
+
 # https://cert-manager.io/docs/configuration/acme/
-- name: cert-manager - Create ACME - {{ ACME_ISSUER_TYPE }}
+- name: cert-manager - Create ACME ({{ ACME_ISSUER_TYPE }})
   template:
     src: cert-manager-acme.yaml
     dest: "{{ kube_home }}/{{ acme_issuer_yaml }}"
@@ -100,12 +103,25 @@
   delay: 5
   retries: 50
 
-- name: rancher - Add rancher helm {{ RANCHER_VERSION }}
+- name: rancher - Add rancher helm ({{ RANCHER_VERSION }})
   shell: helm repo add rancher-{{ RANCHER_VERSION }} https://releases.rancher.com/server-charts/{{ RANCHER_VERSION }}
 
-- name: rancher - Create rancher namespace - {{ RANCHER_NAMESPACE }}
+- name: rancher - Create rancher namespace ({{ RANCHER_NAMESPACE }})
   shell: kubectl create namespace {{ RANCHER_NAMESPACE }}
   ignore_errors: yes
+
+- name: rancher - Install Rancher with External TLS
+  shell: |
+    helm install rancher rancher-{{ RANCHER_VERSION }}/rancher \
+      --set replicas={{ RANCHER_REPLICAS }} \
+      --namespace {{ RANCHER_NAMESPACE }} \
+      --set hostname={{ RANCHER_HOSTNAME }} \
+      --set tls=external --wait
+  when: LETSENCRYPT
+  register: helm
+  changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
+  delay: 5
+  retries: 10
 
 - name: rancher - Install Rancher with Letsencrypt
   shell: |
@@ -115,7 +131,7 @@
       --set hostname={{ RANCHER_HOSTNAME }} \
       --set ingress.tls.source=letsEncrypt \
       --set letsEncrypt.email={{ ADMIN_EMAIL }} \
-      --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }}
+      --set letsEncrypt.environment={{ LETSENCRYPT_STAGE_OR_PROD }} --wait
   when: LETSENCRYPT
   register: helm
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
@@ -128,14 +144,14 @@
       --set replicas={{ RANCHER_REPLICAS }} \
       --namespace {{ RANCHER_NAMESPACE }} \
       --set hostname={{ RANCHER_HOSTNAME }} \
-      --set ingress.tls.source=rancher
+      --set ingress.tls.source=rancher --wait
   when: not LETSENCRYPT
   register: helm
   changed_when: '"cannot re-use a name that is still in use" in helm.stderr'
   delay: 5
   retries: 10
 
-- name: rancher - Scale rancher to {{ RANCHER_REPLICAS }}
+- name: rancher - Scale rancher to ({{ RANCHER_REPLICAS }})
   shell: kubectl scale -n {{ RANCHER_NAMESPACE }} deploy/rancher --replicas={{ RANCHER_REPLICAS }}
 
 - name: rancher - Wait for rancher

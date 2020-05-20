@@ -23,3 +23,7 @@ ingress:
   provider: nginx
   options:
     use-forwarded-headers: "true"
+  extra_args:
+    enable-ssl-passthrough: ""
+
+# https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate-recognizedca.yml

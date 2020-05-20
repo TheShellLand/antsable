@@ -170,4 +170,3 @@
 
   - name: Cleanup
     file: path=/tmp/apps state=absent
-    

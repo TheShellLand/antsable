@@ -142,7 +142,6 @@
     install_recommends: yes
     update_cache: yes
 
-
 # - name: PlayOnLinux
 #   apt:
 #     deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb
@@ -183,29 +182,9 @@
 - name: VLC
   apt: update_cache=no name=vlc state=latest
 
-#   - name: Virtualbox
-#     apt: update_cache=no name=virtualbox state=latest
-
-- name: Virtualbox oracle_vbox apt key
-  apt_key:
-    url: https://www.virtualbox.org/download/oracle_vbox.asc
-    state: present
-
-- name: Virtualbox oracle_vbox_2016 apt key
-  apt_key:
-    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-    state: present
-
-- name: Virtualbox repo
-  apt_repository:
-    repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
-    state: present
-
 - name: Virtualbox 6.0
   apt:
-    name: virtualbox-6.0
-    state: latest
-    update_cache: yes
+    deb: https://download.virtualbox.org/virtualbox/6.1.6/virtualbox-6.1_6.1.6-137129~Ubuntu~bionic_amd64.deb
 
 - name: qemu-kvm
   apt: update_cache=no name=qemu-kvm state=latest
@@ -228,7 +207,7 @@
 
 - name: Vagrant
   apt:
-    deb: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+    deb: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
 
 - name: Pycharm
   snap:

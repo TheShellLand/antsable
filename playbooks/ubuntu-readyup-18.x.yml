@@ -211,7 +211,7 @@
 
     - name: Vagrant
       apt:
-        deb: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+        deb: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
 
     - name: Pycharm
       snap:

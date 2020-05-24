@@ -1,33 +1,28 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: yes
   tasks:
 
-  - name: Install curl
-    apt: update_cache=yes name=curl state=latest
+    - name: Add the Cloud SDK distribution URI as a package source
+      apt_repository: repo='deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main'
 
-  - name: Add the Cloud SDK distribution URI as a package source
-    shell: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
-    args:
-      executable: /bin/bash
+    - name: Install apt-transport-https
+      apt: update_cache=yes name=apt-transport-https state=latest
 
-  - name: Install apt-transport-https
-    apt: update_cache=no name=apt-transport-https state=latest
+    - name: Install ca-certificates
+      apt: update_cache=no name=ca-certificates state=latest
 
-  - name: Install ca-certificates
-    apt: update_cache=no name=ca-certificates state=latest
+    - name: Install gnupg
+      apt: update_cache=no name=gnupg state=latest
 
-  - name: Install gnupg
-    apt: update_cache=no name=gnupg state=latest
+    - name: Import the Google Cloud Platform public key
+      apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg state=present
 
-  - name: Import the Google Cloud Platform public key
-    shell: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-    args:
-      executable: /bin/bash
+    - name: Install google-cloud-sdk
+      apt: update_cache=yes name=google-cloud-sdk state=latest
 
-  - name: Install google-cloud-sdk
-    apt: update_cache=yes name=google-cloud-sdk state=latest
+    # See https://cloud.google.com/sdk/docs/components#external_package_managers
 
-  # See https://cloud.google.com/sdk/docs/components#external_package_managers
-
-  - name: Install kubectl
-    apt: update_cache=no name=kubectl state=latest
+    - name: Install kubectl
+      apt: update_cache=no name=kubectl state=latest

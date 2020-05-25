@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+    # https://github.com/TRON-US/go-btfs
+    - name: BTFS - Download installer
+      get_url:
+        url: https://raw.githubusercontent.com/TRON-US/btfs-binary-releases/master/install.sh
+        dest: /tmp/btfs-install.sh
+
+    - name: BTFS - check file
+      file:
+        path: /tmp/btfs-install.sh
+        mode: +x
+
+    - name: BTFS - Run a script with arguments (free form)
+      script: /tmp/btfs-install.sh -o linux -a amd64
+
+    - name: BTFS - set path
+      shell: export PATH=${PATH}:${HOME}/btfs/

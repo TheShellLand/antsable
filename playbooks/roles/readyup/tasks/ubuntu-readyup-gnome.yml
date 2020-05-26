@@ -1,15 +1,27 @@
 ---
-- name: Cleanup
-  file: path=/tmp/apps state=absent
+- set_fact:
+    install: /tmp/install
+    themes: /usr/share/themes
+    extensions: /usr/share/gnome-shell/extensions
+    ext: /usr/share/gnome-shell/extensions
 
-- name: /tmp/apps
-  file: path=/tmp/apps state=directory
+- name: Create themes dir
+  file: path={{ themes }} state=directory
+
+- name: Create extensions dir
+  file: path={{ extensions }} state=directory
+
+- name: Cleanup
+  file: path={{ install }} state=absent
+
+- name: Create temp dir
+  file: path={{ install }} state=directory
 
 - name: Install Missing Packages
   shell: apt install -f -y
 
 - name: ubuntu-gnome-desktop
-  apt: update_cache=no name=ubuntu-gnome-desktop state=latest
+  apt: update_cache=yes name=ubuntu-gnome-desktop state=latest
 
 - name: dconf-editor
   apt: update_cache=no name=dconf-editor state=latest
@@ -32,49 +44,73 @@
 #      backup: yes
 
 ###
-### PRETTY UI
+### Extensions
 ###
 
 - name: Gnome Extensions
   shell: |
-    apps=/tmp/apps
-    wget -O $apps/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
-    wget -O $apps/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
-    wget -O $apps/hidetopbar.zip https://extensions.gnome.org/download-extension/hidetopbar%40mathieu.bidon.ca.shell-extension.zip?version_tag=7714
-    wget -O $apps/window-corner.zip https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+    # no title bar
+    wget -O {{ install }}/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
+    unzip -o {{ install }}/no-title-bar.zip -d {{ extensions }}/no-title-bar@franglais125.gmail.com
 
-    mkdir -p /usr/share/gnome-shell/extensions
+    # enable shell extensions
+    wget -O {{ install }}/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
+    unzip -o {{ install }}/shell-extension.zip -d {{ extensions }}/user-theme@gnome-shell-extensions.gcampax.github.com
 
-    unzip -o $apps/no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
-    unzip -o $apps/shell-extension.zip -d /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
-    unzip -o $apps/hidetopbar.zip -d /usr/share/gnome-shell/extensions/hidetopbar@mathieu.bidon.ca
-    unzip -o $apps/window-corner.zip -d /usr/share/gnome-shell/extensions/window-corner-preview@fabiomereu.it
+    # hide top bar
+    wget -O {{ install }}/hidetopbar.zip https://extensions.gnome.org/download-extension/hidetopbar%40mathieu.bidon.ca.shell-extension.zip?version_tag=7714
+    unzip -o {{ install }}/hidetopbar.zip -d {{ extensions }}/hidetopbar@mathieu.bidon.ca
 
-    chmod -R +r /usr/share/gnome-shell/extensions
+    # corner window preview
+    wget -O {{ install }}/window-corner.zip https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+    unzip -o {{ install }}/window-corner.zip -d {{ extensions }}/window-corner-preview@fabiomereu.it
+
+    chmod -R +r {{ extensions }}
   args:
     executable: /bin/bash
 
-- name: capitaine-cursors - download
-  get_url:
-    url: https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
-    dest: /tmp/apps/r2.1.tar.gz
-- name: capitaine-cursors - extract
-  shell: mkdir /tmp/apps/capitaine-cursors
-- name: capitaine-cursors - extract
+###
+### Themes
+###
+
+- name: Mojave-dark
   unarchive:
-    src: /tmp/apps/r2.1.tar.gz
-    dest: /tmp/apps/capitaine-cursors
-- name: capitaine-cursors - install
-  shell: cp -r /tmp/apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
+    src: https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODk4ODgyNjUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjRiZTk3NmU2OTI3MDRmNmY2ZDlmYjljYmViYzU1MjQ4NmIxM2Q2N2E0MWFiYjNlZDg4ODZmMmI4MTk5OWU1MjVlZDUwYzg0MDgxMjdhYTI2YzFhMTczMjI1YTA5Y2U2MjhjYjAwMjY5NWM2ODhjMjM1ZjcxZTlkNTE4ZDJkYzc0IiwidCI6MTU5MDUxNDU3Miwic3RmcCI6ImE2ZTUyMmU5ZmNiYTNiOTU0MmJjMGZhZDQyY2RiMDU4Iiwic3RpcCI6IjEwMC4xNS44OC41OSJ9.7MnSE3Iie_fW4GSrJENq2IGb-Q44ecv002CZBQ_4LQs/Mojave-dark-20200519113011.tar.xz
+    dest: "{{ themes }}"
+    remote_src: yes
+
+- name: Prof-Gnome-theme - Light
+  unarchive:
+    src: https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODkzODE1ODIiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjM4NzIwODcyZTVjOWM0MDlkNjlkMWZhNzI5ODg5ZWYyZTBiYzQzNzA1NzQ5ODVhOGVkNGVhMmMzMWRhNDUzNjEwOWQ4ZGQ0MGYwZWRlZGI1MjdiYTI4NDRhYzVjNDQ4MWFhZGY5ZmRjOGIxNDdlZjVlMDEwMDdhZWVhN2IzMzJkIiwidCI6MTU5MDUxNjk3Nywic3RmcCI6ImE2ZTUyMmU5ZmNiYTNiOTU0MmJjMGZhZDQyY2RiMDU4Iiwic3RpcCI6IjEwMC4xNS44OC41OSJ9.kxnw3WHRoDRrBh7LX0cnnvsGR3OlGqY0IVuvMz1ZKfs/Prof-Gnome-Light-3.5.tar.xz
+    dest: "{{ themes }}"
+    remote_src: yes
+
+- name: Prof-Gnome-theme - Dark
+  unarchive:
+    src: https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODkzODE4NjkiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6ImRhNDJjZmRmNzQ0ZWYyZjIwOTk1MzVmOWMwZDJmMmUwZjBmODcyOWQ4YzBjYzU5NWNmZDhlNTE5NjdmNjg5ZGM4ZjY2MzY5YTM3Y2ZiZmIzNzI2MDJiMjM1YjA4Mzc2M2FlNzJhNzBjY2MxYzBiN2JhZTg0MGI5ZWE4ZDEzMmJjIiwidCI6MTU5MDUxNzAwOSwic3RmcCI6ImE2ZTUyMmU5ZmNiYTNiOTU0MmJjMGZhZDQyY2RiMDU4Iiwic3RpcCI6IjEwMC4xNS44OC41OSJ9.yMUpEz5nKPpb_8Iaayx5wNUQneshz6uHK9Zf2tQWGf0/Prof-Gnome-Dark-3.5.tar.xz
+    dest: "{{ themes }}"
+    remote_src: yes
+
+- name: Prof-Gnome-theme - Darker
+  unarchive:
+    src: https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODkzODIxNDAiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjY1OGQ4NjI5ODkxMWNmZmU0OWVjZDdiYzExZDEwNDk2MDEyNDllYzU1MGY1MGJiODg5M2Y1MjAwOTU4ZDIzZTg2YjQ2YTU1YjJiYWZmMjc5NzAyZGFlMTViYWExZWJmYzY3NThiNWUwZGE4ODMxYzhjMmIxN2IwZmU1ZWQyYjNiIiwidCI6MTU5MDUxNzA0Niwic3RmcCI6ImE2ZTUyMmU5ZmNiYTNiOTU0MmJjMGZhZDQyY2RiMDU4Iiwic3RpcCI6IjEwMC4xNS44OC41OSJ9.DWtC1MI92M8Wuj3PHfmFhVl-hw3P3ZSI7i3ZxjYHsBY/Prof-Gnome-Darker-3.5.tar.xz
+    dest: "{{ themes }}"
+    remote_src: yes
+
+- name: Prof-Gnome-theme - Light-DS
+  unarchive:
+    src: https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODkzODIxMDQiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6IjI2YzM3ZjcwZmY0YzFiOGVjZWVlYjBjYWZlMjgyZTkwNzE0NmRlN2Q4MWNiNzQ0OTZhZDNiNzIzZTRhZjAzNzM0NTg3NDc5OTNhZTE4ZmEwY2Q1ZmRiNmViYjk3YWU0OWE0MjJkM2JkOThhYWY0NTIzNGM0YmZiYWUxMGNkNzVlIiwidCI6MTU5MDUxNzE0MSwic3RmcCI6ImE2ZTUyMmU5ZmNiYTNiOTU0MmJjMGZhZDQyY2RiMDU4Iiwic3RpcCI6IjEwMC4xNS44OC41OSJ9.XfmWpXxEI1cGheyqCkS9d2LAOb4159MMqWS94sDw1lU/Prof-Gnome-Light-DS-3.5.tar.xz
+    dest: "{{ themes }}"
+    remote_src: yes
 
 - name: Arrongin theme
   git:
     repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
-    dest: /tmp/apps/arrogin
+    dest: "{{ install }}/arrogin"
     update: yes
-- name: install Arrongin
+- name: Arrongin theme - install
   shell: |
-    cd /tmp/apps/arrogin
+    cd {{ install }}/arrogin
     cp -rv 'Arrongin-Buttons-Right=>3.30' /usr/share/themes/
   args:
     executable: /bin/bash
@@ -82,11 +118,11 @@
 - name: Telinkrin theme
   git:
     repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
-    dest: /tmp/apps/telinkrin
+    dest: "{{ install }}/telinkrin"
     update: yes
-- name: install telinkrin
+- name: Telinkrin theme - install
   shell: |
-    cd /tmp/apps/telinkrin
+    cd {{ install }}/telinkrin
     cp -rv 'Telinkrin-Buttons-Right=>3.30' /usr/share/themes/
   args:
     executable: /bin/bash
@@ -95,6 +131,23 @@
 #     apt_repository: repo='ppa:communitheme/ppa'
 #   - name: ubuntu-communitheme-session - install
 #     apt: update_cache=no name=ubuntu-communitheme-session state=latest
+
+###
+### Icons & Cursors
+###
+
+- name: capitaine-cursors - download
+  get_url:
+    url: https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
+    dest: "{{ install }}/r2.1.tar.gz"
+- name: capitaine-cursors - extract
+  shell: mkdir {{ install }}/capitaine-cursors
+- name: capitaine-cursors - extract
+  unarchive:
+    src: "{{ install }}/r2.1.tar.gz"
+    dest: "{{ install }}/capitaine-cursors"
+- name: capitaine-cursors - install
+  shell: cp -r {{ install }}/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
 
 - name: obsidian-1-icons - repo
   apt_repository: repo='ppa:noobslab/icons'
@@ -149,20 +202,20 @@
 - name: arc-icon-theme - download
   git:
     repo: https://github.com/horst3180/arc-icon-theme.git
-    dest: /tmp/apps/arc-icon-theme
+    dest: "{{ install }}/arc-icon-theme"
 - name: arc-icon-theme - install
-  shell: cp -r /tmp/apps/arc-icon-theme/Arc /usr/share/icons
+  shell: cp -r {{ install }}/arc-icon-theme/Arc /usr/share/icons
 
 - name: mac fonts - download
   get_url:
     url: http://drive.noobslab.com/data/Mac/macfonts.zip
-    dest: /tmp/apps/macfonts.zip
+    dest: "{{ install }}/macfonts.zip"
 - name: mac fonts - install
   unarchive:
-    src: /tmp/apps/macfonts.zip
+    src: "{{ install }}/macfonts.zip"
     dest: /usr/share/fonts
 - name: mac fonts - update
   shell: fc-cache -f -v
 
 - name: Cleanup
-  file: path=/tmp/apps state=absent
+  file: path={{ install }} state=absent

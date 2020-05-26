@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# grep all the logs
+# get kube deployments
 
-if [ -z "$@" ]; then
+if [ -z "$*" ]; then
   kubectl get deploy --all-namespaces
 else
   kubectl get deploy --namespace "$@"
 fi
-

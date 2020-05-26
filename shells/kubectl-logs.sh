@@ -4,7 +4,13 @@
 
 if [ "$1" == "" ]; then
   echo -ne "Usage: kubectl-logs.sh namespace deployment\n\n"
-  kubectl get deploy --all-namespaces
+  set -x
+  kubectl get services --all-namespaces
+  kubectl get deployments --all-namespaces
+  kubectl get jobs --all-namespaces
 else
-  kubectl -n $1 logs deployment/$2 --all-containers | less
+  set -x
+  kubectl logs --namespace $1 deployment/$2 --all-containers $3 2>/dev/null \
+    || kubectl logs --namespace $1 pod/$2 $3 2>/dev/null \
+    || kubectl logs --namespace $1 jobs/$2 $3 2>/dev/null
 fi

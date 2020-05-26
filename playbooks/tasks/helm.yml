@@ -1,6 +1,6 @@
 ---
 - set_fact:
-    helm_version: v3.1.1
+    helm_version: v3.2.1
     helm_path: /tmp/helm
     helm_bin: /tmp/helm/linux-amd64/helm
     bin: /usr/local/bin/helm
@@ -22,6 +22,7 @@
     dest: "{{ bin }}"
     mode: +x,o+x
     remote_src: yes
+  become: true
 
 - name: cleanup
   file:

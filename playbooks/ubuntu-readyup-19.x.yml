@@ -4,8 +4,11 @@
   become: true
   tasks:
 
-    - name: /tmp/apps
-      file: path=/tmp/apps state=directory
+    - set_fact:
+        install: /tmp/install
+
+    - name: temp install
+      file: path={{ install }} state=directory
 
     - name: Update cache
       apt: update_cache=yes
@@ -14,7 +17,7 @@
       shell: apt install -f -y
 
     - name: software-properties-common
-      apt: update_cache=yes name=software-properties-common state=latest
+      apt: update_cache=no name=software-properties-common state=latest
 
     - name: sudo
       apt: update_cache=no name=sudo state=latest
@@ -498,10 +501,10 @@
     #    args:
     #      executable: /bin/bash
 
-    - name: Remove useless packages from the cache
+    - name: autoclean
       apt:
         autoclean: yes
 
-    - name: Remove dependencies that are no longer required
+    - name: autoremove
       apt:
         autoremove: yes

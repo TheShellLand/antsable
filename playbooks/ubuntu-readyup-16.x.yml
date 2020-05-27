@@ -4,9 +4,11 @@
   become: true
   tasks:
 
-    - name: /tmp/apps
-      file: path=/tmp/apps state=directory
+    - set_fact:
+        install: /tmp/install
 
+    - name: temp install
+      file: path={{ install }} state=directory
     #  - name: Disable Ubuntu 16.04 console switch keys
     #    shell: |
     #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
@@ -18,7 +20,7 @@
       shell: apt install -f -y
 
     - name: software-properties-common
-      apt: update_cache=yes name=software-properties-common state=latest
+      apt: update_cache=no name=software-properties-common state=latest
 
     - name: X299 Realtek ALC1220 time drift fix
       # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
@@ -206,7 +208,7 @@
 
     - name: Vagrant
       apt:
-        deb: https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+        deb: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
 
     - name: Pycharm
       shell:
@@ -509,10 +511,10 @@
     #    args:
     #      executable: /bin/bash
 
-    - name: Remove useless packages from the cache
+    - name: autoclean
       apt:
         autoclean: yes
 
-    - name: Remove dependencies that are no longer required
+    - name: autoremove
       apt:
         autoremove: yes

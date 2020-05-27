@@ -1,14 +1,20 @@
 ---
-- hosts: all
-  gather_facts: no
-
+- hosts: localhost
+  connection: local
+  become: true
   tasks:
-  - name: install python 3
-    shell: |
-      apt update
-      apt install -y python3
-      apt install -y curl
-      apt install -y python3-distutils
-      # Install pip or pip3
-      curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
-      python3 "get-pip.py"
+
+    - name: Install python3
+      apt: update_cache=yes name=python3 state=latest
+
+    - name: Install curl
+      apt: update_cache=no name=curl state=latest
+
+    - name: Install python3-distutils
+      apt: update_cache=no name=python3-distutils state=latest
+
+    - name: install pip
+      shell: |
+        # Install pip or pip3
+        curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
+        python3 "get-pip.py"

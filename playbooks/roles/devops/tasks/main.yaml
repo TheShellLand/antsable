@@ -12,4 +12,5 @@
 - import_tasks: tasks/curl.yml
 - import_tasks: tasks/iproute2.yml
 - import_tasks: tasks/kernelmod.yml
+- import_tasks: tasks/python3.yml
 #- import_tasks: tasks/radare.yml

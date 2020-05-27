@@ -87,6 +87,9 @@
     - name: python3-pip
       apt: update_cache=no name=python3-pip state=latest
 
+    - name: python3-distutils
+      apt: update_cache=no name=python3-distutils state=latest
+
     #  - name: Disable Mouse Acceleration for X server
     #    file: >
     #      path=/usr/share/X11/xorg.conf.d/

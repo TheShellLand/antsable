@@ -4,14 +4,17 @@
   become: true
   tasks:
 
-    - name: /tmp/apps
-      file: path=/tmp/apps state=directory
+    - set_fact:
+        temp: /tmp/install
+        version: 6.1.6
+
+    - name: Create temp space
+      file: path={{ temp }} state=directory
 
     - name: Download VBox iso
       get_url:
-        url: https://download.virtualbox.org/virtualbox/6.0.10/VBoxGuestAdditions_6.0.10.iso
-        dest: /tmp/apps/VBoxGuestAdditions.iso
-        #validate_certs: no
+        url: https://download.virtualbox.org/virtualbox/{{ version }}/VBoxGuestAdditions_{{ version }}.iso
+        dest: "{{ temp }}/VBoxGuestAdditions.iso"
 
     - name: build-essential
       apt: update_cache=yes name=build-essential state=latest
@@ -24,10 +27,10 @@
 
     - name: Install Guest Additions
       shell: |
-        mkdir /tmp/apps/iso
-        mount -o loop /tmp/apps/VBoxGuestAdditions.iso /tmp/apps/iso
-        yes | bash /tmp/apps/iso/VBoxLinuxAdditions.run
-        umount /tmp/apps/iso
+        mkdir {{ temp }}/iso
+        mount -o loop {{ temp }}/VBoxGuestAdditions.iso {{ temp }}/iso
+        yes | bash {{ temp }}/iso/VBoxLinuxAdditions.run
+        umount {{ temp }}/iso
 
     - name: Cleanup
-      shell: rm -rf /tmp/apps
+      file: path={{ temp }} state=absent

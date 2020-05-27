@@ -4,9 +4,6 @@
   become: yes
   tasks:
 
-    - name: Add the Cloud SDK distribution URI as a package source
-      apt_repository: repo='deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main'
-
     - name: Install apt-transport-https
       apt: update_cache=yes name=apt-transport-https state=latest
 
@@ -15,6 +12,10 @@
 
     - name: Install gnupg
       apt: update_cache=no name=gnupg state=latest
+
+    - name: Add the Cloud SDK distribution URI as a package source
+      apt_repository:
+        repo: 'deb https://packages.cloud.google.com/apt cloud-sdk main'
 
     - name: Import the Google Cloud Platform public key
       apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg state=present

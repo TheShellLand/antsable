@@ -7,3 +7,15 @@
     - name: Virtualbox 6.0
       apt:
         deb: https://download.virtualbox.org/virtualbox/6.1.6/virtualbox-6.1_6.1.6-137129~Ubuntu~bionic_amd64.deb
+
+    - name: Added user to vboxsf group
+      shell: usermod -a -G vboxsf ubuntu
+      ignore_errors: yes
+
+    - name: Added user to vboxsf group
+      shell: usermod -a -G vboxsf vagrant
+      ignore_errors: yes
+
+    - name: Added user to vboxsf group
+      shell: usermod -a -G vboxsf eric
+      ignore_errors: yes

@@ -9,8 +9,7 @@
 
     - name: Add insync repo
       apt_repository: repo='deb http://apt.insync.io/ubuntu xenial non-free contrib'
-      when: ansible_distribution_version == '18.04' or ansible_distribution_version == '18.04' and ansible_distribution == 'Ubuntu' 
-      
+      when: ansible_distribution_version == '18.04' or ansible_distribution_version == '18.04' and ansible_distribution == 'Ubuntu'
 
     - name: Install insync
       apt: update_cache=yes name=insync state=latest

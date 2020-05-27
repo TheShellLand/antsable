@@ -96,28 +96,29 @@ if [ "$?" == 1 ]; then
   fi
 fi
 
-if [ ! -d ".git" ]; then
-  git clone https://github.com/TheShellLand/antsable
-fi
-
 if ! which ansible-playbook; then
   echo "** ansible not able to be installed **"
   exit 1
 fi
 
-# Create inventory.yaml
-if [ ! -f inventory.yaml ]; then
-  cp -v inventory-example.yaml inventory.yaml
-fi
+if [ ! -d ".git" ]; then
+  git clone https://github.com/TheShellLand/antsable
+else
+  # Create inventory.yaml
+  if [ ! -f inventory.yaml ]; then
+    cp -v inventory-example.yaml inventory.yaml
+  fi
 
-# Create sshconfig
-if [ ! -f config ]; then
-  cp -v config-example config
-fi
+  # Create sshconfig
+  if [ ! -f config ]; then
+    cp -v config-example config
+  fi
 
-# Run playbook
-if [ ! "$1" == "" ]; then
-  set -x
-  ansible-playbook -i inventory.yaml "$@"
-  # ansible-playbook -v -i inventory.yaml -c local "$1"
+  # Run playbook
+  if [ ! "$1" == "" ]; then
+    set -x
+    ansible-playbook -i inventory.yaml "$@"
+    # ansible-playbook -v -i inventory.yaml -c local "$1"
+  fi
+
 fi

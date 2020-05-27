@@ -1,5 +1,7 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: true
   tasks:
 
     - name: Pycharm community

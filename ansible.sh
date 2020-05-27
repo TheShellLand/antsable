@@ -17,6 +17,7 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
+    apt install -y git && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -35,6 +36,7 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
+    apt install -y git && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -52,6 +54,7 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
+    apt install -y git && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -68,6 +71,7 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
+    apt install -y git && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -83,12 +87,17 @@ if [ "$?" == 1 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
+    apt install -y git && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
     apt update && \
     apt install -y ansible
   fi
+fi
+
+if [ ! -d ".git" ]; then
+  git clone https://github.com/TheShellLand/antsable
 fi
 
 if ! which ansible-playbook; then

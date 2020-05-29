@@ -3,3 +3,6 @@
   become: true
   roles:
     - readyup
+  vars:
+    INSTALL_TOOLS: true
+    INSTALL_GNOME: true

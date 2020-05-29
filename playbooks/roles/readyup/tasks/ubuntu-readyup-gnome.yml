@@ -80,6 +80,7 @@
     https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v24.shell-extension.zip
     https://extensions.gnome.org/extension-data/windowsNavigator%40gnome-shell-extensions.gcampax.github.com.v41.shell-extension.zip
     https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+    https://extensions.gnome.org/extension-data/disable-workspace-switcher-popup%40github.com.v2.shell-extension.zip
     "
 
     for ext in $extensions; do

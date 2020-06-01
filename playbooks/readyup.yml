@@ -6,4 +6,4 @@
     - readyup
   vars:
     INSTALL_TOOLS: true
-    INSTALL_GNOME: true
+    INSTALL_GNOME: false

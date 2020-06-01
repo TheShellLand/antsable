@@ -137,6 +137,11 @@
     install_recommends: yes
     update_cache: yes
 
+- name: Wine fonts
+  apt:
+    name: fonts-wine
+    state: latest
+
 # - name: PlayOnLinux
 #   apt:
 #     deb: https://www.playonlinux.com/script_files/PlayOnLinux/4.2.12/PlayOnLinux_4.2.12.deb

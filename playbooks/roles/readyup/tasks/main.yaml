@@ -15,6 +15,8 @@
 # Ubuntu 18
 - import_tasks: ubuntu-readyup-18.yml
   when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+- import_tasks: ubuntu-readyup-18-lite.yml
+  when: INSTALL_TOOLS and LITE and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 - import_tasks: ubuntu-readyup-gnome.yml
   when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 

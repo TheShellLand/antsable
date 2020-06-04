@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: halt
+      shell: systemctl halt
+      

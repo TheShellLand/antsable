@@ -1,48 +1,49 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   become: true
   tasks:
 
-  - name: apt-transport-https
-    apt: update_cache=yes name=apt-transport-https state=latest
+    - name: apt-transport-https
+      apt: update_cache=yes name=apt-transport-https state=latest
 
-  - name: ca-certificates
-    apt: update_cache=no name=ca-certificates state=latest
+    - name: ca-certificates
+      apt: update_cache=no name=ca-certificates state=latest
 
-  - name: curl
-    apt: update_cache=no name=curl state=latest
+    - name: curl
+      apt: update_cache=no name=curl state=latest
 
-  - name: software-properties-common
-    apt: update_cache=no name=software-properties-common state=latest
+    - name: software-properties-common
+      apt: update_cache=no name=software-properties-common state=latest
 
-  - name: Add docker repository key
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
+    - name: Add docker repository key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
 
-  - name: Add docker repo
-    apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
-      state: present
+    - name: Add docker repo
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+        state: present
 
-  - name: Install docker-ce
-    #apt: update_cache=yes name=docker-ce state=absent
-    apt: update_cache=yes name=docker-ce state=latest
+    - name: Install docker-ce
+      #apt: update_cache=yes name=docker-ce state=absent
+      apt: update_cache=yes name=docker-ce state=latest
 
-  - name: Install docker-ce-cli
-    apt: update_cache=no name=docker-ce-cli state=latest
+    - name: Install docker-ce-cli
+      apt: update_cache=no name=docker-ce-cli state=latest
 
-  - name: Install containerd.io
-    apt: update_cache=no name=containerd.io state=latest
+    - name: Install containerd.io
+      apt: update_cache=no name=containerd.io state=latest
 
-  - name: Added user to docker group
-    shell: usermod -a -G docker ubuntu
-    ignore_errors: yes
+    - name: Added user to docker group
+      shell: usermod -a -G docker ubuntu
+      ignore_errors: yes
 
-  - name: Added user to docker group
-    shell: usermod -a -G docker vagrant
-    ignore_errors: yes
+    - name: Added user to docker group
+      shell: usermod -a -G docker vagrant
+      ignore_errors: yes
 
-  - name: Added user to docker group
-    shell: usermod -a -G docker eric
-    ignore_errors: yes
+    - name: Added user to docker group
+      shell: usermod -a -G docker eric
+      ignore_errors: yes

@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: snmpd
+      apt: update_cache=yes name=snmpd state=latest
+
+    - name: snmp
+      apt: update_cache=no name=snmp state=latest

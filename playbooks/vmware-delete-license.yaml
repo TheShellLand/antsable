@@ -5,6 +5,4 @@
   tasks:
 
     - name: Delete vmware license
-      file:
-        path: /etc/vmware/license*
-        state: absent
+      shell: rm /etc/vmware/license*

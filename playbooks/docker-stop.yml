@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   tasks:
 
   - name: Reset Rancher and clean all docker containers

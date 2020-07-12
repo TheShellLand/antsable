@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Download Serverless
+      get_url:
+        url: https://slss.io/install
+        dest: /tmp/install
+
+    - name: Install Serverless
+      shell: /bin/bash /tmp/install

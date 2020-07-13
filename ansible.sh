@@ -17,7 +17,7 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
-    apt install -y git && \
+    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -36,7 +36,7 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
-    apt install -y git && \
+    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -54,7 +54,7 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git && \
+    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -71,7 +71,7 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git && \
+    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -80,14 +80,28 @@ if [ "$?" == 0 ]; then
   fi
 fi
 
-# Best effort
-grep "Ubuntu" /etc/issue
-if [ "$?" == 1 ]; then
+# Ubuntu 20.x
+grep "Ubuntu 20" /etc/issue
+if [ "$?" == 0 ]; then
 
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git && \
+    apt install -y git vim && \
+    apt install -y software-properties-common && \
+    apt install -y apt-transport-https && \
+    apt install -y ansible
+  fi
+fi
+
+# Best effort
+grep "Ubuntu" /etc/issue
+if [ "$?" == 0 ]; then
+
+  if [ ! "$(which ansible)" ]; then
+    echo "Installing ansible"
+    apt update && \
+    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \

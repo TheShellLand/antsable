@@ -1,0 +1,17 @@
+---
+- set_fact:
+    version: 15.5.2-15785246
+
+- set_fact:
+    workstation: https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-{{ version }}.x86_64.bundle
+    bin: /tmp/vmware_workstation_install.sh
+
+- name: Download vmware workstation
+  get_url:
+    url: "{{ workstation }}"
+    dest: "{{ bin }}"
+    mode: '0755'
+
+- name: Install vmware workstation
+  shell: "{{ bin }} --deferred-gtk --eulas-agreed"
+  become: true

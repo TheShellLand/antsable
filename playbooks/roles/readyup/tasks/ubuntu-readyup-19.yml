@@ -9,7 +9,7 @@
   shell: apt install -f -y
 
 - name: software-properties-common
-  apt: update_cache=yes name=software-properties-common state=latest
+  apt: update_cache=no name=software-properties-common state=latest
 
 - name: sudo
   apt: update_cache=no name=sudo state=latest

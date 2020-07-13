@@ -1,5 +1,8 @@
 ---
 
+# Python 3.8
+- import_tasks: tasks/python3.yml
+
 # Ubuntu 16
 - import_tasks: ubuntu-readyup-16.yml
   when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
@@ -14,6 +17,8 @@
 
 # Ubuntu 18
 - import_tasks: ubuntu-readyup-18.yml
+  when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+- import_tasks: tasks/vmware-workstation.yml
   when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 - import_tasks: ubuntu-readyup-18-lite.yml
   when: INSTALL_TOOLS and LITE and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

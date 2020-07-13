@@ -81,7 +81,35 @@
     https://extensions.gnome.org/extension-data/windowsNavigator%40gnome-shell-extensions.gcampax.github.com.v41.shell-extension.zip
     https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
     https://extensions.gnome.org/extension-data/disable-workspace-switcher-popup%40github.com.v2.shell-extension.zip
+    https://extensions.gnome.org/extension-data/cascade-windowslytol.com.v3.shell-extension.zip
+    https://extensions.gnome.org/extension-data/arrangeWindowssun.wxggmail.com.v9.shell-extension.zip
+    https://extensions.gnome.org/extension-data/transparent-window-movingnoobsai.github.com.v3.shell-extension.zip
+    https://extensions.gnome.org/extension-data/windowIsReady_Removernunofarrucagmail.com.v8.shell-extension.zip
+    https://extensions.gnome.org/extension-data/ShellTileemasab.it.v62.shell-extension.zip
+    https://extensions.gnome.org/extension-data/gTilevibou.v35.shell-extension.zip
+    https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v38.shell-extension.zip
+    https://extensions.gnome.org/extension-data/panel-osdberend.de.schouwer.gmail.com.v38.shell-extension.zip
+    https://extensions.gnome.org/extension-data/clipboard-indicatortudmotu.com.v34.shell-extension.zip
+    https://extensions.gnome.org/extension-data/system-monitorparadoxxx.zero.gmail.com.v39.shell-extension.zip
+    https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v21.shell-extension.zip
+    https://extensions.gnome.org/extension-data/VitalsCoreCoding.com.v33.shell-extension.zip
+    https://extensions.gnome.org/extension-data/gnome-shell-screenshotttll.de.v43.shell-extension.zip
+    https://extensions.gnome.org/extension-data/sound-output-device-chooser%40kgshank.net.v17.shell-extension.zip
+    https://extensions.gnome.org/extension-data/maximus-threedaman.4880.gmail.com.v3.shell-extension.zip
+    https://extensions.gnome.org/extension-data/middleclickclosepaolo.tranquilli.gmail.com.v16.shell-extension.zip
     "
+
+    # broken
+    #https://extensions.gnome.org/extension-data/compiz-windows-effecthermes83.github.com.v1.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/window_buttons%40biox.github.com.v15.shell-extension.zip
+
+    # window_buttons
+    git clone https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension.git {{ install }}/window_buttons
+    cd {{ install }}/window_buttons
+    git checkout master
+    make
+    mv 'window_buttons@biox.github.com' {{ extensions }}
+
 
     for ext in $extensions; do
       wget -O {{ install }}/extension.zip "$ext"
@@ -90,10 +118,24 @@
       mv {{ install }}/extension {{ install }}/"$name"
       cp -rv {{ install }}/"$name" {{ extensions }}
     done
-
-    chmod -R +r {{ extensions }}
   args:
     executable: /bin/bash
+
+- name: Gnome Extensions Requirements
+  shell: |
+    apt install -y gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
+
+- name: Gnome Extensions Fixes
+  shell: |
+    chmod -R +r {{ extensions }}
+    chmod +w {{ extensions }}/window_buttons@biox.github.com/schemas/gschemas.compiled
+
+
+- name: Gnome Extensions Enabled
+  shell: |
+    gnome-shell-extension-tool -e window_buttons@biox.github.com
+  ignore_errors: true
+
 
 ###
 ### Themes

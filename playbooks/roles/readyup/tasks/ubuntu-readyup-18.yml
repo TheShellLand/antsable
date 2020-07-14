@@ -279,11 +279,8 @@
 - name: aircrack
   apt: update_cache=no name=aircrack-ng state=latest
 
-- name: darktable ppa
-  apt_repository: repo='ppa:pmjdebruijn/darktable-release'
-
 - name: darktable
-  apt: update_cache=yes name=darktable state=latest
+  apt: update_cache=no name=darktable state=latest
 
 - name: gimp
   apt: update_cache=no name=gimp state=latest

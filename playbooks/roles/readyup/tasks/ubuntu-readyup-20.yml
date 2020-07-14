@@ -168,6 +168,7 @@
 
 - name: Lutris
   apt: update_cache=yes name=lutris state=latest
+  ignore_errors: yes
 
 - name: nodejs
   apt: update_cache=no name=nodejs state=latest
@@ -199,13 +200,14 @@
 - name: kvm - virtinst
   apt: update_cache=no name=virtinst state=latest
 
-- name: kvm - bridge-utils
+- name: bridge-utils
   apt: update_cache=no name=bridge-utils state=latest
 
-- name: kvm - cpu-checker
+- name: cpu-checker
   apt: update_cache=no name=cpu-checker state=latest
 
-- name: kvm - virt-manager
+# Ideally don't use root account for virt-manager
+- name: virt-manager
   apt: update_cache=no name=virt-manager state=latest
 
 - name: Vagrant
@@ -230,12 +232,10 @@
   ignore_errors: yes
 
 - name: Visual Studio Code
-  shell: |
-    curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-- name: code-insiders
-  apt: update_cache=yes name=code-insiders
+  snap:
+    name: code-insiders
+    classic: yes
+    state: present
 
 - name: Sublime 3
   shell: |

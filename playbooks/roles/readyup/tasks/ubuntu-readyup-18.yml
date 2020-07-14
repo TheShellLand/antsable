@@ -178,13 +178,13 @@
     deb: https://download.virtualbox.org/virtualbox/6.1.8/virtualbox-6.1_6.1.8-137981~Ubuntu~bionic_amd64.deb
   ignore_errors: yes
 
-- name: qemu-kvm
+- name: kvm - qemu-kvm
   apt: update_cache=no name=qemu-kvm state=latest
 
-- name: libvirt-bin
+- name: kvm - libvirt-bin
   apt: update_cache=no name=libvirt-bin state=latest
 
-- name: virtinst
+- name: kvm - virtinst
   apt: update_cache=no name=virtinst state=latest
 
 - name: bridge-utils
@@ -219,12 +219,10 @@
   ignore_errors: yes
 
 - name: Visual Studio Code
-  shell: |
-    curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-- name: code-insiders
-  apt: update_cache=yes name=code-insiders
+  snap:
+    name: code-insiders
+    classic: yes
+    state: present
 
 - name: Sublime 3
   shell: |

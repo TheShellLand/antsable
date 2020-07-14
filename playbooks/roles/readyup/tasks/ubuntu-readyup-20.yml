@@ -187,23 +187,25 @@
 - name: Virtualbox
   apt: update_cache=no name=virtualbox state=latest
 
-- name: qemu-kvm
+- name: kvm - qemu-kvm
   apt: update_cache=no name=qemu-kvm state=latest
 
-- name: libvirt-bin
-  apt: update_cache=no name=libvirt-bin state=latest
+- name: kvm - libvirt-clients
+  apt: update_cache=no name=libvirt-clients state=latest
 
-- name: virtinst
+- name: kvm - libvirt-daemon-system
+  apt: update_cache=no name=libvirt-daemon-system state=latest
+
+- name: kvm - virtinst
   apt: update_cache=no name=virtinst state=latest
 
-- name: bridge-utils
+- name: kvm - bridge-utils
   apt: update_cache=no name=bridge-utils state=latest
 
-- name: cpu-checker
+- name: kvm - cpu-checker
   apt: update_cache=no name=cpu-checker state=latest
 
-# Ideally don't use root account for virt-manager
-- name: virt-manager
+- name: kvm - virt-manager
   apt: update_cache=no name=virt-manager state=latest
 
 - name: Vagrant

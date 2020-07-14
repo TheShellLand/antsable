@@ -189,14 +189,14 @@
     deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
   ignore_errors: yes
 
+- name: green-recorder
+  snap:
+    name: green-recorder
+    channel: latest/edge
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
 - name: green recorder - ffmpeg
   apt: update_cache=no name=ffmpeg state=latest
-- name: green recorder ppa
-  apt_repository: repo='ppa:fossproject/ppa'
-- name: green recorder
-  apt: update_cache=yes name=green-recorder state=latest
 
 - name: autoclean
   apt:

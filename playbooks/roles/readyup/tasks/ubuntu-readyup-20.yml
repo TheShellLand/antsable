@@ -305,20 +305,14 @@
     deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
   ignore_errors: yes
 
+- name: green-recorder
+  snap:
+    name: green-recorder
+    channel: latest/edge
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
 - name: green recorder - ffmpeg
   apt: update_cache=no name=ffmpeg state=latest
-- name: green recorder ppa
-  apt_repository: repo='ppa:fossproject/ppa'
-- name: green recorder
-  apt: update_cache=yes name=green-recorder state=latest
-
-  #  - name: X299 Realtek ALC1220 time drift fix
-  #    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
-  #    apt: update_cache=no name=adjtimex state=latest
-  #  - name: Fix timing drift
-  #    shell: adjtimexconfig
 
 - name: Java JDK 8 for NetBeans IDE
   shell: |

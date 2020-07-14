@@ -276,7 +276,7 @@
   apt: update_cache=no name=aircrack-ng state=latest
 
 - name: darktable ppa
-  apt_repository: repo='ppa:pmjdebruijn/darktable-release'
+  apt_repository: repo='ppa:ubuntuhandbook1/darktable'
 
 - name: darktable
   apt: update_cache=yes name=darktable state=latest

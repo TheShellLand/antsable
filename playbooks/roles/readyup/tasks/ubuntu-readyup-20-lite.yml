@@ -79,6 +79,37 @@
 - name: remmina
   apt: update_cache=no name=remmina state=latest
 
+- name: Wine i386 architecture
+  shell: dpkg --add-architecture i386
+
+- name: Wine apt key
+  apt_key:
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    state: present
+
+- name: Wine repo
+  apt_repository:
+    repo: deb https://dl.winehq.org/wine-builds/ubuntu/ focal main
+    state: present
+
+- name: wine32
+  apt: update_cache=no name=wine32 state=latest
+
+- name: wine64
+  apt: update_cache=no name=wine64 state=latest
+
+- name: Wine staging
+  apt:
+    name: winehq-staging
+    state: latest
+    install_recommends: yes
+    update_cache: yes
+
+- name: Wine fonts
+  apt:
+    name: fonts-wine
+    state: latest
+
 - name: nodejs
   shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
   args:

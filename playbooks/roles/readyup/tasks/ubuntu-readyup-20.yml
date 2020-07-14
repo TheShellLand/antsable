@@ -127,13 +127,14 @@
 
 - name: Wine repo
   apt_repository:
-    repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
+    repo: deb https://dl.winehq.org/wine-builds/ubuntu/ focal main
     state: present
 
-- name: Wine - fix libfaudio0
-  apt_repository:
-    repo: ppa:cybermax-dexter/sdl2-backport
-    state: present
+- name: wine32
+  apt: update_cache=no name=wine32 state=latest
+
+- name: wine64
+  apt: update_cache=no name=wine64 state=latest
 
 - name: Wine staging
   apt:

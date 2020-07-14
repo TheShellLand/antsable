@@ -170,11 +170,7 @@
   apt: update_cache=yes name=lutris state=latest
 
 - name: nodejs
-  shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
-  args:
-    executable: /bin/bash
-- name: nodejs
-  apt: update_cache=yes name=nodejs state=latest
+  apt: update_cache=no name=nodejs state=latest
 
 - name: exfat
   apt: update_cache=no name=exfat-utils state=latest

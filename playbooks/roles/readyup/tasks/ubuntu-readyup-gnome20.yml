@@ -216,11 +216,6 @@
 - name: numix-icon-theme-circle - install
   apt: update_cache=yes name=numix-icon-theme-circle state=latest
 
-- name: paper-icon-theme - repo
-  apt_repository: repo='ppa:snwh/pulp'
-- name: paper-icon-theme - install
-  apt: update_cache=yes name=paper-icon-theme state=latest
-
 - name: papirus-icon-theme - repo
   apt_repository: repo='ppa:papirus/papirus'
 - name: papirus-icon-theme - install

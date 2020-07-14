@@ -7,4 +7,4 @@
   vars:
     INSTALL_TOOLS: true
     LITE: false
-    INSTALL_GNOME: false
+    INSTALL_GNOME: true

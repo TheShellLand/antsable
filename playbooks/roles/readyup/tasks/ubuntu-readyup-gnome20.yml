@@ -211,11 +211,6 @@
 - name: capitaine-cursors - install
   shell: cp -r {{ install }}/capitaine-cursors/capitaine-cursors-r2.1/dist {{ cursors }}/capitaine-cursors
 
-- name: moka-icon-theme - repo
-  apt_repository: repo='ppa:moka/daily'
-- name: moka-icon-theme - install
-  apt: update_cache=yes name=moka-icon-theme state=latest
-
 - name: numix-icon-theme-circle - repo
   apt_repository: repo='ppa:numix/ppa'
 - name: numix-icon-theme-circle - install

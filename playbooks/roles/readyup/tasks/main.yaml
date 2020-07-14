@@ -1,5 +1,8 @@
 ---
 
+# TODO: check if in virtual machine
+
+
 # Python 3.8
 - import_tasks: tasks/python3.yml
   when: INSTALL_TOOLS

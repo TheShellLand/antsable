@@ -149,14 +149,12 @@
 - name: Prof-Gnome-theme - install
   shell: |
     cd {{ install }}/Prof-Gnome-theme
-    cp -rv 'Prof-Gnome-Dark-{{ version }}' {{ themes }}
-    cp -rv 'Prof-Gnome-Darker-{{ version }}' {{ themes }}
-    cp -rv 'Prof-Gnome-Light-{{ version }}' {{ themes }}
-    cp -rv 'Prof-Gnome-Light-DS-{{ version }}' {{ themes }}
+    cp -rv 'Prof-Gnome-Dark-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Darker-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Light-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Light-DS-3.5' {{ themes }}
   args:
     executable: /bin/bash
-  vars:
-    version: 3.5
 
 - name: Arrongin theme
   git:

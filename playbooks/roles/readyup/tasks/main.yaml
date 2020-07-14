@@ -3,6 +3,10 @@
 # Python 3.8
 - import_tasks: tasks/python3.yml
 
+# vboxsf
+- import_tasks: tasks/virtualbox-vboxsf.yml
+  when: LITE
+
 # Ubuntu 16
 - import_tasks: ubuntu-readyup-16.yml
   when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'

@@ -20,6 +20,15 @@
 - name: git
   apt: update_cache=no name=git state=latest
 
+- name: gcc
+  apt: update_cache=no name=gcc state=latest
+
+- name: make
+  apt: update_cache=no name=make state=latest
+
+- name: perl
+  apt: update_cache=no name=perl state=latest
+
 - name: curl
   apt: update_cache=no name=curl state=latest
 
@@ -79,12 +88,38 @@
 - name: remmina
   apt: update_cache=no name=remmina state=latest
 
+- name: Wine i386 architecture
+  shell: dpkg --add-architecture i386
+
+- name: Wine apt key
+  apt_key:
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    state: present
+
+- name: Wine repo
+  apt_repository:
+    repo: deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main
+    state: present
+
+- name: Wine - fix libfaudio0
+  apt_repository:
+    repo: ppa:cybermax-dexter/sdl2-backport
+    state: present
+
+- name: Wine staging
+  apt:
+    name: winehq-staging
+    state: latest
+    install_recommends: yes
+    update_cache: yes
+
+- name: Wine fonts
+  apt:
+    name: fonts-wine
+    state: latest
+
 - name: nodejs
-  shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
-  args:
-    executable: /bin/bash
-- name: nodejs
-  apt: update_cache=yes name=nodejs state=latest
+  apt: update_cache=no name=nodejs state=latest
 
 - name: exfat
   apt: update_cache=no name=exfat-utils state=latest
@@ -158,14 +193,14 @@
     deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
   ignore_errors: yes
 
+- name: green-recorder
+  snap:
+    name: green-recorder
+    channel: latest/edge
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
 - name: green recorder - ffmpeg
   apt: update_cache=no name=ffmpeg state=latest
-- name: green recorder ppa
-  apt_repository: repo='ppa:fossproject/ppa'
-- name: green recorder
-  apt: update_cache=yes name=green-recorder state=latest
 
 - name: autoclean
   apt:

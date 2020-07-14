@@ -20,6 +20,15 @@
 - name: git
   apt: update_cache=no name=git state=latest
 
+- name: gcc
+  apt: update_cache=no name=gcc state=latest
+
+- name: make
+  apt: update_cache=no name=make state=latest
+
+- name: perl
+  apt: update_cache=no name=perl state=latest
+
 - name: curl
   apt: update_cache=no name=curl state=latest
 
@@ -110,10 +119,6 @@
     name: fonts-wine
     state: latest
 
-- name: nodejs
-  shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -
-  args:
-    executable: /bin/bash
 - name: nodejs
   apt: update_cache=no name=nodejs state=latest
 

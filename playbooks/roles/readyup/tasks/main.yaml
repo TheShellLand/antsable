@@ -47,7 +47,7 @@
 
 # Ubuntu 20
 - import_tasks: ubuntu-readyup-20.yml
-  when: INSTALL_TOOLS and not LITE ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
+  when: INSTALL_TOOLS and not LITE and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 - import_tasks: ubuntu-readyup-20-lite.yml
   when: INSTALL_TOOLS and LITE and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 - import_tasks: ubuntu-readyup-gnome20.yml

@@ -211,31 +211,6 @@
 - name: capitaine-cursors - install
   shell: cp -r {{ install }}/capitaine-cursors/capitaine-cursors-r2.1/dist {{ cursors }}/capitaine-cursors
 
-- name: obsidian-1-icons - repo
-  apt_repository: repo='ppa:noobslab/icons'
-- name: obsidian-1-icons - install
-  apt: update_cache=yes name=obsidian-1-icons state=latest
-
-- name: shadow-icon-theme - repo
-  apt_repository: repo='ppa:noobslab/icons'
-- name: shadow-icon-theme - install
-  apt: update_cache=yes name=shadow-icon-theme state=latest
-
-- name: square-icons - repo
-  apt_repository: repo='ppa:noobslab/icons2'
-- name: square-icons - install
-  apt: update_cache=yes name=square-icons state=latest
-
-- name: dalisha-icons - repo
-  apt_repository: repo='ppa:noobslab/icons'
-- name: dalisha-icons - install
-  apt: update_cache=yes name=dalisha-icons state=latest
-
-- name: uniform-icons - repo
-  apt_repository: repo='ppa:noobslab/icons2'
-- name: uniform-icons - install
-  apt: update_cache=yes name=uniform-icons state=latest
-
 - name: moka-icon-theme - repo
   apt_repository: repo='ppa:moka/daily'
 - name: moka-icon-theme - install

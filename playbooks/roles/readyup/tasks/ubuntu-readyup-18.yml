@@ -167,6 +167,7 @@
 
 - name: Lutris
   apt: update_cache=yes name=lutris state=latest
+  ignore_errors: yes
 
 - name: nodejs
   shell: curl -sL https://deb.nodesource.com/setup_9.x | bash -

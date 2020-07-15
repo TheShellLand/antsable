@@ -9,7 +9,7 @@
 
 # vboxsf
 - import_tasks: tasks/virtualbox-vboxsf.yml
-  when: LITE
+  when: INSTALL_TOOLS and LITE
 
 # vmware
 - import_tasks: tasks/vmware-workstation.yml

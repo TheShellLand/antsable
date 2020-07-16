@@ -5,7 +5,7 @@
   tasks:
 
     - name: Install apt-transport-https
-      apt: update_cache=yes name=apt-transport-https state=latest
+      apt: update_cache=no name=apt-transport-https state=latest
 
     - name: Install ca-certificates
       apt: update_cache=no name=ca-certificates state=latest
@@ -13,12 +13,12 @@
     - name: Install gnupg
       apt: update_cache=no name=gnupg state=latest
 
+    - name: Import the Google Cloud Platform public key
+      apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg state=present
+
     - name: Add the Cloud SDK distribution URI as a package source
       apt_repository:
         repo: 'deb https://packages.cloud.google.com/apt cloud-sdk main'
-
-    - name: Import the Google Cloud Platform public key
-      apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg state=present
 
     - name: Install google-cloud-sdk
       apt: update_cache=yes name=google-cloud-sdk state=latest

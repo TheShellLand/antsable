@@ -6,8 +6,8 @@
 
     - name: download vmware horizon
       get_url: https://download3.vmware.com/software/view/viewclients/CART19FQ4/VMware-Horizon-Client-4.10.0-11053294.x64.bundle
-      dest: /tmp/VMware-Horizon-Client.bundle
-      mode: '0770'
+        dest: /tmp/VMware-Horizon-Client.bundle
+        mode: '0770'
 
     - name: required libgtk2.0-0
       apt: update_cache=yes name=libgtk2.0-0 state=latest

@@ -8,6 +8,7 @@ if [ ! "$(which apt)" ]; then
   echo "*** minimum requirements not met ***"
 fi
 
+cd $(dirname $0)
 
 # Ubuntu 16.x
 grep "Ubuntu 16" /etc/issue

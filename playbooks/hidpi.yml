@@ -7,24 +7,24 @@
     - name: set grub console resolution
       lineinfile:
         path: /etc/default/grub
-        regexp: '^GRUB_GFXMODE=.*$'
+        regexp: '^.*GRUB_GFXMODE=.*$'
         line: GRUB_GFXMODE=1024x768
 
     - name: set grub console mode to text
       lineinfile:
         path: /etc/default/grub
-        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT=.*$'
+        regexp: '^.*GRUB_CMDLINE_LINUX_DEFAULT=.*$'
         line: GRUB_CMDLINE_LINUX_DEFAULT="text"
 #      when: HIDPI
 
     - name: set terminal font
       lineinfile:
-        path: /etc/default/grub
+        path: /etc/default/console-setup
         regexp: '^FONTFACE=.*$'
         line: FONTFACE="TER"
 
     - name: set terminal size
       lineinfile:
-        path: /etc/default/grub
+        path: /etc/default/console-setup
         regexp: '^FONTSIZE=.*$'
         line: FONTSIZE="16x32"        

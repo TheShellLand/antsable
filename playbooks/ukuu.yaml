@@ -4,8 +4,10 @@
   become: yes
   tasks:
 
-  - name: ukuu - linux kernel upgrader
-    apt_repository: repo='ppa:teejee2008/ppa'
-    
-  - name: ukuu
-    apt: update_cache=yes name=ukuu state=latest
+  - name: ukuu - linux kernel upgrader - v18.9.1
+    apt:
+      deb: https://github.com/teejee2008/ukuu/releases/download/v18.9.1/ukuu-v18.9.1-amd64.deb
+    ignore_errors: yes
+
+  - name: Install missing dependencies
+    shell: apt install -f -y

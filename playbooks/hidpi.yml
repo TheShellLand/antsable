@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+  
+    - name: set grub console resolution
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_GFXMODE=.*$'
+        line: GRUB_GFXMODE=1024x768
+
+    - name: set grub console mode to text
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT=.*$'
+        line: GRUB_CMDLINE_LINUX_DEFAULT="text"
+      when: DEVER
+
+    - name: set terminal font
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^FONTFACE=.*$'
+        line: FONTFACE="TER"
+
+    - name: set terminal size
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^FONTSIZE=.*$'
+        line: FONTSIZE="16x32"        

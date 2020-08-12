@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+
+  - name: dell xps 13 compat kernel
+    apt_repository: repo='ppa:canonical-kernel-team/ppa'
+
+  - name: linux-oem-osp1
+    apt: update_cache=yes name=linux-oem-osp1 state=latest

@@ -2,6 +2,9 @@
 
 # TODO: check if in virtual machine
 
+# HiDPI
+- import_tasks: tasks/hidpi.yml
+  when: HIDPI
 
 # Python 3.8
 - import_tasks: tasks/python3.yml

@@ -1,8 +1,11 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: yes
   tasks:
 
-  - name: ukuu
+  - name: ukuu - linux kernel upgrader
     apt_repository: repo='ppa:teejee2008/ppa'
+    
   - name: ukuu
     apt: update_cache=yes name=ukuu state=latest

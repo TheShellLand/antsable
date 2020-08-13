@@ -7,5 +7,6 @@
   vars:
     INSTALL_TOOLS: true
     LITE: false
-    HIDPI: false
+    HIDPI: true
+    CONSOLE: false
     INSTALL_GNOME: true

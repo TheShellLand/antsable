@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+  
+    - name: set grub console mode to text
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^.*GRUB_CMDLINE_LINUX_DEFAULT=.*$'
+        line: GRUB_CMDLINE_LINUX_DEFAULT="text"
+
+    - name: update-grub
+      shell: update-grub

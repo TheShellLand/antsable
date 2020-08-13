@@ -82,7 +82,7 @@ if [ "$?" == 0 ]; then
 fi
 
 # Ubuntu 20.x
-grep "Ubuntu 20" /etc/issue
+grep "Ubuntu 20" /etc/issue >/dev/null
 if [ "$?" == 0 ]; then
 
   if [ ! "$(which ansible)" ]; then

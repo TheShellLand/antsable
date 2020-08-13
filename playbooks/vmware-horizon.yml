@@ -23,7 +23,8 @@
         ln -s /usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0.*  /usr/lib/x86_64-linux-gnu/libgstreamer-0.10.so.0
         ln -s /usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0 /usr/lib/x86_64-linux-gnu/libgstapp-0.10.so.0
         ln -s /usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0.* /usr/lib/x86_64-linux-gnu/libgstbase-0.10.so.0
+      ignore_errors: yes
 
     - name: vmware horizon - install
-      shell: echo "yes" | /bin/bash /tmp/VMware-Horizon-Client.bundle --eulas-agreed --stop-services
+      shell: yes | /bin/bash /tmp/VMware-Horizon-Client.bundle --eulas-agreed --stop-services --required
       become: true

@@ -17,6 +17,9 @@
         line: GRUB_CMDLINE_LINUX_DEFAULT="text"
 #      when: HIDPI
 
+    - name: update-grub
+      shell: update-grub
+
     - name: set terminal font
       lineinfile:
         path: /etc/default/console-setup

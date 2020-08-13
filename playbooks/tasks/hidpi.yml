@@ -12,14 +12,17 @@
     line: GRUB_CMDLINE_LINUX_DEFAULT="text"
   when: HIDPI
 
+- name: update-grub
+  shell: update-grub
+
 - name: set terminal font
   lineinfile:
-    path: /etc/default/grub
+    path: /etc/default/console-setup
     regexp: '^FONTFACE=.*$'
     line: FONTFACE="TER"
 
 - name: set terminal size
   lineinfile:
-    path: /etc/default/grub
+    path: /etc/default/console-setup
     regexp: '^FONTSIZE=.*$'
-    line: FONTSIZE="16x32"        
+    line: FONTSIZE="16x32"

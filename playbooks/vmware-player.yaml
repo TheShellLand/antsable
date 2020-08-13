@@ -3,19 +3,17 @@
   connection: local
   tasks:
 
-    - set_fact:
-        version: 15.5.2-15785246
+    - stat:
+        path: /tmp/vmware_player_install.sh
+      register: p
 
-    - set_fact:
-        player: http://download3.vmware.com/software/player/file/VMware-Player-{{ version }}.x86_64.bundle
-        bin: /tmp/vmware_player_install.sh
-
-    - name: Download vmware player
+    - name: vmware player - download
       get_url:
-        url: "{{ player }}"
-        dest: "{{ bin }}"
+        url: http://download3.vmware.com/software/player/file/VMware-Player-15.5.2-15785246.x86_64.bundle
+        dest: /tmp/vmware_player_install.sh
         mode: '0755'
+      when: p.stat is not defined
 
-    - name: Install vmware player
-      shell: "{{ bin }}"
+    - name: vmware player - install
+      shell: /tmp/vmware_player_install.sh
       become: true

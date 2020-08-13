@@ -4,13 +4,47 @@
   become: true
   tasks:
 
-    - name: check vmware installer exists
-      shell: which vmware-installer
+    - stat:
+        path: /tmp/vmware_player_install.sh
+      register: p
 
-    - name: Remove vmware player
-      shell: echo "yes" | vmware-installer --ignore-errors -u vmware-player
+    - name: vmware player - download
+      get_url:
+        url: http://download3.vmware.com/software/player/file/VMware-Player-15.5.2-15785246.x86_64.bundle
+        dest: /tmp/vmware_player_install.sh
+        mode: '0755'
+      when: p.stat is not defined
+
+    - name: vmware player - remove
+      shell: echo "yes" | /tmp/vmware_player_install.sh --ignore-errors -u vmware-player
       ignore_errors: true
 
-    - name: Remove vmware workstation
-      shell: echo "yes" | vmware-installer --ignore-errors -u vmware-workstation
+    - stat:
+        path: /tmp/vmware_workstation_install.sh
+      register: p
+
+    - name: vmware workstation - download
+      get_url:
+        url: https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.2-15785246.x86_64.bundle
+        dest: /tmp/vmware_workstation_install.sh
+        mode: '0755'
+      when: p.stat is not defined
+
+    - name: vmware workstation - remove
+      shell: echo "yes" | /tmp/vmware_workstation_install.sh --ignore-errors -u vmware-workstation
+      ignore_errors: true
+
+    - stat:
+        path: /tmp/VMware-Horizon-Client.bundle
+      register: p
+
+    - name: vmware horizon - download
+      get_url:
+        url: https://download3.vmware.com/software/view/viewclients/CART19FQ4/VMware-Horizon-Client-4.10.0-11053294.x64.bundle
+        dest: /tmp/VMware-Horizon-Client.bundle
+        mode: '0770'
+      when: p.stat is not defined
+
+    - name: vmware horizon - remove
+      shell: echo "yes" | /tmp/VMware-Horizon-Client.bundle --uninstall-component=vmware-horizon-client
       ignore_errors: true

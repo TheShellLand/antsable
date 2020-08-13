@@ -59,13 +59,37 @@
 - name: pass
   apt: update_cache=no name=pass state=latest
 
+#  - name: Chrome
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#    ignore_errors: yes
+
 - name: Chrome beta
   apt:
     deb: https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
   ignore_errors: yes
 
+#  - name: Chrome dev
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+#    ignore_errors: yes
+
 - name: Install missing dependencies
   shell: apt install -f -y
+
+#  - name: Brave
+#    shell: snap install brave
+#    args:
+#      executable: /bin/bash
+#
+#  - name: Brave beta
+#    shell: |
+#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | apt-key add -
+#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+#      apt update
+#      apt install -y brave-beta
+#    args:
+#      executable: /bin/bash
 
 - name: python3-pip
   apt: update_cache=no name=python3-pip state=latest

@@ -59,13 +59,37 @@
 - name: pass
   apt: update_cache=no name=pass state=latest
 
+#  - name: Chrome
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#    ignore_errors: yes
+
 - name: Chrome beta
   apt:
     deb: https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
   ignore_errors: yes
 
+#  - name: Chrome dev
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+#    ignore_errors: yes
+
 - name: Install missing dependencies
   shell: apt install -f -y
+
+#  - name: Brave
+#    shell: snap install brave
+#    args:
+#      executable: /bin/bash
+#
+#  - name: Brave beta
+#    shell: |
+#      curl https://s3-us-west-2.amazonaws.com/brave-apt-staging/keys.asc | apt-key add -
+#      echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt-staging `lsb_release -sc` main" | tee /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+#      apt update
+#      apt install -y brave-beta
+#    args:
+#      executable: /bin/bash
 
 - name: python3-pip
   apt: update_cache=no name=python3-pip state=latest
@@ -167,11 +191,39 @@
 - name: Sublime 3
   apt: update_cache=yes name=sublime-text state=latest
 
+#  - name: Skype
+#    shell: dpkg -s apt-transport-https > /dev/null || bash -c "apt-get update; apt-get install apt-transport-https -y"
+#  - name: skype repo key
+#    apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY state=present
+#  - name: skype repo
+#    shell: echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skype-stable.list
+#  - name: skypeforlinux
+#    apt: update_cache=yes name=skypeforlinux state=latest
+
+- name: Discord
+  apt:
+    deb: https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
+  ignore_errors: yes
+- name: Discord
+  shell: apt install -f -y
+
 - name: nmap
   apt: update_cache=no name=nmap state=latest
 
 - name: wireshark
   apt: update_cache=no name=wireshark state=latest
+
+- name: macchanger
+  apt: update_cache=no name=macchanger state=latest
+
+- name: aircrack
+  apt: update_cache=no name=aircrack-ng state=latest
+
+#  - name: darktable ppa
+#    apt_repository: repo='ppa:pmjdebruijn/darktable-release'
+-
+#  - name: darktable
+#    apt: update_cache=yes name=darktable state=latest
 
 - name: gimp
   apt: update_cache=no name=gimp state=latest
@@ -186,6 +238,11 @@
 
 - name: kazam
   apt: update_cache=no name=kazam state=latest
+
+- name: OBS-Studio ppa
+  apt_repository: repo='ppa:obsproject/obs-studio'
+- name: obs-studio
+  apt: update_cache=yes name=obs-studio state=latest
 
 - name: Peek screen recorder
   apt:

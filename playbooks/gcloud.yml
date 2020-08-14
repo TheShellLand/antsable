@@ -28,9 +28,5 @@
     - name: Install kubectl
       apt: update_cache=no name=kubectl state=latest
 
-    - name: gcloud auth login
-      shell: gcloud auth login
-    
-    - name: gcloud auth configure-docker
-      shell: gcloud auth configure-docker
-      
+    - name: gcloud auth login && gcloud auth configure-docker
+      shell: echo

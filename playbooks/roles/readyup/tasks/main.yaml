@@ -14,7 +14,11 @@
 - import_tasks: tasks/virtualbox-vboxsf.yml
   when: INSTALL_TOOLS and LITE
 
-# vmware
+# vmware workstation
+- import_tasks: tasks/vmware-horizon.yml
+  when: INSTALL_TOOLS
+
+# vmware horizon
 - import_tasks: tasks/vmware-workstation.yml
   when: INSTALL_TOOLS
 

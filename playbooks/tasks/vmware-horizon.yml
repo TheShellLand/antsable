@@ -1,0 +1,25 @@
+---
+- stat:
+    path: /tmp/VMware-Horizon-Client.bundle
+  register: p
+
+- name: vmware horizon - download
+  get_url:
+    url: https://download3.vmware.com/software/view/viewclients/CART19FQ4/VMware-Horizon-Client-4.10.0-11053294.x64.bundle
+    dest: /tmp/VMware-Horizon-Client.bundle
+    mode: '0770'
+  when: p.stat is not defined
+
+- name: vmware horizon - required libgtk2.0-0
+  apt: update_cache=yes name=libgtk2.0-0 state=latest
+
+- name: vmware horizon - fix missing libraries
+  shell: |
+    ln -s /usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0.*  /usr/lib/x86_64-linux-gnu/libgstreamer-0.10.so.0
+    ln -s /usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0 /usr/lib/x86_64-linux-gnu/libgstapp-0.10.so.0
+    ln -s /usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0.* /usr/lib/x86_64-linux-gnu/libgstbase-0.10.so.0
+  ignore_errors: yes
+
+- name: vmware horizon - install
+  shell: yes | /bin/bash /tmp/VMware-Horizon-Client.bundle --eulas-agreed --stop-services --required
+  become: true

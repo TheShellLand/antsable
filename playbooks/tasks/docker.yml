@@ -1,44 +1,44 @@
 ---
-- name: apt-transport-https
+- name: docker - apt-transport-https
   apt: update_cache=yes name=apt-transport-https state=latest
 
-- name: ca-certificates
+- name: docker - ca-certificates
   apt: update_cache=no name=ca-certificates state=latest
 
-- name: curl
+- name: docker - curl
   apt: update_cache=no name=curl state=latest
 
-- name: software-properties-common
+- name: docker - software-properties-common
   apt: update_cache=no name=software-properties-common state=latest
 
-- name: Add docker repository key
+- name: docker - Add docker repository key
   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-- name: Add docker repo
+- name: docker - Add docker repo
   shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-- name: Install docker-ce
+- name: docker - Install docker-ce
   #apt: update_cache=yes name=docker-ce state=absent
   apt: update_cache=yes name=docker-ce state=latest
 
-- name: Install docker-ce-cli
+- name: docker - Install docker-ce-cli
   apt: update_cache=no name=docker-ce-cli state=latest
 
-- name: Install containerd.io
+- name: docker - Install containerd.io
   apt: update_cache=no name=containerd.io state=latest
 
-- name: Added user to docker group
+- name: docker - ubuntu
   shell: usermod -a -G docker ubuntu
   ignore_errors: yes
 
-- name: Added user to docker group
+- name: docker - vagrant
   shell: usermod -a -G docker vagrant
   ignore_errors: yes
 
-- name: Added user to docker group
+- name: docker - eric
   shell: usermod -a -G docker eric
   ignore_errors: yes
 
-- name: Added user to docker group
+- name: docker - geralt
   shell: usermod -a -G docker geralt
   ignore_errors: yes

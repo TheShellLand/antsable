@@ -1,9 +1,11 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: yes
   tasks:
 
   - name: zfsutils-linux
     apt: update_cache=yes name=zfsutils-linux state=latest
 
   - name: zfs-initramfs
-    apt: update_cache=yes name=zfs-initramfs state=latest
+    apt: update_cache=no name=zfs-initramfs state=latest

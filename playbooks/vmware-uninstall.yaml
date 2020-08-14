@@ -13,7 +13,7 @@
         url: http://download3.vmware.com/software/player/file/VMware-Player-15.5.2-15785246.x86_64.bundle
         dest: /tmp/vmware_player_install.sh
         mode: '0755'
-      when: p.stat is not defined
+      when: not p.stat.exists
 
     - name: vmware player - remove
       shell: echo "yes" | /tmp/vmware_player_install.sh --ignore-errors -u vmware-player
@@ -28,7 +28,7 @@
         url: https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.2-15785246.x86_64.bundle
         dest: /tmp/vmware_workstation_install.sh
         mode: '0755'
-      when: p.stat is not defined
+      when: not p.stat.exists
 
     - name: vmware workstation - remove
       shell: echo "yes" | /tmp/vmware_workstation_install.sh --ignore-errors -u vmware-workstation
@@ -43,7 +43,7 @@
         url: https://download3.vmware.com/software/view/viewclients/CART19FQ4/VMware-Horizon-Client-4.10.0-11053294.x64.bundle
         dest: /tmp/VMware-Horizon-Client.bundle
         mode: '0770'
-      when: p.stat is not defined
+      when: not p.stat.exists
 
     - name: vmware horizon - remove
       shell: echo "yes" | /tmp/VMware-Horizon-Client.bundle --uninstall-component=vmware-horizon-client

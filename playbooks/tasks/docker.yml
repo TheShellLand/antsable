@@ -38,3 +38,7 @@
 - name: Added user to docker group
   shell: usermod -a -G docker eric
   ignore_errors: yes
+
+- name: Added user to docker group
+  shell: usermod -a -G docker geralt
+  ignore_errors: yes

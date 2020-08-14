@@ -10,6 +10,8 @@ fi
 
 cd $(dirname $0)
 
+apt install -y git vim curl
+
 # Ubuntu 16.x
 grep "Ubuntu 16" /etc/issue
 if [ "$?" == 0 ]; then
@@ -18,7 +20,6 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -37,7 +38,6 @@ if [ "$?" == 0 ]; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y python-software-properties && \
     apt install -y apt-transport-https && \
@@ -55,7 +55,6 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -72,7 +71,6 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
@@ -88,7 +86,6 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt install -y ansible
@@ -102,7 +99,6 @@ if [ "$?" == 0 ]; then
   if [ ! "$(which ansible)" ]; then
     echo "Installing ansible"
     apt update && \
-    apt install -y git vim && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
     apt-add-repository -y 'ppa:ansible/ansible' && \

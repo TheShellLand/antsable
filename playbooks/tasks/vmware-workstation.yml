@@ -8,7 +8,7 @@
     url: https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-15.5.2-15785246.x86_64.bundle
     dest: /tmp/vmware_workstation_install.sh
     mode: '0755'
-  when: p.stat is not defined
+  when: not p.stat.exists
 
 - name: vmware workstation - install
   shell: /tmp/vmware_workstation_install.sh --deferred-gtk --eulas-agreed

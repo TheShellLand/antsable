@@ -12,7 +12,7 @@
         url: http://download3.vmware.com/software/player/file/VMware-Player-15.5.2-15785246.x86_64.bundle
         dest: /tmp/vmware_player_install.sh
         mode: '0755'
-      when: p.stat is not defined
+      when: not p.stat.exists
 
     - name: vmware player - install
       shell: /tmp/vmware_player_install.sh

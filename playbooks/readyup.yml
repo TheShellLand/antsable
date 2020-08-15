@@ -6,7 +6,6 @@
     - readyup
   vars:
     INSTALL_TOOLS: true
-    LITE: false
     HIDPI: false
     CONSOLE: false
     INSTALL_GNOME: true

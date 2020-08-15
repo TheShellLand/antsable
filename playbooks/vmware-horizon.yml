@@ -26,5 +26,5 @@
       ignore_errors: yes
 
     - name: vmware horizon - install
-      shell: yes | /bin/bash /tmp/VMware-Horizon-Client.bundle --eulas-agreed --stop-services --required
+      shell: yes | /bin/bash /tmp/VMware-Horizon-Client.bundle --console --eulas-agreed --stop-services --required
       become: true

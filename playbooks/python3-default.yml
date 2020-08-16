@@ -1,7 +1,9 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: true
 
   tasks:
-    - name: set python3 as default
+    - name: python3 - set python3 as default
       shell: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
       become: true

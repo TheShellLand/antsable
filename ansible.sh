@@ -119,6 +119,14 @@ fi
 
 if [ ! -d ".git" ]; then
   git clone https://github.com/TheShellLand/antsable
+  cd antsable
+
+  # Run playbook
+  if [ ! "$1" == "" ]; then
+    set -x
+    ansible-playbook -i inventory.yaml "$@"
+  fi
+
 else
   # Create inventory.yaml
   if [ ! -f inventory.yaml ]; then

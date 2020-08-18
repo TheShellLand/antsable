@@ -200,13 +200,6 @@
 #  - name: skypeforlinux
 #    apt: update_cache=yes name=skypeforlinux state=latest
 
-- name: Discord
-  apt:
-    deb: https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
-  ignore_errors: yes
-- name: Discord
-  shell: apt install -f -y
-
 - name: nmap
   apt: update_cache=no name=nmap state=latest
 
@@ -221,7 +214,7 @@
 
 #  - name: darktable ppa
 #    apt_repository: repo='ppa:pmjdebruijn/darktable-release'
--
+
 - name: darktable
   apt: update_cache=no name=darktable state=latest
 
@@ -238,11 +231,6 @@
 
 - name: kazam
   apt: update_cache=no name=kazam state=latest
-
-- name: OBS-Studio ppa
-  apt_repository: repo='ppa:obsproject/obs-studio'
-- name: obs-studio
-  apt: update_cache=yes name=obs-studio state=latest
 
 - name: Peek screen recorder
   apt:

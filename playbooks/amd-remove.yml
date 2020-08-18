@@ -8,4 +8,4 @@
       apt: update_cache=yes name=ppa-purge state=latest
 
     - name: amd - purge ppa
-      shell: ppa-purge ppa:oibaf/graphics-drivers
+      shell: ppa-purge -y ppa:oibaf/graphics-drivers

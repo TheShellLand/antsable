@@ -4,5 +4,5 @@
   become: true
   tasks:
 
-    - name: Add nvidia ppa
+    - name: nvidia - add ppa
       apt_repository: repo='ppa:graphics-drivers/ppa'

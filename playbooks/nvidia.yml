@@ -4,14 +4,14 @@
   become: true
   tasks:
 
-    - name: Add nvidia ppa
+    - name: nvidia - Add ppa
       apt_repository: repo='ppa:graphics-drivers/ppa'
 
-    - name: Install nvidia-driver-440
+    - name: nvidia - Install nvidia-driver-440
       apt: update_cache=yes name=nvidia-driver-440 state=latest
 
-    - name: Install libnvidia-gl-430
+    - name: nvidia - Install libnvidia-gl-430
       apt: update_cache=no name=libnvidia-gl-430 state=latest
 
-    - name: Install libnvidia-gl-430:i386
+    - name: nvidia - Install libnvidia-gl-430:i386
       apt: update_cache=no name=libnvidia-gl-430:i386 state=latest

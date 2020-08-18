@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: amd - add ppa
+      apt_repository: repo='ppa:oibaf/graphics-drivers'
+
+    - name: amd -  upgrade
+      apt: update_cache=yes upgrade=yes

@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: amd - add ppa-purge
+      apt: update_cache=yes name=ppa-purge state=latest
+
+    - name: amd - purge ppa
+      shell: ppa-purge ppa:oibaf/graphics-drivers

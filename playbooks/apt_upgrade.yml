@@ -4,14 +4,14 @@
   become: true
   tasks:
 
-    - name: apt upgrade
+    - name: apt - upgrade
       apt: update_cache=yes upgrade=yes
 
-    - name: apt autoremove
+    - name: apt - autoremove
       shell: apt -y autoremove
 
-    - name: apt autoclean
+    - name: apt - autoclean
       shell: apt autoclean
 
-    - name: apt clean
+    - name: apt - clean
       shell: apt clean

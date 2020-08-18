@@ -305,27 +305,6 @@
 - name: green recorder - ffmpeg
   apt: update_cache=no name=ffmpeg state=latest
 
-- name: Java JDK 8 for NetBeans IDE
-  shell: |
-    apps=/tmp/apps
-    version="jdk1.8.0_162"
-    file=jdk.tgz
-    if [ ! -d '/opt/jdk' ]; then mkdir /opt/jdk; fi
-    if [ ! -f $apps/$file ]; then
-        wget -q -O $apps/$file -c --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz"
-        tar zxf $apps/$file -C /opt/jdk
-    else
-        tar zxf $apps/$file -C /opt/jdk
-    fi
-    if [ ! -f /usr/local/bin/javajdk ]; then
-        ln -sf /opt/jdk/"$version"/bin/java /usr/local/bin/javajdk
-    else
-        rm /usr/local/bin/javajdk
-        ln -sf /opt/jdk/"$version"/bin/java /usr/local/bin/javajdk
-    fi
-  args:
-    executable: /bin/bash
-
 - name: autoclean
   apt:
     autoclean: yes

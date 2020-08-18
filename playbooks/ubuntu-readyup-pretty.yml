@@ -1,226 +1,176 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
+  become: yes
   tasks:
 
-  - name: /tmp/apps
-    file: path=/tmp/apps state=directory
+    - set_fact:
+        install: /tmp/install
+        themes: /usr/share/themes
+        extensions: /usr/share/gnome-shell/extensions
+        ext: /usr/share/gnome-shell/extensions
+        fonts: /usr/share/fonts
+        icons: /usr/share/icons
+        cursors: /usr/share/icons
+        user_icons: "{{ ansible_env.HOME }}/.icons"
+        user_cursors: "{{ ansible_env.HOME }}/.icons"
 
-  - name: chdir
-    shell: cd /tmp/apps
+    - name: Create themes dir
+      file: path={{ themes }} state=directory
 
-#  - name: Disable Ubuntu 16.04 console switch keys
-#    shell: |
-#      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys
+    - name: Create extensions dir
+      file: path={{ extensions }} state=directory
 
-  - name: Install Missing Packages
-    shell: apt install -f -y
+    - name: Cleanup
+      file: path={{ install }} state=absent
 
-  - name: software-properties-common
-    apt: update_cache=yes name=software-properties-common state=latest
+    - name: Create temp dir
+      file: path={{ install }} state=directory
 
-  - name: X299 Realtek ALC1220 time drift fix
-    # https://askubuntu.com/questions/982882/audio-glitches-every-few-seconds-with-vlc-and-the-alc1220-codec
-    apt: update_cache=yes name=adjtimex state=latest
-  - name: Fix timing drift
-    shell: adjtimexconfig
+    - name: Install Missing Packages
+      shell: apt install -f -y
 
-  - name: git
-    apt: update_cache=yes name=git state=latest
+    - name: ubuntu-gnome-desktop
+      apt: update_cache=no name=ubuntu-gnome-desktop state=latest
 
-  - name: unzip
-    apt: update_cache=yes name=unzip state=latest
+    - name: dconf-editor
+      apt: update_cache=no name=dconf-editor state=latest
 
-  - name: Installing Macbuntu - ppa:noobslab/macbuntu
-    apt_repository: repo='ppa:noobslab/macbuntu'
+    - name: gnome-tweak-tool
+      apt: update_cache=no name=gnome-tweak-tool state=latest
 
-  - name: gnome-tweak-tool
-    apt: update_cache=yes name=gnome-tweak-tool state=latest
+    #- name: gnome-shell-extensions - purge
+    #  apt: update_cache=no name=gnome-shell-extensions state=absent purge=yes
 
-  - name: system-monitor prerequisite
-    apt:
-      name: '{{ item }}'
-      state: present
-    with_items:
-      - 'gir1.2-gtop-2.0'
-      - 'gir1.2-networkmanager-1.0'
-      - 'gir1.2-clutter-1.0'
+    - name: gnome-shell-extensions
+      apt: update_cache=no name=gnome-shell-extensions state=latest
 
-  - name: Gnome Extensions
-    shell: |
-      apps=/tmp/apps
-      wget -O $apps/extension-clock.zip https://extensions.gnome.org/download-extension/Move_Clock%40rmy.pobox.com.shell-extension.zip?version_tag=5241
-      wget -O $apps/extension-taskbar.zip https://extensions.gnome.org/download-extension/TaskBar%40zpydr.shell-extension.zip?version_tag=7000
-      wget -O $apps/no-title-bar.zip https://extensions.gnome.org/download-extension/no-title-bar%40franglais125.gmail.com.shell-extension.zip?version_tag=7334
-      wget -O $apps/system-monitor.zip https://extensions.gnome.org/download-extension/system-monitor%40paradoxxx.zero.gmail.com.shell-extension.zip?version_tag=6808
-      wget -O $apps/windows-list-up-top.zip https://extensions.gnome.org/download-extension/window-list-mod%40vagonpop.gmail.com.shell-extension.zip?version_tag=7435
-      wget -O $apps/topIcons.zip https://extensions.gnome.org/download-extension/topIcons%40adel.gadllah%40gmail.com.shell-extension.zip?version_tag=7417
-      wget -O $apps/dash-to-dock.zip https://extensions.gnome.org/download-extension/dash-to-dock%40micxgx.gmail.com.shell-extension.zip?version_tag=7315
-      wget -O $apps/shell-extension.zip https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
-      wget -O $apps/workspaces-to-dock.zip https://extensions.gnome.org/extension-data/workspaces-to-dock%40passingthru67.gmail.com.v44.shell-extension.zip
+    - name: jq
+      apt: update_cache=no name=jq state=latest
 
-      mkdir -p /usr/share/gnome-shell/extensions
+    - name: git
+      apt: update_cache=no name=git state=latest
 
-      unzip -o $apps/extension-clock.zip -d /usr/share/gnome-shell/extensions/Move_Clock@rmy.pobox.com
-      unzip -o $apps/extension-taskbar.zip -d /usr/share/gnome-shell/extensions/TaskBar@zpydr
-      unzip -o $apps/no-title-bar.zip -d /usr/share/gnome-shell/extensions/no-title-bar@franglais125.gmail.com
-      unzip -o $apps/system-monitor.zip -d /usr/share/gnome-shell/extensions/system-monitor@paradoxxx.zero.gmail.com
-      unzip -o $apps/windows-list-up-top.zip -d /usr/share/gnome-shell/extensions/window-list-mod@vagonpop.gmail.com
-      unzip -o $apps/topIcons.zip -d /usr/share/gnome-shell/extensions/topIcons@adel.gadllah@gmail.com
-      unzip -o $apps/dash-to-dock.zip -d /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
-      unzip -o $apps/shell-extension.zip -d /usr/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
-      unzip -o $apps/workspaces-to-dock.zip -d /usr/share/gnome-shell/extensions/workspaces-to-dock@passingthru67.gmail.com
+    - name: unzip
+      apt: update_cache=no name=unzip state=latest
 
-      chmod -R +r /usr/share/gnome-shell/extensions
-    args:
-      executable: /bin/bash
+    #  - name: Configure for gdm - debconf
+    #    debconf:
+    #      name: gdm3
+    #      question: shared/default-x-display-manager
+    #      vtype: select
+    #      value: gdm3
+    #
+    #  - name: Configure for gdm - file
+    #    replace:
+    #      path: /etc/X11/default-display-manager
+    #      regexp: '.*'
+    #      replace: /usr/sbin/gdm
+    #      backup: yes
 
-  - name: ubuntu-gnome-desktop
-    apt:
-      name: ubuntu-gnome-desktop
-      state: present
+    ###
+    ### Extensions
+    ###
 
-  - name: Configure for gdm - debconf
-    debconf:
-      name: gdm3
-      question: shared/default-x-display-manager
-      vtype: select
-      value: gdm3
+    - name: Gnome Extensions
+      shell: |
+        extensions="
+        https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip
+        https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon.ca.v70.shell-extension.zip
+        https://extensions.gnome.org/extension-data/no-title-bar%40franglais125.gmail.com.v9.shell-extension.zip
+        https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
+        https://extensions.gnome.org/extension-data/apps-menu%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
+        https://extensions.gnome.org/extension-data/auto-move-windows%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+        https://extensions.gnome.org/extension-data/drive-menu%40gnome-shell-extensions.gcampax.github.com.v37.shell-extension.zip
+        https://extensions.gnome.org/extension-data/launch-new-instance%40gnome-shell-extensions.gcampax.github.com.v21.shell-extension.zip
+        https://extensions.gnome.org/extension-data/native-window-placement%40gnome-shell-extensions.gcampax.github.com.v37.shell-extension.zip
+        https://extensions.gnome.org/extension-data/places-menu%40gnome-shell-extensions.gcampax.github.com.v40.shell-extension.zip
+        https://extensions.gnome.org/extension-data/screenshot-window-sizer%40gnome-shell-extensions.gcampax.github.com.v14.shell-extension.zip
+        https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v24.shell-extension.zip
+        https://extensions.gnome.org/extension-data/windowsNavigator%40gnome-shell-extensions.gcampax.github.com.v41.shell-extension.zip
+        https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+        https://extensions.gnome.org/extension-data/disable-workspace-switcher-popup%40github.com.v2.shell-extension.zip
+        https://extensions.gnome.org/extension-data/cascade-windowslytol.com.v3.shell-extension.zip
+        https://extensions.gnome.org/extension-data/transparent-window-movingnoobsai.github.com.v3.shell-extension.zip
+        https://extensions.gnome.org/extension-data/windowIsReady_Removernunofarrucagmail.com.v8.shell-extension.zip
+        https://extensions.gnome.org/extension-data/ShellTileemasab.it.v62.shell-extension.zip
+        https://extensions.gnome.org/extension-data/gTilevibou.v35.shell-extension.zip
+        https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v38.shell-extension.zip
+        https://extensions.gnome.org/extension-data/clipboard-indicatortudmotu.com.v34.shell-extension.zip
+        https://extensions.gnome.org/extension-data/system-monitorparadoxxx.zero.gmail.com.v39.shell-extension.zip
+        https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v21.shell-extension.zip
+        https://extensions.gnome.org/extension-data/VitalsCoreCoding.com.v33.shell-extension.zip
+        https://extensions.gnome.org/extension-data/gnome-shell-screenshotttll.de.v43.shell-extension.zip
+        https://extensions.gnome.org/extension-data/sound-output-device-chooserkgshank.net.v31.shell-extension.zip
+        https://extensions.gnome.org/extension-data/maximus-threedaman.4880.gmail.com.v3.shell-extension.zip
+        https://extensions.gnome.org/extension-data/middleclickclosepaolo.tranquilli.gmail.com.v16.shell-extension.zip
+        https://extensions.gnome.org/extension-data/unitehardpixel.eu.v37.shell-extension.zip
+        https://extensions.gnome.org/extension-data/CoverflowAltTab%40palatis.blogspot.com.v36.shell-extension.zip
+        https://extensions.gnome.org/extension-data/TopRightHotCorner%40hoquangnam45.v1.shell-extension.zip
+        https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v68.shell-extension.zip
+        https://extensions.gnome.org/extension-data/scroll-workspacesgfxmonk.net.v22.shell-extension.zip
+        https://extensions.gnome.org/extension-data/panel-osdberend.de.schouwer.gmail.com.v38.shell-extension.zip
+        https://extensions.gnome.org/extension-data/extendedgesturesmpiannucci.github.com.v6.shell-extension.zip
+        https://extensions.gnome.org/extension-data/customgesturesraushankumar27.github.com.v6.shell-extension.zip
+        https://extensions.gnome.org/extension-data/ubuntuvn-desktopubuntuvn.com.v3.shell-extension.zip
+        "
 
-  - name: Configure for gdm - file
-    replace:
-      path: /etc/X11/default-display-manager
-      regexp: '.*'
-      replace: /usr/sbin/gdm
-      backup: yes
+        # broken 18.04
+        #https://extensions.gnome.org/extension-data/compiz-windows-effecthermes83.github.com.v1.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/window_buttons%40biox.github.com.v15.shell-extension.zip
 
-  - name: macbuntu-os-icons-lts-v7
-    apt:
-      name: macbuntu-os-icons-lts-v7
-      state: latest
+        # broken 20.04
+        #https://extensions.gnome.org/extension-data/unitehardpixel.eu.v32.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/sound-output-device-chooser%40kgshank.net.v17.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/maximus-threedaman.4880.gmail.com.v3.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/arrangeWindowssun.wxggmail.com.v9.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v65.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/tweaks-system-menuextensions.gnome-shell.fifi.org.v8.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+        #https://extensions.gnome.org/extension-data/scroll-workspaces%40gfxmonk.net.v20.shell-extension.zip
 
-  - name: macbuntu-os-ithemes-lts-v7
-    apt: update_cache=yes name=macbuntu-os-ithemes-lts-v7 state=latest
+        # window_buttons
+        git clone https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension.git {{ install }}/window_buttons
+        cd {{ install }}/window_buttons
+        git checkout master
+        make
+        mv 'window_buttons@biox.github.com' {{ extensions }}
 
-  - name: libreoffice-style-sifr
-    apt: update_cache=yes name=libreoffice-style-sifr state=latest
+        for ext in $extensions; do
+          wget -O {{ install }}/extension.zip "$ext"
+          unzip -o {{ install }}/extension.zip -d {{ install }}/extension
+          name="$(jq -r '.uuid' {{ install }}/extension/metadata.json)"
+          mv {{ install }}/extension {{ install }}/"$name"
+          cp -rv {{ install }}/"$name" {{ extensions }}
+        done
+      args:
+        executable: /bin/bash
 
-  - name: Put buttons on left side
-    shell:
-      cmd: |
-        cat > /tmp/apps/left <<EOF
-        gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-        EOF
-    args:
-      executable: /bin/bash
+    - name: Gnome Extensions Requirements
+      shell: |
+        apt install -y gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
 
-  - name: oranchelo-icon-theme repo
-    apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
-  - name: oranchelo-icon-theme
-    apt: update_cache=yes name=oranchelo-icon-theme state=latest
+    - name: Gnome Extensions Fixes
+      shell: |
+        chmod -R +r {{ extensions }}
+        chmod +w {{ extensions }}/window_buttons@biox.github.com/schemas/gschemas.compiled
 
-  - name: arc-icon-theme
-    shell: |
-      apps=/tmp/apps
-      if [ ! -d "$apps/arc-icon-theme" ]; then mkdir "$apps/arc-icon-theme"; fi
-      if [ ! -d $apps/arc-icon-theme/Arc ]; then
-          git clone https://github.com/horst3180/arc-icon-theme.git "$apps/arc-icon-theme"
-          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-      else
-          cp -r $apps/arc-icon-theme/Arc /usr/share/icons
-      fi
+    #    - name: Gnome Extensions Enabled
+    #      shell: |
+    #        gnome-shell-extension-tool -e window_buttons@biox.github.com
+    #      ignore_errors: true
 
-  - name: capitaine-cursors
-    shell: |
-      apps=/tmp/apps
-      file=capitaine-cursors.tgz
-      if [ ! -d $apps/capitaine-cursors ]; then mkdir $apps/capitaine-cursors; fi
-      if [ ! -f $apps/$file ]; then
-          wget -q -O $apps/$file https://github.com/keeferrourke/capitaine-cursors/archive/r2.1.tar.gz
-          tar zxf $apps/$file -C $apps/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
-      else
-          tar zxf $apps/$file -C $apps/capitaine-cursors
-          cp -r $apps/capitaine-cursors/capitaine-cursors-r2.1/dist /usr/share/icons/capitaine-cursors
-      fi
+    ###
+    ### Icons, Cursors & Fonts
+    ###
 
-  - name: mac fonts
-    shell: |
-      apps=/tmp/apps
-      fonts=mac-fonts.zip
-      if [ ! -f $apps/$fonts ]; then
-          wget -q -O $apps/$fonts http://drive.noobslab.com/data/Mac/macfonts.zip
-          unzip $apps/$fonts -d /usr/share/fonts
-          #rm $apps/$fonts
-      else
-          unzip -o $apps/mac-fonts.zip -d /usr/share/fonts
-      fi
-      fc-cache -f -v
+    - name: cutecursorsomg - download
+      git:
+        repo: https://github.com/TheShellLand/cutecursorsomg.git
+        dest: "{{ install }}/cutecursorsomg"
+    - name: cutecursorsomg - install
+      shell: cp -r {{ install }}/cutecursorsomg/cursors/* {{ icons }}
 
-  - name: Disable Mouse Acceleration for X server
-    file: >
-      path=/usr/share/X11/xorg.conf.d/
-      recurse=yes
-      state=directory
-  - name: Disable Mouse Acceleration for X server
-    shell:
-      cmd: |
-        cat > /usr/share/X11/xorg.conf.d/50-mouse-acceleration.conf <<EOF
-        Section "InputClass"
-            Identifier "My Mouse"
-            MatchIsPointer "yes"
-            Option "AccelerationProfile" "-1"
-            Option "AccelerationScheme" "none"
-            Option "AccelSpeed" "-1"
-        EndSection
-        EOF
-    args:
-      executable: /bin/bash
-
-  - name: OpenVPN
-    apt: update_cache=yes name=openvpn state=latest
-
-  - name: Virt-Viewer
-    apt: update_cache=yes name=virt-viewer state=latest
-
-  - name: x11vnc
-    apt: update_cache=yes name=x11vnc state=latest
-
-  - name: x2go
-    apt: update_cache=yes name=x2goclient state=latest
-
-  - name: tmux
-    apt: update_cache=yes name=tmux state=latest
-
-  - name: CIFS
-    apt: update_cache=yes name=cifs-utils state=latest
-
-  - name: sshfs
-    apt: update_cache=yes name=sshfs state=latest
-
-  - name: duplicity
-    apt: update_cache=yes name=duplicity state=latest
-
-  - name: remmina
-    apt: update_cache=yes name=remmina state=latest
-
-  - name: Chrome
-    shell: |
-      apps=/tmp/apps
-      chrome=chrome.deb
-      if [ ! -f $apps/$chrome ]; then
-          wget -q -O $apps/$chrome 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-          dpkg -i $apps/$chrome
-          #rm $apps/$chrome
-      else
-          dpkg -i $apps/$chrome
-      fi
-      apt install -f -y
-
-  - name: QTQR
-    apt: update_cache=yes name=qtqr state=latest
-
-  - name: Emacs
-    apt: update_cache=yes name=emacs state=latest
-
-  - name: Vim
-    apt: update_cache=yes name=vim state=latest
+    - name: Cleanup
+      file: path={{ install }} state=absent

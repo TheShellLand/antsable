@@ -43,6 +43,12 @@
 - name: jq
   apt: update_cache=no name=jq state=latest
 
+- name: git
+  apt: update_cache=no name=git state=latest
+
+- name: unzip
+  apt: update_cache=no name=unzip state=latest
+
 #  - name: Configure for gdm - debconf
 #    debconf:
 #      name: gdm3
@@ -119,15 +125,12 @@
     #https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
     #https://extensions.gnome.org/extension-data/scroll-workspaces%40gfxmonk.net.v20.shell-extension.zip
 
-
-
     # window_buttons
     git clone https://github.com/danielkza/Gnome-Shell-Window-Buttons-Extension.git {{ install }}/window_buttons
     cd {{ install }}/window_buttons
     git checkout master
     make
     mv 'window_buttons@biox.github.com' {{ extensions }}
-
 
     for ext in $extensions; do
       wget -O {{ install }}/extension.zip "$ext"
@@ -148,60 +151,10 @@
     chmod -R +r {{ extensions }}
     chmod +w {{ extensions }}/window_buttons@biox.github.com/schemas/gschemas.compiled
 
-
-- name: Gnome Extensions Enabled
-  shell: |
-    gnome-shell-extension-tool -e window_buttons@biox.github.com
-  ignore_errors: true
-
-
-###
-### Themes
-###
-
-- name: Prof-Gnome-theme
-  git:
-    repo: https://github.com/paullinuxthemer/Prof-Gnome
-    dest: "{{ install }}/Prof-Gnome-theme"
-    update: yes
-- name: Prof-Gnome-theme - install
-  shell: |
-    cd {{ install }}/Prof-Gnome-theme
-    cp -rv 'Prof-Gnome-Dark-3.5' {{ themes }}
-    cp -rv 'Prof-Gnome-Darker-3.5' {{ themes }}
-    cp -rv 'Prof-Gnome-Light-3.5' {{ themes }}
-    cp -rv 'Prof-Gnome-Light-DS-3.5' {{ themes }}
-  args:
-    executable: /bin/bash
-
-- name: Arrongin theme
-  git:
-    repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
-    dest: "{{ install }}/arrogin"
-    update: yes
-- name: Arrongin theme - install
-  shell: |
-    cd {{ install }}/arrogin
-    cp -rv 'Arrongin-Buttons-Right=>3.30' {{ themes }}
-  args:
-    executable: /bin/bash
-
-- name: Telinkrin theme
-  git:
-    repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
-    dest: "{{ install }}/telinkrin"
-    update: yes
-- name: Telinkrin theme - install
-  shell: |
-    cd {{ install }}/telinkrin
-    cp -rv 'Telinkrin-Buttons-Right=>3.30' {{ themes }}
-  args:
-    executable: /bin/bash
-
-#   - name: Ubuntu CommuniThemes - repo
-#     apt_repository: repo='ppa:communitheme/ppa'
-#   - name: ubuntu-communitheme-session - install
-#     apt: update_cache=no name=ubuntu-communitheme-session state=latest
+#- name: Gnome Extensions Enabled
+#  shell: |
+#    gnome-shell-extension-tool -e window_buttons@biox.github.com
+#  ignore_errors: true
 
 ###
 ### Icons, Cursors & Fonts
@@ -259,6 +212,54 @@
     dest: "{{ fonts }}"
 - name: mac fonts - update
   shell: fc-cache -f -v
+
+###
+### Themes
+###
+
+- name: Prof-Gnome-theme
+  git:
+    repo: https://github.com/paullinuxthemer/Prof-Gnome
+    dest: "{{ install }}/Prof-Gnome-theme"
+    update: yes
+- name: Prof-Gnome-theme - install
+  shell: |
+    cd {{ install }}/Prof-Gnome-theme
+    cp -rv 'Prof-Gnome-Dark-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Darker-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Light-3.5' {{ themes }}
+    cp -rv 'Prof-Gnome-Light-DS-3.5' {{ themes }}
+  args:
+    executable: /bin/bash
+
+- name: Arrongin theme
+  git:
+    repo: https://github.com/paullinuxthemer/Arrongin-GTK.git
+    dest: "{{ install }}/arrogin"
+    update: yes
+- name: Arrongin theme - install
+  shell: |
+    cd {{ install }}/arrogin
+    cp -rv 'Arrongin-Buttons-Right=>3.30' {{ themes }}
+  args:
+    executable: /bin/bash
+
+- name: Telinkrin theme
+  git:
+    repo: https://github.com/paullinuxthemer/Telinkrin-GTK.git
+    dest: "{{ install }}/telinkrin"
+    update: yes
+- name: Telinkrin theme - install
+  shell: |
+    cd {{ install }}/telinkrin
+    cp -rv 'Telinkrin-Buttons-Right=>3.30' {{ themes }}
+  args:
+    executable: /bin/bash
+
+#   - name: Ubuntu CommuniThemes - repo
+#     apt_repository: repo='ppa:communitheme/ppa'
+#   - name: ubuntu-communitheme-session - install
+#     apt: update_cache=no name=ubuntu-communitheme-session state=latest
 
 - name: Cleanup
   file: path={{ install }} state=absent

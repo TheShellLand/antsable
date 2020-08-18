@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: Install nvidia-driver-440
+      apt: update_cache=yes name=nvidia-driver-440 state=latest
+
+#    - name: Install libnvidia-gl-440
+#      apt: update_cache=no name=libnvidia-gl-440 state=latest
+#
+#    - name: Install libnvidia-gl-440:i386
+#      apt: update_cache=no name=libnvidia-gl-440:i386 state=latest

@@ -1,13 +1,14 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   become: true
   tasks:
 
     - name: Add nvidia ppa
       apt_repository: repo='ppa:graphics-drivers/ppa'
 
-    - name: Install nvidia-driver-430
-      apt: update_cache=yes name=nvidia-driver-430 state=latest
+    - name: Install nvidia-driver-440
+      apt: update_cache=yes name=nvidia-driver-440 state=latest
 
     - name: Install libnvidia-gl-430
       apt: update_cache=no name=libnvidia-gl-430 state=latest

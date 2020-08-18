@@ -10,10 +10,6 @@
 - import_tasks: tasks/python3.yml
   when: INSTALL_TOOLS
 
-# vboxsf
-- import_tasks: tasks/virtualbox-vboxsf.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest"
-
 # vmware workstation
 - import_tasks: tasks/vmware-horizon.yml
   when: INSTALL_TOOLS
@@ -28,7 +24,7 @@
 
 # virtualbox
 - import_tasks: tasks/virtualbox-guest-addons-requirements.yml
-  when: INSTALL_TOOLS and not ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
 
 # Ubuntu 16
 - import_tasks: ubuntu-readyup-16.yml
@@ -44,7 +40,7 @@
 
 # Ubuntu 18
 - import_tasks: ubuntu-readyup-18.yml
-  when: INSTALL_TOOLS and not ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 - import_tasks: ubuntu-readyup-18-lite.yml
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 - import_tasks: ubuntu-readyup-gnome.yml
@@ -58,7 +54,7 @@
 
 # Ubuntu 20
 - import_tasks: ubuntu-readyup-20.yml
-  when: INSTALL_TOOLS and not ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 - import_tasks: ubuntu-readyup-20-lite.yml
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 - import_tasks: ubuntu-readyup-gnome20.yml

@@ -157,6 +157,15 @@
 #  ignore_errors: true
 
 ###
+### Wallpapers
+###
+
+- name: walls - download
+  git:
+    repo: https://github.com/TheShellLand/walls.git
+    dest: "{{ install }}/walls"
+
+###
 ### Icons, Cursors & Fonts
 ###
 

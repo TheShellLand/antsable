@@ -3,12 +3,22 @@
   connection: local
   become: yes
   tasks:
-  
+
     - name: hidpi - set grub console resolution
       lineinfile:
         path: /etc/default/grub
         regexp: '^.*GRUB_GFXMODE=.*$'
         line: GRUB_GFXMODE=1024x768
+
+    #    - name: hidpi - set grub console mode to text
+    #      lineinfile:
+    #        path: /etc/default/grub
+    #        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT=.*$'
+    #        line: GRUB_CMDLINE_LINUX_DEFAULT="text"
+    #      when: CONSOLE
+
+    - name: hidpi - update-grub
+      shell: update-grub
 
     - name: hidpi - set terminal font
       lineinfile:
@@ -20,8 +30,5 @@
       lineinfile:
         path: /etc/default/console-setup
         regexp: '^FONTSIZE=.*$'
-        line: FONTSIZE="16x32"        
+        line: FONTSIZE="16x32"
 
-    - name: hidpi - update-grub
-      shell: update-grub
-      

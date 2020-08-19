@@ -4,11 +4,11 @@
   become: yes
   tasks:
   
-    - name: set grub console mode to text
+    - name: grub-text - set grub console mode to text
       lineinfile:
         path: /etc/default/grub
         regexp: '^.*GRUB_CMDLINE_LINUX_DEFAULT=.*$'
         line: GRUB_CMDLINE_LINUX_DEFAULT="text"
 
-    - name: update-grub
+    - name: grub-text - update-grub
       shell: update-grub

@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+
+    - name: walls - download
+      git:
+        repo: https://github.com/TheShellLand/walls.git
+        dest: "/tmp/walls"

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+
+    - name: cutecursorsomg - download
+      git:
+        repo: https://github.com/TheShellLand/cutecursorsomg.git
+        dest: "/tmp/cutecursorsomg"
+
+    - name: cutecursorsomg - install
+      shell: cp -r {{ install }}/cutecursorsomg/cursors/* {{ icons }}

@@ -162,6 +162,15 @@
     #      ignore_errors: true
 
     ###
+    ### Wallpapers
+    ###
+
+    - name: walls - download
+      git:
+        repo: https://github.com/TheShellLand/walls.git
+        dest: "{{ install }}/walls"
+
+    ###
     ### Icons, Cursors & Fonts
     ###
 
@@ -171,6 +180,10 @@
         dest: "{{ install }}/cutecursorsomg"
     - name: cutecursorsomg - install
       shell: cp -r {{ install }}/cutecursorsomg/cursors/* {{ icons }}
+
+    ###
+    ### Themes
+    ###
 
     - name: Cleanup
       file: path={{ install }} state=absent

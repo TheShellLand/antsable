@@ -1,0 +1,46 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: sshd - PubkeyAuthentication yes
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^.?PubkeyAuthentication.*'
+        line: 'PubkeyAuthentication yes'
+      notify:
+        - sshd - restart
+
+    - name: sshd - PasswordAuthentication no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^.?PasswordAuthentication.*'
+        line: 'PasswordAuthentication no'
+      notify:
+        - sshd - restart
+
+    - name: sshd - UsePAM no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^.?UsePAM.*'
+        line: 'UsePAM no'
+      notify:
+        - sshd - restart
+
+    - name: sshd - PermitRootLogin no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^.?PermitRootLogin.*'
+        line: 'PermitRootLogin no'
+      notify:
+        - sshd - restart
+
+  handlers:
+    - name: sshd - restart
+      service: name=sshd state=restarted

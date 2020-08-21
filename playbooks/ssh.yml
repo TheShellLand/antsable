@@ -1,18 +1,20 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   become: true
+  
   tasks:
 
-    - name: Remove openssh-server
+    - name: sshd - Remove openssh-server
       apt: update_cache=no name=openssh-server state=absent
 
-    - name: Install openssh-server
+    - name: sshd - Install openssh-server
       apt: update_cache=no name=openssh-server state=latest
 
-    - name: Start openssh-server
+    - name: sshd - Start openssh-server
       service:
         name: ssh
         state: started
 
-    - name: Enable persistence
+    - name: sshd - Enable persistence
       shell: systemctl enable ssh

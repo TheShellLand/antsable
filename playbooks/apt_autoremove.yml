@@ -6,9 +6,6 @@
 
   tasks:
 
-    - name: apt - upgrade
-      apt: update_cache=yes upgrade=yes
-
     - name: apt - autoremove
       shell: apt -y autoremove
 

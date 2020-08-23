@@ -170,6 +170,8 @@
       git:
         repo: https://github.com/TheShellLand/walls.git
         dest: "{{ install }}/walls"
+    - name: walls - install
+      shell: cp -r {{ install }}/walls/Wallpapers /tmp/
 
     ###
     ### Icons, Cursors & Fonts

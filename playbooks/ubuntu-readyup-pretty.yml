@@ -30,8 +30,8 @@
     - name: Install Missing Packages
       shell: apt install -f -y
 
-    - name: ubuntu-gnome-desktop
-      apt: update_cache=no name=ubuntu-gnome-desktop state=latest
+#    - name: ubuntu-gnome-desktop
+#      apt: update_cache=no name=ubuntu-gnome-desktop state=latest
 
     - name: dconf-editor
       apt: update_cache=no name=dconf-editor state=latest

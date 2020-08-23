@@ -5,16 +5,21 @@
   tasks:
 
     - set_fact:
-        temp: /tmp/install
+        temp: /tmp/vbox
         version: 6.1.6
 
     - name: Create temp space
       file: path={{ temp }} state=directory
 
+    - stat:
+        path: "{{ temp }}/VBoxGuestAdditions.iso"
+      register: p
+
     - name: Download VBox iso
       get_url:
         url: https://download.virtualbox.org/virtualbox/{{ version }}/VBoxGuestAdditions_{{ version }}.iso
         dest: "{{ temp }}/VBoxGuestAdditions.iso"
+      when: not p.stat.exists
 
     - name: build-essential
       apt: update_cache=yes name=build-essential state=latest

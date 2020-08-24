@@ -6,7 +6,7 @@
 
     - set_fact:
         temp: /tmp/vbox
-        version: 6.1.6
+        version: 6.1.10
 
     - name: Create temp space
       file: path={{ temp }} state=directory

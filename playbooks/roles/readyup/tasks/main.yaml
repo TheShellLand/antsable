@@ -1,6 +1,6 @@
 ---
-
-# TODO: check if in virtual machine
+# Apt
+- import_tasks: tasks/apt_upgrade.yml
 
 # HiDPI
 - import_tasks: tasks/hidpi.yml

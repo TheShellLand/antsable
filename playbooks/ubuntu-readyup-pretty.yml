@@ -5,7 +5,7 @@
   tasks:
 
     - set_fact:
-        install: /tmp/install
+        install: /tmp/readyup
         themes: /usr/share/themes
         extensions: /usr/share/gnome-shell/extensions
         ext: /usr/share/gnome-shell/extensions

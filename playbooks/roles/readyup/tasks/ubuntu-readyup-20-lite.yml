@@ -1,6 +1,6 @@
 ---
 - set_fact:
-    install: /tmp/install
+    install: /tmp/readyup
 
 - name: temp install
   file: path={{ install }} state=directory

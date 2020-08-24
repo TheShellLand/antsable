@@ -4,6 +4,7 @@
 - import_tasks: tasks/tmux.yml
 - import_tasks: tasks/vim.yml
 - import_tasks: tasks/ping.yml
+- import_tasks: tasks/nmap.yml
 - import_tasks: tasks/nslookup.yml
 - import_tasks: tasks/netcat.yml
 - import_tasks: tasks/rsync.yml

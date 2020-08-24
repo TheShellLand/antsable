@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - set_fact:
+        version: 7.80
+        url: https://nmap.org/dist/nmap-7.80.tar.bz2
+        nmap: nmap-7.80
+
+    - name: nmap - check
+      stat:
+        path: /tmp/nmap.tar.bz2
+      register: p
+
+    - name: nmap - download
+      get_url:
+        url: "{{ url }}"
+        dest: /tmp/nmap.tar.bz2
+        mode: '0755'
+      when: not p.stat.exists
+
+    - name: nmap - install
+      shell: |
+        cd /tmp
+        bzip2 -cd nmap.tar.bz2 | tar xvf -
+        cd {{ nmap }}
+        ./configure
+        make
+        make install
+      become: yes

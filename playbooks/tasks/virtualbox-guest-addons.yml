@@ -1,0 +1,48 @@
+---
+- set_fact:
+    temp: /tmp/vbox
+    version: 6.1.10
+
+- name: Create temp space
+  file: path={{ temp }} state=directory
+
+- stat:
+    path: "{{ temp }}/VBoxGuestAdditions.iso"
+  register: p
+
+- name: Download VBox iso
+  get_url:
+    url: https://download.virtualbox.org/virtualbox/{{ version }}/VBoxGuestAdditions_{{ version }}.iso
+    dest: "{{ temp }}/VBoxGuestAdditions.iso"
+  when: not p.stat.exists
+
+- name: build-essential
+  apt: update_cache=yes name=build-essential state=latest
+
+- name: dkms
+  apt: update_cache=no name=dkms state=latest
+
+- name: linux-headers
+  shell: apt install -y linux-headers-$(uname -r)
+
+- name: Install Guest Additions
+  shell: |
+    mkdir {{ temp }}/iso
+    mount -o loop {{ temp }}/VBoxGuestAdditions.iso {{ temp }}/iso
+    yes | bash {{ temp }}/iso/VBoxLinuxAdditions.run
+    umount {{ temp }}/iso
+
+- name: Cleanup
+  file: path={{ temp }} state=absent
+
+- name: Added user to vboxsf group
+  shell: usermod -a -G vboxsf ubuntu
+  ignore_errors: yes
+
+- name: Added user to vboxsf group
+  shell: usermod -a -G vboxsf vagrant
+  ignore_errors: yes
+
+- name: Added user to vboxsf group
+  shell: usermod -a -G vboxsf eric
+  ignore_errors: yes

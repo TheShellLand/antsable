@@ -23,7 +23,7 @@
   when: INSTALL_TOOLS
 
 # virtualbox
-- import_tasks: tasks/virtualbox-guest-addons-requirements.yml
+- import_tasks: tasks/virtualbox-guest-addons.yml
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
 
 # Ubuntu 16

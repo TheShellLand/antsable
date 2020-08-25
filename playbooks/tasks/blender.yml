@@ -1,0 +1,3 @@
+---
+- name: blender - install
+  apt: update_cache=yes name=blender state=latest

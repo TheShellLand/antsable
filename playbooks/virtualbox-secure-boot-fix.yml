@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: Virtualbox
+      shell: dpkg-reconfigure virtualbox-dkms

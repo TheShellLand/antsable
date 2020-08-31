@@ -14,10 +14,6 @@
 - import_tasks: tasks/vmware-horizon.yml
   when: INSTALL_TOOLS
 
-# vmware horizon
-- import_tasks: tasks/vmware-workstation.yml
-  when: INSTALL_TOOLS
-
 # docker
 - import_tasks: tasks/docker.yml
   when: INSTALL_TOOLS

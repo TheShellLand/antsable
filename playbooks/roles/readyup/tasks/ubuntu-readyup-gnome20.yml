@@ -146,7 +146,6 @@
 - name: Gnome Extensions Fixes
   shell: |
     chmod -R +r {{ extensions }}
-    chmod +w {{ extensions }}/window_buttons@biox.github.com/schemas/gschemas.compiled
 
 #- name: Gnome Extensions Enabled
 #  shell: |

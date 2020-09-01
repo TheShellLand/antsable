@@ -144,8 +144,7 @@
     apt install -y gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
 
 - name: Gnome Extensions Fixes
-  shell: |
-    chmod -R +r {{ extensions }}
+  shell: chmod -R +r {{ extensions }}
 
 #- name: Gnome Extensions Enabled
 #  shell: |
@@ -177,6 +176,3 @@
 ###
 ### Themes
 ###
-
-- name: Cleanup
-  file: path={{ install }} state=absent

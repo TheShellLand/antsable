@@ -93,8 +93,22 @@ if grep "Ubuntu 20" /etc/issue; then
   fi
 fi
 
+# Debian
+if grep Debian /etc/issue >/dev/null; then
+
+  if ! which ansible; then
+    echo "Installing ansible"
+    apt update && \
+    apt install -y git vim curl && \
+    apt install -y software-properties-common && \
+    apt install -y apt-transport-https && \
+    apt update && \
+    apt install -y ansible
+  fi
+fi
+
 # Best effort
-if grep -E "(Ubuntu|Debian)" /etc/issue >/dev/null; then
+if grep Ubuntu /etc/issue >/dev/null; then
 
   if ! which ansible; then
     echo "Installing ansible"

@@ -2,8 +2,10 @@
 
 # Install Ansible
 
+set -e
+
 # Requires apt
-if [ ! "$(which apt)" ]; then
+if ! which apt; then
   echo "*** apt does not exist ***"
   echo "*** minimum requirements not met ***"
 fi
@@ -12,10 +14,9 @@ cd $(dirname $0)
 
 
 # Ubuntu 16.x
-grep "Ubuntu 16" /etc/issue
-if [ "$?" == 0 ]; then
+if grep "Ubuntu 16" /etc/issue; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
@@ -31,10 +32,9 @@ fi
 
 
 # Ubuntu 17.x
-grep "Ubuntu 17" /etc/issue
-if [ "$?" == 0 ]; then
+if grep "Ubuntu 17" /etc/issue; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt purge -y appstream
     apt update && \
@@ -50,10 +50,9 @@ fi
 
 
 # Ubuntu 18.x
-grep "Ubuntu 18" /etc/issue
-if [ "$?" == 0 ]; then
+if grep "Ubuntu 18" /etc/issue; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -67,10 +66,9 @@ fi
 
 
 # Ubuntu 19.x
-grep "Ubuntu 19" /etc/issue
-if [ "$?" == 0 ]; then
+if grep "Ubuntu 19" /etc/issue; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -83,10 +81,9 @@ if [ "$?" == 0 ]; then
 fi
 
 # Ubuntu 20.x
-grep "Ubuntu 20" /etc/issue
-if [ "$?" == 0 ]; then
+if grep "Ubuntu 20" /etc/issue; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -97,10 +94,9 @@ if [ "$?" == 0 ]; then
 fi
 
 # Best effort
-grep -E "(Ubuntu|Debian)" /etc/issue >/dev/null
-if [ "$?" == 0 ]; then
+if grep -E "(Ubuntu|Debian)" /etc/issue >/dev/null; then
 
-  if [ ! "$(which ansible)" ]; then
+  if ! which ansible; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \

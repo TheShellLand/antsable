@@ -1,6 +1,5 @@
 ---
 all:
-  hosts:
 
 local:
   hosts:

@@ -97,7 +97,7 @@ if [ "$?" == 0 ]; then
 fi
 
 # Best effort
-grep "Ubuntu" /etc/issue >/dev/null
+grep -E "(Ubuntu|Debian)" /etc/issue >/dev/null
 if [ "$?" == 0 ]; then
 
   if [ ! "$(which ansible)" ]; then
@@ -114,6 +114,8 @@ fi
 
 if ! which ansible-playbook; then
   echo "** ansible not able to be installed **"
+  echo "** unknown linux **"
+  cat /etc/issue
   exit 1
 fi
 

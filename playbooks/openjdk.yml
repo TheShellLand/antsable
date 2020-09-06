@@ -38,9 +38,9 @@
         fi
 
         if ! which java; then
-          ln -sf /usr/local/bin/java /usr/local/bin/javajdk
+          ln -sf /usr/local/bin/javajdk /usr/local/bin/java
         else
           rm /usr/local/bin/java
-          ln -sf /usr/local/bin/java /usr/local/bin/javajdk
+          ln -sf /usr/local/bin/javajdk /usr/local/bin/java
         fi
       become: yes

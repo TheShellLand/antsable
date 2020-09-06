@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  connection: local
+  
+  tasks:
+    - name: cryptomator - check
+      stat:
+        path: /tmp/cryptomator.zip
+      register: p
+
+    - name: cryptomator - download
+      get_url:
+        url: https://github.com/cryptomator/cryptomator/releases/download/1.5.8/buildkit-linux.zip
+        dest: /tmp/cryptomator.zip
+        mode: '0755'
+      when: not p.stat.exists
+
+    - name: cryptomator - folder
+      file:
+        path: /opt/cryptomator
+        state: directory
+      become: yes
+
+    - name: cryptomator - unarchive
+      unarchive:
+        src: /tmp/cryptomator.zip
+        dest: /opt/cryptomator
+        remote_src: yes
+      become: yes
+
+    - name: cryptomator - install
+      file:
+        src: /opt/cryptomator/launcher-linux.sh
+        dest: /usr/local/bin/cryptomator
+        state: link
+      become: yes
+
+    - name: cryptomator - install
+      file:
+        src: /opt/cryptomator/libs
+        dest: /usr/local/bin/libs
+        state: link
+      become: yes

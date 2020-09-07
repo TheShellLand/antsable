@@ -1,26 +1,7 @@
 ---
-# Apt
-- import_tasks: tasks/apt_upgrade.yml
-
 # HiDPI
 - import_tasks: tasks/hidpi.yml
   when: HIDPI
-
-# Python 3.8
-- import_tasks: tasks/python3.yml
-  when: INSTALL_TOOLS
-
-# vmware workstation
-- import_tasks: tasks/vmware-workstation.yml
-  when: INSTALL_TOOLS
-
-# docker
-- import_tasks: tasks/docker.yml
-  when: INSTALL_TOOLS
-
-# virtualbox
-- import_tasks: tasks/virtualbox-guest-addons.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
 
 # Ubuntu 16
 - import_tasks: ubuntu-readyup-gnome.yml
@@ -55,3 +36,22 @@
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 - import_tasks: ubuntu-readyup-20-lite.yml
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
+
+# Python 3.8
+- import_tasks: tasks/python3.yml
+  when: INSTALL_TOOLS
+
+# docker
+- import_tasks: tasks/docker.yml
+  when: INSTALL_TOOLS
+
+# vmware workstation
+- import_tasks: tasks/vmware-workstation.yml
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' 
+
+# virtualbox
+- import_tasks: tasks/virtualbox-guest-addons.yml
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
+
+# Apt
+- import_tasks: tasks/apt_upgrade.yml

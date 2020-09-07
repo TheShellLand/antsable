@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  
+  tasks:
+    - name: fonts - folder
+      file:
+        path: ~/.local/share/fonts
+        state: directory

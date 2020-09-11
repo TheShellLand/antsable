@@ -1,0 +1,4 @@
+---
+- name: arkade - install
+  shell: curl -sLS https://dl.get-arkade.dev | sh
+  become: yes

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+    - openfaas
+  vars:
+    k8s: not implemented
+    k3s: false
+    k3d: true
+    faasd: not implemented
+    openshift: not implemented
+    plonk: not implemented
+    cloud_loadbalancer: false
+    EMAIL:
+    DOMAIN:

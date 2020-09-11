@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: k3s - deploy
+      shell: curl -sfL https://get.k3s.io | sh
+      become: yes

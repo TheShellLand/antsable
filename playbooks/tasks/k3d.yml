@@ -1,0 +1,7 @@
+---
+- shell: apt install -y curl
+  become: yes
+
+- name: k3d - install
+  shell: curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash
+  become: yes

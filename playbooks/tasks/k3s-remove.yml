@@ -1,0 +1,14 @@
+---
+- name: k3s - remove server node
+  shell: |
+    if [ -f /usr/local/bin/k3s-uninstall.sh ]; then
+      /usr/local/bin/k3s-uninstall.sh
+    fi
+  become: yes
+
+- name: k3s - remove agent node
+  shell: |
+    if [ -f /usr/local/bin/k3s-agent-uninstall.sh ]; then
+      /usr/local/bin/k3s-agent-uninstall.sh
+    fi
+  become: yes

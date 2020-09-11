@@ -1,0 +1,107 @@
+---
+# housekeeping
+- import_tasks: tasks/docker.yml
+  become: yes
+- import_tasks: tasks/docker-reset-leave-images.yml
+- import_tasks: tasks/arkade.yml
+- import_tasks: tasks/kubectl.yml
+
+
+# k3s
+- import_tasks: tasks/k3s-remove.yml
+  when: k3s
+
+- import_tasks: tasks/k3s.yml
+  when: k3s
+
+- name: k3s - copy k3s kube config
+  shell: cp -v /etc/rancher/k3s/k3s.yaml /root/.kube/config
+  become: yes
+  when: k3s
+
+#- name: add nodes
+#  - token = /var/lib/rancher/k3s/server/node-token
+#  - sudo k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+
+
+# k3d
+- import_tasks: tasks/k3d.yml
+  when: k3d
+
+- name: k3d - create cluster
+  shell: k3d cluster create
+  become: yes
+
+- name: k3d - copy kubeconfig
+  shell: |
+    k3d kubeconfig merge -a --switch-context
+    mkdir $HOME/.kube
+    cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
+  become: yes
+
+- name: k3d - copy kubeconfig user
+  shell: |
+    k3d kubeconfig merge -a --switch-context
+    mkdir $HOME/.kube
+    cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
+
+
+# arkade
+- name: arkade - get kind
+  shell: arkade get kind
+  become: yes
+  when: not k3s and not k3d
+
+- name: arkade - create cluster
+  shell: kind create cluster
+  become: yes
+  when: not k3s and not k3d
+
+- name: arkade - install kubernetes dashboard
+  shell: arkade install kubernetes-dashboard | tail -1 > /root/kubernetes-dashboard-url
+  become: yes
+
+- name: arkade - install portainer
+  shell: arkade install portainer > /root/arkade.log
+  become: yes
+
+- name: arkade - info kubernetes-dashboard
+  shell: arkade info kubernetes-dashboard >> /root/arkade.log
+  become: yes
+
+- name: arkade - install openfaas
+  shell: arkade install openfaas > /root/openfaas-install.log
+  become: yes
+  when: not cloud_loadbalancer
+
+- name: arkade - install openfaas
+  shell: arkade install openfaas --load-balancer > /root/openfaas-install.log
+  become: yes
+  when: cloud_loadbalancer
+
+# Error: repo stable not found
+#- name: arkace - install metrics-server
+#  shell: arkade install metrics-server >> /root/arkade.log
+#  become: yes
+
+- name: arkade - install ingress-nginx
+  shell: arkade install ingress-nginx >> /root/arkade.log
+  become: yes
+
+- name: arkade - install cert-manager
+  shell: arkade install cert-manager >> /root/arkade.log
+  become: yes
+
+- name: arkade - install openfaas-ingress
+  shell: |
+    arkade install openfaas-ingress \
+      --email {{ EMAIL }} \
+      --domain {{ DOMAIN }} >> /root/arkade.log
+  become: yes
+  when: EMAIL and DOMAIN
+
+- name: kubectl - get external IP
+  shell: kubectl get -n openfaas svc/gateway-external >> /root/arkade.log
+
+# arkade uninstall
+# arkade delete

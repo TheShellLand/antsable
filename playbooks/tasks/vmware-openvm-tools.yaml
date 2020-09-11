@@ -1,0 +1,6 @@
+---
+- name: vmware tools - open-vm-tools
+  apt: update_cache=yes name=open-vm-tools state=latest
+
+- name: vmware tools - open-vm-tools-desktop
+  apt: update_cache=no name=open-vm-tools-desktop state=latest

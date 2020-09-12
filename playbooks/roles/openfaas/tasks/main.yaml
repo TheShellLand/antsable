@@ -117,3 +117,13 @@
     kubectl create secret generic -n openfaas-fn payload-secret --from-literal payload-secret="$PAYLOAD_SECRET"
     kubectl create secret generic -n openfaas payload-secret --from-literal payload-secret="$PAYLOAD_SECRET"
   become: yes
+
+# https://github.com/openfaas/openfaas-cloud/tree/master/docs#set-your-github-app-config
+- name: openfaas - set github app config
+  shell: |
+    WEBHOOK_SECRET={{ WEBHOOK_SECRET }}
+    kubectl create secret generic -n openfaas-fn github-webhook-secret --from-literal github-webhook-secret="$WEBHOOK_SECRET"
+
+- fail:
+    msg: WEBHOOK_SECRET not set
+  when: not WEBHOOK_SECRET

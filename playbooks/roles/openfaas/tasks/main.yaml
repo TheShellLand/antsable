@@ -103,6 +103,7 @@
 
 - name: kubectl - get external IP
   shell: kubectl get -n openfaas svc/gateway-external >> /root/arkade.log
+  become: yes
 
 # arkade uninstall
 # arkade delete

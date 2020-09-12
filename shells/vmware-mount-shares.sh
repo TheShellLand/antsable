@@ -2,9 +2,14 @@
 
 # vmware mount shared folder
 
-set -xe
+set -e
 cd $(dirname $0) && cd ..
 
-read -p "Shared folder: " folder
-mkdir ~/$folder
+if [ -z "$@" ]; then
+  read -p "Shared folder: " folder
+  mkdir ~/$folder || :
+else
+  folder="$@"
+fi
+
 sudo mount -t fuse.vmhgfs-fuse -o allow_other .host:/$folder ~/$folder

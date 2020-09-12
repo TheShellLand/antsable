@@ -107,3 +107,13 @@
 
 # arkade uninstall
 # arkade delete
+
+
+# openfaas
+# https://github.com/openfaas/openfaas-cloud/tree/master/docs#create-an-internal-trust-secret
+- name: openfaas - create internal trust secret
+  shell: |
+    PAYLOAD_SECRET=$(head -c 12 /dev/urandom | shasum | cut -d' ' -f1)
+    kubectl create secret generic -n openfaas-fn payload-secret --from-literal payload-secret="$PAYLOAD_SECRET"
+    kubectl create secret generic -n openfaas payload-secret --from-literal payload-secret="$PAYLOAD_SECRET"
+  become: yes

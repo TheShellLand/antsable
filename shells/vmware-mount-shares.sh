@@ -7,7 +7,7 @@ cd $(dirname $0) && cd ..
 
 if [ -z "$@" ]; then
   read -p "Shared folder: " folder
-  mkdir ~/$folder || :
+  mkdir ~/$folder 2>/dev/null || :
 else
   folder="$@"
 fi

@@ -44,6 +44,7 @@
     k3d kubeconfig merge -a --switch-context
     mkdir $HOME/.kube
     cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
+  ignore_errors: yes
 
 
 # arkade

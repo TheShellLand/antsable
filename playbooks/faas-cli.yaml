@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    - name: faas-cli - install
+      shell: curl -sSL https://cli.openfaas.com | sh

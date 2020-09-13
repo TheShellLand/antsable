@@ -46,6 +46,13 @@
     cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
   ignore_errors: yes
 
+- name: k3d - fetch remote kubeconfig
+  fetch:
+    src: /root/.kube/config
+    dest: "~/.kube/config"
+    flat: yes
+  become: yes
+
 
 # arkade
 - name: arkade - get kind

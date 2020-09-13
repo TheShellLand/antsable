@@ -96,8 +96,11 @@
 - name: arkade - install openfaas-ingress
   shell: |
     arkade install openfaas-ingress \
-      --email {{ EMAIL }} \
-      --domain {{ DOMAIN }} >> /root/arkade.log
+      --email {{ EMAIL }} --domain {{ DOMAIN }} >> /root/arkade.log
+  register: ingress
+  until: '"Unable to apply YAML files" not in ingress.stderr'
+  delay: 5
+  retries: 50
   become: yes
   when: EMAIL and DOMAIN
 

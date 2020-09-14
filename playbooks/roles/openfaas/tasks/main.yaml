@@ -31,6 +31,7 @@
 - name: k3d - create cluster
   shell: k3d cluster create
   become: yes
+  when: k3d
 
 - name: k3d - copy kubeconfig
   shell: |
@@ -38,6 +39,7 @@
     mkdir $HOME/.kube
     cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
   become: yes
+  when: k3d
 
 - name: k3d - copy kubeconfig user
   shell: |
@@ -45,6 +47,7 @@
     mkdir $HOME/.kube
     cp -v $HOME/.k3d/kubeconfig-k3s-default.yaml $HOME/.kube/config
   ignore_errors: yes
+  when: k3d
 
 - name: k3d - fetch remote kubeconfig
   fetch:
@@ -52,6 +55,7 @@
     dest: "~/.kube/config"
     flat: yes
   become: yes
+  when: k3d
 
 
 # arkade

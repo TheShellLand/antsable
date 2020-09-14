@@ -12,3 +12,5 @@ echo "Openfaas login"
 echo "=============="
 echo "user: $USER"
 echo "pass: $PASSWORD"
+
+echo $PASSWORD > openfaas-pass

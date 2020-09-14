@@ -2,8 +2,10 @@
 
 # get openfaas gateway proxy
 
+killall kubectl
 set -ex
-cd $(dirname $0)
 
-echo "http://localhost:31112"
-kubectl port-forward svc/gateway -n openfaas 31112:8080
+export OPENFAAS_URL="http://localhost:31112"
+kubectl port-forward svc/gateway -n openfaas 31112:8080 &
+
+exec bash

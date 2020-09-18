@@ -1,12 +1,14 @@
 ---
-- hosts: all
-  tasks:
+- hosts: localhost
+  connection: local
+  become: yes
 
-  - name: Install Drone client cli
-    shell: |
-      cd /tmp/
-      curl -L https://github.com/drone/drone-cli/releases/latest/download/drone_linux_amd64.tar.gz | tar zx
-      install -t /usr/local/bin drone
-    args:
-      executable: /bin/bash
-    become: true
+  tasks:
+    - name: Install Drone client cli
+      shell: |
+        cd /tmp/
+        curl -L https://github.com/drone/drone-cli/releases/latest/download/drone_linux_amd64.tar.gz | tar zx
+        install -t /usr/local/bin drone
+      args:
+        executable: /bin/bash
+      become: true

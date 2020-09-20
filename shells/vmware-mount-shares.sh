@@ -7,9 +7,9 @@ cd $(dirname $0) && cd ..
 
 if [ -z "$@" ]; then
   read -p "Shared folder: " folder
-  mkdir ~/$folder 2>/dev/null || :
 else
   folder="$@"
 fi
 
+mkdir ~/$folder 2>/dev/null || echo
 sudo mount -t fuse.vmhgfs-fuse -o allow_other .host:/$folder ~/$folder

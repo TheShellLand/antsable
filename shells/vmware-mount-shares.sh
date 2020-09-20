@@ -12,4 +12,6 @@ else
 fi
 
 mkdir ~/$folder 2>/dev/null || echo
+
+set -x
 sudo mount -t fuse.vmhgfs-fuse -o allow_other .host:/$folder ~/$folder

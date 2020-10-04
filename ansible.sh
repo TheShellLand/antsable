@@ -129,7 +129,7 @@ if ! which ansible-playbook; then
   exit 1
 fi
 
-if [ ! -d ".git" ] && [ ! $(id -u) == 0 ]; then
+if [ ! -d ".git" ]; then
   git clone https://github.com/TheShellLand/antsable
 
   # Run playbook

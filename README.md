@@ -1,6 +1,11 @@
 ![](ants.jpg)
 
 
+## Get started
+```
+wget -O - https://raw.githubusercontent.com/TheShellLand/antsable/master/ansible.sh | sudo bash
+```
+
 ## Set Inventory
 
 ```

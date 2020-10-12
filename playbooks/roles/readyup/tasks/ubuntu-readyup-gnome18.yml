@@ -1,0 +1,178 @@
+---
+- set_fact:
+    install: /tmp/readyup
+    themes: /usr/share/themes
+    extensions: /usr/share/gnome-shell/extensions
+    ext: /usr/share/gnome-shell/extensions
+    fonts: /usr/share/fonts
+    icons: /usr/share/icons
+    cursors: /usr/share/icons
+    user_icons: "{{ ansible_env.HOME }}/.icons"
+    user_cursors: "{{ ansible_env.HOME }}/.icons"
+
+- name: Create themes dir
+  file: path={{ themes }} state=directory
+
+- name: Create extensions dir
+  file: path={{ extensions }} state=directory
+
+- name: Cleanup
+  file: path={{ install }} state=absent
+
+- name: Create temp dir
+  file: path={{ install }} state=directory
+
+- name: Install Missing Packages
+  shell: apt install -f -y
+
+#- name: ubuntu-gnome-desktop
+#  apt: update_cache=no name=ubuntu-gnome-desktop state=latest
+
+- name: dconf-editor
+  apt: update_cache=no name=dconf-editor state=latest
+
+- name: gnome-tweak-tool
+  apt: update_cache=no name=gnome-tweak-tool state=latest
+
+#- name: gnome-shell-extensions - purge
+#  apt: update_cache=no name=gnome-shell-extensions state=absent purge=yes
+
+- name: gnome-shell-extensions
+  apt: update_cache=no name=gnome-shell-extensions state=latest
+
+- name: jq
+  apt: update_cache=no name=jq state=latest
+
+- name: git
+  apt: update_cache=no name=git state=latest
+
+- name: unzip
+  apt: update_cache=no name=unzip state=latest
+
+#  - name: Configure for gdm - debconf
+#    debconf:
+#      name: gdm3
+#      question: shared/default-x-display-manager
+#      vtype: select
+#      value: gdm3
+#
+#  - name: Configure for gdm - file
+#    replace:
+#      path: /etc/X11/default-display-manager
+#      regexp: '.*'
+#      replace: /usr/sbin/gdm
+#      backup: yes
+
+###
+### Extensions
+###
+
+- name: Gnome Extensions
+  shell: |
+    extensions="
+    https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip
+    https://extensions.gnome.org/extension-data/apps-menu%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
+    https://extensions.gnome.org/extension-data/drive-menu%40gnome-shell-extensions.gcampax.github.com.v37.shell-extension.zip
+    https://extensions.gnome.org/extension-data/screenshot-window-sizer%40gnome-shell-extensions.gcampax.github.com.v14.shell-extension.zip
+    https://extensions.gnome.org/extension-data/windowsNavigator%40gnome-shell-extensions.gcampax.github.com.v41.shell-extension.zip
+    https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+    https://extensions.gnome.org/extension-data/disable-workspace-switcher-popup%40github.com.v2.shell-extension.zip
+    https://extensions.gnome.org/extension-data/cascade-windowslytol.com.v3.shell-extension.zip
+    https://extensions.gnome.org/extension-data/windowIsReady_Removernunofarrucagmail.com.v8.shell-extension.zip
+    https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v38.shell-extension.zip
+    https://extensions.gnome.org/extension-data/clipboard-indicatortudmotu.com.v34.shell-extension.zip
+    https://extensions.gnome.org/extension-data/system-monitorparadoxxx.zero.gmail.com.v39.shell-extension.zip
+    https://extensions.gnome.org/extension-data/VitalsCoreCoding.com.v33.shell-extension.zip
+    https://extensions.gnome.org/extension-data/gnome-shell-screenshotttll.de.v43.shell-extension.zip
+    https://extensions.gnome.org/extension-data/sound-output-device-chooserkgshank.net.v31.shell-extension.zip
+    https://extensions.gnome.org/extension-data/middleclickclosepaolo.tranquilli.gmail.com.v16.shell-extension.zip
+    https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v68.shell-extension.zip
+    https://extensions.gnome.org/extension-data/scroll-workspacesgfxmonk.net.v22.shell-extension.zip
+    https://extensions.gnome.org/extension-data/panel-osdberend.de.schouwer.gmail.com.v38.shell-extension.zip
+    https://extensions.gnome.org/extension-data/extendedgesturesmpiannucci.github.com.v6.shell-extension.zip
+    https://extensions.gnome.org/extension-data/miniviewthesecretaryofwar.com.v7.shell-extension.zip
+    https://extensions.gnome.org/extension-data/gTilevibou.v35.shell-extension.zip
+    "
+
+    # disabled
+    #https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/auto-move-windows%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/CoverflowAltTab%40palatis.blogspot.com.v36.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/customgesturesraushankumar27.github.com.v6.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/ubuntuvn-desktopubuntuvn.com.v3.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/launch-new-instance%40gnome-shell-extensions.gcampax.github.com.v21.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/hidetopbarmathieu.bidon.ca.v70.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/maximus-threedaman.4880.gmail.com.v3.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/native-window-placement%40gnome-shell-extensions.gcampax.github.com.v37.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/no-title-bar%40franglais125.gmail.com.v9.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/places-menu%40gnome-shell-extensions.gcampax.github.com.v40.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/ShellTileemasab.it.v62.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/transparent-window-movingnoobsai.github.com.v3.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/unitehardpixel.eu.v37.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/TopRightHotCorner%40hoquangnam45.v1.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/Move_Clockrmy.pobox.com.v21.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v24.shell-extension.zip
+
+
+    # broken 18.04
+    #https://extensions.gnome.org/extension-data/compiz-windows-effecthermes83.github.com.v1.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/window_buttons%40biox.github.com.v15.shell-extension.zip
+
+    # broken 20.04
+    #https://extensions.gnome.org/extension-data/unitehardpixel.eu.v32.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/sound-output-device-chooser%40kgshank.net.v17.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/maximus-threedaman.4880.gmail.com.v3.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/arrangeWindowssun.wxggmail.com.v9.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v65.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/tweaks-system-menuextensions.gnome-shell.fifi.org.v8.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/window-corner-previewfabiomereu.it.v4.shell-extension.zip
+    #https://extensions.gnome.org/extension-data/scroll-workspaces%40gfxmonk.net.v20.shell-extension.zip
+
+    for ext in $extensions; do
+      wget -O {{ install }}/extension.zip "$ext"
+      unzip -o {{ install }}/extension.zip -d {{ install }}/extension
+      name="$(jq -r '.uuid' {{ install }}/extension/metadata.json)"
+      mv {{ install }}/extension {{ install }}/"$name"
+      cp -rv {{ install }}/"$name" {{ extensions }}
+    done
+  args:
+    executable: /bin/bash
+
+- name: Gnome Extensions Requirements
+  shell: |
+    apt install -y gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
+
+- name: Gnome Extensions Fixes
+  shell: chmod -R +r {{ extensions }}
+
+#- name: Gnome Extensions Enabled
+#  shell: |
+#    gnome-shell-extension-tool -e window_buttons@biox.github.com
+#  ignore_errors: true
+
+###
+### Wallpapers
+###
+
+- name: walls - download
+  git:
+    repo: https://github.com/TheShellLand/walls.git
+    dest: "{{ install }}/walls"
+- name: walls - install
+  shell: cp -r {{ install }}/walls/Wallpapers /tmp/
+
+###
+### Icons, Cursors & Fonts
+###
+
+- name: cutecursorsomg - download
+  git:
+    repo: https://github.com/TheShellLand/cutecursorsomg.git
+    dest: "{{ install }}/cutecursorsomg"
+- name: cutecursorsomg - install
+  shell: cp -r {{ install }}/cutecursorsomg/cursors/* {{ icons }}
+
+###
+### Themes
+###

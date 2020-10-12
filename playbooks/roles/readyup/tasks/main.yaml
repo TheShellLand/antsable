@@ -12,7 +12,7 @@
   when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '17.04'
 
 # Ubuntu 18
-- import_tasks: ubuntu-readyup-gnome.yml
+- import_tasks: ubuntu-readyup-gnome18.yml
   when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 - import_tasks: ubuntu-readyup-18.yml
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

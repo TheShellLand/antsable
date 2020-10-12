@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+
+    - name: Install Missing Packages
+      shell: apt install -f -y
+
+    - name: ubuntu-gnome-desktop
+      apt: update_cache=yes name=ubuntu-gnome-desktop state=latest
+
+    - name: gnome-tweak-tool
+      apt: update_cache=no name=gnome-tweak-tool state=latest
+
+    - name: gnome-shell-extensions
+      apt: update_cache=no name=gnome-shell-extensions state=latest

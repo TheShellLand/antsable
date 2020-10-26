@@ -131,6 +131,7 @@ fi
 
 if [ ! -d ".git" ]; then
   git clone https://github.com/TheShellLand/antsable
+  chown -R $SUDO_USER antsable
 
   # Run playbook
   if [ ! "$1" == "" ]; then

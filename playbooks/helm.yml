@@ -1,9 +1,10 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   tasks:
 
     - set_fact:
-        helm_version: v3.2.1
+        helm_version: v3.4.0
         helm_path: /tmp/helm
         helm_bin: /tmp/helm/linux-amd64/helm
         bin: /usr/local/bin/helm

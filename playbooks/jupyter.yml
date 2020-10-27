@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: jupyter - python3
+      apt: update_cache=yes name=python3 state=latest
+
+    - name: jupyter - python3-pip
+      apt: update_cache=no name=python3-pip state=latest
+
+    - name: jupyter - python3-dev
+      apt: update_cache=no name=python3-dev state=latest
+
+    - name: jupyter - install
+      shell: |
+        python3 -m pip install -U virtualenv
+        python3 -m pip install -U jupyterlab

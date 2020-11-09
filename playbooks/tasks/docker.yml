@@ -12,10 +12,14 @@
   apt: update_cache=no name=software-properties-common state=latest
 
 - name: docker - Add docker repository key
-  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
 
 - name: docker - Add docker repo
-  shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
 
 - name: docker - Install docker-ce
   #apt: update_cache=yes name=docker-ce state=absent

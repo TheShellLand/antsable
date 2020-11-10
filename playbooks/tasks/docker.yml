@@ -8,6 +8,10 @@
 - name: docker - curl
   apt: update_cache=no name=curl state=latest
 
+- name: docker - gnupg-agent
+  apt: update_cache=no name=gnupg-agent state=latest
+  ignore_errors: yes
+
 - name: docker - software-properties-common
   apt: update_cache=no name=software-properties-common state=latest
 
@@ -17,9 +21,8 @@
     state: present
 
 - name: docker - Add docker repo
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
-    state: present
+  shell: apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  retries: 99
 
 - name: docker - Install docker-ce
   #apt: update_cache=yes name=docker-ce state=absent
@@ -43,6 +46,8 @@
   shell: usermod -a -G docker eric
   ignore_errors: yes
 
-- name: docker - geralt
-  shell: usermod -a -G docker geralt
-  ignore_errors: yes
+- name: docker - python3 docker
+  shell: python3 -m pip install docker
+
+- name: docker - python3 docker-compose
+  shell: python3 -m pip install docker-compose

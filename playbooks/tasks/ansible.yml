@@ -2,6 +2,7 @@
 - name: Add ansible ppa
   apt_repository: repo='ppa:ansible/ansible'
   become: true
+  when: ansible_distribution_version != '20.04' and ansible_distribution == 'Ubuntu'
 
 - name: Install ansible
   apt: update_cache=yes name=ansible state=latest

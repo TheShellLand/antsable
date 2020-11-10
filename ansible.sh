@@ -5,7 +5,7 @@
 set -e
 
 # Requires apt
-if ! which apt; then
+if ! which apt >/dev/null; then
   echo "*** apt does not exist ***"
   echo "*** minimum requirements not met ***"
 fi
@@ -14,7 +14,7 @@ cd $(dirname $0)
 
 
 # Ubuntu 16.x
-if grep "Ubuntu 16" /etc/issue; then
+if grep "Ubuntu 16" /etc/issue >/dev/null; then
 
   if ! which ansible; then
     echo "Installing ansible"
@@ -32,7 +32,7 @@ fi
 
 
 # Ubuntu 17.x
-if grep "Ubuntu 17" /etc/issue; then
+if grep "Ubuntu 17" /etc/issue >/dev/null; then
 
   if ! which ansible; then
     echo "Installing ansible"
@@ -50,9 +50,9 @@ fi
 
 
 # Ubuntu 18.x
-if grep "Ubuntu 18" /etc/issue; then
+if grep "Ubuntu 18" /etc/issue >/dev/null; then
 
-  if ! which ansible; then
+  if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -66,9 +66,9 @@ fi
 
 
 # Ubuntu 19.x
-if grep "Ubuntu 19" /etc/issue; then
+if grep "Ubuntu 19" /etc/issue >/dev/null; then
 
-  if ! which ansible; then
+  if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -81,9 +81,9 @@ if grep "Ubuntu 19" /etc/issue; then
 fi
 
 # Ubuntu 20.x
-if grep "Ubuntu 20" /etc/issue; then
+if grep "Ubuntu 20" /etc/issue >/dev/null; then
 
-  if ! which ansible; then
+  if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -96,7 +96,7 @@ fi
 # Debian
 if grep Debian /etc/issue >/dev/null; then
 
-  if ! which ansible; then
+  if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -110,7 +110,7 @@ fi
 # Best effort
 if grep Ubuntu /etc/issue >/dev/null; then
 
-  if ! which ansible; then
+  if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
     apt install -y git vim curl && \
@@ -122,7 +122,7 @@ if grep Ubuntu /etc/issue >/dev/null; then
   fi
 fi
 
-if ! which ansible-playbook; then
+if ! which ansible-playbook >/dev/null; then
   echo "** ansible not able to be installed **"
   echo "** unknown linux **"
   cat /etc/issue

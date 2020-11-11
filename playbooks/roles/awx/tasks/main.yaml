@@ -1,0 +1,13 @@
+---
+# Tested on Ubuntu 20.04
+- import_tasks: python3.yml
+- import_tasks: docker.yml
+- import_tasks: ansible.yml
+
+- name: awx - clone
+  shell: git clone https://github.com/ansible/awx
+
+- name: awx - install
+  shell: |
+    cd awx
+    ansible-playbook -i installer/inventory installer/install.yml

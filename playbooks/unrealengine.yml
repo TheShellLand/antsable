@@ -19,21 +19,25 @@
 
     - name: unreal - clone git
       shell: |
-        if [ ! -d UnrealEngine ]; then
-          git clone git@github.com:EpicGames/UnrealEngine.git
+        if [ ! -d $HOME/UnrealEngine ]; then
+          git clone git@github.com:EpicGames/UnrealEngine.git $HOME/UnrealEngine
         fi
 
     - name: unreal - setup
       shell: |
-        cd UnrealEngine
+        cd $HOME/UnrealEngine
         ./Setup.sh
 
     - name: unreal - generate
       shell: |
-        cd UnrealEngine
+        cd $HOME/UnrealEngine
         ./GenerateProjectFiles.sh
 
     - name: unreal - make
       shell: |
-        cd UnrealEngine
+        cd $HOME/UnrealEngine
         make
+
+    - name: unreal - run
+      debug:
+        msg: "$HOME/UnrealEngine/Engine/Binaries/Linux/UE4Editor"

@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+
+  # https://docs.unrealengine.com/en-US/Platforms/Linux/BeginnerLinuxDeveloper/SettingUpAnUnrealWorkflow/index.html
+
+    - name: gcc
+      apt: update_cache=no name=gcc state=latest
+
+    - name: make
+      apt: update_cache=no name=make state=latest
+
+    - name: unreal - git
+      apt: update_cache=no name=git state=latest
+
+    - name: unreal - clone git
+      shell: |
+        if [ ! -d UnrealEngine ]; then
+          git clone https://github.com/EpicGames/UnrealEngine.git
+        fi
+
+    - name: unreal - setup
+      shell: |
+        cd UnrealEngine
+        ./Setup.sh
+
+    - name: unreal - generate
+      shell: |
+        cd UnrealEngine
+        ./GenerateProjectFiles.sh
+
+    - name: unreal - make
+      shell: |
+        cd UnrealEngine
+        make

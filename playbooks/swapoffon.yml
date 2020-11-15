@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    - name: swap off
+      shell: swapoff -a
+
+    - name: swap on
+      shell: swapon -a

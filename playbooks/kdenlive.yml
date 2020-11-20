@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  tasks:
+    - name: kdenlive - install
+      shell: |
+        add-apt-repository -y ppa:kdenlive/kdenlive-stable
+        apt-get update
+        apt install -y kdenlive

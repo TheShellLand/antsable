@@ -3,4 +3,4 @@
   tasks:
 
     - debug:
-        msg: "gnome-{{ansible_distribution}}{{ansible_distribution_version}}.yml"
+        msg: ansible_facts['virtualization_role']

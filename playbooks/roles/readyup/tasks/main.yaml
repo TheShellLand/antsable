@@ -1,49 +1,31 @@
 ---
-# Ubuntu 16
-- import_tasks: ubuntu-readyup-gnome.yml
-  when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
-- import_tasks: ubuntu-readyup-16.yml
-  when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+- debug:
+    msg: "{{system}}"
 
-# Ubuntu 17
-- import_tasks: ubuntu-readyup-gnome.yml
-  when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '17.04'
-- import_tasks: ubuntu-readyup-17.yml
-  when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '17.04'
+# Ubuntu
+- include_tasks: "{{tasks}}/gnome-{{system}}.yml"
+  when: HIDPI and ansible_facts['ansible_distribution'] == "Ubuntu"
+- include_tasks: "{{tasks}}/readyup-{{system}}.yml"
+  when: INSTALL_TOOLS and ansible_facts['virtualiztion_role'] == "host"
+  ignore_errors: yes
+- include_tasks: "{{tasks}}/readyup-{{system}}-lite.yml"
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" 
+  ignore_errors: yes
 
-# Ubuntu 18
-- import_tasks: ubuntu-readyup-gnome18.yml
-  when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
-- import_tasks: ubuntu-readyup-18.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
-- import_tasks: ubuntu-readyup-18-lite.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
-
-# Ubuntu 19
-- import_tasks: ubuntu-readyup-gnome19.yml
-  when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '19.10'
-- import_tasks: ubuntu-readyup-19.yml
-  when: INSTALL_TOOLS and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '19.10'
-
-# Ubuntu 20
-- import_tasks: ubuntu-readyup-gnome20.yml
-  when: INSTALL_GNOME and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
-- import_tasks: ubuntu-readyup-20.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
-- import_tasks: ubuntu-readyup-20-lite.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
+# Macbook M1
+- include_tasks: "{{tasks}}/readyup-{{system}}.yml"
 
 # HiDPI
 - import_tasks: tasks/hidpi.yml
-  when: HIDPI
+  when: HIDPI and ansible_facts['ansible_distribution'] == "Ubuntu"
 
 # Python 3.8
 - import_tasks: tasks/python3.yml
-  when: INSTALL_TOOLS
+  when: INSTALL_TOOLS and ansible_distribution == "Ubuntu"
 
 # docker
 - import_tasks: tasks/docker.yml
-  when: INSTALL_TOOLS
+  when: INSTALL_TOOLS and ansible_distribution == "Ubuntu"
 
 # vmware workstation
 - import_tasks: tasks/vmware-workstation.yml
@@ -59,3 +41,4 @@
 
 # Apt
 - import_tasks: tasks/apt_upgrade.yml
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'

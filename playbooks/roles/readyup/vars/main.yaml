@@ -1,0 +1,4 @@
+---
+system: "{{ansible_distribution}}{{ansible_distribution_version}}"
+tasks: "roles/readyup/tasks"
+

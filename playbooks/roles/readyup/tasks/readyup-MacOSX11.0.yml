@@ -1,0 +1,18 @@
+---
+- set_fact:
+    install: /tmp/readyup
+
+- name: temp install
+  file: path={{ install }} state=directory
+
+- name: brew
+  shell: |
+    if ! which brew >/dev/null; then
+      arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+- name: tmux
+  shell: arch -x86_64 brew install tmux
+
+- name: tmux
+  shell: arch -x86_64 brew install tmux

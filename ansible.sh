@@ -5,7 +5,7 @@
 set -e
 
 # Requires apt
-if ! which apt >/dev/null; then
+if ! which apt >/dev/null 2>&1; then
   echo "*** apt does not exist ***"
   echo "*** minimum requirements not met ***"
 fi
@@ -14,7 +14,7 @@ cd $(dirname $0)
 
 
 # Ubuntu 16.x
-if grep "Ubuntu 16" /etc/issue >/dev/null; then
+if grep "Ubuntu 16" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible; then
     echo "Installing ansible"
@@ -32,7 +32,7 @@ fi
 
 
 # Ubuntu 17.x
-if grep "Ubuntu 17" /etc/issue >/dev/null; then
+if grep "Ubuntu 17" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible; then
     echo "Installing ansible"
@@ -50,7 +50,7 @@ fi
 
 
 # Ubuntu 18.x
-if grep "Ubuntu 18" /etc/issue >/dev/null; then
+if grep "Ubuntu 18" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -66,7 +66,7 @@ fi
 
 
 # Ubuntu 19.x
-if grep "Ubuntu 19" /etc/issue >/dev/null; then
+if grep "Ubuntu 19" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -81,7 +81,7 @@ if grep "Ubuntu 19" /etc/issue >/dev/null; then
 fi
 
 # Ubuntu 20.x
-if grep "Ubuntu 20" /etc/issue >/dev/null; then
+if grep "Ubuntu 20" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -94,7 +94,7 @@ if grep "Ubuntu 20" /etc/issue >/dev/null; then
 fi
 
 # Debian
-if grep Debian /etc/issue >/dev/null; then
+if grep Debian /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -108,7 +108,7 @@ if grep Debian /etc/issue >/dev/null; then
 fi
 
 # Best effort
-if grep Ubuntu /etc/issue >/dev/null; then
+if grep Ubuntu /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -122,10 +122,20 @@ if grep Ubuntu /etc/issue >/dev/null; then
   fi
 fi
 
+# Mac M1
+if [ "$(uname)" == "Darwin" ]; then
+  if ! which brew >/dev/null; then
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  if ! which ansible >/dev/null; then
+    arch -x86_64 brew install ansible
+  fi
+fi
+
 if ! which ansible-playbook >/dev/null; then
   echo "** ansible not able to be installed **"
-  echo "** unknown linux **"
-  cat /etc/issue
+  echo "** unsupported system **"
+  uname -a
   exit 1
 fi
 

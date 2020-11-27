@@ -11,8 +11,20 @@
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-- name: tmux
-  shell: arch -x86_64 brew install tmux
+- name: wget
+  shell: arch -x86_64 brew install wget
 
 - name: tmux
   shell: arch -x86_64 brew install tmux
+
+- name: darktable
+  shell: arch -x86_64 brew cask install darktable
+
+- name: pycharm-ce
+  shell: arch -x86_64 brew cask install pycharm-ce
+
+- name: audacity
+  ansible.builtin.git:
+    repo: 'git@github.com:TheShellLand/audacity-mac.git'
+    dest: "{{install}}/audacity-mac"
+

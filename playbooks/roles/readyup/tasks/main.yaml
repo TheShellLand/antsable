@@ -2,6 +2,9 @@
 - debug:
     msg: "{{system}}"
 
+# Macbook M1
+- include_tasks: "{{tasks}}/readyup-{{system}}.yml"
+
 # Ubuntu
 - include_tasks: "{{tasks}}/gnome-{{system}}.yml"
   when: HIDPI and ansible_facts['ansible_distribution'] == "Ubuntu"
@@ -11,9 +14,6 @@
 - include_tasks: "{{tasks}}/readyup-{{system}}-lite.yml"
   when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" 
   ignore_errors: yes
-
-# Macbook M1
-- include_tasks: "{{tasks}}/readyup-{{system}}.yml"
 
 # HiDPI
 - import_tasks: tasks/hidpi.yml

@@ -14,14 +14,14 @@
 - name: vagrant
   shell: arch -x86_64 brew cask install vagrant
 
-- name: virtualbox
-  shell: arch -x86_64 brew cask install virtualbox
+#- name: virtualbox
+#  shell: arch -x86_64 brew cask install virtualbox
 
 - name: vmware-fusion
   shell: arch -x86_64 brew cask install vmware-fusion
 
-- name: parallels
-  shell: arch -x86_64 brew cask install parallels
+#- name: parallels
+#  shell: arch -x86_64 brew cask install parallels
 
 - name: wget
   shell: arch -x86_64 brew install wget

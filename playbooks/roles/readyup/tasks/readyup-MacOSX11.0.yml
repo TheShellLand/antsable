@@ -26,6 +26,9 @@
 - name: vmware-fusion
   shell: arch -x86_64 brew cask install vmware-fusion
 
+- name: vagrant
+  shell: arch -x86_64 brew cask install vagrant
+
 - name: audacity - download
   ansible.builtin.git:
     repo: 'https://github.com/TheShellLand/audacity-mac.git'

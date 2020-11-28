@@ -23,8 +23,14 @@
 - name: pycharm-ce
   shell: arch -x86_64 brew cask install pycharm-ce
 
-- name: audacity
+- name: audacity - download
   ansible.builtin.git:
-    repo: 'git@github.com:TheShellLand/audacity-mac.git'
+    repo: 'https://github.com/TheShellLand/audacity-mac.git'
     dest: "{{install}}/audacity-mac"
 
+- name: audacity - install
+  shell: |
+    hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
+    cp -R "/Volumes/Audacity 2.4.2/Audacity.app" /Applications/
+    hdiutil detach "/Volumes/Audacity 2.4.2/"
+  become: yes

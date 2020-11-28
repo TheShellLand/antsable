@@ -37,6 +37,7 @@
 - name: audacity - install
   shell: |
     hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
+    #hdiutil attach -nobrowse https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
     cp -R "/Volumes/Audacity 2.4.2/Audacity.app" /Applications/
     hdiutil detach "/Volumes/Audacity 2.4.2/"
   become: yes

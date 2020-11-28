@@ -23,6 +23,9 @@
 - name: pycharm-ce
   shell: arch -x86_64 brew cask install pycharm-ce
 
+- name: vmware-fusion
+  shell: arch -x86_64 brew cask install vmware-fusion
+
 - name: audacity - download
   ansible.builtin.git:
     repo: 'https://github.com/TheShellLand/audacity-mac.git'
@@ -34,3 +37,4 @@
     cp -R "/Volumes/Audacity 2.4.2/Audacity.app" /Applications/
     hdiutil detach "/Volumes/Audacity 2.4.2/"
   become: yes
+

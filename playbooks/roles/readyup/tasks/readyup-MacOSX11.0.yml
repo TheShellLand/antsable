@@ -11,6 +11,9 @@
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
+- name: vagrant
+  shell: arch -x86_64 brew cask install vagrant
+
 - name: wget
   shell: arch -x86_64 brew install wget
 
@@ -25,9 +28,6 @@
 
 - name: vmware-fusion
   shell: arch -x86_64 brew cask install vmware-fusion
-
-- name: vagrant
-  shell: arch -x86_64 brew cask install vagrant
 
 - name: audacity - download
   ansible.builtin.git:

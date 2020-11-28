@@ -4,5 +4,12 @@
   become: true
   tasks:
 
-    - name: Delete vmware license
+    - name: Delete vmware license - linux
       shell: rm /etc/vmware/license*
+      when: ansible_facts['distribution'] == "Ubuntu"
+      ignore_errors: yes
+
+    - name: Delete vmware license - mac
+      shell: rm "/Library/Preferences/VMware Fusion/license"*
+      when: ansible_facts['distribution'] == "MacOSX"
+      ignore_errors: yes

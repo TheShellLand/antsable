@@ -17,6 +17,12 @@
 - name: virtualbox
   shell: arch -x86_64 brew cask install virtualbox
 
+- name: vmware-fusion
+  shell: arch -x86_64 brew cask install vmware-fusion
+
+- name: parallels
+  shell: arch -x86_64 brew cask install parallels
+
 - name: wget
   shell: arch -x86_64 brew install wget
 
@@ -28,9 +34,6 @@
 
 - name: pycharm-ce
   shell: arch -x86_64 brew cask install pycharm-ce
-
-- name: vmware-fusion
-  shell: arch -x86_64 brew cask install vmware-fusion
 
 - name: audacity - download
   ansible.builtin.git:

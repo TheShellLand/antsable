@@ -29,6 +29,9 @@
 - name: rclone
   shell: arch -x86_64 brew install rclone
 
+- name: osxfuse
+  shell: arch -x86_64 brew cask install osxfuse
+
 - name: tmux
   shell: arch -x86_64 brew install tmux
 
@@ -37,6 +40,9 @@
 
 - name: pycharm-ce
   shell: arch -x86_64 brew cask install pycharm-ce
+
+- name: docker
+  shell: arch -x86_64 brew cask install docker
 
 - name: audacity - download
   ansible.builtin.git:

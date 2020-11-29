@@ -66,3 +66,13 @@
     hdiutil detach "/Volumes/$folder/"
   become: yes
 
+- name: streamlabs
+  shell: |
+    url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.25.2.dmg
+    folder="Streamlabs OBS 0.25.2"
+    app="Streamlabs OBS.app"
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes

@@ -126,6 +126,7 @@ fi
 if [ "$(uname)" == "Darwin" ]; then
   if [ ! "stat /usr/local/lib/pkgconfig | grep $(whoami)" ]; then
     sudo chown -R $(whoami) /usr/local/lib/pkgconfig
+    sudo chown -R $(whoami) /usr/local/share/man/man8
   fi
   if ! which brew >/dev/null; then
     arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

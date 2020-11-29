@@ -11,20 +11,23 @@
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-- name: vagrant
-  shell: arch -x86_64 brew cask install vagrant
+#- name: vagrant
+#  shell: arch -x86_64 brew cask install vagrant
 
 #- name: virtualbox
 #  shell: arch -x86_64 brew cask install virtualbox
 
-- name: vmware-fusion
-  shell: arch -x86_64 brew cask install vmware-fusion
+#- name: vmware-fusion
+#  shell: arch -x86_64 brew cask install vmware-fusion
 
 #- name: parallels
 #  shell: arch -x86_64 brew cask install parallels
 
 - name: wget
   shell: arch -x86_64 brew install wget
+
+- name: rclone
+  shell: arch -x86_64 brew install rclone
 
 - name: tmux
   shell: arch -x86_64 brew install tmux

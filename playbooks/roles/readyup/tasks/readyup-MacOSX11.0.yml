@@ -26,6 +26,9 @@
 - name: wget
   shell: arch -x86_64 brew install wget
 
+- name: rclone
+  shell: arch -x86_64 brew install rclone
+
 - name: tmux
   shell: arch -x86_64 brew install tmux
 

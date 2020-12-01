@@ -1,0 +1,85 @@
+---
+- set_fact:
+    install: /tmp/readyup
+
+- name: temp install
+  file: path={{ install }} state=directory
+
+- name: brew
+  shell: |
+    if ! which brew >/dev/null; then
+      arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+#- name: vagrant
+#  shell: arch -x86_64 brew cask install vagrant
+
+#- name: virtualbox
+#  shell: arch -x86_64 brew cask install virtualbox
+
+#- name: vmware-fusion
+#  shell: arch -x86_64 brew cask install vmware-fusion
+
+#- name: parallels
+#  shell: arch -x86_64 brew cask install parallels
+
+- name: wget
+  shell: arch -x86_64 brew install wget
+
+- name: rclone
+  shell: arch -x86_64 brew install rclone
+
+- name: osxfuse
+  shell: arch -x86_64 brew install --cask osxfuse
+  ignore_errors: yes
+
+- name: tmux
+  shell: arch -x86_64 brew install tmux
+
+- name: darktable
+  shell: arch -x86_64 brew cask install darktable
+
+- name: pycharm-ce
+  shell: arch -x86_64 brew cask install pycharm-ce
+
+- name: docker
+  shell: arch -x86_64 brew cask install docker
+
+- name: audacity - download
+  ansible.builtin.git:
+    repo: 'https://github.com/TheShellLand/audacity-mac.git'
+    dest: "{{install}}/audacity-mac"
+
+- name: audacity - install
+  shell: |
+    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
+    folder="Audacity 2.4.2"
+    app=Audacity.app
+
+    hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
+    #hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes
+
+- name: steam
+  shell: |
+    url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
+    folder=Steam
+    app=Steam.app
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes
+
+- name: streamlabs
+  shell: |
+    url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.25.2.dmg
+    folder="Streamlabs OBS 0.25.2"
+    app="Streamlabs OBS.app"
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes

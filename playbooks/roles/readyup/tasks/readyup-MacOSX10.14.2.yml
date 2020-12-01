@@ -40,7 +40,7 @@
   shell: arch -x86_64 brew cask install darktable
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew cask install pycharm-ce
+  shell: arch -x86_64 brew cask install --force pycharm-ce
 
 - name: docker
   shell: arch -x86_64 brew cask install docker

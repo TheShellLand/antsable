@@ -4,10 +4,11 @@
 
 # Macbook M1
 - include_tasks: "{{role_path}}/tasks/readyup-{{system}}.yml"
+  when: INSTALL_TOOLS
 
 # Ubuntu
 - include_tasks: "{{role_path}}/tasks/gnome-{{system}}.yml"
-  when: HIDPI and ansible_facts['ansible_distribution'] == "Ubuntu"
+  when: ansible_facts['distribution'] == "Ubuntu"
 - include_tasks: "{{role_path}}/tasks/readyup-{{system}}.yml"
   when: INSTALL_TOOLS and ansible_facts['virtualiztion_role'] == "host"
   ignore_errors: yes
@@ -17,28 +18,28 @@
 
 # HiDPI
 - import_tasks: tasks/hidpi.yml
-  when: HIDPI and ansible_facts['ansible_distribution'] == "Ubuntu"
+  when: HIDPI and ansible_facts['distribution'] == "Ubuntu"
 
 # Python 3.8
 - import_tasks: tasks/python3.yml
-  when: INSTALL_TOOLS and ansible_distribution == "Ubuntu"
+  when: INSTALL_TOOLS and distribution == "Ubuntu"
 
 # docker
 - import_tasks: tasks/docker.yml
-  when: INSTALL_TOOLS and ansible_distribution == "Ubuntu"
+  when: INSTALL_TOOLS and distribution == "Ubuntu"
 
 # vmware workstation
 - import_tasks: tasks/vmware-workstation.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu' 
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and distribution == 'Ubuntu' 
 
 # vmware tools
 - import_tasks: tasks/vmware-openvm-tools.yaml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and ansible_distribution == 'Ubuntu'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "host" and distribution == 'Ubuntu'
 
 # virtualbox
 - import_tasks: tasks/virtualbox-guest-addons.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and distribution == 'Ubuntu'
 
 # Apt
 - import_tasks: tasks/apt_upgrade.yml
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and ansible_distribution == 'Ubuntu'
+  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest" and distribution == 'Ubuntu'

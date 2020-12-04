@@ -59,6 +59,9 @@
 - name: pass
   apt: update_cache=no name=pass state=latest
 
+- name: rclone
+  shell: curl https://rclone.org/install.sh | sudo bash
+
 #  - name: Chrome
 #    apt:
 #      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

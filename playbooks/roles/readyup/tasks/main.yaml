@@ -4,7 +4,7 @@
 
 # Macbook M1
 - include_tasks: "{{role_path}}/tasks/readyup-{{system}}.yml"
-  when: INSTALL_TOOLS
+  when: INSTALL_TOOLS and ansible_facts['distribution'] == "MacOSX"
 
 # Ubuntu
 - include_tasks: "{{role_path}}/tasks/gnome-{{system}}.yml"

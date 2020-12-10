@@ -25,9 +25,11 @@
 
 - name: wget
   shell: arch -x86_64 brew install wget
+  ignore_errors: yes
 
 - name: rclone
   shell: arch -x86_64 brew install rclone
+  ignore_errors: yes
 
 - name: osxfuse
   shell: arch -x86_64 brew install --cask osxfuse
@@ -35,15 +37,19 @@
 
 - name: tmux
   shell: arch -x86_64 brew install tmux
+  ignore_errors: yes
 
 - name: darktable
   shell: arch -x86_64 brew cask install darktable
+  ignore_errors: yes
 
 - name: pycharm-ce
   shell: arch -x86_64 brew cask install --force pycharm-ce
+  ignore_errors: yes
 
 - name: docker
   shell: arch -x86_64 brew cask install docker
+  ignore_errors: yes
 
 - name: audacity - download
   ansible.builtin.git:

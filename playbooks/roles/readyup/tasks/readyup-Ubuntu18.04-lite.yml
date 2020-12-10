@@ -208,14 +208,14 @@
 #  - name: darktable ppa
 #    apt_repository: repo='ppa:pmjdebruijn/darktable-release'
 
-- name: darktable
-  apt: update_cache=no name=darktable state=latest
+#- name: darktable
+#  apt: update_cache=no name=darktable state=latest
 
-- name: gimp
-  apt: update_cache=no name=gimp state=latest
+#- name: gimp
+#  apt: update_cache=no name=gimp state=latest
 
-- name: audacity
-  apt: update_cache=no name=audacity state=latest
+#- name: audacity
+#  apt: update_cache=no name=audacity state=latest
 
 - name: Veracrypt ppa
   apt_repository: repo='ppa:unit193/encryption'

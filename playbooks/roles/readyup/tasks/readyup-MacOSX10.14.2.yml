@@ -83,3 +83,36 @@
     cp -R "/Volumes/$folder/$app" /Applications/
     hdiutil detach "/Volumes/$folder/"
   become: yes
+
+- name: geforcenow
+  shell: |
+    url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
+    folder="GeForce NOW"
+    app="GeForceNOW.app"
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes
+
+- name: wireshark
+  shell: |
+    url=https://2.na.dl.wireshark.org/osx/Wireshark%203.4.1%20Intel%2064.dmg
+    folder="Wireshark 3.4.1"
+    app="Wireshark.app"
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "/Volumes/$folder/"
+  become: yes
+
+#- name: virtualbox
+#  shell: |
+#    folder="virtualbox 3.4.1"
+#    app="virtualbox.app"
+#    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -R "/Volumes/$folder/$app" /Applications/
+#    hdiutil detach "/Volumes/$folder/"
+#  become: yes

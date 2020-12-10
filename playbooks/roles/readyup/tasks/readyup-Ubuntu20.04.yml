@@ -61,6 +61,7 @@
 
 - name: rclone
   shell: curl https://rclone.org/install.sh | sudo bash
+  ignore_errors: yes
 
 #  - name: Chrome
 #    apt:

@@ -11,7 +11,18 @@
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-#- name: vagrant
+- name: vagrant
+  shell: |
+    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
+    folder="Vagrant"
+    pkg=vagrant.pkg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$pkg" -target CurrentUserHomeDirectory
+    hdiutil detach "/Volumes/$folder/"
+    installer -pkg myapp.pkg -target CurrentUserHomeDirectory
+
+#- name: vagrant (brew)
 #  shell: arch -x86_64 brew cask install vagrant
 
 #- name: virtualbox
@@ -62,8 +73,8 @@
     folder="Audacity 2.4.2"
     app=Audacity.app
 
-    hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
-    #hdiutil attach -nobrowse "$url"
+    #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
+    hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
     hdiutil detach "/Volumes/$folder/"
   become: yes

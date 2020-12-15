@@ -16,11 +16,11 @@
     url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
     folder="Vagrant"
     pkg=vagrant.pkg
+    volume="/Volumes/$folder"
 
     hdiutil attach -nobrowse "$url"
-    installer -pkg "$pkg" -target CurrentUserHomeDirectory
-    hdiutil detach "/Volumes/$folder/"
-    installer -pkg myapp.pkg -target CurrentUserHomeDirectory
+    installer -pkg "$volume/$pkg" -target CurrentUserHomeDirectory
+    hdiutil detach "$volume/$folder/"
 
 #- name: vagrant (brew)
 #  shell: arch -x86_64 brew cask install vagrant

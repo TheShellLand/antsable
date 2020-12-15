@@ -3,7 +3,7 @@
     msg: "{{system}}"
 
 # Macbook M1
-- include_tasks: "{{role_path}}/tasks/readyup-{{system}}.yml"
+- include_tasks: "{{role_path}}/tasks/readyup-MacOSX.yml"
   when: INSTALL_TOOLS and ansible_facts['distribution'] == "MacOSX"
 
 # Ubuntu

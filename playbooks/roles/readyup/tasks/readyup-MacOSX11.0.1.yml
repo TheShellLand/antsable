@@ -25,6 +25,17 @@
 #- name: vagrant (brew)
 #  shell: arch -x86_64 brew cask install vagrant
 
+- name: virtualbox
+  shell: |
+    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
+    folder="VirtualBox"
+    pkg=VirtualBox.pkg
+    volume="/Volumes/$folder"
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target CurrentUserHomeDirectory
+    hdiutil detach "$volume/$folder/"
+
 #- name: virtualbox
 #  shell: arch -x86_64 brew cask install virtualbox
 

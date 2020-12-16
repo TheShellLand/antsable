@@ -19,8 +19,8 @@
     volume="/Volumes/$folder"
 
     hdiutil attach -nobrowse "$url"
-    installer -pkg "$volume/$pkg" -target CurrentUserHomeDirectory
-    hdiutil detach "$volume/$folder/"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
 
 #- name: vagrant (brew)
 #  shell: arch -x86_64 brew cask install vagrant
@@ -33,8 +33,8 @@
     volume="/Volumes/$folder"
 
     hdiutil attach -nobrowse "$url"
-    installer -pkg "$volume/$pkg" -target CurrentUserHomeDirectory
-    hdiutil detach "$volume/$folder/"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
 
 #- name: virtualbox
 #  shell: arch -x86_64 brew cask install virtualbox

@@ -2,7 +2,11 @@
 
 # Install Ansible
 
-set -e
+cd $(dirname $0) && set -e
+
+# Helps automation
+export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+#export TZ="America/New_York"
 
 # Requires apt
 if ! which apt >/dev/null 2>&1; then
@@ -10,63 +14,8 @@ if ! which apt >/dev/null 2>&1; then
   echo "*** minimum requirements not met ***"
 fi
 
-cd $(dirname $0)
-
-
-# Ubuntu 16.x
-if grep "Ubuntu 16" /etc/issue >/dev/null 2>&1; then
-
-  if ! which ansible; then
-    echo "Installing ansible"
-    apt purge -y appstream
-    apt update && \
-    apt install -y git vim curl && \
-    apt install -y software-properties-common && \
-    apt install -y python-software-properties && \
-    apt install -y apt-transport-https && \
-    apt-add-repository -y 'ppa:ansible/ansible' && \
-    apt update && \
-    apt install -y ansible
-  fi
-fi
-
-
-# Ubuntu 17.x
-if grep "Ubuntu 17" /etc/issue >/dev/null 2>&1; then
-
-  if ! which ansible; then
-    echo "Installing ansible"
-    apt purge -y appstream
-    apt update && \
-    apt install -y git vim curl && \
-    apt install -y software-properties-common && \
-    apt install -y python-software-properties && \
-    apt install -y apt-transport-https && \
-    apt-add-repository -y 'ppa:ansible/ansible' && \
-    apt update && \
-    apt install -y ansible
-  fi
-fi
-
-
 # Ubuntu 18.x
 if grep "Ubuntu 18" /etc/issue >/dev/null 2>&1; then
-
-  if ! which ansible >/dev/null; then
-    echo "Installing ansible"
-    apt update && \
-    apt install -y git vim curl && \
-    apt install -y software-properties-common && \
-    apt install -y apt-transport-https && \
-    apt-add-repository -y 'ppa:ansible/ansible' && \
-    apt update && \
-    apt install -y ansible
-  fi
-fi
-
-
-# Ubuntu 19.x
-if grep "Ubuntu 19" /etc/issue >/dev/null 2>&1; then
 
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
@@ -146,29 +95,23 @@ fi
 if [ ! -d ".git" ]; then
   git clone https://github.com/TheShellLand/antsable
   sudo chown -R $SUDO_USER antsable
+fi
 
-  # Run playbook
-  if [ ! "$1" == "" ]; then
-    set -x
-    ansible-playbook -i inventory.yaml "$@"
-  fi
+if [ ! -f inventory.yaml ]; then
 
-else
-  # Create inventory.yaml
-  if [ ! -f inventory.yaml ]; then
-    cp -v inventory-example.yaml inventory.yaml
-  fi
+  cat > inventory.yaml <<EOF
+---
+all:
 
-  # Create sshconfig
-  if [ ! -f config ]; then
-    cp -v config-example config
-  fi
+local:
+  hosts:
+    localhost:
+EOF
 
-  # Run playbook
-  if [ ! "$1" == "" ]; then
-    set -x
-    ansible-playbook -i inventory.yaml "$@"
-    # ansible-playbook -v -i inventory.yaml -c local "$1"
-  fi
+fi
 
+# Run playbook
+if [ ! "$1" == "" ]; then
+  set -x
+  exec ansible-playbook -i inventory.yaml "$@"
 fi

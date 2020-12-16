@@ -13,10 +13,10 @@
 
 - name: vagrant
   shell: |
-    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
     folder="Vagrant"
     pkg=vagrant.pkg
     volume="/Volumes/$folder"
+    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
 
     hdiutil attach -nobrowse "$url"
     installer -pkg "$volume/$pkg" -target /
@@ -27,10 +27,10 @@
 
 - name: virtualbox
   shell: |
-    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
     folder="VirtualBox"
     pkg=VirtualBox.pkg
     volume="/Volumes/$folder"
+    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
 
     hdiutil attach -nobrowse "$url"
     installer -pkg "$volume/$pkg" -target /
@@ -80,67 +80,73 @@
 
 - name: audacity - install
   shell: |
-    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
     folder="Audacity 2.4.2"
     app=Audacity.app
+    volume="/Volumes/$folder"
+    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
 
     #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
-    hdiutil detach "/Volumes/$folder/"
+    hdiutil detach "$volume"
   become: yes
 
 - name: steam
   shell: |
-    url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
     folder=Steam
     app=Steam.app
+    volume="/Volumes/$folder"
+    url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
 
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
-    hdiutil detach "/Volumes/$folder/"
+    hdiutil detach "$volume"
   become: yes
 
 - name: streamlabs
   shell: |
-    url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.25.2.dmg
     folder="Streamlabs OBS 0.25.2"
     app="Streamlabs OBS.app"
+    volume="/Volumes/$folder"
+    url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.25.2.dmg
 
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
-    hdiutil detach "/Volumes/$folder/"
+    hdiutil detach "$volume"
   become: yes
 
 - name: geforcenow
   shell: |
-    url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
     folder="GeForce NOW"
     app="GeForceNOW.app"
+    volume="/Volumes/$folder"
+    url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
 
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
-    hdiutil detach "/Volumes/$folder/"
+    hdiutil detach "$volume"
   become: yes
 
 - name: wireshark
   shell: |
-    url=https://2.na.dl.wireshark.org/osx/Wireshark%203.4.1%20Intel%2064.dmg
     folder="Wireshark 3.4.1"
     app="Wireshark.app"
+    volume="/Volumes/$folder"
+    url=https://2.na.dl.wireshark.org/osx/Wireshark%203.4.1%20Intel%2064.dmg
 
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
-    hdiutil detach "/Volumes/$folder/"
+    hdiutil detach "$volume"
   become: yes
 
 #- name: virtualbox
 #  shell: |
 #    folder="virtualbox 3.4.1"
 #    app="virtualbox.app"
+#    volume="/Volumes/$folder"
 #    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
 #
 #    hdiutil attach -nobrowse "$url"
 #    cp -R "/Volumes/$folder/$app" /Applications/
-#    hdiutil detach "/Volumes/$folder/"
+#    hdiutil detach "$volume"
 #  become: yes

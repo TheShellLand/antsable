@@ -8,11 +8,6 @@ cd $(dirname $0) && set -e
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
-# Requires apt
-if ! which apt >/dev/null 2>&1; then
-  echo "*** apt does not exist ***"
-  echo "*** minimum requirements not met ***"
-fi
 
 # Ubuntu 18.x
 if grep "Ubuntu 18" /etc/issue >/dev/null 2>&1; then
@@ -68,6 +63,20 @@ if grep Ubuntu /etc/issue >/dev/null 2>&1; then
     apt-add-repository -y 'ppa:ansible/ansible' && \
     apt update && \
     apt install -y ansible
+  fi
+fi
+
+# CentOS/RHEL
+if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
+
+  if ! which ansible >/dev/null; then
+    yum install -y python3
+    yum install -y yum-utils
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    yum install -y docker-ce docker-ce-cli containerd.io
+    yum install -y python-pip
+    pip install -U pip docker
+    systemctl start docker
   fi
 fi
 

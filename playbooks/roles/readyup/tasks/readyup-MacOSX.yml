@@ -69,6 +69,18 @@
   shell: arch -x86_64 brew cask install --force pycharm-ce
   ignore_errors: yes
 
+#- name: docker
+#  shell: |
+#    folder="Docker"
+#    app="docker.app"
+#    volume="/Volumes/$folder"
+#    url=https://desktop.docker.com/mac/stable/Docker.dmg
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -R "/Volumes/$folder/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes
+
 - name: docker
   shell: arch -x86_64 brew cask install docker
   ignore_errors: yes

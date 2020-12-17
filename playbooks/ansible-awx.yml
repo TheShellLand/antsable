@@ -1,0 +1,4 @@
+---
+- hosts: awx
+  roles:
+    - ansible-awx

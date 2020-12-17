@@ -1,0 +1,10 @@
+---
+- name: mkdir .ssh
+  file:
+    path: $HOME/.ssh
+    state: directory
+
+- name: setup ssh key
+  copy:
+    src: files/authorized_keys
+    dest: $HOME/.ssh/authorized_keys

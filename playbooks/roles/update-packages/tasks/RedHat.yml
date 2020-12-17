@@ -1,0 +1,12 @@
+---
+- name: update all packges
+  yum:
+    name: "*"
+    state: latest
+  become: yes
+
+- shell: cat /etc/os-release
+  register: out
+
+- debug:
+    var: out.stdout_lines

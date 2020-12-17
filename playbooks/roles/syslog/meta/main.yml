@@ -1,0 +1,10 @@
+---
+dependencies:
+  - auth
+  #- python3
+  - git
+  - sshd
+  - splunk-forwarder
+  - rsyslog
+  - logrotate
+  - deploymentserver

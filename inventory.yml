@@ -1,0 +1,71 @@
+---
+all:
+
+local:
+  hosts:
+    localhost:
+
+awx:
+  hosts:
+    local:
+
+
+syslog:
+  hosts:
+
+    #NAME="Red Hat Enterprise Linux Server"
+    #VERSION="7.9 (Maipo)"
+    #ID="rhel"
+    #ID_LIKE="fedora"
+    #VARIANT="Server"
+    #VARIANT_ID="server"
+    #VERSION_ID="7.9"
+    #PRETTY_NAME="Red Hat Enterprise Linux"
+    #ANSI_COLOR="0;31"
+    #CPE_NAME="cpe:/o:redhat:enterprise_linux:7.9:GA:server"
+    #HOME_URL="https://www.redhat.com/"
+    #BUG_REPORT_URL="https://bugzilla.redhat.com/"
+    #
+    #REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
+    #REDHAT_BUGZILLA_PRODUCT_VERSION=7.9
+    #REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+    #REDHAT_SUPPORT_PRODUCT_VERSION="7.9"
+
+    lnxprd1173:
+    # ejaw425 can't access
+    lnxprd1174:
+#    lnxprd1175:
+#    lnxprd1176:
+#    lnxprd1177:
+#    lnxprd1178:
+
+#    HDQNCCS01A:
+#    HDQNCCS02A:
+#    HDQNCCS03A:
+#    HDQNCCS04A:
+#    HDQNCCS05A:
+#    HDQNCCS06A:
+
+#    nccs01:
+#    nccs02:
+#    nccs03:
+#    nccs04:
+#    nccs05:
+#    nccs06:
+
+# Deployment Servers and Heavy Forwarders
+deployment_and_forwarders:
+  hosts:
+    LNXPRD0960:
+    LNXPRD0961:
+    LNXPRD0962:
+    LNXPRD0963:
+    LNXPRD0964:
+    LNXPRD0966:
+    LNXPRD0967:
+    LNXPRD0968:
+    LNXPRD0969:
+    LNXPRD0970:
+    LNXPRD0971:
+    LNXPRD0972:
+    LNXPRD0973:

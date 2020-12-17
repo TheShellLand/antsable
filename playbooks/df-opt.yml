@@ -1,0 +1,5 @@
+---
+- hosts: all
+
+  tasks:
+    - shell: mount| grep opt | awk '{print $3}' | xargs df -h

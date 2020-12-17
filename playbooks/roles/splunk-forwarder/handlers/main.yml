@@ -1,0 +1,20 @@
+---
+- name: Restart splunk
+  service:
+    name: splunk
+    state: restarted
+  become: yes
+
+- name: Enable boot start
+  shell: /opt/splunkforwarder/bin/splunk enable boot-start
+  become: yes
+
+- name: Start splunk
+  shell: /opt/splunkforwarder/bin/splunk start
+  become: yes
+
+- name: Start splunk service
+  service:
+    name: splunk
+    state: started
+  become: yes

@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  tasks:
+    - name: ansible
+      yum:
+        name: ansible
+        state: latest
+      become: yes

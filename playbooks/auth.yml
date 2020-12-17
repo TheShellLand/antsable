@@ -1,0 +1,13 @@
+---
+- hosts: all
+
+  tasks:
+    - name: ansible - mkdir .ssh
+      file:
+        path: $HOME/.ssh
+        state: directory
+
+    - name: ansible - setup ssh key
+      copy:
+        src: roles/deploy-syslog/files/authorized_keys
+        dest: $HOME/.ssh/authorized_keys

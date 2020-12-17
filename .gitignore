@@ -1,0 +1,7 @@
+.idea/
+env.sh
+*.log
+sudo-password
+.DS_Store
+.vagrant/
+Vagrantfile

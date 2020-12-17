@@ -1,0 +1,62 @@
+---
+- hosts: all
+
+  tasks:
+    - name: syslog - Check connectivity to Splunk Cloud
+      wait_for:
+        host: "inputs{{ item }}.marriottplatform.splunkcloud.com"
+        port: 9997
+        delay: 0
+        state: started
+        timeout: 1
+      with_items:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+
+    - name: syslog - Check ports TCP
+      wait_for:
+        host: localhost
+        port: "{{ item }}"
+        delay: 0
+        state: started
+        timeout: 1
+      with_items:
+        - 5095
+        - 5090
+        - 5100
+        - 5015
+        - 5035
+        - 5020
+        - 5115
+        - 5120
+        - 5130
+        - 5140
+        - 5105
+        - 5110
+        - 6000
+
+    # DISABLED: UDP 514 is for syslog linux log
+    - name: syslog - Check ports UDP
+      wait_for:
+        host: localhost
+        port: "{{ item }}"
+        delay: 0
+        state: started
+        timeout: 1
+      with_items:
+    #    - 514
+        - 5130
+        - 5045

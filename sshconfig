@@ -1,0 +1,5 @@
+ForwardAgent yes
+StrictHostKeyChecking no
+ServerAliveInterval 20
+
+

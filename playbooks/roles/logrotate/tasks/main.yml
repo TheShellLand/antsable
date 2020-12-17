@@ -1,0 +1,28 @@
+---
+- name: copy logrotate.conf
+  copy:
+    src: files/logrotate/logrotate.conf
+    dest: /etc/logrotate.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: copy rsyslog.conf
+  copy:
+    src: files/logrotate/rsyslog.conf
+    dest: /etc/logrotate.d/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0600
+  become: yes
+
+# Create cronjob to force logrotate every 12 hours
+# 0 */12 * * * /usr/sbin/logrotate -f /etc/logrotate.d/rsyslog.conf
+- name: cron rotate logs every 12 hours
+  cron:
+    name: "Rotate logs every 12 hours"
+    minute: "0"
+    hour: "*/12"
+    job: "/usr/sbin/logrotate -f /etc/logrotate.d/rsyslog.conf"
+  become: yes

@@ -1,0 +1,6 @@
+---
+- name: git
+  yum:
+    name: git
+    state: latest
+  become: yes

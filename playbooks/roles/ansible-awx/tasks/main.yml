@@ -1,0 +1,11 @@
+---
+- name: install
+  shell: |
+    apt update \
+      && apt install -y git wget vim curl software-properties-common apt-transport-https ansible
+
+- name: deploy
+  shell: |
+    git clone https://github.com/ansible/awx \
+      && cd awx \
+      && ansible-playbook -i installer/inventory installer/install.yml

@@ -1,0 +1,41 @@
+---
+#- name: lnxprd1173
+#  import_tasks: hosts/lnxprd1173.yml
+#  when: ansible_facts.hostname == 'lnxprd1173' or ansible_facts.hostname == 'nccs01' or ansible_facts.hostname == 'hdqnccs01'
+#  become: yes
+#
+#- name: lnxprd1174
+#  import_tasks: hosts/lnxprd1174.yml
+#  when: ansible_facts.hostname == 'lnxprd1174' or ansible_facts.hostname == 'nccs03' or ansible_facts.hostname == 'hdqnccs03a'
+#  become: yes
+#
+#- name: lnxprd1175
+#  import_tasks: hosts/lnxprd1175.yml
+#  when: ansible_facts.hostname == 'lnxprd1175'
+#  become: yes
+#
+#- name: lnxprd1176
+#  import_tasks: hosts/lnxprd1176.yml
+#  when: ansible_facts.hostname == 'lnxprd1176'
+#  become: yes
+#
+#- name: lnxprd1177
+#  import_tasks: hosts/lnxprd1177.yml
+#  when: ansible_facts.hostname == 'lnxprd1177'
+#  become: yes
+#
+#- name: lnxprd1178
+#  import_tasks: hosts/lnxprd1178.yml
+#  when: ansible_facts.hostname == 'lnxprd1178'
+#  become: yes
+
+
+- name: copy hosts
+  copy:
+    src: files/hosts/hosts
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+

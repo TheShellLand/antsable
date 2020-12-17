@@ -1,0 +1,12 @@
+---
+- name: redhat - install ssh server
+  yum:
+    name: openssh-server
+    state: latest
+  become: yes
+
+- name: redhat - install ssh client
+  yum:
+    name: openssh-clients
+    state: latest
+  become: yes

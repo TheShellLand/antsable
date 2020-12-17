@@ -1,0 +1,6 @@
+---
+- hosts: syslog
+  roles:
+    - syslog
+  vars:
+    DEBUG: false

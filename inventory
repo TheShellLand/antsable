@@ -1,0 +1,66 @@
+---
+all:
+  hosts:
+
+awx:
+  hosts:
+
+syslog:
+  hosts:
+
+    #NAME="Red Hat Enterprise Linux Server"
+    #VERSION="7.9 (Maipo)"
+    #ID="rhel"
+    #ID_LIKE="fedora"
+    #VARIANT="Server"
+    #VARIANT_ID="server"
+    #VERSION_ID="7.9"
+    #PRETTY_NAME="Red Hat Enterprise Linux"
+    #ANSI_COLOR="0;31"
+    #CPE_NAME="cpe:/o:redhat:enterprise_linux:7.9:GA:server"
+    #HOME_URL="https://www.redhat.com/"
+    #BUG_REPORT_URL="https://bugzilla.redhat.com/"
+    #
+    #REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
+    #REDHAT_BUGZILLA_PRODUCT_VERSION=7.9
+    #REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+    #REDHAT_SUPPORT_PRODUCT_VERSION="7.9"
+
+    lnxprd1173.marriott.com:
+    # ejaw425 can't access
+    lnxprd1174.marriott.com:
+    lnxprd1175.marriott.com:
+    lnxprd1176.marriott.com:
+    lnxprd1177.marriott.com:
+    lnxprd1178.marriott.com:
+
+#    HDQNCCS01A.marriott.com:
+#    HDQNCCS02A.marriott.com:
+#    HDQNCCS03A.marriott.com:
+#    HDQNCCS04A.marriott.com:
+#    HDQNCCS05A.marriott.com:
+#    HDQNCCS06A.marriott.com:
+
+#    nccs01.marriott.com:
+#    nccs02.marriott.com:
+#    nccs03.marriott.com:
+#    nccs04.marriott.com:
+#    nccs05.marriott.com:
+#    nccs06.marriott.com:
+
+# Deployment Servers and Heavy Forwarders
+deployment_and_forwarders:
+  hosts:
+    LNXPRD0960.marriott.com:
+    LNXPRD0961.marriott.com:
+    LNXPRD0962.marriott.com:
+    LNXPRD0963.marriott.com:
+    LNXPRD0964.marriott.com:
+    LNXPRD0966.marriott.com:
+    LNXPRD0967.marriott.com:
+    LNXPRD0968.marriott.com:
+    LNXPRD0969.marriott.com:
+    LNXPRD0970.marriott.com:
+    LNXPRD0971.marriott.com:
+    LNXPRD0972.marriott.com:
+    LNXPRD0973.marriott.com:

@@ -1,0 +1,156 @@
+---
+- name: start splunk
+  service:
+    name: splunk
+    state: started
+  become: yes
+
+- name: enable splunk boot
+  shell: /opt/splunkforwarder/bin/splunk enable boot-start
+  become: yes
+  register: shell
+  changed_when: shell.rc == 0
+  failed_when:
+    - shell.rc != 0
+    - shell.rc != 8
+
+- name: make sure service is running
+  service:
+    name: splunk
+    state: started
+  become: yes
+
+- name: fix permissions
+  shell: chown -R splunk:splunk /opt/splunkforwarder/
+  notify:
+    - Restart splunk
+  become: yes
+
+
+
+- name: create folders
+  shell: |
+    mkdir -p /opt/syslog/firewall/checkpoint
+    mkdir -p /opt/syslog/firewall/paloalto
+    mkdir -p /opt/syslog/endpoint/trend
+    mkdir -p /opt/syslog/customapps/fosse_spasoft
+    mkdir -p /opt/syslog/netdev/networkdevices
+    mkdir -p /opt/syslog/netdev/propertyACL
+    mkdir -p /opt/syslog/netdev/ciscoASA
+    mkdir -p /opt/syslog/netdev/mi_connector
+    mkdir -p /opt/syslog/netdev/aruba
+    mkdir -p /opt/syslog/netdev/ciscoISE
+    mkdir -p /opt/syslog/netdev/reflector
+    mkdir -p /opt/syslog/password_tools/pwdtools
+    mkdir -p /opt/syslog/password_tools
+    mkdir -p /opt/syslog/database/imperva
+    mkdir -p /opt/syslog/mail/ironport
+    mkdir -p /opt/syslog/dhcp/ipcontrol
+    mkdir -p /opt/syslog/ids/snort
+    mkdir -p /opt/syslog/rsyslog/impstats
+    mkdir -p /opt/syslog/eds/audit
+  become: yes
+
+- name: set acl
+  shell: |
+    setfacl -Rdm u:splunk:rx /opt/syslog/firewall/checkpoint
+    setfacl -Rdm u:splunk:rx /opt/syslog/firewall/paloalto
+    setfacl -Rdm u:splunk:rx /opt/syslog/endpoint/trend
+    setfacl -Rdm u:splunk:rx /opt/syslog/customapps/fosse_spasoft
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/networkdevices
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/propertyACL
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/ciscoASA
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/mi_connector
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/aruba
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/ciscoISE
+    setfacl -Rdm u:splunk:rx /opt/syslog/netdev/reflector
+    setfacl -Rdm u:splunk:rx /opt/syslog/password_tools/pwdtools
+    setfacl -Rdm u:splunk:rx /opt/syslog/password_tools
+    setfacl -Rdm u:splunk:rx /opt/syslog/database/imperva
+    setfacl -Rdm u:splunk:rx /opt/syslog/mail/ironport
+    setfacl -Rdm u:splunk:rx /opt/syslog/dhcp/ipcontrol
+    setfacl -Rdm u:splunk:rx /opt/syslog/ids/snort
+    setfacl -Rdm u:splunk:rx /opt/syslog/rsyslog/impstats
+    setfacl -Rdm u:splunk:rx /opt/syslog/eds/audit
+  become: yes
+
+- name: Check connectivity to Splunk Cloud
+  wait_for:
+    host: "inputs{{ item }}.marriottplatform.splunkcloud.com"
+    port: 9997
+    delay: 0
+    state: started
+    timeout: 1
+  with_items:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+
+# eric.jaw@marriott.com
+# disabled, because ports are not dependable
+# ports have changed from 5xxx to - 15xxx
+# this is unknown why
+# fix this when you figure out what changed the port config
+#- name: Check ports TCP
+#  wait_for:
+#    host: localhost
+#    port: "{{ item }}"
+#    delay: 0
+#    state: started
+#    timeout: 1
+#  with_items:
+#    - 5095
+##    - 5090
+##    - 5100
+#    - 5015
+##    - 5035
+#    - 5020
+#    - 5115
+#    - 5120
+#    - 5130
+#    - 5140
+#    - 5105
+#    - 5110
+#    - 6000
+
+# DISABLED: UDP 514 is for syslog linux log
+- name: Check ports UDP
+  shell: /usr/sbin/ss -lnu | grep -w {{ item }}
+  args:
+    executable: /bin/bash
+  with_items:
+#    - 514
+    - 5130
+    - 5045
+  changed_when: false
+
+# eric.jaw@marriott.com
+# disabling this terrible log check
+# Verify that /opt/splunkforwarder/var/log/splunk/splunkd.log shows no errors
+#- name: check errors
+#  lineinfile:
+#    path: /opt/splunkforwarder/var/log/splunk/splunkd.log
+#    state: absent
+#    regexp: '9997 failed'
+#  become: yes
+
+# eric.jaw@marriott.com
+# disabling this, this isn't dependable
+# /opt/splunkforwarder/var/log/splunk/metrics.log shows that the UF is passing events per second
+# to Splunk Cloud (instantaneous_eps=)
+#- name: syslog - metrics
+#  shell: grep 'instantaneous_eps=' /opt/splunkforwarder/var/log/splunk/metrics.log
+#  become: yes
+

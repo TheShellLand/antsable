@@ -1,0 +1,13 @@
+---
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+
+- name: sshd - copy sshd config
+  copy:
+    src: files/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+  become: yes
+  notify:
+    - Restart sshd

@@ -1,0 +1,8 @@
+---
+- name: deploymentserver - Check connectivity to deploymentserver
+  wait_for:
+    host: "deploymentserver.marriott.com"
+    port: 8089
+    delay: 0
+    state: started
+    timeout: 1

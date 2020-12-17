@@ -67,47 +67,23 @@ if grep Ubuntu /etc/issue >/dev/null 2>&1; then
 fi
 
 # CentOS/RHEL
-if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
+if [ -f /etc/os-release ]; then
+  if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
 
-  if ! which ansible >/dev/null; then
-    yum install -y python3
-    yum install -y yum-utils
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum install -y docker-ce docker-ce-cli containerd.io
-    yum install -y python-pip
-    pip install -U pip docker
-    systemctl start docker
+    if ! which ansible >/dev/null; then
+      yum install -y python3
+      yum install -y yum-utils
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      yum install -y docker-ce docker-ce-cli containerd.io
+      yum install -y python-pip
+      pip install -U pip docker
+      systemctl start docker
+    fi
   fi
 fi
 
-# Mac M1
-if [ "$(uname)" == "Darwin" ]; then
-  if [ ! "stat /usr/local/lib/pkgconfig | grep $(whoami)" ]; then
-    sudo chown -R $(whoami) /usr/local/lib/pkgconfig
-    sudo chown -R $(whoami) /usr/local/share/man/man8
-  fi
-  if ! which brew >/dev/null; then
-    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-  if ! which ansible >/dev/null; then
-    arch -x86_64 brew install ansible
-  fi
-fi
-
-if ! which ansible-playbook >/dev/null; then
-  echo "** ansible not able to be installed **"
-  echo "** unsupported system **"
-  uname -a
-  exit 1
-fi
-
-if [ ! -d ".git" ]; then
-  git clone https://github.com/TheShellLand/antsable
-  sudo chown -R $SUDO_USER antsable
-fi
-
+# create base local inventory
 if [ ! -f inventory.yaml ]; then
-
   cat > inventory.yaml <<EOF
 ---
 all:
@@ -116,7 +92,50 @@ local:
   hosts:
     localhost:
 EOF
+fi
 
+# Mac M1
+if [ "$(uname)" == "Darwin" ]; then
+
+  if [ ! "stat /usr/local/lib/pkgconfig | grep $(whoami)" ]; then
+    sudo chown -R $(whoami) /usr/local/lib/pkgconfig || true
+    sudo chown -R $(whoami) /usr/local/share/man/man8 || true
+  fi
+
+  if ! which brew >/dev/null; then
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null 2>&1 || true
+  else
+    arch -x86_64 brew install ansible
+  fi
+
+  if ! which ansible >/dev/null; then
+     pip install --user ansible >/dev/null
+  fi
+
+  if which $HOME/Library/Python/*/bin/ansible >/dev/null; then
+    function ansible () {
+      ansible="$HOME/Library/Python/*/bin/ansible"
+      exec $ansible "$@"
+    }
+    function ansible_playbook () {
+      ansible_playbook="$HOME/Library/Python/*/bin/ansible-playbook"
+      exec $ansible_playbook -i inventory.yaml "$@"
+    }
+
+    alias ansible="$HOME/Library/Python/*/bin/ansible"
+    alias ansible-playbook="$HOME/Library/Python/*/bin/ansible-playbook"
+
+    if [ ! "$1" == "" ]; then
+      set -x
+      ansible_playbook -i inventory.yaml "$@"
+    fi
+  fi
+
+fi
+
+if [ ! -d ".git" ]; then
+  git clone https://github.com/TheShellLand/antsable
+  sudo chown -R $SUDO_USER antsable
 fi
 
 # Run playbook

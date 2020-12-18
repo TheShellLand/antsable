@@ -5,6 +5,7 @@
 cd $(dirname $0) && set -e
 
 # Helps automation
+export ANSIBLE_INVENTORY=inventory.yaml
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
@@ -119,7 +120,7 @@ if [ "$(uname)" == "Darwin" ]; then
     }
     function ansible_playbook () {
       ansible_playbook="$HOME/Library/Python/*/bin/ansible-playbook"
-      exec $ansible_playbook -i inventory.yaml "$@"
+      exec $ansible_playbook "$@"
     }
 
     alias ansible="$HOME/Library/Python/*/bin/ansible"
@@ -127,7 +128,8 @@ if [ "$(uname)" == "Darwin" ]; then
 
     if [ ! "$1" == "" ]; then
       set -x
-      ansible_playbook -i inventory.yaml "$@"
+      ansible_playbook "$@" || exit 1
+      exit 0
     fi
   fi
 
@@ -141,5 +143,5 @@ fi
 # Run playbook
 if [ ! "$1" == "" ]; then
   set -x
-  exec ansible-playbook -i inventory.yaml "$@"
+  exec ansible-playbook "$@"
 fi

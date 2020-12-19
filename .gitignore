@@ -1,3 +1,5 @@
 .idea/
 inventory.yaml
 config
+.vagrant
+Vagrantfile

@@ -104,9 +104,9 @@ if [ "$(uname)" == "Darwin" ]; then
   fi
 
   if ! which brew >/dev/null; then
-    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null 2>&1 || true
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
   else
-    arch -x86_64 brew install ansible
+    arch -x86_64 brew upgrade ansible
   fi
 
   if ! which ansible >/dev/null; then
@@ -135,9 +135,12 @@ if [ "$(uname)" == "Darwin" ]; then
 
 fi
 
-if [ ! -d ".git" ]; then
+if [ ! -d ".git" ] && [ ! -d "antsable" ]; then
   git clone https://github.com/TheShellLand/antsable
-  sudo chown -R $SUDO_USER antsable
+
+  if [[ ! "$SUDO_USER" == "" ]]; then
+    sudo chown -R $SUDO_USER antsable
+  fi
 fi
 
 # Run playbook

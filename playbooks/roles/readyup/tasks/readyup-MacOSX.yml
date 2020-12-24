@@ -153,13 +153,13 @@
 
 - name: wireshark
   shell: |
-    folder="Wireshark 3.4.1"
+    folder="Wireshark 3.4.2"
     app="Wireshark.app"
     volume="/Volumes/$folder"
-    url=https://2.na.dl.wireshark.org/osx/Wireshark%203.4.1%20Intel%2064.dmg
+    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -vR "/Volumes/$folder/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 

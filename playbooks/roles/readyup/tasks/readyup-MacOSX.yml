@@ -35,7 +35,7 @@
     hdiutil detach "$volume"
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew cask install vagrant
+#  shell: arch -x86_64 brew install --cask vagrant
 
 - name: virtualbox
   shell: |
@@ -49,13 +49,13 @@
     hdiutil detach "$volume"
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew cask install virtualbox
+#  shell: arch -x86_64 brew install --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew cask install vmware-fusion
+#  shell: arch -x86_64 brew install --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew cask install parallels
+#  shell: arch -x86_64 brew install --cask parallels
 
 - name: wget
   shell: arch -x86_64 brew install wget
@@ -74,11 +74,11 @@
   ignore_errors: yes
 
 - name: darktable
-  shell: arch -x86_64 brew cask install darktable
+  shell: arch -x86_64 brew install --cask darktable
   ignore_errors: yes
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew cask install --force pycharm-ce
+  shell: arch -x86_64 brew install --cask --force pycharm-ce
   ignore_errors: yes
 
 #- name: docker
@@ -94,7 +94,7 @@
 #  become: yes
 
 - name: docker
-  shell: arch -x86_64 brew cask install docker
+  shell: arch -x86_64 brew install --cask docker
   ignore_errors: yes
 
 - name: audacity - download

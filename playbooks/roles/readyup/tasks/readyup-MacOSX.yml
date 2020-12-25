@@ -69,6 +69,10 @@
   shell: arch -x86_64 brew install --cask osxfuse
   ignore_errors: yes
 
+- name: veracrypt
+  shell: arch -x86_64 brew install --cask veracrypt
+  ignore_errors: yes
+
 - name: tmux
   shell: arch -x86_64 brew install tmux
   ignore_errors: yes

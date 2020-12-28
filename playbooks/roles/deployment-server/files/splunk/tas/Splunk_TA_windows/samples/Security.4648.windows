@@ -1,0 +1,32 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4648
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A logon was attempted using explicit credentials.
+Subject:
+	Security ID:  ##Domain##\SYSTEM
+	Account Name:  ##Computer_Name##
+	Account Domain:  ##Domain##
+	Logon ID:  0x##System_Logon_Id##
+	Logon GUID:		{##Logon_Guid##}
+Account Whose Credentials Were Used:
+	Account Name:		##User_Name##
+	Account Domain:		##Domain##
+	Logon GUID:		{##Logon_Guid2##}
+Target Server:
+	Target Server Name:	##Server_Name##
+	Additional Information:	##Server_Name##
+Process Information:
+	Process ID:		##Process_Id##
+	Process Name:		##Process_Name##
+Network Information:
+	Network Address:	##Network_Ip##
+	Port:			##Network_Port##
+This event is generated when a process attempts to log on an account by explicitly specifying that account's credentials. This most commonly occurs in batch-type configurations such as scheduled tasks, or when using the RUNAS command.

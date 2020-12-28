@@ -1,0 +1,14 @@
+20110415101153.240698
+Caption=##Caption##
+Command=##Command##
+Description=##Description##
+InstallDate=##Install_Date##
+InteractWithDesktop=##Interact_With_Desktop##
+JobId=##Job_Id##
+JobStatus=##Job_Status##
+Name=##Name##
+Notify=##Notify##
+Priority=##Priority##
+RunRepeatedly=##Run_Repeatedly##
+Status=##Status##
+wmi_type=ScheduledJobs

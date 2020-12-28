@@ -1,0 +1,8 @@
+20180521143346.501274
+AvgDisksecPerRead=##AvgDisksecPerRead##
+AvgDisksecPerTransfer=##AvgDisksecPerTransfer##
+AvgDisksecPerWrite=##AvgDisksecPerWrite##
+DiskReadsPersec=##DiskReadsPersec##
+DiskWritesPersec=##DiskWritesPersec##
+Name=##Name##
+wmi_type=LogicalDisk

@@ -1,0 +1,27 @@
+---
+- name: copy splunk serverclass.conf
+  copy:
+    src: files/splunk/serverclass.conf
+    dest: /opt/splunk/etc/system/local/serverclass.conf
+  become: yes
+  notify:
+    - Restart splunk
+
+- name: copy splunk apps
+  copy:
+    src: files/splunk/tas/
+    dest: /opt/splunk/etc/deployment-apps/
+  become: yes
+  notify:
+    - Restart splunk
+
+- name: Check connectivity
+  wait_for:
+    host: "127.0.0.1"
+    port: "{{item}}"
+    delay: 0
+    state: started
+    timeout: 1
+  with_items:
+    - 8089
+    - 9997

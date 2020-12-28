@@ -1,0 +1,162 @@
+category_id,parent_category,child_category
+1,Adult Material,Adult Material
+2,Business and Economy,Business and Economy
+3,Education,Education
+4,Government,Government
+5,News and Media,News and Media
+6,Religion,Religion
+7,Society and Lifestyles,Society and Lifestyles
+8,Special Events,Special Events
+9,Information Technology,Information Technology
+10,Abortion,Abortion
+11,Advocacy Groups,Advocacy Groups
+12,Entertainment,Entertainment
+13,Gambling,Gambling
+14,Games,Games
+15,Illegal or Questionable,Illegal or Questionable
+16,Job Search,Job Search
+17,Shopping,Shopping
+18,Sports,Sports
+19,Tasteless,Tasteless
+20,Travel,Travel
+21,Vehicles,Vehicles
+22,Violence,Violence
+23,Weapons,Weapons
+24,Drugs,Drugs
+25,Militancy and Extremist,Militancy and Extremist
+26,Intolerance,Intolerance
+27,Health,Health
+28,Information technology,Website Translation
+29,Productivity,Advertisements
+64,User-Defined,User-Defined
+65,Adult Material,Nudity
+66,Adult Material,Adult Content
+67,Adult Material,Sex
+68,Business and Economy,Financial Data and Services
+69,Education,Cultural Institutions
+70,Entertainment,Media File Download
+72,Government,Military
+73,Government,Political Organizations
+74,Internet Communication,General Email
+75,Information Technology,Proxy Avoidance
+76,Information Technology,Search Engines and Portals
+78,Information Technology,Web Hosting
+79,Internet Communication,Web Chat
+80,Information Technology,Hacking
+81,News and Media,Alternative Journals
+82,Religion,Non-Traditional Religions
+83,Religion,Traditional Religions
+84,Society and Lifestyles,Restaurants and Dining
+85,Society and Lifestyles,Gay or Lesbian or Bisexual Interest
+86,Society and Lifestyles,Personals and Dating
+87,Society and Lifestyles,Alcohol and Tobacco
+88,Drugs,Prescribed Medications
+89,Drugs,Supplements and Unregulated Compounds
+90,Drugs,Abused Drugs
+91,Internet Communication,Internet Communication
+92,Abortion,Pro-Choice
+93,Abortion,Pro-Life
+94,Adult Material,Sex Education
+95,Adult Material,Lingerie and Swimsuit
+96,Productivity,Online Brokerage and Trading
+97,Education,Educational Institutions
+98,Productivity,Instant Messaging
+99,Productivity,Application and Software Download
+100,Productivity,Pay-to-Surf
+101,Shopping,Internet Auctions
+102,Shopping,Real Estate
+103,Society and Lifestyles,Hobbies
+107,Sport,Sport Hunting and Gun Clubs
+108,Bandwidth,Internet Telephony
+109,Bandwidth,Streaming Media
+110,Productivity,Productivity
+111,Drugs,Marijuana
+112,Productivity,Message Boards and Forums
+113,Bandwidth,Personal Network Storage and Backup
+114,Bandwidth,Internet Radio and TV
+115,Bandwidth,Peer-to-Peer File Sharing
+116,Bandwidth,Bandwidth
+117,Society and Lifestyles,Social Networking
+118,Education,Educational Materials
+121,Education,Reference Materials
+122,Social Organizations,Social Organizations
+123,Social Organizations,Service and Philanthropic Organizations
+124,Social Organizations,Social and Affiliation Organizations
+125,Social Organizations,Professional and Worker Organizations
+126,Security,Security
+128,Security,Malicious Web Sites
+138,Information Technology,Computer Security
+146,Miscellaneous,Miscellaneous
+147,Miscellaneous,Web Infrastructure
+148,Miscellaneous,Web Images
+149,Miscellaneous,Private IP Addresses
+150,Miscellaneous,Content Delivery Networks
+151,Miscellaneous,Dynamic Content
+152,Miscellaneous,Network Errors
+153,Miscellaneous,Uncategorized
+154,Security,Spyware
+156,Miscellaneous,File Download Servers
+164,Security,Phishing and Other Frauds
+166,Security,Keyloggers
+167,Security,Potentially Unwanted Software
+172,Security,Bot Networks
+191,Extended Protection,Extended Protection
+192,Extended Protection,Elevated Exposure
+193,Extended Protection,Emerging Exploits
+194,Extended Protection,Suspicious Content
+195,Internet Communication,Organizational Email
+196,Internet Communication,Text and Media Messaging
+200,Information Technology,Web and Email Spam
+201,Information Technology,Web Collaboration
+202,Parked Domain,Parked Domain
+203,Business and Economy,Hosted Business Applications
+204,Society and Lifestyles,Blogs and Personal Sites
+205,Security,Malicious Embedded Link
+206,Security,Malicious Embedded iFrame
+207,Security,Suspicious Embedded Link
+208,Bandwidth,Surveillance
+209,Bandwidth,Educational Video
+210,Bandwidth,Entertainment Video
+211,Bandwidth,Viral Video
+212,Extended Protection,Dynamic DNS
+213,Security,Potentially Exploited Documents
+214,Security,Mobile Malware
+215,Information Technology,Unauthorized Mobile Marketplaces
+216,Security,Custom-Encrypted Uploads
+217,Security,Files Containing Passwords
+218,Security,Advanced Malware Command and Control
+219,Security,Advanced Malware Payloads
+220,Security,Compromised Websites
+221,Extended Protection,Newly Registered Websites
+1500,Social Web - Facebook,Social Web - Facebook
+1501,Social Web - LinkedIn,LinkedIn Updates
+1502,Social Web - LinkedIn,LinkedIn Mail
+1503,Social Web - LinkedIn,LinkedIn Connections
+1504,Social Web - LinkedIn,LinkedIn Jobs
+1505,Social Web - Facebook,Facebook Posting
+1506,Social Web - Facebook,Facebook Commenting
+1507,Social Web - Facebook,Facebook Friends
+1508,Social Web - Facebook,Facebook Photo Upload
+1509,Social Web - Facebook,Facebook Mail
+1510,Social Web - Facebook,Facebook Events
+1511,Social Web - YouTube,YouTube Commenting
+1512,Social Web - YouTube,YouTube Video Upload
+1513,Social Web - Facebook,Facebook Apps
+1514,Social Web - Facebook,Facebook Chat
+1516,Social Web - Facebook,Facebook Questions
+1517,Social Web - Facebook,Facebook Video Upload
+1518,Social Web - Facebook,Facebook Groups
+1519,Social Web - Twitter,Twitter Posting
+1520,Social Web - Twitter,Twitter Mail
+1521,Social Web - Twitter,Twitter Follow
+1523,Social Web - YouTube,YouTube Sharing
+1524,Social Web - Facebook,Facebook Games
+1525,Social Web - YouTube,Social Web - YouTube
+1526,Social Web - Twitter,Social Web - Twitter
+1527,Social Web - LinkedIn,Social Web - LinkedIn
+1528,Social Web - Various,Social Web - Various
+1529,Social Web - Various,Classifieds Posting
+1530,Social Web - Various,Blog Posting
+1531,Social Web - Various,Blog Commenting
+1801,Non-HTTP,Non-HTTP
+*,unknown,unknown

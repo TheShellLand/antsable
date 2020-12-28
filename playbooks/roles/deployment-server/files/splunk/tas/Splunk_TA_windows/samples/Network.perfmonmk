@@ -1,0 +1,6 @@
+01/25/2018 15:20:14.270 +0530
+collection=NetworkMk
+category=NetworkMk
+object=Network_Interface
+instance	Bytes_Total/sec	Packets/sec	Packets_Received/sec	Packets_Sent/sec	Current_Bandwidth	Bytes_Received/sec	Packets_Received_Unicast/sec	Packets_Received_Non-Unicast/sec	Packets_Received_Discarded	Packets_Received_Errors	Packets_Received_Unknown	Bytes_Sent/sec	Packets_Sent_Unicast/sec	Packets_Sent_Non-Unicast/sec	Packets_Outbound_Discarded	Packets_Outbound_Errors	Output_Queue_Length	Offloaded_Connections	TCP_Active_RSC_Connections	TCP_RSC_Coalesced_Packets/sec	TCP_RSC_Exceptions/sec	TCP_RSC_Average_Packet_Size	
+##Instance##	##Bytes_Total/sec##	##Packets/sec##	##Packets_Received/sec##	##Packets_Sent/sec##	##Current_Bandwidth##	##Bytes_Received/sec##	##Packets_Received_Unicast/sec##	##Packets_Received_Non-Unicast/sec##	##Packets_Received_Discarded##	##Packets_Received_Errors##	##Packets_Received_Unknown##	##Bytes_Sent/sec##	##Packets_Sent_Unicast/sec##	##Packets_Sent_Non-Unicast/sec##	##Packets_Outbound_Discarded##	##Packets_Outbound_Errors##	##Output_Queue_Length##	##Offloaded_Connections##	##TCP_Active_RSC_Connections##	##TCP_RSC_Coalesced_Packets/sec##	##TCP_RSC_Exceptions/sec##	##TCP_RSC_Average_Packet_Size##

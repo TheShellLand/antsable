@@ -1,0 +1,50 @@
+<form class="form-horizontal form-complex">
+    <style>
+        .alert-save-as .trigger-actions .alert-actions-control-group .more-info .control-label, .alert-edit .trigger-actions .alert-actions-control-group .more-info .control-label{
+            width: 80px;
+            padding-right: 10px;
+        }
+    </style>
+    <div class="control-group">
+        <label class="control-label" for="snow_event_node">Node<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event.param.node" id="snow_event_node" />
+            <span class="help-block">The physical or virtual device on which the event occurred</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_event_type">Type<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event.param.type" id="snow_event_type" />
+            <span class="help-block">Event type, as defined in ServiceNow Event Management</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_event_resource">Resource<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event.param.resource" id="snow_event_resource" />
+            <span class="help-block">The component on the node to which the event applies</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_severity">Severity<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_event.param.severity" id="snow_severity" />
+            <span class="help-block">Numerical value for the severity of the event</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_event_description">Description</label>
+
+        <div class="controls">
+            <textarea type="text" name="action.snow_event.param.description" style="height:120px;" id="snow_event_description" >
+
+            </textarea>
+            <span class="help-block"></span>
+        </div>
+    </div>
+</form>

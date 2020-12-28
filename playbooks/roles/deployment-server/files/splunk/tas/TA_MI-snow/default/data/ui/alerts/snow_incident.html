@@ -1,0 +1,126 @@
+<form class="form-horizontal form-complex">
+    <style>
+        .alert-save-as .trigger-actions .alert-actions-control-group .more-info .control-label, .alert-edit .trigger-actions .alert-actions-control-group .more-info .control-label{
+            width: 80px;
+            padding-right: 10px;
+        }
+    </style>
+    <div class="control-group">
+        <label class="control-label" for="snow_state">State</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.state" id="snow_state" ／>
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_configuration_item">Configuration Item</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.configuration_item" id="snow_incident_configuration_item" />
+            <span class="help-block">Configuration item ID or name</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="caller_id">Contact<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.caller_id" id="caller_id" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="business_service">Impacted Service<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.business_service" id="business_service" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_contact_type">Contact Type<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.contact_type" id="snow_incident_contact_type" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_assignment_group">Assignment Group</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.assignment_group" id="snow_incident_assignment_group" />
+            <span class="help-block">Incident assignment group ID or name</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_category">Category<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.category" id="snow_incident_category"/>
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_sub_category">Subcategory</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.subcategory" id="snow_incident_sub_category" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+        <div class="control-group">
+        <label class="control-label" for="snow_incident_location">Location<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.location" id="snow_incident_location" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="u_opened_by_group">Opened by Group</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.u_opened_by_group" id="u_opened_by_group" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="opened_by">Opened By</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.opened_by" id="opened_by" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_short_description">Short Description<span class="required">*</span></label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.short_description" id="snow_incident_short_description" />
+            <span class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_description">Description</label>
+
+        <div class="controls">
+            <textarea type="text" name="action.snow_incident.param.description" cols="40" rows="10" id="snow_incident_description" style="margin: 0px; width: 350px; height: 135px;"></textarea>		
+            <!---<input type="text" name="action.snow_incident.param.description" id="snow_incident_description" />--->
+            <span class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="snow_incident_correlation_id">Correlation ID</label>
+
+        <div class="controls">
+            <input type="text" name="action.snow_incident.param.correlation_id" id="snow_incident_correlation_id" />
+            <span class="help-block"><a class="external" href="http://docs.splunk.com/Documentation/AddOns/latest/ServiceNow/Usecustomalertactions" target="_blank">Learn more</a></span>
+        </div>
+    </div>
+</form>
+

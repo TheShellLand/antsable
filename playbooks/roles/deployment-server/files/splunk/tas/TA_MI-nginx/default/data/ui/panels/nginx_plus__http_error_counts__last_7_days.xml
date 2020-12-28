@@ -1,0 +1,15 @@
+<panel>
+  <title>Nginx Plus - HTTP Error Counts - Last 7 days</title>
+  <table>
+    <search>
+      <query>(sourcetype="nginx:plus:kv" OR sourcetype="nginx:plus:access") NOT status="2*" | rex field="status" "(?&lt;http_resp_code&gt;\d{1})" | eval http_resp_code = http_resp_code + "XX" | stats count(http_resp_code) as "Count" by http_resp_code | rename  http_resp_code as "Http Error Code"</query>
+      <earliest>-7d@h</earliest>
+      <latest>now</latest>
+    </search>
+    <option name="wrap">true</option>
+    <option name="rowNumbers">false</option>
+    <option name="dataOverlayMode">none</option>
+    <option name="drilldown">cell</option>
+    <option name="count">10</option>
+  </table>
+</panel>

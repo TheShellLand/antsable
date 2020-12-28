@@ -1,0 +1,181 @@
+<setup>
+    <block title="ServiceNow Setup (* fields are required)" endpoint="service_now_setup/snow_account" entity="snow_account">
+        <input field="url">
+            <label>URL (for example, https://myaccount.service-now.com)*</label>
+            <type>text</type>
+        </input>
+        <input field="username">
+            <label>Username*</label>
+            <type>text</type>
+        </input>
+        <input field="password">
+            <label>Password*</label>
+            <type>password</type>
+        </input>
+    </block>
+    <block title="ServiceNow Proxy Setup" endpoint="service_now_setup/snow_proxy" entity="snow_proxy">
+        <input field="proxy_enabled" old_style_disable="true">
+            <label>Enable Proxy</label>
+            <type>bool</type>
+        </input>
+        <input field="proxy_url">
+            <label>Proxy host</label>
+            <type>text</type>
+        </input>
+        <input field="proxy_port">
+            <label>Proxy port</label>
+            <type>integer</type>
+        </input>
+        <input field="proxy_username">
+            <label>Proxy username</label>
+            <type>text</type>
+        </input>
+        <input field="proxy_password">
+            <label>Proxy password</label>
+            <type>password</type>
+        </input>
+        <input field="proxy_rdns">
+            <label>Use proxy to do DNS resolution</label>
+            <type>bool</type>
+        </input>
+        <input field="proxy_type">
+            <label>Proxy type</label>
+            <type>text</type>
+        </input>
+    </block>
+    <block title="ServiceNow Data Collection Setup" endpoint="service_now_setup/snow_data_collection" entity="snow_default">
+        <input field="collection_interval">
+            <label>Default data collection interval (in seconds)</label>
+            <type>text</type>
+        </input>
+        <input field="since_when">
+            <label>Data started from (UTC in "YYYY-MM-DD hh:mm:ss" format. Default is one year ago.)</label>
+            <type>text</type>
+        </input>
+        <input field="loglevel">
+            <label>Logging level (DEBUG, INFO, or ERROR)</label>
+            <type>text</type>
+        </input>
+        <text>
+            <![CDATA[ <script type="text/javascript">
+              $(function() {
+                /*
+                  For each workflow input's version configuration, change to a select (drop-down) by hiding the text box.
+                  Update the text box with the selection value on each drop-down change
+                */
+
+                proxy_host_ebox = $('#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_url');
+                proxy_port_ebox = $('#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_port');
+                proxy_user_ebox = $('#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_username');
+                proxy_passwd_ebox = $('#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_password');
+                proxy_check_box = $('#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_enabled');
+
+                var proxy_base = '#item-\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/'
+                var proxy_eboxes = ["proxy_url", "proxy_port", "proxy_username", "proxy_password", "proxy_rdns", "proxy_type"];
+
+                var show_hide = function() {
+                    checked = $('#\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_enabled_id')[0].checked;
+                    if (checked) {
+                        for (var i = 0; i < proxy_eboxes.length; i++) {
+                            var ectrl = $(proxy_base + proxy_eboxes[i]);
+                            ectrl.show();
+                        }
+                        /*proxy_host_ebox.show();
+                        proxy_port_ebox.show();
+                        proxy_user_ebox.show();
+                        proxy_passwd_ebox.show();*/
+                    }
+                    else {
+                        for (var i = 0; i < proxy_eboxes.length; i++) {
+                            var ectrl = $(proxy_base + proxy_eboxes[i]);
+                            ectrl.hide();
+                        }
+
+                        /*proxy_host_ebox.hide();
+                        proxy_port_ebox.hide();
+                        proxy_user_ebox.hide();
+                        proxy_passwd_ebox.hide();*/
+                        proxy_passwd = $('#\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_password_id');
+                        proxy_passwd_confirm = $('#\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_password_id_confirm');
+                        proxy_passwd.clearInputs();
+                        proxy_passwd_confirm.clearInputs();
+                    }
+                };
+                show_hide();
+
+                proxy_check_box.on('change', show_hide);
+
+                var setup_dropdown = function (control_id, options_arr, new_control_id) {
+                    var ctrl = $(control_id);
+                    var current_val = ctrl.val();
+                    var index = options_arr.indexOf(current_val);
+                    if (index > -1) {
+                        options_arr.splice(index, 1);
+                    }
+
+                    var options = '<option selected="selected" value="' + current_val + '">' + current_val + '</option>';'</option>'
+                    for (var i = 0; i < options_arr.length; i++) {
+                        options += '<option value="' + options_arr[i] + '">' + options_arr[i] + '</option>';
+                    }
+                    ctrl.parent().after('<br/><select id="' + new_control_id + '">' + options + '</select>');
+                    ctrl.parent().hide();
+                    $("#" + new_control_id).on("change", function() {
+                        var new_select = $("#" + new_control_id);
+                        var new_val = $(control_id);
+                        ctrl.val(new_select.val());
+                    });
+                };
+
+                // log level dropdown
+                ctrl_id = '#\\/service_now_setup\\/snow_data_collection\\/snow_default\\/loglevel_id';
+                var log_ctrl = $(ctrl_id);
+                var current_level = log_ctrl.val();
+                var loglevels = ['DEBUG', 'INFO', 'ERROR'];
+                setup_dropdown(ctrl_id, loglevels, "loglevel_dropdown");
+
+                // proxy type dropdown
+                ctrl_id = '#\\/service_now_setup\\/snow_proxy\\/snow_proxy\\/proxy_type_id';
+                var proxy_type_ctrl = $(ctrl_id);
+                var current_proxy_type = proxy_type_ctrl.val();
+                var proxy_types = ['http', 'http_no_tunnel', 'socks4', 'socks5'];
+                setup_dropdown(ctrl_id, proxy_types, "proxy_type_dropdown");
+
+                //snow URL verification
+                url_id = $("#\\/service_now_setup\\/snow_account\\/snow_account\\/url_id");
+                
+                $(".splButton-primary").on("click", function (e) {
+                   if (validate_url(url_id)) {
+                        return true;
+                    } else {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+                function validate_url(url_id) {
+                    var url_validation_regex = "^https";
+                    var url_val = $(url_id).val().trim();
+                    var _errid = "url_err";
+
+                    url_id.parent().find('#url_err').remove();
+
+                    errMsg = "Provide a URL in the following format: https://example.com"
+
+                    if (url_val.length == 0) {
+                        url_id.parent().append("<div id='" + _errid + "' class='custom-error' style='display:inline;color:red'> " + errMsg + "</div>");
+                        return false;
+                    }
+
+                    if (url_val.match(url_validation_regex)) {
+                        return true;
+                    } else {
+                        url_id.parent().append("<div id='" + _errid + "' class='custom-error' style='display:inline;color:red'> " + errMsg + "</div>");
+                        return false;
+                    }
+                }
+
+              });
+            </script> ]]>
+        </text>
+    </block>
+</setup>

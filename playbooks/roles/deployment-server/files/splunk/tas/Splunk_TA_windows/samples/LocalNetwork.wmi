@@ -1,0 +1,7 @@
+20110414155841.735270
+BytesReceivedPersec=##Bytes_Received/sec##
+BytesSentPersec=##Bytes_Sent/sec##
+BytesTotalPersec=##Bytes_Total/sec##
+CurrentBandwidth=##Current_Bandwidth##
+Name=##Instance##
+wmi_type=LocalNetwork

@@ -1,0 +1,8 @@
+Type=Processor
+Name=##Name##
+Manufacturer=##Manufacturer##
+Architecture=##Architecture##
+ClockSpeedMHz=##ClockSpeedMHz##
+NumberOfCores=##NumberOfCores##
+NumberOfProcessors=##NumberOfProcessors##
+Processor Id=##Processor_Id##

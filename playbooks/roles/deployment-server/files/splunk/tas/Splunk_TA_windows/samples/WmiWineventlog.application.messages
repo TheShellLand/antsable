@@ -1,0 +1,26 @@
+16384,"Successfully scheduled Software Protection service for re-start at 2018-04-22T17:13:56Z. Reason: TBL."
+903,"The Software Protection service has stopped."
+1037,"Time-based license remaining validity time ##Seconds## minutes."
+258,The ""##hex12##"" is successfully initialized for this Virtual Machine.
+256,The ""##hex12##"" is successfully initialized for this Virtual Machine. WMI namespace: ""root\cimv2"".
+1704,Security policy in the Group policy objects has been applied successfully.
+1008,The Open Procedure for service ""BITS"" in DLL ""##Path####FileName##.dll"" failed. Performance data for this service will not be available. The first four bytes (DWORD) of the Data section contains the error code.
+257,The volume System Reserved was not optimized because an error was encountered: Neither Slab Consolidation nor Slab Analysis will run if slabs are less than ##Size## MB. (0x##hex8##)
+8224,The VSS service is shutting down due to idle timeout. 
+301,DFSRs (2964) \\.\##Path## Volume ##VolumePath####FileName##.db: The database engine has begun replaying logfile \\.\##Path## Volume ##VolumePath####FileName##.log.
+302,DFSRs (2964) \\.\##Path## Volume ##VolumePath####FileName##.db: The database engine has successfully completed recovery steps.
+102,DFSRs (2964) \\.\##Path## Volume ##VolumePath####FileName##.db: The database engine (##Ip##) is starting a new instance (0).
+300,DFSRs (2964) \\.\##Path## Volume ##VolumePath####FileName##.db: The database engine is initiating recovery steps.
+271,Restored network configuration.
+781,The COM+ sub system is suppressing duplicate event log entries for a duration of ##Seconds## seconds.  The suppression timeout can be controlled by a REG_DWORD value named SuppressDuplicateDuration under the following registry key: ##RegistryPath##.
+5617,Windows Management Instrumentation Service subsystems initialized successfully
+9027,The Desktop Window Manager has registered the session port.
+4625,The EventSystem sub system is suppressing duplicate event log entries for a duration of ##Seconds## seconds.  The suppression timeout can be controlled by a REG_DWORD value named SuppressDuplicateDuration under the following registry key: ##RegistryPath##.
+1531,The User Profile Service has started successfully.
+5615,Windows Management Instrumentation Service started sucessfully
+4112,Successful auto update of disallowed certificate list with effective date: ##DateLong## ##Time##.
+5612,"Windows Management Instrumentation has stopped WMIPRVSE.EXE because a quota reached a warning value. Quota: HandleCount  Value: 4206 Maximum value: 4096 WMIPRVSE PID: 5608 Providers hosted in this process: %systemroot%\system32\wbem\##FileName##.dll##comma## %systemroot%\system32\##FileName##.dll##comma## %windir%\system32\wbem\##FileName##.dll##comma## %SystemRoot%\system32\tscfgwmi.dll"
+4109,Successful auto property update of third-party root certificate:: Subject: <OU=Class 3 Public Primary Certification Authority##comma## O=""##hex8####comma## Inc.""##comma## C=US> Sha1 thumbprint: <##SHA##>.
+4111,"Successful auto update of third-party root list with effective date: ##DateLong## ##Time##."
+1002,The shell stopped unexpectedly and ##FileName##.exe was restarted.
+5611,The Windows Management Instrumentation service has detected an inconsistent system shutdown.

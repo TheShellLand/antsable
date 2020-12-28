@@ -1,0 +1,23 @@
+Apr 28 14:47:39 ##host## sshd[##number##]: Accepted password for ##user## from ##ip## port ##ipport## ssh2
+Apr 28 14:47:40 ##host## sshd[##number##]: pam_unix(sshd:session): session opened for user ##user## by (uid=0)
+Apr 28 14:33:08 ##host## sshd[##number##]: Invalid user ##user## from ##ip##
+Apr 28 14:06:27 ##host## kernel: Console: switching to colour frame buffer device ##frame_size##
+Apr 28 14:06:27 ##host## kernel: Console: colour VGA+ ##vga_size##
+Apr 26 12:12:33 ##host## kernel: NetLabel:  protocols = UNLABELED CIPSOv4
+Apr 28 14:06:27 ##host## kernel: NetLabel:  unlabeled traffic allowed by default
+Apr 26 12:17:46 ##host## kernel: NetLabel:  domain hash size = ##domain_hash_size##
+Apr 28 14:06:27 ##host## kernel: i8042: PNP: PS/2 Controller [PNP0303:KBC,PNP0f13:MOUS] at 0x60,0x64 irq 1,12
+Apr 28 14:06:27 ##host## kernel: pnp: PnP ACPI: found 6 devices
+Apr 28 14:06:27 ##host## kernel: pnp: PnP ACPI init
+May 10 12:50:01 ##host## systemd[1]: Starting Session ##number## of user ##user##.
+May 10 12:50:01 ##host## systemd[1]: Started Session ##number## of user ##user##.
+Apr 28 14:06:29 ##host## systemd-udevd[588]: starting version 219
+Apr 28 14:06:28 ##host## systemd[1]: Started Cleanup udevd DB.
+Apr 25 15:50:10 ##host## useradd[##number##]: new user: name=##user##, UID=##number##, GID=##number##, home=/etc/##user##, shell=/sbin/nologin
+Apr 25 15:50:10 ##host##  groupadd[##number##]: group added to ##group_name##: name=##user##
+05:14:03,111 DEBUG kernel:[    0.000000]   DMA zone: ##pages## pages, LIFO batch:0
+05:14:03,111 DEBUG kernel:[    0.000000]   DMA zone: ##pages## pages used for memmap
+05:14:03,111 DEBUG kernel:[    0.000000]   DMA zone: ##pages## pages reserved
+Apr 28 14:33:08 ##host## sshd[##number##]: Connection closed by ##ip## [preauth]
+Apr 26 12:17:46 ##host## kernel: PCI: Using ACPI for IRQ routing
+Apr 26 12:17:46 ##host## kernel: PCI: Using configuration type 1 for base access

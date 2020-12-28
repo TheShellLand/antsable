@@ -1,0 +1,10 @@
+20110414122636.433557
+AvailableBytes=##Available_Bytes##
+CommittedBytes=##Committed_Bytes##
+PagesInputPersec=##PagesInputPersec##
+PagesOutputPersec=##PagesOutputPersec##
+PagesPersec=##Pages/sec##
+PercentCommittedBytesInUse=##Committed_Bytes_In_Use##
+PoolNonpagedBytes=##Pool_Nonpaged_Bytes##
+PoolPagedBytes=##Pool_Paged_Bytes##
+wmi_type=Memory

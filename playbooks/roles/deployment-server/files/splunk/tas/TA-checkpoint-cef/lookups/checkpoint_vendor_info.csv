@@ -1,0 +1,9 @@
+sourcetype,vendor,product,vendor_product,opsec_product
+checkpoint,Checkpoint,FireWall-1,FireWall-1,FireWall-1
+opsec,Checkpoint,FireWall-1,FireWall-1,FireWall-1
+opsec:threat_emulation,Checkpoint,Threat Emulation,Threat Emulation,Threat Emulation
+opsec:anti_malware,Checkpoint,Anti Malware,Anti Malware,Anti Malware
+opsec:smartdefense,Checkpoint,SmartDefense,SmartDefense,SmartDefense
+opsec:anti_virus,Checkpoint,New Anti Virus,New Anti Virus,New Anti Virus
+opsec:audit,Checkpoint,Audit,Audit,Audit
+opsec:vpn,Checkpoint,VPN-1 & FireWall-1,VPN-1 & FireWall-1,VPN-1 & FireWall-1

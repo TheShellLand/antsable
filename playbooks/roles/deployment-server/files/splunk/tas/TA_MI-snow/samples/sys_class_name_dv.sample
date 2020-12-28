@@ -1,0 +1,4 @@
+syslog,Log Entry
+import_log,Import Log
+syslog_email,Email Log Entry
+pa_diagnostic_log,Diagnostic Log

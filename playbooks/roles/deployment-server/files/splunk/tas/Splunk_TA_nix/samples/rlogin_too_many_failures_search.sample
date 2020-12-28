@@ -1,0 +1,4 @@
+search index = main eventtype="rlogin_too_many_failures"| fields "general syslog msg" "TOO MANY LOGIN TRIES"
+search index = main eventtype="rlogin_too_many_failures"| fields "general syslog msg" "TOO MANY LOGIN TRIES" _raw
+search index = main | reverse | fields index, host, source, sourcetype, "general syslog msg" "TOO MANY LOGIN TRIES", _raw
+search index = main | reverse | fields index, "general syslog msg" "TOO MANY LOGIN TRIES", _raw

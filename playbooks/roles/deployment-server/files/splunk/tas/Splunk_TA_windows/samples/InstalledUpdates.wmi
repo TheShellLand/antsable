@@ -1,0 +1,8 @@
+20100616185831.000000
+Description=##Description##
+FixComments=##Comments##
+HotFixID=KB##HotFix_Id##
+InstalledBy=##User_Sid##
+InstalledOn=##Installed_On##
+ServicePackInEffect=##ServicePack_In_Effect##
+wmi_type=InstalledUpdates

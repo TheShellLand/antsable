@@ -1,0 +1,4 @@
+***SPLUNK*** source=iostat sourcetype=iostat host=##host##
+
+Device          rReq_PS      wReq_PS        rKB_PS        wKB_PS        avgWaitMillis   avgSvcMillis   bandwUtilPct
+##Device##     ##No_value##    ##No_value##    ##rKB_PS##   ##wKB_PS##      ##No_value##       ##No_value##     ##bandwUtilPct##

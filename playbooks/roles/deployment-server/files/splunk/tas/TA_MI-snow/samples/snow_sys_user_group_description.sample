@@ -1,0 +1,7 @@
+Responsible for Return Material Authorization approvals and RMA number allocations in Inventory Management
+eCAB Approvers
+Responsible for ordering catalog items, or moving them from inventory that are in Stock
+This is the group of users that need to approve a Service Catalog request that is greater than $1000
+LDAP admins group
+Review, approve and/or reject the code pushed to parent instance.
+IT department responsible for all hardware requests including installation and repair

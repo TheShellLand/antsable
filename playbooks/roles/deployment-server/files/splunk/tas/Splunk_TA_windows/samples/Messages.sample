@@ -1,0 +1,100 @@
+The WMI Performance Adapter service entered the stopped state.
+The Function Discovery Provider Host service entered the running state.
+The Device Association Service service entered the running state.
+The WMI Performance Adapter service entered the running state.
+The Diagnostic System Host service entered the stopped state.
+The AppX Deployment Service (AppXSVC) service entered the stopped state.
+The AppX Deployment Service (AppXSVC) service entered the running state.
+The WinRM service is listening for WS-Management requests. User Action Use the following command to see the specific IPs on which WinRM is listening: winrm enumerate winrm/config/listener
+The WinRM service failed to create the following SPNs: WSMAN/taserver.windows.local; WSMAN/taserver. Additional Data The error received was 8344: %%8344. User Action The SPNs can be created by an administrator using setspn.exe utility.
+The Network Setup Service service entered the stopped state.
+The Network Setup Service service entered the running state.
+The Windows Update service entered the stopped state.
+The Data Sharing Service service entered the stopped state.
+NULL
+The Client License Service (ClipSVC) service entered the stopped state.
+The Diagnostic System Host service entered the running state.
+The Software Protection service entered the running state.
+The Software Protection service entered the stopped state.
+The Client License Service (ClipSVC) service entered the running state.
+The Windows Update service entered the running state.
+The application-specific permission settings do not grant Local Activation permission for the COM Server application with CLSID {D63B10C5-BB46-4990-A94F-E40B9D520160} and APPID {9CA88EE3-ACB7-47C8-AFC4-AB702511C276} to the user NT AUTHORITY\SYSTEM SID (S-1-5-18) from address LocalHost (Using LRPC) running in the application container Unavailable SID (Unavailable). This security permission can be modified using the Component Services administrative tool.
+The Function Discovery Provider Host service entered the stopped state.
+The system uptime is 2336767 seconds.
+The Device Association Service service entered the stopped state.
+The WinHTTP Web Proxy Auto-Discovery Service service entered the running state.
+The Update Orchestrator Service for Windows Update service entered the stopped state.
+The WinHTTP Web Proxy Auto-Discovery Service service entered the stopped state.
+A service was installed in the system. Service Name: MpKsl045d935f Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{A2139067-3005-4667-940B-FC4F06AA247D}\MpKsl045d935f.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The start type of the Remote Access IP ARP Driver service was changed from auto start to demand start.
+The Microsoft Account Sign-in Assistant service entered the stopped state.
+The Microsoft Account Sign-in Assistant service entered the running state.
+The Google Update Service (gupdate) service entered the stopped state.
+The Google Update Service (gupdate) service entered the running state.
+The Windows Modules Installer service entered the running state.
+The Windows Modules Installer service entered the stopped state.
+The start type of the Background Intelligent Transfer Service service was changed from auto start to demand start.
+The Background Intelligent Transfer Service service entered the stopped state.
+Windows Update started downloading an update.
+The Background Intelligent Transfer Service service entered the running state.
+The start type of the Background Intelligent Transfer Service service was changed from demand start to auto start.
+The Windows Insider Service service entered the stopped state.
+The Windows Insider Service service entered the running state.
+The Optimize drives service entered the stopped state.
+The access history in hive \??\c:\users\user1\ntuser.dat was cleared updating 10 keys and creating 6 modified pages.
+The access history in hive \??\c:\users\user1\AppData\Local\Microsoft\Windows\usrclass.dat was cleared updating 1 keys and creating 1 modified pages.
+The access history in hive \??\c:\users\user2\ntuser.dat was cleared updating 10 keys and creating 6 modified pages.
+The access history in hive \??\c:\users\user2\AppData\Local\Microsoft\Windows\usrclass.dat was cleared updating 1 keys and creating 1 modified pages.
+Hive \??\C:\Windows\System32\config\components was reorganized with a starting size of 61431808 bytes and an ending size of 61431808 bytes.
+The Device Setup Manager service entered the stopped state.
+The access history in hive \SystemRoot\System32\Config\RegBack\SYSTEM was cleared updating 9568 keys and creating 864 modified pages.
+The access history in hive \SystemRoot\System32\Config\RegBack\DEFAULT was cleared updating 240 keys and creating 27 modified pages.
+The access history in hive \SystemRoot\System32\Config\RegBack\SAM was cleared updating 21 keys and creating 4 modified pages.
+The access history in hive \SystemRoot\System32\Config\RegBack\SOFTWARE was cleared updating 128574 keys and creating 10596 modified pages.
+The Optimize drives service entered the running state.
+The access history in hive \SystemRoot\System32\Config\RegBack\SECURITY was cleared updating 115 keys and creating 6 modified pages.
+The Device Setup Manager service entered the running state.
+The Storage Service service entered the running state.
+The Windows License Manager Service service entered the running state.
+The system uptime is 2250367 seconds.
+A service was installed in the system. Service Name: MpKsl7a0f738e Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{F19838D9-FA93-43C0-93CF-9806F21AD4AF}\MpKsl7a0f738e.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The Update Orchestrator Service for Windows Update service entered the running state.
+A service was installed in the system. Service Name: splunkdrv Service File Name: C:\Windows\system32\drivers\splunkdrv.sys Service Type: kernel mode driver Service Start Type: demand start Service Account:
+The Splunkd Service service entered the running state.
+The Splunkd Service service entered the stopped state.
+The system uptime is 2163967 seconds.
+A service was installed in the system. Service Name: MpKslc0ad4260 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{185516A6-1ED7-4F0B-B7AE-86E553A2DEF3}\MpKslc0ad4260.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The Windows Event Collector service entered the running state.
+The start type of the Windows Event Collector service was changed from demand start to auto start.
+The access history in hive \??\C:\Users\Administrator\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\Settings\settings.dat was cleared updating 2 keys and creating 1 modified pages.
+The access history in hive \??\C:\Users\Administrator\AppData\Local\Packages\Microsoft.Windows.Cortana_cw5n1h2txyewy\Settings\settings.dat was cleared updating 14 keys and creating 4 modified pages.
+The system uptime is 2077567 seconds.
+A service was installed in the system. Service Name: MpKslc2aa8bd0 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{B38257BA-E3E7-4782-99C2-C32E1944CF95}\MpKslc2aa8bd0.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1991167 seconds.
+A service was installed in the system. Service Name: MpKsld9045c1f Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{5419E429-B765-45CD-B436-E7BEF582EA0C}\MpKsld9045c1f.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+Unable to start a DCOM Server: {73E709EA-5D93-4B2E-BBB0-99B7938DA9E4}. The error: "5" Happened while starting this command: C:\Windows\system32\wbem\wmiprvse.exe -Embedding
+The system uptime is 1904767 seconds.
+A service was installed in the system. Service Name: MpKsla6ef8a87 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{40A5C817-70C0-4094-BEDC-D468E942C328}\MpKsla6ef8a87.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The access history in hive \SystemRoot\System32\config\DRIVERS was cleared updating 46 keys and creating 18 modified pages.
+The system uptime is 1818367 seconds.
+The Windows Defender Network Inspection Service service entered the stopped state.
+The Windows Defender Network Inspection Service service entered the running state.
+A service was installed in the system. Service Name: MpKslb449eca3 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{6C78DFCE-042D-46AA-B75E-01421E3FAA56}\MpKslb449eca3.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1731967 seconds.
+A service was installed in the system. Service Name: MpKsl1975f19e Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{B399CD98-6F90-416E-9F77-B8FA905170CD}\MpKsl1975f19e.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1645567 seconds.
+A service was installed in the system. Service Name: MpKsl99227484 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{C5151465-85C5-47E0-B8E8-F90618B90AE6}\MpKsl99227484.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1559167 seconds.
+A service was installed in the system. Service Name: MpKsl04d298d2 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{6591C344-E246-42AE-A123-E124168E8150}\MpKsl04d298d2.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1472767 seconds.
+A service was installed in the system. Service Name: MpKsl17a74242 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{D7FC426A-61F9-487C-BB9A-978DAD896F20}\MpKsl17a74242.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1386367 seconds.
+A service was installed in the system. Service Name: MpKsl445a29cb Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{6FBA8EE0-AB8D-46DC-9D39-CF93D68DF093}\MpKsl445a29cb.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1299967 seconds.
+A service was installed in the system. Service Name: MpKsl8a5fc096 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{591DE0A0-A281-4258-9DFA-18255E37E2CB}\MpKsl8a5fc096.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1213567 seconds.
+A service was installed in the system. Service Name: MpKsl0f9c8e96 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{526B139F-C8C1-4B4C-BE43-F35DDDDC46BC}\MpKsl0f9c8e96.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1127167 seconds.
+A service was installed in the system. Service Name: MpKslace75a4f Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{EDAF99A5-7DB4-4CC1-AA9B-9129D73BDC38}\MpKslace75a4f.sys Service Type: kernel mode driver Service Start Type: system start Service Account:
+The system uptime is 1040767 seconds.
+A service was installed in the system. Service Name: MpKsl966878e9 Service File Name: C:\ProgramData\Microsoft\Windows Defender\Definition Updates\{F914C734-5890-45D7-9FA0-5E1E211140F3}\MpKsl966878e9.sys Service Type: kernel mode driver Service Start Type: system start Service Account: 

@@ -1,0 +1,1304 @@
+20180718152820.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4756
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180718095820.078028-000
+TimeWritten=20180718095820.078028-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A member was added to a security-enabled universal group.
+
+Subject:
+	Security ID:		##Sid_Long##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Member:
+	Security ID:		S-1-5-21-532143110-843176838-1594448436-1106
+	Account Name:		CN=##user_name##,CN=##CN##,DC=##DC##,DC=##DC1##
+
+Group:
+	Security ID:		S-1-5-21-532143110-843176838-1594448436-1119
+	Account Name:		##GroupName##
+	Account Domain:		##UserName##
+
+Additional Information:
+	Privileges:		-
+
+20180421230212.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4634
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171456.434164-000
+TimeWritten=20180421171456.434164-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=The Windows Filtering Platform has permitted a connection.
+
+Application Information:
+	Process ID:		##ProcessID##
+	Application Name:	##DevicePath####FileName##.exe
+
+Network Information:
+	Direction:		##Direction##
+	Source Address:		##Ip##
+	Source Port:		##Port##
+	Destination Address:	##Ip##
+	Destination Port:		##Port##
+	Protocol:		##Protocol##
+
+Filter Information:
+	Filter Run-Time ID:	##Numerical_ID##
+	Layer Name:		##LayerName##
+	Layer Run-Time ID:	##Numerical_ID##
+
+20180421230212.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4634
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173212.847740-000
+TimeWritten=20180421173212.847740-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=An account was logged off.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+
+Logon Type:			##LoginType##
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer.
+
+20180421230210.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4688
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173210.288814-000
+TimeWritten=20180421173210.288814-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A new process has been created.
+
+Creator Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Target Subject:
+	Security ID:		##Sid##
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x##hex1##
+
+Process Information:
+	New Process ID:		0x##hex4##
+	New Process Name:	##Path####FileName##.exe
+	Token Elevation Type:	%%##Numerical_ID##
+	Mandatory Label:		##Sid##
+	Creator Process ID:	0x##hex3##
+	Creator Process Name:	##Path####FileName##.exe
+	Process Command Line:	
+
+Token Elevation Type indicates the type of token that was assigned to the new process in accordance with##UserText##Account Control policy.
+
+Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if##UserText##Account Control is disabled or if the##UserText##is the built-in Administrator account or a service account.
+
+Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when##UserText##Account Control is enabled and the##UserText##chooses to start the program using Run as administrator.  An elevated token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the##UserText##is a member of the Administrators group.
+
+Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when##UserText##Account Control is enabled, the application does not require administrative privilege, and the##UserText##does not choose to start the program using Run as administrator.
+
+20180421230210.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4689
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173210.302321-000
+TimeWritten=20180421173210.302321-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A process has exited.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Process Information:
+	Process ID:	0x##hex4##
+	Process Name:	##Path####FileName##.exe
+	Exit Status:	0x##hex1##
+
+20180421230209.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4703
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173209.442661-000
+TimeWritten=20180421173209.442661-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A token right was adjusted.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Target Account:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Process Information:
+	Process ID:		0x##hex3##
+	Process Name:		##Path####FileName##.exe
+
+Enabled Privileges:
+			SeAssignPrimaryTokenPrivilege
+			SeIncreaseQuotaPrivilege
+			SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeSystemtimePrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeShutdownPrivilege
+			SeSystemEnvironmentPrivilege
+			SeUndockPrivilege
+			SeManageVolumePrivilege
+
+Disabled Privileges:
+			-
+
+20180421230209.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4690
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173209.475637-000
+TimeWritten=20180421173209.475637-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=An attempt was made to duplicate a handle to an object.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Source Handle Information:
+	Source Handle ID:	0x##hex3##
+	Source Process ID:	0x##hex4##
+
+New Handle Information:
+	Target Handle ID:	0x##hex4##
+	Target Process ID:	0x##hex1##
+
+20180421230209.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4658
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173209.475642-000
+TimeWritten=20180421173209.475642-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=The handle to an object was closed.
+
+Subject :
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Object:
+	Object Server:		Security
+	Handle ID:		0x##hex4##
+
+Process Information:
+	Process ID:		0x##hex4##
+	Process Name:		##Path####FileName##.exe
+
+20180421230209.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4656
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173209.475651-000
+TimeWritten=20180421173209.475651-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A handle to an object was requested.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Object:
+	Object Server:		Security
+	Object Type:		Process
+	Object Name:		##DevicePath####FileName##.exe
+	Handle ID:		0x##hex3##
+	Resource Attributes:	-
+
+Process Information:
+	Process ID:		0x##hex4##
+	Process Name:		##Path####FileName##.exe
+
+Access Request Information:
+	Transaction ID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Accesses:		DELETE
+				READ_CONTROL
+				WRITE_DAC
+				WRITE_OWNER
+				SYNCHRONIZE
+				Force process termination
+				Create new thread in process
+				Set process session ID
+				Perform virtual memory operation
+				Read from process memory
+				Write to process memory
+				Duplicate handle into or out of process
+				Create a subprocess of process
+				Set process quotas
+				Set process information
+				Query process information
+				Set process termination port
+				Undefined Access (no effect) Bit 12
+				Undefined Access (no effect) Bit 13
+				Undefined Access (no effect) Bit 14
+				Undefined Access (no effect) Bit 15
+				
+	Access Reasons:		-
+	Access Mask:		0x##hex6##
+	Privileges Used for Access Check:	-
+	Restricted SID Count:	##Small_ID##
+
+20180421230207.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4663
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173207.328442-000
+TimeWritten=20180421173207.328442-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=An attempt was made to access an object.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Object:
+	Object Server:		Security
+	Object Type:		Process
+	Object Name:		##DevicePath####FileName##.exe
+	Handle ID:		0x##hex4##
+	Resource Attributes:	-
+
+Process Information:
+	Process ID:		0x##hex3##
+	Process Name:		##Path####FileName##.exe
+
+Access Request Information:
+	Accesses:		Read from process memory
+				
+	Access Mask:		0x##hex2##
+
+20180421230207.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=5158
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173207.882138-000
+TimeWritten=20180421173207.882138-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=The Windows Filtering Platform has permitted a bind to a local port.
+
+Application Information:
+	Process ID:		##Numerical_ID##
+	Application Name:	##DevicePath####FileName##.exe
+
+Network Information:
+	Source Address:		##Source_Address##
+	Source Port:		##Port##
+	Protocol:		##Protocol##
+
+Filter Information:
+	Filter Run-Time ID:	##Numerical_ID##
+	Layer Name:		##LayerName##
+	Layer Run-Time ID:	##Numerical_ID##
+
+20180421230207.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4672
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173207.884411-000
+TimeWritten=20180421173207.884411-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege
+			SeEnableDelegationPrivilege
+
+20180421230207.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4624
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173207.884536-000
+TimeWritten=20180421173207.884536-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=An account was successfully logged on.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex1##
+
+Logon Information:
+	Logon Type:		##LoginType##
+	Restricted Admin Mode:	-
+	Virtual Account:		No
+	Elevated Token:		Yes
+
+Impersonation Level:		Impersonation
+
+New Logon:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+	Linked Logon ID:		0x##hex1##
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon ##GUIDtext##:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+Process Information:
+	Process ID:		0x##hex1##
+	Process Name:		-
+
+Network Information:
+	Workstation Name:	
+	Source Network Address:	##Source_Address##
+	Source Port:		##Port##
+
+Detailed Authentication Information:
+	Logon Process:		##LogonProcessName##
+	Authentication Package:	##LogonProcessName##
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as ##FileName##.exe or ##FileName##.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon ##GUIDtext## is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.
+
+20180421230207.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4627
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173207.884563-000
+TimeWritten=20180421173207.884563-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=Group membership information.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex1##
+
+Logon Type:			3
+
+New Logon:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+
+Event in sequence:		1 of 1
+
+Group Membership:			
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		%{##Logon_Guid##}
+		
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as ##FileName##.exe or ##FileName##.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+This event is generated when the Audit Group Membership subcategory is configured.  The Logon ID field can be used to correlate this event with the corresponding##UserText##logon event as well as to any other security audit events generated during this logon session.
+
+20180421230202.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=5140
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173202.145036-000
+TimeWritten=20180421173202.145036-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A network share object was accessed.
+	
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+
+Network Information:	
+	Object Type:		File
+	Source Address:		##Source_Address##
+	Source Port:		##Port##
+	
+Share Information:
+	Share Name:		\\*\##FileName##
+	Share Path:		\??\##Path####FileName##
+
+Access Request Information:
+	Access Mask:		0x##hex1##
+	Accesses:		ReadData (or ListDirectory)
+				
+
+
+20180421230202.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=5145
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173202.145424-000
+TimeWritten=20180421173202.145424-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A network share object was checked to see whether client can be granted desired access.
+	
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex8##
+
+Network Information:	
+	Object Type:		File
+	Source Address:		##Source_Address##
+	Source Port:		##Port##
+	
+Share Information:
+	Share Name:		\\*\SYSVOL
+	Share Path:		\??\##Path##
+	Relative Target Name:	##DevicePath##{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}\##FileName##.ini
+
+Access Request Information:
+	Access Mask:		0x##hex6##
+	Accesses:		READ_CONTROL
+				SYNCHRONIZE
+				ReadData (or ListDirectory)
+				ReadEA
+				ReadAttributes
+				
+Access Check Results:
+	READ_CONTROL:	Granted by Ownership
+				SYNCHRONIZE:	Granted by	D:(A;;0x##hex6##;;;WD)
+				ReadData (or ListDirectory):	Granted by	D:(A;;0x##hex6##;;;WD)
+				ReadEA:	Granted by	D:(A;;0x##hex6##;;;WD)
+				ReadAttributes:	Granted by	D:(A;;0x##hex6##;;;WD)
+				
+
+
+20180421230155.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=5152
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173155.551654-000
+TimeWritten=20180421173155.551654-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=The Windows Filtering Platform has blocked a packet.
+
+Application Information:
+	Process ID:		##ProcessID##
+	Application Name:	-
+
+Network Information:
+	Direction:		Inbound
+	Source Address:		##Ip##
+	Source Port:		##Port##
+	Destination Address:	##Ip##
+	Destination Port:		##Port##
+	Protocol:		##Protocol##
+
+Filter Information:
+	Filter Run-Time ID:	##Numerical_ID##
+	Layer Name:		##LayerName##
+	Layer Run-Time ID:	##Numerical_ID##
+
+20180421230136.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4957
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173136.892279-000
+TimeWritten=20180421173136.892279-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=Windows Firewall did not apply the following rule:
+
+Rule Information:
+	ID:	CoreNet-Teredo-In
+	Name:	Core Networking - Teredo (UDP-In)
+
+Error Information:
+	Reason:	Local Port resolved to an empty set.
+
+20180421230136.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=5447
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173136.895941-000
+TimeWritten=20180421173136.895941-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A Windows Filtering Platform filter has been changed.
+	
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##UserSID##
+
+Process Information:
+	Process ID:	##ProcessID##
+
+Provider Information:
+	ID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Name:		##hex12##
+
+Change Information:
+	Change Type:	Add
+
+Filter Information:
+	ID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Name:		File and Printer Sharing (Spooler Service - RPC-EPMAP)
+	Type:		Not persistent
+	Run-Time ID:	##Numerical_ID##
+
+Layer Information:
+	ID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Name:		ALE Listen v4 Layer
+	Run-Time ID:	##Numerical_ID##
+
+Callout Information:
+	ID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Name:		-
+
+Additional Information:
+	Weight:	##Weight##	
+	Conditions:	
+	Condition ID:	{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Match value:	Equal to
+	Condition value:	
+O:SYG:SYD:(A;;CCRC;;;##Sid_Long##)
+
+
+	Condition ID:	{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Match value:	Equal to
+	Condition value:	0x##hex4##
+
+	Filter Action:	Permit
+
+20180421230133.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4673
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173133.169082-000
+TimeWritten=20180421173133.169082-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A privileged service was called.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Service:
+	Server:		##UserSID##
+	Service Name:	LsaRegisterLogonProcess()
+
+Process:
+	Process ID:	0x##hex3##
+	Process Name:	##Path####FileName##.exe
+
+Service Request Information:
+	Privileges:		SeTcbPrivilege
+
+20180421230132.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4670
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421173132.954520-000
+TimeWritten=20180421173132.954520-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=Permissions on an object were changed.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Object:
+	Object Server:	Security
+	Object Type:	Token
+	Object Name:	-
+	Handle ID:	0x##hex4##
+
+Process:
+	Process ID:	0x##hex3##
+	Process Name:	##Path####FileName##.exe
+
+Permissions Change:
+	Original Security Descriptor:	D:(A;;GA;;;SY)(A;;GA;;;NS)
+	New Security Descriptor:	D:(A;;GA;;;SY)(A;;RC;;;OW)(A;;GA;;;##Sid_Long##)
+
+20180421225800.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4662
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421172800.308832-000
+TimeWritten=20180421172800.308832-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=An operation was performed on an object.
+
+Subject :
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex6##
+
+Object:
+	Object Server:		##hex2##
+	Object Type:		%{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Object Name:		%{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Handle ID:		0x##hex1##
+
+Operation:
+	Operation Type:		Object Access
+	Accesses:		Control Access
+				
+	Access Mask:		0x##hex3##
+	Properties:		Control Access
+		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+
+Additional Information:
+	Parameter 1:		-
+	Parameter 2:		
+
+20180421225506.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=The Windows Filtering Platform has blocked a connection.
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421172506.514086-000
+TimeWritten=20180421172506.514086-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=The Windows Filtering Platform has blocked a connection.
+
+Application Information:
+	Process ID:		##ProcessID##
+	Application Name:	##DevicePath####FileName##.exe
+
+Network Information:
+	Direction:		Inbound
+	Source Address:		##Ip##
+	Source Port:		##Port##
+	Destination Address:	##Ip##
+	Destination Port:		##Port##
+	Protocol:		17
+
+Filter Information:
+	Filter Run-Time ID:	##Numerical_ID##
+	Layer Name:		##LayerName##
+	Layer Run-Time ID:	##Numerical_ID##
+
+20180421224456.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4702
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171456.433720-000
+TimeWritten=20180421171456.433720-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A scheduled task was updated.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Task Information:
+	Task Name: 		##DevicePath##
+	Task New Content: 		<?xml version=""1.0"" encoding=""UTF-16""?>
+<Task version=""1.5"" xmlns=""##xmlns##"">
+  <RegistrationInfo>
+    <Source>$(@%systemroot%\system32\##FileName##.dll,-200)</Source>
+    <Author>$(@%systemroot%\system32\##FileName##.dll,-200)</Author>
+    <Version>1.0</Version>
+    <Description>$(@%systemroot%\system32\##FileName##.dll,-201)</Description>
+    <URI>##DevicePath##</URI>
+    <SecurityDescriptor>D:P(A;;FA;;;SY)(A;;FA;;;BA)(A;;FA;;;##Sid_Long##)(A;;FR;;;##Sid_Long##)</SecurityDescriptor>
+  </RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2018-04-22T17:13:56Z</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByDay>
+        <DaysInterval>##Numerical_ID##</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id=""NetworkService"">
+      <UserId>##Sid##</UserId>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>##TrueFalse##</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>##TrueFalse##</StopIfGoingOnBatteries>
+    <AllowHardTerminate>##TrueFalse##</AllowHardTerminate>
+    <StartWhenAvailable>##TrueFalse##</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>##TrueFalse##</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>##TrueFalse##</StopOnIdleEnd>
+      <RestartOnIdle>##TrueFalse##</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>##TrueFalse##</AllowStartOnDemand>
+    <Enabled>##TrueFalse##</Enabled>
+    <Hidden>##TrueFalse##</Hidden>
+    <RunOnlyIfIdle>##TrueFalse##</RunOnlyIfIdle>
+    <DisallowStartOnRemoteAppSession>##TrueFalse##</DisallowStartOnRemoteAppSession>
+    <UseUnifiedSchedulingEngine>##TrueFalse##</UseUnifiedSchedulingEngine>
+    <WakeToRun>##TrueFalse##</WakeToRun>
+    <ExecutionTimeLimit>##hex4##</ExecutionTimeLimit>
+    <Priority>##Numerical_ID##</Priority>
+    <RestartOnFailure>
+      <Interval>##hex4##</Interval>
+      <Count>##Numerical_ID##</Count>
+    </RestartOnFailure>
+  </Settings>
+  <Actions Context=""NetworkService"">
+    <ComHandler>
+      <ClassId>{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}</ClassId>
+      <Data><![CDATA[timer]]></Data>
+    </ComHandler>
+  </Actions>
+</Task>
+	
+
+20180421215846.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4769
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421162846.513743-000
+TimeWritten=20180421162846.513743-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A Kerberos service ticket was requested.
+
+Account Information:
+	Account Name:		##AccountName##@##Host##
+	Account Domain:		##Host##
+	Logon ##GUIDtext##:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+Service Information:
+	Service Name:		##AccountName##
+	Service ID:		{##Logon_Guid##}
+
+Network Information:
+	Client Address:		##Source_Address##
+	Client Port:		##Port##
+
+Additional Information:
+	Ticket Options:		0x##hex8##
+	Ticket Encryption Type:	0x##hex2##
+	Failure Code:		0x##hex1##
+	Transited Services:	-
+
+This event is generated every time access is requested to a resource such as a computer or a Windows service.  The service name indicates the resource to which access was requested.
+
+This event can be correlated with Windows logon events by comparing the Logon ##GUIDtext## fields in each event.  The logon event occurs on the machine that was accessed, which is often a different machine than the domain controller which issued the service ticket.
+
+Ticket options, encryption types, and failure codes are defined in RFC 4120.
+
+20180421213117.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4770
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421160117.000278-000
+TimeWritten=20180421160117.000278-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A Kerberos service ticket was renewed.
+
+Account Information:
+	Account Name:		##AccountName##@##Host##
+	Account Domain:		##Host##
+
+Service Information:
+	Service Name:		##AccountName##
+	Service ID:		{##Logon_Guid##}
+
+Network Information:
+	Client Address:		##Source_Address##
+	Client Port:		##Port##
+
+Additional Information:
+	Ticket Options:		0x##hex5##
+	Ticket Encryption Type:	0x##hex2##
+
+Ticket options and encryption types are defined in RFC 4120.
+
+20180421204300.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4768
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421151300.068399-000
+TimeWritten=20180421151300.068399-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A Kerberos authentication ticket (TGT) was requested.
+
+Account Information:
+	Account Name:		##AccountName##
+	Supplied Realm Name:	##UserName##
+##UserText##ID:			{##Logon_Guid##}
+
+Service Information:
+	Service Name:		##AccountName##
+	Service ID:		{##Logon_Guid##}
+
+Network Information:
+	Client Address:		##Source_Address##
+	Client Port:		##Port##
+
+Additional Information:
+	Ticket Options:		0x##hex8##
+	Result Code:		0x##hex1##
+	Ticket Encryption Type:	0x##hex2##
+	Pre-Authentication Type:	##LoginType##
+
+Certificate Information:
+	Certificate Issuer Name:		
+	Certificate Serial Number:	
+	Certificate Thumbprint:		
+
+Certificate information is only provided if a certificate was used for pre-authentication.
+
+Pre-authentication types, ticket options, encryption types and result codes are defined in RFC 4120.
+
+20180421204300.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4648
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421151300.075674-000
+TimeWritten=20180421151300.075674-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A logon was attempted using explicit credentials.
+
+Subject:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+	Logon ##GUIDtext##:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+Account Whose Credentials Were Used:
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Logon ##GUIDtext##:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+Target Server:
+	Target Server Name:	##AccountName##
+	Additional Information:	##AccountName##
+
+Process Information:
+	Process ID:		0x##hex4##
+	Process Name:		##Path####FileName##.exe
+
+Network Information:
+	Network Address:	-
+	Port:			-
+
+This event is generated when a process attempts to log on an account by explicitly specifying that account’s credentials.  This most commonly occurs in batch-type configurations such as scheduled tasks, or when using the RUNAS command.
+
+20180421055959.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4661
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Security
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421002959.036545-000
+TimeWritten=20180421002959.036545-000
+Type=##Type##
+##UserText##=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Security
+Message=A handle to an object was requested.
+
+Subject :
+	Security ID:		##Sid##
+	Account Name:		##AccountName##
+	Account Domain:		##UserName##
+	Logon ID:		0x##hex3##
+
+Object:
+	Object Server:	Security Account Manager
+	Object Type:	SAM_DOMAIN
+	Object Name:	CN=Builtin,DC=windows1,DC=local
+	Handle ID:	0x##hex11##
+
+Process Information:
+	Process ID:	0x##hex3##
+	Process Name:	##Path####FileName##.exe
+
+Access Request Information:
+	Transaction ID:	{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+	Accesses:	DELETE
+				READ_CONTROL
+				WRITE_DAC
+				WRITE_OWNER
+				ReadPasswordParameters
+				WritePasswordParameters
+				ReadOtherParameters
+				WriteOtherParameters
+				CreateUser
+				CreateGlobalGroup
+				CreateLocalGroup
+				GetLocalGroupMembership
+				ListAccounts
+				
+	Access Reasons:		-
+	Access Mask:	0x##hex5##
+	Privileges Used for Access Check:	-
+	Properties:	---
+	{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+DELETE
+READ_CONTROL
+WRITE_DAC
+WRITE_OWNER
+ReadPasswordParameters
+WritePasswordParameters
+ReadOtherParameters
+WriteOtherParameters
+CreateUser
+CreateGlobalGroup
+CreateLocalGroup
+GetLocalGroupMembership
+ListAccounts
+		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+			{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+	Restricted SID Count:	##Numerical_ID##
+
+"

@@ -1,0 +1,9 @@
+***SPLUNK*** sourcetype=ps source=ps host=##host##
+
+USER       PID   PSR   pctCPU   CPUTIME                       pctMEM   RSZ_KB   VSZ_KB   TTY  S  ELAPSED              COMMAND        ARGS
+##USER##  ##PID##  ##PSR##  ##pctCPU##  ##CPUTIME1##:##CPUTIME2##:##CPUTIME3## ##pctMEM##  ##RSZ_KB## ##VSZ_KB##  ##TTY##    S  ##EL1##-##EL2##:##EL3##:##EL4##  ##COMMAND##  ##ARGS##
+##USER##  ##PID##  ##PSR##  ##pctCPU##  ##CPUTIME1##:##CPUTIME2##:##CPUTIME3## ##pctMEM##  ##RSZ_KB## ##VSZ_KB##  ##TTY##    ##S##  ##EL3##:##EL4##  ##COMMAND##  ##ARGS##
+##USER##  ##PID##  ##PSR_solaris##  ##pctCPU##  ##CPUTIME1##:##CPUTIME2##:##CPUTIME3## ##pctMEM##  ##RSZ_KB## ##VSZ_KB##  ##TTY_solaris##    ##S_solaris##  ##EL1##-##EL2##:##EL3##:##EL4##  ##COMMAND##  ##ARGS##
+##Mac_User##  ##PID## ##No_value##  ##pctCPU##   ##CPUTIME1##:##CPUTIME2##.##CPUTIME3##   ##pctMEM##   ##RSZ_KB##   ##VSZ_KB##   ##Mac_tty##    ##Mac_S##   ##EL1##-##EL2##:##EL3##:##EL4##   ##Mac_COMMAND##      ##Mac_ARGS##
+##USER##    ##PID##     ##No_value##   ##pctCPU##   ##CPUTIME1##:##CPUTIME2##.##CPUTIME3##     ##pctMEM##     ##RSZ_KB##    ##VSZ_KB##    ##FBSD_TTY##    ##FBSD_S##   ##EL1##-##EL2##:##EL3##:##EL4##   ##COMMAND##      ##ARGS##
+##USER##    ##PID##     ##AIX_PSR##   ##pctCPU##   ##CPUTIME1##:##CPUTIME2##:##CPUTIME3##     ##pctMEM##    ##RSZ_KB##    ##VSZ_KB##  ##AIX_TTY##    ##AIX_S##  ##EL1##-##EL2##:##EL3##:##EL4##   ##COMMAND##      ##ARGS##

@@ -1,0 +1,14 @@
+1,New,state,incident
+2,Active,state,incident
+3,Awaiting Problem,state,incident
+4,Awaiting User Info,state,incident
+5,Awaiting Evidence,state,incident
+6,Resolved,state,incident
+7,Closed,state,incident
+1,Pending,result,sn_si_scan_request
+2,Passed,result,sn_si_scan_request
+3,Failed,result,sn_si_scan_request
+4,Error,result,sn_si_scan_request
+5,None,result,sn_si_scan_request
+Male,Male,gender,sys_user
+Female,Female,gender,sys_user

@@ -1,0 +1,42 @@
+01/24/2018 05:36:45 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4720
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##User## account was created. 
+Subject: 
+	Security ID: ##Domain##\##User_Name##
+	Account Name: ##User_Name##
+	Account Domain: ##Domain##
+	Logon ID: 0x##Logon_Id##
+New Account: 
+	Security ID: ##Domain##\##User_Name2##
+	Account Name: ##User_Name2##
+	Account Domain: ##Domain##
+Attributes: 
+	SAM Account Name: ##New_User_Name##
+	Display Name: ##New_Display_Name##
+	##User## Principal Name: ##User_Principal_Name##
+	Home Directory: ##Home_Directory##
+	Home Drive: ##Home_Drive##
+	Script Path: ##Script_Path##
+	Profile Path: ##Profile_Path##
+	##User## Workstations: ##User_Workstation##
+	Password Last Set: ##Password_Last_Set##
+	Account Expires: ##Account_Expires##
+	Primary Group ID: ##Group_Id##
+	Allowed To Delegate To: ##Allowed_Delegate##
+	Old UAC Value: ##Old_UAC##
+	New UAC Value: ##New_UAC##
+	##User## Account Control: ##Account_Control##
+	##User## Parameters: ##User_Parameters##
+	SID History: ##SID_History##
+	Logon Hours: ##Logon_Hours##
+Additional Information:
+	Privileges ##Privileges##

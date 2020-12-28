@@ -1,0 +1,6 @@
+act,action
+Drop,blocked
+Decrypt,allowed
+Encrypt,allowed
+Accept,allowed
+Reject,blocked

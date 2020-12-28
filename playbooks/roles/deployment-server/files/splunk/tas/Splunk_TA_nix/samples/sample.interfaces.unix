@@ -1,0 +1,5 @@
+Name       MAC                inetAddr         inet6Addr                                  Collisions  RXbytes          RXerrors          TXbytes          TXerrors         Speed        Duplex
+##Name1##     ##MAC1##     ##inetAddr1##     ##inet6Addr1##     ##Collisions##     ##RXbytes##     ##RXerrors##     ##TXbytes##     ##TXerrors##     ##Speed##Mb/s     ##Duplex1##
+##Name2##     ##MAC2##     ##inetAddr2##     ##inet6Addr2##     ##Collisions##     ##RXbytes##     ##RXerrors##     ##TXbytes##     ##TXerrors##     ##Speed##Mb/s     ##Duplex2##
+##Name3##    ##MAC2##     ##inetAddr2##     ##FBSD_inet6Addr##    ##Collisions##   ##RXbytes##     ##RXerrors##     ##TXbytes##     ##TXerrors##     ##FBSD_Speed##     ##Duplex2##
+##Name4##    ##No_value##     ##NA##     ##NA##    ##Collisions##   ##RXbytes##     ##RXerrors##     ##TXbytes##     ##AIX_TXerrors##     ##NA##     ##NA##

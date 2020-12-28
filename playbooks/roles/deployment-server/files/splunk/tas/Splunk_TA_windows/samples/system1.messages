@@ -1,0 +1,14 @@
+7036,The Windows Update service entered the stopped state.
+6013,The system uptime is ##Seconds## seconds.
+7011,A timeout (##Seconds## milliseconds) was reached while waiting for a transaction response from the Splunkd service.
+2,Geolocation positioning has been disabled by the user.
+3,Service started.
+7000,The splunkweb service failed to start due to the following error: The service did not respond to the start or control request in a timely fashion.
+7009,A timeout was reached (##Seconds## milliseconds) while waiting for the splunkweb service to connect.
+6005,The Event log service was started.
+6009,Microsoft (R) Windows (R) 10.00. ##MultiProcessor_Free##  Multiprocessor Free.
+6006,The Event log service was stopped.
+1056,A new self signed certificate to be used for RD Session Host Server authentication on SSL connections was generated. The name on this certificate is ##hex7##-##hex7##. The SHA1 hash of the certificate is in the event data.
+6011,The NetBIOS name and DNS host name of this machine have been changed from ##name_from## to ##name_to##.
+158,Disk ##Small_integer## has the same disk identifiers as one or more disks connected to the system. Go to Microsoft's support website (##URL##) and search for KB##KB## to resolve the issue.
+1056,A new self signed certificate to be used for RD Session Host Server authentication on SSL connections was generated. The name on this certificate is ##hex7##. The SHA1 hash of the certificate is in the event data.

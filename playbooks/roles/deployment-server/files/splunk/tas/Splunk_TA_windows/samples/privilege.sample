@@ -1,0 +1,12 @@
+SeAssignPrimaryTokenPrivilege
+SeTcbPrivilege
+SeSecurityPrivilege
+SeTakeOwnershipPrivilege
+SeLoadDriverPrivilege
+SeBackupPrivilege
+SeRestorePrivilege
+SeDebugPrivilege
+SeAuditPrivilege
+SeSystemEnvironmentPrivilege
+SeImpersonatePrivilege
+SeDelegateSessionUserImpersonatePrivilege

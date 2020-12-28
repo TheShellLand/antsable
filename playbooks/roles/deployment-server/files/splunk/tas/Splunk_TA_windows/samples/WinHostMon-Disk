@@ -1,0 +1,6 @@
+Type=Disk
+Name="##Name##"
+DriveType="##Drive_Type##"
+TotalSpaceKB=##Total_Space##
+FreeSpaceKB=##Free_Space##
+FileSystem="##File_System##"

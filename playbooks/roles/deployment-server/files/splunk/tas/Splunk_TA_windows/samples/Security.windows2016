@@ -1,0 +1,977 @@
+
+03/29/2018 04:03:05 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4625
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex1##
+
+Logon Type:		##SmallInteger##
+
+Account For Which Logon Failed:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+Failure Information:
+	Failure Reason:		Unknown ##UserText## name or bad password.
+	Status:			0x##hex8##
+	Sub Status:		0x##hex8##
+
+Process Information:
+	Caller Process ID:	0x##hex1##
+	Caller Process Name:	-
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	##Ip##
+	Source Port:		0
+
+Detailed Authentication Information:
+	Logon Process:		##hex8## 
+	Authentication Package:	##AuthenticationPackage##
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		##KeyLength##
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as ##FileName##.exe or ##FileName##.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.
+
+03/29/2018 08:40:08 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4672
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Privileges:		SeAssignPrimaryTokenPrivilege
+			SeTcbPrivilege
+			SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeAuditPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege
+			SeDelegateSessionUserImpersonatePrivilege
+
+03/29/2018 08:40:08 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4624
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An account was successfully logged on.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Logon Information:
+	Logon Type:		##SmallInteger##
+	Restricted Admin Mode:	-
+	Virtual Account:		##YesNo##
+	Elevated Token:		##YesNo##
+
+Impersonation Level:		##ImpersonationLevel##
+
+New Logon:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##	Linked Logon ID:		0x##hex1##
+	Network Account Name:	-
+	Network Account Domain:	-
+	Logon GUID:		{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+Process Information:
+	Process ID:		0x##hex3##	Process Name:		##Path####FileName##.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		##hex8##  
+	Authentication Package:	##AuthenticationPackage##
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		##KeyLength##
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as ##FileName##.exe or ##FileName##.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Logon ##GUID## is a unique identifier that can be used to correlate this event with a KDC event.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.
+
+03/27/2018 11:28:05 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4634
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An account was logged off.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex7##
+
+Logon Type:		##SmallInteger##
+
+This event is generated when a logon session is destroyed. It may be positively correlated with a logon event using the Logon ID value. Logon IDs are only unique between reboots on the same computer.
+
+03/27/2018 11:28:03 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4776
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The computer attempted to validate the credentials for an account.
+
+Authentication Package:	##AuthenticationPackage##
+Logon Account:	##hex4##
+Source Workstation:	##hex8##
+Error Code:	0x##hex1##
+
+03/27/2018 09:01:10 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4648
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A logon was attempted using explicit credentials.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##	Logon GUID:		##Logon_Id##
+
+Account Whose Credentials Were Used:
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon GUID:		##Logon_Id##
+
+Target Server:
+	Target Server Name:	##SubjectDomainName##
+	Additional Information:	##SubjectDomainName##
+
+Process Information:
+	Process ID:		0x##hex3##	Process Name:		##Path####FileName##.exe
+
+Network Information:
+	Network Address:	##Ip##
+	Port:			##Port##
+
+This event is generated when a process attempts to log on an account by explicitly specifying that account’s credentials.  This most commonly occurs in batch-type configurations such as scheduled tasks, or when using the RUNAS command.
+
+03/27/2018 09:01:10 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4798
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##UserText##'s local group membership was enumerated.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+User:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+Process Information:
+	Process ID:		0x16c4
+	Process Name:		##Path####FileName##.exe
+
+03/27/2018 06:27:43 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=5061
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Cryptographic operation.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Cryptographic Parameters:
+	Provider Name: ##hex12##	
+	Algorithm Name:	
+	Key Name:	332fe7e7-d709-e3d8-af9e-7236c48f4c55
+	Key Type: ##UserText## key.
+
+Cryptographic Operation:
+	Operation:	Open Key.
+	Return Code:	0x##hex1##
+
+03/27/2018 06:27:43 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=5058
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Key file operation.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Cryptographic Parameters:
+	Provider Name:	##ProviderName##
+	Algorithm Name:	UNKNOWN
+	Key Name:	##hex8##-##hex4##-##hex4##-##hex4##-##hex12##
+	Key Type: ##UserText## key.
+
+Key File Operation Information:
+	File Path:	##Path####hex32##_##hex8##-##hex4##-##hex4##-##hex4##-##hex12##
+	Operation:	Read persisted key from file.
+	Return Code:	0x##hex1##
+
+03/27/2018 06:19:18 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=5059
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Key migration operation.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Cryptographic Parameters:
+	Provider Name:	##ProviderName##
+	Algorithm Name:	##AlgorithmName##
+	Key Name:	Microsoft Connected Devices Platform device certificate
+	Key Type: ##UserText## key.
+
+Additional Information:
+	Operation:	Export of persistent cryptographic key.
+	Return Code:	0x##hex1##
+
+03/27/2018 06:17:36 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4799
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A security-enabled local group membership was enumerated.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Group:
+	Security ID:		##UserSID##
+	Group Name:		Administrators
+	Group Domain:		Builtin
+
+Process Information:
+	Process ID:		0x##hex3##	Process Name:		##Path####FileName##.exe
+
+03/27/2018 06:17:15 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=5024
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The Windows Firewall service started successfully.
+
+03/27/2018 06:17:15 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=5033
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The Windows Firewall Driver started successfully.
+
+03/27/2018 06:17:14 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4902
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The Per-##UserText## audit policy table was created.
+
+Number of Elements:	0
+Policy ID:	0x6118
+
+03/27/2018 06:17:13 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4608
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Windows is starting up.
+
+This event is logged when ##FileName##.EXE starts and the auditing subsystem is initialized.
+
+03/27/2018 06:17:13 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4688
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A new process has been created.
+
+Creator Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Target Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex1##
+
+Process Information:
+	New Process ID:		0x##hex3##	New Process Name:	##Path####FileName##.exe
+	Token Elevation Type:	%%1936
+	Mandatory Label:		Mandatory ##LabelSystemText## Mandatory Level
+	Creator Process ID:	0x##hex3##	Creator Process Name:	##Path####FileName##.exe
+	Process Command Line:	
+
+Token Elevation Type indicates the type of token that was assigned to the new process in accordance with ##UserText## Account Control policy.
+
+Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if ##UserText## Account Control is disabled or if the ##UserText## is the built-in Administrator account or a service account.
+
+Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when ##UserText## Account Control is enabled and the ##UserText## chooses to start the program using Run as administrator.  An elevated token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the ##UserText## is a member of the Administrators group.
+
+Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when ##UserText## Account Control is enabled, the application does not require administrative privilege, and the ##UserText## does not choose to start the program using Run as administrator.
+
+03/27/2018 06:17:11 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4826
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Boot Configuration Data loaded.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+General Settings:
+	Load Options:		-
+	Advanced Options:		No
+	Configuration Access Policy:	Default
+	System Event Logging:	No
+	Kernel Debugging:	No
+	VSM Launch Type:	Off
+
+Signature Settings:
+	Test Signing:		No
+	Flight Signing:		No
+	Disable Integrity Checks:	No
+
+HyperVisor Settings:
+	HyperVisor Load Options:	-
+	HyperVisor Launch Type:	Off
+	HyperVisor Debugging:	No
+
+03/27/2018 06:16:45 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=1100
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The event logging service has shut down.
+
+03/27/2018 06:16:44 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4616
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The system time was changed.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Process Information:
+	Process ID:	0x##hex3##	Name:		##Path####FileName##.exe
+
+Previous Time:		‎2018‎-‎03‎-‎27T06:16:44.956655900Z
+New Time:		‎2018‎-‎03‎-‎27T06:16:44.951000000Z
+
+This event is generated when the system time is changed. It is normal for the Windows Time Service, which runs with System privilege, to change the system time on a regular basis. Other system time changes may be indicative of attempts to tamper with the computer.
+
+03/27/2018 06:16:43 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4647
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=##UserText## initiated logoff:
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+This event is generated when a logoff is initiated. No further ##UserText##-initiated activity can occur. This event can be interpreted as a logoff event.
+
+03/22/2018 09:17:51 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4797
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An attempt was made to query the existence of a blank password for an account.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x29E647
+
+Additional Information:
+	Caller Workstation:	EC2AMAZ-SKK3T11
+	Target Account Name:	Guest
+	Target Account Domain:	EC2AMAZ-SKK3T11
+
+03/22/2018 08:52:34 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4732
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A member was added to a security-enabled local group.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+Member:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+
+Group:
+	Security ID:		##UserSID##
+	Group Name:		Administrators
+	Group Domain:		Builtin
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 08:52:26 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4738
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##UserText## account was changed.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+Target Account:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+Changed Attributes:
+	SAM Account Name:	-
+	Display Name:		-
+ ##UserText## Principal Name:	-
+	Home Directory:		-
+	Home Drive:		-
+	Script Path:		-
+	Profile Path:		-
+ ##UserText## Workstations:	-
+	Password Last Set:	-
+	Account Expires:		-
+	Primary Group ID:	-
+	AllowedToDelegateTo:	-
+	Old UAC Value:		-
+	New UAC Value:		-
+ ##UserText## Account Control:	-
+ ##UserText## Parameters:	-
+	SID History:		-
+	Logon Hours:		-
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 08:52:26 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4724
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An attempt was made to reset an account's password.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+Target Account:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+03/22/2018 08:52:26 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4722
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##UserText## account was enabled.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+Target Account:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+03/22/2018 08:52:26 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4720
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##UserText## account was created.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+New Account:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+Attributes:
+	SAM Account Name:	crest
+	Display Name:		<value not set>
+ ##UserText## Principal Name:	-
+	Home Directory:		<value not set>
+	Home Drive:		<value not set>
+	Script Path:		<value not set>
+	Profile Path:		<value not set>
+ ##UserText## Workstations:	<value not set>
+	Password Last Set:	<never>
+	Account Expires:		<never>
+	Primary Group ID:	513
+	Allowed To Delegate To:	-
+	Old UAC Value:		0x##hex1##
+	New UAC Value:		0x15
+ ##UserText## Account Control:	
+		Account Disabled
+		'Password Not Required' - Enabled
+		'Normal Account' - Enabled
+ ##UserText## Parameters:	<value not set>
+	SID History:		-
+	Logon Hours:		All
+
+Additional Information:
+	Privileges		-
+
+03/22/2018 08:52:26 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4728
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A member was added to a security-enabled global group.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0xAE4AA
+
+Member:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+
+Group:
+	Security ID:		##UserSID##
+	Group Name:		None
+	Group Domain:		EC2AMAZ-SKK3T11
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 06:53:38 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4737
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A security-enabled global group was changed.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Group:
+	Security ID:		##UserSID##
+	Group Name:		None
+	Group Domain:		EC2AMAZ-SKK3T11
+
+Changed Attributes:
+	SAM Account Name:	None
+	SID History:		-
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 06:53:38 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4781
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The name of an account was changed:
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Target Account:
+	Security ID:		##UserSID##
+	Account Domain:		##SubjectDomainName##
+	Old Account Name:	None
+	New Account Name:	None
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 06:53:38 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4735
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A security-enabled local group was changed.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Group:
+	Security ID:		##UserSID##
+	Group Name:		##GroupName##
+	Group Domain:		##GroupDomain##
+
+Changed Attributes:
+	SAM Account Name:	##GroupName##
+	SID History:		-
+
+Additional Information:
+	Privileges:		-
+
+03/22/2018 06:52:30 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4725
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##UserText## account was disabled.
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex3##
+Target Account:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+
+03/06/2018 03:39:12 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4739
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Domain Policy was changed.
+
+Change Type:		Password Policy modified
+
+Subject:
+	Security ID:		##UserSID##
+	Account Name:		##AccountName##
+	Account Domain:		##SubjectDomainName##
+	Logon ID:		0x##hex7##
+
+Domain:
+	Domain Name:		##hex12##
+	Domain ID:		##hex8##
+
+Changed Attributes:
+	Min. Password Age:	
+	Max. Password Age:	
+	Force Logoff:		
+	Lockout Threshold:	
+	Lockout Observation Window:	
+	Lockout Duration:	
+	Password Properties:	
+	Min. Password Length:	
+	Password History Length:	-
+	Machine Account Quota:	-
+	Mixed Domain Mode:	-
+	Domain Behavior Version:	-
+	OEM Information:	1
+
+Additional Information:
+	Privileges:		-
+
+03/06/2018 03:39:11 AM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=1102
+EventType=##Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=The audit log was cleared.
+Subject:
+	Security ID:	##UserSID##
+	Account Name:	##AccountName##
+	Domain Name:	##hex12##
+	Logon ID:	0x##hex7##
+
+
+
+
+
+

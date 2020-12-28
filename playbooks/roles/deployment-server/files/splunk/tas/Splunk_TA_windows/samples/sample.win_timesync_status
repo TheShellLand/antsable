@@ -1,0 +1,22 @@
+Current time: 14-03-2018 14:35:01.29 
+Leap Indicator: ##Leap_Indicator##
+Stratum: ##Stratum##
+Precision: ##Precision## (##Ms_per_tick##ms per tick)
+Root Delay: #Root_Delay##s
+Root Dispersion: ##Root_Dispersion##s
+ReferenceId: 0x##ReferenceIDhex## (source name:  "LOCL")
+Last Successful Sync Time: ##Last_Successful_Sync_Time##
+Source: Free-running System Clock
+Poll Interval: ##Polling_interval## (##PollingInterval_Sec##s)
+
+Phase Offset: ##Phase_Offset##s
+ClockRate: ##ClockRate##s
+State Machine: ##State_Machine##
+Time Source Flags: ##Time_Source_Flags##
+Server Role: ##Server_Role## (Reliable Time Service)
+Last Sync Error: ##Last_Sync_Error##
+Time since Last Good Sync Time: ##Time_since_last_good_sync_time##s
+
+Time zone: Current:TIME_ZONE_ID_UNKNOWN Bias: ##Bias##min (UTC=LocalTime+Bias)
+  [Standard Name:"##Country## Standard Time" Bias:##Bias##min Date:(unspecified)]
+  [Daylight Name:"##Country## Daylight Time" Bias:##Bias##min Date:(unspecified)]

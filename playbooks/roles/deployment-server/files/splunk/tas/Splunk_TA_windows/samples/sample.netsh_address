@@ -1,0 +1,15 @@
+Configuration for interface "##INTERFACE_NAME##"
+    DHCP enabled:                         ##DHCP_ENABLE_DISABLE##
+    IP Address:                           127.1.1.##IP_ADDRESS##
+    Subnet Prefix:                        127.1.1.0/20 (mask 255.255.240.0)
+    Default Gateway:                      127.1.1.1
+    Gateway Metric:                       ##GATEWAY_METRIC##
+    InterfaceMetric:                      ##INTERFACE_METRIC##
+Configuration for interface "##INTERFACE_NAME##"
+    DHCP enabled:                         ##DHCP_ENABLE_DISABLE##
+    InterfaceMetric:                      ##INTERFACE_METRIC##
+Configuration for interface "##INTERFACE_NAME##"
+    DHCP enabled:                         ##DHCP_ENABLE_DISABLE##
+    IP Address:                           127.1.1.##IP_ADDRESS##
+    Subnet Prefix:                        127.1.1.0/20 (mask 255.255.240.0)
+    InterfaceMetric:                      ##INTERFACE_METRIC##

@@ -1,0 +1,6 @@
+01/26/2018 10:25:40.369 +0530
+collection=SystemMk
+category=SystemMk
+object=System
+instance	File_Read_Operations/sec	File_Write_Operations/sec	File_Control_Operations/sec	File_Read_Bytes/sec	File_Write_Bytes/sec	File_Control_Bytes/sec	Context_Switches/sec	System_Calls/sec	File_Data_Operations/sec	System_Up_Time	Processor_Queue_Length	Processes	Threads	Alignment_Fixups/sec	Exception_Dispatches/sec	Floating_Emulations/sec	%_Registry_Quota_In_Use	
+##Instance##	##File_Read_Operations/sec##	##File_Write_Operations/sec##	##File_Control_Operations/sec##	##File_Read_Bytes/sec##	##File_Write_Bytes/sec##	##File_Control_Bytes/sec##	##Context_Switches/sec##	##System_Calls/sec##	##File_Data_Operations/sec##	##System_Up_Time##	##Processor_Queue_Length##	##Processes##	##Threads##	##Alignment_Fixups/sec##	##Exception_Dispatches/sec##	##Floating_Emulations/sec##	##Registry_Quota_In_Use##

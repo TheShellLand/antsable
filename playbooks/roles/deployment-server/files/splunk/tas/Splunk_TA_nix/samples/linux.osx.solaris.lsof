@@ -1,0 +1,4 @@
+COMMAND     PID        USER   FD      TYPE             DEVICE     SIZE       NODE NAME
+##COMMAND##      ##PID##     ##USER##     ##FD##     ##TYPE##     ##DEVICE##     ##SIZE##     ##NODE##       ##NAME##
+COMMAND     PID        USER   FD      TYPE             DEVICE     SIZE       NODE NAME
+##MAC_COMMAND##     ##PID##     ##Mac_USER##     ##FD##     ##TYPE##     ##DEVICE##     ##SIZE##     ##NODE##       ##NAME##

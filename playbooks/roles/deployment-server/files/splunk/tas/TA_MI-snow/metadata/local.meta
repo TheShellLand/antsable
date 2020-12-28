@@ -1,0 +1,9 @@
+[]
+access = read : [ * ], write : [ power, siem_admin, siem_admin2 ]
+export = system
+version = 7.0.9.1
+modtime = 1561471689.460677000
+
+[lookups/cmdb_ci_server.csv]
+version = 7.0.9.1
+modtime = 1562015952.186589000

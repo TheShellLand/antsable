@@ -1,0 +1,11 @@
+Type=Service
+Name=##Name##
+DisplayName=##DisplayName##
+Description=##Description##
+Path=##Path##
+ServiceType=##ServiceType##
+StartMode=##StartMode##
+Started=##Started##
+State=##State##
+Status=##Status##
+ProcessId=##ProcessId##

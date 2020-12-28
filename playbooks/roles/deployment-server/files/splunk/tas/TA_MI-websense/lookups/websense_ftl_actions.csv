@@ -1,0 +1,9 @@
+disposition_code,vendor_action,action
+2,"Page blocked",blocked
+3,"Page filtered and permitted",allowed
+4,"Request filtering refused to service the request",blocked
+6,"Could not connect to requested site",blocked
+9,"Blocked and user access to service disabled",blocked
+12,"Continue/confirm request",allowed
+13,"Quota request",blocked
+14,"Request permitted without filtering",allowed

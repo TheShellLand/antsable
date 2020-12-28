@@ -1,0 +1,7 @@
+{hdaudio\func_01&ven_10ec&dev_0255&subsys_10251094}
+{PCI\VEN_8086&DEV_5904}
+{pci\ven_10ec&dev_5287&subsys_10941025}
+{{0f4130dd-19c7-7ab6-99a1-980f03b2ee4e}}
+{ACPI\INT3F0D}
+{hid\ven_elan&dev_0501&col01}
+{usb\vid_04ca&pid_3015}

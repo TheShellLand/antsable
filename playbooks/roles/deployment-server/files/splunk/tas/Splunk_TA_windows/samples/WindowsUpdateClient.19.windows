@@ -1,0 +1,175 @@
+02/01/2018 10:25:12 AM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=0
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: 9WZDNCRFHVJL-##url##
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Microsoft .NET Framework 3.5 SP1 Update for Windows Vista SP1 and Windows Server 2008 for x64-based Systems (KB982535)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Microsoft .NET Framework 3.5 SP1 Security Update for Windows Vista SP1 and Windows Server 2008 for x64-based Systems (KB979911)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Security Update for Windows Server 2008 x64 Edition (KB975562)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Update for Internet Explorer 8 Compatibility View List for Windows Server 2008 x64 Edition (KB982632)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Cumulative Security Update for ActiveX Killbits for Windows Server 2008 x64 Edition (KB980195)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Security Update for Windows Server 2008 x64 Edition (KB980218)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Cumulative Security Update for Internet Explorer 8 for Windows Server 2008 x64 Edition (KB982381)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Security Update for Windows Server 2008 x64 Edition (KB979559)
+
+06/16/10 06:48:43 PM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Microsoft .NET Framework 3.5 SP1 Update for Windows Vista SP1 and Windows Server 2008 for x64-based Systems (KB982535)
+
+10/06/09 10:37:04 AM
+LogName=System
+SourceName=Microsoft-Windows-WindowsUpdateClient
+EventCode=19
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-18
+SidType=1
+TaskCategory=Windows Update Agent
+OpCode=Installation
+RecordNumber=##Record_Number##
+Keywords=Installation
+Message=Installation Successful: Windows successfully installed the following update: Windows Update Aux

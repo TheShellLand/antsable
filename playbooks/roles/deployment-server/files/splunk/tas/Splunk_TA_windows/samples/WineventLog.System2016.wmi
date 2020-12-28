@@ -1,0 +1,297 @@
+20180421224456.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=##EventCodeDynamic##
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171456.442170-000
+TimeWritten=20180421171456.442170-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:System
+Message=##MessageDynamic##
+
+20180421072126.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=7045
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421015126.856601-000
+TimeWritten=20180421015126.856601-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=A service was installed in the system.
+
+Service Name:  ##hex12##
+Service File Name:  ##Path## Updates\{##Logon_Guid##}\##FileName##.sys
+Service Type:  kernel mode driver
+Service Start Type:  system start
+Service Account:  
+
+20180419005947.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=1028
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180418192947.477581-000
+TimeWritten=20180418192947.477581-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The DHCP service failed to initialize the audit log. The following error occurred: 
+Access is denied.
+
+20180417124328.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=10154
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071328.780257-000
+TimeWritten=20180417071328.780257-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The WinRM service failed to create the following SPNs: WSMAN/##UserName##.##Domain##; WSMAN/##UserName##. 
+
+ Additional Data 
+ The error received was ##NumFourDigit##: %%##NumFourDigit##.
+
+ ##UserText## Action 
+ The SPNs can be created by an administrator using ##FileName##.exe utility.
+
+20180417124322.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=7000
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071322.514620-000
+TimeWritten=20180417071322.514620-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The splunkweb service failed to start due to the following error: 
+The service did not respond to the start or control request in a timely fashion.
+
+20180417124322.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=7026
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071322.514620-000
+TimeWritten=20180417071322.514620-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The following boot-start or system-start driver(s) did not load: 
+dam
+
+20180417124320.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=10148
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071320.498993-000
+TimeWritten=20180417071320.498993-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The WinRM service is listening for WS-Management requests. 
+
+ ##UserText## Action 
+ Use the following command to see the specific IPs on which WinRM is listening: 
+
+ winrm enumerate winrm/config/listener
+
+20180417124245.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=16962
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071245.669840-000
+TimeWritten=20180417071245.669840-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:System
+Message=Remote calls to the SAM database are being restricted using the default security descriptor: .
+For more information please see ##UrlMS##.
+
+20180417124241.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=55
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071241.604057-000
+TimeWritten=20180417071241.604057-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=Processor 0 in group 0 exposes the following power management capabilities:
+
+Idle state type: ACPI Idle (C) States (1 state(s))
+
+Performance state type: ACPI Performance (P) / Throttle (T) States
+Nominal Frequency (MHz): ##NumFourDigit##
+Maximum performance percentage: ##Percentage##
+Minimum performance percentage: ##Percentage##
+Minimum throttle percentage: ##Percentage##
+
+20180417124241.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=32
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071241.724861-000
+TimeWritten=20180417071241.724861-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=Intel(R) 82574L Gigabit Network Connection
+ Network link has been established at 1Gbps full duplex.
+
+20180327152036.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=10016
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180327095036.928351-000
+TimeWritten=20180327095036.928351-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The application-specific permission settings do not grant Local Activation permission for the COM Server application with CLSID 
+{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+ and APPID 
+{##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+ to the ##UserText## ##UserSID## SID (##Sid##) from address LocalHost (Using LRPC) running in the application container Unavailable SID (Unavailable). This security permission can be modified using the Component Services administrative tool.
+
+20180327151431.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=1076
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180327094431.193118-000
+TimeWritten=20180327094431.193118-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=The reason supplied by ##UserText## ##UserSID## for the last unexpected shutdown of this computer is: Other (Unplanned)
+ Reason Code: 0x##hex7##
+ Problem ID: 
+ Bugcheck String: 
+ Comment: 
+
+20180327135943.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=6038
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180327082943.034085-000
+TimeWritten=20180327082943.034085-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=Microsoft Windows Server has detected that NTLM authentication is presently being used between clients and this server. This event occurs once per boot of the server on the first time a client uses NTLM with this server.
+ 
+NTLM is a weaker authentication mechanism. Please check:
+ 
+      Which applications are using NTLM authentication?
+      Are there configuration issues preventing the use of stronger authentication such as Kerberos authentication?
+      If NTLM must be supported, is Extended Protection configured?
+ 
+Details on how to complete these checks can be found at ##UrlMS##
+
+20180326173913.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=26
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180326120913.647476-000
+TimeWritten=20180326120913.647476-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##OriginalComputerName##
+wmi_type=WinEventLog:System
+Message=Application popup: ##FileName##.exe - Application Error : The application was unable to start correctly (0x##hex8##). Click OK to close the application. 

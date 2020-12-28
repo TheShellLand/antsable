@@ -1,0 +1,11 @@
+﻿<Event xmlns='##XML_NS##'><System><Provider Name='##Source_Name##' Guid='{##Logon_Guid##}'/><EventID>4672</EventID><Version>##Version##</Version><Level>##Level##</Level><Task>##Task##</Task><Opcode>##Opcode##</Opcode><Keywords>##Keyword##</Keywords><TimeCreated SystemTime='2014-08-04T09:38:36.049352200Z'/><EventRecordID>##Record_Number##</EventRecordID><Correlation/><Execution ProcessID='##Process_Id##' ThreadID='##Thread_Id##'/><Channel>Security</Channel><Computer>##Computer_Name##</Computer><Security/></System><EventData><Data Name='SubjectUserSid'>##User_Sid##</Data><Data Name='SubjectUserName'>##User_Name##</Data><Data Name='SubjectDomainName'>##Domain##</Data><Data Name='SubjectLogonId'>##Logon_Id##</Data><Data Name='PrivilegeList'>SeAssignPrimaryTokenPrivilege
+			SeTcbPrivilege
+			SeSecurityPrivilege
+			SeTakeOwnershipPrivilege
+			SeLoadDriverPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeDebugPrivilege
+			SeAuditPrivilege
+			SeSystemEnvironmentPrivilege
+			SeImpersonatePrivilege</Data></EventData></Event>

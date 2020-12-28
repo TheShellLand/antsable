@@ -1,0 +1,40 @@
+09/09/2010 23:36:32.0128
+event_status="(0)The operation completed successfully."
+pid=1300
+process_image="##path####filename##"
+registry_type="CreateKey"
+key_path="\##path##{676235CD-B656-42D5-B737-49856E97D072}\PrinterDriverData"
+data_type="REG_NONE"
+data=""
+09/09/2010 23:36:31.0800
+event_status="(0)The operation completed successfully."
+pid=1300
+process_image="##path####filename##"
+registry_type="SetValue"
+key_path="##path##{676235CD-B656-42D5-B737-49856E97D072}\DsKeyUpdateForeground"
+data_type="REG_DWORD"
+data="0x00000003(3)"
+09/09/2010 23:36:29.0519
+event_status="(-1073741790)Access is denied."
+pid=2940
+process_image="##path####filename##"
+registry_type="CreateKey"
+key_path="##path##{ED8C108E-4349-11D2-91A4-00C04F7969E8}\iexplore"
+data_type="REG_NONE"
+data=""
+09/09/2010 23:28:36.0860
+event_status="(0)The operation completed successfully."
+pid=1836
+process_image="##path####filename##"
+registry_type="DeleteKey"
+key_path="##path##"
+data_type="REG_NONE"
+data=""
+09/09/2010 23:23:44.0542
+event_status="(0)The operation completed successfully."
+pid=4032
+process_image="##path####filename##"
+registry_type="RenameKey"
+key_path="##path##"
+data_type="REG_NONE"
+data=""

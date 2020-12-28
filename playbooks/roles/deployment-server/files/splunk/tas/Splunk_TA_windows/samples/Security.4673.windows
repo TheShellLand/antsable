@@ -1,0 +1,29 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4673
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A privileged service was called.
+
+Subject:
+	Security ID:		##Domain##\##User_Name##
+	Account Name:		##User_Name##
+	Account Domain:		##Domain##
+	Logon ID:		0x##Logon_Id##
+
+Service:
+	Server:	##Server##
+	Service Name:	##Service_Name##
+
+Process:
+	Process ID:	0x##Process_Id##
+	Process Name:	##Process_Name##
+
+Service Request Information:
+	Privileges:		##Privilege##

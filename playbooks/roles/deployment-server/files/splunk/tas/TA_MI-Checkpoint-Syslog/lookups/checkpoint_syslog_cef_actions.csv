@@ -1,0 +1,5 @@
+vendor_action,action
+Accept,allowed
+Drop,blocked
+Reject,blocked
+Detect,allowed

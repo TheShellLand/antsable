@@ -1,0 +1,5 @@
+***SPLUNK*** sourcetype=df source=df host=##host##
+
+Filesystem  Type    Size    Used    Avail   UsePct      MountedOn
+##FileSystem## ##Type##    ##Size##G  ##Used##G  ##Avail##G ##UsePct##%    ##MountedOn##
+##remote_host##:##FileSystem##    nfs ##Size##M  ##Used##M  ##Avail##M ##UsePct##%    /mnt/remote_fs##UsePct##

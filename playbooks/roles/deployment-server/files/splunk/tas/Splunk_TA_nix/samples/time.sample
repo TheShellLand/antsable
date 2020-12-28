@@ -1,0 +1,5 @@
+Fri May 11 17:45:10 IST 2018
+server ##ip##, stratum ##stratum##, offset ##sign####offset##, delay ##delay##
+server ##ip##, stratum ##stratum##, offset ##sign####offset##, delay ##delay##
+server ##ip##, stratum ##stratum##, offset ##sign####offset##, delay ##delay##
+11 May 17:45:22 ntpdate[##number##]: adjust time server ##ip## offset ##delay## sec

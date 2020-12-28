@@ -1,0 +1,269 @@
+20180421224456.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=##EventCodeDynamic##
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171456.434164-000
+TimeWritten=20180421171456.434164-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=##MessageDynamic##
+
+20180421224426.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=900
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171426.160829-000
+TimeWritten=20180421171426.160829-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=The Software Protection service is starting.
+Parameters:caller=##FileName##.exe
+
+20180421224426.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=1066
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171426.254831-000
+TimeWritten=20180421171426.254831-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=Initialization status for service objects.
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+
+20180421224426.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=1003
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171426.328835-000
+TimeWritten=20180421171426.328835-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=The Software Protection service has completed licensing status check.
+Application Id=##hex8##-##hex4##-##hex4##-##hex4##-##hex12##
+Licensing Status=
+1: ##hex8##-##hex4##-##hex4##-##hex4##-##hex12##, 1, 1 [(0 [0x##hex8##, 1, 0], [(?)( 1 0x##hex8##)(?)( 2 0x##hex8## 0 0 msft:##path####volume## 0x##hex8## 0)(?)( 9 0x##hex8## 180 165339)( 10 0x##hex8## msft:##path####volume##)(?)])(1 )(2 )(3 )]
+
+20180421224426.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=902
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421171426.366838-000
+TimeWritten=20180421171426.366838-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=The Software Protection service has started.
+##Ip##
+
+20180421213333.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=1001
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180421160333.521660-000
+TimeWritten=20180421160333.521660-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=Fault bucket , type 0
+Event Name: PowerShell
+Response: Not available
+Cab Id: ##Category##
+
+Problem signature:
+P1: ##FileName##.exe
+P2: ##Ip##
+P3: ##ProblemSignature##
+P4: ##ProblemSignature##
+P5: ##ProblemSignature##
+P6: ##ProblemSignature##
+P7: ##ProblemSignature##
+P8: 
+P9: 
+P10: 
+
+Attached files:
+
+These files may be available here:
+##Path####FileName##.exe_##hex39##_##hex8##_##hex8##
+
+Analysis symbol: 
+Rechecking for solution: 0
+Report Id: ##hex8##-##hex4##-##hex4##-##hex4##-##hex12##
+Report Status: ##Category##
+Hashed bucket: 
+
+20180417124332.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=105
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071332.405278-000
+TimeWritten=20180417071332.405278-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=DFSRs (2964) \\.\##Path####FileName##.db: The database engine started a new instance (0). (Time=##Seconds## seconds) 
+ 
+Internal Timing Sequence: [1] ##Sequence##, [2] ##Sequence##, [3] ##Sequence##, [4] ##Sequence##, [5] ##Sequence##, [6] ##Sequence##, [7] ##Sequence##, [8] ##Sequence##, [9] ##Sequence##, [10] ##Sequence##.
+
+20180417124332.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=326
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071332.405278-000
+TimeWritten=20180417071332.405278-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=DFSRs (2964) \\.\##Path####FileName##.db: The database engine attached a database (1, \\.\##Path####FileName##.db). (Time=##Seconds## seconds) 
+ 
+Internal Timing Sequence: [1] ##Sequence##, [2] ##Sequence##, [3] ##Sequence##, [4] ##Sequence##, [5] ##Sequence##, [6] ##Sequence##, [7] ##Sequence##, [8] ##Sequence##, [9] ##Sequence##, [10] ##Sequence##, [11] ##Sequence##, [12] ##Sequence##. 
+Saved Cache: 1 0
+
+20180417124322.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=4202
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071322.998996-000
+TimeWritten=20180417071322.998996-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=MSDTC started with the following settings:
+
+ Security Configuration (OFF = 0 and ON = 1):
+ Allow Remote Administrator = ##BinaryNumber##,
+ Network Clients = ##BinaryNumber##,
+ Transaction Manager Communication: 
+ Allow Inbound Transactions = ##BinaryNumber##,
+ Allow Outbound Transactions = ##BinaryNumber##,
+ Transaction Internet Protocol (TIP) = ##BinaryNumber##,
+  Enable XA Transactions = ##BinaryNumber##,
+  Enable SNA LU 6.2 Transactions = ##BinaryNumber##,
+  MSDTC Communications Security = Mutual Authentication Required,
+ Account = ##Account##,
+  Firewall Exclusion Detected = ##BinaryNumber##
+
+ Transaction Bridge Installed = ##BinaryNumber##
+ Filtering Duplicate Events = ##BinaryNumber##
+
+20180417124320.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=8193
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180417071320.405667-000
+TimeWritten=20180417071320.405667-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=Volume Shadow Copy Service error: Unexpected error calling routine RegOpenKeyExW(-2147483646,##path##,...).  hr = 0x##hex8##, Access is denied.
+. 
+
+Operation:
+   Initializing Writer
+
+Context:
+   Writer Class Id: {##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+   Writer Name: ##WriterName##
+   Writer Instance ID: {##hex8##-##hex4##-##hex4##-##hex4##-##hex12##}
+
+20180405145830.000000
+Category=##Category##
+CategoryString=##CategoryString##
+EventCode=8230
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=Application
+RecordNumber=##RecordNumber##
+SourceName=##SourceName##
+TimeGenerated=20180405092830.288045-000
+TimeWritten=20180405092830.288045-000
+Type=##Type##
+User=##User##
+ComputerName=##ComputerName##
+OriginalComputerName=##ComputerName##
+wmi_type=WinEventLog:Application
+Message=The rules engine successfully re-evaluated the schedule.
+Kernel policies:
+Security-SPP-Action-StateData (REG_SZ) =AppId=##hex8##-##hex4##-##hex4##-##hex4##-##hex12##;GraceEndDate=##GraceEndDate##;LastConsumptionReason=0x##hex8##;LastNotificationId=##LastNotificationId##;LicenseState=##LicenseState##;PartialProductKey=##hex5##;ProductKeyType=##hex4##:##hex8:##hex12##;SkuId=##hex8##-##hex4##-##hex4##-##hex4##-##hex12##;ruleId=##hex8##-##hex4##-##hex4##-##hex4##-##hex12##;uxDifferentiator=##uxDifferentiator##

@@ -1,0 +1,10 @@
+01/25/2018 14:55:47.686 +0530
+collection=LogicalDiskMk
+category=LogicalDiskMk
+object=LogicalDisk
+instance	%_Free_Space	Free_Megabytes	Current_Disk_Queue_Length	%_Disk_Time	Avg._Disk_Queue_Length	%_Disk_Read_Time	Avg._Disk_Read_Queue_Length	%_Disk_Write_Time	Avg._Disk_Write_Queue_Length	Avg._Disk_sec/Transfer	Avg._Disk_sec/Read	Avg._Disk_sec/Write	Disk_Transfers/sec	Disk_Reads/sec	Disk_Writes/sec	Disk_Bytes/sec	Disk_Read_Bytes/sec	Disk_Write_Bytes/sec	Avg._Disk_Bytes/Transfer	Avg._Disk_Bytes/Read	Avg._Disk_Bytes/Write	%_Idle_Time	Split_IO/Sec	
+##Instance0##
+##Instance1##
+##Instance2##
+##Instance3##
+##Total##

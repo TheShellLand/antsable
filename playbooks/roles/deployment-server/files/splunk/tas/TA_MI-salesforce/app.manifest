@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "info": {
+    "title": "Splunk Add-on for Salesforce",
+    "id": {
+      "group": null,
+      "name": "Splunk_TA_salesforce",
+      "version": "4.0.0"
+    },
+    "author": [
+      {
+        "name": "Splunk, Inc.",
+        "email": "support@splunk.com",
+        "company": "Splunk, Inc."
+      }
+    ],
+    "releaseDate": null,
+    "description": "Splunk Add-on for Salesforce",
+    "classification": {
+      "intendedAudience": "IT",
+      "categories": [
+        "IT Operations",
+        "Security, Fraud & Compliance"
+   ],
+      "developmentStatus": "Production/Stable"
+    },
+    "commonInformationModels": {
+       "Authentication": ">=4.8.0,<=4.15.0",
+       "Web": ">=4.8.0,<=4.15.0",
+       "Change Analysis":">=4.8.0,<=4.15.0",
+       "Change":">=4.12.0,<=4.15.0"
+ },
+    "license": {
+      "name": "Splunk Software License Agreement",
+      "text": "license-eula.txt",
+      "uri": "http://www.splunk.com/en_us/legal/splunk-software-license-agreement.html"
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": "README",
+      "text": "README.txt",
+      "uri": "http://docs.splunk.com/Documentation/AddOns/released/Salesforce/Releasenotes"
+    }
+  },
+  "dependencies": null,
+  "tasks": null,
+  "inputGroups": null,
+  "incompatibleApps": null
+}

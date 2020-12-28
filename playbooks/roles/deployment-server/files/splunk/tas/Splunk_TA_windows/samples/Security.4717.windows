@@ -1,0 +1,24 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4717
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=System security access was granted to an account.
+
+Subject:
+	Security ID:		##Domain##\SYSTEM
+	Account Name:		##Computer_Name##
+	Account Domain:		##Domain##
+	Logon ID:		0x##Logon_Id##
+
+Account Modified:
+	Account Name:		##Domain##\##User_Name##
+
+Access Granted:
+	Access Right:		##Login_Privilege##

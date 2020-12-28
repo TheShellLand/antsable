@@ -1,0 +1,13 @@
+04/14/2011 11:53:26.486
+collection="CPU Load"
+object=Processor
+counter=##Counter##
+instance=##Instance##
+Value=##Value##
+
+04/14/2011 11:53:26.486
+collection="CPU Load"
+object=Processor
+counter=##Counter1##
+instance=##Instance##
+Value=##Value1##

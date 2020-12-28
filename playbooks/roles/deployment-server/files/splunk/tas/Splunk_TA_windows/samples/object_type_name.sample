@@ -1,0 +1,4 @@
+Key,\REGISTRY\MACHINE\SYSTEM\ControlSet001\Services\EventLog\App_A
+Key,\REGISTRY\MACHINE\SYSTEM\ControlSet001\Services\EventLog\App_B
+File,A:\aa\bb\cc.txt
+File,B:\dd\ee\ff.txt

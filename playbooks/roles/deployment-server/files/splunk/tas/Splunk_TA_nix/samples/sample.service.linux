@@ -1,0 +1,4 @@
+Tue Mar  5 09:05:43 PST 2013 type=##type_service_linux1## app=##app_service_linux## runlevel0=##runlevel0## runlevel1=##runlevel1## runlevel2=##runlevel2## runlevel3=##runlevel3## runlevel4=##runlevel4## runlevel5=##runlevel5## runlevel6=##runlevel6##
+Tue Mar  5 09:05:43 PST 2013 app="Splunk" StartMode=Disabled
+Tue Mar  5 09:05:43 PST 2013 file_hash=##sha1checksum##
+Mon Mar 26 15:42:27 IST 2018 type=##type_service_linux2## UNIT=##unit_service_linux##, LOADED=##loaded_service_linux##, ACTIVE=##active_service_linux##, SUB=##sub_service_linux##, DESCRIPTION=##des_service_linux##

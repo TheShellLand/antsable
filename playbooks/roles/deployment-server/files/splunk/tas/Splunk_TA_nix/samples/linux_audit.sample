@@ -1,0 +1,1 @@
+type=##type## msg=audit(1521624461.553:44887): pid=##pid## uid=0 auid=0 ses=4906 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=##op## grp="##group_name##" id=##id## exe="/usr/sbin/userdel" hostname=? addr=? terminal=pts/1 res=success'

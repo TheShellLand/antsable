@@ -1,0 +1,36 @@
+"Page Faults/sec",##Page_Faults/sec##
+"Available Bytes",##Available_Bytes##
+"Committed Bytes",##Committed_Bytes##
+"Commit Limit",##Commit_Limit##
+"Write Copies/sec",##Write_Copies/sec##
+"Transition Faults/sec",##Transition_Faults/sec##
+"Cache Faults/sec",##Cache_Faults/sec##
+"Demand Zero Faults/sec",##Demand_Zero_Faults/sec##
+"Pages/sec",##Pages/sec##
+"Pages Input/sec",##Pages_Input/sec##
+"Page Reads/sec",##Page_Reads/sec##
+"Pages Output/sec",##Pages_Output/sec##
+"Pool Paged Bytes",##Pool_Paged_Bytes##
+"Pool Nonpaged Bytes",##Pool_Nonpaged_Bytes##
+"Page Writes/sec",##Page_Writes/sec##
+"Pool Paged Allocs",##Pool_Paged_Allocs##
+"Pool Nonpaged Allocs",##Pool_Nonpaged_Allocs##
+"Free System Page Table Entries",##Free_System_Page_Table_Entries##
+"Cache Bytes",##Cache_Bytes##
+"Cache Bytes Peak",##Cache_Bytes_Peak##
+"Pool Paged Resident Bytes",##Pool_Paged_Resident_Bytes##
+"System Code Total Bytes",##System_Code_Total_Bytes##
+"System Code Resident Bytes",##System_Code_Resident_Bytes##
+"System Driver Total Bytes",##System_Driver_Total_Bytes##
+"System Driver Resident Bytes",##System_Driver_Resident_Bytes##
+"System Cache Resident Bytes",##System_Cache_Resident_Bytes##
+"% Committed Bytes In Use",##Committed_Bytes_In_Use##
+"Available KBytes",##Available_KBytes##
+"Available MBytes",##Available_MBytes##
+"Transition Pages RePurposed/sec",##Transition_Pages_RePurposed/sec##
+"Free & Zero Page List Bytes",##Free_&_Zero_Page_List_Bytes##
+"Modified Page List Bytes",##Modified_Page_List_Bytes##
+"Standby Cache Reserve Bytes",##Standby_Cache_Reserve_Bytes##
+"Standby Cache Normal Priority Bytes",##Standby_Cache_Normal_Priority_Bytes##
+"Standby Cache Core Bytes",##Standby_Cache_Core_Bytes##
+"Long-Term Average Standby Cache Lifetime (s)",##Long_Term_Average_Standby_Cache_Lifetime##

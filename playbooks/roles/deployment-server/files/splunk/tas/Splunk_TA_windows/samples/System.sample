@@ -1,0 +1,15 @@
+"% Registry Quota In Use",##% Registry Quota In Use##
+"Exception Dispatches/sec",##Exception Dispatches/sec##
+"Threads",##Threads##
+"Processes",##Processes##
+"Processor Queue Length",##Processor Queue Length##
+"System Up Time",##System Up Time##
+"File Data Operations/sec",##File Data Operations/sec##
+"System Calls/sec",##System Calls/sec##
+"Context Switches/sec",##Context Switches/sec##
+"File Control Bytes/sec",##File Control Bytes/sec##
+"File Write Bytes/sec",##File Write Bytes/sec##
+"File Read Bytes/sec",##File Read Bytes/sec##
+"File Control Operations/sec",##File Control Operations/sec##
+"File Write Operations/sec",##File Write Operations/sec##
+"File Read Operations/sec",##File Read Operations/sec##

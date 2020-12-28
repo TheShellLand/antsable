@@ -1,0 +1,7 @@
+state,change_state_name
+1,Open
+2,"Work in Progress"
+3,"Closed Complete"
+4,"Closed Incomplete"
+7,"Closed Skipped"
+-5,"Pending"

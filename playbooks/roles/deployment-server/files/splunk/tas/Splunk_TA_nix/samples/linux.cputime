@@ -1,0 +1,5 @@
+***SPLUNK*** source=cpu sourcetype=cpu host=##host##
+
+   CPU     pctUser    pctNice   pctSystem    pctIowait    pctIdle
+   all     ##pctUser##   ##pctNice##  ##pctSystem##   ##pctIowait##   ##pctIdle##
+   ##CPU##    ##pctUser##   ##pctNice##  ##pctSystem##   ##pctIowait##   ##pctIdle##

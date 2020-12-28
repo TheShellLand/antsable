@@ -1,0 +1,75 @@
+<form class="form-horizontal form-complex">
+<style>
+    .alert-save-as .trigger-actions .alert-actions-control-group .more-info .control-label, .alert-edit .trigger-actions .alert-actions-control-group .more-info .control-label{
+        width: 80px;
+        padding-right: 10px;
+    }
+</style>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_account">Select Account <span class="required">*</span> </label>
+    <div class="controls">
+		<splunk-search-dropdown name="action.snow_incident.param.account" id="snow_incident_account" label-field="title" value-field="title" search="| rest servicesNS/nobody/Splunk_TA_snow/admin/splunk_ta_snow_account | dedup title"/>
+                <span class="help-block"> 
+                    <a class="external" href="/app/Splunk_TA_snow/configuration" target="_blank" rel="noopener noreferrer">
+                        Configure a new account
+                    </a>
+                    Reopen this pop-up after creating a new account
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_state">State  </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.state" id="snow_incident_state"/>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_configuration_item">Configuration Item  </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.configuration_item" id="snow_incident_configuration_item"/>
+                <span class="help-block"> 
+                    Configuration item ID or name
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_contact_type">Contact Type <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.contact_type" id="snow_incident_contact_type"/>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_assignment_group">Assignment Group  </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.assignment_group" id="snow_incident_assignment_group"/>
+                <span class="help-block"> 
+                    Incident assignment group ID or name
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_category">Category <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.category" id="snow_incident_category"/>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_subcategory">Subcategory  </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.subcategory" id="snow_incident_subcategory"/>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_short_description">Short Description <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.short_description" id="snow_incident_short_description"/>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_incident_correlation_id">Correlation ID  </label>
+    <div class="controls">
+	<input type="text" name="action.snow_incident.param.correlation_id" id="snow_incident_correlation_id"/>
+	<span class="help-block"><a class="external" href="http://docs.splunk.com/Documentation/AddOns/latest/ServiceNow/Usecustomalertactions" target="_blank"  rel="noopener noreferrer">Learn more</a></span>
+    </div>
+</div>
+</form>

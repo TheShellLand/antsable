@@ -1,0 +1,9 @@
+KEY                   VALUE
+CPU_TYPE              ##AIX_CPU_TYPE##
+CPU_CACHE             ##AIX_CPU_CACHE##
+CPU_COUNT             ##CPU_COUNT##
+HARD_DRIVES           ##AIX_HARD_DRIVES## ##SIZE## MB;
+NIC_TYPE              ##AIX_NIC_TYPE##
+NIC_COUNT             ##NIC_COUNT##
+MEMORY_REAL           ##MEMORY_REAL## ##MEMORY_SIZE##
+MEMORY_SWAP           ##MEMORY_SWAP## ##MEMORY_SIZE##

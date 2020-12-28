@@ -1,0 +1,9 @@
+1,1 - High,1,1 - High,1,1 - Critical
+1,1 - High,2,2 - Medium,2,2 - High
+1,1 - High,3,3 - Low,3,3 - Moderate
+2,2 - Medium,1,1 - High,2,2 - High
+2,2 - Medium,2,2 - Medium,3,3 - Moderate
+2,2 - Medium,3,3 - Low,4,4 - Low
+3,3 - Low,1,1 - High,3,3 - Moderate
+3,3 - Low,2,2 - Medium,4,4 - Low
+3,3 - Low,3,3 - Low,5,5 - Planning

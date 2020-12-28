@@ -1,0 +1,4 @@
+W32Time,"Windows Time","C:\Windows\system32\svchost.exe -k LocalService", "Maintains date and time synchronization on all clients and servers in the network. If this service is stopped; date and time synchronization will be unavailable. If this service is disabled; any services that explicitly depend on it will fail to start."
+WZCSVC,"Wireless Configuration","C:\WINDOWS\System32\svchost.exe -k netsvcs",
+wuauserv,"Automatic Updates","C:\WINDOWS\system32\svchost.exe -k netsvcs", "Enables the download and installation of Windows updates. If this service is disabled; this computer will not be able to use the Automatic Updates feature or the Windows Update Web site."
+Wmi,"Windows Management Instrumentation Driver Extensions", "C:\WINDOWS\system32\svchost.exe -k netsvcs", 

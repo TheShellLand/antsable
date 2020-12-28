@@ -1,0 +1,3 @@
+Tue Mar  5 15:06:57 EST 2013 app="VirtualBox" StartMode=##startmode_service_osx## StartType=startup file_path="/Library/StartupItems/VirtualBox"
+Tue Mar  5 15:06:57 EST 2013 app="##app_service_osx##" StartMode=##startmode_service_osx## StartType=##starttype_service_osx## file_path="##filepath_service_osx##" user=##user_service_osx##
+Tue Mar  5 15:06:57 EST 2013 app="Splunk" StartMode=Disabled

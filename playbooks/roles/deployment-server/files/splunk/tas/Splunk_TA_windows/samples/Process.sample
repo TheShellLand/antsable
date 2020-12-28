@@ -1,0 +1,28 @@
+"% Privileged Time",##%_Privileged_Time##
+"% Processor Time",##%_Processor_Time##
+"% User Time",##%_User_Time##
+"Creating Process ID",##Creating Process ID##
+"Elapsed Time",##Elapsed Time##
+"Handle Count",##Handle Count##
+"ID Process",##ID Process##
+"IO Data Bytes/sec",##IO Data Bytes/sec##
+"IO Data Operations/sec",##IO Data Operations/sec##
+"IO Other Bytes/sec",##IO Other Bytes/sec##
+"IO Other Operations/sec",##IO Other Operations/sec##
+"IO Read Bytes/sec",##IO Read Bytes/sec##
+"IO Read Operations/sec",##IO Read Operations/sec##
+"IO Write Bytes/sec",##IO Write Bytes/sec##
+"IO Write Operations/sec",##IO Write Operations/sec##
+"Page Faults/sec",##Page Faults/sec##
+"Page File Bytes",##Page File Bytes##
+"Page File Bytes Peak",##Page File Bytes Peak##
+"Pool Nonpaged Bytes",##Pool Nonpaged Bytes##
+"Pool Paged Bytes",##Pool Paged Bytes##
+"Priority Base",##Priority Base##
+"Private Bytes",##Private Bytes##
+"Thread Count",##Thread Count##
+"Virtual Bytes",##Virtual Bytes##
+"Virtual Bytes Peak",##Virtual Bytes Peak##
+"Working Set",##Working Set##
+"Working Set - Private",##Working Set - Private##
+"Working Set Peak",##Working Set Peak##

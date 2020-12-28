@@ -1,0 +1,3 @@
+Tuesday, March  5, 2013 08:27:07 PM UTC app="##app_service_solaris##" StartMode="##startmode_service_solaris##" StartName="##startname_service_solaris##" State="##state_service_solaris##"
+Tuesday, March  5, 2013 08:27:07 PM UTC app="Splunk" StartMode=Disabled
+Tuesday, March  5, 2013 08:27:07 PM UTC file_hash=##sha1checksum##

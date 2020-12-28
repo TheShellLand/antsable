@@ -1,0 +1,8 @@
+Proto   Recv-Q  Send-Q  LocalAddress    ForeignAddress  State
+##protocol0##    ##recvQ0##  ##sendQ0##    ##localAddress0##    ##foreignAddress0##  ##state0##
+##protocol1##    ##recvQ1##  ##sendQ1##    ##localAddress1##    ##foreignAddress1##  ##state1##
+##protocol2##    ##recvQ2##  ##sendQ2##    ##localAddress2##    ##foreignAddress2##  ##state2##
+Proto   Recv-Q  Send-Q  LocalAddress    ForeignAddress  State
+##protocol4##    ##recvQ0##  ##sendQ0##    ##localAddress0##    ##foreignAddress0##  ##state4##
+##protocol4##    ##recvQ1##  ##sendQ1##    ##localAddress1##    ##foreignAddress1##  ##state4##
+##protocol4##    ##recvQ2##  ##sendQ2##    ##localAddress2##    ##foreignAddress2##  ##state4##

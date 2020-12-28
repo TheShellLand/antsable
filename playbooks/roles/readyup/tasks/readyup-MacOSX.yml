@@ -85,6 +85,14 @@
   shell: arch -x86_64 brew install --cask --force pycharm-ce
   ignore_errors: yes
 
+- name: amazon workspace
+  shell: |
+    pkg=WorkSpaces.pkg
+    url=https://d2td7dqidlhjx7.cloudfront.net/prod/global/osx/WorkSpaces.pkg
+
+    wget "$url"
+    installer -pkg "$pkg" -target /
+
 #- name: docker
 #  shell: |
 #    folder="Docker"

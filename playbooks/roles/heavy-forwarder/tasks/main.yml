@@ -1,0 +1,16 @@
+---
+- name: splunk limits.conf
+  copy:
+    src: file/splunk/limits.conf
+    dest: /opt/splunk/etc/system/local/limits.conf
+  become: yes
+  notify:
+    - Restart splunk
+
+- name: splunk ldap authentication.conf
+  copy:
+    src: files/splunk/authentication.conf
+    dest: /opt/splunk/etc/system/local/authentication.conf
+  become: yes
+  notify:
+    - Restart splunk

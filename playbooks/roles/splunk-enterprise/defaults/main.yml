@@ -1,0 +1,2 @@
+---
+splunk_url  : "https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=7.3.3&product=splunk&filename=splunk-7.3.3-7af3758d0d5e-Linux-x86_64.tgz&wget=true"

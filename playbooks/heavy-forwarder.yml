@@ -1,0 +1,6 @@
+---
+- hosts: heavy_forwarders
+  roles:
+    - heavy-forwarder
+  vars:
+    DEBUG: false

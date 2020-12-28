@@ -1,0 +1,7 @@
+---
+dependencies:
+  - auth
+  #- python3
+  - sshd
+  - splunk-enterprise
+  - deploymentserver

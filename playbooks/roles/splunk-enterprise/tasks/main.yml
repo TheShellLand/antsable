@@ -1,0 +1,33 @@
+---
+# splunk-7.3.3-7af3758d0d5e-Linux-x86_64.tgz
+- name: download
+  get_url:
+    url: "{{splunk_url}}"
+    dest: "splunk.tgz"
+
+- name: install
+  shell: tar -xvzf splunk.tgz -C /opt
+  become: yes
+
+- name: fix perms
+  shell: chown -R splunk:splunk /opt/splunk/
+  become: yes
+
+- name: start splunk
+  shell: |
+    /opt/splunk/bin/splunk start –accept-license
+    /opt/splunk/bin/splunk enable boot-start
+  become: yes
+
+- name: copy splunk cloud inputs
+  copy:
+    src: file/splunk/splunkclouduf.spl
+    dest: /opt/splunk/etc/apps/splunkclouduf.spl
+
+- name: extract splunk cloud inputs
+  shell: |
+    cd /opt/splunk/etc/apps
+    tar -xvzf splunkclouduf.spl
+  become: yes
+  notify:
+    - Restart splunk

@@ -69,3 +69,6 @@ deployment_and_forwarders:
     LNXPRD0971:
     LNXPRD0972:
     LNXPRD0973:
+
+heavy_forwarders:
+  hosts:

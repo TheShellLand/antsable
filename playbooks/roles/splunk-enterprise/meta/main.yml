@@ -1,0 +1,6 @@
+---
+dependencies:
+  - auth
+  #- python3
+  - sshd
+  - deploymentserver

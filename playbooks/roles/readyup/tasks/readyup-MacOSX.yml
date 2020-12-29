@@ -35,7 +35,7 @@
     hdiutil detach "$volume"
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew install --cask vagrant
+#  shell: arch -x86_64 brew upgrade --cask vagrant
 
 - name: virtualbox
   shell: |
@@ -49,41 +49,34 @@
     hdiutil detach "$volume"
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew install --cask virtualbox
+#  shell: arch -x86_64 brew upgrade --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew install --cask vmware-fusion
+#  shell: arch -x86_64 brew upgrade --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew install --cask parallels
+#  shell: arch -x86_64 brew upgrade --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew install wget
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade wget
 
 - name: rclone
-  shell: arch -x86_64 brew install rclone
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade rclone
 
 - name: osxfuse
-  shell: arch -x86_64 brew install --cask osxfuse
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew install --cask veracrypt
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew install tmux
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade tmux
 
 - name: darktable
-  shell: arch -x86_64 brew install --cask darktable
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade --cask darktable
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew install --cask --force pycharm-ce
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade --cask --force pycharm-ce
 
 - name: amazon workspace
   shell: |
@@ -106,8 +99,7 @@
 #  become: yes
 
 - name: docker
-  shell: arch -x86_64 brew install --cask docker
-  ignore_errors: yes
+  shell: arch -x86_64 brew upgrade --cask docker
 
 - name: audacity - download
   ansible.builtin.git:

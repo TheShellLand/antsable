@@ -106,11 +106,10 @@ if [ "$(uname)" == "Darwin" ]; then
   if ! which brew >/dev/null; then
     arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
   else
-    arch -x86_64 brew upgrade ansible
-  fi
-
-  if ! which ansible >/dev/null; then
-     pip install --user ansible >/dev/null
+    if ! which ansible >/dev/null; then
+      pip install --user ansible >/dev/null
+      arch -x86_64 brew upgrade ansible
+    fi
   fi
 
   if which $HOME/Library/Python/*/bin/ansible >/dev/null; then

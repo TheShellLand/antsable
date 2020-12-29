@@ -175,6 +175,17 @@
     hdiutil detach "$volume"
   become: yes
 
+- name: crossover download
+  get_url:
+    url: unzip https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-20.0.2.zip
+    dest: crossover.zip
+
+- name: crossover install
+  unarchive:
+    src: crossover.zip
+    dest: /Applications/
+  become: yes
+
 #- name: virtualbox
 #  shell: |
 #    folder="virtualbox 3.4.1"

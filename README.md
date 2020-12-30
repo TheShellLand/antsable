@@ -5,7 +5,7 @@
 You're here because you have been doing something manually for years, and you realized it's time to do better. This is better. This is ansible.
 
 **[Roles](#Supported-Roles)** | **[Meta](#Supported-Meta-Dependencies)** | 
-**[Deploy](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Jenkins](#jenkins)** 
+**[Deploy](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Ansible Tower](#ansible-tower)** | **[Jenkins](#jenkins)** 
 
 ## Supported Roles
 
@@ -39,6 +39,9 @@ To enter your ssh and sudo password manually like a cave person:
 See README.md in each deployment role for additional information
 
 For any issues or questions, please raise a git issue
+
+## Ansible AWX
+Available as a local instance, deploy role [ansible-awx.yml](playbooks/roles/ansible-awx)
 
 ## Ansible Tower
 In the proceess of testing, [Ansible Tower](https://git.marriott.com/CSAA/ansible-tower)

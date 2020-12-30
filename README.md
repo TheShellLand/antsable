@@ -4,8 +4,8 @@
 
 You're here because you have been doing something manually for years, and you realized it's time to do better. This is better. This is ansible.
 
-**[Supported Roles](#Supported-Roles)** | **[Supported Dependencies](#Supported-Dependencies)** | 
-**[Deploy Role](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Jenkins](#jenkins)** 
+**[Roles](#Supported-Roles)** | **[Meta](#Supported-Meta-Dependencies)** | 
+**[Deploy](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Jenkins](#jenkins)** 
 
 ## Supported Roles
 
@@ -14,7 +14,7 @@ You're here because you have been doing something manually for years, and you re
 - [heavy-forwarder.yml](playbooks/roles/heavy-forwarder)
 - [deployment-server.yml](playbooks/roles/deployment-server)
 
-## Supported Dependencies
+## Supported Meta Dependencies
 
 - [splunk-enterprise](playbooks/roles/splunk-enterprise)
 - [rsyslog](playbooks/roles/rsyslog)

@@ -1,0 +1,345 @@
+03/27/2018 06:17:36 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=##EventCode1##
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=A tape access reached a filemark.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=##Message1##
+
+03/29/2018 03:17:00 PM
+LogName=System
+SourceName=##Source_Name##
+EventCode=##EventCode2##
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=##Message2##
+
+03/29/2018 06:17:36 AM
+LogName=System
+SourceName=##Source_Name_IAS##
+EventCode=9590
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=A tape access reached a filemark.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Sample IAS Generated Event.
+
+03/27/2018 06:17:02 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=12
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=Possible detection of CVE: %##Percentage##
+Additional Information: %##Percentage##
+
+This Event is generated when an attempt to exploit a known vulnerability (%##Percentage##) is detected.
+This Event is raised by a ##UserText## mode process.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The operating system started at system time ##Date##T##Time##:##Float9##Z.
+
+03/27/2018 06:16:51 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=13
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=Possible detection of CVE: %##Percentage##
+Additional Information: %##Percentage##
+
+This Event is generated when an attempt to exploit a known vulnerability (%##Percentage##) is detected.
+This Event is raised by a kernel mode driver.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The operating system is shutting down at system time ##Date##T##Time##:##Float9##Z.
+
+03/27/2018 06:17:11 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=55
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=None
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Processor ##Small_int## in group ##Group_number## exposes the following power management capabilities:
+
+Idle state type: ACPI Idle (C) States (##Small_int## state(s))
+
+Performance state type: None
+Nominal Frequency (MHz): ##Frequency##
+Maximum performance percentage: ##Percentage##
+Minimum performance percentage: ##Percentage##
+Minimum throttle percentage: ##Percentage##
+
+03/27/2018 06:16:49 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=109
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The semaphore cannot be set again.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The kernel power manager has initiated a shutdown transition.
+
+Shutdown Reason: Kernel API
+
+03/27/2018 06:17:11 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=508
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The address for the thread ID is not correct.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The system has been constrained to a periodic tick 
+
+Reason: No HW support.
+
+03/27/2018 06:16:42 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=1074
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The process ##Path####FileName##.exe (##UserName##) has initiated the restart of computer ##UserName## on behalf of ##UserText## ##UserName##\##hex4## for the following reason: Hardware: Maintenance (Unplanned)
+ Reason Code: 0x##hex7##
+ Shutdown Type: ##Shutdown_Type##
+ Comment:
+
+03/27/2018 06:17:12 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=5200
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=None
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Splunk could not get the description for this event. Either the component that raises this event is not installed on your local computer or the installation is corrupt.
+
+FormatMessage error:
+
+Got the following information from this event: 
+
+##Device##
+Amazon Elastic Network Adapter
+
+03/22/2018 08:39:08 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=5201
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=None
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Splunk could not get the description for this event. Either the component that raises this event is not installed on your local computer or the installation is corrupt.
+
+FormatMessage error:
+
+Got the following information from this event: 
+
+##Device##
+Amazon Elastic Network Adapter
+
+03/27/2018 06:17:12 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=5203
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=None
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Splunk could not get the description for this event. Either the component that raises this event is not installed on your local computer or the installation is corrupt.
+
+FormatMessage error:
+
+Got the following information from this event: 
+
+##Device##
+Amazon Elastic Network Adapter
+
+03/27/2018 06:32:41 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=7023
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Splunk could not get the description for this event. Either the component that raises this event is not installed on your local computer or the installation is corrupt.
+
+FormatMessage error:
+
+Got the following information from this event: 
+
+Data Sharing Service
+%%##Data_Sharing_Service##
+
+03/27/2018 06:17:17 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=7026
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The following boot-start or system-start driver(s) did not load: 
+##hex4##
+##hex7##
+##hex8##
+
+03/29/2018 06:27:31 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=7045
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=A service was installed in the system.
+
+Service Name:  ##hex8##
+Service File Name:  ##Path##{##id8##-##id4##-##id4##-##id4##-##id12##}\##FileName##.sys
+Service Type:  ##Service_Type##
+Service Start Type:  ##Service_Start##
+Service Account:
+
+03/27/2018 06:16:43 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=10016
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The application-specific permission settings do not grant Local Activation permission for the COM Server application with CLSID 
+{##id8##-##id4##-##id4##-##id4##-##id12##}
+ and APPID 
+{##id8##-##id4##-##id4##-##id4##-##id12##}
+ to the ##UserText## ##UserName##\##hex8## SID (##Sid##) from address LocalHost (Using LRPC) running in the application container ##hex8## SID (##Sid##). This security permission can be modified using the Component Services administrative tool.
+
+03/27/2018 06:17:15 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=10148
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The WinRM service is listening for WS-Management requests. 
+
+##UserText## Action 
+ Use the following command to see the specific IPs on which WinRM is listening: 
+
+ winrm enumerate winrm/config/listener
+
+03/27/2018 06:16:44 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=10149
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The WinRM service is not listening for WS-Management requests. 
+
+##UserText## Action 
+ If you did not intentionally stop the service, use the following command to see the WinRM configuration: 
+
+ winrm enumerate winrm/config/listener
+
+03/27/2018 06:17:14 AM
+LogName=System
+SourceName=##Source_Name##
+EventCode=16962
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Remote calls to the SAM database are being restricted using the default security descriptor: ##hex1##:##id4##:##hex8##:(##hex1##;;##id4##;;;##id4##).
+For more information please see ##Microsoft_help_link##.

@@ -1,0 +1,288 @@
+03/29/2018 08:40:39 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=##EventCode1##
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=##Message1##
+
+03/27/2018 06:17:16 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=##EventCode2##
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=##Message2##
+
+03/06/2018 03:40:59 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=None
+OpCode=None
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=Splunk could not get the description for this event. Either the component that raises this event is not installed on your local computer or the installation is corrupt.
+
+FormatMessage error:
+
+Got the following information from this event:
+
+03/29/2018 08:39:02 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=900
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=The Software Protection service is starting.
+Parameters:trigger=##Trigger##;sessionid=##sessionid##
+
+03/29/2018 08:39:02 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=902
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The Software Protection service has started.
+##Ip##
+
+03/29/2018 08:40:04 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=12289
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The client has processed an activation response from the key management service machine.
+Info:
+0x##hex8##, 0x##hex8##, ##Small_int##, ##Small_int##, ##Small_int##, ##Small_int##, ##Int6##, ##Date## ##Time##
+
+03/29/2018 08:40:04 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=12288
+EventType=EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The client has sent an activation request to the key management service machine.
+Info:
+0x##hex8##, 0x##hex8##, ##Ip##:##Port##, ##id8##-##id4##-##id4##-##id4##-##id12##, ##Date## ##Time##, ##Small_int##, ##Small_int##, ##Int6##, ##id8##-##id4##-##id4##-##id4##-##id12##, ##Small_int##
+
+03/29/2018 08:40:04 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=8230
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=The rules engine successfully re-evaluated the schedule.
+Kernel policies:
+Security-SPP-Action-StateData (REG_SZ) =AppId=##id8##-##id4##-##id4##-##id4##-##id12##;GraceEndDate=2018/09/25:08:40:04;LastConsumptionReason=0x##hex8##;LastNotificationId=##LastNotificationId##;LicenseState=##LicenseState##;PartialProductKey=##PartialProductKey##;ProductKeyType=##ProductKeyType##;SkuId=##id8##-##id4##-##id4##-##id4##-##id12##;ruleId=##id8##-##id4##-##id4##-##id4##-##id12##;uxDifferentiator=##uxDifferentiator##;volumeActivationOrder=##volumeActivationOrder##
+
+03/29/2018 08:40:09 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=16384
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=##FileName##.exe was launched with the following command-line parameters:
+RuleId=##id8##-##id4##-##id4##-##id4##-##id12##;Action=##Action##;AppId=##id8##-##id4##-##id4##-##id4##-##id12##;SkuId=##id8##-##id4##-##id4##-##id4##-##id12##;NotificationInterval=##seconds##;Trigger=##Trigger##
+
+03/27/2018 06:19:21 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=4202
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=TM
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=MSDTC started with the following settings:
+
+ Security Configuration (OFF = 0 and ON = 1):
+ Allow Remote Administrator = ##Binary_number##,
+ Network Clients = ##Binary_number##,
+ Transaction Manager Communication: 
+ Allow Inbound Transactions = ##Binary_number##,
+ Allow Outbound Transactions = ##Binary_number##,
+ Transaction Internet Protocol (TIP) = ##Binary_number##,
+  Enable XA Transactions = ##Binary_number##,
+  Enable SNA LU 6.2 Transactions = ##Binary_number##,
+  MSDTC Communications Security = Mutual Authentication Required,
+ Account = ##Account##,
+  Firewall Exclusion Detected = ##Binary_number##
+
+ Transaction Bridge Installed = ##Binary_number##
+ Filtering Duplicate Events = ##Binary_number##
+
+ 03/27/2018 06:16:43 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1530
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+##UserText##=##User##
+Sid=##Sid##
+SidType=##SidType##
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Windows detected your registry file is still in use by other applications or services. The file will be unloaded now. The applications or services that hold your registry file may not function properly afterwards. No ##UserText##  action is required.  
+
+ DETAIL - 
+ 4 ##UserText##  registry handles leaked from ##Registry_Path_Base##:
+Process ##Process_number## (##File_Path_Base####FileName##.exe) has opened key ##Registry_Path_Base####Registry_Path##
+Process ##Process_number## (##File_Path_Base####FileName##.exe) has opened key ##Registry_Path_Base####Registry_Path##
+Process ##Process_number## (##File_Path_Base####FileName##.exe) has opened key ##Registry_Path_Base####Registry_Path##
+Process ##Process_number## (##File_Path_Base####FileName##.exe) has opened key ##Registry_Path_Base####Registry_Path##
+
+03/29/2018 08:39:02 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1066
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Initialization status for service objects.
+##Path####FileName##.dll, msft:msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+##Path####FileName##.dll, msft:##path####volume##, 0x##hex8##, 0x##hex8##
+
+03/29/2018 08:40:09 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1034
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=Duplicate definition of policy found. Policy name=##Policy_Names##  Priority=##Priority##
+
+03/29/2018 08:40:09 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1033
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=These policies are being excluded since they are only defined with override-only attribute.
+Policy Names=(##Policy_Names##) 
+App Id=##id8##-##id4##-##id4##-##id4##-##id12##
+Sku Id=##id8##-##id4##-##id4##-##id4##-##id12##
+
+03/22/2018 06:53:40 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1016
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keywords##
+Message=Proof of Purchase installed successfully. 
+ACID=##id8##-##id4##-##id4##-##id4##-##id12##
+PKeyId=##id8##-##id4##-##id4##-##id4##-##id12##
+
+03/29/2018 08:40:09 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=1003
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=The Software Protection service has completed licensing status check.
+Application Id=##id8##-##id4##-##id4##-##id4##-##id12##
+Licensing Status=
+1: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 1 [(0 [0x##hex8##, 1, 0], [(?)( 1 0x##hex8##)(?)( 2 0x##hex8## 0 0 msft:##path####volume## 0x##hex8## ##big_integer##)(?)(?)( 10 0x##hex8## msft:##path####volume##)(?)])(1 )(2 )(3 )]
+2: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+3: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+4: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+5: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+6: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+7: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+8: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+9: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+10: ##id8##-##id4##-##id4##-##id4##-##id12##, 1, 0 [(0 [0x##hex8##, 0, 0], [(?)(?)(?)(?)(?)(?)(?)(?)])(1 )(2 )(3 )]
+
+03/29/2018 08:40:39 AM
+LogName=Application
+SourceName=##Source_Name##
+EventCode=903
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=The operation completed successfully.
+OpCode=The operation completed successfully.
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Classic##
+Message=The Software Protection service has stopped.

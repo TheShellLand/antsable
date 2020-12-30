@@ -1,0 +1,16 @@
+vendor_action,action
+accept,allowed
+allow,allowed
+alert,allowed
+authcrypt,success
+authcrypt_failed,failure
+block,blocked
+ctl,
+decrypt,
+drop,blocked
+encrypt,
+logout,
+monitor,allowed
+prevent,blocked
+reject,blocked
+vpnroute,

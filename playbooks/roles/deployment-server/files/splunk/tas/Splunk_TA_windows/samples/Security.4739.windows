@@ -1,0 +1,42 @@
+01/24/2018 07:50:25 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4739
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=Domain Policy was changed.
+
+Change Type:		Password Policy modified
+
+Subject:
+	Security ID:  ##Domain##\##User_Name##
+	Account Name:  ##User_Name##
+	Account Domain:  ##Domain##
+	Logon ID:  0x##Logon_Id##
+
+Domain:
+	Domain Name:		##Domain##
+	Domain ID:		##Domain##\
+
+Changed Attributes:
+	Min. Password Age:	-
+	Max. Password Age:	-
+	Force Logoff:		-
+	Lockout Threshold:	-
+	Lockout Observation Window:	-
+	Lockout Duration:	-
+	Password Properties:	-
+	Min. Password Length:	6
+	Password History Length:	23
+	Machine Account Quota:	-
+	Mixed Domain Mode:	-
+	Domain Behavior Version:	-
+	OEM Information:	-
+
+Additional Information:
+	Privileges:		-

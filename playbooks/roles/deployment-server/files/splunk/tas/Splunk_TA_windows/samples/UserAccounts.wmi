@@ -1,0 +1,11 @@
+20100616182011.000000
+Caption=##Domain##\##User_Name##
+Description=##Description##
+Domain=##Domain##
+InstallDate=##Install_Date##
+LocalAccount=##Local_Account##
+Name=##User_Name##
+SID=##User_Sid##
+SIDType=##Sid_Type##	
+Status=##Status##
+wmi_type=UserAccounts

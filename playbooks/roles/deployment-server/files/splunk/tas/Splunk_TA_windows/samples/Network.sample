@@ -1,0 +1,22 @@
+"Bytes Total/sec",##Bytes_Total/sec##
+"Packets/sec",##Packets/sec##
+"Packets Received/sec",##Packets_Received/sec##
+"Packets Sent/sec",##Packets_Sent/sec##
+"Current Bandwidth",##Current_Bandwidth##
+"Bytes Received/sec",##Bytes_Received/sec##
+"Packets Received Unicast/sec",##Packets_Received_Unicast/sec##
+"Packets Received Non-Unicast/sec",##Packets_Received_Non-Unicast/sec##
+"Packets Received Discarded",##Packets_Received_Discarded##
+"Packets Received Errors",##Packets_Received_Errors##
+"Packets Received Unknown",##Packets_Received_Unknown##
+"Bytes Sent/sec",##Bytes_Sent/sec##
+"Packets Sent Unicast/sec",##Packets_Sent_Unicast/sec##
+"Packets Sent Non-Unicast/sec",##Packets_Sent_Non-Unicast/sec##
+"Packets Outbound Discarded",##Packets_Outbound_Discarded##
+"Packets Outbound Errors",##Packets_Outbound_Errors##
+"Output Queue Length",##Output_Queue_Length##
+"Offloaded Connections",##Offloaded_Connections##
+"TCP Active RSC Connections",##TCP_Active_RSC_Connections##
+"TCP RSC Coalesced Packets/sec",##TCP_RSC_Coalesced_Packets/sec##
+"TCP RSC Exceptions/sec",##TCP_RSC_Exceptions/sec##
+"TCP RSC Average Packet Size",##TCP_RSC_Average_Packet_Size##

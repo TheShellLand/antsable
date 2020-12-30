@@ -1,0 +1,10 @@
+clear
+ls
+splunk start
+splunk clean eventdata
+splunk stop
+splunk status
+splun restart
+python
+cd
+ps

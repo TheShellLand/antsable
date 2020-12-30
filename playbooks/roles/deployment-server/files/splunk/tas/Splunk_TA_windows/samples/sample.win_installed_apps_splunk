@@ -1,0 +1,25 @@
+05-19-2011 10:48:34
+Installed application enumerated from "##hkey_local_uninstall_path##{163025bb-ef60-4329-9384-9aeb595a0179}"
+AuthorizedCDFPrefix=
+Comments=The IT Search Engine
+Contact=Contact Support at ##splunk_url##page/submit_issue
+DisplayVersion=##Display_Version##
+HelpLink=##splunk_url##page/submit_issue
+HelpTelephone=
+InstallDate=20110318
+InstallLocation=##splunk_path##
+InstallSource=C:\Users\##firstname##\Desktop\
+ModifyPath=##MsiExec##.exe /I{163025bb-ef60-4329-9384-9aeb595a0179}
+Publisher=Splunk, Inc.
+Readme=##splunk_path####base_filename##.txt 
+Size=
+EstimatedSize=0x##Estimated_Size##
+UninstallString=##MsiExec##.exe /I{163025bb-ef60-4329-9384-9aeb595a0179}
+URLInfoAbout=##splunk_url##
+URLUpdateInfo=##splunk_url##download
+VersionMajor=0x##Major_Version##
+VersionMinor=0x##Minor_Version##
+WindowsInstaller=0x##Windows_Installer##
+Version=0x##Version##
+Language=0x##Language##
+DisplayName=Splunk

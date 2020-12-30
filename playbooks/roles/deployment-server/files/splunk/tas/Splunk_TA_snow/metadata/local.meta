@@ -1,0 +1,74 @@
+[splunk_ta_snow_settings/logging]
+version = 7.3.3
+modtime = 1588865678.214293000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23Splunk_TA_snow%23configs%2Fconf-splunk_ta_snow_account%3Asnow_acount%60%60splunk_cred_sep%60%601%3A]
+owner = mjmey276
+version = 7.3.3
+modtime = 1588866257.285067000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23Splunk_TA_snow%23configs%2Fconf-splunk_ta_snow_account%3Asnow_acount%60%60splunk_cred_sep%60%602%3A]
+owner = mjmey276
+version = 7.3.3
+modtime = 1588866257.294771000
+
+[splunk_ta_snow_account/snow_acount]
+owner = mjmey276
+version = 7.3.3
+modtime = 1588866257.302400000
+
+[inputs/snow%3A%2F%2Fchange_request]
+version = 7.3.3
+modtime = 1589385335.942314000
+
+[inputs/snow%3A%2F%2Fchange_task]
+version = 7.3.3
+modtime = 1589385356.960993000
+
+[inputs/snow%3A%2F%2Fcmn_location]
+version = 7.3.3
+modtime = 1589385286.330465000
+
+[inputs/snow%3A%2F%2Fem_event]
+version = 7.3.3
+modtime = 1588868150.564689000
+
+[inputs/snow%3A%2F%2Fincident]
+version = 7.3.3
+modtime = 1589386918.093816000
+
+[inputs/snow%3A%2F%2Fproblem]
+version = 7.3.3
+modtime = 1589385423.883335000
+
+[inputs/snow%3A%2F%2Fsys_audit]
+version = 7.3.3
+modtime = 1588868176.494217000
+
+[inputs/snow%3A%2F%2Fsys_audit_delete]
+version = 7.3.3
+modtime = 1588868181.168758000
+
+[inputs/snow%3A%2F%2Fsys_choice]
+version = 7.3.3
+modtime = 1588868186.381043000
+
+[inputs/snow%3A%2F%2Fsys_user]
+version = 7.3.3
+modtime = 1588868213.384624000
+
+[inputs/snow%3A%2F%2Fsys_user_group]
+version = 7.3.3
+modtime = 1588868217.122619000
+
+[inputs/snow%3A%2F%2Fsysevent]
+version = 7.3.3
+modtime = 1588868221.123336000
+
+[inputs/snow%3A%2F%2Fsyslog]
+version = 7.3.3
+modtime = 1588868227.362207000
+
+[inputs/snow%3A%2F%2Fsyslog_transaction]
+version = 7.3.3
+modtime = 1588868231.060693000

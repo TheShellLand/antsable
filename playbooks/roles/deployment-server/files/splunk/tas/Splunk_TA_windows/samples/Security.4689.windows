@@ -1,0 +1,23 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4689
+EventType=##Event_Type##
+Type=Information
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A process has exited.
+
+Subject:
+	Security ID:		##Domain##\##User_Name##
+	Account Name:		##User_Name##
+	Account Domain:		##Domain##
+	Logon ID:		0x##Logon_Id##
+
+Process Information:
+	Process ID:	0x##Process_Id##
+	Process Name:	##Process_Name##
+	Exit Status:	0x##Exit_Code##

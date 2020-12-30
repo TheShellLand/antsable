@@ -1,0 +1,7 @@
+Type=Computer
+Name=##Computer_Name##
+Domain=##Domain##
+Manufacturer=##Manufacturer##
+Model=##Model##
+Status=##Status##
+System Type=##System_Type##

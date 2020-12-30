@@ -1,0 +1,3 @@
+<nav color="#B41F3A">
+  <view name="home" default="true" label="Home" />
+</nav>

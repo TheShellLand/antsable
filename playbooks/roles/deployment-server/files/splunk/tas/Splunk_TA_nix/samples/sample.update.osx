@@ -1,0 +1,3 @@
+Tue Mar  5 15:09:44 EST 2013 package="##update_package##" is_recommended="##update_is_recommended##" restart_required="##update_restart_required##"
+Tue Mar  5 15:09:44 EST 2013 package="##update_package##" is_recommended="##update_is_recommended##"
+Tue Mar  5 15:09:44 EST 2013 total_updates=##update_total_updates##

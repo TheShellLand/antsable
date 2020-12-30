@@ -1,0 +1,15 @@
+01/30/2018 01:35:16 PM
+LogName=System
+SourceName=Microsoft-Windows-Time-Service
+EventCode=35
+EventType=4
+Type=Information
+ComputerName=##Computer_Name##
+##user##=##User##
+Sid=S-1-5-19
+SidType=0
+TaskCategory=The operation completed successfully.
+OpCode=Info
+RecordNumber=##Record_Number##
+Keywords=None
+Message=The time service is now synchronizing the system time with the time source ##url##,0x9 (ntp.m|0x9|0.0.0.0:123->13.65.245.138:123) with reference id 2331328781. Current local stratum number is 3.

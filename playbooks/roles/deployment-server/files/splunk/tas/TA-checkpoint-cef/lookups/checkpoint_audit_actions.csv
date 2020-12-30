@@ -1,0 +1,8 @@
+look_up_key,action,app
+"Modify Object","modified",
+"Delete Object","deleted",
+"Create Object","created",
+"Failure","failure","opsec"
+"Success","success","opsec"
+"filesystem","read",
+"accept","read",

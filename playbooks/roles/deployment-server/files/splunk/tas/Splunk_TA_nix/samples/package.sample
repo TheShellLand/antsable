@@ -1,0 +1,26 @@
+dhclient,4.2.5,47.el7.centos,System Environment/Base
+passwd,0.79,4.el7,System Environment/Base
+authconfig,6.2.8,14.el7,System Environment/Base
+sed,4.2.2,5.el7,Applications/Text
+newt,0.52.15,4.el7,System Environment/Libraries
+perl,5.16.3,291.el7,Development/Languages
+gdbm,1.10,8.el7,System Environment/Libraries
+subversion,1.7.14,10.el7,Development/Tools
+audit-libs,2.6.5,3.el7,Development/Libraries
+systemd-sysv,219,30.el7_3.6,Unspecified
+java-1.8.0-openjdk-headless,1.8.0.161,0.b14.el7_4,Development/Languages
+ntpdate,4.2.6p5,25.el7.centos.2,Applications/System
+chkconfig,1.7.2,1.el7,System Environment/Base
+yum-metadata-parser,1.1.4,10.el7,Development/Libraries
+openssl-libs,1.0.1e,60.el7,System Environment/Libraries
+python-libs,2.7.5,48.el7,Applications/System
+pygobject3-base,3.14.0,3.el7,Development/Languages
+python-perf,3.10.0,514.6.1.el7,Development/Libraries
+rpm-libs,4.11.3,21.el7,Development/Libraries
+dhcp-common,4.2.5,47.el7.centos,System Environment/Base
+openssh,6.6.1p1,33.el7_3 ,Applications/Internet
+lsof,4.87,4.el7,Development/Debuggers
+grep,2.20,2.el7,Applications/Text
+pam,1.1.8,18.el7,System Environment/Base
+python,2.7.5,48.el7,Development/Languages
+tar,1.26,31.el7,Applications/Archiving

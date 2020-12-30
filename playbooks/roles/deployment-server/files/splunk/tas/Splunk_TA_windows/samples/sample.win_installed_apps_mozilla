@@ -1,0 +1,17 @@
+09-02-2018  18:13:47
+Installed application enumerated from "##hkey_local_uninstall_path##Mozilla Firefox 57.0.1 (x64 en-US)"
+##hkey_local_uninstall_path##Mozilla=57.0.1 (x64 en-US)
+Comments=Mozilla Firefox 57.0.1 (x64 en-US)
+DisplayIcon=##file_path####base_filename##.exe,0
+DisplayName="Mozilla Firefox 57.0.1 (x64 en-US)"
+DisplayVersion=##Display_Version##
+HelpLink=##baseurl##
+InstallLocation="##file_path##"
+Publisher=Mozilla
+UninstallString="##file_path####base_filename##.exe"
+URLUpdateInfo=##baseurl##firefox/57.0.1/releasenotes
+URLInfoAbout=##baseurl##
+NoModify=0x##Modify##
+NoRepair=0x##Repair##
+EstimatedSize=0x##Estimated_Size##
+sEstimatedSize2=0x##Estimated_Size##

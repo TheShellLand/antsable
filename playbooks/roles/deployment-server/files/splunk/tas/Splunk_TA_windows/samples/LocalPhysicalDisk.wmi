@@ -1,0 +1,8 @@
+20110415100017.910471
+CurrentDiskQueueLength=##Current_Disk_Queue_Length##
+DiskBytesPersec=##Disk_Bytes/sec##
+Name=##Instance##
+PercentDiskReadTime=##Disk_Read_Time##
+PercentDiskTime=##Disk_Time##
+PercentDiskWriteTime=##Disk_Write_Time##
+wmi_type=LocalPhysicalDisk

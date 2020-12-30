@@ -1,0 +1,10 @@
+01/24/2018 17:16:26.313 +0530
+collection=CPUMk
+category=CPUMk
+object=Processor
+instance	%_Processor_Time	%_User_Time	%_Privileged_Time	Interrupts/sec	%_DPC_Time	%_Interrupt_Time	DPCs_Queued/sec	DPC_Rate	%_Idle_Time	%_C1_Time	%_C2_Time	%_C3_Time	C1_Transitions/sec	C2_Transitions/sec	C3_Transitions/sec
+##Instance0##
+##Instance1##
+##Instance2##
+##Instance3##
+##Total##

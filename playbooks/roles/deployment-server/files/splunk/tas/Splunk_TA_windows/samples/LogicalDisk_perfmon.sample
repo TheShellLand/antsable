@@ -1,0 +1,23 @@
+"% Disk Read Time",##% Disk Read Time##
+"% Disk Time",##% Disk Time##
+"% Disk Write Time",##% Disk Write Time##
+"% Free Space",##% Free Space##
+"% Idle Time",##% Idle Time##
+"Avg. Disk Bytes/Read",##Avg. Disk Bytes/Read##
+"Avg. Disk Bytes/Transfer",##Avg. Disk Bytes/Transfer##
+"Avg. Disk Bytes/Write",##Avg. Disk Bytes/Write##
+"Avg. Disk Queue Length",##Avg. Disk Queue Length##
+"Avg. Disk Read Queue Length",##Avg. Disk Read Queue Length##
+"Avg. Disk Write Queue Length",##Avg. Disk Write Queue Length##
+"Avg. Disk sec/Read",##Avg. Disk sec/Read##
+"Avg. Disk sec/Transfer",##Avg. Disk sec/Transfer##
+"Avg. Disk sec/Write",##Avg. Disk sec/Write##
+"Current Disk Queue Length",##Current Disk Queue Length##
+"Disk Bytes/sec",##Disk Bytes/sec##
+"Disk Read Bytes/sec",##Disk Read Bytes/sec##
+"Disk Reads/sec",##Disk Reads/sec##
+"Disk Transfers/sec",##Disk Transfers/sec##
+"Disk Write Bytes/sec",##Disk Write Bytes/sec##
+"Disk Writes/sec",##Disk Writes/sec##
+"Free Megabytes",##Free Megabytes##
+"Split IO/Sec",##Split IO/Sec##

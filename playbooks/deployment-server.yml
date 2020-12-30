@@ -1,0 +1,6 @@
+---
+- hosts: deployment_server
+  roles:
+    - deployment-server
+  vars:
+    DEBUG: false

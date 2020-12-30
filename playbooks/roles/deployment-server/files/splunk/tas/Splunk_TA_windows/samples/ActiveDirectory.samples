@@ -1,0 +1,45 @@
+08/16/2018 22:36:33.237
+dcName=##name##.##DC##.##DC1##
+admonEventType=##admonEventType##
+Names:
+	objectCategory=CN=##CN##,CN=##CN1##,CN=##CN2##,DC=##DC##,DC=##DC1##
+	name=##name##
+	distinguishedName=CN=##name##,OU=##OU##,DC=##DC##,DC=##DC1##
+	cn=##name##
+Object Details:
+	sAMAccountType=##sAMAccountType##
+	sAMAccountName=##name##$
+	logonCount=##logonCount##
+	accountExpires=##accountExpires##
+	objectSid=##objectSid##
+	primaryGroupID=##primaryGroupID##
+	pwdLastSet=##pwdLastSet##
+	lastLogon=##lastLogon##
+	lastLogoff=##lastLogoff##
+	badPasswordTime=##badPasswordTime##
+	countryCode=##countryCode##
+	codePage=##codePage##
+	badPwdCount=##badPwdCount##
+	userAccountControl=##userAccountControl##
+	objectGUID=##objectGUID##
+	whenChanged=##whenChanged##
+	whenCreated=##whenCreated##
+	objectClass=##objectClass##
+Event Details:
+	uSNChanged=##uSNChanged##
+	uSNCreated=##uSNCreated##
+	instanceType=##instanceType##
+Additional Details:
+	msDFSR-ComputerReferenceBL=CN=##name##,CN=##CN_topology##,CN=##CN_Domain_system_value##,CN=##DFSR_settings##,CN=##CN_system##,DC=##DC##,DC=##DC1##
+	msDS-GenerationId=##msDS-GenerationId##
+	msDS-SupportedEncryptionTypes=##msDS-SupportedEncryptionTypes##
+	lastLogonTimestamp=##lastLogonTimestamp##
+	dSCorePropagationData=##dSCorePropagationData##.0Z|##dSCorePropagationData##.0Z
+	isCriticalSystemObject=##isCriticalSystemObject##
+	servicePrincipalName=TERMSRV/##name##|TERMSRV/##name##.##DC##.##DC1##|Dfsr-##Dfsr-no##/##name##.##DC##.##DC1##|ldap/##name##.##DC##.##DC1##/ForestDnsZones.##DC##.##DC1##|ldap/##name##.##DC##.##DC1##/DomainDnsZones.##DC##.##DC1##|DNS/##name##.##DC##.##DC1##|GC/##name##.##DC##.##DC1##/##DC##.##DC1##|RestrictedKrbHost/##name##.##DC##.##DC1##|RestrictedKrbHost/##name##|RPC/##RPC##._msdcs.##DC##.##DC1##|HOST/##name##/##DC##|HOST/##name##.##DC##.##DC1##/##DC##|HOST/##name##|HOST/##name##.##DC##.##DC1##|HOST/##name##.##DC##.##DC1##/##DC##.##DC1##|##HOST_no##/##ldap_msdcs##/##DC##.##DC1##|ldap/##name##/##DC##|ldap/##ldap_msdcs##_msdcs.##DC##.##DC1##|ldap/##name##.##DC##.##DC1##/##DC##|ldap/##name##|ldap/##name##.##DC##.##DC1##|ldap/##name##.##DC##.##DC1##/##DC##.##DC1##
+	rIDSetReferences=CN=##CN_rid##,CN=##name##,OU=##OU##,DC=##DC##,DC=##DC1##
+	dNSHostName=##name##.##DC##.##DC1##
+	serverReferenceBL=CN=##name##,CN=##CN_servers##,CN=##CN-site_name##,CN=##CN_sites##,CN=##CN2##,DC=##DC##,DC=##DC1##
+	operatingSystemVersion=##operatingSystemVersion## (##Version##)
+	operatingSystem=##operatingsystem##
+	localPolicyFlags=##localPolicyFlags##

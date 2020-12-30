@@ -1,0 +1,16 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4776
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword##
+Message=The computer attempted to validate the credentials for an account.
+Authentication Package: ##Authentication_Package##
+Logon Account: ##User_Name##
+Source Workstation: ##Computer_Name##
+Error Code: ##Error_Code##

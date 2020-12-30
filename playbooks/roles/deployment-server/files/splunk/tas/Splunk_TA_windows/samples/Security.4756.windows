@@ -1,0 +1,30 @@
+07/18/2018 04:16:16 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4756
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A member was added to a security-enabled universal group.
+
+Subject:
+	Security ID:		##Computer_Name##\##AccountName##
+	Account Name:		##AccountName##
+	Account Domain:		##Computer_Name##
+	Logon ID:		0x91A8E
+
+Member:
+	Security ID:		##AccountName##\##user_name##
+	Account Name:		CN=##user_name##,CN=##CN##,DC=##DC##,DC=##DC1##
+
+Group:
+	Security ID:		##AccountName##\##Group_Name##
+	Account Name:		##Group_Name##
+	Account Domain:		##AccountName##
+
+Additional Information:
+	Privileges:		-

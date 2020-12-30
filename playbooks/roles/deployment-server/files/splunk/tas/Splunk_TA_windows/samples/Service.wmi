@@ -1,0 +1,10 @@
+20100511153257.000000
+Caption=##Caption##
+Description=##Description##
+Name=##Name##
+PathName=##Path_Name##
+StartMode=##Start_Mode##
+StartName=##Start_Name##
+State=##State##
+Status=##Status##
+wmi_type=Service

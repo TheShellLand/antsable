@@ -1,0 +1,17 @@
+20180314142405.000000
+Category=##EventCode##
+CategoryString=##CategoryString##
+EventCode=##EventCode##
+EventIdentifier=##EventIdentifier##
+EventType=##EventType##
+Logfile=System
+RecordNumber=##RecordNumber##
+SourceName=##SourceName## 
+TimeGenerated=20180314085405.383089-000 
+TimeWritten=20180314085405.383089-000 
+Type=##Type## 
+User=##User## 
+ComputerName=##ComputerName## 
+OriginalComputerName=##ComputerName## 
+wmi_type=WinEventLog:System 
+Message=##Message##

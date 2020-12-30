@@ -1,0 +1,71 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName= ##Source_Name##
+EventCode=4624
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=An account was successfully logged on.
+
+Subject:
+ Security ID:  ##Domain##\SYSTEM
+ Account Name:  ##Computer_Name##
+ Account Domain:  ##Domain##
+ Logon ID:  0x##System_Logon_Id##
+
+Logon Information:
+ Logon Type:  ##Logon_Type##
+ Restricted Admin Mode: ##Restricted_Admin_Mode##
+ Virtual Account:  ##Virtual_Account##
+ Elevated Token:  ##Elevated_Token##
+
+Impersonation Level:  ##Impersonation_Level##
+
+New Logon:
+ Security ID:  ##Domain##\##User_Name##
+ Account Name:  ##User_Name##
+ Account Domain:  ##Domain##
+ Logon ID:  0x##Logon_Id##
+ Linked Logon ID:  ##Linked_Logon_Id##
+ Network Account Name: ##User_Name2##
+ Network Account Domain: ##Domain2##
+ Logon ##GUID##:  {##Logon_Guid##}
+
+Process Information:
+ Process ID:  0x##Process_Id##
+ Process Name:  ##Process_Name##
+
+Network Information:
+ Workstation Name: ##Computer_Name##
+ Source Network Address: ##Network_Ip##
+ Source Port:  ##Network_Port##
+
+Detailed Authentication Information:
+ Logon Process:  ##Logon_Process## 
+ Authentication Package: ##Authentication_Package##
+ Transited Services: ##Transited_Services##
+ Package Name (NTLM only): ##Package_Name##
+ Key Length:  ##Key_Length##
+
+This event is generated when a logon session is created. It is generated on the computer that was accessed.
+
+The subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as ##base_filename##.exe or ##base_filename##.exe.
+
+The logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).
+
+The New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.
+
+The network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The impersonation level field indicates the extent to which a process in the logon session can impersonate.
+
+The authentication information fields provide detailed information about this specific logon request.
+ - Logon ##GUID## is a unique identifier that can be used to correlate this event with a KDC event.
+ - Transited services indicate which intermediate services have participated in this logon request.
+ - Package name indicates which sub-protocol was used among the NTLM protocols.
+ - Key length indicates the length of the generated session key. This will be 0 if no session key was requested.
+

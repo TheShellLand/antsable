@@ -1,0 +1,5 @@
+problem_state,problem_state_name
+1,"Open"
+2,"Pending Change"
+3,"Known Error"
+4,"Closed"

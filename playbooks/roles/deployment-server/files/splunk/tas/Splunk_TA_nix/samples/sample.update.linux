@@ -1,0 +1,5 @@
+Tue Mar  5 09:06:34 PST 2013 package="##package##" package_type="##Package_Type##"
+Tue Mar  5 09:06:34 PST 2013 extras=##extras## base=##base## addons=##addons## updates=##updates##
+Tue Apr  5 02:13:12 PDT 2013 extras=##extras## epel=##update_epel## base=##base## addons=##addons## updates=##updates##
+Tue Apr  5 02:25:57 PDT 2013 @base=##update_base## epel=##update_epel## base=##base## @updates=##update_update## updates=##updates## extras=##extras## addons=##addons##
+Tue Mar  5 09:06:34 PST 2013 extras=##extras## base=##base## addons=##addons## rhel-7-server-rpms=##update_rhel_7_server_rpms## updates=##updates##

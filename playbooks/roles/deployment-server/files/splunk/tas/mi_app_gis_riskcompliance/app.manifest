@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "info": {
+    "title": "GIS Risk & Compliance",
+    "id": {
+      "group": null,
+      "name": "mi_app_gis_riskcompliance",
+      "version": "1.0.0"
+    },
+    "author": [
+      {
+        "name": "Marriott",
+        "email": "",
+        "company": "Marriott International"
+      }
+    ],
+    "releaseDate": null,
+    "description": "GIS Risk and Compliance Dashboards App",
+    "classification": {
+      "intendedAudience": null,
+      "categories": [],
+      "developmentStatus": null
+    },
+    "commonInformationModels": null,
+    "license": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": null,
+      "text": null,
+      "uri": null
+    }
+  },
+  "dependencies": {
+  },
+  "tasks": [],
+  "inputGroups": {
+  },
+  "incompatibleApps": {
+  },
+  "platformRequirements": {
+    "splunk": {
+      "Enterprise": "*"
+    }
+  }
+}

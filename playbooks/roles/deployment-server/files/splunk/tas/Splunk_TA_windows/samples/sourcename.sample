@@ -1,0 +1,11 @@
+Service Control Manager
+Microsoft-Windows-Kernel-General 	
+Microsoft-Windows-WindowsUpdateClient 	
+Microsoft-Windows-FilterManager 	
+EventLog
+Microsoft-Windows-Kernel-Boot 	
+Microsoft-Windows-Time-Service 	
+Microsoft-Windows-Kernel-Processor-Power 	
+Microsoft-Windows-DistributedCOM 	
+Microsoft-Windows-Directory-Services-SAM
+Microsoft-Windows-Security-Auditing

@@ -1,0 +1,14 @@
+*** Script,Start running Event Management - Node Count job_12
+*** Script,Done running Event Management of ABC field - Node Count job_56
+*** Script,starting EvtMgmtNodeCount_80
+*** Script,*** Done synchronizing of svc_association ***
+EmailDigest,Email Digest complete processed=123 error=0 elapsedms=10
+Upgrade,Upgrade check: instance already running assigned version: abc-version-instance-11-11-2017_1422.zip
+Cleanup,Cleaning import sets > 7 days old
+CollectionCleaner,Starting to analyze table pa_scores_l243
+USAGEANALYTICS_UPLOADER,No new data to upload for uaa_event_no12
+com.glide.ui.ServletErrorListener,QuotaManager: Exception during quota processing: : com.glide.quota.QuotaManager.updateTransactionSnapshots(QuotaManager.java:336) com.glide.quota.QuotaManager.process(QuotaManager.java:103) com.glide.quota.QuotaManager.run(QuotaManager.java:152)
+UALicenseStatus,The SURF instance: abc0236 is not a Prod instance, no licenses to send
+ScriptBackgroundCheck, Background Script run by: system@abc on app12344.pqr1.service-now.com:vsdf01486007gs.print(gs.getProperty('encryption_wrapper.storage.enabled'));
+EvtMgmtEventProcessor, [122] Total number of events processed: 1
+EvtMgmtEventProcessor, [22] Total number of events processed: 0

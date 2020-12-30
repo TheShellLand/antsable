@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2014-06-20 02:37:24">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>This is a bi-rectional integration between splunk and Servicenow.
+This integration allows to create incidents in Servicenow based on outages and problems detected by Splunk. This also allows Splunk to pull down any data from ServiceNow tables and apply analytics to splice and dice the data.  </description>
+<inserted/>
+<name>Splunk-ServiceNow Integration</name>
+<origin_sys_id/>
+<release_date/>
+<remote_sys_id>2549849dfc306500bbd222e651be2abf</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>89c0d0e7fc1d2900bbd222e651be2a79</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<target_release>5c668567404bc1003f8e0fc5040a3290</target_release>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+<vendor_key>SPL</vendor_key>
+<version>1.0</version>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_short_description</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_short_description" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Short Description</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_short_description</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>80</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:04</sys_created_on><sys_id>9c2fc49dfc306500bbd222e651be2ac9</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:04</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XI/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:04</sys_created_on><sys_id>d3af44ddfc306500bbd222e651be2a3d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Short Description</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XI/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_short_description" name="u_splunk_incident" sys_source_table="sys_dictionary">9c2fc49dfc306500bbd222e651be2ac9</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_short_description</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:04</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>01c0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_short_description</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_d61a089dfc306500bbd222e651be2a32</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app"><sys_app action="INSERT_OR_UPDATE"><active>true</active><menu display_value="Splunk-ServiceNow Integration">e54b489dfc306500bbd222e651be2aca</menu><name>Splunk-ServiceNow Integration</name><short_description>This allows bi-directional integration between Splunk and ServiceNow</short_description><sys_app_file/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:41</sys_created_on><sys_id>d61a089dfc306500bbd222e651be2a32</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 05:55:41</sys_updated_on><user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</user_role></sys_app><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X:/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:41</sys_created_on><sys_id>a54b489dfc306500bbd222e651be2ace</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk-ServiceNow Integration</sys_name><sys_parent/><sys_path>!!0X:/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>d61a089dfc306500bbd222e651be2a32</sys_source_id><sys_source_table>sys_app</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_app_d61a089dfc306500bbd222e651be2a32</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 05:55:41</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>01c0d0e7fc1d2900bbd222e651be2a7e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>Splunk-ServiceNow Integration</target_name>
+<type>Application</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_assignment_group</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_assignment_group" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Assignment Group</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_assignment_group</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Reference">reference</internal_type><mandatory>false</mandatory><max_length>32</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference display_value="">sys_user_group</reference><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:58</sys_created_on><sys_id>57fb489dfc306500bbd222e651be2a43</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:58</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X?/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:58</sys_created_on><sys_id>03af44ddfc306500bbd222e651be2a11</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Assignment Group</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0X?/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_assignment_group" name="u_splunk_incident" sys_source_table="sys_dictionary">57fb489dfc306500bbd222e651be2a43</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_assignment_group</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:58</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>01c0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_assignment_group</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_23af44ddfc306500bbd222e651be2a4d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><condition/><description>Default access control on u_splunk_incident</description><name>u_splunk_incident</name><operation display_value="create">create</operation><script/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_id>23af44ddfc306500bbd222e651be2a4d</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:56</sys_updated_on><type display_value="record">record</type></sys_security_acl><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XN/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_id>b7af44ddfc306500bbd222e651be2a4e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_splunk_incident</sys_name><sys_parent/><sys_path>!!0XN/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>23af44ddfc306500bbd222e651be2a4d</sys_source_id><sys_source_table>sys_security_acl</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_security_acl_23af44ddfc306500bbd222e651be2a4d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:56</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>01c0d0e7fc1d2900bbd222e651be2a83</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_category</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_category" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Category</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_category</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:58</sys_created_on><sys_id>486ccc9dfc306500bbd222e651be2ab7</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:58</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X@/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:58</sys_created_on><sys_id>cbaf44ddfc306500bbd222e651be2a15</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Category</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0X@/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_category" name="u_splunk_incident" sys_source_table="sys_dictionary">486ccc9dfc306500bbd222e651be2ab7</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_category</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:58</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>05c0d0e7fc1d2900bbd222e651be2a7c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_category</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value=""/>
+<category>customer</category>
+<comments/>
+<name>sys_ui_section_c63e27aac61122860001d65226b409e8</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section section_id="c63e27aac61122860001d65226b409e8" sys_domain="global" table="sys_app_module" version="2"><sys_ui_element action="INSERT_OR_UPDATE"><element>title</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>113c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>name</element><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d53c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>order</element><position>2</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>593c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>application</element><position>3</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d93c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>hint</element><position>4</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>5d3c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>active</element><position>5</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>dd3c561dfc706500bbd222e651be2ab0</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>image</element><position>6</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>513c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.split</element><position>7</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d13c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type>.split</type></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>link_type</element><position>8</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>553c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>view_name</element><position>9</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d53c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>report</element><position>10</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>593c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>map_page</element><position>11</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d93c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>content_page</element><position>12</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>5d3c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>timeline_page</element><position>13</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>dd3c561dfc706500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>homepage</element><position>14</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>513c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>survey</element><position>15</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d13c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>survey_overwrite</element><position>16</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>553c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>roles</element><position>17</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d53c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.end_split</element><position>18</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>593c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type>.end_split</type></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>filter</element><position>19</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>d93c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>query</element><position>20</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>5d3c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>window_name</element><position>21</position><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:28:54</sys_created_on><sys_id>dd3c561dfc706500bbd222e651be2ab2</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_section display_value="">c63e27aac61122860001d65226b409e8</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:28:54</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption/><header>false</header><name>sys_app_module</name><roles/><sys_created_by>GUEST</sys_created_by><sys_created_on>2004-04-05 00:00:00</sys_created_on><sys_domain>global</sys_domain><sys_id>c63e27aac61122860001d65226b409e8</sys_id><sys_mod_count>1</sys_mod_count><sys_overrides/><sys_updated_by>glide.maint</sys_updated_by><sys_updated_on>2007-05-18 22:19:46</sys_updated_on><sys_user/><title>true</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section><sys_app_file action="INSERT_OR_UPDATE"><sys_app/><sys_code>!!02;/</sys_code><sys_created_by>GUEST</sys_created_by><sys_created_on>2004-04-05 00:00:00</sys_created_on><sys_id>95b4e41dfc68e100bbd222e651be2a37</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sys_app_module</sys_name><sys_parent display_value="Module">52e36055fc68e100bbd222e651be2af9</sys_parent><sys_path>!!-A:/!!02;/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>c63e27aac61122860001d65226b409e8</sys_source_id><sys_source_table>sys_ui_section</sys_source_table><sys_type/><sys_update_name>sys_ui_section_c63e27aac61122860001d65226b409e8</sys_update_name><sys_updated_by>glide.maint</sys_updated_by><sys_updated_on>2007-05-18 22:19:46</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>05c0d0e7fc1d2900bbd222e651be2a7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>sys_app_module</table>
+<target_name>Module</target_name>
+<type>Form Layout</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_module_6dea921dfc706500bbd222e651be2ac4</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Splunk-ServiceNow Integration">e54b489dfc306500bbd222e651be2aca</application><content_page/><filter/><hint>Click this link to contact Splunk Support</hint><homepage/><image/><link_type>DIRECT</link_type><map_page/><name/><order/><query>http://www.splunk.com/support</query><report/><roles>admin,Splunk</roles><survey/><survey_overwrite>true</survey_overwrite><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:26:07</sys_created_on><sys_domain>global</sys_domain><sys_id>6dea921dfc706500bbd222e651be2ac4</sys_id><sys_mod_count>2</sys_mod_count><sys_overrides/><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 19:53:38</sys_updated_on><timeline_page/><title>Contact Support</title><uncancelable>false</uncancelable><view_name/><window_name>_blank</window_name></sys_app_module><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y(/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:26:07</sys_created_on><sys_id>289bd21dfc706500bbd222e651be2abb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Contact Support</sys_name><sys_parent/><sys_path>!!0Y(/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>6dea921dfc706500bbd222e651be2ac4</sys_source_id><sys_source_table>sys_app_module</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_app_module_6dea921dfc706500bbd222e651be2ac4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 19:53:38</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>05c0d0e7fc1d2900bbd222e651be2a82</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>Contact Support</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_e82e9a1dfc706500bbd222e651be2afc</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_contact_type</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>e82e9a1dfc706500bbd222e651be2afc</sys_id><sys_mod_count>3</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:42</sys_updated_on><target_field>contact_type</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y,/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>242e9a1dfc706500bbd222e651be2afd</sys_id><sys_mod_count>0</sys_mod_count><sys_name>e82e9a1dfc706500bbd222e651be2afc</sys_name><sys_parent/><sys_path>!!0Y,/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>e82e9a1dfc706500bbd222e651be2afc</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_e82e9a1dfc706500bbd222e651be2afc</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:42</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>09c0d0e7fc1d2900bbd222e651be2a7b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>e82e9a1dfc706500bbd222e651be2afc</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_6c2eda1dfc706500bbd222e651be2a07</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_priority</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>6c2eda1dfc706500bbd222e651be2a07</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:51:03</sys_updated_on><target_field>priority</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y2/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a42eda1dfc706500bbd222e651be2a08</sys_id><sys_mod_count>0</sys_mod_count><sys_name>6c2eda1dfc706500bbd222e651be2a07</sys_name><sys_parent/><sys_path>!!0Y2/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>6c2eda1dfc706500bbd222e651be2a07</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_6c2eda1dfc706500bbd222e651be2a07</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:51:03</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>09c0d0e7fc1d2900bbd222e651be2a80</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>6c2eda1dfc706500bbd222e651be2a07</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>dictionary_u_splunk_incident_114fbe46cc5047b285ce8db16fe9d384</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><database><element extends="sys_import_set_row" label="Splunk Incident" name="u_splunk_incident" type="collection"><element label="Assignment Group" name="u_assignment_group" reference="sys_user_group" type="reference"/><element label="Category" max_length="40" name="u_category" type="string"/><element label="Configuration item" name="u_configuration_item" reference="cmdb_ci" type="reference"/><element label="Contact type" max_length="40" name="u_contact_type" type="string"/><element label="Impact" max_length="40" name="u_impact" type="integer"/><element label="Location" name="u_location" reference="task_location" type="reference"/><element label="Number" max_length="40" name="u_number" type="string"/><element label="Opened" max_length="40" name="u_opened" type="glide_date_time"/><element label="Opened by" name="u_opened_by" reference="sys_user" type="reference"/><element label="Priority" max_length="40" name="u_priority" type="integer"/><element label="Short Description" max_length="80" name="u_short_description" type="string"/><element label="State" max_length="40" name="u_state" type="integer"/><element label="Subcategory" max_length="40" name="u_subcategory" type="string"/><element label="Urgency" max_length="40" name="u_urgency" type="integer"/></element></database><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XV/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:58</sys_created_on><sys_id>c4bf44ddfc306500bbd222e651be2a66</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_splunk_incident</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XV/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="NULL" name="u_splunk_incident" sys_source_table="sys_dictionary">84bf44ddfc306500bbd222e651be2a65</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>dictionary_u_splunk_incident_114fbe46cc5047b285ce8db16fe9d384</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:05</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>09c0d0e7fc1d2900bbd222e651be2a81</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident</target_name>
+<type>Database field(s)</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_ec2e9a1dfc706500bbd222e651be2af7</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>create</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_number</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>ec2e9a1dfc706500bbd222e651be2af7</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:19</sys_updated_on><target_field>number</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y*/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>6c2e9a1dfc706500bbd222e651be2af8</sys_id><sys_mod_count>0</sys_mod_count><sys_name>ec2e9a1dfc706500bbd222e651be2af7</sys_name><sys_parent/><sys_path>!!0Y*/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>ec2e9a1dfc706500bbd222e651be2af7</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_ec2e9a1dfc706500bbd222e651be2af7</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:19</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>0dc0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>ec2e9a1dfc706500bbd222e651be2af7</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_opened_by</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary element="u_opened_by" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Opened By</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_opened_by</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Reference">reference</internal_type><mandatory>false</mandatory><max_length>32</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference display_value="">sys_user</reference><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>848ec89dfc306500bbd222e651be2a07</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:31:49</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XG/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>d7af44ddfc306500bbd222e651be2a34</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Opened By</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XG/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_opened_by" name="u_splunk_incident" sys_source_table="sys_dictionary">848ec89dfc306500bbd222e651be2a07</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_opened_by</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:31:49</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>0dc0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_opened_by</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_number_06bf84ddfc306500bbd222e651be2a1c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number"><sys_number action="INSERT_OR_UPDATE"><category display_value="">u_splunk_incident</category><maximum_digits>7</maximum_digits><number>1000</number><prefix>SPL</prefix><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:06</sys_created_on><sys_id>06bf84ddfc306500bbd222e651be2a1c</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:06</sys_updated_on></sys_number><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y$/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:06</sys_created_on><sys_id>8ebf84ddfc306500bbd222e651be2a1d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>SPL</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0Y$/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>06bf84ddfc306500bbd222e651be2a1c</sys_source_id><sys_source_table>sys_number</sys_source_table><sys_type/><sys_update_name>sys_number_06bf84ddfc306500bbd222e651be2a1c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:06</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>41c0d0e7fc1d2900bbd222e651be2a7c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>SPL</target_name>
+<type>Number</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_number</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary element="u_number" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Number</column_label><comments/><create_roles/><default_value>javascript:getNextObjNumberPadded();</default_value><defaultsort/><delete_roles/><dependent/><display>true</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_number</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:01</sys_created_on><sys_id>e3edc49dfc306500bbd222e651be2ac4</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 19:53:04</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XE/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:01</sys_created_on><sys_id>1faf44ddfc306500bbd222e651be2a2b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Number</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XE/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_number" name="u_splunk_incident" sys_source_table="sys_dictionary">e3edc49dfc306500bbd222e651be2ac4</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_number</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 19:53:04</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>41c0d0e7fc1d2900bbd222e651be2a7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_number</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_a42eda1dfc706500bbd222e651be2a0c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_assignment_group</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a42eda1dfc706500bbd222e651be2a0c</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:58</sys_updated_on><target_field>assignment_group</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y4/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>ec2eda1dfc706500bbd222e651be2a0c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>a42eda1dfc706500bbd222e651be2a0c</sys_name><sys_parent/><sys_path>!!0Y4/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>a42eda1dfc706500bbd222e651be2a0c</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_a42eda1dfc706500bbd222e651be2a0c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:58</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>41c0d0e7fc1d2900bbd222e651be2a82</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>a42eda1dfc706500bbd222e651be2a0c</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a11</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>create</choice_action><coalesce>true</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_short_description</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>e42eda1dfc706500bbd222e651be2a11</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:43:30</sys_updated_on><target_field>short_description</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y6/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>202eda1dfc706500bbd222e651be2a12</sys_id><sys_mod_count>0</sys_mod_count><sys_name>e42eda1dfc706500bbd222e651be2a11</sys_name><sys_parent/><sys_path>!!0Y6/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>e42eda1dfc706500bbd222e651be2a11</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a11</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:43:30</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>45c0d0e7fc1d2900bbd222e651be2a7b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>e42eda1dfc706500bbd222e651be2a11</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_6c2e9a1dfc706500bbd222e651be2afa</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>true</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_subcategory</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>6c2e9a1dfc706500bbd222e651be2afa</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:17</sys_updated_on><target_field>subcategory</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y+/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a42e9a1dfc706500bbd222e651be2afb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>6c2e9a1dfc706500bbd222e651be2afa</sys_name><sys_parent/><sys_path>!!0Y+/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>6c2e9a1dfc706500bbd222e651be2afa</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_6c2e9a1dfc706500bbd222e651be2afa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:17</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>45c0d0e7fc1d2900bbd222e651be2a80</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>6c2e9a1dfc706500bbd222e651be2afa</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_b7af44ddfc306500bbd222e651be2a53</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><condition/><description>Default access control on u_splunk_incident</description><name>u_splunk_incident</name><operation display_value="read">read</operation><script/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>b7af44ddfc306500bbd222e651be2a53</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><type display_value="record">record</type></sys_security_acl><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XP/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>f7af44ddfc306500bbd222e651be2a54</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_splunk_incident</sys_name><sys_parent/><sys_path>!!0XP/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>b7af44ddfc306500bbd222e651be2a53</sys_source_id><sys_source_table>sys_security_acl</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_security_acl_b7af44ddfc306500bbd222e651be2a53</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>45c0d0e7fc1d2900bbd222e651be2a81</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_urgency</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_urgency" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Urgency</column_label><comments/><create_roles/><default_value>3</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_urgency</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Integer">integer</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:40:48</sys_created_on><sys_id>8dbe1e1dfc706500bbd222e651be2a53</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:40:48</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y8/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:40:48</sys_created_on><sys_id>27ee1e1dfc706500bbd222e651be2aea</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Urgency</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0Y8/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_urgency" name="u_splunk_incident" sys_source_table="sys_dictionary">8dbe1e1dfc706500bbd222e651be2a53</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_urgency</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:40:48</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>49c0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_urgency</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_bfaf44ddfc306500bbd222e651be2a55</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>bfaf44ddfc306500bbd222e651be2a55</sys_id><sys_mod_count>0</sys_mod_count><sys_security_acl display_value="u_splunk_incident">b7af44ddfc306500bbd222e651be2a53</sys_security_acl><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><sys_user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</sys_user_role></sys_security_acl_role><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XQ/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>ffaf44ddfc306500bbd222e651be2a56</sys_id><sys_mod_count>0</sys_mod_count><sys_name>bfaf44ddfc306500bbd222e651be2a55</sys_name><sys_parent/><sys_path>!!0XQ/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>bfaf44ddfc306500bbd222e651be2a55</sys_source_id><sys_source_table>sys_security_acl_role</sys_source_table><sys_type/><sys_update_name>sys_security_acl_role_bfaf44ddfc306500bbd222e651be2a55</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>49c0d0e7fc1d2900bbd222e651be2a7e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident.Splunk</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_opened</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary element="u_opened" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Opened</column_label><comments/><create_roles/><default_value>javascript:gs.nowDateTime()</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_opened</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="">glide_date_time</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:02</sys_created_on><sys_id>f54e449dfc306500bbd222e651be2ad4</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-23 03:36:56</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XF/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:02</sys_created_on><sys_id>53af44ddfc306500bbd222e651be2a30</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Opened</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XF/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_opened" name="u_splunk_incident" sys_source_table="sys_dictionary">f54e449dfc306500bbd222e651be2ad4</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_opened</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-23 03:36:56</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>49c0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_opened</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_impact</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_impact" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Impact</column_label><comments/><create_roles/><default_value>4</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_impact</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Integer">integer</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:00</sys_created_on><sys_id>da7d40ddfc306500bbd222e651be2acc</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:00</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XC/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:00</sys_created_on><sys_id>8faf44ddfc306500bbd222e651be2a22</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Impact</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XC/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_impact" name="u_splunk_incident" sys_source_table="sys_dictionary">da7d40ddfc306500bbd222e651be2acc</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_impact</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:00</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>4dc0d0e7fc1d2900bbd222e651be2a79</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_impact</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_242eda1dfc706500bbd222e651be2a13</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_location</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>242eda1dfc706500bbd222e651be2a13</sys_id><sys_mod_count>3</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-28 16:30:21</sys_updated_on><target_field>location</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y7/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>6c2eda1dfc706500bbd222e651be2a13</sys_id><sys_mod_count>0</sys_mod_count><sys_name>242eda1dfc706500bbd222e651be2a13</sys_name><sys_parent/><sys_path>!!0Y7/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>242eda1dfc706500bbd222e651be2a13</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_242eda1dfc706500bbd222e651be2a13</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-28 16:30:21</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>4dc0d0e7fc1d2900bbd222e651be2a7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>242eda1dfc706500bbd222e651be2a13</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_splunk_incident_u_contact_type_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_contact_type" language="en" table="u_splunk_incident"><sys_documentation action="INSERT_OR_UPDATE"><element>u_contact_type</element><help/><hint/><label>Contact Type</label><language>en</language><name>u_splunk_incident</name><plural>Contact Types</plural><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:00</sys_created_on><sys_id>60bf44ddfc306500bbd222e651be2a94</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:28:41</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X[/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:00</sys_created_on><sys_id>a4bf44ddfc306500bbd222e651be2a95</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Contact Type</sys_name><sys_parent display_value="Contact type">4baf44ddfc306500bbd222e651be2a1e</sys_parent><sys_path>!!0XL/!!0XB/!!0X[/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_contact_type" language="en" name="u_splunk_incident" sys_source_table="sys_documentation">60bf44ddfc306500bbd222e651be2a94</sys_source_id><sys_source_table>sys_documentation</sys_source_table><sys_type/><sys_update_name>sys_documentation_u_splunk_incident_u_contact_type_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:28:41</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>4dc0d0e7fc1d2900bbd222e651be2a7e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.Contact Type</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_map_dcdd9a1dfc706500bbd222e651be2a4e</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_map"><sys_transform_map action="INSERT_OR_UPDATE"><active>true</active><copy_empty_fields>false</copy_empty_fields><enforce_mandatory_fields>Only Mapped Fields</enforce_mandatory_fields><name>Splunk Incident Transformation</name><order>100</order><run_business_rules>true</run_business_rules><run_script>false</run_script><script><![CDATA[/**
+ * For variables go to: http://wiki.service-now.com/index.php?title=Import_Sets
+ **/ 
+]]]]><![CDATA[></script><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:10</sys_created_on><sys_id>dcdd9a1dfc706500bbd222e651be2a4e</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:10</sys_updated_on><target_table>incident</target_table></sys_transform_map><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y)/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:10</sys_created_on><sys_id>661e561dfc706500bbd222e651be2aa5</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk Incident Transformation</sys_name><sys_parent/><sys_path>!!0Y)/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>dcdd9a1dfc706500bbd222e651be2a4e</sys_source_id><sys_source_table>sys_transform_map</sys_source_table><sys_type/><sys_update_name>sys_transform_map_dcdd9a1dfc706500bbd222e651be2a4e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:10</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>4dc0d0e7fc1d2900bbd222e651be2a82</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>Splunk Incident Transformation</target_name>
+<type>Table Transform Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a05</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_impact</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>e42eda1dfc706500bbd222e651be2a05</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:28</sys_updated_on><target_field>impact</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y1/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>202eda1dfc706500bbd222e651be2a06</sys_id><sys_mod_count>0</sys_mod_count><sys_name>e42eda1dfc706500bbd222e651be2a05</sys_name><sys_parent/><sys_path>!!0Y1/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>e42eda1dfc706500bbd222e651be2a05</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a05</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:28</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>81c0d0e7fc1d2900bbd222e651be2a7b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>e42eda1dfc706500bbd222e651be2a05</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_682eda1dfc706500bbd222e651be2a0a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_state</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>682eda1dfc706500bbd222e651be2a0a</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:00</sys_updated_on><target_field>state</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y3/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a02eda1dfc706500bbd222e651be2a0b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>682eda1dfc706500bbd222e651be2a0a</sys_name><sys_parent/><sys_path>!!0Y3/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>682eda1dfc706500bbd222e651be2a0a</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_682eda1dfc706500bbd222e651be2a0a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:00</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>81c0d0e7fc1d2900bbd222e651be2a80</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>682eda1dfc706500bbd222e651be2a0a</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_b3af44ddfc306500bbd222e651be2a5d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><condition/><description>Default access control on u_splunk_incident</description><name>u_splunk_incident</name><operation display_value="delete">delete</operation><script/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>b3af44ddfc306500bbd222e651be2a5d</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><type display_value="record">record</type></sys_security_acl><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XT/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>f3af44ddfc306500bbd222e651be2a5e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_splunk_incident</sys_name><sys_parent/><sys_path>!!0XT/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>b3af44ddfc306500bbd222e651be2a5d</sys_source_id><sys_source_table>sys_security_acl</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_security_acl_b3af44ddfc306500bbd222e651be2a5d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>81c0d0e7fc1d2900bbd222e651be2a81</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_application_e54b489dfc306500bbd222e651be2aca</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category><description/><device_type>browser</device_type><hint/><name>u_splunk-servicenow integration</name><order>100</order><roles>Splunk,admin</roles><sys_app_file display_value="Splunk-ServiceNow Integration">694b489dfc306500bbd222e651be2acb</sys_app_file><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:40</sys_created_on><sys_domain>global</sys_domain><sys_id>e54b489dfc306500bbd222e651be2aca</sys_id><sys_mod_count>2</sys_mod_count><sys_overrides/><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:29:46</sys_updated_on><title>Splunk-ServiceNow Integration</title><view_name/></sys_app_application><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X9/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:40</sys_created_on><sys_id>694b489dfc306500bbd222e651be2acb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk-ServiceNow Integration</sys_name><sys_parent/><sys_path>!!0X9/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>e54b489dfc306500bbd222e651be2aca</sys_source_id><sys_source_table>sys_app_application</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_app_application_e54b489dfc306500bbd222e651be2aca</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:29:46</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>85c0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>Splunk-ServiceNow Integration</target_name>
+<type>Application Menu</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value=""/>
+<category>customer</category>
+<comments/>
+<name>sys_choice_task_impact</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_choice field="impact" table="task"><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>impact</element><hint/><inactive>false</inactive><label>1 - High</label><language>en</language><name>task</name><sequence>1</sequence><sys_created_by>system</sys_created_by><sys_created_on>2014-05-06 21:01:00</sys_created_on><sys_domain>global</sys_domain><sys_id>60dd5051fc28e100bbd222e651be2a66</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2014-05-06 21:01:00</sys_updated_on><value>1</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>impact</element><hint/><inactive>false</inactive><label>2 - Medium</label><language>en</language><name>task</name><sequence>2</sequence><sys_created_by>system</sys_created_by><sys_created_on>2014-05-06 21:01:00</sys_created_on><sys_domain>global</sys_domain><sys_id>a0dd5051fc28e100bbd222e651be2a66</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2014-05-06 21:01:00</sys_updated_on><value>2</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>impact</element><hint/><inactive>false</inactive><label>3 - Low</label><language>en</language><name>task</name><sequence>3</sequence><sys_created_by>system</sys_created_by><sys_created_on>2014-05-06 21:01:00</sys_created_on><sys_domain>global</sys_domain><sys_id>e0dd5051fc28e100bbd222e651be2a66</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>system</sys_updated_by><sys_updated_on>2014-05-06 21:01:00</sys_updated_on><value>3</value></sys_choice><sys_choice action="INSERT_OR_UPDATE"><dependent_value/><element>impact</element><hint/><inactive>false</inactive><label>4</label><language>en</language><name>task</name><sequence>4</sequence><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:48:02</sys_created_on><sys_domain>global</sys_domain><sys_id>6d90625dfc706500bbd222e651be2a12</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:48:02</sys_updated_on><value>4</value></sys_choice></sys_choice></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>85c0d0e7fc1d2900bbd222e651be2a7e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>task</table>
+<target_name>Task.Impact</target_name>
+<type>Choice list</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_contact_type</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary element="u_contact_type" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Contact Type</column_label><comments/><create_roles/><default_value>Phone</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_contact_type</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>f90d889dfc306500bbd222e651be2a04</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:28:41</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XB/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>4baf44ddfc306500bbd222e651be2a1e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Contact Type</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XB/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_contact_type" name="u_splunk_incident" sys_source_table="sys_dictionary">f90d889dfc306500bbd222e651be2a04</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_contact_type</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:28:41</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>85c0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_contact_type</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_module_efaf44ddfc306500bbd222e651be2a49</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Splunk-ServiceNow Integration">e54b489dfc306500bbd222e651be2aca</application><content_page/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><name>u_splunk_incident</name><order/><query/><report/><roles>Splunk,admin</roles><survey/><survey_overwrite>true</survey_overwrite><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_domain>global</sys_domain><sys_id>efaf44ddfc306500bbd222e651be2a49</sys_id><sys_mod_count>1</sys_mod_count><sys_overrides/><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 20:19:42</sys_updated_on><timeline_page/><title>Splunk Incidents</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XM/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_id>63af44ddfc306500bbd222e651be2a4b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk Incidents</sys_name><sys_parent/><sys_path>!!0XM/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>efaf44ddfc306500bbd222e651be2a49</sys_source_id><sys_source_table>sys_app_module</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_app_module_efaf44ddfc306500bbd222e651be2a49</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-27 20:19:42</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>89c0d0e7fc1d2900bbd222e651be2a7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incidents</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_a82e9a1dfc706500bbd222e651be2aff</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>create</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_opened</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a82e9a1dfc706500bbd222e651be2aff</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:19</sys_updated_on><target_field>opened_at</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y-/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>e02eda1dfc706500bbd222e651be2a00</sys_id><sys_mod_count>0</sys_mod_count><sys_name>a82e9a1dfc706500bbd222e651be2aff</sys_name><sys_parent/><sys_path>!!0Y-/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>a82e9a1dfc706500bbd222e651be2aff</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_a82e9a1dfc706500bbd222e651be2aff</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 16:37:19</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>89c0d0e7fc1d2900bbd222e651be2a82</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>a82e9a1dfc706500bbd222e651be2aff</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_splunk_incident_u_configuration_item_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_configuration_item" language="en" table="u_splunk_incident"><sys_documentation action="INSERT_OR_UPDATE"><element>u_configuration_item</element><help/><hint/><label>Configuration Item</label><language>en</language><name>u_splunk_incident</name><plural>Configuration Items</plural><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>5cbf44ddfc306500bbd222e651be2a87</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:27:36</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XZ/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>90bf44ddfc306500bbd222e651be2a89</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Configuration Item</sys_name><sys_parent display_value="Configuration item">83af44ddfc306500bbd222e651be2a1a</sys_parent><sys_path>!!0XL/!!0XA/!!0XZ/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_configuration_item" language="en" name="u_splunk_incident" sys_source_table="sys_documentation">5cbf44ddfc306500bbd222e651be2a87</sys_source_id><sys_source_table>sys_documentation</sys_source_table><sys_type/><sys_update_name>sys_documentation_u_splunk_incident_u_configuration_item_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:27:36</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>8dc0d0e7fc1d2900bbd222e651be2a7b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.Configuration Item</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_9f0f5e1dfc706500bbd222e651be2ab5</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>false</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_urgency</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:41:19</sys_created_on><sys_id>9f0f5e1dfc706500bbd222e651be2ab5</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:44</sys_updated_on><target_field>urgency</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y:/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:41:19</sys_created_on><sys_id>d70f5e1dfc706500bbd222e651be2ab6</sys_id><sys_mod_count>0</sys_mod_count><sys_name>9f0f5e1dfc706500bbd222e651be2ab5</sys_name><sys_parent/><sys_path>!!0Y:/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>9f0f5e1dfc706500bbd222e651be2ab5</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_9f0f5e1dfc706500bbd222e651be2ab5</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-16 16:50:44</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>8dc0d0e7fc1d2900bbd222e651be2a7c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>9f0f5e1dfc706500bbd222e651be2ab5</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_33af44ddfc306500bbd222e651be2a50</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_id>33af44ddfc306500bbd222e651be2a50</sys_id><sys_mod_count>0</sys_mod_count><sys_security_acl display_value="u_splunk_incident">23af44ddfc306500bbd222e651be2a4d</sys_security_acl><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:56</sys_updated_on><sys_user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</sys_user_role></sys_security_acl_role><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XO/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:56</sys_created_on><sys_id>b7af44ddfc306500bbd222e651be2a51</sys_id><sys_mod_count>0</sys_mod_count><sys_name>33af44ddfc306500bbd222e651be2a50</sys_name><sys_parent/><sys_path>!!0XO/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>33af44ddfc306500bbd222e651be2a50</sys_source_id><sys_source_table>sys_security_acl_role</sys_source_table><sys_type/><sys_update_name>sys_security_acl_role_33af44ddfc306500bbd222e651be2a50</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:56</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>8dc0d0e7fc1d2900bbd222e651be2a80</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident.Splunk</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_priority</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_priority" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Priority</column_label><comments/><create_roles/><default_value>4</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_priority</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Integer">integer</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>f3de445dfc306500bbd222e651be2aaa</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:03</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XH/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>9faf44ddfc306500bbd222e651be2a38</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Priority</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XH/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_priority" name="u_splunk_incident" sys_source_table="sys_dictionary">f3de445dfc306500bbd222e651be2aaa</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_priority</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:03</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>8dc0d0e7fc1d2900bbd222e651be2a81</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_priority</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_location</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_location" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Location</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_location</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Reference">reference</internal_type><mandatory>false</mandatory><max_length>32</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference display_value="">task_location</reference><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:01</sys_created_on><sys_id>b3ad80ddfc306500bbd222e651be2a25</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:01</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XD/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:01</sys_created_on><sys_id>47af44ddfc306500bbd222e651be2a27</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Location</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XD/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_location" name="u_splunk_incident" sys_source_table="sys_dictionary">b3ad80ddfc306500bbd222e651be2a25</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_location</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:01</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c1c0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_location</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_282eda1dfc706500bbd222e651be2a01</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>true</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_opened_by</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>282eda1dfc706500bbd222e651be2a01</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:09</sys_updated_on><target_field>opened_by</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y./</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>602eda1dfc706500bbd222e651be2a02</sys_id><sys_mod_count>0</sys_mod_count><sys_name>282eda1dfc706500bbd222e651be2a01</sys_name><sys_parent/><sys_path>!!0Y./</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>282eda1dfc706500bbd222e651be2a01</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_282eda1dfc706500bbd222e651be2a01</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:09</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c1c0d0e7fc1d2900bbd222e651be2a7e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>282eda1dfc706500bbd222e651be2a01</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value=""/>
+<category>customer</category>
+<comments/>
+<name>sys_user_role_842b489dfc306500bbd222e651be2ab1</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><grantable>true</grantable><includes_roles/><name>Splunk</name><sys_app_file/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:19</sys_created_on><sys_id>842b489dfc306500bbd222e651be2ab1</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 05:55:19</sys_updated_on></sys_user_role><sys_app_file action="INSERT_OR_UPDATE"><sys_app/><sys_code>!!0X8/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 05:55:19</sys_created_on><sys_id>803b489dfc306500bbd222e651be2ab7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk</sys_name><sys_parent/><sys_path>!!0X8/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id name="Splunk" sys_source_table="sys_user_role">842b489dfc306500bbd222e651be2ab1</sys_source_id><sys_source_table>sys_user_role</sys_source_table><sys_type/><sys_update_name>sys_user_role_842b489dfc306500bbd222e651be2ab1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 05:55:19</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c1c0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>Splunk</target_name>
+<type>Role</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_3faf44ddfc306500bbd222e651be2a5a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>3faf44ddfc306500bbd222e651be2a5a</sys_id><sys_mod_count>0</sys_mod_count><sys_security_acl display_value="u_splunk_incident">37af44ddfc306500bbd222e651be2a58</sys_security_acl><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><sys_user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</sys_user_role></sys_security_acl_role><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XS/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>7faf44ddfc306500bbd222e651be2a5b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>3faf44ddfc306500bbd222e651be2a5a</sys_name><sys_parent/><sys_path>!!0XS/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>3faf44ddfc306500bbd222e651be2a5a</sys_source_id><sys_source_table>sys_security_acl_role</sys_source_table><sys_type/><sys_update_name>sys_security_acl_role_3faf44ddfc306500bbd222e651be2a5a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c1c0d0e7fc1d2900bbd222e651be2a83</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident.Splunk</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_88bf44ddfc306500bbd222e651be2a5f</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>88bf44ddfc306500bbd222e651be2a5f</sys_id><sys_mod_count>0</sys_mod_count><sys_security_acl display_value="u_splunk_incident">b3af44ddfc306500bbd222e651be2a5d</sys_security_acl><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><sys_user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</sys_user_role></sys_security_acl_role><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XU/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>c8bf44ddfc306500bbd222e651be2a60</sys_id><sys_mod_count>0</sys_mod_count><sys_name>88bf44ddfc306500bbd222e651be2a5f</sys_name><sys_parent/><sys_path>!!0XU/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>88bf44ddfc306500bbd222e651be2a5f</sys_source_id><sys_source_table>sys_security_acl_role</sys_source_table><sys_type/><sys_update_name>sys_security_acl_role_88bf44ddfc306500bbd222e651be2a5f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c5c0d0e7fc1d2900bbd222e651be2a7c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident.Splunk</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_state</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_state" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>State</column_label><comments/><create_roles/><default_value>1</default_value><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_state</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Integer">integer</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:05</sys_created_on><sys_id>5e4f40ddfc306500bbd222e651be2a46</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:05</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XJ/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:05</sys_created_on><sys_id>1baf44ddfc306500bbd222e651be2a41</sys_id><sys_mod_count>0</sys_mod_count><sys_name>State</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XJ/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_state" name="u_splunk_incident" sys_source_table="sys_dictionary">5e4f40ddfc306500bbd222e651be2a46</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_state</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:05</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c5c0d0e7fc1d2900bbd222e651be2a7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_state</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_documentation_u_splunk_incident_u_opened_by_en</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_documentation element="u_opened_by" language="en" table="u_splunk_incident"><sys_documentation action="INSERT_OR_UPDATE"><element>u_opened_by</element><help/><hint/><label>Opened By</label><language>en</language><name>u_splunk_incident</name><plural>Opened Bys</plural><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>99bf44ddfc306500bbd222e651be2ae6</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:31:49</sys_updated_on><url/><url_target/></sys_documentation></sys_documentation><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0X|/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:03</sys_created_on><sys_id>ddbf44ddfc306500bbd222e651be2ae7</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Opened By</sys_name><sys_parent display_value="Opened by">d7af44ddfc306500bbd222e651be2a34</sys_parent><sys_path>!!0XL/!!0XG/!!0X|/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_opened_by" language="en" name="u_splunk_incident" sys_source_table="sys_documentation">99bf44ddfc306500bbd222e651be2ae6</sys_source_id><sys_source_table>sys_documentation</sys_source_table><sys_type/><sys_update_name>sys_documentation_u_splunk_incident_u_opened_by_en</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:31:49</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c5c0d0e7fc1d2900bbd222e651be2a82</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.Opened By</target_name>
+<type>Field Label</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_37af44ddfc306500bbd222e651be2a58</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><condition/><description>Default access control on u_splunk_incident</description><name>u_splunk_incident</name><operation display_value="write">write</operation><script/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>37af44ddfc306500bbd222e651be2a58</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on><type display_value="record">record</type></sys_security_acl><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XR/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:57</sys_created_on><sys_id>77af44ddfc306500bbd222e651be2a59</sys_id><sys_mod_count>0</sys_mod_count><sys_name>u_splunk_incident</sys_name><sys_parent/><sys_path>!!0XR/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>37af44ddfc306500bbd222e651be2a58</sys_source_id><sys_source_table>sys_security_acl</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_security_acl_37af44ddfc306500bbd222e651be2a58</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:57</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c9c0d0e7fc1d2900bbd222e651be2a7b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>u_splunk_incident</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action/>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_configuration_item</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary element="u_configuration_item" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Configuration Item</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_configuration_item</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="Reference">reference</internal_type><mandatory>false</mandatory><max_length>32</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference display_value="">cmdb_ci</reference><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>58ec805dfc306500bbd222e651be2ae4</sys_id><sys_mod_count>1</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:27:36</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XA/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:59</sys_created_on><sys_id>83af44ddfc306500bbd222e651be2a1a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Configuration Item</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XA/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_configuration_item" name="u_splunk_incident" sys_source_table="sys_dictionary">58ec805dfc306500bbd222e651be2ae4</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_configuration_item</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-20 18:27:36</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c9c0d0e7fc1d2900bbd222e651be2a7c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_configuration_item</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_6c2eda1dfc706500bbd222e651be2a0e</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>true</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_category</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>6c2eda1dfc706500bbd222e651be2a0e</sys_id><sys_mod_count>2</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:25</sys_updated_on><target_field>category</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y5/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>a42eda1dfc706500bbd222e651be2a0f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>6c2eda1dfc706500bbd222e651be2a0e</sys_name><sys_parent/><sys_path>!!0Y5/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>6c2eda1dfc706500bbd222e651be2a0e</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_6c2eda1dfc706500bbd222e651be2a0e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-06-10 16:26:25</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c9c0d0e7fc1d2900bbd222e651be2a80</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>6c2eda1dfc706500bbd222e651be2a0e</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_db_object_b2fb0c9dfc306500bbd222e651be2a98</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object"><sys_db_object action="INSERT_OR_UPDATE"><create_access_controls>true</create_access_controls><is_extendable>false</is_extendable><label>Splunk Incident</label><name>u_splunk_incident</name><number_ref/><provider_class/><super_class display_value="Import Set Row" name="sys_import_set_row">915edc91fc28e100bbd222e651be2a6c</super_class><sys_app_file/><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:55</sys_created_on><sys_id>b2fb0c9dfc306500bbd222e651be2a98</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:14:55</sys_updated_on><user_role display_value="Splunk" name="Splunk">842b489dfc306500bbd222e651be2ab1</user_role></sys_db_object><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XL/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:14:55</sys_created_on><sys_id>a3af44ddfc306500bbd222e651be2a49</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Splunk Incident</sys_name><sys_parent/><sys_path>!!0XL/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id name="u_splunk_incident" sys_source_table="sys_db_object">b2fb0c9dfc306500bbd222e651be2a98</sys_source_id><sys_source_table>sys_db_object</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_db_object_b2fb0c9dfc306500bbd222e651be2a98</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:06</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>c9c0d0e7fc1d2900bbd222e651be2a81</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident</target_name>
+<type>Table</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a03</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_transform_entry"><sys_transform_entry action="INSERT_OR_UPDATE"><choice_action>ignore</choice_action><coalesce>true</coalesce><coalesce_case_sensitive>false</coalesce_case_sensitive><coalesce_empty_fields>false</coalesce_empty_fields><date_format>yyyy-MM-dd hh:mm:ss</date_format><map display_value="Splunk Incident Transformation">dcdd9a1dfc706500bbd222e651be2a4e</map><reference_value_field/><source_field>u_configuration_item</source_field><source_script/><source_table>u_splunk_incident</source_table><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>e42eda1dfc706500bbd222e651be2a03</sys_id><sys_mod_count>4</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-28 16:30:35</sys_updated_on><target_field>cmdb_ci</target_field><target_table>incident</target_table><use_source_script>false</use_source_script></sys_transform_entry><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0Y0/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 16:37:19</sys_created_on><sys_id>202eda1dfc706500bbd222e651be2a04</sys_id><sys_mod_count>0</sys_mod_count><sys_name>e42eda1dfc706500bbd222e651be2a03</sys_name><sys_parent/><sys_path>!!0Y0/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id>e42eda1dfc706500bbd222e651be2a03</sys_source_id><sys_source_table>sys_transform_entry</sys_source_table><sys_type/><sys_update_name>sys_transform_entry_e42eda1dfc706500bbd222e651be2a03</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-28 16:30:35</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>cdc0d0e7fc1d2900bbd222e651be2a7a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table/>
+<target_name>e42eda1dfc706500bbd222e651be2a03</target_name>
+<type>Field Map</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT</action>
+<application display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</application>
+<category>customer</category>
+<comments/>
+<name>sys_dictionary_u_splunk_incident_u_subcategory</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT" element="u_subcategory" table="u_splunk_incident"><active>true</active><array>false</array><attributes/><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Subcategory</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><element>u_subcategory</element><element_reference>false</element_reference><foreign_database/><internal_type display_value="String">string</internal_type><mandatory>false</mandatory><max_length>40</max_length><name>u_splunk_incident</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference/><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_type/><sizeclass/><spell_check>false</spell_check><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:05</sys_created_on><sys_id>846f40ddfc306500bbd222e651be2a4c</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:05</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary><sys_app_file action="INSERT_OR_UPDATE"><sys_app display_value="Splunk-ServiceNow Integration">d61a089dfc306500bbd222e651be2a32</sys_app><sys_code>!!0XK/</sys_code><sys_created_by>admin</sys_created_by><sys_created_on>2014-05-19 06:15:05</sys_created_on><sys_id>6faf44ddfc306500bbd222e651be2a45</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Subcategory</sys_name><sys_parent display_value="Splunk Incident">a3af44ddfc306500bbd222e651be2a49</sys_parent><sys_path>!!0XL/!!0XK/</sys_path><sys_policy/><sys_source_deleted>false</sys_source_deleted><sys_source_id element="u_subcategory" name="u_splunk_incident" sys_source_table="sys_dictionary">846f40ddfc306500bbd222e651be2a4c</sys_source_id><sys_source_table>sys_dictionary</sys_source_table><sys_type>code</sys_type><sys_update_name>sys_dictionary_u_splunk_incident_u_subcategory</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2014-05-19 06:15:05</sys_updated_on></sys_app_file></record_update>]]></payload>
+<remote_update_set display_value="Splunk-ServiceNow Integration">89c0d0e7fc1d2900bbd222e651be2a79</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2014-06-20 02:37:24</sys_created_on>
+<sys_id>cdc0d0e7fc1d2900bbd222e651be2a7f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2014-06-20 02:37:24</sys_updated_on>
+<table>u_splunk_incident</table>
+<target_name>Splunk Incident.u_subcategory</target_name>
+<type>Dictionary</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>

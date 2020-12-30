@@ -1,0 +1,5 @@
+20110414114247.083068
+Name=##Instance##
+PercentProcessorTime=##Proc_Time##
+PercentUserTime=##Percent_Time##
+wmi_type=CPUTime

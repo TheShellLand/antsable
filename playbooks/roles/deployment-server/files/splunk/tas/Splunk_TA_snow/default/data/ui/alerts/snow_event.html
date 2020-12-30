@@ -1,0 +1,63 @@
+<form class="form-horizontal form-complex">
+<style>
+    .alert-save-as .trigger-actions .alert-actions-control-group .more-info .control-label, .alert-edit .trigger-actions .alert-actions-control-group .more-info .control-label{
+        width: 80px;
+        padding-right: 10px;
+    }
+</style>
+<div class="control-group">
+	<label class="control-label" for="snow_event_account">Select Account <span class="required">*</span> </label>
+    <div class="controls">
+		<splunk-search-dropdown name="action.snow_event.param.account" id="snow_event_account" label-field="title" value-field="title" search="| rest servicesNS/nobody/Splunk_TA_snow/admin/splunk_ta_snow_account | dedup title"/>
+                <span class="help-block"> 
+                    <a class="external" href="/app/Splunk_TA_snow/configuration" target="_blank" rel="noopener noreferrer">
+                        Configure a new account
+                    </a>
+                    Reopen this pop-up after creating a new account
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_event_node">Node <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_event.param.node" id="snow_event_node"/>
+                <span class="help-block"> 
+                    The physical or virtual device on which the event occurred
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_event_type">Type <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_event.param.type" id="snow_event_type"/>
+                <span class="help-block"> 
+                    Event type, as defined in ServiceNow Event Management
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_event_resource">Resource <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_event.param.resource" id="snow_event_resource"/>
+                <span class="help-block"> 
+                    The component on the node to which the event applies
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_event_severity">Severity <span class="required">*</span> </label>
+    <div class="controls">
+	<input type="text" name="action.snow_event.param.severity" id="snow_event_severity"/>
+                <span class="help-block"> 
+                    Numerical value for the severity of the event
+                </span>
+    </div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="snow_event_description">Description  </label>
+    <div class="controls">
+	<textarea type="text" name="action.snow_event.param.description" style="height:120px;" id="snow_event_description">
+	</textarea>
+    </div>
+</div>
+</form>

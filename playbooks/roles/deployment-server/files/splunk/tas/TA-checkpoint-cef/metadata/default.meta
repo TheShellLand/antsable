@@ -1,0 +1,13 @@
+# shared Application-level permissions
+[]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[views/configuration]
+owner = none
+export = none
+
+[views/inputs]
+owner = none
+export = none
+

@@ -1,0 +1,19 @@
+<panel>
+  <title>ServiceNow - Incident Count by Location</title>
+    <map>
+    <search>
+      <query>sourcetype=snow:incident incident_state &lt; 7 location != "" latitude != "" longitude != "" location_name != "" | where isnotnull(location) AND isnotnull(longitude) AND isnotnull(latitude)  | stats count, max(latitude) as latitude, max(longitude) as longitude by location_name | table latitude, longitude, count</query>
+      <earliest>-30d@h</earliest>
+      <latest>now</latest>
+    </search>
+    <option name="mapping.data.maxClusters">100</option>
+    <option name="mapping.drilldown">all</option>
+    <option name="mapping.map.center">(0,0)</option>
+    <option name="mapping.map.zoom">2</option>
+    <option name="mapping.markerLayer.markerMaxSize">50</option>
+    <option name="mapping.markerLayer.markerMinSize">10</option>
+    <option name="mapping.markerLayer.markerOpacity">0.8</option>
+    <option name="mapping.tileLayer.maxZoom">7</option>
+    <option name="mapping.tileLayer.minZoom">0</option>
+  </map>
+</panel>

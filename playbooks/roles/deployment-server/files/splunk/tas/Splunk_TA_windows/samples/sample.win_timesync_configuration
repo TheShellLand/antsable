@@ -1,0 +1,57 @@
+Current time: 15-03-2018 11:05:35.84 
+[Configuration]
+
+EventLogFlags: ##EventLogFlags## (Local)
+AnnounceFlags: ##AnnounceFlags## (Local)
+TimeJumpAuditOffset: ##TimeJumpAuditOffset##28800 (Local)
+MinPollInterval: ##PollingInterval## (Local)
+MaxPollInterval: ##PollingInterval## (Local)
+MaxNegPhaseCorrection: ##PhaseCorrection## (Local)
+MaxPosPhaseCorrection: ##PhaseCorrection## (Local)
+MaxAllowedPhaseOffset: ##HundredInteger## (Local)
+
+FrequencyCorrectRate: ##SmallInteger## (Local)
+PollAdjustFactor: ##SmallInteger## (Local)
+LargePhaseOffset: ##LargePhaseOffset## (Local)
+SpikeWatchPeriod: ##HundredInteger## (Local)
+LocalClockDispersion: ##SmallInteger## (Local)
+HoldPeriod: ##SmallInteger## (Local)
+PhaseCorrectRate: ##SmallInteger## (Local)
+UpdateInterval: ##HundredInteger## (Local)
+
+FileLogName: ##FileName##
+FileLogEntries: ##FileLogNumber##  
+FileLogSize: ##FileLogNumber##
+FileLogFlags: ##FileLogNumber##
+
+[TimeProviders]
+NtpClient (Local)
+DllName: ##DllName## (Local)
+Enabled: ##Enabled## (Local)
+InputProvider: ##SmallInteger## (Local)
+CrossSiteSyncFlags: ##SmallInteger## (Local)
+AllowNonstandardModeCombinations: ##SmallInteger## (Local)
+ResolvePeerBackoffMinutes: ##SmallInteger## (Local)
+ResolvePeerBackoffMaxTimes: ##SmallInteger## (Local)
+CompatibilityFlags: ##CompatibilityFlags##2147483648 (Local)
+EventLogFlags: ##SmallInteger## (Local)
+LargeSampleSkew: ##SmallInteger## (Local)
+SpecialPollInterval: ##HundredInteger## (Local)
+Type: ##Type## (Local)
+NtpServer:  ##Hex_Text##
+
+NtpServer (Local)
+DllName: ##file_path####FileName##.dll (Local)
+Enabled: ##Enabled## (Local)
+InputProvider: ##SmallInteger## (Local)
+AllowNonstandardModeCombinations: ##SmallInteger## (Local)
+EventLogFlags: ##SmallInteger## (##Hex_Text##)
+
+VMICTimeProvider (Local)
+DllName: ##file_path####FileName##.dll (Local)
+Enabled: ##Enabled## (Local)
+InputProvider: ##SmallInteger## (Local)
+
+Time zone: Current:TIME_ZONE_ID_UNKNOWN Bias: ##Bias##min (UTC=LocalTime+Bias)
+  [Standard Name:"##Country## Standard Time" Bias:##Bias##min Date:(unspecified)]
+  [Daylight Name:"##Country## Daylight Time" Bias:##Bias##min Date:(unspecified)]

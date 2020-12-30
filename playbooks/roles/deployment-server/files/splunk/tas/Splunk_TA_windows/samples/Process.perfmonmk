@@ -1,0 +1,6 @@
+01/25/2018 23:35:50.324 +0530
+collection=ProcessMk
+category=ProcessMk
+object=Process
+instance	%_Processor_Time	%_User_Time	%_Privileged_Time	Virtual_Bytes_Peak	Virtual_Bytes	Page_Faults/sec	Working_Set_Peak	Working_Set	Page_File_Bytes_Peak	Page_File_Bytes	Private_Bytes	Thread_Count	Priority_Base	Elapsed_Time	ID_Process	Creating_Process_ID	Pool_Paged_Bytes	Pool_Nonpaged_Bytes	Handle_Count	IO_Read_Operations/sec	IO_Write_Operations/sec	IO_Data_Operations/sec	IO_Other_Operations/sec	IO_Read_Bytes/sec	IO_Write_Bytes/sec	IO_Data_Bytes/sec	IO_Other_Bytes/sec	Working_Set_-_Private
+##Instance##	##Processor_Time##	##User_Time##	##Privileged_Time##	##Virtual_Bytes_Peak##	##Virtual_Bytes##	##Page_Faults/sec##	##Working_Set_Peak##	##Working_Set##	##Page_File_Bytes_Peak##	##Page_File_Bytes##	##Private_Bytes##	##Thread_Count##	##Priority_Base##	##Elapsed_Time##	##ID_Process##	##Creating_Process_ID##	##Pool_Paged_Bytes##	##Pool_Nonpaged_Bytes##	##Handle_Count##	##IO_Read_Operations/sec##	##IO_Write_Operations/sec##	##IO_Data_Operations/sec##	##IO_Other_Operations/sec##	##IO_Read_Bytes/sec##	##IO_Write_Bytes/sec##	##IO_Data_Bytes/sec##	##IO_Other_Bytes/sec##	##Working_Set_-_Private##

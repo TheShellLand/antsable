@@ -1,0 +1,6 @@
+20110415100037.210680
+IDProcess=##Process_Id##
+Name=##Name##
+PercentProcessorTime=##Percent_Processor_Time##
+PrivateBytes=##Private_Bytes##
+wmi_type=LocalProcesses

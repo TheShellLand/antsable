@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="Splunk_TA_salesforce:templates/splunk_ta_salesforce_redirect.html" type="html" isDashboard="False">
+    <label>Redirect</label>
+</view>

@@ -1,0 +1,15 @@
+2018-02-02 15:25:47.0999281 ##Process_ID## ##Thread_ID## ComApi          * END *   Search ClientId = <<PROCESS>>: 32bitProxy.exe, Updates found = 14, ServiceId = 7971F918-A847-4430-9279-4A52D1EFE18D (cV = 6UblOFHXxEmK5aob.1.0.0)
+2018-02-02 15:25:47.0942980 ##Process_ID## ##Thread_ID## ComApi          *RESUMED*   Search ClientId = <<PROCESS>>: 32bitProxy.exe, ServiceId = 7971F918-A847-4430-9279-4A52D1EFE18D (cV = 6UblOFHXxEmK5aob.1.0.0)
+2018-02-02 15:25:47.0940084 ##Process_ID##  ##Thread_ID## IdleTimer       WU operation (CSearchCall::Init ID 17, operation # 154) stopped; does use network; is not at background priority
+2018-02-02 15:24:59.4682334 ##Process_ID##  ##Thread_ID## Agent           Added update ##Agent_ID## to search result
+2018-02-02 15:24:59.3537953 ##Process_ID##  ##Thread_ID## Metadata        Using mode: Audit, validity: 90
+2018-02-02 15:24:59.3537912 ##Process_ID##  ##Thread_ID## Metadata        TimestampToken Validity: 0 => 90 (days)
+2018-02-02 15:24:59.3537844 ##Process_ID##  ##Thread_ID## Metadata        Enforcement Mode: Unknown => Audit
+2018-02-02 15:24:59.2933038 ##Process_ID##  ##Thread_ID## IdleTimer       WU operation (CAgentProtocolTalker::GetExtendedUpdateInfo_WithRecovery, operation # 135) stopped; does use network; is at background priority
+2018-02-02 15:24:58.3739102 ##Process_ID##  ##Thread_ID## ProtocolTalker  SyncUpdates round trips: 2
+2018-02-02 15:24:58.3232592 ##Process_ID##  ##Thread_ID## ProtocolTalker  SyncUpdates - 0 bad out of 2 metadata signatures checked using Audit enforcement mode.
+2018-02-02 15:24:52.0608930 ##Process_ID##  ##Thread_ID## Driver          Skipping printer driver 6 due to incomplete info or mismatched environment - HWID[microsoftmicrosoft_musd] Provider[Microsoft] MfgName[Microsoft] Name[Microsoft enhanced Point and Print compatibility driver] pEnvironment[Windows NT x86] LocalPrintServerEnv[Windows x64]
+2018-02-02 15:24:52.0608889 ##Process_ID##  ##Thread_ID## Driver          Skipping printer driver 5 due to incomplete info or mismatched environment - HWID[(null)] Provider[(null)] MfgName[(null)] Name[Foxit Reader PDF Printer Driver] pEnvironment[Windows x64] LocalPrintServerEnv[Windows x64]
+2018-02-02 15:24:08.4220794 ##Process_ID##  ##Thread_ID## Driver          DrvUtil: ##Drive_Util##
+2018-02-02 15:24:08.4219510 ##Process_ID##  ##Thread_ID## Driver          Status: 0x##Status_Number##a, ProblemNumber: ##Problem_Number##
+2018-02-02 15:24:08.4219488 ##Process_ID##  ##Thread_ID## Driver          Matched driver to device ##Device_Util##

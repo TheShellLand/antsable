@@ -1,0 +1,7 @@
+***SPLUNK*** sourcetype=top source=top host=##host##
+
+PID    USER      PR    NI    VIRT  RES     SHR     S  pctCPU  pctMEM cpuTIME   COMMAND
+##PID##  ##USER##  ##No_value##   ##No_value##   ##VIRT##M   ##RES##M   ##SHR##K  ##No_value## ##pctCPU##  ##No_value##   ##cpuTIME1##:##cpuTIME2##.##cpuTIME3##  ##COMMAND##
+##PID##  ##USER##   ##No_value##  ##No_value##  ##VIRT##M   ##RES##M     ##SHR##M  ##No_value## ##pctCPU##  ##No_value##  ##cpuTIME1##:##cpuTIME2##.##cpuTIME3##  ##COMMAND##
+##PID##  ##USER##      ##PR##     ##NI##    ##VIRT##   ##RES##     ##SHR##   ##S##  ##pctCPU##    ##pctMEM##    ##cpuTIME1##:##cpuTIME2##.##cpuTIME3##  ##COMMAND##
+##PID##  ##Mac_User##   ##No_value##  ##No_value##   ##Mac_VIRT##    ##RES##K   ##No_value##   ##No_value##     ##pctCPU##    ##No_value##   ##cpuTIME1##:##cpuTIME2##.##cpuTIME3##  ##Mac_COMMAND##

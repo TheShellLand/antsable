@@ -1,0 +1,7 @@
+Type=Process
+Name="##Name##"
+ProcessId=##processid##
+CommandLine=##commandline##
+StartTime="20180521070927.953449+330"
+Host="##host##"
+Path=##path##

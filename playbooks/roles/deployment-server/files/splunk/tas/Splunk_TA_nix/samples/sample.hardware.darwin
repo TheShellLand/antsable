@@ -1,0 +1,9 @@
+KEY                   VALUE
+CPU_TYPE              ##CPU_TYPE##
+CPU_CACHE             ##MAC_CPU_CACHE##
+CPU_COUNT             ##CPU_COUNT##
+HARD_DRIVES           ##MAC_HDD##: ##SIZE##Gi;
+NIC_TYPE              ##MAC_NIC_TYPE##
+NIC_COUNT             ##NIC_COUNT##
+MEMORY_REAL           ##MEMORY_REAL## ##MEMORY_SIZE##
+MEMORY_SWAP           ##MEMORY_SWAP## ##MEMORY_SIZE##

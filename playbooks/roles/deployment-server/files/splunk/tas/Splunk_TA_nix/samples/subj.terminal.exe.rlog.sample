@@ -1,0 +1,10 @@
+system_u:system_r:sshd_t:s0-s0:c0.c1026,?,/usr/sbin/sshd
+system_u:system_r:crond_t:s0-s1:c0.c1027,cron,/usr/sbin/crond
+system_u:system_r:sshd_t:s0-s0:c0.c1025,ssh,/usr/sbin/sshd
+system_u:system_r:sshd_t:s0-s0:c0.c1029,pts/0,/usr/sbin/sshd
+system_u:system_r:sshd_t:s3-s0:c0.c1032,/dev/pts/0,/usr/sbin/sshd
+system_u:system_r:sshd_t:s0-s0:c0.c1023,/dev/pts/1,/usr/sbin/sshd
+system_u:system_r:sshd_t:s0-s1:c0.c1083,pts/1,/usr/sbin/sshd
+system_u:system_r:crond_t:s1-s1:c1.c1023,cron,/usr/sbin/crond
+system_u:system_r:crond_t:s2-s2:c2.c1021,cron,/usr/sbin/crond
+system_u:system_r:crond_t:s3-s3:c3.c1022,cron,/usr/sbin/crond

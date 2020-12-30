@@ -1,0 +1,9 @@
+KEY                   VALUE
+CPU_TYPE              ##CPU_TYPE##
+CPU_CACHE             ##SOLARIS_CPU_CACHE##
+CPU_COUNT             ##CPU_COUNT##
+HARD_DRIVES           ##SOLARIS_HDD## ##HDD_SIZE## ##MEMORY_SIZE##;
+NIC_TYPE              ##NIC_TYPE##
+NIC_COUNT             ##NIC_COUNT##
+MEMORY_REAL           ##MEMORY_REAL## ##MEMORY_SIZE##
+MEMORY_SWAP           ##MEMORY_SWAP## ##MEMORY_SIZE##

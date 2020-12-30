@@ -1,0 +1,22 @@
+01/24/2018 12:05:53 PM 
+LogName=Security 
+SourceName=##Source_Name##
+EventCode=4740 
+EventType=##Event_Type## 
+Type=##Type##
+ComputerName=##Computer_Name## 
+TaskCategory=##Task_Category_User##
+OpCode=##OpCode## 
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A ##user## account was locked out. 
+Subject: 
+	Security ID: ##Domain##\##User_Name## 
+	Account Name: ##User_Name##
+	Account Domain: ##Domain##
+	Logon ID: 0x##Logon_Id##
+Account That Was Locked Out: 
+	Security ID: ##Domain##\##User_Name2## 
+	Account Name: ##User_Name2##
+Additional Information: 
+	Caller Computer Name: ##Computer_Name##

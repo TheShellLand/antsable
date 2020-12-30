@@ -1,0 +1,2 @@
+Fri Jun 18 15:28:51 2010 action=add, path="##path##", isdir=##isdir##, size=##size##, gid=##gid##, uid=##uid##, modtime="##modtime##", mode="##mode##", hash=##hash##
+Mon Jun 14 09:31:29 2010 action=update, path="##path##", isdir=##isdir##, size=##size##, gid=##gid##, uid=##uid##, modtime="##modtime##", mode="##mode##", hash=##hash##, chgs="##chgs##"

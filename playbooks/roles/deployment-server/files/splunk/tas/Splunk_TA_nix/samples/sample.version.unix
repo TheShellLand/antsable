@@ -1,0 +1,5 @@
+Tue Mar  5 09:07:16 PST 2013 machine_hardware_name="##machine_hardware_name##" machine_architecture_name="##machine_architecture_name##" os_release="##os_release##" os_name="##os_name##" os_version="##os_version##"
+Wed Apr 11 05:17:14 PDT 2018 machine_hardware_name="##AIX_machine_hardware_name##"  os_release="##AIX_os_release##" os_name="##AIX_os_name##" os_version="##AIX_os_version##"
+Wed Apr 11 05:17:14 PDT 2018 machine_hardware_name="##AIX_machine_hardware_name##"  os_release="##AIX_os_release1##" os_name="##AIX_os_name##" os_version="##AIX_os_version1##"
+Tuesday  3 April 2018 01:09:58 AM IST machine_hardware_name="##machine_hardware_name_s##" machine_architecture_name="##machine_architecture_name_s##" os_release="##os_release_s##" os_name="##os_name_s##" os_version="##os_version_s##"
+Tuesday, April  3, 2018 06:38:39 AM IST machine_hardware_name="##machine_hardware_name_s##" machine_architecture_name="##machine_architecture_name_s##" os_release="##os_release_s##" os_name="##os_name_s##" os_version="##os_version_s##"

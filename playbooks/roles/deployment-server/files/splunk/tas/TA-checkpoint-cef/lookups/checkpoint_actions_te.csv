@@ -1,0 +1,14 @@
+te_action,action
+deferred,deferred
+allowed,allowed
+blocked,blocked
+ctl,deferred
+allow,allowed
+prevent,blocked
+monitor,deferred
+ask,deferred
+detect,deferred
+redirect,deferred
+detect,deferred
+drop,blocked
+reject,blocked

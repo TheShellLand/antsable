@@ -1,0 +1,14 @@
+systemd-random-seed-load.service,systemd-random-seed-load.service
+systemd-random-seed.service,Load/Save Random Seed
+systemd-readahead-collect.service,Collect Read-Ahead Data
+systemd-readahead-done.service,Stop Read-Ahead Data Collection
+systemd-readahead-replay.service,Replay Read-Ahead Data
+systemd-reboot.service,Reboot
+systemd-remount-fs.service,Remount Root and Kernel File Systems
+systemd-shutdownd.service,Delayed Shutdown Service
+systemd-sysctl.service,Apply Kernel Variables
+systemd-sysusers.service,systemd-sysusers.service
+systemd-timesyncd.service,systemd-timesyncd.service
+systemd-tmpfiles-clean.service,Cleanup of Temporary Directories
+systemd-tmpfiles-setup-dev.service,Create Static Device Nodes in /dev
+systemd-tmpfiles-setup.service,Create Volatile Files and Directories

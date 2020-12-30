@@ -1,0 +1,5 @@
+20110414134409.228187
+FreeMegabytes=##Mbytes_Free##
+Name=##Diskspace_Name##
+PercentFreeSpace=##Perc_Free##
+wmi_type=FreeDiskSpace

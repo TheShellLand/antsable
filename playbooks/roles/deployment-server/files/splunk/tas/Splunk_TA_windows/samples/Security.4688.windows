@@ -1,0 +1,26 @@
+05/02/11 03:47:12 PM
+LogName=Security
+SourceName=##Source_Name##
+EventCode=4688
+EventType=##Event_Type##
+Type=##Type##
+ComputerName=##Computer_Name##
+TaskCategory=##Task_Category##
+OpCode=##OpCode##
+RecordNumber=##Record_Number##
+Keywords=##Keyword_Success##
+Message=A new process has been created.
+Subject:
+	Security ID:		##Domain##\##User_Name##
+	Account Name:		##User_Name##
+	Account Domain:		##Domain##
+	Logon ID:		0x##Logon_Id##
+Process Information:
+	New Process ID:		0x##Process_Id##
+	New Process Name:	##Process_Name##
+	Token Elevation Type:	##Token_Elevation_Type##
+	Creator Process ID:	0x##Process_Id2##
+Token Elevation Type indicates the type of token that was assigned to the new process in accordance with ##User## Account Control policy.
+Type 1 is a full token with no privileges removed or groups disabled.  A full token is only used if ##User## Account Control is disabled or if the ##User## is the built-in Administrator account or a service account.
+Type 2 is an elevated token with no privileges removed or groups disabled.  An elevated token is used when ##User## Account Control is enabled and the ##User## chooses to start the program using Run as administrator.  An elevated token is also used when an application is configured to always require administrative privilege or to always require maximum privilege, and the ##User## is a member of the Administrators group.
+Type 3 is a limited token with administrative privileges removed and administrative groups disabled.  The limited token is used when ##User## Account Control is enabled, the application does not require administrative privilege, and the ##User## does not choose to start the program using Run as administrator.

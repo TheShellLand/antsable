@@ -8,4 +8,5 @@
   shell: |
     git clone https://github.com/ansible/awx \
       && cd awx \
+      && rm -rf .git \
       && ansible-playbook -i installer/inventory installer/install.yml

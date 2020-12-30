@@ -4,19 +4,30 @@
 
 You're here because you have been doing something manually for years, and you realized it's time to do better. This is better. This is ansible.
 
-**[Deployment Roles](#roles)** | **[Deploy](#deploy)** | **[Ansible AWX](#ansible-awx)** | **[Jenkins](#jenkins)** 
+**[Supported Roles](#Supported-Roles)** | **[Supported Dependencies](#Supported-Dependencies)** | 
+**[Deploy Role](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Jenkins](#jenkins)** 
 
-## Roles
+## Supported Roles
 
 - [syslog.yml](playbooks/roles/syslog)
 - [ansible-awx.yml](playbooks/roles/ansible-awx)
+- [heavy-forwarder.yml](playbooks/roles/heavy-forwarder)
+- [deployment-server.yml](playbooks/roles/deployment-server)
 
-## Deploy
+## Supported Dependencies
+
+- [splunk-enterprise](playbooks/roles/splunk-enterprise)
+- [rsyslog](playbooks/roles/rsyslog)
+- [logrotate](playbooks/roles/logrotate)
+- [sshd](playbooks/roles/sshd)
+
+## Deploy Role
 
 For automated passwordless deployment:
 ```shell
 # ensure you ssh-copy-id to your server 
-# ensure sudo password is in sudo-password
+# ensure sudo password is in sudo-
+# ensure your public key is in playbooks/roles/auth/files/authorized_keys
 ./deploy.sh playbooks/roles/syslog.yml
 ```
 

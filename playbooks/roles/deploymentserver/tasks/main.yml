@@ -1,5 +1,5 @@
 ---
-- name: deploymentserver - Check connectivity to deploymentserver
+- name: Check connectivity to deploymentserver
   wait_for:
     host: "deploymentserver.marriott.com"
     port: 8089

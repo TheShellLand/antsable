@@ -1,7 +1,7 @@
 ---
 - include_tasks: "{{ansible_facts.os_family}}.yml"
 
-- name: sshd - copy sshd config
+- name: copy sshd config
   copy:
     src: files/ssh/sshd_config
     dest: /etc/ssh/sshd_config

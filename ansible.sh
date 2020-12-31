@@ -5,7 +5,7 @@
 cd $(dirname $0) && set -e
 
 # Helps automation
-export ANSIBLE_INVENTORY=inventory.yml
+export ANSIBLE_INVENTORY=inventory
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
@@ -84,8 +84,8 @@ if [ -f /etc/os-release ]; then
 fi
 
 # create base local inventory
-if [ ! -f inventory.yml ]; then
-  cat > inventory.yml <<EOF
+if [ ! -f inventory ]; then
+  cat > inventory <<EOF
 ---
 all:
 

@@ -2,8 +2,13 @@
 all:
   hosts:
 
+local:
+  hosts:
+    localhost:
+
 awx:
   hosts:
+    local:
 
 syslog:
   hosts:
@@ -27,26 +32,14 @@ syslog:
     #REDHAT_SUPPORT_PRODUCT_VERSION="7.9"
 
     lnxprd1173.marriott.com:
-    # ejaw425 can't access
     lnxprd1174.marriott.com:
+
+    # need to be created
     lnxprd1175.marriott.com:
     lnxprd1176.marriott.com:
     lnxprd1177.marriott.com:
     lnxprd1178.marriott.com:
 
-#    HDQNCCS01A.marriott.com:
-#    HDQNCCS02A.marriott.com:
-#    HDQNCCS03A.marriott.com:
-#    HDQNCCS04A.marriott.com:
-#    HDQNCCS05A.marriott.com:
-#    HDQNCCS06A.marriott.com:
-
-#    nccs01.marriott.com:
-#    nccs02.marriott.com:
-#    nccs03.marriott.com:
-#    nccs04.marriott.com:
-#    nccs05.marriott.com:
-#    nccs06.marriott.com:
 
 # Deployment Servers and Heavy Forwarders
 deployment_and_forwarders:
@@ -64,3 +57,10 @@ deployment_and_forwarders:
     LNXPRD0971.marriott.com:
     LNXPRD0972.marriott.com:
     LNXPRD0973.marriott.com:
+
+
+heavy_forwarders:
+  hosts:
+
+deployment_servers:
+  hosts:

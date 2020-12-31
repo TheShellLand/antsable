@@ -6,6 +6,10 @@ local:
   hosts:
     localhost:
 
+testing:
+  children:
+    local:
+
 awx:
   hosts:
     local:

@@ -1,0 +1,6 @@
+---
+- hosts: testing
+  roles:
+    - heavy-forwarder
+  vars:
+    DEBUG: false

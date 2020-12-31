@@ -1,3 +1,4 @@
 ---
-- shell: apt update && apt install -y openssh-server
+- name: install openssh-server
+  shell: apt update && apt install -y openssh-server
   become: yes

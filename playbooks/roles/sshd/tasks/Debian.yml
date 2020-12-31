@@ -1,0 +1,3 @@
+---
+- shell: apt update && apt install -y openssh-server
+  become: yes

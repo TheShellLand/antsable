@@ -119,6 +119,18 @@
     hdiutil detach "$volume"
   become: yes
 
+- name: vlc
+  shell: |
+    folder="VLC media player"
+    app=VLC.app
+    volume="/Volumes/$folder"
+    url=https://mirror.clarkson.edu/videolan/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
 - name: steam
   shell: |
     folder=Steam

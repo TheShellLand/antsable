@@ -4,6 +4,7 @@
   get_url:
     url: "{{splunk_url}}"
     dest: "splunk.tgz"
+    force: yes
 
 - name: install
   shell: tar -xvzf splunk.tgz -C /opt
@@ -21,7 +22,7 @@
 
 - name: copy splunk cloud inputs
   copy:
-    src: file/splunk/splunkclouduf.spl
+    src: files/splunk/splunkclouduf.spl
     dest: /opt/splunk/etc/apps/splunkclouduf.spl
 
 - name: extract splunk cloud inputs

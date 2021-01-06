@@ -21,6 +21,8 @@ You're here because you have been doing something manually for years, and you re
 - [logrotate](playbooks/roles/logrotate)
 - [sshd](playbooks/roles/sshd)
 
+*Note: to request additional automated deployments, raise a github issue*
+
 ## Deploy Role
 
 For automated passwordless deployment:

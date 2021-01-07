@@ -2,17 +2,13 @@
 all:
   hosts:
 
-local:
-  hosts:
-    localhost:
-
 testing:
   children:
     local:
 
 awx:
   hosts:
-    local:
+    127.0.0.1:
 
 syslog:
   hosts:

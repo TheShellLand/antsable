@@ -2,7 +2,7 @@
 
 # run a vagrant vm
 
-set -x
+cd $(dirname $0) && set -x
 
 #image="centos/7"
 image="ubuntu/focal64"

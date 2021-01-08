@@ -4,5 +4,5 @@
 
 set -xe
 
-docker run --rm -it -v "$(pwd)":/root/antsable ubuntu:20.04
+docker run --rm -it --network=host -v "$(pwd)":/root/antsable ubuntu:20.04 "$@"
 

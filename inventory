@@ -35,10 +35,10 @@ syslog:
     lnxprd1174.marriott.com:
 
     # need to be created
-    lnxprd1175.marriott.com:
-    lnxprd1176.marriott.com:
-    lnxprd1177.marriott.com:
-    lnxprd1178.marriott.com:
+#    lnxprd1175.marriott.com:
+#    lnxprd1176.marriott.com:
+#    lnxprd1177.marriott.com:
+#    lnxprd1178.marriott.com:
 
 
 # Deployment Servers and Heavy Forwarders

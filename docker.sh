@@ -4,7 +4,7 @@
 
 if [ "$1" == "" ]; then image=ubuntu:20.04; fi
 
-cd $(dirnarm $0) && set -xe
+cd $(dirname $0) && set -xe
 
 # this only works on linux
 #docker run --rm -it --network=host -v "$(pwd)":/root/antsable $image "$@"

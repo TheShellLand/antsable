@@ -117,7 +117,19 @@
     repo: 'https://github.com/TheShellLand/audacity-mac.git'
     dest: "{{install}}/audacity-mac"
 
-- name: audacity - install
+- name: google drive
+  shell: |
+    folder="Install Backup and Sync from Google"
+    app="Backup and Sync.app"
+    volume="/Volumes/$folder"
+    url=https://dl.google.com/drive/InstallBackupAndSync.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: audacity
   shell: |
     folder="Audacity 2.4.2"
     app=Audacity.app

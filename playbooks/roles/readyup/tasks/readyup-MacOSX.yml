@@ -23,6 +23,17 @@
     cp -R "/Volumes/$folder/$app" /Applications/
     hdiutil detach "$volume"
 
+- name: gimp
+  shell: |
+    folder="GIMP 2.10 Install"
+    app="GIMP-2.10.app"
+    volume="/Volumes/$folder"
+    url=https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "$volume"
+
 - name: vagrant
   shell: |
     folder="Vagrant"

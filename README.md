@@ -47,7 +47,7 @@ For any issues or questions, please raise a git issue
 Available as a local instance, deploy role [ansible-awx.yml](playbooks/roles/ansible-awx)
 
 ## Ansible Tower
-In the proceess of testing, [Ansible Tower](https://git.marriott.com/CSAA/ansible-tower)
+Currently iced, [Ansible Tower](https://git.marriott.com/CSAA/ansible-tower)
 
 ## Jenkins
 We have a jenkins automation server, [here](https://iam-jenkins.tools.marriott.com/job/soar-playground/job/deploy-syslog/)

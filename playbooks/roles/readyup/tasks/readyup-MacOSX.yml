@@ -23,6 +23,17 @@
     cp -R "/Volumes/$folder/$app" /Applications/
     hdiutil detach "$volume"
 
+- name: blender
+  shell: |
+    folder="Blender"
+    app="Blender.app"
+    volume="/Volumes/$folder"
+    url=https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.91/blender-2.91.0-macOS.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "$volume"
+
 - name: gimp
   shell: |
     folder="GIMP 2.10 Install"

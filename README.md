@@ -19,6 +19,7 @@ You're here because you have been doing something manually for years, and you re
 - [splunk-enterprise](playbooks/roles/splunk-enterprise)
 - [rsyslog](playbooks/roles/rsyslog)
 - [logrotate](playbooks/roles/logrotate)
+- [docker](playbooks/roles/docker)
 - [sshd](playbooks/roles/sshd)
 
 *Note: to request additional automated deployments, raise a github issue*

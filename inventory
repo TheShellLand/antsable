@@ -58,9 +58,19 @@ deployment_and_forwarders:
     LNXPRD0972.marriott.com:
     LNXPRD0973.marriott.com:
 
-
 heavy_forwarders:
   hosts:
+    Lnxprd0968.marriott.com:
+    Lnxprd0969.marriott.com:
+    Lnxprd0970.marriott.com:
+    Lnxprd0971.marriott.com:
+    Lnxprd0972.marriott.com:
+    Lnxprd0973.marriott.com:
 
 deployment_servers:
   hosts:
+    Lnxprd0960.marriott.com:
+    Lnxprd0961.marriott.com:
+    Lnxprd0962.marriott.com:
+    Lnxprd0963.marriott.com:
+    Lnxprd0964.marriott.com:

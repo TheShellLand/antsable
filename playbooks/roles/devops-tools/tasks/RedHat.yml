@@ -1,10 +1,4 @@
 ---
-- name: install git
-  yum:
-    name: git
-    state: latest
-  become: yes
-
 - name: install vim
   yum:
     name: vim

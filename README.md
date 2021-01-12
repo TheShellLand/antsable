@@ -19,7 +19,7 @@ You're here because you have been doing something manually for years, and you re
 
 - [splunk-enterprise](playbooks/roles/splunk-enterprise)
 - [devops-tools](playbooks/roles/devops-tools)
-- [logrotate](playbooks/roles/logrotate)
+- [resolvconf](playbooks/roles/resolvconf)
 - [firewalld](playbooks/roles/firewalld)
 - [rsyslog](playbooks/roles/rsyslog)
 - [sshd](playbooks/roles/sshd)

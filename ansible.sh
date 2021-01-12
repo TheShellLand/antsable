@@ -5,7 +5,7 @@
 cd $(dirname $0) && set -e
 
 # Helps automation
-export ANSIBLE_INVENTORY=inventory
+export ANSIBLE_INVENTORY=inventory.yaml
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
@@ -71,21 +71,20 @@ fi
 if [ -f /etc/os-release ]; then
   if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
 
+    if ! which which >/dev/null; then
+      yum install -y which
+    fi
+
     if ! which ansible >/dev/null; then
-      yum install -y python3
-      yum install -y yum-utils
-      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-      yum install -y docker-ce docker-ce-cli containerd.io
-      yum install -y python-pip
-      pip install -U pip docker
-      systemctl start docker
+      yum install -y epel-release
+      yum install -y ansible
     fi
   fi
 fi
 
 # create base local inventory
-if [ ! -f inventory ]; then
-  cat > inventory <<EOF
+if [ ! -f inventory.yaml ]; then
+  cat > inventory.yaml <<EOF
 ---
 all:
 

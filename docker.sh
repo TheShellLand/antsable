@@ -2,9 +2,13 @@
 
 # start docker image to test
 
-set -xe
+if [ "$1" == "" ]; then image=ubuntu:20.04; fi
 
-IMAGE=ubuntu:20.04
-#IMAGE=centos:7
+cd $(dirname $0) && set -xe
 
-docker run --rm -it -v "$(pwd)":/root/ansible-deploy $IMAGE "$@"
+# this only works on linux
+#docker run --rm -it --network=host -v "$(pwd)":/root/antsable $image "$@"
+
+# for everything else you have to specify ports
+docker run --rm -it -v "$(pwd)":/root/antsable $image "$@"
+

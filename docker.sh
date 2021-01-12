@@ -4,4 +4,7 @@
 
 set -xe
 
-docker run --rm -it -v "$(pwd)":/root/ansible-deploy ubuntu:20.04
+IMAGE=ubuntu:20.04
+#IMAGE=centos:7
+
+docker run --rm -it -v "$(pwd)":/root/ansible-deploy $IMAGE "$@"

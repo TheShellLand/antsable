@@ -11,4 +11,5 @@
   service:
     name: firewalld
     state: started
+    enabled: true
   become: yes

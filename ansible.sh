@@ -71,14 +71,13 @@ fi
 if [ -f /etc/os-release ]; then
   if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
 
+    if ! which which >/dev/null 2>/dev/null; then
+      yum install -y which
+    fi
+
     if ! which ansible >/dev/null; then
-      yum install -y python3
-      yum install -y yum-utils
-      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-      yum install -y docker-ce docker-ce-cli containerd.io
-      yum install -y python-pip
-      pip install -U pip docker
-      systemctl start docker
+      yum install -y epel-release
+      yum install -y ansible
     fi
   fi
 fi

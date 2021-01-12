@@ -1,11 +1,9 @@
 ---
-- name: install firewalld
-  yum:
+- name: Restart firewalld
+  service:
     name: firewalld
-    state: latest
+    state: restarted
   become: yes
-  notify:
-    - Start firewalld
 
 - name: Start firewalld
   service:

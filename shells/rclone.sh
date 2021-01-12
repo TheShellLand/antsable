@@ -2,6 +2,10 @@
 
 # rclone wrapper
 
-cd $(dirname $0) && set -xe
+set -e
 
-exec rclone -v --drive-acknowledge-abuse "$@"
+if [ -f rclone ]; then
+  exec ./rclone -v --drive-acknowledge-abuse "$@"
+else
+  exec rclone -v --drive-acknowledge-abuse "$@"
+fi

@@ -71,7 +71,7 @@ fi
 if [ -f /etc/os-release ]; then
   if grep centos /etc/os-release >/dev/null || grep rhel /etc/os-release >/dev/null; then
 
-    if ! which which >/dev/null; then
+    if ! which which >/dev/null 2>/dev/null; then
       yum install -y which
     fi
 

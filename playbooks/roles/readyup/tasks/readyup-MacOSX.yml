@@ -98,8 +98,9 @@
 - name: rclone
   shell: arch -x86_64 brew upgrade rclone
 
-- name: osxfuse
-  shell: arch -x86_64 brew upgrade --cask osxfuse
+# this one is too old
+#- name: osxfuse
+#  shell: arch -x86_64 brew upgrade --cask osxfuse
 
 - name: veracrypt
   shell: arch -x86_64 brew upgrade --cask veracrypt
@@ -164,6 +165,18 @@
     #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
     hdiutil attach -nobrowse "$url"
     cp -R "/Volumes/$folder/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: macfuse
+  shell: |
+    folder="macFUSE"
+    pkg="Install macFUSE.pkg"
+    volume="/Volumes/$folder"
+    url=https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
   become: yes
 

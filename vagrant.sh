@@ -7,6 +7,7 @@ set -xe
 DEFAULT=ubuntu/focal64
 # ubuntu/focal64
 # generic/rhel7
+# centos/7
 
 if [ -f Vagrantfile ]; then
   vagrant destroy -f

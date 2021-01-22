@@ -108,6 +108,9 @@
 - name: tmux
   shell: arch -x86_64 brew upgrade tmux
 
+- name: pass
+  shell: arch -x86_64 brew upgrade pass
+
 - name: darktable
   shell: arch -x86_64 brew upgrade --cask darktable
 

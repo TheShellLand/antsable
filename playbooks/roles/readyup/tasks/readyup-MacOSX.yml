@@ -20,7 +20,7 @@
     # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
 - name: blender
@@ -31,7 +31,7 @@
     url=https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.91/blender-2.91.0-macOS.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
 - name: gimp
@@ -42,18 +42,18 @@
     url=https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
 - name: gpg
   shell: |
     folder="GPG Suite"
+    pkg=Install.pkg
     volume="/Volumes/$folder"
-    pkg="$volume/Install.pkg"
     url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
 
     hdiutil attach -nobrowse "$url"
-    installer -pkg "$pkg" -target /
+    installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
   become: yes
 
@@ -65,7 +65,7 @@
     url=https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
 
     wget -O $pkg "$url"
-    installer -pkg "$pkg" -target /
+    installer -pkg "$volume/$pkg" -target /
   become: yes
 
 - name: vagrant
@@ -146,7 +146,7 @@
 #    url=https://desktop.docker.com/mac/stable/Docker.dmg
 #
 #    hdiutil attach -nobrowse "$url"
-#    cp -R "/Volumes/$folder/$app" /Applications/
+#    cp -R "$volume/$app" /Applications/
 #    hdiutil detach "$volume"
 #  become: yes
 
@@ -166,7 +166,7 @@
     url=https://dl.google.com/drive/InstallBackupAndSync.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -179,7 +179,7 @@
 
     #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -203,7 +203,7 @@
     url=https://mirror.clarkson.edu/videolan/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -215,7 +215,7 @@
     url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -227,7 +227,7 @@
     url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.26.2.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -239,7 +239,7 @@
     url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
 
     hdiutil attach -nobrowse "$url"
-    cp -R "/Volumes/$folder/$app" /Applications/
+    cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -251,7 +251,7 @@
     url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
 
     hdiutil attach -nobrowse "$url"
-    cp -vR "/Volumes/$folder/$app" /Applications/
+    cp -vR "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
@@ -274,6 +274,6 @@
 #    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
 #
 #    hdiutil attach -nobrowse "$url"
-#    cp -R "/Volumes/$folder/$app" /Applications/
+#    cp -R "$volume/$app" /Applications/
 #    hdiutil detach "$volume"
 #  become: yes

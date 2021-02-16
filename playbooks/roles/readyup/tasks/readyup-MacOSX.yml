@@ -45,6 +45,18 @@
     cp -R "/Volumes/$folder/$app" /Applications/
     hdiutil detach "$volume"
 
+- name: gpg
+  shell: |
+    folder="GPG Suite"
+    volume="/Volumes/$folder"
+    pkg="$volume/Install.pkg"
+    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
 - name: sshfs
   shell: |
     folder="sshfs"

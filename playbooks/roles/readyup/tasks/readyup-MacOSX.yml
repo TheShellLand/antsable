@@ -68,6 +68,19 @@
     installer -pkg "$volume/$pkg" -target /
   become: yes
 
+#- name: fing
+#  shell: |
+#    folder="fing"
+#    pkg=Fing-5.5.2-osX.pkg
+#    url=https://www.fing.com/images/uploads/general/CLI_macOSX_5.5.2.zip
+#
+#    wget -O /tmp/readyup/fing.zip "$url"
+#    cd /tmp/readyup
+#    unzip -o fing.zip
+#    installer -pkg "$pkg" -target /
+#  become: yes
+
+
 - name: vagrant
   shell: |
     folder="Vagrant"
@@ -106,6 +119,12 @@
 
 - name: wget
   shell: arch -x86_64 brew upgrade wget
+
+- name: fing
+  shell: arch -x86_64 brew upgrade fing
+
+- name: nmap
+  shell: arch -x86_64 brew upgrade nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone

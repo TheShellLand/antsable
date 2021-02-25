@@ -80,7 +80,6 @@
 #    installer -pkg "$pkg" -target /
 #  become: yes
 
-
 - name: vagrant
   shell: |
     folder="Vagrant"
@@ -91,6 +90,16 @@
     hdiutil attach -nobrowse "$url"
     installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
+  become: yes
+
+- name: hashicorp vault
+  shell: |
+    pkg=vault.zip
+    url=https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
+
+    wget -O $pkg "$url"
+    unzip $pkg
+    mv vault /usr/local/bin/
   become: yes
 
 #- name: vagrant (brew)

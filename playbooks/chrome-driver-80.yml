@@ -1,13 +1,44 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   tasks:
 
+    - set_fact:
+        version: 89.0.4389.23
+
     # use Google Chrome Stable to match driver
-    - name: Download Google Driver {{ version }}
-      vars:
-        version: 80.0.3987.106
+    - name: Download linux {{ version }}
       unarchive:
-        # https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
         src: https://chromedriver.storage.googleapis.com/{{ version }}/chromedriver_linux64.zip
+        dest: /tmp
+        remote_src: yes
+      when: ansible_facts.distribution == "Linux"
+
+    - name: Download mac m1 {{ version }}
+      unarchive:
+        src: https://chromedriver.storage.googleapis.com/{{ version }}/chromedriver_mac64_m1.zip
+        dest: /tmp
+        remote_src: yes
+      when: ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1"
+
+    - name: Download mac m1 {{ version }}
+      unarchive:
+        src: https://chromedriver.storage.googleapis.com/{{ version }}/chromedriver_mac64_m1.zip
+        dest: /tmp
+        remote_src: yes
+      when: ansible_facts.distribution == "MacOSX" and ansible_facts.processor != "Apple M1"
+
+    - name: Download windows {{ version }}
+      unarchive:
+        src: https://chromedriver.storage.googleapis.com/{{ version }}/chromedriver_win32.zip
+        dest: /tmp
+        remote_src: yes
+      when: ansible_facts.distribution == "Windows"
+
+    - name: Install chromedriver {{ version }}
+      copy:
+        src: /tmp/chromedriver
         dest: /usr/local/bin/chromedriver
         remote_src: yes
+        mode: 0755
+      become: yes

@@ -3,9 +3,9 @@
 # entrypoint
 
 if [ ! "$1" == "" ]; then
-  exec "$@"
+  /bin/bash /ansible-deploy/deploy.sh $@ || exec bash
 else
-  /bin/bash /deploy.sh && exec bash
+  exec $@
 fi
 
-exec "$@"
+exec bash

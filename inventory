@@ -6,9 +6,54 @@ testing:
   children:
     local:
 
-awx:
+local:
   hosts:
     127.0.0.1:
+
+awx:
+  children:
+    local:
+
+
+managed:
+  children:
+    managed_by_gis:
+    managed_by_sa_unix:
+    managed_by_cloud_services:
+
+managed_by_gis:
+  children:
+    syslog_old_gis:
+
+managed_by_sa_unix:
+  children:
+    deployment_servers_sa_unix:
+    heavy_forwarders_sa_unix:
+
+managed_by_cloud_services:
+  children:
+    deployment_servers_cloud_services:
+    heavy_forwarders_cloud_services:
+
+
+syslog_old_gis:
+  hosts:
+    HDQNCCS02.marriott.com:
+      ip: 162.130.112.10
+    HDQNCCS03.marriott.com:
+      ip: 162.130.112.11
+    HDQNCCS04.marriott.com:
+      ip: 162.130.112.12
+    HDQNCCS05.marriott.com:
+      ip: 162.130.112.13
+    HDQNCCS06.marriott.com:
+      ip: 162.130.112.14
+
+syslog_old:
+  children:
+    syslog_old_gis:
+  vars:
+    load_balancer: logging.marriott.com
 
 syslog:
   hosts:
@@ -25,7 +70,6 @@ syslog:
     #CPE_NAME="cpe:/o:redhat:enterprise_linux:7.9:GA:server"
     #HOME_URL="https://www.redhat.com/"
     #BUG_REPORT_URL="https://bugzilla.redhat.com/"
-    #
     #REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
     #REDHAT_BUGZILLA_PRODUCT_VERSION=7.9
     #REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
@@ -42,23 +86,48 @@ syslog:
 
 
 # Deployment Servers and Heavy Forwarders
-deployment_and_forwarders:
+deployment_servers_sa_unix:
   hosts:
     LNXPRD0960.marriott.com:
+      ip: 162.130.139.122
     LNXPRD0961.marriott.com:
+      ip: 162.130.139.123
     LNXPRD0962.marriott.com:
+      ip: 162.130.139.124
     LNXPRD0963.marriott.com:
+      ip: 162.130.139.125
     LNXPRD0964.marriott.com:
-    LNXPRD0966.marriott.com:
-    LNXPRD0967.marriott.com:
-    LNXPRD0968.marriott.com:
-    LNXPRD0969.marriott.com:
-    LNXPRD0970.marriott.com:
-    LNXPRD0971.marriott.com:
-    LNXPRD0972.marriott.com:
-    LNXPRD0973.marriott.com:
+      ip: 162.130.139.126
 
-heavy_forwarders:
+deployment_servers_cloud_services:
+  hosts:
+    ip-172-25-13-120.marriott.com:
+      ip: 172.25.13.120
+      notes: AWS Deployment Server for HRS
+    admin-alicloud-splunk-logs-01.marriott.com:
+      ip: 172.26.2.150
+      notes: 139.224.218.253 / 172.26.2.150 Deployment Server for AliCloud
+
+
+# not sure where these two go
+#LNXPRD0966.marriott.com:
+#LNXPRD0967.marriott.com:
+
+heavy_forwarders_cloud_services:
+  hosts:
+    admin-alicloud-splunk-hf-01.marriott.com:
+      ip: 172.26.2.149
+      notes: 139.224.218.252 / 172.26.2.149 HF for AliCloud
+    ip-172-25-13-185.marriott.com:
+      ip: 172.25.13.185
+      notse: AWS HF
+    ip-172-25-13-146.marriott.com:
+      ip: 172.25.13.146
+    ip-172-25-13-231.marriott.com:
+      ip: 172.25.13.231
+      notes: GuardDuty HEC
+
+heavy_forwarders_sa_unix:
   hosts:
     Lnxprd0968.marriott.com:
     Lnxprd0969.marriott.com:
@@ -67,10 +136,12 @@ heavy_forwarders:
     Lnxprd0972.marriott.com:
     Lnxprd0973.marriott.com:
 
+heavy_forwarders:
+  children:
+    heavy_forwarders_sa_unix:
+    heavy_forwarders_cloud_services:
+
 deployment_servers:
-  hosts:
-    Lnxprd0960.marriott.com:
-    Lnxprd0961.marriott.com:
-    Lnxprd0962.marriott.com:
-    Lnxprd0963.marriott.com:
-    Lnxprd0964.marriott.com:
+  children:
+    deployment_servers_sa_unix:
+    deployment_servers_cloud_services:

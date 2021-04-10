@@ -7,17 +7,16 @@ if [ -f env.sh ]; then source env.sh; fi
 set -xe; cd $(dirname $0)
 
 # clean docker
-docker system prune -f
+#docker system prune -f
 # clean older than 10 days
-docker image prune -a --force --filter "until=240h"
+#docker image prune -a --force --filter "until=240h"
 
 # build image
-DOCKERNAME=csaa/syslog-deploy
 DOCKERTAG=$(git describe --tags --always)
 docker build "$@" \
- --build-arg JENKINS_SSH_B64="$JENKINS_SSH_B64" \
- -t $DOCKERNAME:$DOCKERTAG .
-docker tag $DOCKERNAME:$DOCKERTAG $DOCKERNAME:latest
+ --build-arg JENKINS_SSH_PUB="$JENKINS_SSH_PUB" \
+ -t csaa/syslog-deploy:$DOCKERTAG .
+docker tag csaa/syslog-deploy:$DOCKERTAG csaa/syslog-deploy:latest
 
 # list image
-docker images | grep $DOCKERNAME
+docker images | grep csaa/syslog-deploy

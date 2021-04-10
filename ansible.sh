@@ -5,7 +5,7 @@
 cd $(dirname $0) && set -e
 
 # Helps automation
-export ANSIBLE_INVENTORY=inventory.yaml
+export ANSIBLE_INVENTORY=inventory
 export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
@@ -82,17 +82,6 @@ if [ -f /etc/os-release ]; then
   fi
 fi
 
-# create base local inventory
-if [ ! -f inventory.yaml ]; then
-  cat > inventory.yaml <<EOF
----
-all:
-
-local:
-  hosts:
-    localhost:
-EOF
-fi
 
 # Mac M1
 if [ "$(uname)" == "Darwin" ]; then
@@ -131,14 +120,6 @@ if [ "$(uname)" == "Darwin" ]; then
     fi
   fi
 
-fi
-
-if [ ! -d ".git" ] && [ ! -d "antsable" ]; then
-  git clone https://github.com/TheShellLand/antsable
-
-  if [[ ! "$SUDO_USER" == "" ]]; then
-    sudo chown -R $SUDO_USER antsable
-  fi
 fi
 
 # Run playbook

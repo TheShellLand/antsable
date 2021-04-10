@@ -4,10 +4,10 @@
 
 cd $(dirname $0)
 
-export ANSIBLE_HOST_KEY_CHECKING=False
+set -xe
 
-if [ -f sudo-password ]; then
- ./ansible.sh -i inventory -c local --extra-vars "ansible_become_pass=$(cat sudo-password)" "$@"
+if [ -f env.sh ]; then
+  docker run --rm -it --env-file env.sh csaa/syslog-deploy $@
 else
-  ./ansible.sh -i inventory -c local "$@"
+  docker run --rm -it csaa/syslog-deploy $@
 fi

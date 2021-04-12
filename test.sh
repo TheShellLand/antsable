@@ -6,6 +6,8 @@ cd $(dirname $0)
 
 set -xe
 
+./build.sh
+
 if [ -f env.sh ]; then
   docker run --rm -it --env-file env.sh csaa/syslog-deploy $@
 else

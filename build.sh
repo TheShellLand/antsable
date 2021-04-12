@@ -13,9 +13,7 @@ set -xe; cd $(dirname $0)
 
 # build image
 DOCKERTAG=$(git describe --tags --always)
-docker build "$@" \
- --build-arg JENKINS_SSH_PUB="$JENKINS_SSH_PUB" \
- -t csaa/syslog-deploy:$DOCKERTAG .
+docker build "$@" -t csaa/syslog-deploy:$DOCKERTAG .
 docker tag csaa/syslog-deploy:$DOCKERTAG csaa/syslog-deploy:latest
 
 # list image

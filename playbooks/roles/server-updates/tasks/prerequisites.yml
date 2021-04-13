@@ -1,0 +1,7 @@
+---
+# PREREQUISITES FOR INSTALLING SPLUNK UBA ON SEVERAL LINUX SERVERS
+- name: yum-utils
+  yum:
+    name: yum-utils
+    state: latest
+  become: yes

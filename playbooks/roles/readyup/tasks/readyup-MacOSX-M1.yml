@@ -1,0 +1,337 @@
+---
+- set_fact:
+    install: /tmp/readyup
+
+- name: temp install
+  file: path={{ install }} state=directory
+
+- name: brew
+  shell: |
+    if ! which brew >/dev/null; then
+      arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+- name: chrome m1
+  shell: |
+    folder="Google Chrome"
+    app="Google Chrome.app"
+    volume="/Volumes/$folder"
+    url=https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
+    # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+
+- name: blender
+  shell: |
+    folder="Blender"
+    app="Blender.app"
+    volume="/Volumes/$folder"
+    url=https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.91/blender-2.91.0-macOS.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+
+- name: gimp
+  shell: |
+    folder="GIMP 2.10 Install"
+    app="GIMP-2.10.app"
+    volume="/Volumes/$folder"
+    url=https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+
+- name: gpg
+  shell: |
+    folder="GPG Suite"
+    pkg=Install.pkg
+    volume="/Volumes/$folder"
+    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
+- name: sshfs
+  shell: |
+    folder="sshfs"
+    pkg=sshfs.pkg
+    volume="/Volumes/$folder"
+    url=https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
+
+    wget -O $pkg "$url"
+    installer -pkg "$volume/$pkg" -target /
+  become: yes
+
+#- name: fing
+#  shell: |
+#    folder="fing"
+#    pkg=Fing-5.5.2-osX.pkg
+#    url=https://www.fing.com/images/uploads/general/CLI_macOSX_5.5.2.zip
+#
+#    wget -O /tmp/readyup/fing.zip "$url"
+#    cd /tmp/readyup
+#    unzip -o fing.zip
+#    installer -pkg "$pkg" -target /
+#  become: yes
+
+- name: vagrant
+  shell: |
+    folder="Vagrant"
+    pkg=vagrant.pkg
+    volume="/Volumes/$folder"
+    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
+- name: hashicorp vault
+  shell: |
+    pkg=vault.zip
+    url=https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
+
+    wget -O $pkg "$url"
+    unzip $pkg
+    mv vault /usr/local/bin/
+  become: yes
+
+#- name: vagrant (brew)
+#  shell: arch -x86_64 brew upgrade --cask vagrant
+
+#- name: virtualbox
+#  shell: arch -x86_64 brew upgrade --cask virtualbox
+
+#- name: vmware-fusion
+#  shell: arch -x86_64 brew upgrade --cask vmware-fusion
+
+#- name: parallels
+#  shell: arch -x86_64 brew upgrade --cask parallels
+
+- name: wget
+  shell: arch -x86_64 brew upgrade wget
+
+- name: fing
+  shell: arch -x86_64 brew upgrade fing
+
+- name: nmap
+  shell: arch -x86_64 brew upgrade nmap
+
+# mount is not supported on MacOS when installed via Homebrew
+#- name: rclone
+#  shell: arch -x86_64 brew upgrade rclone
+
+- name: rclone
+  set_fact:
+    rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
+    rclone_ver: rclone-v1.54.0-osx-amd64
+- name: rclone download
+  get_url:
+    url: '{{rclone_url}}'
+    dest: '{{install}}/rclone.zip'
+- name: rclone unzip
+  unarchive:
+    src: '{{install}}/rclone.zip'
+    dest: '{{install}}'
+- name: rclone install
+  copy:
+    src: '{{install}}/{{rclone_ver}}/rclone'
+    dest: /usr/local/bin/rclone
+    mode: '0755'
+
+# this one is too old
+#- name: osxfuse
+#  shell: arch -x86_64 brew upgrade --cask osxfuse
+
+- name: veracrypt
+  shell: arch -x86_64 brew upgrade --cask veracrypt
+
+- name: tmux
+  shell: arch -x86_64 brew upgrade tmux
+
+- name: pass
+  shell: arch -x86_64 brew upgrade pass
+
+- name: darktable
+  shell: arch -x86_64 brew upgrade --cask darktable
+
+- name: pycharm-ce
+  shell: arch -x86_64 brew upgrade --cask --force pycharm-ce
+
+- name: amazon workspace
+  shell: |
+    pkg=WorkSpaces.pkg
+    url=https://d2td7dqidlhjx7.cloudfront.net/prod/global/osx/WorkSpaces.pkg
+
+    wget "$url"
+    installer -pkg "$pkg" -target /
+  become: yes
+
+#- name: docker
+#  shell: |
+#    folder="Docker"
+#    app="docker.app"
+#    volume="/Volumes/$folder"
+#    url=https://desktop.docker.com/mac/stable/Docker.dmg
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -R "$volume/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes
+
+- name: docker Apple Silicon Tech Preview download
+  get_url:
+    url: https://desktop.docker.com/mac/stable/arm64/62632/Docker.dmg
+    dest: "{{ install }}/Docker.dmg"
+
+- name: docker Apple Silicon Tech Preview
+  shell: |
+    folder="Install Backup and Sync from Google"
+    app="Backup and Sync.app"
+    volume="/Volumes/$folder"
+    url="{{install}}/Docker.dmg"
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+# You must install Rosetta 2 as some binaries are still Darwin/AMD64.
+# To install Rosetta 2 manually from the command line, use this command:
+- name: docker Apple Silicon Tech Preview - fix
+  shell: softwareupdate --install-rosetta
+  become: yes
+
+- name: docker
+  shell: arch -x86_64 brew upgrade --cask docker
+
+- name: audacity - download
+  ansible.builtin.git:
+    repo: 'https://github.com/TheShellLand/audacity-mac.git'
+    dest: "{{install}}/audacity-mac"
+
+- name: google drive
+  shell: |
+    folder="Install Backup and Sync from Google"
+    app="Backup and Sync.app"
+    volume="/Volumes/$folder"
+    url=https://dl.google.com/drive/InstallBackupAndSync.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: audacity
+  shell: |
+    folder="Audacity 2.4.2"
+    app=Audacity.app
+    volume="/Volumes/$folder"
+    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
+
+    #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: macfuse
+  shell: |
+    folder="macFUSE"
+    pkg="Install macFUSE.pkg"
+    volume="/Volumes/$folder"
+    url=https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
+- name: vlc
+  shell: |
+    folder="VLC media player"
+    app=VLC.app
+    volume="/Volumes/$folder"
+    url=https://mirror.clarkson.edu/videolan/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: steam
+  shell: |
+    folder=Steam
+    app=Steam.app
+    volume="/Volumes/$folder"
+    url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: streamlabs
+  shell: |
+    folder="Streamlabs OBS 0.25.2"
+    app="Streamlabs OBS.app"
+    volume="/Volumes/$folder"
+    url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.26.2.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: geforcenow
+  shell: |
+    folder="GeForce NOW"
+    app="GeForceNOW.app"
+    volume="/Volumes/$folder"
+    url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: wireshark
+  shell: |
+    folder="Wireshark 3.4.2"
+    app="Wireshark.app"
+    volume="/Volumes/$folder"
+    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
+
+    hdiutil attach -nobrowse "$url"
+    cp -vR "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+  become: yes
+
+- name: crossover download
+  get_url:
+    url: unzip https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-20.0.2.zip
+    dest: crossover.zip
+
+- name: crossover install
+  unarchive:
+    src: crossover.zip
+    dest: /Applications/
+  become: yes
+
+#- name: virtualbox
+#  shell: |
+#    folder="virtualbox 3.4.1"
+#    app="virtualbox.app"
+#    volume="/Volumes/$folder"
+#    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -R "$volume/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes

@@ -3,8 +3,12 @@
     msg: "{{system}}"
 
 # Macbook M1
-- include_tasks: "{{role_path}}/tasks/readyup-MacOSX.yml"
-  when: INSTALL_TOOLS and ansible_facts['distribution'] == "MacOSX"
+- include_tasks: "{{role_path}}/tasks/readyup-MacOSX-M1.yml"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1"
+
+# Macbook Intel
+- include_tasks: "{{role_path}}/tasks/readyup-MacOSX-Intel.yml"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor != "Apple M1"
 
 # Ubuntu
 - include_tasks: "{{role_path}}/tasks/gnome-{{system}}.yml"

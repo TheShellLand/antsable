@@ -11,13 +11,12 @@
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
-- name: chrome m1
+- name: chrome intel
   shell: |
     folder="Google Chrome"
     app="Google Chrome.app"
     volume="/Volumes/$folder"
-    url=https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
-    # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+    utl=https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
     hdiutil attach -nobrowse "$url"
     cp -R "$volume/$app" /Applications/

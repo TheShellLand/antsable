@@ -143,6 +143,11 @@ fi
 
 # Run playbook
 if [ ! "$1" == "" ]; then
-  set -x
-  exec ansible-playbook "$@"
+
+  if [ -f become_password ] && [ -f ssh_password ]; then
+    set -x
+    exec ansible-playbook -e "ansible_become_password=$(cat become_password)" -e "ansible_ssh_password=$(cat ssh_password)" "$@"
+  else
+    exec ansible-playbook "$@"
+  fi
 fi

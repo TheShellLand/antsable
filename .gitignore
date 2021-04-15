@@ -3,3 +3,5 @@ inventory.yaml
 config
 .vagrant
 Vagrantfile
+become_password
+ssh_password

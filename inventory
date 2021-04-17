@@ -1,147 +1,179 @@
----
 all:
   hosts:
-
-testing:
+awx:
   children:
     local:
+deployment_servers:
+  hosts:
+    LNXPRD0960.marriott.com:
+      ip: 162.130.139.122
+      managed_by: SA Unix
+    LNXPRD0961.marriott.com:
+      ip: 162.130.139.123
+      managed_by: SA Unix
+    LNXPRD0962.marriott.com:
+      ip: 162.130.139.124
+      managed_by: SA Unix
+    LNXPRD0963.marriott.com:
+      ip: 162.130.139.125
+      managed_by: SA Unix
+    LNXPRD0964.marriott.com:
+      ip: 162.130.139.126
+      managed_by: SA Unix
+    admin-alicloud-splunk-logs-01:
+      ip: 172.26.2.150
+      notes: 139.224.218.253 / 172.26.2.150 Deployment Server for AliCloud
+      managed_by: Cloud Services
+    mi-admin-rsyslog_1.aws-use1.cloud.marriott.com:
+      hostname: ip-172-25-13-120
+      ip: 172.25.13.120
+      notes: AWS Deployment Server for HRS
+      managed_by: Cloud Services
+heavy_forwarders:
+  hosts:
+    admin-alicloud-splunk-hf-01:
+      ip: 172.26.2.149
+      notes: 139.224.218.252 / 172.26.2.149 HF for AliCloud
+      managed_by: cloud services
+    mi-admin-rsyslog_2.aws-use1.cloud.marriott.com:
+      hostname: ip-172-25-13-146
+      ip: 172.25.13.146
+      managed_by: cloud services
+    mi-admin-rsyslog_3.aws-use1.cloud.marriott.com:
+      hostname: ip-172-25-13-185
+      ip: 172.25.13.185
+      notse: AWS HF
+      managed_by: cloud services
+    mi-admin-rsyslog_4.aws-use1.cloud.marriott.com:
+      hostname: ip-172-25-13-231
+      ip: 172.25.13.231
+      notes: GuardDuty HEC
+      managed_by: cloud services
+    Lnxprd0968.marriott.com:
+      managed_by: SA Unix
+    Lnxprd0969.marriott.com:
+      managed_by: SA Unix
+    Lnxprd0970.marriott.com:
+      managed_by: SA Unix
+    Lnxprd0971.marriott.com:
+      managed_by: SA Unix
+    Lnxprd0972.marriott.com:
+      managed_by: SA Unix
+    Lnxprd0973.marriott.com:
+      managed_by: SA Unix
 
 local:
   hosts:
     127.0.0.1:
 
-awx:
-  children:
-    local:
+phantom:
+  hosts:
+    splunk-phantom01.cloud.marriott.com:
+      hostname: prod-splunk-phantom01
+      ip: 172.25.225.220
+      prod: false
+    splunk-phantom02.cloud.marriott.com:
+      hostname: prod-splunk-phantom02
+      ip: 172.25.225.47
+      prod: false
+syslog:
+  hosts:
+    lnxprd1173.marriott.com:
+    lnxprd1174.marriott.com:
+    lnxprd1175.marriott.com:
+      provisioned: False
+    lnxprd1176.marriott.com:
+      provisioned: False
+    lnxprd1177.marriott.com:
+      provisioned: False
+    lnxprd1178.marriott.com:
+      provisioned: False
 
-
-managed:
-  children:
-    managed_by_gis:
-    managed_by_sa_unix:
-    managed_by_cloud_services:
-
-managed_by_gis:
-  children:
-    syslog_old_gis:
-
-managed_by_sa_unix:
-  children:
-    deployment_servers_sa_unix:
-    heavy_forwarders_sa_unix:
-
-managed_by_cloud_services:
-  children:
-    deployment_servers_cloud_services:
-    heavy_forwarders_cloud_services:
-
-
-syslog_old_gis:
+syslog_old:
   hosts:
     HDQNCCS02.marriott.com:
       ip: 162.130.112.10
+      managed_by: GIS
     HDQNCCS03.marriott.com:
       ip: 162.130.112.11
+      managed_by: GIS
     HDQNCCS04.marriott.com:
       ip: 162.130.112.12
+      managed_by: GIS
     HDQNCCS05.marriott.com:
       ip: 162.130.112.13
+      managed_by: GIS
     HDQNCCS06.marriott.com:
       ip: 162.130.112.14
-
-syslog_old:
-  children:
-    syslog_old_gis:
+      managed_by: GIS
   vars:
     load_balancer: logging.marriott.com
-
-syslog:
-  hosts:
-
-    #NAME="Red Hat Enterprise Linux Server"
-    #VERSION="7.9 (Maipo)"
-    #ID="rhel"
-    #ID_LIKE="fedora"
-    #VARIANT="Server"
-    #VARIANT_ID="server"
-    #VERSION_ID="7.9"
-    #PRETTY_NAME="Red Hat Enterprise Linux"
-    #ANSI_COLOR="0;31"
-    #CPE_NAME="cpe:/o:redhat:enterprise_linux:7.9:GA:server"
-    #HOME_URL="https://www.redhat.com/"
-    #BUG_REPORT_URL="https://bugzilla.redhat.com/"
-    #REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
-    #REDHAT_BUGZILLA_PRODUCT_VERSION=7.9
-    #REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
-    #REDHAT_SUPPORT_PRODUCT_VERSION="7.9"
-
-    lnxprd1173.marriott.com:
-    lnxprd1174.marriott.com:
-
-    # need to be created
-#    lnxprd1175.marriott.com:
-#    lnxprd1176.marriott.com:
-#    lnxprd1177.marriott.com:
-#    lnxprd1178.marriott.com:
-
-
-# Deployment Servers and Heavy Forwarders
-deployment_servers_sa_unix:
-  hosts:
-    LNXPRD0960.marriott.com:
-      ip: 162.130.139.122
-    LNXPRD0961.marriott.com:
-      ip: 162.130.139.123
-    LNXPRD0962.marriott.com:
-      ip: 162.130.139.124
-    LNXPRD0963.marriott.com:
-      ip: 162.130.139.125
-    LNXPRD0964.marriott.com:
-      ip: 162.130.139.126
-
-deployment_servers_cloud_services:
-  hosts:
-    ip-172-25-13-120.marriott.com:
-      ip: 172.25.13.120
-      notes: AWS Deployment Server for HRS
-    admin-alicloud-splunk-logs-01.marriott.com:
-      ip: 172.26.2.150
-      notes: 139.224.218.253 / 172.26.2.150 Deployment Server for AliCloud
-
-
-# not sure where these two go
-#LNXPRD0966.marriott.com:
-#LNXPRD0967.marriott.com:
-
-heavy_forwarders_cloud_services:
-  hosts:
-    admin-alicloud-splunk-hf-01.marriott.com:
-      ip: 172.26.2.149
-      notes: 139.224.218.252 / 172.26.2.149 HF for AliCloud
-    ip-172-25-13-185.marriott.com:
-      ip: 172.25.13.185
-      notse: AWS HF
-    ip-172-25-13-146.marriott.com:
-      ip: 172.25.13.146
-    ip-172-25-13-231.marriott.com:
-      ip: 172.25.13.231
-      notes: GuardDuty HEC
-
-heavy_forwarders_sa_unix:
-  hosts:
-    Lnxprd0968.marriott.com:
-    Lnxprd0969.marriott.com:
-    Lnxprd0970.marriott.com:
-    Lnxprd0971.marriott.com:
-    Lnxprd0972.marriott.com:
-    Lnxprd0973.marriott.com:
-
-heavy_forwarders:
+testing:
   children:
-    heavy_forwarders_sa_unix:
-    heavy_forwarders_cloud_services:
-
-deployment_servers:
-  children:
-    deployment_servers_sa_unix:
-    deployment_servers_cloud_services:
+    local:
+uba:
+  hosts:
+    prod-spark-node01.cloud.marriott.com:
+      hostname: prod-spark-node01
+      ip: 172.25.225.254
+    prod-spark-node02.cloud.marriott.com:
+      hostname: prod-spark-node02
+      ip: 172.25.225.69
+    prod-spark-node03.cloud.marriott.com:
+      hostname: prod-spark-node03
+      ip: 172.25.225.176
+    prod-spark-node04.cloud.marriott.com:
+      hostname: prod-spark-node04
+      ip: 172.25.225.112
+    prod-uba-node01.cloud.marriott.com:
+      hostname: prod-uba-node01
+      ip: 172.25.225.182
+    prod-uba-node02.cloud.marriott.com:
+      hostname: prod-uba-node02
+      ip: 172.25.225.71
+    prod-uba-node03.cloud.marriott.com:
+      hostname: prod-uba-node03
+      ip: 172.25.225.153
+    prod-uba-node04.cloud.marriott.com:
+      hostname: prod-uba-node04
+      ip: 172.25.225.28
+    prod-uba-node05.cloud.marriott.com:
+      hostname: prod-uba-node05
+      ip: 172.25.225.244
+    prod-uba-node06.cloud.marriott.com:
+      hostname: prod-uba-node06
+      ip: 172.25.225.67
+    prod-uba-node07.cloud.marriott.com:
+      hostname: prod-uba-node07
+      ip: 172.25.225.222
+    prod-uba-node08.cloud.marriott.com:
+      hostname: prod-uba-node08
+      ip: 172.25.225.125
+    prod-uba-node09.cloud.marriott.com:
+      hostname: prod-uba-node09
+      ip: 172.25.225.221
+    prod-uba-node10.cloud.marriott.com:
+      hostname: prod-uba-node10
+      ip: 172.25.225.113
+    prod-uba-node11.cloud.marriott.com:
+      hostname: prod-uba-node11
+      ip: 172.25.225.204
+    prod-uba-node12.cloud.marriott.com:
+      hostname: prod-uba-node12
+      ip: 172.25.225.7
+    prod-uba-node13.cloud.marriott.com:
+      hostname: prod-uba-node13
+      ip: 172.25.225.209
+    prod-uba-node14.cloud.marriott.com:
+      hostname: prod-uba-node14
+      ip: 172.25.225.87
+    prod-uba-node15.cloud.marriott.com:
+      hostname: prod-uba-node15
+      ip: 172.25.225.149
+    prod-uba-node16.cloud.marriott.com:
+      hostname: prod-uba-node16
+      ip: 172.25.225.65
+unknown:
+  hosts:
+    LNXPRD0966.marriott.com:
+    LNXPRD0967.marriott.com:

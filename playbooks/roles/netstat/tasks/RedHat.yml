@@ -1,0 +1,6 @@
+---
+- name: net-tools
+  yum:
+    name: net-tools
+    state: latest
+  become: yes

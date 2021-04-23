@@ -3,6 +3,7 @@
   shell: |
     apt update \
       && apt install -y git wget vim curl software-properties-common apt-transport-https ansible
+  become: yes
 
 - name: clean
   ansible.builtin.file:

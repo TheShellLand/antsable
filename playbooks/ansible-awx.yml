@@ -1,5 +1,6 @@
 ---
 - hosts: awx
   connection: local
+  become: yes
   roles:
     - ansible-awx

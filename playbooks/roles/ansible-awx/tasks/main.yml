@@ -9,6 +9,7 @@
   ansible.builtin.file:
     path: awx
     state: absent
+  become: no
 
 - name: deploy
   shell: |
@@ -16,3 +17,4 @@
       && cd awx \
       && rm -rf .git \
       && ansible-playbook -i installer/inventory installer/install.yml
+  become: no

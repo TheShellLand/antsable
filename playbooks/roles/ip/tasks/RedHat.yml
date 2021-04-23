@@ -1,0 +1,6 @@
+---
+- name: install iproute
+  yum:
+    name: iproute
+    state: latest
+  become: yes

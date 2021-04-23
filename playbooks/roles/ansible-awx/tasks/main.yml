@@ -1,20 +1,9 @@
 ---
-- name: install
-  shell: |
-    apt update \
-      && apt install -y git wget vim curl software-properties-common apt-transport-https ansible
-  become: yes
+- name: start minikube
+  shell: "minikube start --cpus={{CPUS}} --memory={{RAM}} --addons=ingress"
 
-- name: clean
-  ansible.builtin.file:
-    path: awx
-    state: absent
-  become: no
+- name: deploy awx operator
+  shell: minikube kubectl -- apply -f https://raw.githubusercontent.com/ansible/awx-operator/<tag>/deploy/awx-operator.yaml
 
-- name: deploy
-  shell: |
-    git clone https://github.com/ansible/awx \
-      && cd awx \
-      && rm -rf .git \
-      && ansible-playbook -i installer/inventory installer/install.yml
-  become: no
+#- name: deploy awx
+#  shell: minikube kubectl apply -- -f myawx.yml

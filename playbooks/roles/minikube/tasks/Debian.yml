@@ -1,8 +1,14 @@
 ---
-- name: download
-  shell: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-  become: no
-
 - name: install
-  shell: install minikube-darwin-amd64 /usr/local/bin/minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+    force: yes
+    mode: '0755'
   become: yes
+
+- name: kubectl
+  snap:
+    name: kubectl
+    state: present
+    classic: yes

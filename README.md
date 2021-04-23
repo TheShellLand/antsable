@@ -38,7 +38,7 @@ For automated passwordless deployment:
 ```shell
 # ensure you ssh-copy-id to your server 
 # ensure sudo password is in sudo-password
-# ensure your public key is in playbooks/roles/auth/files/authorized_keys
+# ensure your public key is added to playbooks/roles/auth
 ./deploy.sh playbooks/roles/syslog.yml
 ```
 

@@ -4,6 +4,11 @@
     apt update \
       && apt install -y git wget vim curl software-properties-common apt-transport-https ansible
 
+- name: clean
+  ansible.builtin.file:
+    path: awx
+    state: absent
+
 - name: deploy
   shell: |
     git clone https://github.com/ansible/awx \

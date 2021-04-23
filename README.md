@@ -7,6 +7,9 @@ You're here because you have been doing something manually for years, and you re
 **[Roles](#Supported-Roles)** | **[Meta](#Supported-Meta-Dependencies)** | 
 **[Deploy](#Deploy-Role)** | **[Ansible AWX](#ansible-awx)** | **[Ansible Tower](#ansible-tower)** | **[Jenkins](#jenkins)** 
 
+## Requires
+Ansible. 
+
 ## Supported Roles
 
 - [syslog.yml](playbooks/roles/syslog)
@@ -23,6 +26,11 @@ You're here because you have been doing something manually for years, and you re
 - [sshd](playbooks/roles/sshd)
 
 *Note: to request additional automated deployments, raise a github issue*
+
+## Install Ansible
+```shell
+figure it out
+```
 
 ## Deploy Role
 

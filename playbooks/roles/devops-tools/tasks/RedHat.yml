@@ -1,0 +1,12 @@
+---
+- name: install vim
+  yum:
+    name: vim
+    state: latest
+  become: yes
+
+- name: install tmux
+  yum:
+    name: tmux
+    state: latest
+  become: yes

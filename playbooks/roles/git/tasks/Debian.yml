@@ -1,0 +1,4 @@
+---
+- name: install openssh-server
+  shell: apt update && apt install -y git
+  become: yes

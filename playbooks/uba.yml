@@ -1,0 +1,6 @@
+---
+- hosts: uba
+  roles:
+    - uba
+  vars:
+    DEBUG: false

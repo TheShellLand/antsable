@@ -1,0 +1,21 @@
+---
+# Script for automating Splunk UBA installation and SSH key distribution
+- name: get interface
+  shell: ip addr show | awk '/inet.*brd/{print $NF}'
+  register: interface
+
+- debug:
+    var: interface.stdout
+
+
+- name: UBA INSTALL & INTERFACE ADD
+  shell: |
+    tar xvzf /home/caspida/splunk-uba-rhel-7x-software-for-bare-metal-installation_50.tgz
+    mv splunk-uba-rhel-7x-software-for-bare-metal-installation_50/* /home/caspida
+    tar xvzf /home/caspida/Splunk-UBA-Platform-5.0.0-20191015-000100.tgz -C /opt/caspida/
+    tar xvzf /home/caspida/Splunk-UBA-5.0-Packages-RHEL-7.7.tgz -C /home/caspida/
+    /opt/caspida/bin/installer/redhat/INSTALL.sh /home/caspida/Splunk-UBA-5.0-Packages-RHEL-7.7
+
+    if [[ {{interface.stdout}} != "eth0" ]]; then
+      printf "system.network.interface={{interface.stdout}}\n" >> /etc/caspida/local/conf/uba-site.properties
+    fi

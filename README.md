@@ -12,6 +12,7 @@ Ansible.
 
 ## Supported Roles
 
+- [uba.yml](playbooks/roles/uba)
 - [syslog.yml](playbooks/roles/syslog)
 - [ansible-awx.yml](playbooks/roles/ansible-awx)
 - [heavy-forwarder.yml](playbooks/roles/heavy-forwarder)
@@ -20,10 +21,13 @@ Ansible.
 ## Supported Meta Dependencies
 
 - [splunk-enterprise](playbooks/roles/splunk-enterprise)
+- [devops-tools](playbooks/roles/devops-tools)
+- [resolvconf](playbooks/roles/resolvconf)
+- [firewalld](playbooks/roles/firewalld)
 - [rsyslog](playbooks/roles/rsyslog)
-- [logrotate](playbooks/roles/logrotate)
-- [docker](playbooks/roles/docker)
 - [sshd](playbooks/roles/sshd)
+- [git](playbooks/roles/git)
+- [ip](playbooks/roles/ip)
 
 *Note: to request additional automated deployments, raise a github issue*
 
@@ -55,7 +59,7 @@ For any issues or questions, please raise a git issue
 Available as a local instance, deploy role [ansible-awx.yml](playbooks/roles/ansible-awx)
 
 ## Ansible Tower
-Currently iced, [Ansible Tower](https://git.marriott.com/CSAA/ansible-tower)
+In the proceess of testing, [Ansible Tower](https://git.marriott.com/CSAA/ansible-tower)
 
 ## Jenkins
 We have a jenkins automation server, [here](https://iam-jenkins.tools.marriott.com/job/soar-playground/job/deploy-syslog/)

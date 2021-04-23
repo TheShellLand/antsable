@@ -1,0 +1,8 @@
+---
+dependencies:
+  - ip
+  - netstat
+  - firewalld
+  - resolvconf
+  - git
+  - devops-tools

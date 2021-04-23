@@ -1,6 +1,2 @@
 ---
-- name: git
-  yum:
-    name: git
-    state: latest
-  become: yes
+- include_tasks: "{{ansible_facts.os_family}}.yml"

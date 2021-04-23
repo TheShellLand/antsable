@@ -19,6 +19,7 @@ if grep "Ubuntu 18" /etc/issue >/dev/null 2>&1; then
     apt install -y git vim curl && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
+    apt install -y python-apt && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
     apt update && \
     apt install -y ansible
@@ -34,6 +35,7 @@ if grep "Ubuntu 20" /etc/issue >/dev/null 2>&1; then
     apt install -y git vim curl && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
+    apt install -y python-apt && \
     apt install -y ansible
   fi
 fi
@@ -47,6 +49,7 @@ if grep Debian /etc/issue >/dev/null 2>&1; then
     apt install -y git vim curl && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
+    apt install -y python-apt && \
     apt update && \
     apt install -y ansible
   fi
@@ -61,6 +64,7 @@ if grep Ubuntu /etc/issue >/dev/null 2>&1; then
     apt install -y git vim curl && \
     apt install -y software-properties-common && \
     apt install -y apt-transport-https && \
+    apt install -y python-apt && \
     apt-add-repository -y 'ppa:ansible/ansible' && \
     apt update && \
     apt install -y ansible
@@ -84,14 +88,7 @@ fi
 
 # create base local inventory
 if [ ! -f inventory.yaml ]; then
-  cat > inventory.yaml <<EOF
----
-all:
-
-local:
-  hosts:
-    localhost:
-EOF
+  cp -v inventory-example.yaml inventory.yaml
 fi
 
 # Mac M1

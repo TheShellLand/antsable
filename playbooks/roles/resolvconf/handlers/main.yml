@@ -1,0 +1,12 @@
+---
+- name: Restart resolvconf
+  service:
+    name: resolvconf
+    state: restarted
+  become: yes
+
+- name: Start resolvconf
+  service:
+    name: resolvconf
+    state: started
+  become: yes

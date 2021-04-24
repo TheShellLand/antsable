@@ -5,8 +5,7 @@
 cd $(dirname $) && set -e
 
 DEFAULT=ubuntu/focal64
-# DEFAULT=ubuntu/focal64
-# DEFAULT=generic/rhel7
+#DEFAULT=generic/rhel7
 
 if [ -f Vagrantfile ]; then
   vagrant up

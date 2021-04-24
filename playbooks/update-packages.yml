@@ -4,4 +4,4 @@
     - update-packages
   vars:
     all_packages: false
-    security_packages: true
+    security_packages: false

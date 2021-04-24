@@ -3,6 +3,7 @@
   yum:
     update_only: yes
   become: yes
+  when: not security_packages and not all_packages
 
 - name: upgrade all security packages
   yum:

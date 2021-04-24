@@ -1,5 +1,5 @@
 ---
-- name: upgrade all security packages
+- name: libselinux-python
   yum:
     name: libselinux-python
     state: latest

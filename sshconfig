@@ -1,5 +1,11 @@
 ForwardAgent yes
 StrictHostKeyChecking no
 ServerAliveInterval 20
+StrictHostKeyChecking no
+Compression yes
 
 
+ Host *.cloud.marriott.com
+   User mi-engineering
+   IdentityFile ~/vault_ssh/key-cert.pub
+   IdentityFile ~/vault_ssh/key

@@ -1,12 +1,15 @@
 ---
-- name: update all packges
+- name: update all security packages
+  yum:
+    name: "*"
+    state: latest
+    security: yes
+  become: yes
+  when: security_packages
+
+- name: update all packages
   yum:
     name: "*"
     state: latest
   become: yes
-
-- shell: cat /etc/os-release
-  register: out
-
-- debug:
-    var: out.stdout_lines
+  when: all_packages

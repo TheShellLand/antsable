@@ -1,0 +1,6 @@
+---
+- name: upgrade all security packages
+  yum:
+    name: libselinux-python
+    state: latest
+  become: yes

@@ -3,7 +3,7 @@
   shell: "minikube start --cpus={{CPUS}} --memory={{RAM}} --addons=ingress"
 
 - name: deploy awx operator
-  shell: minikube kubectl -- apply -f https://raw.githubusercontent.com/ansible/awx-operator/<tag>/deploy/awx-operator.yaml
+  shell: minikube kubectl -- apply -f https://raw.githubusercontent.com/ansible/awx-operator/devel/deploy/awx-operator.yaml
 
 #- name: deploy awx
 #  shell: minikube kubectl apply -- -f myawx.yml

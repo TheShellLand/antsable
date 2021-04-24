@@ -16,6 +16,7 @@ Ansible.
 - [syslog.yml](playbooks/roles/syslog)
 - [ansible-awx.yml](playbooks/roles/ansible-awx)
 - [heavy-forwarder.yml](playbooks/roles/heavy-forwarder)
+- [update-packages.yml](playbooks/roles/update-packages)
 - [deployment-server.yml](playbooks/roles/deployment-server)
 
 ## Supported Meta Dependencies

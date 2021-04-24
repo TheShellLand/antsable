@@ -1,6 +1,5 @@
 ---
-- debug:
-    var: ansible_facts.os_family
+#- debug:
+#    var: ansible_facts.os_family
 
 - include_tasks: "{{ansible_facts.os_family}}.yml"
-  when: install

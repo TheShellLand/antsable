@@ -1,5 +1,10 @@
 ---
-- name: update all security packages
+- name: update only
+  yum:
+    update_only: yes
+  become: yes
+
+- name: upgrade all security packages
   yum:
     name: "*"
     state: latest
@@ -7,7 +12,7 @@
   become: yes
   when: security_packages
 
-- name: update all packages
+- name: upgrade all packages
   yum:
     name: "*"
     state: latest

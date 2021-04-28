@@ -120,10 +120,13 @@ testing:
 uba:
   children:
     uba_healthcheck:
+      children:
+        uba_dev:
       hosts:
         prod-uba-node01.cloud.marriott.com:
           hostname: prod-uba-node01
           ip: 172.25.225.182
+
     uba_prod:
       hosts:
         prod-spark-node01.cloud.marriott.com:
@@ -186,6 +189,9 @@ uba:
         prod-uba-node16.cloud.marriott.com:
           hostname: prod-uba-node16
           ip: 172.25.225.65
+    uba_dev:
+      hosts:
+        172.25.226.182:
 unknown:
   hosts:
     LNXPRD0966.marriott.com:

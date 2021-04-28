@@ -5,7 +5,7 @@ StrictHostKeyChecking no
 Compression yes
 
 
- Host *.cloud.marriott.com
-   User mi-engineering
-   IdentityFile ~/vault_ssh/key-cert.pub
-   IdentityFile ~/vault_ssh/key
+Host *.cloud.marriott.com
+  User mi-engineering
+  IdentityFile ~/vault_ssh/key-cert.pub
+  IdentityFile ~/vault_ssh/key

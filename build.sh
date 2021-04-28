@@ -2,19 +2,20 @@
 
 # build docker
 
-if [ -f env.sh ]; then source env.sh; fi
+cd $(dirname $0) && set -e
 
-set -xe; cd $(dirname $0)
+# copy vault ssh keys
+if [ ! -d $HOME/vault_ssh ]; then
+  echo "vault ssh keys not found, $HOME/vault_ssh"
+  echo "run refresh-keys.sh in CSAA/docker-bastion"
+  exit 1
+fi
 
-# clean docker
-#docker system prune -f
-# clean older than 10 days
-#docker image prune -a --force --filter "until=240h"
+set -x
 
 # build image
 DOCKERTAG=$(git describe --tags --always)
-docker build "$@" -t csaa/syslog-deploy:$DOCKERTAG .
-docker tag csaa/syslog-deploy:$DOCKERTAG csaa/syslog-deploy:latest
+docker build "$@" -t csaa/syslog-deploy .
 
 # list image
 docker images | grep csaa/syslog-deploy

@@ -1,0 +1,11 @@
+---
+- name: get healthcheck file
+  fetch:
+    src: /var/log/caspida/check/uhc_prod-uba-node01_210406_1750_v21.03.001.txt
+    dest: uba-prod-healthcheck.txt
+
+
+- name: get healthcheck file
+  fetch:
+    src: /var/log/caspida/check/uhc_uba-node01_210406_1810_v21.03.001.txt
+    dest: uba-dev-healthcheck.txt

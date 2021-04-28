@@ -1,0 +1,4 @@
+---
+- hosts: uba_healthcheck
+  roles:
+    - uba-healthcheck

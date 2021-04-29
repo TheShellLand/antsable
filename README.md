@@ -3,7 +3,7 @@
 
 ## Get started
 ```
-wget -O - https://raw.githubusercontent.com/TheShellLand/antsable/master/ansible.sh | sudo bash
+wget -O - https://raw.githubusercontent.com/TheShellLand/antsable/master/install-ansible.sh | sudo bash
 ```
 
 ## Set Inventory

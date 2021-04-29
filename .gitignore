@@ -1,6 +1,7 @@
 .idea/
 inventory.yaml
 config
+sshconfig
 .vagrant
 Vagrantfile
 become_password

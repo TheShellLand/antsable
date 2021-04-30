@@ -6,3 +6,4 @@ sshconfig
 Vagrantfile
 become_password
 ssh_password
+env.sh

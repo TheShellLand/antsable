@@ -4,6 +4,5 @@ config
 sshconfig
 .vagrant
 Vagrantfile
-become_password
-ssh_password
 env.sh
+vault-secret

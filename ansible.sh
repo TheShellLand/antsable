@@ -4,18 +4,23 @@
 
 cd $(dirname $0) && set -e
 
-# Helps automation
-export ANSIBLE_INVENTORY=inventory.yaml
+if [ -f env.sh ]; then source env.sh; fi
 
 # Run playbook
 if which ansible-playbook >/dev/null; then
+  GIT_TAG=$(git describe --tags --abbrev=0)
 
-  if [ -f become_password ] && [ -f ssh_password ]; then
+  if [ -f vault-secret ] && [ "$ANSIBLE_SSH_PASS" != "" ] && [ "$ANSIBLE_BECOME_PASS" != "" ]; then
     set -x
-    exec ansible-playbook -e "ansible_become_password=$(cat become_password)" -e "ansible_ssh_password=$(cat ssh_password)" "$@"
+    ansible-playbook --vault-password-file vault-secret \
+      -e "git_tag=$GIT_TAG" \
+      -e "ansible_become_pass=$ANSIBLE_BECOME_PASS" \
+      -e "ansible_ssh_pass=$ANSIBLE_SSH_PASS" "$@"
+  elif [ -f vault-secret ]; then
+    set -x
+    ansible-playbook --vault-password-file vault-secret \
+      -e "git_tag=$GIT_TAG" "$@"
   else
-    exec ansible-playbook "$@"
+    ansible-playbook "$@"
   fi
 fi
-
-#exec bash

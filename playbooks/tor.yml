@@ -1,5 +1,5 @@
 ---
-- hosts: ivre
+- hosts: all
   tasks:
 
   - name: Build TOR from source
@@ -17,7 +17,7 @@
       createhome: yes
 
   - name: Start on reboot
-    shel: |
+    shell: |
       cat > /etc/rc.local <<EOF
       #!/bin/sh -e
       #

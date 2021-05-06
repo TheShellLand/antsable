@@ -10,4 +10,6 @@ FROM ansible
 COPY . /antsable
 WORKDIR /antsable
 
+RUN chmod -x vault-secret*
+
 ENTRYPOINT ["/bin/bash", "ansible.sh"]

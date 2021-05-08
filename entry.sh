@@ -5,9 +5,10 @@
 if [ "$1" == "" ]; then
   exec bash
 else
-  echo "/bin/bash /ansible-deploy/deploy.sh $@ " '$@' > last-deploy.sh
   set -x
-  /bin/bash /ansible-deploy/deploy.sh $@ || exec bash
+  /bin/bash /ansible-deploy/deploy.sh $@
+  echo "/bin/bash /ansible-deploy/deploy.sh $@ -l @$(ls *.retry)" > last-deploy.sh
+  chmod +x last-deploy.sh
 fi
 
-#exec bash
+exec bash

@@ -122,7 +122,7 @@ if [ "$(uname)" == "Darwin" ]; then
     alias ansible-playbook="$HOME/Library/Python/*/bin/ansible-playbook"
 
     if [ ! "$1" == "" ]; then
-      set -x
+      #set -x
       ansible_playbook "$@" || exit 1
       exit 0
     fi
@@ -132,6 +132,6 @@ fi
 
 # Run playbook
 if [ ! "$1" == "" ]; then
-  set -x
+  #set -x
   exec ansible-playbook "$@"
 fi

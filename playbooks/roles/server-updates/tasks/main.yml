@@ -1,0 +1,5 @@
+---
+- import_tasks: prerequisites.yml
+- import_tasks: 1_uba_prep_RHEL.yml
+- import_tasks: 2_install_uba.yml
+- import_tasks: 3_uba_upgrade.yml

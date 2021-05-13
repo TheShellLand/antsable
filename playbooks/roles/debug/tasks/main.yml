@@ -1,3 +1,6 @@
 ---
 - debug:
     var: ansible_facts
+
+- debug:
+    var: inventory_hostname

@@ -68,18 +68,30 @@ local:
 
 phantom:
   children:
+    phantom_unknown:
+      hosts:
+        172.25.226.156:
+          hostname: splunk-phantom01.aws-use1.cloud.marriott.com
+          ip: 172.25.226.156
+        172.25.226.112:
+          hostname: splunk-phantom02.aws-use1.cloud.marriott.com
+          ip: 172.25.226.112
     phantom_prod:
       hosts:
-    phantom_nonprod:
-      hosts:
         splunk-phantom01.cloud.marriott.com:
-          hostname: prod-splunk-phantom01
+          hostname: prod-splunk-phantom01.aws-use1.cloud.marriott.com
           ip: 172.25.225.220
           prod: false
         splunk-phantom02.cloud.marriott.com:
-          hostname: prod-splunk-phantom02
+          hostname: prod-splunk-phantom02.aws-use1.cloud.marriott.com
           ip: 172.25.225.47
           prod: false
+    phantom_nonprod:
+      hosts:
+        splunk-phantom01-nonprod.cloud.marriott.com:
+          ip: 172.25.226.156
+        splunk-phantom02-nonprod.cloud.marriott.com:
+          ip: 172.25.226.112
 
 
 syslog:
@@ -128,19 +140,25 @@ uba:
           ip: 172.25.225.182
 
     uba_prod:
+      children:
+        uba_spark_cluster:
+          hosts:
+            prod-spark-node01.cloud.marriott.com:
+              hostname: prod-spark-node01
+              ip: 172.25.225.254
+            prod-spark-node02.cloud.marriott.com:
+              hostname: prod-spark-node02
+              ip: 172.25.225.69
+            prod-spark-node03.cloud.marriott.com:
+              hostname: prod-spark-node03
+              ip: 172.25.225.176
+            prod-spark-node04.cloud.marriott.com:
+              hostname: prod-spark-node04
+              ip: 172.25.225.112
+        uba_cluster_1:
+        uba_cluster_2:
+        uba_cluster_3:
       hosts:
-        prod-spark-node01.cloud.marriott.com:
-          hostname: prod-spark-node01
-          ip: 172.25.225.254
-        prod-spark-node02.cloud.marriott.com:
-          hostname: prod-spark-node02
-          ip: 172.25.225.69
-        prod-spark-node03.cloud.marriott.com:
-          hostname: prod-spark-node03
-          ip: 172.25.225.176
-        prod-spark-node04.cloud.marriott.com:
-          hostname: prod-spark-node04
-          ip: 172.25.225.112
         prod-uba-node01.cloud.marriott.com:
           hostname: prod-uba-node01
           ip: 172.25.225.182
@@ -191,7 +209,16 @@ uba:
           ip: 172.25.225.65
     uba_dev:
       hosts:
-        172.25.226.182:
+        uba-node01.cloud.marriott.com:
+          hostname: uba-node01.aws-use1.cloud.marriott.com
+          ip: 172.25.226.182
+        uba-node02.cloud.marriott.com:
+          hostname: uba-node02.aws-use1.cloud.marriott.com
+          ip: 172.25.226.116
+        spark-node01.cloud.marriott.com:
+          hostname: spark-node01.aws-use1.cloud.marriott.com
+          ip: 172.25.226.132
+
 unknown:
   hosts:
     LNXPRD0966.marriott.com:

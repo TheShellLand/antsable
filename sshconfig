@@ -10,7 +10,7 @@ Host *.cloud.marriott.com
   IdentityFile ~/vault_ssh/key-cert.pub
   IdentityFile ~/vault_ssh/key
 
-Host 172.25.226.*
+Host 172.25.*
   User mi-engineering
   IdentityFile ~/vault_ssh/key-cert.pub
   IdentityFile ~/vault_ssh/key

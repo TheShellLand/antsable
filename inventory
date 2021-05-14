@@ -132,13 +132,10 @@ testing:
 uba:
   children:
     uba_healthcheck:
-      children:
-        uba_dev:
       hosts:
         prod-uba-node01.cloud.marriott.com:
           hostname: prod-uba-node01
           ip: 172.25.225.182
-
     uba_prod:
       children:
         uba_spark_cluster:

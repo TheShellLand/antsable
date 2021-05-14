@@ -1,5 +1,7 @@
 #! /bin/sh
 
+set -x
+
 ##
 # Copyright © 2021 Splunk Inc.
 # SPLUNK CONFIDENTIAL – Use or disclosure of this material in whole or in part
@@ -5000,7 +5002,8 @@ then
 	if test -s $TMP1file
 	then
 		echo >> $TMP1file
-		$SPLUNK_HOME/bin/splunk display boot-start >> $TMP1file 2>/dev/null
+		# disabled
+		#$SPLUNK_HOME/bin/splunk display boot-start >> $TMP1file 2>/dev/null
 		echo
 		NECHO "splunkd:" "`head -1 $TMP1file`" ; echo
 		ALL_BUT_FIRST $TMP1file

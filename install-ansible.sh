@@ -14,6 +14,7 @@ if which python3 && which curl; then
   curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
   python3 "get-pip.py"
   python3 -m pip install -U pip ansible
+  exit 0
 fi
 
 # Best effort Ubuntu
@@ -28,6 +29,7 @@ if which apt >/dev/null || which apt-get >/dev/null; then
     curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py && \
     python3 "get-pip.py" && \
     python3 -m pip install -U pip ansible
+    exit 0
   fi
 fi
 
@@ -42,6 +44,7 @@ if [ -f /etc/os-release ]; then
     if ! which ansible >/dev/null; then
       yum install -y epel-release
       yum install -y ansible
+      exit 0
     fi
   fi
 fi

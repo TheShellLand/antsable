@@ -1,0 +1,15 @@
+---
+- name: upgrade all security packages
+  yum:
+    name: "*"
+    state: latest
+    security: yes
+  become: yes
+  when: security_packages
+
+- name: upgrade all packages
+  yum:
+    name: "*"
+    state: latest
+  become: yes
+  when: all_packages

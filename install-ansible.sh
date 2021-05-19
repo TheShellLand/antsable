@@ -21,6 +21,7 @@ if which apt >/dev/null || which apt-get >/dev/null; then
   if ! which ansible >/dev/null; then
     echo "Installing ansible"
     apt update && \
+    apt install -y git && \
     apt install -y python3 python3-distutils && \
     apt install -y gcc && \
     apt install -y curl && \

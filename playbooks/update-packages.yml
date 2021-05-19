@@ -5,3 +5,4 @@
   vars:
     all_packages: false
     security_packages: false
+    reboot: false

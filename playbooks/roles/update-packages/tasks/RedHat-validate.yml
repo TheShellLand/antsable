@@ -1,5 +1,5 @@
 ---
-- name: upgrade all security packages
+- name: validate all security packages
   yum:
     name: "*"
     state: latest
@@ -7,7 +7,7 @@
   become: yes
   when: security_packages
 
-- name: upgrade all packages
+- name: validate all packages
   yum:
     name: "*"
     state: latest

@@ -124,6 +124,8 @@ testing:
   children:
     local:
 uba:
+  vars:
+    validate: uba-validate
   children:
     uba_healthcheck:
       hosts:
@@ -201,7 +203,7 @@ uba:
               ip: 172.25.225.65
     uba_dev:
       children:
-        uba_dev_leader:
+        uba_dev_cluster_leader:
           hosts:
             uba-node01.cloud.marriott.com:
               hostname: uba-node01.aws-use1.cloud.marriott.com

@@ -68,14 +68,6 @@ local:
 
 phantom:
   children:
-    phantom_unknown:
-      hosts:
-        172.25.226.156:
-          hostname: splunk-phantom01.aws-use1.cloud.marriott.com
-          ip: 172.25.226.156
-        172.25.226.112:
-          hostname: splunk-phantom02.aws-use1.cloud.marriott.com
-          ip: 172.25.226.112
     phantom_prod:
       hosts:
         splunk-phantom01.cloud.marriott.com:
@@ -89,8 +81,10 @@ phantom:
     phantom_nonprod:
       hosts:
         splunk-phantom01-nonprod.cloud.marriott.com:
+          hostname: splunk-phantom01.aws-use1.cloud.marriott.com
           ip: 172.25.226.156
         splunk-phantom02-nonprod.cloud.marriott.com:
+          hostname: splunk-phantom02.aws-use1.cloud.marriott.com
           ip: 172.25.226.112
 
 

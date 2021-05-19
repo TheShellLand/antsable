@@ -16,3 +16,5 @@
     delay: 5
     timeout: 300
   when: reboot
+
+- include_tasks: "{{ansible_facts.os_family}}-validate.yml"

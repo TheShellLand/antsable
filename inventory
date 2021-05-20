@@ -131,25 +131,29 @@ uba:
         prod-uba-node01.cloud.marriott.com:
     uba_prod:
       children:
-        uba_spark_cluster:
+        uba_prod_cluster:
+          children:
+            uba_spark_cluster:
+              hosts:
+                prod-spark-node01.cloud.marriott.com:
+                  hostname: prod-spark-node01
+                  ip: 172.25.225.254
+                prod-spark-node02.cloud.marriott.com:
+                  hostname: prod-spark-node02
+                  ip: 172.25.225.69
+                prod-spark-node03.cloud.marriott.com:
+                  hostname: prod-spark-node03
+                  ip: 172.25.225.176
+                prod-spark-node04.cloud.marriott.com:
+                  hostname: prod-spark-node04
+                  ip: 172.25.225.112
+
+            uba_prod_cluster_leader:
+              hosts:
+                prod-uba-node01.cloud.marriott.com:
+                  hostname: prod-uba-node01
+                  ip: 172.25.225.182
           hosts:
-            prod-spark-node01.cloud.marriott.com:
-              hostname: prod-spark-node01
-              ip: 172.25.225.254
-            prod-spark-node02.cloud.marriott.com:
-              hostname: prod-spark-node02
-              ip: 172.25.225.69
-            prod-spark-node03.cloud.marriott.com:
-              hostname: prod-spark-node03
-              ip: 172.25.225.176
-            prod-spark-node04.cloud.marriott.com:
-              hostname: prod-spark-node04
-              ip: 172.25.225.112
-        uba_cluster:
-          hosts:
-            prod-uba-node01.cloud.marriott.com:
-              hostname: prod-uba-node01
-              ip: 172.25.225.182
             prod-uba-node02.cloud.marriott.com:
               hostname: prod-uba-node02
               ip: 172.25.225.71
@@ -196,10 +200,13 @@ uba:
               hostname: prod-uba-node16
               ip: 172.25.225.65
     uba_dev:
+      children:
+        uba_dev_leader:
+          hosts:
+            uba-node01.cloud.marriott.com:
+              hostname: uba-node01.aws-use1.cloud.marriott.com
+              ip: 172.25.226.182
       hosts:
-        uba-node01.cloud.marriott.com:
-          hostname: uba-node01.aws-use1.cloud.marriott.com
-          ip: 172.25.226.182
         uba-node02.cloud.marriott.com:
           hostname: uba-node02.aws-use1.cloud.marriott.com
           ip: 172.25.226.116

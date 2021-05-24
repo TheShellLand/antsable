@@ -1,0 +1,10 @@
+---
+- name: stop capida services
+  shell: /opt/caspida/bin/Caspida stop-all
+  become: yes
+  become_user: caspida
+  register: stop
+  failed_when: "'DONE' not in stop.stdout"
+  changed_when: "'DONE' in stop.stdout"
+  notify:
+    - verify capida services

@@ -1,0 +1,11 @@
+---
+- name: start capida services
+  shell: /opt/caspida/bin/Caspida start-all
+  become: yes
+  become_user: caspida
+  register: start
+  failed_when: "'failed' in start.stdout"
+  notify:
+    - verify capida services
+
+#Mon May 24 06:36:02 UTC 2021:   splunkuba is in state=Active, indicates that the containers are currently running, aborting

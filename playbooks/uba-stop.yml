@@ -1,0 +1,4 @@
+---
+- hosts: uba_*_cluster_leader
+  roles:
+    - uba-stop

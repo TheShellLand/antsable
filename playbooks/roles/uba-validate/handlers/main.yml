@@ -1,1 +1,21 @@
 ---
+- name: verify capida services
+  shell: /opt/caspida/bin/Caspida status
+  become: yes
+  become_user: caspida
+  register: status
+  failed_when: "'return value' in status.stdout"
+
+
+#IP - 172.25.226.182
+#Mon May 24 04:47:56 UTC 2021: Running: /opt/caspida/bin/Caspida status
+#checking status of: caspida-jobmanager
+#Caspida Job Manager is running[  OK  ]
+#checking status of: caspida-ui
+#caspida-ui is running (pid 10682)
+
+#IP - 172.25.226.182
+#Mon May 24 05:20:25 UTC 2021: Running: /opt/caspida/bin/Caspida status
+#checking status of: caspida-jobmanager
+#Caspida Job Manager is not running[FAILED]
+#caspida-jobmanager status: return value: 3

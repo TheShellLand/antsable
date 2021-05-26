@@ -301,6 +301,18 @@
     hdiutil detach "$volume"
   become: yes
 
+- name: teamviewer
+  shell: |
+    folder="TeamViewer"
+    app="Install TeamViewer.app"
+    volume="/Volumes/$folder"
+    url="https://dl.teamviewer.com/download/version_15x/TeamViewer.dmg"
+
+    hdiutil attach -nobrowse "$url"
+    cp -vR "$volume/$app" ~/
+    hdiutil detach "$volume"
+  become: no
+
 - name: crossover download
   get_url:
     url: unzip https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-20.0.2.zip

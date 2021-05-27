@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: get public ip
+      shell: dig +short myip.opendns.com @resolver1.opendns.com
+      register: publicip
+
+    - debug:
+        var: publicip.stdout
+

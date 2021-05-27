@@ -1,0 +1,11 @@
+---
+- hosts: uba
+  roles:
+    - uba-stop
+    - update-packages
+    - uba-start
+    - uba-validate
+  vars:
+    all_packages: false
+    security_packages: false
+    reboot: false

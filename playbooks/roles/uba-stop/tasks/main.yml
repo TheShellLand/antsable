@@ -8,3 +8,5 @@
   changed_when: "'DONE' in stop.stdout"
   notify:
     - verify capida services
+  when:
+    - "'uba_healthcheck' in group_names"

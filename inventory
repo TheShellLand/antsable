@@ -138,8 +138,6 @@ testing:
   children:
     local:
 uba:
-  vars:
-    validate: uba-validate
   children:
     uba_healthcheck:
       hosts:

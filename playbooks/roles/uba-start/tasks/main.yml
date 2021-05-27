@@ -7,5 +7,7 @@
   failed_when: "'failed' in start.stdout"
   notify:
     - verify capida services
+  when:
+    - "'uba_healthcheck' in group_names"
 
 #Mon May 24 06:36:02 UTC 2021:   splunkuba is in state=Active, indicates that the containers are currently running, aborting

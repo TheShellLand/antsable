@@ -3,3 +3,4 @@
   roles:
     - uba-stop
     - uba-start
+    - uba-validate

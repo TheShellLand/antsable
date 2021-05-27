@@ -18,4 +18,3 @@
   when: reboot
 
 - include_tasks: "{{ansible_facts.os_family}}-validate.yml"
-- include_role: "{{ validate }}"

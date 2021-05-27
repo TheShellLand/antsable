@@ -68,6 +68,20 @@ local:
 
 phantom:
   children:
+    phantom_loadbalancers:
+      hosts:
+        splunk-phantom-nlb.marriott.com:
+          cname: splunk-phantom-nlb.marriott.com
+          fqdn: splunk-phantom-nlb-49e536f60d4996d3.elb.us-east-1.amazonaws.com
+          ip:
+            - 3.225.249.197
+            - 24.205.160.170
+        splunk-phantom-nlb-NonProd.marriott.com:
+          fqdn: splunk-phantom-nlb-328aec1ed975abe6.elb.us-east-1.amazonaws.com
+          cname: splunk-phantom-nlb-NonProd.marriott.com
+          ip:
+            - 3.210.216.248
+            - 34.228.137.125
     phantom_prod:
       hosts:
         splunk-phantom01.cloud.marriott.com:

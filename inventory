@@ -101,6 +101,43 @@ phantom:
           hostname: splunk-phantom02.aws-use1.cloud.marriott.com
           ip: 172.25.226.112
 
+marriott_nat_gw:
+  hosts:
+    mi-na-gis-prod-east-nat-2:
+      nat_gw_id: nat-0cd0bd6ecfe27ea68
+      state: Available
+      elastic_ip: 52.54.115.67
+      internal_ip: 172.25.224.47
+      eni: eni-065e204a39d78a9f2
+      vpc: vpc-0c798899292b92e5e/ mi-na-gis-prod-east-vpc
+      subnet: subnet-0bf95a8428f36b5f0/ mi-na-gis-prod-east-dmz-2
+
+    mi-na-gis-prod-east-nat-1:
+      nat_gw_id: nat-0122fa06e29963533
+      state: Available
+      elastic_ip: 34.196.34.69
+      internal_ip: 172.25.224.10
+      eni: eni-05262e6e1d23a8451
+      vpc: vpc-0c798899292b92e5e/ mi-na-gis-prod-east-vpc
+      subnet: subnet-0b182eec3a101c0ac/ mi-na-gis-prod-east-dmz-1
+
+    mi-na-gis-nonprod-east-nat-2:
+      nat_gw_id: nat-0828f5e63c6b31aa1
+      state: Available
+      elastic_ip: 34.227.189.192
+      internal_ip: 172.25.226.20
+      eni: eni-02a621aed1b8d6277
+      vpc: vpc-0702a9bcf8a99d46a/ mi-na-gis-nonprod-east-vpc
+      subnet: subnet-03b0a11989b351aea/ mi-na-gis-nonprod-east-dmz-2
+
+    mi-na-gis-nonprod-east-nat-1:
+      nat_gw_i: nat-08b5dd9038987a427
+      state: Available
+      elastic_ip: 54.88.169.56
+      internal_ip: 172.25.226.13
+      eni: eni-0a2b61a329cf479ac
+      vpc: vpc-0702a9bcf8a99d46a/ mi-na-gis-nonprod-east-vpc
+      subnet: subnet-028dd610322bf24b8/ mi-na-gis-nonprod-east-dmz-1
 
 syslog:
   hosts:

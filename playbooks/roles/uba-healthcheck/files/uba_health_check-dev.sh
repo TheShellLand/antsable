@@ -1,6 +1,6 @@
 #! /bin/sh
 
-set -x
+#set -x
 
 ##
 # Copyright © 2021 Splunk Inc.

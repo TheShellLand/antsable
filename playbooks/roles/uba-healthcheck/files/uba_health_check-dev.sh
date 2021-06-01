@@ -5002,7 +5002,7 @@ then
 	if test -s $TMP1file
 	then
 		echo >> $TMP1file
-		# disabled
+		# disabled because requires interactive response
 		#$SPLUNK_HOME/bin/splunk display boot-start >> $TMP1file 2>/dev/null
 		echo
 		NECHO "splunkd:" "`head -1 $TMP1file`" ; echo

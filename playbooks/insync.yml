@@ -11,19 +11,19 @@
       apt: update_cache=no name=insync state=absent purge=yes
 
     # Ubuntu 18.04
-    - name: insync - install
+    - name: insync - install 18.04
       apt:
         deb: https://d2t3ff60b2tol4.cloudfront.net/builds/insync_3.1.9.40821-bionic_amd64.deb
       when: ansible_distribution_version == '18.04' and ansible_distribution == 'Ubuntu'
 
     # Ubuntu 19.04
-    - name: insync - install
+    - name: insync - install 19.04
       apt:
         deb: https://d2t3ff60b2tol4.cloudfront.net/builds/insync_3.1.9.40821-bionic_amd64.deb
       when: ansible_distribution_version == '19.04' and ansible_distribution == 'Ubuntu'
 
     # Ubuntu 20.04
-    - name: insync - install
+    - name: insync - install 20.04
       apt:
         deb: https://d2t3ff60b2tol4.cloudfront.net/builds/insync_3.1.9.40821-bionic_amd64.deb
       when: ansible_distribution_version == '20.04' and ansible_distribution == 'Ubuntu'

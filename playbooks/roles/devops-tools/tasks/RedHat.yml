@@ -1,12 +1,9 @@
 ---
-- name: install vim
+- name: install tools
   yum:
-    name: vim
+    name: "{{item}}"
     state: latest
   become: yes
-
-- name: install tmux
-  yum:
-    name: tmux
-    state: latest
-  become: yes
+  loop:
+    - vim
+    - tmux

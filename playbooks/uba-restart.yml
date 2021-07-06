@@ -5,3 +5,5 @@
     - uba-server-reboot
     - uba-start
     - uba-validate
+  vars:
+    reboot: false

@@ -28,15 +28,20 @@
 
 - name: get healthcheck file
   fetch:
-    src: /var/log/caspida/check/uba_health_check.txt
+    src: "{{ item }}"
     dest: "uba_health_check"
+  loop:
+#    - /var/log/caspida/check/uba_health_check.txt
+    - /var/log/caspida/check/uba_health_check-dev.txt
 
 - name: archive file
   archive:
-    path: /var/log/caspida/check/uba_health_check.txt
-    dest: "{{inventory_hostname}}-uba_health_check.tgz"
+#    path: /var/log/caspida/check/uba_health_check.txt
+#    dest: "{{inventory_hostname}}-uba_health_check.tgz"
+    path: /var/log/caspida/check/uba_health_check-dev.txt
+    dest: "{{inventory_hostname}}-uba_health_check-dev.tgz"
 
 - name: get archive
   fetch:
-    src: "{{inventory_hostname}}-uba_health_check.tgz"
+    src: "{{inventory_hostname}}-uba_health_check-dev.tgz"
     dest: "uba_health_check"

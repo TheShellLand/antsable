@@ -2,5 +2,6 @@
 - hosts: uba_*_cluster_leader
   roles:
     - uba-stop
+    - uba-server-reboot
     - uba-start
     - uba-validate

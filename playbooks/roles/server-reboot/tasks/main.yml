@@ -1,0 +1,13 @@
+---
+- name: Reboot the server
+  reboot:
+  become: yes
+  when: reboot
+
+- name: Wait for the server to come back online
+  wait_for_connection:
+    connect_timeout: 60
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: reboot

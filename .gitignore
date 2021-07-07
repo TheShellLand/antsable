@@ -7,3 +7,4 @@ sudo-password
 Vagrantfile
 *.retry
 uba_health_check/
+uba_pre_check/

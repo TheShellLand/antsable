@@ -270,19 +270,23 @@ vds:
     vds_dev:
       hosts:
         marrvdsdev.marriott.com:
-          port: 636
+          ldap_port: 636
+          rest_port: 8090
     vds_test:
       hosts:
         marrvdstest.marriott.com:
-          port: 636
+          ldap_port: 636
+          rest_port: 8090
     vds_perf:
       hosts:
         marrvdsperf.marriott.com:
-          port: 636
+          ldap_port: 636
+          rest_port: 8090
     vds_prod:
       hosts:
         marrvds.marriott.com:
-          port: 636
+          ldap_port: 636
+          rest_port: 8090
 
 
 unknown:

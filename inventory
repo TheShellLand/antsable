@@ -265,6 +265,26 @@ uba:
           hostname: spark-node01.aws-use1.cloud.marriott.com
           ip: 172.25.226.132
 
+vds:
+  children:
+    vds_dev:
+      hosts:
+        marrvdsdev.marriott.com:
+          port: 636
+    vds_test:
+      hosts:
+        marrvdstest.marriott.com:
+          port: 636
+    vds_perf:
+      hosts:
+        marrvdsperf.marriott.com:
+          port: 636
+    vds_prod:
+      hosts:
+        marrvds.marriott.com:
+          port: 636
+
+
 unknown:
   hosts:
     LNXPRD0966.marriott.com:

@@ -13,8 +13,8 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 if which python3 && which curl; then
   set -x
   curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
-  python3 "get-pip.py"
-  python3 -m pip install -U pip ansible && exit 0
+  sudo python3 "get-pip.py"
+  python3 -m pip install --user -U pip ansible && exit 0
 fi
 
 # Best effort Ubuntu
@@ -59,7 +59,7 @@ if [ "$(uname)" == "Darwin" ]; then
     arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
   else
     if ! which ansible >/dev/null; then
-      pip install --user ansible >/dev/null
+      python3 -m pip install --user ansible >/dev/null
       arch -x86_64 brew upgrade ansible
     fi
   fi

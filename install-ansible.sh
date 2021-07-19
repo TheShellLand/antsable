@@ -14,7 +14,7 @@ if which python3 && which curl; then
   set -x
   curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
   sudo python3 "get-pip.py"
-  python3 -m pip install --user -U pip ansible && exit 0
+  python3 -m pip install --user -U pip cryptography ansible && exit 0
 fi
 
 # Best effort Ubuntu
@@ -28,7 +28,7 @@ if which apt >/dev/null || which apt-get >/dev/null; then
     apt install -y curl && \
     curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py && \
     python3 "get-pip.py" && \
-    python3 -m pip install -U pip ansible && exit 0
+    python3 -m pip install -U pip cryptography ansible && exit 0
   fi
 fi
 
@@ -59,7 +59,7 @@ if [ "$(uname)" == "Darwin" ]; then
     arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
   else
     if ! which ansible >/dev/null; then
-      python3 -m pip install --user ansible >/dev/null
+      python3 -m pip install --user -U pip cryptography ansible >/dev/null
       arch -x86_64 brew upgrade ansible
     fi
   fi

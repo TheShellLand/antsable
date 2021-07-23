@@ -14,7 +14,11 @@ if which python3 && which curl; then
   set -x
   curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
   sudo python3 "get-pip.py"
-  python3 -m pip install --user -U pip cryptography ansible && exit 0
+  sudo python3 -m pip install -U pip
+  sudo python3 -m pip install -U setuptools-rust cryptography
+  python3 -m pip install --user -U ansible
+
+  which ansible >/dev/null && exit 0
 fi
 
 # Best effort Ubuntu

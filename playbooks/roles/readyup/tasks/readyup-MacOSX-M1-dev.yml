@@ -83,29 +83,29 @@
   become: yes
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew upgrade --cask vagrant
+#  shell: arch -x86_64 brew install --cask vagrant
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew upgrade --cask virtualbox
+#  shell: arch -x86_64 brew install --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew upgrade --cask vmware-fusion
+#  shell: arch -x86_64 brew install --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew upgrade --cask parallels
+#  shell: arch -x86_64 brew install --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew upgrade wget
+  shell: arch -x86_64 brew install wget
 
 - name: fing
-  shell: arch -x86_64 brew upgrade fing
+  shell: arch -x86_64 brew install fing
 
 - name: nmap
-  shell: arch -x86_64 brew upgrade nmap
+  shell: arch -x86_64 brew install nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone
-#  shell: arch -x86_64 brew upgrade rclone
+#  shell: arch -x86_64 brew install rclone
 
 - name: rclone
   set_fact:
@@ -127,19 +127,19 @@
 
 # this one is too old
 #- name: osxfuse
-#  shell: arch -x86_64 brew upgrade --cask osxfuse
+#  shell: arch -x86_64 brew install --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew upgrade --cask veracrypt
+  shell: arch -x86_64 brew install --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew upgrade tmux
+  shell: arch -x86_64 brew install tmux
 
 - name: pass
-  shell: arch -x86_64 brew upgrade pass
+  shell: arch -x86_64 brew install pass
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew upgrade --cask --force pycharm-ce
+  shell: arch -x86_64 brew install --cask --force pycharm-ce
 
 #- name: amazon workspace
 #  shell: |
@@ -186,7 +186,7 @@
 #  become: yes
 #
 #- name: docker
-#  shell: arch -x86_64 brew upgrade --cask docker
+#  shell: arch -x86_64 brew install --cask docker
 
 - name: wireshark
   shell: |

@@ -4,7 +4,9 @@
 
 # Macbook M1
 - include_tasks: "{{role_path}}/tasks/readyup-MacOSX-M1.yml"
-  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1" and not WORK
+- include_tasks: "{{role_path}}/tasks/readyup-MacOSX-M1.yml"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1" and WORK
 
 # Macbook Intel
 - include_tasks: "{{role_path}}/tasks/readyup-MacOSX-Intel.yml"

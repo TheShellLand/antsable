@@ -201,7 +201,7 @@
 #  become: yes
 
 - name: wireshark
-  shell: arch -x86_64 brew install wireshark || arch -x86_64 brew upgrade wireshark
+  shell: arch -x86_64 brew install --cask wireshark || arch -x86_64 brew upgrade wireshark
 
 #- name: virtualbox
 #  shell: |

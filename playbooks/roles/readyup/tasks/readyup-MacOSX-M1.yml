@@ -74,7 +74,7 @@
 #    pkg=Fing-5.5.2-osX.pkg
 #    url=https://www.fing.com/images/uploads/general/CLI_macOSX_5.5.2.zip
 #
-#    wget -O /tmp/readyup/fing.zip "$url"
+#    curl -o /tmp/readyup/fing.zip "$url"
 #    cd /tmp/readyup
 #    unzip -o fing.zip
 #    installer -pkg "$pkg" -target /
@@ -97,35 +97,35 @@
     pkg=vault.zip
     url=https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
 
-    wget -O $pkg "$url"
+    curl -o $pkg "$url"
     unzip $pkg
     mv vault /usr/local/bin/
   become: yes
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew upgrade --cask vagrant
+#  shell: arch -x86_64 brew install --cask vagrant
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew upgrade --cask virtualbox
+#  shell: arch -x86_64 brew install --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew upgrade --cask vmware-fusion
+#  shell: arch -x86_64 brew install --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew upgrade --cask parallels
+#  shell: arch -x86_64 brew install --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew upgrade wget
+  shell: arch -x86_64 brew install wget || arch -x86_64 brew upgrade wget
 
 - name: fing
-  shell: arch -x86_64 brew upgrade fing
+  shell: arch -x86_64 brew install fing || arch -x86_64 brew upgrade fing
 
 - name: nmap
-  shell: arch -x86_64 brew upgrade nmap
+  shell: arch -x86_64 brew install nmap || arch -x86_64 brew upgrade nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone
-#  shell: arch -x86_64 brew upgrade rclone
+#  shell: arch -x86_64 brew install rclone || arch -x86_64 brew upgrade rclone
 
 - name: rclone
   set_fact:
@@ -147,22 +147,22 @@
 
 # this one is too old
 #- name: osxfuse
-#  shell: arch -x86_64 brew upgrade --cask osxfuse
+#  shell: arch -x86_64 brew install --cask osxfuse || arch -x86_64 brew upgrade --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew upgrade --cask veracrypt
+  shell: arch -x86_64 brew install --cask veracrypt || arch -x86_64 brew upgrade --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew upgrade tmux
+  shell: arch -x86_64 brew install tmux || arch -x86_64 brew upgrade tmux
 
 - name: pass
-  shell: arch -x86_64 brew upgrade pass
+  shell: arch -x86_64 brew install pass || arch -x86_64 brew upgrade pass
 
 - name: darktable
   shell: arch -x86_64 brew upgrade --cask darktable
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew upgrade --cask --force pycharm-ce
+  shell: arch -x86_64 brew install --cask --force pycharm-ce || arch -x86_64 brew upgrade --cask --force pycharm-ce
 
 - name: amazon workspace
   shell: |
@@ -301,17 +301,20 @@
     hdiutil detach "$volume"
   become: yes
 
-- name: wireshark
-  shell: |
-    folder="Wireshark 3.4.2"
-    app="Wireshark.app"
-    volume="/Volumes/$folder"
-    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
+#- name: wireshark
+#  shell: |
+#    folder="Wireshark 3.4.2"
+#    app="Wireshark.app"
+#    volume="/Volumes/$folder"
+#    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -vR "$volume/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes
 
-    hdiutil attach -nobrowse "$url"
-    cp -vR "$volume/$app" /Applications/
-    hdiutil detach "$volume"
-  become: yes
+- name: wireshark
+  shell: arch -x86_64 brew install wireshark || arch -x86_64 brew upgrade wireshark
 
 - name: teamviewer
   shell: |

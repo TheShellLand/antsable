@@ -188,17 +188,20 @@
 #- name: docker
 #  shell: arch -x86_64 brew install --cask docker
 
-- name: wireshark
-  shell: |
-    folder="Wireshark 3.4.2"
-    app="Wireshark.app"
-    volume="/Volumes/$folder"
-    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
+#- name: wireshark
+#  shell: |
+#    folder="Wireshark 3.4.2"
+#    app="Wireshark.app"
+#    volume="/Volumes/$folder"
+#    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
+#
+#    hdiutil attach -nobrowse "$url"
+#    cp -vR "$volume/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes
 
-    hdiutil attach -nobrowse "$url"
-    cp -vR "$volume/$app" /Applications/
-    hdiutil detach "$volume"
-  become: yes
+- name: wireshark
+  shell: arch -x86_64 brew install wireshark
 
 #- name: virtualbox
 #  shell: |

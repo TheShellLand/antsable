@@ -95,17 +95,17 @@
 #  shell: arch -x86_64 brew install --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew install wget
+  shell: arch -x86_64 brew install wget || arch -x86_64 brew upgrade wget
 
 - name: fing
-  shell: arch -x86_64 brew install fing
+  shell: arch -x86_64 brew install fing || arch -x86_64 brew upgrade fing
 
 - name: nmap
-  shell: arch -x86_64 brew install nmap
+  shell: arch -x86_64 brew install nmap || arch -x86_64 brew upgrade nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone
-#  shell: arch -x86_64 brew install rclone
+#  shell: arch -x86_64 brew install rclone || arch -x86_64 brew upgrade rclone
 
 - name: rclone
   set_fact:
@@ -127,19 +127,19 @@
 
 # this one is too old
 #- name: osxfuse
-#  shell: arch -x86_64 brew install --cask osxfuse
+#  shell: arch -x86_64 brew install --cask osxfuse || arch -x86_64 brew upgrade --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew install --cask veracrypt
+  shell: arch -x86_64 brew install --cask veracrypt || arch -x86_64 brew upgrade --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew install tmux
+  shell: arch -x86_64 brew install tmux || arch -x86_64 brew upgrade tmux
 
 - name: pass
-  shell: arch -x86_64 brew install pass
+  shell: arch -x86_64 brew install pass || arch -x86_64 brew upgrade pass
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew install --cask --force pycharm-ce
+  shell: arch -x86_64 brew install --cask --force pycharm-ce || arch -x86_64 brew upgrade --cask --force pycharm-ce
 
 #- name: amazon workspace
 #  shell: |
@@ -186,7 +186,7 @@
 #  become: yes
 #
 #- name: docker
-#  shell: arch -x86_64 brew install --cask docker
+#  shell: arch -x86_64 brew install --cask docker || arch -x86_64 brew upgrade --cask docker
 
 #- name: wireshark
 #  shell: |
@@ -201,7 +201,7 @@
 #  become: yes
 
 - name: wireshark
-  shell: arch -x86_64 brew install wireshark
+  shell: arch -x86_64 brew install wireshark || arch -x86_64 brew upgrade wireshark
 
 #- name: virtualbox
 #  shell: |

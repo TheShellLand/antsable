@@ -80,6 +80,7 @@
       get_url:
         url: '{{rclone_url}}'
         dest: '{{install}}/rclone.zip'
+        validate_certs: false
     - name: rclone unzip
       unarchive:
         src: '{{install}}/rclone.zip'
@@ -140,6 +141,7 @@
       get_url:
         url: '{{hashicorp_url}}'
         dest: '{{install}}/hashicorp.zip'
+        validate_certs: false
     - name: hashicorp unzip
       unarchive:
         src: '{{install}}/hashicorp.zip'

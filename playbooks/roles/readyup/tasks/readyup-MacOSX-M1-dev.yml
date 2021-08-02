@@ -10,30 +10,15 @@
     if ! which brew >/dev/null; then
       arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
+  register: brew
+  changed_when: "brew.rc != 0"
 
-- name: chrome m1
-  shell: |
-    folder="Google Chrome"
-    app="Google Chrome.app"
-    volume="/Volumes/$folder"
-    url=https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
-    # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-
-    hdiutil attach -nobrowse "$url"
-    cp -R "$volume/$app" /Applications/
-    hdiutil detach "$volume"
-
-- name: gpg
-  shell: |
-    folder="GPG Suite"
-    pkg=Install.pkg
-    volume="/Volumes/$folder"
-    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
-
-    hdiutil attach -nobrowse "$url"
-    installer -pkg "$volume/$pkg" -target /
-    hdiutil detach "$volume"
-  become: yes
+- name: install xcode
+  shell: xcode-select --install
+  register: xcode
+  changed_when: "'command line tools are already installed' is not in xcode.stdout"
+  failed_when: xcode.rc == 1
+  ignore_errors: yes
 
 # can't download from link
 # link redirects to a session link
@@ -59,28 +44,6 @@
 #    unzip -o fing.zip
 #    installer -pkg "$pkg" -target /
 #  become: yes
-
-- name: vagrant
-  shell: |
-    folder="Vagrant"
-    pkg=vagrant.pkg
-    volume="/Volumes/$folder"
-    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
-
-    hdiutil attach -nobrowse "$url"
-    installer -pkg "$volume/$pkg" -target /
-    hdiutil detach "$volume"
-  become: yes
-
-- name: hashicorp vault
-  shell: |
-    pkg=vault.zip
-    url=https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
-
-    curl -o $pkg "$url"
-    unzip $pkg
-    mv vault /usr/local/bin/
-  become: yes
 
 #- name: vagrant (brew)
 #  shell: arch -x86_64 brew install --cask vagrant
@@ -108,22 +71,24 @@
 #  shell: arch -x86_64 brew install rclone || arch -x86_64 brew upgrade rclone
 
 - name: rclone
-  set_fact:
-    rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
-    rclone_ver: rclone-v1.54.0-osx-amd64
-- name: rclone download
-  get_url:
-    url: '{{rclone_url}}'
-    dest: '{{install}}/rclone.zip'
-- name: rclone unzip
-  unarchive:
-    src: '{{install}}/rclone.zip'
-    dest: '{{install}}'
-- name: rclone install
-  copy:
-    src: '{{install}}/{{rclone_ver}}/rclone'
-    dest: /usr/local/bin/rclone
-    mode: '0755'
+  block:
+    - name: rclone
+      set_fact:
+        rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
+        rclone_ver: rclone-v1.54.0-osx-amd64
+    - name: rclone download
+      get_url:
+        url: '{{rclone_url}}'
+        dest: '{{install}}/rclone.zip'
+    - name: rclone unzip
+      unarchive:
+        src: '{{install}}/rclone.zip'
+        dest: '{{install}}'
+    - name: rclone install
+      copy:
+        src: '{{install}}/{{rclone_ver}}/rclone'
+        dest: /usr/local/bin/rclone
+        mode: '0755'
 
 # this one is too old
 #- name: osxfuse
@@ -141,44 +106,6 @@
 - name: pycharm-ce
   shell: arch -x86_64 brew install --cask --force pycharm-ce || arch -x86_64 brew upgrade --cask --force pycharm-ce
 
-#- name: amazon workspace
-#  shell: |
-#    pkg=WorkSpaces.pkg
-#    url=https://d2td7dqidlhjx7.cloudfront.net/prod/global/osx/WorkSpaces.pkg
-#
-#    wget "$url"
-#    installer -pkg "$pkg" -target /
-#  become: yes
-
-#- name: docker
-#  shell: |
-#    folder="Docker"
-#    app="docker.app"
-#    volume="/Volumes/$folder"
-#    url=https://desktop.docker.com/mac/stable/Docker.dmg
-#
-#    hdiutil attach -nobrowse "$url"
-#    cp -R "$volume/$app" /Applications/
-#    hdiutil detach "$volume"
-#  become: yes
-
-#- name: docker Apple Silicon Tech Preview download
-#  get_url:
-#    url: https://desktop.docker.com/mac/stable/arm64/62632/Docker.dmg
-#    dest: "{{ install }}/Docker.dmg"
-#
-#- name: docker Apple Silicon Tech Preview
-#  shell: |
-#    folder="Install Backup and Sync from Google"
-#    app="Backup and Sync.app"
-#    volume="/Volumes/$folder"
-#    url="{{install}}/Docker.dmg"
-#
-#    hdiutil attach -nobrowse "$url"
-#    cp -R "$volume/$app" /Applications/
-#    hdiutil detach "$volume"
-#  become: yes
-
 # You must install Rosetta 2 as some binaries are still Darwin/AMD64.
 # To install Rosetta 2 manually from the command line, use this command:
 #- name: docker Apple Silicon Tech Preview - fix
@@ -188,29 +115,62 @@
 #- name: docker
 #  shell: arch -x86_64 brew install --cask docker || arch -x86_64 brew upgrade --cask docker
 
-#- name: wireshark
-#  shell: |
-#    folder="Wireshark 3.4.2"
-#    app="Wireshark.app"
-#    volume="/Volumes/$folder"
-#    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
-#
-#    hdiutil attach -nobrowse "$url"
-#    cp -vR "$volume/$app" /Applications/
-#    hdiutil detach "$volume"
-#  become: yes
-
 - name: wireshark
-  shell: arch -x86_64 brew install --cask wireshark || arch -x86_64 brew upgrade wireshark
+  block:
+    - name: wireshark install
+      shell: arch -x86_64 brew install --cask wireshark
+      register: wireshark
+      failed_when: "'is already installed' not in wireshark.stderr"
+      changed_when: "'is already installed' not in wireshark.stderr"
+  rescue:
+    - name: wireshark upgrade
+      shell: arch -x86_64 brew upgrade wireshark
+      register: wireshark
+      failed_when: "'The upgrade was successful' not in wireshark.stdout"
+      changed_when: "'The upgrade was successful' not in wireshark.stdout"
 
-#- name: virtualbox
-#  shell: |
-#    folder="virtualbox 3.4.1"
-#    app="virtualbox.app"
-#    volume="/Volumes/$folder"
-#    url=https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-OSX.dmg
-#
-#    hdiutil attach -nobrowse "$url"
-#    cp -R "$volume/$app" /Applications/
-#    hdiutil detach "$volume"
-#  become: yes
+- name: chrome m1
+  shell: |
+    folder="Google Chrome"
+    app="Google Chrome.app"
+    volume="/Volumes/$folder"
+    url=https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
+    # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+
+    hdiutil attach -nobrowse "$url"
+    cp -R "$volume/$app" /Applications/
+    hdiutil detach "$volume"
+
+- name: gpg
+  shell: |
+    folder="GPG Suite"
+    pkg=Install.pkg
+    volume="/Volumes/$folder"
+    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
+- name: vagrant
+  shell: |
+    folder="Vagrant"
+    pkg=vagrant.pkg
+    volume="/Volumes/$folder"
+    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
+
+    hdiutil attach -nobrowse "$url"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes
+
+- name: hashicorp vault
+  shell: |
+    pkg=vault.zip
+    url=https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
+
+    curl -o $pkg "$url"
+    unzip $pkg
+    mv vault /usr/local/bin/
+  become: yes

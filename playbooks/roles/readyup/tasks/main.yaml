@@ -1,6 +1,6 @@
 ---
 - debug:
-    msg: "{{system}}"
+    msg: "{{system}} {{ansible_facts.distribution}} {{ansible_facts.processor}}"
 
 # Macbook M1
 - include_tasks: "{{role_path}}/tasks/readyup-MacOSX-M1.yml"

@@ -120,14 +120,16 @@
     - name: wireshark install
       shell: arch -x86_64 brew install --cask wireshark
       register: wireshark
-      failed_when: "'The install was successful' not in wireshark.stdout" or "'is already installed' not in wireshark.stderr"
-      changed_when: "'The install was successful' not in wireshark.stdout" or "'is already installed' not in wireshark.stderr"
+      failed_when: "'The install was successful' not in wireshark.stdout"
+      changed_when: "'The install was successful' not in wireshark.stdout"
+      ignore_errors: yes
   rescue:
     - name: wireshark upgrade
       shell: arch -x86_64 brew upgrade wireshark
       register: wireshark
       failed_when: "'The upgrade was successful' not in wireshark.stdout"
       changed_when: "'The upgrade was successful' not in wireshark.stdout"
+      ignore_errors: yes
 
 - name: hashicorp
   block:

@@ -1,0 +1,7 @@
+---
+- hosts: all
+
+  tasks:
+    - name: check sudo
+      shell: yum update
+      become: yes

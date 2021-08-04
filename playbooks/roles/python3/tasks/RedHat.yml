@@ -1,0 +1,10 @@
+---
+#- name: python3
+#  yum:
+#    name: python3
+#    state: latest
+#  become: yes
+
+- name: python3
+  shell: yum install -y python3
+  become: yes

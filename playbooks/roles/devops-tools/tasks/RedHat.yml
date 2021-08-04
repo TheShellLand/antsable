@@ -1,0 +1,10 @@
+---
+- name: install tools
+  yum:
+    name: "{{item}}"
+    state: latest
+  become: yes
+  loop:
+    - vim
+    - tmux
+    - git

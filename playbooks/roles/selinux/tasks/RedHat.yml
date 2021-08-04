@@ -1,0 +1,6 @@
+---
+- name: libselinux-python
+  yum:
+    name: libselinux-python
+    state: latest
+  become: yes

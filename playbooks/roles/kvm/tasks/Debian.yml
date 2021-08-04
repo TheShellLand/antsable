@@ -1,0 +1,10 @@
+---
+- name: install
+  apt: update_cache=yes name="{{ item }}" state=latest
+  loop:
+    - qemu-kvm
+    - libvirt-daemon-system
+    - libvirt-clients
+    - bridge-utils
+    - virtinst
+    - virt-manager

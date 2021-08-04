@@ -1,0 +1,24 @@
+---
+#- name: mkdir .ssh
+#  file:
+#    path: $HOME/.ssh
+#    state: directory
+#
+#- name: setup ssh key
+#  copy:
+#    src: files/authorized_keys
+#    dest: $HOME/.ssh/authorized_keys
+
+- name: Add ssh keys
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user_id }}"
+    state: present
+    key: '{{ item }}'
+  with_file:
+    - "public_keys/{{ ansible_user_id }}/id_rsa.pub"
+    - "public_keys/jenkins/id_rsa.pub"
+
+- name: Update bash profile to start ssh-agent
+  copy:
+    src: files/.bash_profile
+    dest: "~/.bash_profile"

@@ -1,0 +1,58 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: docker - apt-transport-https
+      apt: update_cache=yes name=apt-transport-https state=latest
+
+    - name: docker - ca-certificates
+      apt: update_cache=no name=ca-certificates state=latest
+
+    - name: docker - curl
+      apt: update_cache=no name=curl state=latest
+
+    - name: docker - gnupg-agent
+      apt: update_cache=no name=gnupg-agent state=latest
+      ignore_errors: yes
+
+    - name: docker - software-properties-common
+      apt: update_cache=no name=software-properties-common state=latest
+
+    - name: docker - Add docker repository key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: docker - Add docker repo
+      shell: apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      retries: 99
+
+    - name: docker - Install docker-ce
+      #apt: update_cache=yes name=docker-ce state=absent
+      apt: update_cache=yes name=docker-ce state=latest
+
+    - name: docker - Install docker-ce-cli
+      apt: update_cache=no name=docker-ce-cli state=latest
+
+    - name: docker - Install containerd.io
+      apt: update_cache=no name=containerd.io state=latest
+
+    - name: docker - ubuntu
+      shell: usermod -a -G docker ubuntu
+      ignore_errors: yes
+
+    - name: docker - vagrant
+      shell: usermod -a -G docker vagrant
+      ignore_errors: yes
+
+    - name: docker - eric
+      shell: usermod -a -G docker eric
+      ignore_errors: yes
+
+    - name: docker - python3 docker
+      shell: python3 -m pip install docker
+
+    - name: docker - python3 docker-compose
+      shell: python3 -m pip install docker-compose

@@ -1,0 +1,6 @@
+---
+- shell: uptime
+  register: uptime
+
+- debug:
+    var: uptime.stdout

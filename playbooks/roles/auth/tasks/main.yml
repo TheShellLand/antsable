@@ -16,7 +16,6 @@
     key: '{{ item }}'
   with_file:
     - "public_keys/{{ ansible_user_id }}/id_rsa.pub"
-    - "public_keys/jenkins/id_rsa.pub"
 
 - name: Update bash profile to start ssh-agent
   copy:

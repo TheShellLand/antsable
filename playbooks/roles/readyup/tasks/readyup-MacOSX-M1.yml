@@ -278,20 +278,32 @@
 #    hdiutil detach "$volume"
 #  become: yes
 
-- name: wireshark
+#- name: wireshark
+#  block:
+#    - name: wireshark install
+#      shell: arch -x86_64 brew install --cask wireshark
+#      register: wireshark
+#      failed_when: "'The install was successful' not in wireshark.stdout"
+#      changed_when: "'The install was successful' not in wireshark.stdout"
+#      ignore_errors: yes
+#  rescue:
+#    - name: wireshark upgrade
+#      shell: arch -x86_64 brew upgrade wireshark
+#      register: wireshark
+#      failed_when: "'The upgrade was successful' not in wireshark.stdout"
+#      changed_when: "'The upgrade was successful' not in wireshark.stdout"
+#      ignore_errors: yes
+
+- name: wireshark-chmodbpf
   block:
     - name: wireshark install
-      shell: arch -x86_64 brew install --cask wireshark
+      shell: arch -x86_64 brew install --cask wireshark-chmodbpf
       register: wireshark
-      failed_when: "'The install was successful' not in wireshark.stdout"
-      changed_when: "'The install was successful' not in wireshark.stdout"
       ignore_errors: yes
   rescue:
     - name: wireshark upgrade
-      shell: arch -x86_64 brew upgrade wireshark
+      shell: arch -x86_64 brew upgrade wireshark-chmodbpf
       register: wireshark
-      failed_when: "'The upgrade was successful' not in wireshark.stdout"
-      changed_when: "'The upgrade was successful' not in wireshark.stdout"
       ignore_errors: yes
 
 - name: teamviewer

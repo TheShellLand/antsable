@@ -373,6 +373,24 @@
     hdiutil detach "$volume"
   become: yes
 
+- name: wine
+  block:
+    - name: wine xquartz
+      shell: arch -x86_64 brew install --cask xquartz || arch -x86_64 brew upgrade xquartz
+    - name: wine tap
+      shell: brew tap homebrew/cask-versions
+    - name: wine xquartz
+      shell: arch -x86_64 brew install --cask --no-quarantine wine-devel || arch -x86_64 brew upgrade wine-devel
+
+#    - name: wine pkg
+#      shell: |
+#        pkg=wine.pkg
+#        url=https://dl.winehq.org/wine-builds/macosx/pool/winehq-devel-5.7.pkg
+#
+#        curl -o $pkg "$url"
+#        installer -pkg "$pkg" -target /
+#      become: yes
+
 - name: vagrant
   shell: |
     folder="Vagrant"

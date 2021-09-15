@@ -13,14 +13,16 @@ if which ansible-playbook >/dev/null; then
   if [ -f vault-secret ] && [ "$ANSIBLE_SSH_PASS" != "" ] && [ "$ANSIBLE_BECOME_PASS" != "" ]; then
     set -x
     ansible-playbook --vault-password-file vault-secret \
+      -i inventory.yaml \
       -e "git_tag=$GIT_TAG" \
       -e "ansible_become_pass=$ANSIBLE_BECOME_PASS" \
       -e "ansible_ssh_pass=$ANSIBLE_SSH_PASS" "$@"
   elif [ -f vault-secret ]; then
     set -x
     ansible-playbook --vault-password-file vault-secret \
+      -i inventory.yaml \
       -e "git_tag=$GIT_TAG" "$@"
   else
-    ansible-playbook "$@"
+    ansible-playbook -i inventory.yaml "$@"
   fi
 fi

@@ -19,4 +19,6 @@ COPY entry.sh .
 
 RUN chmod -x *sh
 
+VOLUME /root
+
 ENTRYPOINT ["/bin/bash", "entry.sh"]

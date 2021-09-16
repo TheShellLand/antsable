@@ -16,7 +16,7 @@ if which python3 && which curl; then
   sudo python3 "get-pip.py"
   sudo python3 -m pip install -U pip
   sudo python3 -m pip install -U setuptools-rust cryptography
-  python3 -m pip install --user -U ansible
+  python3 -m pip install -U pip cryptography ansible
 
   which ansible >/dev/null && exit 0
 fi
@@ -30,9 +30,9 @@ if which apt >/dev/null || which apt-get >/dev/null; then
     apt install -y python3 python3-distutils && \
     apt install -y gcc && \
     apt install -y curl && \
-    curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py && \
-    python3 "get-pip.py" && \
-    python3 -m pip install -U pip cryptography ansible && exit 0
+    apt install -y ansible
+
+    which ansible >/dev/null && exit 0
   fi
 fi
 
@@ -88,4 +88,9 @@ if [ "$(uname)" == "Darwin" ]; then
     fi
   fi
 
+fi
+
+if ! which ansible; then
+  echo "ansible still not found. please raise an issue"
+  exit 1
 fi

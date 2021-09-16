@@ -1,9 +1,9 @@
 FROM python:3 as ansible
 
-RUN apt update && apt install -y git sudo && apt clean
 COPY requirements.txt .
 COPY install-ansible.sh .
 RUN /bin/bash install-ansible.sh
+RUN apt update && apt upgrade -y && apt autoclean -y
 #RUN python3 -m pip install -r requirements.txt -U
 
 FROM ansible

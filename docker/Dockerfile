@@ -13,8 +13,6 @@ WORKDIR /antsable
 COPY playbooks playbooks
 COPY ansible.cfg .
 COPY ansible.sh .
-COPY sshconfig .
-COPY inventory.yaml .
 COPY entry.sh .
 
 RUN chmod -x *sh

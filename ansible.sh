@@ -8,7 +8,6 @@ if [ -f env.sh ]; then source env.sh; fi
 
 # Run playbook
 if which ansible-playbook >/dev/null; then
-  GIT_TAG=$(git describe --tags --abbrev=0)
 
   ansible_eval=ansible-playbook
 

@@ -7,7 +7,7 @@ cd $(dirname $0) && set -e
 ./build.sh
 
 if [ -f ../env.sh ]; then
-  docker run --rm -it --env-file ../env.sh antsable $@
+  docker run --rm -it --env-file ../env.sh theshellland/antsable $@
 else
-  docker run --rm -it antsable $@
+  docker run --rm -it theshellland/antsable $@
 fi

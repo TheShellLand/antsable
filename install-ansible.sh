@@ -17,6 +17,8 @@ if which python3 && which curl; then
   python3 -m pip install -U pip
   python3 -m pip install -U setuptools-rust cryptography
   python3 -m pip install -U pip cryptography ansible
+  apt update && \
+  apt install -y ansible sshpass
 
   which ansible >/dev/null && exit 0
 fi
@@ -30,7 +32,7 @@ if which apt >/dev/null || which apt-get >/dev/null; then
     apt install -y python3 python3-distutils && \
     apt install -y gcc && \
     apt install -y curl && \
-    apt install -y ansible
+    apt install -y ansible sshpass
 
     which ansible >/dev/null && exit 0
   fi

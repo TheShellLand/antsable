@@ -6,3 +6,4 @@ sshconfig
 Vagrantfile
 env.sh
 vault-secret
+*.retry

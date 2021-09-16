@@ -1,5 +1,6 @@
 FROM python:3 as ansible
 
+RUN apt update && apt install -y git sudo && apt clean
 COPY requirements.txt .
 COPY install-ansible.sh .
 RUN /bin/bash install-ansible.sh
@@ -7,12 +8,15 @@ RUN /bin/bash install-ansible.sh
 
 FROM ansible
 
-WORKDIR /
-RUN apt update && apt install -y git
-RUN git clone https://github.com/TheShellLand/antsable
-
 WORKDIR /antsable
 
-RUN chmod -x vault-secret*
+COPY playbooks playbooks
+COPY ansible.cfg .
+COPY ansible.sh .
+COPY sshconfig .
+COPY inventory.yaml .
+COPY entry.sh .
+
+RUN chmod -x *sh
 
 ENTRYPOINT ["/bin/bash", "entry.sh"]

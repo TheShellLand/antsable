@@ -24,6 +24,10 @@ if which ansible-playbook >/dev/null; then
       ansible_eval="${ansible_eval} -e ansible_become_pass=${ANSIBLE_BECOME_PASS}"
   fi
 
+  if [ "$ANSIBLE_USER" != "" ]; then
+      ansible_eval="${ansible_eval} -e ansible_user=${ANSIBLE_USER}"
+  fi
+
   ansible_eval="${ansible_eval} -i inventory.yaml ${@}"
 
   exec $ansible_eval

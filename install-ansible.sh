@@ -13,9 +13,9 @@ export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 if which python3 && which curl; then
   set -x
   curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
-  sudo python3 "get-pip.py"
-  sudo python3 -m pip install -U pip
-  sudo python3 -m pip install -U setuptools-rust cryptography
+  python3 "get-pip.py"
+  python3 -m pip install -U pip
+  python3 -m pip install -U setuptools-rust cryptography
   python3 -m pip install -U pip cryptography ansible
 
   which ansible >/dev/null && exit 0

@@ -14,7 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag antsable
+
     - name: Test the Docker image
-      run: docker run antsable
+      run: /bin/bash ansible-docker.sh playbooks/debug.yml -l 127.0.0.1 -c local

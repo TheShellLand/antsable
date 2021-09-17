@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# test
+# test docker
 
 cd $(dirname $0) && set -e
 
@@ -20,7 +20,7 @@ if [ -f env.sh ]; then
     -v "$(pwd)/inventory.yaml":/antsable/inventory.yaml \
     antsable ${@}
 else
-  docker run --rm -it
+  docker run --rm -it \
     -e GIT_TAG=$(git describe --tags --abbrev=0) \
     -v antsable:/root \
     -v "$HOME/.ssh":/root/.ssh \

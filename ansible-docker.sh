@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# test
+# deploy from docker
 
 cd $(dirname $0) && set -e
 
@@ -11,7 +11,7 @@ fi
 if [ -f env.sh ]; then
   docker run --rm -it --env-file env.sh \
     -e GIT_TAG=$(git describe --tags --abbrev=0) \
-    -v ansible:/root \
+    -v antsable:/root \
     -v "$HOME/.ssh":/root/.ssh \
     -v "$(pwd)/ansible.cfg":/antsable/ansible.cfg \
     -v "$(pwd)/sshconfig":/antsable/sshconfig \

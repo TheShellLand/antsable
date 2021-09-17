@@ -4,7 +4,7 @@
 
 cd $(dirname $0) && set -xe
 
-docker build $@ -t antsable -f Dockerfile ..
-docker tag antsable theshellland/antsable
+docker build $@ -t antsable -f ../Dockerfile ..
 docker images | grep antsable
-docker push theshellland/antsable:latest
+#docker tag antsable theshellland/antsable
+#docker push theshellland/antsable:latest

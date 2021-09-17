@@ -2,9 +2,9 @@ name: Testing
 
 on:
   push:
-    branches: [ master ]
+    branches: [ * ]
   pull_request:
-    branches: [ master ]
+    branches: [ * ]
 
 jobs:
 
@@ -16,6 +16,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag antsable
+    - name: Test the Docker image
+      run: docker run antsable
 
   test:
 

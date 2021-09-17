@@ -6,6 +6,10 @@ cd $(dirname $0) && set -e
 
 if [ -f env.sh ]; then source env.sh; fi
 
+if [ ! -f inventory.yaml ]; then
+  cp -v inventory-example.yaml inventory.yaml
+fi
+
 # Run playbook
 if which ansible-playbook >/dev/null; then
 

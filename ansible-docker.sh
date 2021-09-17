@@ -4,6 +4,10 @@
 
 cd $(dirname $0) && set -e
 
+if [ ! -f inventory.yaml ]; then
+  cp -v inventory-example.yaml inventory.yaml
+fi
+
 if [ -f env.sh ]; then
   docker run --rm -it --env-file env.sh \
     -e GIT_TAG=$(git describe --tags --abbrev=0) \

@@ -17,5 +17,10 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag antsable
 
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Test the Docker image
       run: docker run antsable

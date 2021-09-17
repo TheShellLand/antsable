@@ -4,4 +4,6 @@
 
 cd $(dirname $0) && set -x
 
-/bin/bash ansible.sh $@ || exec bash
+/bin/bash ansible.sh $@
+
+#exec bash

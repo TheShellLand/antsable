@@ -32,3 +32,6 @@
     path: "{{ service_path }}"
     state: directory
     mode: '0755'
+#-
+#  name: create function
+#  shell: NODE_OPTIONS=--experimental-worker cloud

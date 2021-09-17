@@ -1,8 +1,6 @@
 name: Testing
 
 on:
-  schedule:
-    - cron: '40 10 * * *'
   push:
     branches: [ '*' ]
   pull_request:
@@ -15,33 +13,35 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 
-
 jobs:
 
-  unittest:
-
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    - run: docker build . --file Dockerfile --tag antsable
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag antsable
 
-    - name: Test the Docker image
-      run: docker run antsable playbooks/debug.yml -i 127.0.0.1, -c local
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: docker build . --file Dockerfile --tag antsable
+    - run: docker run antsable playbooks/debug.yml -i 127.0.0.1, -c local
 
 
   publish:
-
+    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action

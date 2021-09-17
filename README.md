@@ -33,6 +33,12 @@ Limit to localhost:
 ./ansible.sh playbooks/ubuntu-readyup-18.x.yml -c local -l local
 ```
 
+Run with docker:
+```
+/bin/bash docker/build.sh
+/bin/bash ansible-docker.sh playbooks/debug.yml
+```
+
 ## Gnome Readyup Screenshots
 
 ![](https://i.imgur.com/psaL1os.png)

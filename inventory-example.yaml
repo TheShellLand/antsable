@@ -5,6 +5,9 @@ local:
   hosts:
     localhost:
 
+serverless:
+  hosts:
+
 hypervisor:
   hosts:
 

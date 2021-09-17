@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -16,13 +16,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag antsable
-    - name: Test the Docker image
-      run: docker run antsable
-
-  test:
-
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Test the Docker image
       run: docker run antsable

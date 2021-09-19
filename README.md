@@ -1,5 +1,6 @@
 ![](ants.jpg)
 
+[![master](https://github.com/TheShellLand/antsable/workflows/CI/badge.svg?branch=master)](https://github.com/TheShellLand/antsable/actions)
 
 ## Get started
 ```

@@ -1,5 +1,6 @@
 ![](ants.jpg)
 
+[![codecov](https://codecov.io/gh/TheShellLand/antsable/branch/master/graph/badge.svg)](https://codecov.io/gh/TheShellLand/antsable)
 [![master](https://github.com/TheShellLand/antsable/workflows/CI/badge.svg?branch=master)](https://github.com/TheShellLand/antsable/actions)
 
 ## Get started

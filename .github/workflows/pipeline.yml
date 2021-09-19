@@ -11,6 +11,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME_LOWERCASE: theshellland/automonisaur
 
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     - name: Build docker
-      run: docker build . --tag ${{ env.IMAGE_NAME }}
+      run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
 
 
   test:
@@ -37,9 +38,9 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     - name: Build docker
-      run: docker build . --tag ${{ env.IMAGE_NAME }}
+      run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
     - name: Run tests in docker
-      run: docker run ${{ env.IMAGE_NAME }} playbooks/debug.yml -i 127.0.0.1, -c local
+      run: docker run ${{ env.IMAGE_NAME_LOWERCASE }} playbooks/debug.yml -i 127.0.0.1, -c local
 
 
   publish:

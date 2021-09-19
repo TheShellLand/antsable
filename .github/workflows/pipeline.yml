@@ -11,7 +11,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  DOCKER_IMAGE: antsable
 
 
 jobs:
@@ -24,18 +23,8 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-    - name: Build and push
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        tags: ${{ env.DOCKER_IMAGE }}
-        outputs: type=docker,dest=/tmp/${{ env.DOCKER_IMAGE }}.tar
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ env.DOCKER_IMAGE }}.tar
-        path: /tmp/${{ env.DOCKER_IMAGE }}.tar
+    - name: Build docker
+      run: docker build . --tag ${{ env.IMAGE_NAME }}
 
 
   test:
@@ -47,15 +36,10 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: ${{ env.DOCKER_IMAGE }}.tar
-        path: /tmp
-    - name: Load Docker image
-      run: |
-        docker load --input /tmp/${{ env.DOCKER_IMAGE }}.tar
-        docker run ${{ env.DOCKER_IMAGE }} playbooks/debug.yml -i 127.0.0.1, -c local
+    - name: Build docker
+      run: docker build . --tag ${{ env.IMAGE_NAME }}
+    - name: Run tests in docker
+      run: docker run ${{ env.IMAGE_NAME }} playbooks/debug.yml -i 127.0.0.1, -c local
 
 
   publish:

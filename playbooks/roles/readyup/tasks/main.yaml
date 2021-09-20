@@ -2,6 +2,9 @@
 - debug:
     msg: "{{system}} {{ansible_facts.distribution}} {{ansible_facts.processor}}"
 
+- name: temp install path
+  file: path={{ install }} state=directory
+
 # Macbook M1
 - include_tasks: "{{role_path}}/tasks/readyup-MacOSX-M1.yml"
   when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor == "Apple M1" and not WORK
@@ -10,7 +13,9 @@
 
 # Macbook Intel
 - include_tasks: "{{role_path}}/tasks/readyup-MacOSX-Intel.yml"
-  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor != "Apple M1"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor != "Apple M1" and not WORK
+- include_tasks: "{{role_path}}/tasks/readyup-MacOSX-Intel-dev.yml"
+  when: INSTALL_TOOLS and ansible_facts.distribution == "MacOSX" and ansible_facts.processor != "Apple M1" and WORK
 
 # Ubuntu
 - include_tasks: "{{role_path}}/tasks/gnome-{{system}}.yml"

@@ -1,10 +1,4 @@
 ---
-- set_fact:
-    install: /tmp/readyup
-
-- name: temp install
-  file: path={{ install }} state=directory
-
 - name: brew
   shell: |
     if ! which brew >/dev/null; then
@@ -12,6 +6,7 @@
     fi
   register: brew
   changed_when: "brew.rc != 0"
+  ignore_errors: yes
 
 - name: install xcode
   shell: xcode-select --install

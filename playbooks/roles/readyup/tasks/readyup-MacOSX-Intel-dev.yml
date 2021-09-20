@@ -1,7 +1,4 @@
 ---
-- name: temp install
-  file: path={{ install }} state=directory
-
 - name: brew
   shell: |
     if ! which brew >/dev/null; then

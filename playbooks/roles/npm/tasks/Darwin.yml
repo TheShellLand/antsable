@@ -1,4 +1,16 @@
 ---
 -
-  name: brew
+  name: brew npm
   shell: arch -x86_64 brew install npm
+-
+  name: nodejs
+  # https://nodejs.org/dist/v14.17.6/node-v14.17.6.pkg
+  shell: |
+    folder="nodejs"
+    pkg=nodejs.pkg
+    volume="/Volumes/$folder"
+    url=https://nodejs.org/dist/v14.17.6/node-v14.17.6.pkg
+
+    curl -o $pkg "$url"
+    installer -pkg "$pkg" -target /
+  become: yes

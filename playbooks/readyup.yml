@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   connection: local
+  ignore_errors: yes
   roles:
     - readyup
   vars:

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  ignore_errors: yes
+  roles:
+    - readyup
+  vars:
+    INSTALL_TOOLS: true
+    HIDPI: false
+    CONSOLE: false
+    INSTALL_GNOME: false
+    WORK: true

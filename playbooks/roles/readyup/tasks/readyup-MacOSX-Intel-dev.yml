@@ -77,6 +77,12 @@
     hdiutil detach "$volume"
   become: yes
 
+- name: vagrant - vmware
+  shell: |
+    vagrant plugin install vagrant-vmware-desktop
+    vagrant plugin update vagrant-vmware-desktop
+    curl https://releases.hashicorp.com/vagrant-vmware-utility/1.0.20/vagrant-vmware-utility_1.0.20_x86_64.dmg > vagrant-vmware-utility.dmg
+
 - name: hashicorp vault
   shell: |
     pkg=vault.zip

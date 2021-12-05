@@ -1,4 +1,8 @@
 ---
+- set_fact:
+    BREW: brew
+    BREW_M1: "arch -x86_64 brew"
+
 - name: brew
   shell: |
     if ! which brew >/dev/null; then
@@ -41,29 +45,37 @@
 #  become: yes
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew install --cask vagrant
+#  shell: |
+#    {{ BREW_M1 }} install --cask vagrant
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew install --cask virtualbox
+#  shell: |
+#    {{ BREW_M1 }} install --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew install --cask vmware-fusion
+#  shell: |
+#    {{ BREW_M1 }} install --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew install --cask parallels
+#  shell: |
+#    {{ BREW_M1 }} install --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew install wget || arch -x86_64 brew upgrade wget
+  shell: |
+    {{ BREW_M1 }} install wget || {{ BREW_M1 }} upgrade wget
 
 - name: fing
-  shell: arch -x86_64 brew install fing || arch -x86_64 brew upgrade fing
+  shell: |
+    {{ BREW_M1 }} install fing || {{ BREW_M1 }} upgrade fing
 
 - name: nmap
-  shell: arch -x86_64 brew install nmap || arch -x86_64 brew upgrade nmap
+  shell: |
+    {{ BREW_M1 }} install nmap || {{ BREW_M1 }} upgrade nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone
-#  shell: arch -x86_64 brew install rclone || arch -x86_64 brew upgrade rclone
+#  shell: |
+#    {{ BREW_M1 }} install rclone || {{ BREW_M1 }} upgrade rclone
 
 - name: rclone
   block:
@@ -88,40 +100,38 @@
 
 # this one is too old
 #- name: osxfuse
-#  shell: arch -x86_64 brew install --cask osxfuse || arch -x86_64 brew upgrade --cask osxfuse
+#  shell: |
+    {{ BREW_M1 }} install --cask osxfuse || {{ BREW_M1 }} upgrade --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew install --cask veracrypt || arch -x86_64 brew upgrade --cask veracrypt
+  shell: |
+    {{ BREW_M1 }} install --cask veracrypt || {{ BREW_M1 }} upgrade --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew install tmux || arch -x86_64 brew upgrade tmux
+  shell: |
+    {{ BREW_M1 }} install tmux || {{ BREW_M1 }} upgrade tmux
 
-- name: pass
-  shell: arch -x86_64 brew install pass || arch -x86_64 brew upgrade pass
+#- name: pass
+#  shell: |
+#    {{ BREW_M1 }} install pass || {{ BREW_M1 }} upgrade pass
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew install --cask --force pycharm-ce || arch -x86_64 brew upgrade --cask --force pycharm-ce
-
-# You must install Rosetta 2 as some binaries are still Darwin/AMD64.
-# To install Rosetta 2 manually from the command line, use this command:
-#- name: docker Apple Silicon Tech Preview - fix
-#  shell: softwareupdate --install-rosetta
-#  become: yes
-#
-#- name: docker
-#  shell: arch -x86_64 brew install --cask docker || arch -x86_64 brew upgrade --cask docker
+  shell: |
+    {{ BREW_M1 }} install --cask --force pycharm-ce || {{ BREW_M1 }} upgrade --cask --force pycharm-ce
 
 #- name: wireshark
 #  block:
 #    - name: wireshark install
-#      shell: arch -x86_64 brew install --cask wireshark
+#      shell: |
+#        {{ BREW_M1 }} install --cask wireshark
 #      register: wireshark
 #      failed_when: "'The install was successful' not in wireshark.stdout"
 #      changed_when: "'The install was successful' not in wireshark.stdout"
 #      ignore_errors: yes
 #  rescue:
 #    - name: wireshark upgrade
-#      shell: arch -x86_64 brew upgrade wireshark
+#      shell: |
+#        {{ BREW_M1 }} upgrade wireshark
 #      register: wireshark
 #      failed_when: "'The upgrade was successful' not in wireshark.stdout"
 #      changed_when: "'The upgrade was successful' not in wireshark.stdout"
@@ -130,12 +140,14 @@
 - name: wireshark-chmodbpf
   block:
     - name: wireshark install
-      shell: arch -x86_64 brew install --cask wireshark-chmodbpf
+      shell: |
+        {{ BREW_M1 }} install --cask wireshark-chmodbpf
       register: wireshark
       ignore_errors: yes
   rescue:
     - name: wireshark upgrade
-      shell: arch -x86_64 brew upgrade wireshark-chmodbpf
+      shell: |
+        {{ BREW_M1 }} upgrade wireshark-chmodbpf
       register: wireshark
       ignore_errors: yes
 

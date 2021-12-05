@@ -1,4 +1,7 @@
 ---
+- set_fact:
+    BREW: brew
+
 - name: brew
   shell: |
     if ! which brew >/dev/null; then
@@ -99,7 +102,8 @@
   become: yes
 
 #- name: vagrant (brew)
-#  shell: arch -x86_64 brew upgrade --cask vagrant
+#  shell: |
+#    {{ BREW }} install --cask vagrant
 
 - name: virtualbox
   shell: |
@@ -114,26 +118,33 @@
   become: yes
 
 #- name: virtualbox
-#  shell: arch -x86_64 brew upgrade --cask virtualbox
+#  shell: |
+#    {{ BREW }} install --cask virtualbox
 
 #- name: vmware-fusion
-#  shell: arch -x86_64 brew upgrade --cask vmware-fusion
+#  shell: |
+#    {{ BREW }} install --cask vmware-fusion
 
 #- name: parallels
-#  shell: arch -x86_64 brew upgrade --cask parallels
+#  shell: |
+#    {{ BREW }} install --cask parallels
 
 - name: wget
-  shell: arch -x86_64 brew upgrade wget
+  shell: |
+    {{ BREW }} install wget || {{ BREW }} upgrade wget
 
 - name: fing
-  shell: arch -x86_64 brew upgrade fing
+  shell: |
+    {{ BREW }} install fing || {{ BREW }} upgrade fing
 
 - name: nmap
-  shell: arch -x86_64 brew upgrade nmap
+  shell: |
+    {{ BREW }} install nmap || {{ BREW }} upgrade nmap
 
 # mount is not supported on MacOS when installed via Homebrew
 #- name: rclone
-#  shell: arch -x86_64 brew upgrade rclone
+#  shell: |
+#    {{ BREW }} install rclone || {{ BREW }} upgrade rclone
 
 - name: rclone
   set_fact:
@@ -155,22 +166,28 @@
 
 # this one is too old
 #- name: osxfuse
-#  shell: arch -x86_64 brew upgrade --cask osxfuse
+#  shell: |
+#    {{ BREW }} install --cask osxfuse || {{ BREW }} upgrade --cask osxfuse
 
 - name: veracrypt
-  shell: arch -x86_64 brew upgrade --cask veracrypt
+  shell: |
+    {{ BREW }} install --cask veracrypt || {{ BREW }} upgrade --cask veracrypt
 
 - name: tmux
-  shell: arch -x86_64 brew upgrade tmux
+  shell: |
+    {{ BREW }} install tmux || {{ BREW }} upgrade tmux
 
-- name: pass
-  shell: arch -x86_64 brew upgrade pass
+#- name: pass
+#  shell: |
+#    {{ BREW }} install pass || {{ BREW }} upgrade pass
 
 - name: darktable
-  shell: arch -x86_64 brew upgrade --cask darktable
+  shell: |
+    {{ BREW }} upgrade --cask darktable
 
 - name: pycharm-ce
-  shell: arch -x86_64 brew upgrade --cask --force pycharm-ce
+  shell: |
+    {{ BREW }} install --cask --force pycharm-ce || {{ BREW }} upgrade --cask --force pycharm-ce
 
 - name: amazon workspace
   shell: |
@@ -194,7 +211,8 @@
 #  become: yes
 
 - name: docker
-  shell: arch -x86_64 brew upgrade --cask docker
+  shell: |
+    {{ BREW }} upgrade --cask docker
 
 - name: audacity - download
   ansible.builtin.git:
@@ -286,17 +304,19 @@
     hdiutil detach "$volume"
   become: yes
 
-- name: wireshark
-  shell: |
-    folder="Wireshark 3.4.2"
-    app="Wireshark.app"
-    volume="/Volumes/$folder"
-    url="https://1.na.dl.wireshark.org/osx/Wireshark%203.4.2%20Intel%2064.dmg"
-
-    hdiutil attach -nobrowse "$url"
-    cp -vR "$volume/$app" /Applications/
-    hdiutil detach "$volume"
-  become: yes
+- name: wireshark-chmodbpf
+  block:
+    - name: wireshark install
+      shell: |
+        {{ BREW }} install --cask wireshark-chmodbpf
+      register: wireshark
+      ignore_errors: yes
+  rescue:
+    - name: wireshark upgrade
+      shell: |
+        {{ BREW }} upgrade wireshark-chmodbpf
+      register: wireshark
+      ignore_errors: yes
 
 - name: teamviewer
   shell: |

@@ -19,19 +19,6 @@
   failed_when: xcode.rc == 1
   ignore_errors: yes
 
-# can't download from link
-# link redirects to a session link
-#- name: sshfs
-#  shell: |
-#    folder="sshfs"
-#    pkg=sshfs.pkg
-#    volume="/Volumes/$folder"
-#    url=https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
-#
-#    curl -o $pkg "$url"
-#    installer -pkg "$volume/$pkg" -target /
-#  become: yes
-
 #- name: fing
 #  shell: |
 #    folder="fing"
@@ -101,7 +88,7 @@
 # this one is too old
 #- name: osxfuse
 #  shell: |
-    {{ BREW_M1 }} install --cask osxfuse || {{ BREW_M1 }} upgrade --cask osxfuse
+#    {{ BREW_M1 }} install --cask osxfuse || {{ BREW_M1 }} upgrade --cask osxfuse
 
 - name: veracrypt
   shell: |
@@ -174,36 +161,39 @@
 
 - name: chrome m1
   shell: |
-    folder="Google Chrome"
-    app="Google Chrome.app"
-    volume="/Volumes/$folder"
     url=https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
     # https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
 
+    folder="Google Chrome"
+    app="Google Chrome.app"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
 - name: gpg
   shell: |
-    folder="GPG Suite"
-    pkg=Install.pkg
-    volume="/Volumes/$folder"
     url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
 
+    folder="GPG Suite"
+    pkg=Install.pkg
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
   become: yes
 
 - name: vagrant
   shell: |
-    folder="Vagrant"
-    pkg=vagrant.pkg
-    volume="/Volumes/$folder"
     url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
 
+    folder="Vagrant"
+    pkg=vagrant.pkg
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
   become: yes

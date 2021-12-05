@@ -24,12 +24,13 @@
 
 #- name: gimp
 #  shell: |
-#    folder="GIMP 2.10 Install"
-#    app="GIMP-2.10.app"
-#    volume="/Volumes/$folder"
 #    url=https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
 #
+#    folder="GIMP 2.10 Install"
+#    app="GIMP-2.10.app"
+#
 #    hdiutil attach -nobrowse "$url"
+#    volume="/Volumes/$folder"
 #    cp -R "$volume/$app" /Applications/
 #    hdiutil detach "$volume"
 
@@ -47,13 +48,13 @@
 
 - name: sshfs
   shell: |
-    folder="sshfs"
-    pkg=sshfs.pkg
-    volume="/Volumes/$folder"
     url=https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
 
-    wget -O $pkg "$url"
-    installer -pkg "$volume/$pkg" -target /
+    folder="sshfs"
+    pkg=sshfs.pkg
+
+    curl -o $pkg "$url"
+    installer -pkg "/Volumes/$folder/$pkg" -target /
   become: yes
 
 #- name: fing
@@ -62,7 +63,7 @@
 #    pkg=Fing-5.5.2-osX.pkg
 #    url=https://www.fing.com/images/uploads/general/CLI_macOSX_5.5.2.zip
 #
-#    wget -O /tmp/readyup/fing.zip "$url"
+#    curl -o /tmp/readyup/fing.zip "$url"
 #    cd /tmp/readyup
 #    unzip -o fing.zip
 #    installer -pkg "$pkg" -target /
@@ -138,22 +139,25 @@
 #    {{ BREW }} install rclone || {{ BREW }} upgrade rclone
 
 - name: rclone
-  set_fact:
-    rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
-    rclone_ver: rclone-v1.54.0-osx-amd64
-- name: rclone download
-  get_url:
-    url: '{{rclone_url}}'
-    dest: '{{install}}/rclone.zip'
-- name: rclone unzip
-  unarchive:
-    src: '{{install}}/rclone.zip'
-    dest: '{{install}}'
-- name: rclone install
-  copy:
-    src: '{{install}}/{{rclone_ver}}/rclone'
-    dest: /usr/local/bin/rclone
-    mode: '0755'
+  block:
+    - name: rclone
+      set_fact:
+        rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
+        rclone_ver: rclone-v1.54.0-osx-amd64
+    - name: rclone download
+      get_url:
+        url: '{{rclone_url}}'
+        dest: '{{install}}/rclone.zip'
+        validate_certs: false
+    - name: rclone unzip
+      unarchive:
+        src: '{{install}}/rclone.zip'
+        dest: '{{install}}'
+    - name: rclone install
+      copy:
+        src: '{{install}}/{{rclone_ver}}/rclone'
+        dest: /usr/local/bin/rclone
+        mode: '0755'
 
 # this one is too old
 #- name: osxfuse

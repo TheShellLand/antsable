@@ -24,23 +24,25 @@
 
 - name: blender
   shell: |
-    folder="Blender"
-    app="Blender.app"
-    volume="/Volumes/$folder"
     url=https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.91/blender-2.91.0-macOS.dmg
 
+    folder="Blender"
+    app="Blender.app"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
 - name: gimp
   shell: |
-    folder="GIMP 2.10 Install"
-    app="GIMP-2.10.app"
-    volume="/Volumes/$folder"
     url=https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
 
+    folder="GIMP 2.10 Install"
+    app="GIMP-2.10.app"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
 
@@ -58,13 +60,13 @@
 
 - name: sshfs
   shell: |
-    folder="sshfs"
-    pkg=sshfs.pkg
-    volume="/Volumes/$folder"
     url=https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
 
-    wget -O $pkg "$url"
-    installer -pkg "$volume/$pkg" -target /
+    folder="sshfs"
+    pkg=sshfs.pkg
+
+    curl -o $pkg "$url"
+    installer -pkg "/Volumes/$folder/$pkg" -target /
   become: yes
 
 #- name: fing
@@ -73,7 +75,7 @@
 #    pkg=Fing-5.5.2-osX.pkg
 #    url=https://www.fing.com/images/uploads/general/CLI_macOSX_5.5.2.zip
 #
-#    wget -O /tmp/readyup/fing.zip "$url"
+#    curl -o /tmp/readyup/fing.zip "$url"
 #    cd /tmp/readyup
 #    unzip -o fing.zip
 #    installer -pkg "$pkg" -target /
@@ -147,22 +149,25 @@
 #    {{ BREW }} install rclone || {{ BREW }} upgrade rclone
 
 - name: rclone
-  set_fact:
-    rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
-    rclone_ver: rclone-v1.54.0-osx-amd64
-- name: rclone download
-  get_url:
-    url: '{{rclone_url}}'
-    dest: '{{install}}/rclone.zip'
-- name: rclone unzip
-  unarchive:
-    src: '{{install}}/rclone.zip'
-    dest: '{{install}}'
-- name: rclone install
-  copy:
-    src: '{{install}}/{{rclone_ver}}/rclone'
-    dest: /usr/local/bin/rclone
-    mode: '0755'
+  block:
+    - name: rclone
+      set_fact:
+        rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
+        rclone_ver: rclone-v1.54.0-osx-amd64
+    - name: rclone download
+      get_url:
+        url: '{{rclone_url}}'
+        dest: '{{install}}/rclone.zip'
+        validate_certs: false
+    - name: rclone unzip
+      unarchive:
+        src: '{{install}}/rclone.zip'
+        dest: '{{install}}'
+    - name: rclone install
+      copy:
+        src: '{{install}}/{{rclone_ver}}/rclone'
+        dest: /usr/local/bin/rclone
+        mode: '0755'
 
 # this one is too old
 #- name: osxfuse
@@ -219,87 +224,97 @@
     repo: 'https://github.com/TheShellLand/audacity-mac.git'
     dest: "{{install}}/audacity-mac"
 
-- name: google drive
-  shell: |
-    folder="Install Backup and Sync from Google"
-    app="Backup and Sync.app"
-    volume="/Volumes/$folder"
-    url=https://dl.google.com/drive/InstallBackupAndSync.dmg
-
-    hdiutil attach -nobrowse "$url"
-    cp -R "$volume/$app" /Applications/
-    hdiutil detach "$volume"
-  become: yes
+# TODO: update to new google drive
+#- name: google drive
+#  shell: |
+#    url=https://dl.google.com/drive/InstallBackupAndSync.dmg
+#
+#    folder="Install Backup and Sync from Google"
+#    app="Backup and Sync.app"
+#
+#    hdiutil attach -nobrowse "$url"
+#    volume="/Volumes/$folder"
+#    cp -R "$volume/$app" /Applications/
+#    hdiutil detach "$volume"
+#  become: yes
 
 - name: audacity
   shell: |
+    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
+
     folder="Audacity 2.4.2"
     app=Audacity.app
-    volume="/Volumes/$folder"
-    url=https://github.com/TheShellLand/audacity-mac/raw/master/audacity-macos-2.4.2.dmg
 
     #hdiutil attach -nobrowse "{{install}}/audacity-mac/audacity-macos-2.4.2.dmg"
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
 - name: macfuse
   shell: |
-    folder="macFUSE"
-    pkg="Install macFUSE.pkg"
-    volume="/Volumes/$folder"
     url=https://github.com/osxfuse/osxfuse/releases/download/macfuse-4.0.5/macfuse-4.0.5.dmg
 
+    folder="macFUSE"
+    pkg="Install macFUSE.pkg"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     installer -pkg "$volume/$pkg" -target /
     hdiutil detach "$volume"
   become: yes
+  register: pkg
+  failed_when:  "'Error' in pkg.stderr"
 
 - name: vlc
   shell: |
-    folder="VLC media player"
-    app=VLC.app
-    volume="/Volumes/$folder"
     url=https://mirror.clarkson.edu/videolan/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg
 
+    folder="VLC media player"
+    app=VLC.app
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
 - name: steam
   shell: |
-    folder=Steam
-    app=Steam.app
-    volume="/Volumes/$folder"
     url=https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg
 
+    folder=Steam
+    app=Steam.app
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
 - name: streamlabs
   shell: |
-    folder="Streamlabs OBS 0.25.2"
-    app="Streamlabs OBS.app"
-    volume="/Volumes/$folder"
     url=https://slobs-cdn.streamlabs.com/Streamlabs+OBS-0.26.2.dmg
 
+    folder="Streamlabs OBS 0.25.2"
+    app="Streamlabs OBS.app"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
 
 - name: geforcenow
   shell: |
-    folder="GeForce NOW"
-    app="GeForceNOW.app"
-    volume="/Volumes/$folder"
     url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
 
+    folder="GeForce NOW"
+    app="GeForceNOW.app"
+
     hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
     cp -R "$volume/$app" /Applications/
     hdiutil detach "$volume"
   become: yes
@@ -318,17 +333,18 @@
       register: wireshark
       ignore_errors: yes
 
-- name: teamviewer
-  shell: |
-    folder="TeamViewer"
-    app="Install TeamViewer.app"
-    volume="/Volumes/$folder"
-    url="https://dl.teamviewer.com/download/version_15x/TeamViewer.dmg"
-
-    hdiutil attach -nobrowse "$url"
-    cp -vR "$volume/$app" ~/
-    hdiutil detach "$volume"
-  become: no
+#- name: teamviewer
+#  shell: |
+#    url="https://dl.teamviewer.com/download/version_15x/TeamViewer.dmg"
+#
+#    folder="TeamViewer"
+#    app="Install TeamViewer.app"
+#
+#    hdiutil attach -nobrowse "$url"
+#    volume="/Volumes/$folder"
+#    cp -vR "$volume/$app" ~/
+#    hdiutil detach "$volume"
+#  become: no
 
 - name: crossover download
   get_url:

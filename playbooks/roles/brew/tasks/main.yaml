@@ -1,2 +1,2 @@
 ---
-- include_tasks: "{{system_specific_playbook}}.yml"
+- include_tasks: "{{ansible_facts.os_family}}.yml"

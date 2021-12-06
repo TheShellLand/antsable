@@ -1,0 +1,5 @@
+---
+- shell: xcode-select --install
+  register: shell
+  changed_when: "'already installed' not in shell.stderr"
+  failed_when: '"already installed" not in shell.stderr'

@@ -3,7 +3,7 @@
     install: /tmp/readyup
 
 - name: temp install
-  file: path={{ install }} state=directory
+  file: path={{ readyup }} state=directory
 #  - name: Disable Ubuntu 16.04 console switch keys
 #    shell: |
 #      dumpkeys | grep -v Incr_Console | grep -v Decr_Console | grep -v Last_Console | loadkeys

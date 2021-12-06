@@ -22,10 +22,10 @@
       file: path={{ extensions }} state=directory
 
     - name: Cleanup
-      file: path={{ install }} state=absent
+      file: path={{ readyup }} state=absent
 
     - name: Create temp dir
-      file: path={{ install }} state=directory
+      file: path={{ readyup }} state=directory
 
     - name: Install Missing Packages
       shell: apt install -f -y
@@ -135,11 +135,11 @@
         #https://extensions.gnome.org/extension-data/scroll-workspaces%40gfxmonk.net.v20.shell-extension.zip
 
         for ext in $extensions; do
-          wget -O {{ install }}/extension.zip "$ext"
-          unzip -o {{ install }}/extension.zip -d {{ install }}/extension
-          name="$(jq -r '.uuid' {{ install }}/extension/metadata.json)"
-          mv {{ install }}/extension {{ install }}/"$name"
-          cp -rv {{ install }}/"$name" {{ extensions }}
+          wget -O {{ readyup }}/extension.zip "$ext"
+          unzip -o {{ readyup }}/extension.zip -d {{ readyup }}/extension
+          name="$(jq -r '.uuid' {{ readyup }}/extension/metadata.json)"
+          mv {{ readyup }}/extension {{ readyup }}/"$name"
+          cp -rv {{ readyup }}/"$name" {{ extensions }}
         done
       args:
         executable: /bin/bash
@@ -163,9 +163,9 @@
     - name: walls - download
       git:
         repo: https://github.com/TheShellLand/walls.git
-        dest: "{{ install }}/walls"
+        dest: "{{ readyup }}/walls"
     - name: walls - install
-      shell: cp -r {{ install }}/walls/Wallpapers /tmp/
+      shell: cp -r {{ readyup }}/walls/Wallpapers /tmp/
 
     ###
     ### Icons, Cursors & Fonts
@@ -174,9 +174,9 @@
     - name: cutecursorsomg - download
       git:
         repo: https://github.com/TheShellLand/cutecursorsomg.git
-        dest: "{{ install }}/cutecursorsomg"
+        dest: "{{ readyup }}/cutecursorsomg"
     - name: cutecursorsomg - install
-      shell: cp -r {{ install }}/cutecursorsomg/cursors/* {{ icons }}
+      shell: cp -r {{ readyup }}/cutecursorsomg/cursors/* {{ icons }}
 
     ###
     ### Themes

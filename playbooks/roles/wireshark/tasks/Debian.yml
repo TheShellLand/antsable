@@ -1,4 +1,3 @@
 ---
-- name: wireshark
-  apt: update_cache=no name=wireshark state=latest
+- apt: update_cache=no name=wireshark state=latest
   become: yes

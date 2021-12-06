@@ -1,7 +1,2 @@
 ---
 install: /tmp/readyup
-
-role: "{{role_path}}"
-tasks: "{{role}}/tasks"
-system_specific: "{{tasks}}/{{ansible_facts.os_family}}/{{ansible_facts.processor}}/{{ansible_facts.distribution}}/{{ ansible_facts.distribution_major_version }}"
-system_specific_playbook: "{{tasks}}/{{ansible_facts.os_family}}_{{ansible_facts.processor}}_{{ansible_facts.distribution}}_{{ ansible_facts.distribution_major_version }}"

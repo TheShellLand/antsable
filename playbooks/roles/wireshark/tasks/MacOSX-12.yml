@@ -1,0 +1,16 @@
+---
+- include_role: name=brew
+
+- name: wireshark install
+  shell: |
+    {{ BREW_M1 }} install --cask wireshark
+  register: wireshark
+  changed_when: "'installed' not in wireshark.stderr"
+
+- name: wireshark upgrade
+  shell: |
+    {{ BREW_M1 }} upgrade --cask wireshark
+  register: wireshark
+  failed_when: "'already' not in wireshark.stderr"
+  changed_when: "'already' not in wireshark.stderr"
+  when: "'installed' in wireshark.stderr"

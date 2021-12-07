@@ -12,3 +12,15 @@
   failed_when: shell.stdout
   changed_when: shell.stdout
   when: "'installed' in shell.stderr"
+
+#- shell: |
+#    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg
+#
+#    folder="Vagrant"
+#    pkg=vagrant.pkg
+#
+#    hdiutil attach -nobrowse "$url"
+#    volume="/Volumes/$folder"
+#    installer -pkg "$volume/$pkg" -target /
+#    hdiutil detach "$volume"
+#  become: yes

@@ -1,7 +1,4 @@
 ---
-- set_fact:
-    package: parallels
-
 - name: install
   shell: |
     {{ BREW_M1 }} install --cask {{ package }}

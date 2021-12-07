@@ -1,0 +1,11 @@
+---
+- get_url:
+    url: https://d2td7dqidlhjx7.cloudfront.net/prod/global/osx/WorkSpaces.pkg
+    dest: ./WorkSpaces.pkg
+
+- shell: |
+    pkg=WorkSpaces.pkg
+    installer -pkg "$pkg" -target / && echo OK
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

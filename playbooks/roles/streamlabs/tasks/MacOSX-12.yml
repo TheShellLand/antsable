@@ -1,0 +1,21 @@
+---
+- set_fact:
+    version: 0.26.2
+
+- get_url:
+    url: "https://slobs-cdn.streamlabs.com/Streamlabs+OBS-{{ version }}.dmg"
+    dest: ./streamlabs.dmg
+
+- shell: |
+    url=streamlabs.dmg
+
+    folder="Streamlabs OBS {{ version }}"
+    app="Streamlabs OBS.app"
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    cp -R "$volume/$app" /Applications/ && echo OK
+    hdiutil detach "$volume"
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

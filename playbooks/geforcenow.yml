@@ -1,16 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  tasks:
-
-    - name: geforcenow
-      shell: |
-        url=https://download.nvidia.com/gfnpc/GeForceNOW-release.dmg
-        folder="GeForce NOW"
-        app="GeForceNOW.app"
-
-        hdiutil attach -nobrowse "$url"
-        cp -R "/Volumes/$folder/$app" /Applications/
-        hdiutil detach "/Volumes/$folder/"
-      become: yes
-      when: ansible_facts['distribution'] == "MacOSX"
+- hosts: all
+  roles:
+    - geforcenow

@@ -1,11 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-
-    - name: Pycharm community
-      snap:
-        name: pycharm-community
-        classic: yes
-        state: present
+- hosts: all
+  roles:
+    - pycharm

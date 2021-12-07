@@ -16,7 +16,7 @@ env:
 
 jobs:
 
-  unittest:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,12 @@ jobs:
           python-version: 3.8
       - name: Install python packages
         run: pip3 install -r requirements.txt
-      - name: Run tests
+
+  unittest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
         run: /bin/bash test.sh
 
 

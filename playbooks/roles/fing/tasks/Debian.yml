@@ -1,0 +1,3 @@
+---
+- apt: update_cache=no name=fing state=latest
+  become: yes

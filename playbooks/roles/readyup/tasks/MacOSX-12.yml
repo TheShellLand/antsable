@@ -1,0 +1,61 @@
+---
+# internet
+- include_role: name=google-drive
+- include_role: name=chrome
+
+# coding
+- include_role: name=brew
+- include_role: name=pycharm
+- include_role: name=tmux
+- include_role: name=xcode
+#- include_role: name=sshfs
+
+# virtualization
+- include_role: name=docker
+#- include_role: name=vagrant
+#- include_role: name=virtualbox
+#- include_role: name=parallels
+#- include_role: name=vmware-fusion
+
+# tools
+- include_role: name=nmap
+- include_role: name=wget
+- include_role: name=rclone
+- include_role: name=amazon-workspace
+- include_role: name=macfuse
+- include_role: name=wireshark
+#- include_role: name=teamviewer
+#- include_role: name=fing
+
+# editing
+- include_role: name=darktable
+- include_role: name=gimp
+- include_role: name=audacity
+- include_role: name=blender
+
+# encryption
+- include_role: name=veracrypt
+
+# gaming
+- include_role: name=steam
+- include_role: name=streamlabs
+- include_role: name=geforcenow
+- include_role: name=crossover
+#- include_role: name=wine
+
+# media
+- include_role: name=vlc
+
+
+- name: gpg
+  shell: |
+    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+
+    folder="GPG Suite"
+    pkg=Install.pkg
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes

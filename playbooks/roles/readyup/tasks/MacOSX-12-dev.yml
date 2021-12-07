@@ -1,0 +1,26 @@
+---
+- include_role: name=brew
+- include_role: name=fing
+- include_role: name=nmap
+- include_role: name=wget
+- include_role: name=rclone
+- include_role: name=veracrypt
+- include_role: name=tmux
+- include_role: name=pycharm
+- include_role: name=wireshark
+- include_role: name=vagrant
+- include_role: name=chrome
+
+
+- name: gpg
+  shell: |
+    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+
+    folder="GPG Suite"
+    pkg=Install.pkg
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    installer -pkg "$volume/$pkg" -target /
+    hdiutil detach "$volume"
+  become: yes

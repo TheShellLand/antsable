@@ -1,0 +1,3 @@
+---
+- apt: update_cache=yes name=sshfs state=latest
+  become: yes

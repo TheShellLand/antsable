@@ -1,0 +1,13 @@
+---
+- get_url:
+    url: https://github.com/osxfuse/sshfs/releases/download/osxfuse-sshfs-2.5.0/sshfs-2.5.0.pkg
+    dest: ./sshfs.pkg
+
+- shell: |
+    folder="sshfs"
+    pkg=sshfs.pkg
+
+    installer -pkg "/Volumes/$folder/$pkg" -target / && echo OK
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

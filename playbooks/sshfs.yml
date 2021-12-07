@@ -1,7 +1,4 @@
 ---
 - hosts: all
-  gather_facts: no
-
-  tasks:
-  - name: sshfs - install
-    apt: update_cache=yes name=sshfs state=latest
+  roles:
+    - sshfs

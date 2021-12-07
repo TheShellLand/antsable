@@ -1,16 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: yes
-  tasks:
-
-    - name: Update cache
-      apt: update_cache=yes
-
-    - name: Chrome
-      apt:
-        deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      ignore_errors: yes
-
-    - name: Install missing dependencies
-      shell: apt install -f -y
+- hosts: all
+  roles:
+    - chrome

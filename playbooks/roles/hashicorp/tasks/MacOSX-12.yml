@@ -1,0 +1,19 @@
+---
+- name: hashicorp
+  set_fact:
+    hashicorp_url: https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_darwin_amd64.zip
+- name: hashicorp download
+  get_url:
+    url: '{{hashicorp_url}}'
+    dest: '{{install}}/hashicorp.zip'
+    validate_certs: false
+- name: hashicorp unzip
+  unarchive:
+    src: '{{install}}/hashicorp.zip'
+    dest: '{{install}}'
+- name: hashicorp install
+  copy:
+    src: '{{install}}/vault'
+    dest: /usr/local/bin/vault
+    mode: '0755'
+  become: yes

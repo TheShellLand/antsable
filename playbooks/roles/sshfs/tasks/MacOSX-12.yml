@@ -4,10 +4,8 @@
     dest: ./sshfs.pkg
 
 - shell: |
-    folder="sshfs"
     pkg=sshfs.pkg
-
-    installer -pkg "/Volumes/$folder/$pkg" -target / && echo OK
+    installer -pkg "$pkg" -target / && echo OK
   register: shell
   become: yes
   changed_when: "'OK' not in shell.stdout"

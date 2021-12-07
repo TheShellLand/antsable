@@ -1,9 +1,9 @@
 ---
 - set_fact:
-    version: 0.26.2
+    version: 1.5.0
 
 - get_url:
-    url: "https://slobs-cdn.streamlabs.com/Streamlabs+OBS-{{ version }}.dmg"
+    url: https://slobs-cdn.streamlabs.com/Streamlabs+OBS-1.5.0.dmg
     dest: ./streamlabs.dmg
 
 - shell: |

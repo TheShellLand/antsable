@@ -9,6 +9,6 @@
   shell: |
     {{ BREW_M1 }} upgrade --cask wireshark
   register: shell
-  failed_when: "'already' not in shell.stderr"
-  changed_when: "'already' not in shell.stderr"
+  failed_when: shell.stdout
+  changed_when: shell.stdout
   when: "'installed' in shell.stderr"

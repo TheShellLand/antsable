@@ -1,21 +1,32 @@
 ---
-- name: install
-  shell: |
-    {{ BREW_M1 }} install --cask {{ package }}
-  register: shell
-  changed_when: "'installed' not in shell.stderr"
+#- name: install
+#  shell: |
+#    {{ BREW_M1 }} install --cask {{ package }}
+#  register: shell
+#  changed_when: "'installed' not in shell.stderr"
+#
+#- name: upgrade
+#  shell: |
+#    {{ BREW_M1 }} upgrade --cask {{ package }}
+#  register: shell
+#  failed_when: shell.stdout
+#  changed_when: shell.stdout
+#  when: "'installed' in shell.stderr"
 
-- name: upgrade
-  shell: |
-    {{ BREW_M1 }} upgrade --cask {{ package }}
-  register: shell
-  failed_when: shell.stdout
-  changed_when: shell.stdout
-  when: "'installed' in shell.stderr"
+- get_url:
+    url: https://desktop.docker.com/mac/main/arm64/Docker.dmg
+    dest: ./docker.dmg
 
-# You must install Rosetta 2 as some binaries are still Darwin/AMD64.
-# To install Rosetta 2 manually from the command line, use this command:
-#- name: docker Apple Silicon Tech Preview - fix
-#  shell: echo 'A' | softwareupdate --install-rosetta
-#  args:
-#    executable: /bin/bash
+- shell: |
+    url=docker.dmg
+
+    folder=Docker
+    app="Docker.app"
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    cp -R "$volume/$app" /Applications/ && echo OK
+    hdiutil detach "$volume"
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

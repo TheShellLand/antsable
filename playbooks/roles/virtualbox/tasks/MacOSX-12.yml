@@ -1,0 +1,14 @@
+---
+- name: install
+  shell: |
+    {{ BREW_M1 }} install --cask virtualbox
+  register: shell
+  changed_when: "'installed' not in shell.stderr"
+
+- name: upgrade
+  shell: |
+    {{ BREW_M1 }} upgrade --cask virtualbox
+  register: shell
+  failed_when: shell.stdout
+  changed_when: shell.stdout
+  when: "'installed' in shell.stderr"

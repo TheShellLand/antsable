@@ -1,0 +1,36 @@
+---
+# mount is not supported on MacOS when installed via Homebrew
+- name: install
+  shell: |
+    {{ BREW_M1 }} install {{ package }}
+  register: shell
+  changed_when: "'installed' not in shell.stderr"
+
+- name: upgrade
+  shell: |
+    {{ BREW_M1 }} upgrade {{ package }}
+  register: shell
+  failed_when: shell.stdout
+  changed_when: shell.stdout
+  when: "'installed' in shell.stderr"
+
+#- name: rclone
+#  block:
+#    - name: rclone
+#      set_fact:
+#        rclone_url: https://downloads.rclone.org/v1.54.0/rclone-v1.54.0-osx-amd64.zip
+#        rclone_ver: rclone-v1.54.0-osx-amd64
+#    - name: rclone download
+#      get_url:
+#        url: '{{rclone_url}}'
+#        dest: '{{install}}/rclone.zip'
+#        validate_certs: false
+#    - name: rclone unzip
+#      unarchive:
+#        src: '{{install}}/rclone.zip'
+#        dest: '{{install}}'
+#    - name: rclone install
+#      copy:
+#        src: '{{install}}/{{rclone_ver}}/rclone'
+#        dest: /usr/local/bin/rclone
+#        mode: '0755'

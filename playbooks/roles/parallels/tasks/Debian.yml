@@ -1,0 +1,3 @@
+---
+- apt: update_cache=no name=parallels state=latest
+  become: yes

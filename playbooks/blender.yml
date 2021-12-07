@@ -1,8 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: yes
-
-  tasks:
-    - name: blender - install
-      apt: update_cache=yes name=blender state=latest
+- hosts: all
+  roles:
+    - blender

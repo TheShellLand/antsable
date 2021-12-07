@@ -1,12 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-
-    - name: Vagrant
-      apt:
-        deb: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
-
-    - name: jq
-      apt: update_cache=no name=jq state=latest
+- hosts: all
+  roles:
+    - vagrant

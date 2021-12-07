@@ -1,0 +1,3 @@
+---
+- apt: update_cache=no name=vagrant state=latest
+  become: yes

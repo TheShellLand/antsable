@@ -1,0 +1,3 @@
+---
+- yum: name=vagrant state=latest
+  become: yes

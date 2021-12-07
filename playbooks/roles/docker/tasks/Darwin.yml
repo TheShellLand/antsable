@@ -1,1 +1,2 @@
 ---
+- include_tasks: "{{ansible_facts.processor}}.yml"

@@ -1,0 +1,3 @@
+---
+- yum: name=gimp state=latest
+  become: yes

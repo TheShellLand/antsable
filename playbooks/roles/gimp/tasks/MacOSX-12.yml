@@ -1,0 +1,18 @@
+---
+- get_url:
+    url: https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
+    dest: ./gimp.dmg
+
+- shell: |
+    url=gimp.dmg
+
+    folder="GIMP 2.10 Install"
+    app="GIMP-2.10.app"
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    cp -R "$volume/$app" /Applications/ && echo OK
+    hdiutil detach "$volume"
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

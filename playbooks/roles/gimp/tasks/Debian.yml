@@ -1,0 +1,3 @@
+---
+- apt: update_cache=yes name=gimp state=latest
+  become: yes

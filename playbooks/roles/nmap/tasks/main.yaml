@@ -1,5 +1,3 @@
 ---
-- set_fact:
-    package: nmap
-
+- set_fact: package=nmap
 - include_tasks: "{{ansible_facts.os_family}}.yml"

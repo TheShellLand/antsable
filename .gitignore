@@ -1,9 +1,11 @@
 .idea/
+.vagrant
 inventory.yaml
 config
-sshconfig
-.vagrant
-Vagrantfile
 env.sh
+sshconfig
 vault-secret
+Vagrantfile
 *.retry
+*.dmg
+*.pkg

@@ -1,13 +1,13 @@
 ---
 - name: install
   shell: |
-    {{ BREW_M1 }} install --cask vagrant
+    {{ BREW_M1 }} install --cask {{ package }}
   register: shell
   changed_when: "'installed' not in shell.stderr"
 
 - name: upgrade
   shell: |
-    {{ BREW_M1 }} upgrade --cask vagrant
+    {{ BREW_M1 }} upgrade --cask {{ package }}
   register: shell
   failed_when: shell.stdout
   changed_when: shell.stdout

@@ -1,4 +1,0 @@
----
-- name: wireshark
-  yum: name=wireshark state=latest
-  become: yes

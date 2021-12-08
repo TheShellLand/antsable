@@ -10,6 +10,9 @@
 - include_role: name=xcode
 #- include_role: name=sshfs
 
+# source code
+- include_role: name=gcc
+
 # virtualization
 - include_role: name=docker
 #- include_role: name=vagrant

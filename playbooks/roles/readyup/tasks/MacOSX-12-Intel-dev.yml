@@ -1,6 +1,5 @@
 ---
 - include_role: name=brew
-- include_role: name=sshfs
 - include_role: name=nmap
 - include_role: name=wget
 - include_role: name=rclone
@@ -9,9 +8,8 @@
 - include_role: name=pycharm
 - include_role: name=wireshark
 - include_role: name=vagrant
-- include_role: name=virtualbox
 - include_role: name=chrome
-- include_role: name=pass
+- include_role: name=caffeine
 
 
 - name: gpg

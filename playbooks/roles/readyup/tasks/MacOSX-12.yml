@@ -18,6 +18,7 @@
 #- include_role: name=vmware-fusion
 
 # tools
+- include_role: name=caffeine
 - include_role: name=nmap
 - include_role: name=wget
 - include_role: name=rclone

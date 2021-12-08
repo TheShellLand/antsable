@@ -1,11 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-
-    - name: gcc
-      apt: update_cache=no name=gcc state=latest
-
-    - name: make
-      apt: update_cache=no name=make state=latest
+- hosts: all
+  roles:
+    - gcc

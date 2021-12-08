@@ -1,4 +1,5 @@
 .idea/
+node_modules/
 .vagrant
 .DS_Store
 inventory.yaml

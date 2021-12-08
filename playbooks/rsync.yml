@@ -1,6 +1,4 @@
 ---
 - hosts: all
-  tasks:
-
-  - name: Install rsync
-    apt: update_cache=yes name=rsync state=latest
+  roles:
+    - rsync

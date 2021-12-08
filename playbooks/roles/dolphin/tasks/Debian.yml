@@ -1,0 +1,5 @@
+---
+- shell: apt-add-repository ppa:dolphin-emu/ppa
+  become: yes
+- apt: update_cache=yes name=dolphin-emu state=latest
+  become: yes

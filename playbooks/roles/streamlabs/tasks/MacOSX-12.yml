@@ -17,5 +17,5 @@
     cp -R "$volume/$app" /Applications/ && echo OK
     hdiutil detach "$volume"
   register: shell
-  become: yes
+#  become: yes
   changed_when: "'OK' not in shell.stdout"

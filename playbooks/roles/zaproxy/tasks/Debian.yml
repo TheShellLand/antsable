@@ -1,0 +1,5 @@
+---
+- snap:
+    name: zaproxy
+    state: present
+    classic: yes

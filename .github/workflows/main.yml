@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        run: /bin/bash test.sh
+      - run: /bin/bash test.sh
 
 
   docker-build:

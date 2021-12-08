@@ -1,0 +1,18 @@
+---
+- get_url:
+    url: https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
+    dest: ./gpg.dmg
+
+- shell: |
+    url=gpg.dmg
+
+    folder="GPG Suite"
+    pkg=Install.pkg
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    installer -pkg "$volume/$pkg" -target / && echo OK
+    hdiutil detach "$volume"
+  register: shell
+  become: yes
+  changed_when: "'OK' not in shell.stdout"

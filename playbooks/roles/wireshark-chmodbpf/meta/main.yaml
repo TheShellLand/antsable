@@ -2,4 +2,3 @@
 dependencies:
   - defaults
   - brew
-  - wireshark-chmodbpf

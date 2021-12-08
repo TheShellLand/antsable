@@ -36,6 +36,7 @@
 
 # encryption
 - include_role: name=veracrypt
+- include_role: name=gpg
 
 # gaming
 - include_role: name=steam
@@ -47,17 +48,3 @@
 
 # media
 - include_role: name=vlc
-
-
-- name: gpg
-  shell: |
-    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
-
-    folder="GPG Suite"
-    pkg=Install.pkg
-
-    hdiutil attach -nobrowse "$url"
-    volume="/Volumes/$folder"
-    installer -pkg "$volume/$pkg" -target /
-    hdiutil detach "$volume"
-  become: yes

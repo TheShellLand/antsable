@@ -10,17 +10,4 @@
 - include_role: name=vagrant
 - include_role: name=chrome
 - include_role: name=caffeine
-
-
-- name: gpg
-  shell: |
-    url=https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
-
-    folder="GPG Suite"
-    pkg=Install.pkg
-
-    hdiutil attach -nobrowse "$url"
-    volume="/Volumes/$folder"
-    installer -pkg "$volume/$pkg" -target /
-    hdiutil detach "$volume"
-  become: yes
+- include_role: name=gpg

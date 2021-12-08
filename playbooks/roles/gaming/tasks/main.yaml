@@ -1,8 +1,2 @@
 ---
-- import_tasks: tasks/update_cache.yml
-- import_tasks: tasks/games-support.yml
-- import_tasks: tasks/nvidia-ppa.yml
-- import_tasks: tasks/vulkan.yml
-- import_tasks: tasks/steam.yml
-- import_tasks: tasks/wine.yml
-- import_tasks: tasks/mono.yml
+- include_tasks: "{{ansible_facts.os_family}}.yml"

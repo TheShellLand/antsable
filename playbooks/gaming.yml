@@ -1,6 +1,5 @@
 ---
 # Gaming on Linux with Steam, Proton, Nvidia, and Wine
-- hosts: gaming
-  become: true
+- hosts: all
   roles:
     - gaming

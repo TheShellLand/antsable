@@ -8,7 +8,6 @@
 - include_role: name=pycharm
 - include_role: name=tmux
 - include_role: name=xcode
-#- include_role: name=sshfs
 
 # source code
 - include_role: name=gcc
@@ -28,6 +27,7 @@
 - include_role: name=amazon-workspace
 - include_role: name=macfuse
 - include_role: name=wireshark
+#- include_role: name=sshfs
 #- include_role: name=teamviewer
 #- include_role: name=fing
 

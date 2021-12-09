@@ -27,6 +27,7 @@
 - include_role: name=amazon-workspace
 - include_role: name=macfuse
 - include_role: name=wireshark
+- include_role: name=keepassx
 #- include_role: name=sshfs
 #- include_role: name=teamviewer
 #- include_role: name=fing

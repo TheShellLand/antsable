@@ -1,3 +1,3 @@
 ---
-- name: Install git
-  apt: update_cache=yes name=git state=latest
+- apt: update_cache=yes name={{ package }} state=latest
+  become: yes

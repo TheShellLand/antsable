@@ -1,0 +1,3 @@
+---
+- yum: name=build-essential state=latest
+  become: yes

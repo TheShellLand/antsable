@@ -1,0 +1,6 @@
+---
+dependencies:
+  - defaults
+  - brew
+  - git
+  - gcc

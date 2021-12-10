@@ -1,9 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-
-    - name: Steam
-      apt:
-        deb: https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+- hosts: all
+  roles:
+    - steam

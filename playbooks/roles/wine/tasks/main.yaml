@@ -1,3 +1,3 @@
 ---
-- set_fact: package=wine-devel
+- set_fact: package=wine-stable
 - include_tasks: "{{ansible_facts.os_family}}.yml"

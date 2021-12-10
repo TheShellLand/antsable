@@ -1,0 +1,34 @@
+---
+## https://medium.com/@evshiron/build-valve-proton-on-macos-89ce2e1e6140
+
+
+#git clone https://github.com/ValveSoftware/Proton
+#cd Proton
+#git submodule update --init
+- git:
+    repo: https://github.com/ValveSoftware/Proton
+    dest: Proton
+    track_submodules: yes
+
+- shell: "{{item}}"
+  loop:
+    - cd Proton
+    - git submodule update --init
+
+# The glslang in the repo root is for Linux and will not run on macOS, so we remove it and use the global one installed by HomeBrew
+- file:
+    path: Proton/glslang
+    state: absent
+
+# In the build process, meson install is used to move Windows DLLs to the right places, but when meson discovers that we are on macOS, the DLLs are moved using install_name_tool, which only works will macOS *.dylibs and resulting in failures. We have to fix it by replacing the last line with a pass:
+
+#vi /usr/local/lib/python3.7/site-packages/mesonbuild/scripts/depfixer.py
+- pip:
+    name: meson
+
+#./build_proton.sh
+- shell: |
+    cd Proton
+    bash build_proton.sh
+
+#STEAM_COMPAT_DATA_PATH=%HOME/.proton/ ./proton run THE/PATH/TO/EXE

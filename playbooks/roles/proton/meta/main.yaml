@@ -1,0 +1,6 @@
+---
+dependencies:
+  - defaults
+  - git
+  - python3
+  - build-tools

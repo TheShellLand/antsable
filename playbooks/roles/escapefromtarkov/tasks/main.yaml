@@ -1,0 +1,13 @@
+---
+- set_fact: package=streamlabs-obs
+- set_fact:
+    url: https://cdn-13.eft-store.com/LauncherDistribs/12.11.0.1747_a60961d7a8c88bd30133802b1eedd4d1/BsgLauncher.12.11.0.1747.exe
+    file: BsgLauncher.exe
+
+- get_url:
+    url: "{{url}}"
+    dest: "./{{file}}"
+
+- fail:
+
+- include_tasks: "{{ansible_facts.os_family}}.yml"

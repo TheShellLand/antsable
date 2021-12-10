@@ -27,7 +27,7 @@
     dest: "./{{file}}"
 
 - shell: |
-    yes | hdiutil attach -nobrowse {{file}}
+    yes | hdiutil attach -nobrowse {{file}} >/dev/null
     rsync -arui "/Volumes/{{ folder }}/{{ app }}" /Applications/ && echo OK
     hdiutil detach '/Volumes/{{folder}}'
   register: shell

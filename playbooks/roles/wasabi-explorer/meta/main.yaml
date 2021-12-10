@@ -1,0 +1,5 @@
+---
+dependencies:
+  - defaults
+  - brew
+  - rsync

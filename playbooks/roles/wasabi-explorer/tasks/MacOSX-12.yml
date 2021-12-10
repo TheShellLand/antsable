@@ -1,0 +1,37 @@
+---
+- block:
+  - name: install
+    shell: |
+      {{ BREW_M1 }} install --cask {{ package }}
+    register: shell
+    changed_when: "'installed' not in shell.stderr"
+
+  - name: upgrade
+    shell: |
+      {{ BREW_M1 }} upgrade --cask {{ package }}
+    register: shell
+    failed_when: shell.stdout
+    changed_when: shell.stdout
+    when: "'installed' in shell.stderr"
+  when: BREW_INSTALL
+
+
+- block:
+  - set_fact:
+      url: https://s3.wasabisys.com/wasabi-explorer/mac/Wasabi_Explorer_v1.2.0.281_20211112143251.dmg
+      file: Wasabi_Explorer.dmg
+      folder: Wasabi Explorer
+      app: Wasabi Explorer.app
+
+  - get_url:
+      url: "{{url}}"
+      dest: "./{{file}}"
+
+  - shell: |
+      yes | hdiutil attach -nobrowse {{file}} >/dev/null
+      rsync -arui "/Volumes/{{ folder }}/{{ app }}" /Applications/ && echo OK
+      hdiutil detach '/Volumes/{{folder}}'
+    register: shell
+  #  become: yes
+    changed_when: "'OK' not in shell.stdout"
+  when: not BREW_INSTALL

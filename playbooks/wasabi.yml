@@ -1,8 +1,6 @@
 ---
-- hosts: localhost
-  connection: local
-  become: yes
-
-  tasks:
-    - name: wasabi - s3fs
-      apt: update_cache=yes name=s3fs state=latest
+- hosts: all
+  roles:
+    - wasabi-explorer
+  vars:
+    BREW_INSTALL: false

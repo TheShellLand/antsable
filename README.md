@@ -1,3 +1,4 @@
+
 ![](ants.jpg)
 
 [![master](https://github.com/TheShellLand/antsable/workflows/CI/badge.svg?branch=master)](https://github.com/TheShellLand/antsable/actions)
@@ -20,19 +21,19 @@ Modify `inventory.yaml`
 
 Run
 ```
-./ansible.sh playbooks/ubuntu-readyup-18.x.yml
+./ansible.sh playbooks/readyup.yml 
 ```
 
 Run locally without SSH
 ```
-./ansible.sh playbooks/ubuntu-readyup-18.x.yml --connection local
+./ansible.sh playbooks/readyup.yml --connection local
 ```
 
 Limit to localhost:
 ```
 # -c --connection
 # -l --limit
-./ansible.sh playbooks/ubuntu-readyup-18.x.yml -c local -l local
+./ansible.sh playbooks/readyup.yml -c local -l local
 ```
 
 Run with docker:

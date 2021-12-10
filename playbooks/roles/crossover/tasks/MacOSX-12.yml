@@ -12,3 +12,9 @@
   failed_when: shell.stdout
   changed_when: shell.stdout
   when: "'installed' in shell.stderr"
+
+# ~/Library/Preferences/com.codeweavers.CrossOver.plist
+- name: reset trial by deleting plist?
+  file:
+    path: ~/Library/Preferences/com.codeweavers.CrossOver.plist
+    state: absent

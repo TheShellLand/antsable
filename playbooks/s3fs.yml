@@ -1,6 +1,4 @@
 ---
 - hosts: all
-  tasks:
-
-  - name: Install s3fs
-    apt: update_cache=yes name=s3fs state=latest
+  roles:
+    - s3fs

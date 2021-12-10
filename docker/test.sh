@@ -2,9 +2,9 @@
 
 # test docker
 
-cd $(dirname $0) && set -e
+set -e
 
-/bin/bash build.sh
+/bin/bash docker/build.sh
 
 if [ ! -f inventory.yaml ]; then
   cp -v inventory-example.yaml inventory.yaml

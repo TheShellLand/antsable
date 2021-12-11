@@ -2,3 +2,5 @@
 - hosts: all
   roles:
     - crossover
+  vars:
+    FROM_SOURCE: false

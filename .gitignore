@@ -13,3 +13,4 @@ Vagrantfile
 *.pkg
 *.json
 *.exe
+*.tar.gz

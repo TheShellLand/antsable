@@ -3,3 +3,4 @@ dependencies:
   - defaults
   - brew
   - tar
+  - bison

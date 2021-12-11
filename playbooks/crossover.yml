@@ -3,4 +3,4 @@
   roles:
     - crossover
   vars:
-    FROM_SOURCE: false
+    FROM_SOURCE: true

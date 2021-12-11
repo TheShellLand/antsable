@@ -24,7 +24,7 @@
   register: shell
   changed_when: shell.stdout
 
-- name: clang
+- name: build clang
   shell: |
     export PATH={{PATH}}:$PATH
     cd {{source}}
@@ -40,10 +40,10 @@
     - clang/llvm
     - clang/clang
 
-- debug: var=results.stdout_lines
-- debug: var=results.stderr_lines
+- debug: var=item.stderr_lines
+  loop: "{{shell.results}}"
 
-- name: wine
+- name: build wine
   shell: |
     export PATH={{PATH}}:$PATH
     cd {{source}}

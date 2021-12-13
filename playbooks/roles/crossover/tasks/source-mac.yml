@@ -3,7 +3,7 @@
 
 - set_fact:
     url: https://media.codeweavers.com/pub/crossover/source/crossover-sources-21.1.0.tar.gz
-    file: crossover-sources.tar.gz
+    file: /tmp/crossover-sources.tar.gz
     source: /tmp/crossover-sources
 
 - get_url:
@@ -24,24 +24,31 @@
   register: shell
   changed_when: shell.stdout
 
+- name: build llvm
+  shell: |
+    export PATH={{PATH}}:$PATH
+    cd {{source}}
+    cd sources/clang/llvm
+    mkdir build
+    cd build
+    cmake ..
+  register: shell
+- set_fact: PATH="{{source}}/sources/clang/llvm/build/bin:{{PATH}}:$PATH"
+- debug: var=shell.stderr_lines
+
 - name: build clang
   shell: |
     export PATH={{PATH}}:$PATH
     cd {{source}}
-    cd sources
-    cd {{item}}
+    cd sources/clang/clang
     mkdir build
     cd build
     cmake ..
-    export PATH=$PWD/bin:$PATH
   register: shell
-  ignore_errors: yes
-  loop:
-    - clang/llvm
-    - clang/clang
+- set_fact: PATH="{{source}}/sources/clang/clang/build/bin:{{PATH}}:$PATH"
+- debug: var=shell.stderr_lines
 
-- debug: var=item.stderr_lines
-  loop: "{{shell.results}}"
+- debug: var=PATH
 
 - name: build wine
   shell: |
@@ -51,7 +58,6 @@
     cd {{item}}
     CC="clang" CXX="clang++" ./configure --enable-win32on64
   register: shell
-  ignore_errors: yes
   loop:
     - wine
 

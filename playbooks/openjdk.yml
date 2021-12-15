@@ -1,46 +1,6 @@
 ---
-- hosts: localhost
-  connection: local
-  
-  tasks:
-    - name: openjdk - check
-      stat:
-        path: /tmp/openjdk.tar.bz2
-      register: p
-
-    - name: openjdk - download
-      get_url:
-        url: https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
-        dest: /tmp/openjdk.tar.bz2
-        mode: '0755'
-      when: not p.stat.exists
-
-    - name: openjdk - folder
-      file:
-        path: /opt/jdk
-        state: directory
-      become: yes
-
-    - name: openjdk - unarchive
-      unarchive:
-        src: /tmp/openjdk.tar.bz2
-        dest: /opt/jdk
-        remote_src: yes
-      become: yes
-
-    - name: openjdk - install
-      shell: |
-        if [ ! -f /usr/local/bin/javajdk ]; then
-          ln -sf /opt/jdk/*/bin/java /usr/local/bin/javajdk
-        else
-          rm /usr/local/bin/javajdk
-          ln -sf /opt/jdk/*/bin/java /usr/local/bin/javajdk
-        fi
-
-        if ! which java; then
-          ln -sf /usr/local/bin/javajdk /usr/local/bin/java
-        else
-          rm /usr/local/bin/java
-          ln -sf /usr/local/bin/javajdk /usr/local/bin/java
-        fi
-      become: yes
+- hosts: all
+  roles:
+    - openjdk
+  vars:
+    BREW_INSTALL: true

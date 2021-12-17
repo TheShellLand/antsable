@@ -1,4 +1,1 @@
 ---
-ARCH_M1: arch -x86_64
-BREW: brew
-BREW_M1: arch -x86_64 brew

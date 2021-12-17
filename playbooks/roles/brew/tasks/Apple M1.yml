@@ -1,2 +1,6 @@
 ---
-- include_tasks: "{{ansible_facts.distribution}}-{{ansible_facts.distribution_major_version}}.yml"
+- set_fact:
+    ARCH: arch -x86_64
+    BREW: arch -x86_64 brew
+    ARCH_M1: arch -x86_64
+    BREW_M1: arch -x86_64 brew

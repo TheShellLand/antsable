@@ -1,7 +1,7 @@
 ---
 - shell: |
     if ! which brew >/dev/null; then
-      {{ ARCH_M1 }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      {{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
   register: brew
   changed_when: "brew.rc != 0"

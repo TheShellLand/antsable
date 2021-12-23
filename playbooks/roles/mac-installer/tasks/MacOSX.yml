@@ -7,7 +7,8 @@
           changed_when: false
 
     - block:
-        - get_url:
+        - name: deb
+          get_url:
             url: "{{ url }}"
             dest: "./{{ mac_deb }}"
           when: url
@@ -30,9 +31,10 @@
 
 - name: pkg
   block:
-    - get_url:
+    - name: pkg
+      get_url:
         url: "{{ url }}"
-        dest: "{{ mac_pkg }}"
+        dest: "./{{ mac_pkg }}"
       when: url
 
     - shell: |
@@ -43,3 +45,16 @@
       changed_when: "'OK' not in shell.stdout"
 
   when: mac_pkg
+
+- name: zip
+  block:
+    - name: zip
+      get_url:
+        url: "{{ url }}"
+        dest: "./{{ mac_zip }}"
+      when: url
+
+    - debug: msg="Not Implemented"
+    - fail:
+
+  when: mac_zip

@@ -1,2 +1,7 @@
 ---
-- include_tasks: "{{ansible_facts.processor}}.yml"
+- name: Apple M1
+  include_tasks: "{{ansible_facts.processor}}.yml"
+  when: ansible_facts.processor == "Apple M1"
+
+- name: "{{ansible_facts.distribution}}"
+  include_tasks: "{{ansible_facts.distribution}}.yml"

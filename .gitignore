@@ -14,3 +14,4 @@ Vagrantfile
 *.json
 *.exe
 *.tar.gz
+*.zip

@@ -1,0 +1,43 @@
+---
+
+- shell: "brew info {{ package }} | grep -i cask"
+  register: shell
+  changed_when: false
+
+- set_fact:
+    CASK: true
+  when: shell.rc == 0
+
+- name: no cask
+  block:
+    - name: "install {{ package }}"
+      shell: |
+        {{ BREW }} install {{ package }}
+      register: shell
+      changed_when: "'installed' not in shell.stderr"
+
+    - name: upgrade
+      shell: |
+        {{ BREW }} upgrade {{ package }}
+      register: shell
+      failed_when: shell.stdout
+      changed_when: shell.stdout
+      when: "'installed' in shell.stderr"
+  when: not CASK
+
+- name: cask
+  block:
+    - name: "install {{ package }}"
+      shell: |
+        {{ BREW }} install --cask {{ package }}
+      register: shell
+      changed_when: "'installed' not in shell.stderr"
+
+    - name: upgrade
+      shell: |
+        {{ BREW }} upgrade --cask {{ package }}
+      register: shell
+      failed_when: shell.stdout
+      changed_when: shell.stdout
+      when: "'installed' in shell.stderr"
+  when: CASK

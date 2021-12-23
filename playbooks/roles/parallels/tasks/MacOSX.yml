@@ -1,0 +1,20 @@
+---
+- name: install
+  shell: |
+    {{ BREW }} install --cask {{ package }}
+  register: shell
+  changed_when: "'installed' not in shell.stderr"
+
+- name: upgrade
+  shell: |
+    {{ BREW }} upgrade --cask {{ package }}
+  register: shell
+  failed_when: shell.stdout
+  changed_when: shell.stdout
+  when: "'installed' in shell.stderr"
+
+# ~/Library/Preferences/com.parallels.Parallels Desktop.plist
+- name: reset trial by deleting plist?
+  file:
+    path: ~/Library/Preferences/com.parallels.Parallels Desktop.plist
+    state: absent

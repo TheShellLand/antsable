@@ -1,0 +1,31 @@
+---
+## brew install wget mingw-w64 cmake nasm libtool automake meson glslang
+- name: install
+  shell: |
+    {{ BREW }} install {{ item }}
+  register: shell
+  changed_when: "'installed' not in shell.stderr"
+  loop:
+    - wget mingw-w64
+    - cmake
+    - nasm
+    - libtool
+    - automake
+    - meson
+    - glslang
+
+- name: upgrade
+  shell: |
+    {{ BREW }} upgrade {{ item }}
+  register: shell
+  failed_when: shell.stdout
+  changed_when: shell.stdout
+#  when: "'installed' in shell.stderr"
+  loop:
+    - wget mingw-w64
+    - cmake
+    - nasm
+    - libtool
+    - automake
+    - meson
+    - glslang

@@ -1,0 +1,38 @@
+---
+#- name: install
+#  shell: |
+#    {{ BREW }} install --cask {{ package }}
+#  register: shell
+#  changed_when: "'installed' not in shell.stderr"
+#
+#- name: upgrade
+#  shell: |
+#    {{ BREW }} upgrade --cask {{ package }}
+#  register: shell
+#  failed_when: shell.stdout
+#  changed_when: shell.stdout
+#  when: "'installed' in shell.stderr"
+
+- shell: ls '/Applications/Docker.app'
+  register: shell
+  changed_when: false
+
+- block:
+  - get_url:
+      url: https://desktop.docker.com/mac/main/arm64/Docker.dmg
+      dest: ./docker.dmg
+
+  - shell: |
+      url=docker.dmg
+  
+      folder=Docker
+      app="Docker.app"
+  
+      hdiutil attach -nobrowse "$url"
+      volume="/Volumes/$folder"
+      cp -R "$volume/$app" /Applications/ && echo OK
+      hdiutil detach "$volume"
+    register: shell
+    become: yes
+    changed_when: "'OK' not in shell.stdout"
+  when: not shell.rc == 0

@@ -1,0 +1,36 @@
+---
+- block:
+    - name: install
+      shell: |
+        {{ BREW }} install --cask {{ package }}
+      register: shell
+      changed_when: "'installed' not in shell.stderr"
+
+    - name: upgrade
+      shell: |
+        {{ BREW }} upgrade --cask {{ package }}
+      register: shell
+      failed_when: shell.stdout
+      changed_when: shell.stdout
+      when: "'installed' in shell.stderr"
+
+  when: INSTALL_BREW
+
+- get_url:
+    url: https://download-cdn.jetbrains.com/python/pycharm-community-2021.3-aarch64.dmg
+    dest: ./pycharm.dmg
+
+- shell: |
+    url=pycharm.dmg
+
+    folder="PyCharm CE"
+    app="PyCharm CE.app"
+
+    hdiutil attach -nobrowse "$url"
+    volume="/Volumes/$folder"
+    cp -R "$volume/$app" /Applications/ && echo OK
+    hdiutil detach "$volume"
+  register: shell
+  #become: yes
+  changed_when: "'OK' not in shell.stdout"
+  when: not INSTALL_BREW

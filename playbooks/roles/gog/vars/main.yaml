@@ -1,0 +1,5 @@
+---
+BREW_INSTALL: true
+
+url: https://cdn.gog.com/open/galaxy/client/2.0.44.200/galaxy_client_2.0.44.200.pkg
+mac_pkg: gog.pkg

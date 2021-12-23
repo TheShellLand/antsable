@@ -1,12 +1,16 @@
 ---
 
-- shell: "brew info {{ package }} | grep -i cask"
-  register: shell
-  changed_when: false
+- block:
+    - shell: "brew info {{ package }} | grep -i cask"
+      register: shell
+      changed_when: false
 
-- set_fact:
-    CASK: true
-  when: shell.rc == 0
+    - set_fact:
+        CASK: true
+
+  rescue:
+    - set_fact:
+        CASK: false
 
 - name: no cask
   block:

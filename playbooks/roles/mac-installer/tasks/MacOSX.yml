@@ -1,5 +1,5 @@
 ---
-- shell: "ls /Applications/ | grep -i {{ mac_app }}"
+- shell: "ls /Applications/ | grep -i '{{ mac_app }}'"
   register: shell
   changed_when: false
 

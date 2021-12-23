@@ -1,0 +1,8 @@
+---
+BREW_INSTALL: true
+
+url: https://desktop.githubusercontent.com/github-desktop/releases/2.9.6-9196a1ae/GitHubDesktop-x64.zip
+mac_zip: github.zip
+mac_pkg:
+mac_folder:
+mac_app:

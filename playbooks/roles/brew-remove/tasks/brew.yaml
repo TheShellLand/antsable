@@ -1,0 +1,4 @@
+---
+- shell: "{{ BREW }} remove {{ package }}"
+  register: shell
+  changed_when: "'Uninstalling' not in shell.stdout"

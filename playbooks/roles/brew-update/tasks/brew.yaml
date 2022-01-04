@@ -1,0 +1,4 @@
+---
+- shell: "{{ BREW }} update"
+  register: shell
+  changed_when: "'Already up-to-date' not in shell.stdout"

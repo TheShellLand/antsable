@@ -1,0 +1,5 @@
+---
+- shell: "{{ BREW }} upgrade"
+  register: shell
+  failed_when: shell.stdout
+  changed_when: shell.stdout

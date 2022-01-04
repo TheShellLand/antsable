@@ -3,4 +3,4 @@
   roles:
     - brew-remove
   vars:
-    package: nvidia-geforce-now
+    package:

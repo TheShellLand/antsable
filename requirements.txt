@@ -1,2 +1,4 @@
 pip
+setuptools-rust
+cryptography
 ansible

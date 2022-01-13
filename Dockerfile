@@ -11,7 +11,7 @@ FROM ansible
 WORKDIR /antsable
 
 COPY playbooks playbooks
-COPY inventory-example.yaml .
+COPY inventory inventory
 COPY ansible.cfg .
 COPY ansible.sh .
 COPY entry.sh .

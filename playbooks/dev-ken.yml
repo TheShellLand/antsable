@@ -1,0 +1,7 @@
+---
+# Kibana-Elasticsearch-Neo4j
+- hosts: all
+  roles:
+    - kibana
+    - elasticsearch
+    - neo4j

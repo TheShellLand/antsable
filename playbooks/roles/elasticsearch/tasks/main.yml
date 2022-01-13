@@ -1,0 +1,21 @@
+---
+- set_fact: package=elasticsearch
+- set_fact: ARCH=amd64
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+
+- name: "docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2-{{ ARCH }}"
+  docker_container:
+    name: elasticsearch
+    image: "docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2-{{ ARCH }}"
+    state: started
+    restart: yes
+    ports:
+      - "127.0.0.1:9200:9200/tcp"
+    env:
+      discovery.type: single-node
+  register: docker
+  changed_when:
+    - not docker.container.State.Running
+
+- debug: var=docker.container.Name
+- debug: var=docker.container.State.Status

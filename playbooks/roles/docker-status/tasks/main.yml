@@ -1,0 +1,5 @@
+---
+- shell: docker ps -a
+  register: shell
+
+- debug: var=shell.stdout_lines

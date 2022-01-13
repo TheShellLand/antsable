@@ -32,4 +32,6 @@
     - name: "{{ BREW }} link {{ package }}"
       shell: "{{ BREW }} link {{ package }}"
       register: shell
-      changed_when: "'installed' not in shell.stderr"
+      changed_when:
+        - "'installed' not in shell.stderr"
+        - '"Already linked" not in shell.stderr'

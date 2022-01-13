@@ -3,7 +3,11 @@
     - name: "{{ BREW }} install --cask {{ package }}"
       shell: "{{ BREW }} install --cask {{ package }}"
       register: shell
-      changed_when: "'installed' not in shell.stderr"
+      changed_when:
+        - "'installed' not in shell.stderr"
+        - '"there is already an App" not in shell.stderr'
+      failed_when:
+        - '"there is already an App" not in shell.stderr'
 
     - name: "{{ BREW }} upgrade --cask {{ package }}"
       shell: "{{ BREW }} upgrade --cask {{ package }}"

@@ -1,4 +1,10 @@
 ---
-- shell: "{{ BREW }} remove {{ package }}"
+- name: "{{ BREW }} remove {{ package }}"
+  shell: "{{ BREW }} remove {{ package }}"
   register: shell
-  changed_when: "'Uninstalling' not in shell.stdout"
+  changed_when:
+    - "'Uninstalling' not in shell.stdout"
+    - "'is not installed' not in shell.stderr"
+  failed_when:
+    - "'Uninstalling' not in shell.stdout"
+    - "'is not installed' not in shell.stderr"

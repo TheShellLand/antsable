@@ -2,7 +2,8 @@
 - name: deb
   block:
     - block:
-        - shell: "ls /Applications/ | grep -i '{{ mac_app }}'"
+        - name: "check {{ mac_app }}"
+          shell: "ls /Applications/ | grep -i '{{ mac_app }}'"
           changed_when: false
 
       rescue:

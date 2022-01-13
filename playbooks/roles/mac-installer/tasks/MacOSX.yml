@@ -3,17 +3,16 @@
   block:
     - block:
         - shell: "ls /Applications/ | grep -i '{{ mac_app }}'"
-          register: shell
           changed_when: false
 
-    - block:
-        - name: deb
+      rescue:
+        - name: "deb {{ url }}"
           get_url:
             url: "{{ url }}"
             dest: "./{{ mac_deb }}"
-          when: url
 
-        - shell: |
+        - name: "installing {{ mac_deb }}"
+          shell: |
             url={{ mac_deb }}
             
             folder="{{ mac_folder }}"
@@ -26,18 +25,17 @@
           register: shell
           become: yes
           changed_when: "'OK' not in shell.stdout"
-      when: not shell.rc == 0
   when: mac_deb
 
 - name: pkg
   block:
-    - name: pkg
+    - name: "pkg {{ url }}"
       get_url:
         url: "{{ url }}"
         dest: "./{{ mac_pkg }}"
-      when: url
 
-    - shell: |
+    - name: "installing {{ mac_pkg }}"
+      shell: |
         pkg={{ mac_pkg }}
         installer -pkg "$pkg" -target / && echo OK
       register: shell
@@ -48,11 +46,10 @@
 
 - name: zip
   block:
-    - name: zip
+    - name: "zip {{ url }}"
       get_url:
         url: "{{ url }}"
         dest: "./{{ mac_zip }}"
-      when: url
 
     - debug: msg="Not Implemented"
     - fail:

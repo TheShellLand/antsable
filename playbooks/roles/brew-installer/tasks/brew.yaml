@@ -1,47 +1,31 @@
 ---
-
 - block:
-    - shell: "brew info {{ package }} | grep -i cask"
+    - name: "{{ BREW }} install --cask {{ package }}"
+      shell: "{{ BREW }} install --cask {{ package }}"
       register: shell
-      changed_when: false
+      changed_when: "'installed' not in shell.stderr"
 
-    - set_fact:
-        CASK: true
+    - name: "{{ BREW }} upgrade --cask {{ package }}"
+      shell: "{{ BREW }} upgrade --cask {{ package }}"
+      register: shell
+      failed_when: shell.stdout
+      changed_when: shell.stdout
+      when: "'installed' in shell.stderr"
 
   rescue:
-    - set_fact:
-        CASK: false
-
-- name: no cask
-  block:
-    - name: "install {{ package }}"
-      shell: |
-        {{ BREW }} install {{ package }}
+    - name: "{{ BREW }} install {{ package }}"
+      shell: "{{ BREW }} install {{ package }}"
       register: shell
       changed_when: "'installed' not in shell.stderr"
 
-    - name: upgrade
-      shell: |
-        {{ BREW }} upgrade {{ package }}
+    - name: "{{ BREW }} upgrade {{ package }}"
+      shell: "{{ BREW }} upgrade {{ package }}"
       register: shell
       failed_when: shell.stdout
       changed_when: shell.stdout
       when: "'installed' in shell.stderr"
-  when: not CASK
 
-- name: cask
-  block:
-    - name: "install {{ package }}"
-      shell: |
-        {{ BREW }} install --cask {{ package }}
+    - name: "{{ BREW }} link {{ package }}"
+      shell: "{{ BREW }} link {{ package }}"
       register: shell
       changed_when: "'installed' not in shell.stderr"
-
-    - name: upgrade
-      shell: |
-        {{ BREW }} upgrade --cask {{ package }}
-      register: shell
-      failed_when: shell.stdout
-      changed_when: shell.stdout
-      when: "'installed' in shell.stderr"
-  when: CASK

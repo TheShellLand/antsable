@@ -5,3 +5,4 @@
     - kibana
     - elasticsearch
     - neo4j
+    - docker-status

@@ -1,4 +1,5 @@
 ---
-- set_fact:
+- name: "{{ansible_facts.processor}}"
+  set_fact:
     ARCH: arch -x86_64
     BREW: arch -x86_64 brew

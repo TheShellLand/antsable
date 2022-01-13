@@ -1,5 +1,6 @@
 ---
-- set_fact:
+- name: "{{ansible_facts.os_family}}"
+  set_fact:
     ARCH:
     BREW: brew
 

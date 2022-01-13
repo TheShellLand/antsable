@@ -1,1 +1,9 @@
 ---
+url: https://desktop.docker.com/mac/main/arm64/Docker.dmg
+mac_deb: Docker.dmg
+mac_pkg:
+mac_zip:
+mac_folder: Docker
+mac_app: Docker.app
+
+BREW_INSTALL: false

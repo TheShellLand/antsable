@@ -5,6 +5,7 @@
   changed_when:
     - "'installed' not in shell.stderr"
     - '"Requirement already satisfied" not in shell.stdout'
+    - '"Requirement already up-to-date" not in shell.stdout'
   when: pip_index
 
 - name: "python3 -m pip install -U {{ pip_package }}"
@@ -13,4 +14,5 @@
   changed_when:
     - "'installed' not in shell.stderr"
     - '"Requirement already satisfied" not in shell.stdout'
+    - '"Requirement already up-to-date" not in shell.stdout'
   when: not pip_index

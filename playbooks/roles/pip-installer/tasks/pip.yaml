@@ -1,7 +1,16 @@
 ---
-- name: "python3 -m pip install -U {{ package }}"
-  shell: "python3 -m pip install -U {{ package }}"
+- name: "python3 -m pip install -U {{ pip_package }} -i {{ pip_index }}"
+  shell: "python3 -m pip install -U {{ pip_package }} -i {{ pip_index }}"
   register: shell
   changed_when:
     - "'installed' not in shell.stderr"
     - '"Requirement already satisfied" not in shell.stdout'
+  when: pip_index
+
+- name: "python3 -m pip install -U {{ pip_package }}"
+  shell: "python3 -m pip install -U {{ pip_package }}"
+  register: shell
+  changed_when:
+    - "'installed' not in shell.stderr"
+    - '"Requirement already satisfied" not in shell.stdout'
+  when: not pip_index

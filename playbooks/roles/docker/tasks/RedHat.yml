@@ -1,1 +1,72 @@
 ---
+- block:
+    - yum:
+        name: "{{item}}"
+        state: latest
+      become: yes
+      loop:
+        - yum-utils
+
+    - name: https://download.docker.com/linux/rhel/docker-ce.repo
+      yum_repository:
+        name: docker.com
+        description: Official docker repo
+        baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
+        timeout: 1
+      become: yes
+      changed_when: false
+
+    # yum install docker-ce docker-ce-cli containerd.io
+    - yum:
+        name: "{{item}}"
+        state: latest
+      become: yes
+      register: yum
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      failed_when:
+        - '"No package matching" not in yum.msg'
+  #        - '"Public key for" not in yum.msg'
+
+  rescue:
+
+    - name: delete https://download.docker.com/linux/rhel/docker-ce.repo
+      yum_repository:
+        name: docker.com
+        state: absent
+      become: yes
+      changed_when: false
+
+    - yum:
+        name: "{{item}}"
+        state: latest
+        update_cache: yes
+      become: yes
+      loop:
+        - docker*
+
+- user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes
+
+- user:
+    name: "{{ appUser }}"
+    groups: docker
+    append: yes
+  become: yes
+  when: appUser
+
+- service:
+    name: docker
+    enabled: yes
+    state: started
+  become: yes
+
+- shell: docker ps
+  register: shell
+  become: yes
+  changed_when: shell.rc != 0

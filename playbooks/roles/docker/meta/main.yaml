@@ -2,5 +2,3 @@
 dependencies:
   - defaults
   - brew
-  - pip-requests
-  - pip-docker

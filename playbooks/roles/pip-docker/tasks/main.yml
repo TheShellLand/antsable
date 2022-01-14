@@ -1,3 +1,0 @@
----
-- set_fact: package=docker
-- include_role: name=pip-installer

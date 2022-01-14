@@ -1,3 +1,0 @@
----
-- set_fact: package=requests
-- include_role: name=pip-installer

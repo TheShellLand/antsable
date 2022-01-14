@@ -1,3 +1,5 @@
 ---
 - include_tasks: pip.yaml
-  when: PIP_INSTALL
+  when:
+    - PIP_INSTALL
+    - pip_package

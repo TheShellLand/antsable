@@ -30,10 +30,11 @@
       changed_when: shell.stdout
       when: "'installed' in shell.stderr"
 
-    - name: "{{ BREW }} link {{ package }}"
-      shell: "{{ BREW }} link {{ package }}"
+    - name: "{{ BREW }} link --overwrite {{ package }}"
+      shell: "{{ BREW }} link --overwrite {{ package }}"
       register: shell
       changed_when:
+        - "'Linking' not in shell.stdout"
         - "'installed' not in shell.stderr"
         - '"Already linked" not in shell.stderr'
 

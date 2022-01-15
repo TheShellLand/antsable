@@ -1,8 +1,6 @@
 ---
 - include_role:
     name: pip-installer
-    apply:
-      become: yes
   vars:
     pip_package: "{{item}}"
   loop:

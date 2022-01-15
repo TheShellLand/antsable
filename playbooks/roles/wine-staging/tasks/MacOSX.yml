@@ -1,19 +1,7 @@
 ---
 # I don't think this works for M1 yet
+- include_role: name=brew-installer
 
-- shell: |
-    {{ BREW }} tap homebrew/cask-versions
-
-- name: install
-  shell: |
-    {{ BREW }} install --cask --no-quarantine {{ package }}
-  register: shell
-  changed_when: "'installed' not in shell.stderr"
-
-- name: upgrade
-  shell: |
-    {{ BREW }} upgrade --cask --no-quarantine {{ package }}
-  register: shell
-  failed_when: shell.stdout
-  changed_when: shell.stdout
-  when: "'installed' in shell.stderr"
+- name: "{{ BREW }} tap homebrew/cask-versions"
+  shell: "{{ BREW }} tap homebrew/cask-versions"
+  changed_when: false

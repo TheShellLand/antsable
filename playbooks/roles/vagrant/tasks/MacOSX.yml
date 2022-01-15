@@ -1,17 +1,5 @@
 ---
-- name: install
-  shell: |
-    {{ BREW }} install --cask {{ package }}
-  register: shell
-  changed_when: "'installed' not in shell.stderr"
-
-- name: upgrade
-  shell: |
-    {{ BREW }} upgrade --cask {{ package }}
-  register: shell
-  failed_when: shell.stdout
-  changed_when: shell.stdout
-  when: "'installed' in shell.stderr"
+- include_role: name=brew-installer
 
 #- shell: |
 #    url=https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.dmg

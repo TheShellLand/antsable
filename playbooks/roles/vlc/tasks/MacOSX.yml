@@ -1,14 +1,2 @@
 ---
-- name: install
-  shell: |
-    {{ BREW }} install --cask {{ package }}
-  register: shell
-  changed_when: "'installed' not in shell.stderr"
-
-- name: upgrade
-  shell: |
-    {{ BREW }} upgrade --cask {{ package }}
-  register: shell
-  failed_when: shell.stdout
-  changed_when: shell.stdout
-  when: "'installed' in shell.stderr"
+- include_role: name=brew-installer

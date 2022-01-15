@@ -1,7 +1,10 @@
 ---
-- shell: |
-    if which brew; then  
-      {{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
-    fi
+- name: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"'
+  shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"'
   register: shell
+  become_method: sudo
   changed_when: "shell.rc != 0"
+  failed_when:
+    - '"command not found" not in shell.stderr'
+
+- debug: var=shell

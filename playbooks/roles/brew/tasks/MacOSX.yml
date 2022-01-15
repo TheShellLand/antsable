@@ -1,8 +1,15 @@
 ---
-- name: install
-  shell: |
-    if ! which brew; then  
-      {{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-  register: shell
-  changed_when: "shell.rc != 0"
+- block:
+    - name: check
+      shell: which brew
+      register: shell
+      changed_when: false
+
+  rescue:
+    - name: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+      shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+      register: shell
+      changed_when: "shell.rc != 0"
+      become_method: sudo
+
+- debug: var=shell

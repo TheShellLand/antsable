@@ -1,4 +1,7 @@
 ---
-- shell: "{{ BREW }} update"
+- name: "{{ BREW }} update"
+  shell: "{{ BREW }} update"
   register: shell
   changed_when: "'Already up-to-date' not in shell.stdout"
+
+- debug: var=shell

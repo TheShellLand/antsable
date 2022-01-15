@@ -8,3 +8,5 @@
   failed_when:
     - "'Uninstalling' not in shell.stdout"
     - "'is not installed' not in shell.stderr"
+
+- debug: var=shell

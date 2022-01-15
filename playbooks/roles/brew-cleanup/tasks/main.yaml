@@ -3,9 +3,12 @@
   register: shell
   changed_when: shell.stdout
   failed_when: false
+  when: not SCRUB
 
 - shell: brew cleanup -s 2>&1 | grep -v Warning
   register: shell
   changed_when: shell.stdout
   failed_when: false
   when: SCRUB
+
+- debug: var=shell

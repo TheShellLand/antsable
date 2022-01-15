@@ -37,5 +37,21 @@
         - "'Linking' not in shell.stdout"
         - "'installed' not in shell.stderr"
         - '"Already linked" not in shell.stderr'
+  when: not NO_QUARANTINE
+
+- block:
+    - name: "{{ BREW }} install --cask --no-quarantine {{ package }}"
+      shell: "{{ BREW }} install --cask --no-quarantine {{ package }}"
+      register: shell
+      changed_when: "'installed' not in shell.stderr"
+
+    - name: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
+      shell: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
+      register: shell
+      failed_when: shell.stdout
+      changed_when: shell.stdout
+      when: "'installed' in shell.stderr"
+  when: NO_QUARANTINE
+
 
 - debug: var=shell

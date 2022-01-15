@@ -1,11 +1,11 @@
 ---
 # internet
 - include_role: name=google-drive
-- include_role: name=chrome
+#- include_role: name=chrome
 
 # coding
 - include_role: name=brew
-- include_role: name=pycharm
+#- include_role: name=pycharm
 - include_role: name=tmux
 - include_role: name=xcode
 

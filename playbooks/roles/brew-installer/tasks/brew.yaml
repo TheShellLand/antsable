@@ -14,8 +14,10 @@
       register: shell
       changed_when:
         - "'installed' not in shell.stderr"
+        - '"successfully installed" not in shell.stdout'
         - '"there is already an App" not in shell.stderr'
       failed_when:
+        - '"successfully installed" not in shell.stdout'
         - '"is already installed" not in shell.stderr'
         - '"there is already an App" not in shell.stderr'
 

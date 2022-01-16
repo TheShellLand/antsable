@@ -1,0 +1,8 @@
+---
+url: https://github.com/utmapp/UTM/releases/latest/download/UTM.dmg
+mac_deb: UTM.app
+mac_pkg:
+mac_zip:
+mac_folder: UTM
+
+BREW_INSTALL: true

@@ -1,5 +1,14 @@
 ---
 - block:
+    - name: "{{ BREW }} tap {{ BREW_TAP }}"
+      shell: "{{ BREW }} tap {{ BREW_TAP }}"
+      register: shell
+      changed_when: shell.rc != 0
+
+    - debug: var=shell
+  when: BREW_TAP
+
+- block:
     - name: "{{ BREW }} install --cask {{ package }}"
       shell: "{{ BREW }} install --cask {{ package }}"
       register: shell
@@ -52,6 +61,5 @@
       changed_when: shell.stdout
       when: "'installed' in shell.stderr"
   when: NO_QUARANTINE
-
 
 - debug: var=shell

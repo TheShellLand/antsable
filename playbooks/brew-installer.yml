@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+    - brew-installer
+  vars:
+    package:
+    BREW_PACKAGE:
+    BREW_TAP:
+    BREW_INSTALL: true
+    NO_QUARANTINE: false

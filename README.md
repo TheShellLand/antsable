@@ -2,7 +2,8 @@
 ![](ants.jpg)
 
 [![master](https://github.com/TheShellLand/antsable/workflows/CI/badge.svg?branch=master)](https://github.com/TheShellLand/antsable/actions)
-[![codecov](https://codecov.io/gh/TheShellLand/antsable/branch/master/graph/badge.svg)](https://codecov.io/gh/TheShellLand/antsable)
+
+[//]: # ([![codecov]&#40;https://codecov.io/gh/TheShellLand/antsable/branch/master/graph/badge.svg&#41;]&#40;https://codecov.io/gh/TheShellLand/antsable&#41;)
 
 ## Get started
 ```

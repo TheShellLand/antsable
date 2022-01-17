@@ -6,5 +6,6 @@
   changed_when: "shell.rc != 0"
   failed_when:
     - '"command not found" not in shell.stderr'
+    - "shell.rc != 0"
 
 - debug: var=shell

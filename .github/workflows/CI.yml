@@ -42,12 +42,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-    - name: Build docker
-      run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build docker
+        run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
 
 
   docker-test:
@@ -55,14 +55,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-    - name: Build docker
-      run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
-    - name: Run tests in docker
-      run: docker run ${{ env.IMAGE_NAME_LOWERCASE }} playbooks/debug.yml -i 127.0.0.1, -c local
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build docker
+        run: docker build . --tag ${{ env.IMAGE_NAME_LOWERCASE }}
+      - name: Run tests in docker
+        run: docker run ${{ env.IMAGE_NAME_LOWERCASE }} playbooks/debug.yml -i 127.0.0.1, -c local
 
 
   docker-publish:

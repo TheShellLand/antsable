@@ -1,8 +1,19 @@
 ---
-# Kibana-Elasticsearch-Neo4j
 - hosts: all
   roles:
-    - kibana
     - elasticsearch
+    - kibana
     - neo4j
     - docker-status
+
+  tasks:
+    - docker_network:
+        name: ken
+        connected:
+          - "{{kibana_name}}"
+          - "{{elasticsearch_name}}"
+          - "{{neo4j_name}}"
+      register: docker
+      changed_when: not docker.network.Containers
+
+    - debug: var=docker.network.Containers

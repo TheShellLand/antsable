@@ -1,12 +1,4 @@
 ---
-- include_role:
-    name: pip-installer
-  vars:
-    pip_package: "{{item}}"
-  loop:
-    - requests
-    - docker
-
 - name: check
   shell: docker ps
   register: shell

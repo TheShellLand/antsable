@@ -1,3 +1,11 @@
 ---
+- include_role:
+    name: pip-installer
+  vars:
+    pip_package: "{{item}}"
+  loop:
+    - requests
+    - docker
+
 - include_role: name=brew-installer
 - include_role: name=mac-installer

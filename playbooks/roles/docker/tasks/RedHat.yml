@@ -1,4 +1,13 @@
 ---
+- include_role:
+    name: pip-installer
+  vars:
+    pip_package: "{{item}}"
+    pip_user: yes
+  loop:
+    - requests
+    - docker
+
 - block:
     - yum:
         name: "{{item}}"

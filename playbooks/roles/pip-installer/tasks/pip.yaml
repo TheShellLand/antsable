@@ -1,18 +1,15 @@
 ---
-- name: "python3 -m pip install -U {{ pip_package }} -i {{ pip_index }}"
-  shell: "python3 -m pip install -U {{ pip_package }} -i {{ pip_index }}"
-  register: shell
-  changed_when:
-    - "'installed' not in shell.stderr"
-    - '"Requirement already satisfied" not in shell.stdout'
-    - '"Requirement already up-to-date" not in shell.stdout'
+- set_fact: pip="{{ pip_package }}"
+- set_fact: pip="{{ pip }} --user"
+  when: pip_user
+
+- set_fact: pip="{{ pip }} -i {{ pip_index }}"
   when: pip_index
 
-- name: "python3 -m pip install -U {{ pip_package }}"
-  shell: "python3 -m pip install -U {{ pip_package }}"
+- name: "python3 -m pip install -U {{ pip }}"
+  shell: "python3 -m pip install -U {{ pip }}"
   register: shell
   changed_when:
     - "'installed' not in shell.stderr"
     - '"Requirement already satisfied" not in shell.stdout'
     - '"Requirement already up-to-date" not in shell.stdout'
-  when: not pip_index

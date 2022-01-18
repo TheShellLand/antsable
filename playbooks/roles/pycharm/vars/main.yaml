@@ -1,1 +1,7 @@
 ---
+url: https://download-cdn.jetbrains.com/python/pycharm-community-2021.3-aarch64.dmg
+mac_deb: pycharm.dmg
+mac_folder: PyCharm CE
+mac_app: PyCharm CE.app
+
+BREW_INSTALL: true

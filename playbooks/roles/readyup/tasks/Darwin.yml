@@ -5,3 +5,8 @@
 
 - name: "{{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"
+  when: not WORK
+
+- name: "{{ansible_facts.distribution}}"
+  include_tasks: "{{ansible_facts.distribution}}-dev.yml"
+  when: WORK

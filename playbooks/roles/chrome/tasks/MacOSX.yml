@@ -1,14 +1,3 @@
 ---
-- block:
-    - include_role: name=brew-installer
-  when: BREW_INSTALL
-
-- block:
-    - set_fact:
-        url: https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
-        mac_deb: chrome.dmg
-        mac_folder: Google Chrome
-        mac_app: Google Chrome.app
-
-    - include_role: name=mac-installer
-  when: not BREW_INSTALL
+- include_role: name=brew-installer
+- include_role: name=mac-installer

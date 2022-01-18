@@ -1,21 +1,34 @@
 ---
 - set_fact: package=neo4j
-- set_fact: ARCH=amd64
 - include_tasks: "{{ansible_facts.os_family}}.yml"
 
-- name: "neo4j:latest"
+- set_fact: image_name="neo4j"
+- set_fact: image_tag="latest"
+- set_fact: image_path="{{ image_name }}:{{ image_tag }}"
+- set_fact: image="{{ docker_registry }}/{{ image_path }}"
+
+- set_fact: docker_name="{{ image_name }}"
+- set_fact: neo4j_name="{{ image_name }}"
+
+- docker_volume:
+    name: data
+
+- name: "{{ image }}"
   docker_container:
-    name: neo4j
-    image: "neo4j:latest"
+    name: "{{ docker_name }}"
+    image: "{{ image }}"
     state: started
     restart: yes
     ports:
-      - "127.0.0.1:7474:7474/tcp"
-      - "127.0.0.1:7473:7473/tcp"
-      - "127.0.0.1:7687:7687/tcp"
+      - "0.0.0.0:7474:7474/tcp"
+      - "0.0.0.0:7473:7473/tcp"
+      - "0.0.0.0:7687:7687/tcp"
+    volumes:
+      - "data:/data"
   register: docker
   changed_when:
     - not docker.container.State.Running
 
+- debug: var=image
 - debug: var=docker.container.Name
 - debug: var=docker.container.State.Status

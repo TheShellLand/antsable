@@ -1,5 +1,6 @@
 ---
 - shell: docker ps -a
   register: shell
+  changed_when: false
 
 - debug: var=shell.stdout_lines

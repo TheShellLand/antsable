@@ -6,11 +6,19 @@
       changed_when: false
 
   rescue:
+
+    - name: prime sudo
+      shell: 'sudo pwd'
+      register: shell
+      changed_when: False
+      become: true
+
     - name: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       register: shell
       changed_when: "shell.rc != 0"
       become: true
       become_user: "{{ ansible_user_id }}"
+#      become_method: sudo
 
 - debug: var=shell

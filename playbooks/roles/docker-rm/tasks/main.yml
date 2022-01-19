@@ -1,0 +1,7 @@
+---
+- shell: docker ps -aq | xargs docker rm -f
+  register: shell
+  changed_when: false
+  failed_when: false
+
+- debug: var=shell.stdout_lines

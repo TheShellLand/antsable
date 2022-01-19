@@ -24,10 +24,18 @@
     env:
       discovery.type: single-node
     volumes:
-      - "data:/usr/share/elasticsearch/data"
+      - "{{appHome if appHome is defined else ansible_env.HOME}}/data/elasticsearch:/usr/share/elasticsearch/data"
   register: docker
+  become: "{{ 'yes' if appUser is defined else 'no'}}"
+  become_user: "{{appUser if appUser is defined}}"
   changed_when:
     - not docker.container.State.Running
+
+- name: "docker exec {{docker_name}} chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data"
+  command: "docker exec {{docker_name}} chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data"
+  become: "{{ 'yes' if appUser is defined else 'no'}}"
+  changed_when: false
+
 
 - debug: var=image
 - debug: var=docker.container.Name

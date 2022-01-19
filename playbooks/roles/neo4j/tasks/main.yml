@@ -24,8 +24,10 @@
       - "0.0.0.0:7473:7473/tcp"
       - "0.0.0.0:7687:7687/tcp"
     volumes:
-      - "data:/data"
+      - "{{appHome if appHome is defined else ansible_env.HOME}}/data/neo4j:/data"
   register: docker
+  become: "{{ 'yes' if appUser is defined else 'no'}}"
+  become_user: "{{appUser if appUser is defined}}"
   changed_when:
     - not docker.container.State.Running
 

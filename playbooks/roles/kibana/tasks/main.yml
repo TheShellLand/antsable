@@ -24,10 +24,18 @@
     env:
       ELASTICSEARCH_HOSTS: "http://{{ elasticsearch_name }}:9200"
     volumes:
-      - "data:/usr/share/kibana/data"
+      - "{{appHome if appHome is defined else ansible_env.HOME}}/data/kibana:/usr/share/kibana/data"
   register: docker
+  become: "{{ 'yes' if appUser is defined else 'no'}}"
+  become_user: "{{appUser if appUser is defined}}"
   changed_when:
     - not docker.container.State.Running
+
+- name: "chown -R 1000:1000 {{appHome if appHome is defined else ansible_env.HOME}}/data/kibana"
+  command: "chown -R 1000:1000 {{appHome if appHome is defined else ansible_env.HOME}}/data/kibana"
+  become: "{{ 'yes' if appUser is defined else 'no'}}"
+  changed_when: false
+
 
 - debug: var=image
 - debug: var=docker.container.Name

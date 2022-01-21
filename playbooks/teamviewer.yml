@@ -1,12 +1,5 @@
 ---
 - hosts: localhost
   connection: local
-  become: true
-  tasks:
-
-    - name: teamviewer - purge
-      apt: update_cache=no name=teamviewer state=absent purge=yes
-
-    - name: teamviewer - install
-      apt:
-        deb: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+  roles:
+    - teamviewer

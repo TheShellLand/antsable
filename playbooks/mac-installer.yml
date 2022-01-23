@@ -1,0 +1,11 @@
+---
+- hosts: all
+  roles:
+    - mac-installer
+  vars:
+    url:
+    mac_deb:
+    mac_pkg:
+    mac_zip:
+    mac_folder:
+    mac_app:

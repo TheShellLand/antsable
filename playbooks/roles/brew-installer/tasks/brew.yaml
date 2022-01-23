@@ -63,5 +63,3 @@
       changed_when: shell.stdout
       when: "'installed' in shell.stderr"
   when: NO_QUARANTINE
-
-- debug: var=shell

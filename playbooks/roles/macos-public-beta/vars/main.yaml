@@ -1,0 +1,9 @@
+---
+#url: https://appleseeddownload.apple.com/macOS/Aug2020/macOSPublicBetaAccessUtility.dmg
+mac_deb: macOSPublicBetaAccessUtility.dmg
+mac_pkg: macOSPublicBetaAccessUtility.pkg
+mac_zip:
+mac_folder: macOS Public Beta Access Utility
+mac_app:
+
+BREW_INSTALL: false

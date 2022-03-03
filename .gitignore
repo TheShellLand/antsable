@@ -5,6 +5,7 @@ node_modules/
 inventory.yaml
 config
 env.sh
+env.yml
 sshconfig
 vault-secret
 Vagrantfile

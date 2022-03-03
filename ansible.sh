@@ -16,19 +16,17 @@ if which ansible-playbook >/dev/null; then
     ansible_eval="${ansible_eval} --vault-password-file vault-secret"
   fi
 
-  if [ "$ANSIBLE_SSH_PASS" != "" ]; then
-      ansible_eval="${ansible_eval} -e ansible_ssh_pass=${ANSIBLE_SSH_PASS}"
+  if [ -f env.yml ]; then
+    ansible_eval="${ansible_eval} -e @env.yml"
   fi
 
-  if [ "$ANSIBLE_BECOME_PASS" != "" ]; then
-      ansible_eval="${ansible_eval} -e ansible_become_pass=${ANSIBLE_BECOME_PASS}"
+  if [ -d inventory ]; then
+    ansible_eval="${ansible_eval} -i inventory"
+  elif [ -f inventory.yaml ]; then
+    ansible_eval="${ansible_eval} -i inventory.yaml"
   fi
 
-  if [ "$ANSIBLE_USER" != "" ]; then
-      ansible_eval="${ansible_eval} -e ansible_user=${ANSIBLE_USER}"
-  fi
-
-  ansible_eval="${ansible_eval} -i inventory ${@}"
+  ansible_eval="${ansible_eval} ${@}"
 
   exec $ansible_eval
 

@@ -1,3 +1,5 @@
 ---
-ansible_python_interpreter: python3
+#ansible_python_interpreter: python3
 docker_registry: docker.io
+DOCKER_HOME:
+FORCE:

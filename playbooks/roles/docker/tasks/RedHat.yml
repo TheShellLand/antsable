@@ -1,6 +1,9 @@
 ---
 - include_role:
     name: pip-installer
+    apply:
+      become: "{{ 'yes' if become_user is defined else 'no'}}"
+      become_user: "{{become_user if become_user is defined}}"
   vars:
     pip_package: "{{item}}"
     pip_user: yes
@@ -56,6 +59,24 @@
       loop:
         - docker*
 
+- block:
+    - service:
+        name: docker
+        enabled: yes
+        state: stopped
+      become: yes
+      changed_when: false
+
+    - shell: |
+        if [ ! -d {{ DOCKER_HOME }}/docker ]; then 
+          mv -v /var/lib/docker {{ DOCKER_HOME }}
+          ln -s {{ DOCKER_HOME }} /var/lib/docker
+        fi
+      become: yes
+      changed_when: false
+
+  when: DOCKER_HOME
+
 - user:
     name: "{{ ansible_user_id }}"
     groups: docker
@@ -63,17 +84,18 @@
   become: yes
 
 - user:
-    name: "{{ appUser }}"
+    name: "{{ become_user }}"
     groups: docker
     append: yes
   become: yes
-  when: appUser
+  when: become_user
 
 - service:
     name: docker
     enabled: yes
     state: started
   become: yes
+  changed_when: false
 
 - shell: docker ps
   register: shell

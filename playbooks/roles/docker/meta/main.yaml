@@ -1,4 +1,5 @@
 ---
 dependencies:
   - defaults
+  - python3
   - brew

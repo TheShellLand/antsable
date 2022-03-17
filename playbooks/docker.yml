@@ -2,3 +2,6 @@
 - hosts: all
   roles:
     - docker
+  vars:
+    DOCKER_HOME:
+    FORCE:

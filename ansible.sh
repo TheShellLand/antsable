@@ -7,7 +7,7 @@ cd $(dirname $0) && set -e
 if [ -f env.sh ]; then source env.sh; fi
 
 # Run playbook
-if which ansible-playbook >/dev/null; then
+if type ansible-playbook >/dev/null; then
 
   ansible_eval=ansible-playbook
 

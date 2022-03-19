@@ -19,6 +19,10 @@
       loop:
         - yum-utils
 
+    - uri:
+        url: https://download.docker.com/linux/rhel/docker-ce.repo
+        timeout: 1
+
     - name: https://download.docker.com/linux/rhel/docker-ce.repo
       yum_repository:
         name: docker.com
@@ -44,19 +48,14 @@
 
   rescue:
 
-    - name: delete https://download.docker.com/linux/rhel/docker-ce.repo
-      yum_repository:
-        name: docker.com
-        state: absent
-      become: yes
-      changed_when: false
-
     - yum:
         name: "{{item}}"
         state: latest
         update_cache: yes
       become: yes
       loop:
+        - docker-acl-plugin
+        - docker-engine
         - docker*
 
 - block:

@@ -1,7 +1,7 @@
 ---
 - block:
-    - name: check
-      shell: which brew
+    - name: "{{ BREW }} --version"
+      shell: "{{ BREW }} --version"
       register: shell
       changed_when: false
 

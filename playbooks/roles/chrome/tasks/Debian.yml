@@ -15,4 +15,4 @@
     - apt: update_cache=yes name=chromium-browser state=latest
       register: apt
       become: yes
-      changed_when: "Snap installation complete" not in apt.stdout
+      changed_when: false

@@ -1,3 +1,16 @@
 ---
-- apt: update_cache=yes name={{ package }} state=latest
-  become: yes
+- block:
+    - get_url:
+        url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        dest: .
+
+    - shell: dpkg -i google-chrome-stable_current_amd64.deb
+      become: yes
+
+    - shell: apt install -f -y
+      become: yes
+      changed_when: false
+
+  rescue:
+    - apt: update_cache=yes name=chromium-browser state=latest
+      become: yes

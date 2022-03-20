@@ -1,0 +1,6 @@
+---
+- apt: update_cache=yes name=spice-vdagent state=latest
+  become: yes
+
+- apt: update_cache=yes name=spice-webdavd state=latest
+  become: yes

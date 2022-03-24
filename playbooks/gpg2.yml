@@ -1,5 +1,5 @@
 ---
 - hosts: all
   roles:
-    - gpg
+    - gpg2
 

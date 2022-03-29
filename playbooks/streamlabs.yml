@@ -3,4 +3,5 @@
   roles:
     - streamlabs
   vars:
-    BREW_INSTALL: true
+    BREW_INSTALL: false
+

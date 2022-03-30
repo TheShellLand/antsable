@@ -1,0 +1,3 @@
+---
+- reboot:
+- wait_for_connection:

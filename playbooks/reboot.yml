@@ -1,8 +1,4 @@
 ---
 - hosts: all
-  become: true
-  gather_facts: false
-  tasks:
-
-    - name: reboot
-      reboot:
+  roles:
+    - reboot

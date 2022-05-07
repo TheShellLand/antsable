@@ -4,7 +4,7 @@
   tasks:
 
     - set_fact:
-        version: 89.0.4389.23
+        version: 101.0.4951.41
 
     # use Google Chrome Stable to match driver
     - name: Download linux {{ version }}

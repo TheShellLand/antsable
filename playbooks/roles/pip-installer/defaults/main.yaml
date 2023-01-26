@@ -1,4 +1,5 @@
 ---
 pip_package:
 pip_index:
+pip_user:
 PIP_INSTALL: true

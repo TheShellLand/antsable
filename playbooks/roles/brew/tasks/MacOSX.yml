@@ -22,3 +22,5 @@
       shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       register: shell
       changed_when: "shell.rc != 0"
+      become: yes
+      become_user: "{{ lookup('env', 'USER') }}"

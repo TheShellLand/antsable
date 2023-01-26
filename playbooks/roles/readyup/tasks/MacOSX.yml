@@ -13,7 +13,7 @@
 - include_role: name=gcc
 
 # virtualization
-- include_role: name=docker
+#- include_role: name=docker
 - include_role: name=parallels
 - include_role: name=utm
 #- include_role: name=vagrant

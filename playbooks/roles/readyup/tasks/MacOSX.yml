@@ -25,7 +25,7 @@
 - include_role: name=nmap
 - include_role: name=wget
 - include_role: name=rclone
-- include_role: name=amazon-workspace
+#- include_role: name=amazon-workspace
 - include_role: name=macfuse
 - include_role: name=wireshark
 - include_role: name=keepassx
@@ -37,7 +37,7 @@
 - include_role: name=darktable
 - include_role: name=gimp
 - include_role: name=audacity
-- include_role: name=blender
+#- include_role: name=blender
 
 # encryption
 - include_role: name=veracrypt

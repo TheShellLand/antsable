@@ -7,3 +7,5 @@
   get_url:
     url: https://github.com/utmapp/qemu/releases/download/v6.2.0-utm/spice-guest-tools-0.164.3.iso
     dest: ./spice-guest-tools.iso
+    validate_certs: false
+  changed_when: false

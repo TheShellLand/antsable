@@ -3,14 +3,16 @@
 
 - block:
   - set_fact:
-      url: https://slobs-cdn.streamlabs.com/Streamlabs+Desktop-1.6.1.dmg
+      url: https://slobs-cdn.streamlabs.com/Streamlabs+Desktop-1.12.1.dmg
       file: streamlabs.dmg
-      folder: Streamlabs Desktop 1.6.1
+      folder: Streamlabs Desktop 1.12.1
       app: Streamlabs Desktop.app
 
   - get_url:
       url: "{{url}}"
       dest: "./{{file}}"
+      validate_certs: false
+    changed_when: false
 
   - shell: |
       yes | hdiutil attach -nobrowse {{file}} >/dev/null

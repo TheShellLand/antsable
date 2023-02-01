@@ -16,3 +16,4 @@ Vagrantfile
 *.exe
 *.tar.gz
 *.zip
+*.iso

@@ -1,6 +1,6 @@
 ---
 # internet
-- include_role: name=google-drive
+#- include_role: name=google-drive
 #- include_role: name=chrome
 
 # coding

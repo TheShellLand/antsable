@@ -3,4 +3,5 @@ install: /tmp/readyup
 HIDPI: false
 CONSOLE: false
 INSTALL_GNOME: false
+INSTALL_TOOLS: false
 WORK: false

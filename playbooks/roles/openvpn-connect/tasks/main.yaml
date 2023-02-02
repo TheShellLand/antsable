@@ -1,0 +1,4 @@
+---
+- set_fact: package=openvpn-connect
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+  when: package

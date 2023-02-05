@@ -1,0 +1,7 @@
+---
+- name: install iptables-persistent
+  apt:
+    update_cache: yes
+    name: iptables-persistent
+    state: latest
+  become: yes

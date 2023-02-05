@@ -4,7 +4,11 @@
 
 cd $(dirname $0) && set -e
 
-if [ -f env.sh ]; then source env.sh; fi
+if [ -f env.sh ]; then
+  for var in $(cat env.sh); do
+    export "$var"
+  done
+fi
 
 # Run playbook
 if type ansible-playbook >/dev/null; then

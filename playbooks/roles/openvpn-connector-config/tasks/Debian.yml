@@ -1,0 +1,37 @@
+---
+# configure connector firewall to work correctly with openvpn cloud connector
+
+- name: get default interface
+  shell: ip route | grep default | awk '{print $5}'
+  register: shell
+  changed_when: not shell.stdout
+  failed_when: not shell.stdout
+
+- set_fact:
+    interface: "{{shell.stdout}}"
+
+- name: configure iptables v4
+  shell: |
+    iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
+    iptables-save > /etc/iptables/rules.v4
+  become: yes
+  register: shell
+  changed_when: shell.stdout
+
+- name: configure iptables v6
+  shell: |
+    ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
+    iptables-save > /etc/iptables/rules.v6
+  become: yes
+  register: shell
+  changed_when: shell.stdout
+
+- name: show v4 rules
+  shell: cat /etc/iptables/rules.v4
+  become: yes
+  changed_when: false
+
+- name: show v6 rules
+  shell: cat /etc/iptables/rules.v6
+  become: yes
+  changed_when: false

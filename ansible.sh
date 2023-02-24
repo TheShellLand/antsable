@@ -16,8 +16,9 @@ if type ansible-playbook >/dev/null; then
   ansible_eval=ansible-playbook
 
   if [ "$ANSIBLE_VAULT" != "" ]; then
-    echo "$ANSIBLE_VAULT" > vault-secret
-    chmod 600 vault-secret
+    echo '#!/bin/bash' > vault-secret
+    echo "echo $ANSIBLE_VAULT" >> vault-secret
+    chmod 700 vault-secret
     ansible_eval="${ansible_eval} --vault-password-file vault-secret"
   fi
 

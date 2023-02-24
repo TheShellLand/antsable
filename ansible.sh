@@ -6,7 +6,9 @@ cd $(dirname $0) && set -e
 
 if [ -f env.sh ]; then
   for var in $(cat env.sh); do
-    export "$var"
+    if ! echo "$var" | grep "^#" >/dev/null; then
+      export "$var"
+    fi
   done
 fi
 

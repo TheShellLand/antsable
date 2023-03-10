@@ -1,8 +1,4 @@
 ---
-- set_fact:
-    ARCH:
-    BREW: brew
-
 - name: Apple M1
   include_tasks: "{{ansible_facts.processor}}.yml"
   when: ansible_facts.processor == "Apple M1"

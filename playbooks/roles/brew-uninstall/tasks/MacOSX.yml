@@ -1,13 +1,5 @@
 ---
 - block:
-    - name: '{{ BREW }} tap | xargs {{ BREW }} untap -v'
-      shell: '{{ BREW }} tap | xargs {{ BREW }} untap -v'
-      register: shell
-      changed_when:
-        - '"Untapping" not in shell.stderr'
-      failed_when:
-        - '"Untapping" not in shell.stderr'
-
     - name: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"'
       shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"'
       register: shell

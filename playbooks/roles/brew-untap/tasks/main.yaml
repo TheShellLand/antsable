@@ -1,0 +1,4 @@
+---
+- name: "{{ansible_facts.os_family}}"
+  include_tasks: "{{ansible_facts.os_family}}.yml"
+  when: ansible_facts.os_family == "Darwin"

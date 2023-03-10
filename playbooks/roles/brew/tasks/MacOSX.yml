@@ -18,9 +18,20 @@
 
   rescue:
 
+    - name: pre-run sudo
+      shell: sudo id
+      changed_when: false
+
     - name: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       register: shell
       changed_when: "shell.rc != 0"
       become: yes
       become_user: "{{ lookup('env', 'USER') }}"
+
+    - name: set up PATH
+      shell: | 
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/{{ lookup('env', 'USER') }}/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      register: shell
+      changed_when: shell.stderr

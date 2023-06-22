@@ -28,12 +28,13 @@
         name: docker.com
         description: Official docker repo
         baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
-        timeout: 1
+        timeout: 5
       become: yes
       changed_when: false
 
     # yum install docker-ce docker-ce-cli containerd.io
-    - yum:
+    - name: install docker
+      yum:
         name: "{{item}}"
         state: latest
       become: yes
@@ -42,13 +43,16 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
       failed_when:
         - '"No package matching" not in yum.msg'
   #        - '"Public key for" not in yum.msg'
 
   rescue:
 
-    - yum:
+    - name: install docker
+      yum:
         name: "{{item}}"
         state: latest
         update_cache: yes
@@ -66,7 +70,8 @@
       become: yes
       changed_when: false
 
-    - shell: |
+    - name: move docker home
+      shell: |
         if [ ! -d {{ DOCKER_HOME }}/docker ]; then 
           mv -v /var/lib/docker {{ DOCKER_HOME }}
           ln -s {{ DOCKER_HOME }} /var/lib/docker
@@ -76,27 +81,32 @@
 
   when: DOCKER_HOME
 
-- user:
+- name: add current user to docker group
+  user:
     name: "{{ ansible_user_id }}"
     groups: docker
     append: yes
   become: yes
 
-- user:
+
+- name: add user to docker group
+  user:
     name: "{{ become_user }}"
     groups: docker
     append: yes
   become: yes
   when: become_user
 
-- service:
+- name: start docker
+  service:
     name: docker
     enabled: yes
     state: started
   become: yes
   changed_when: false
 
-- shell: docker ps
+- name: test docker
+  shell: docker ps
   register: shell
   become: yes
   changed_when: shell.rc != 0

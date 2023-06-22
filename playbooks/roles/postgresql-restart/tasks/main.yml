@@ -1,0 +1,32 @@
+---
+- block:
+    - name: restart postgresql-11
+      shell: /opt/phantom/bin/phsvc restart postgresql-11
+      become: true
+      register: shell
+      changed_when: not shell.rc == 0
+
+    - debug:
+        var: shell.stdout_lines
+
+    - name: restart postgresql-11
+      systemd:
+        state: started
+        name: postgresql-11
+      become: true
+
+    - name: wait until finished recovery
+      shell: phenv python /opt/phantom/bin/setup_warm_standby.pyc --status
+      become: yes
+      register: shell
+      changed_when: not shell.rc == 0
+      retries: 99
+      until: "'recovery' not in shell.stdout"
+
+    - debug:
+        var: shell.stdout_lines
+
+  rescue:
+
+    - shell: systemctl status postgresql-11.service
+      become: true

@@ -1,0 +1,51 @@
+---
+- name: auto vacuum
+  shell: su - postgres -c '/usr/pgsql-11/bin/vacuumdb -h /tmp --all --analyze-in-stages'
+  become: yes
+  register: postgres
+
+# IF YOU INTERRUPT THIS PROCESS YOU WILL BREAK AND WILL HAVE TO REVERT SNAPSHOT
+- name: full vacuum - MB
+  shell: |
+    su - postgres -c  "psql -Aqt -h /tmp -d phantom -p 6432" > postgresql-full-vacuum.log << EOF
+    VACUUM FULL {{ item }};
+    EOF
+    
+    df -h /
+  become: yes
+  register: shell
+  changed_when: false
+  loop:
+    - action_run
+    - artifact
+    - case_activity
+    - container
+    - container_comment
+    - custom_function_run
+    - indicator
+    - indicator_artifact_record
+    - ingestion_status
+    - playbook
+    - playbook_run
+    - playbook_run_log
+
+# IF YOU INTERRUPT THIS PROCESS YOU WILL BREAK AND WILL HAVE TO REVERT SNAPSHOT
+- name: full vacuum - GB (very large, ensure free disk double table size)
+  shell: |
+    su - postgres -c  "psql -Aqt -h /tmp -d phantom -p 6432" >> postgresql-full-vacuum.log << EOF
+    VACUUM FULL {{ item }};
+    EOF
+    
+    df -h /
+  become: yes
+  register: shell
+  changed_when: false
+  loop:
+    - audit
+    - app_run
+
+- name: get output
+  fetch:
+    src: postgresql-full-vacuum.log
+    dest: "{{ inventory_hostname }}"
+  become: yes

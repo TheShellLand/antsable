@@ -1,0 +1,16 @@
+---
+# port 6432 for pgbouncer
+- name: get postgress \dt+
+  shell: |
+    su - postgres -c  "psql -Aqt -h /tmp -d phantom -p 5432" > postgresql-get-table-sizes.log << EOF
+    \dt+
+    EOF
+  become: yes
+  register: shell
+  changed_when: false
+
+- name: get output
+  fetch:
+    src: postgresql-get-table-sizes.log
+    dest: "{{ inventory_hostname }}"
+  become: yes

@@ -1,0 +1,5 @@
+---
+- name: status postgresql-11
+  systemd:
+    name: postgresql-11
+    state: started

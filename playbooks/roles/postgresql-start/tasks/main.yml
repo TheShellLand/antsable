@@ -1,0 +1,18 @@
+---
+- block:
+    - name: start postgresql-11
+      shell: /opt/phantom/bin/phsvc start postgresql-11
+      become: true
+      register: shell
+      changed_when: not shell.rc == 0
+
+    - name: start postgresql-11
+      systemd:
+        state: started
+        name: postgresql-11
+      become: true
+
+  rescue:
+
+    - shell: systemctl status postgresql-11.service
+      become: true

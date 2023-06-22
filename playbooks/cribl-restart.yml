@@ -1,0 +1,6 @@
+---
+- hosts: cribl
+  gather_facts: yes
+  roles:
+    - cribl-stop
+    - cribl-start

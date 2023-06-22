@@ -1,0 +1,7 @@
+---
+- name: stop cribl
+  shell: /opt/cribl/bin/cribl stop
+  become: yes
+  become_user: cribl
+  register: shell
+  changed_when: false

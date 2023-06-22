@@ -1,6 +1,11 @@
 ---
-- shell: docker ps -a
-  register: shell
-  changed_when: false
-
-- debug: var=shell.stdout_lines
+- systemd:
+    name: docker
+  become: yes
+  register: docker
+  until:
+    - docker.status.ActiveState == "active"
+  changed_when:
+    - not docker.status.ActiveState == "active"
+  failed_when:
+    - not docker.status.ActiveState == "active"

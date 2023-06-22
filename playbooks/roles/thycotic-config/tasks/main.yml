@@ -1,0 +1,14 @@
+---
+- set_fact:
+    THYCOTICCONFIGPATH: "{{ansible_env.HOME}}/{{ansible_facts.env.USER}}/"
+
+
+- block:
+    - name: check
+      shell: "tss token -cd '{{THYCOTICCONFIGPATH}}'"
+      register: shell
+      changed_when: false
+
+  rescue:
+    - name: "{{ansible_facts.os_family}}"
+      include_tasks: "{{ansible_facts.os_family}}.yml"

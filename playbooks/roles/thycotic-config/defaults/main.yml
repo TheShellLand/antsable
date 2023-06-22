@@ -1,0 +1,5 @@
+---
+PROD:
+TEST:
+THYCOTICEXECUTABLEPATH:
+THYCOTICCONFIGPATH: "{{ansible_env.HOME}}/{{ansible_facts.env.USER}}/"

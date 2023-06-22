@@ -1,0 +1,39 @@
+---
+- debug: var=THYCOTICCONFIGPATH
+
+- block:
+    - shell: "tss init -u {{ PROD }} -r {{ SDKRule }} -k {{ SDKKey }} -cd '{{THYCOTICCONFIGPATH}}' "
+      register: shell
+      changed_when:
+        - " 'Your SDK client account registration is complete' not in shell.stdout"
+        - " 'This machine is already initialized. Remove the configuration settings' not in shell.stdout"
+      failed_when:
+        - " 'Your SDK client account registration is complete' not in shell.stdout"
+        - " 'This machine is already initialized. Remove the configuration settings' not in shell.stdout"
+
+    - shell: "tss token -cd '{{THYCOTICCONFIGPATH}}'"
+      register: shell
+      changed_when: false
+
+  rescue:
+    - file:
+        path: "{{THYCOTICCONFIGPATH}}"
+        state: absent
+
+    - shell: "tss init -u {{ PROD }} -r {{ SDKRule }} -k {{ SDKKey }} -cd '{{THYCOTICCONFIGPATH}}' "
+      register: shell
+      changed_when:
+        - " 'Your SDK client account registration is complete' not in shell.stdout"
+        - " 'This machine is already initialized. Remove the configuration settings' not in shell.stdout"
+      failed_when:
+        - " 'Your SDK client account registration is complete' not in shell.stdout"
+        - " 'This machine is already initialized. Remove the configuration settings' not in shell.stdout"
+
+    - shell: "tss token -cd '{{THYCOTICCONFIGPATH}}'"
+      register: shell
+      changed_when: false
+
+- set_fact:
+    THYCOTIC_TOKEN: "{{shell.stdout}}"
+
+- debug: var=THYCOTIC_TOKEN

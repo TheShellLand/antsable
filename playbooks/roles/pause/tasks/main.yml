@@ -1,0 +1,3 @@
+---
+- pause:
+    prompt: "Paused until you press ENTER"

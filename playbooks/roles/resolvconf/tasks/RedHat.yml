@@ -1,0 +1,12 @@
+---
+- name: check /etc/resolv.conf
+  stat:
+    path: /etc/resolv.conf
+  register: resolv
+
+- name: Start resolvconf
+  service:
+    name: resolvconf
+    state: started
+  become: yes
+  when: not resolv.stat.exists

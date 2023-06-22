@@ -1,0 +1,23 @@
+---
+- name: install haproxy
+  yum:
+    name: haproxy
+    state: latest
+  become: yes
+  register: install
+  notify:
+    - Start haproxy
+
+- name: copy haproxy config
+  copy:
+    src: etc/haproxy/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  become: yes
+
+- name: Start haproxy
+  service:
+    name: haproxy
+    state: started
+    enabled: true
+  become: yes
+

@@ -1,0 +1,7 @@
+---
+# yum module only works on python2
+- name: install rsyslog
+  yum:
+    name: rsyslog
+    state: latest
+  become: yes

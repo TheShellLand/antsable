@@ -1,0 +1,23 @@
+---
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+
+- name: rsyslog - copy rsyslog.conf
+  copy:
+    src: files/rsyslog/rsyslog.conf
+    dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  notify:
+    - Restart rsyslog
+
+# We like to restart the rsyslog service occasionally to help load distribution via the load balancer.
+# 20 */2 * * * /usr/sbin/service rsyslog restart
+- name: rsyslog - cron restart rsyslog every few hours
+  cron:
+    name: "Restart rsyslog every few hours"
+    minute: "20"
+    hour: "*/2"
+    job: "/usr/sbin/service rsyslog restart"
+  become: yes

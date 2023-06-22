@@ -1,0 +1,7 @@
+---
+- name: check fips is enabled
+  shell: cat /proc/sys/crypto/fips_enabled
+  register: shell
+  changed_when: false
+  failed_when:
+    - "shell.stdout == '0'"

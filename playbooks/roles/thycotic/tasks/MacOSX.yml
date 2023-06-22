@@ -1,0 +1,46 @@
+---
+- set_fact:
+    THYCOTICEXECUTABLEPATH: /Library/Thycotic/
+
+- block:
+    - name: check
+      shell: tss version
+      register: shell
+      changed_when: false
+
+  rescue:
+    - set_fact:
+        THYCOTIC_URL: https://downloads.ss.thycotic.com/secretserversdk/1.4.1/secretserver-sdk-1.4.1-osx-x64.zip
+
+    - get_url:
+        url: "{{ THYCOTIC_URL }}"
+        dest: /tmp/thycotic.zip
+        mode: '0755'
+        validate_certs: no
+
+    - file:
+        path: "{{ THYCOTICEXECUTABLEPATH }}"
+        state: directory
+      become: yes
+
+    - unarchive:
+        src: /tmp/thycotic.zip
+        dest: "{{ THYCOTICEXECUTABLEPATH }}"
+      become: yes
+      changed_when: false
+
+    - file:
+        path: "{{ THYCOTICEXECUTABLEPATH }}tss"
+        mode: '0777'
+      become: yes
+      changed_when: false
+
+    - file:
+        src: "{{ THYCOTICEXECUTABLEPATH }}tss"
+        dest: /usr/local/bin/tss
+        state: link
+      become: yes
+
+    - shell: tss version
+      register: shell
+      changed_when: ' "1.4.1.0" not in shell.stdout '

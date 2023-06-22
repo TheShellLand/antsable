@@ -2,3 +2,4 @@
 - name: install openssh-server
   shell: apt update && apt install -y vim tmux
   become: yes
+  changed_when: false

@@ -1,0 +1,5 @@
+---
+- name: status pgbouncer
+  systemd:
+    name: pgbouncer
+    state: started

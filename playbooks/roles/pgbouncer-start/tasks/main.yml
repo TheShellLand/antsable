@@ -1,0 +1,12 @@
+---
+- name: start pgbouncer
+  shell: /opt/phantom/bin/phsvc start pgbouncer
+  become: true
+  register: shell
+  changed_when: not shell.rc == 0
+
+- name: start pgbouncer
+  systemd:
+    state: started
+    name: pgbouncer
+  become: true

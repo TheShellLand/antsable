@@ -1,0 +1,11 @@
+---
+- name: yum update -y
+  yum:
+    name: '*'
+    state: latest
+    exclude: nginx
+  become: yes
+  register: yum
+
+- debug:
+    var: yum.results

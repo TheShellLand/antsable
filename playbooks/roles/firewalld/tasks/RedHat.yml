@@ -4,6 +4,11 @@
     name: firewalld
     state: latest
   become: yes
+  register: install
+  changed_when:
+    - "'firewalld.noarch' not in install.results"
+    - "'Complete!' not in install.results"
+    - "'All packages providing firewalld are up to date' not in install.results"
   notify:
     - Start firewalld
 

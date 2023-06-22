@@ -1,0 +1,21 @@
+---
+- name: Restart firewalld
+  service:
+    name: firewalld
+    state: restarted
+  become: yes
+
+- name: Start firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+  become: yes
+
+- name: Disable firewalld
+  service:
+    name: firewalld
+    state: stopped
+    enabled: false
+  become: yes
+

@@ -1,3 +1,2 @@
 ---
-- include_role:
-    name: brew-installer
+- include_role: name=brew-installer

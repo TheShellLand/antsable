@@ -1,0 +1,6 @@
+---
+- name: apt update -y
+  apt:
+    update_cache: yes
+  become: yes
+  changed_when: false

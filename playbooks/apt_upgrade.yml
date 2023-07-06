@@ -1,19 +1,4 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  gather_facts: no
-
-  tasks:
-
-    - name: apt - upgrade
-      apt: update_cache=yes upgrade=yes
-
-    - name: apt - autoremove
-      shell: apt -y autoremove
-
-    - name: apt - autoclean
-      shell: apt autoclean
-
-    - name: apt - clean
-      shell: apt clean
+- hosts: all
+  roles:
+    - apt-upgrade

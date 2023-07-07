@@ -1,1 +1,9 @@
 ---
+- name: install serverless
+  npm:
+    name: "{{ item }}"
+    state: latest
+    global: yes
+  become: yes
+  loop:
+    - serverless

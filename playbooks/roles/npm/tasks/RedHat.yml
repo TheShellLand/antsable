@@ -1,1 +1,7 @@
 ---
+- name: install npm
+  yum:
+    name: npm
+    state: latest
+  become: yes
+  changed_when: false

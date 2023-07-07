@@ -1,4 +1,9 @@
 ---
+- name: install repository
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+  become: yes
+  changed_when: false
+
 - name: install npm
   yum:
     name: npm

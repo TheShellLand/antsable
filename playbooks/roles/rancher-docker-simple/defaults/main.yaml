@@ -1,0 +1,4 @@
+---
+DOCKER_NAME: rancher_server
+DOCKER_VERSION: latest
+RANCHER_DATA: rancher-data

@@ -1,0 +1,7 @@
+---
+- hosts: rancher
+  roles:
+    - rancher-docker-simple
+  vars:
+    DOCKER_VERSION: latest
+    RANCHER_DATA:

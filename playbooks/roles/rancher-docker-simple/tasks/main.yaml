@@ -1,0 +1,24 @@
+---
+- name: rancher data
+  file:
+    path: "{{ RANCHER_DATA }}"
+    state: directory
+  become: yes
+  when: RANCHER_DATA
+
+- set_fact:
+    RANCHER_DATA: rancher-data
+  when: not RANCHER_DATA
+
+- name: run rancher
+  shell: |
+    docker rm -f {{ DOCKER_NAME }} || true
+    docker run -d \
+      --name {{ DOCKER_NAME }} \
+      --restart=unless-stopped \
+      -p 8080:80 -p 8443:443 \
+      -v {{ RANCHER_DATA }}:/var/lib/rancher \
+      --privileged \
+      rancher/rancher:{{ DOCKER_VERSION }}
+  become: yes
+  changed_when: false

@@ -21,11 +21,18 @@
 
 - name: run rancher
   shell: |
-    docker rm -f {{ DOCKER_NAME }} || true
+    docker rm -f {{ DOCKER_NAME }}
+  become: yes
+  changed_when: false
+  register: shell
+  until: "'No such container' in shell.stderr"
+
+- name: run rancher
+  shell: |
     docker run -d \
       --name {{ DOCKER_NAME }} \
       --restart=unless-stopped \
-      -p 8080:80 -p 8443:443 \
+      -p 80:80 -p 443:443 \
       -v {{ RANCHER_DATA }}:/var/lib/rancher \
       --privileged \
       rancher/rancher:{{ DOCKER_VERSION }}
@@ -36,3 +43,7 @@
   shell: |
     docker logs {{ DOCKER_NAME }} 2>&1 | grep "Bootstrap Password:"
   become: yes
+  register: shell
+  until: shell.rc == 0
+  retries: 99
+  changed_when: false

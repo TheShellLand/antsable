@@ -31,3 +31,8 @@
       rancher/rancher:{{ DOCKER_VERSION }}
   become: yes
   changed_when: false
+
+- name: get boostrap password
+  shell: |
+    docker logs {{ DOCKER_NAME }} 2>&1 | grep "Bootstrap Password:"
+  become: yes

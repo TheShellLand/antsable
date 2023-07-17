@@ -7,6 +7,14 @@
   changed_when: false
   when: RANCHER_DATA and DELETE_DATA
 
+- name: delete volume
+  shell: |
+    docker rm -f {{ DOCKER_NAME }}
+    docker volume rm -f rancher-data
+  become: yes
+  changed_when: false
+  when: not RANCHER_DATA and DELETE_DATA
+
 - name: rancher data
   file:
     path: "{{ RANCHER_DATA }}"

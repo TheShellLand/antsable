@@ -1,9 +1,18 @@
 ---
+- name: delete data
+  file:
+    path: "{{ RANCHER_DATA }}"
+    state: absent
+  become: yes
+  changed_when: false
+  when: RANCHER_DATA and DELETE_DATA
+
 - name: rancher data
   file:
     path: "{{ RANCHER_DATA }}"
     state: directory
   become: yes
+  changed_when: false
   when: RANCHER_DATA
 
 - set_fact:

@@ -5,3 +5,4 @@
   vars:
     DOCKER_VERSION: latest
     RANCHER_DATA:
+    DELETE_DATA: no

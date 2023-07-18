@@ -27,7 +27,7 @@
     RANCHER_DATA: rancher-data
   when: not RANCHER_DATA
 
-- name: run rancher
+- name: delete rancher
   shell: |
     docker rm -f {{ DOCKER_NAME }}
   become: yes

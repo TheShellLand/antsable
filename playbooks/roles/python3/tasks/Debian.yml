@@ -2,18 +2,22 @@
 - name: python3 - Install python3.8
   apt: update_cache=yes name=python3.8 state=latest
   become: true
+  changed_when: false
 
 - name: python3 - Install python3.8-distutils
   apt: update_cache=no name=python3.8-distutils state=latest
   become: true
+  changed_when: false
 
 - name: python3 - Install python3.8-dev
   apt: update_cache=no name=python3.8-dev state=latest
   become: true
+  changed_when: false
 
 - name: python3 - Install curl
   apt: update_cache=no name=curl state=latest
   become: true
+  changed_when: false
 
 - name: python3 - install pip
   shell: |
@@ -22,6 +26,7 @@
     python3 "get-pip.py"
     python3 -m pip install -U pip
   become: true
+  changed_when: false
 
 - name: set python3 as default
   shell: update-alternatives --install /usr/bin/python python /usr/bin/python3 1

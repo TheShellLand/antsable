@@ -1,0 +1,9 @@
+---
+- hosts: rancher
+  roles:
+    - rancher-github-actions
+  vars:
+    NAMESPACE: arc-runners
+    KUBECONFIG_PATH:
+    GITHUB_PAT:
+    GITHUB_CONFIG_URL:

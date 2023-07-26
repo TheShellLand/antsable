@@ -1,0 +1,54 @@
+---
+- fail:
+  when: not GITHUB_PAT and not GITHUB_CONFIG_URL and not KUBECONFIG_PATH
+
+- block:
+  - name: install arc-runner-set
+    shell: |
+      INSTALLATION_NAME="{{ INSTALLATION_NAME }}"
+      NAMESPACE="{{ NAMESPACE }}"
+      GITHUB_CONFIG_URL="{{ GITHUB_CONFIG_URL }}"
+      GITHUB_PAT="{{ GITHUB_PAT }}"
+      
+      helm --kubeconfig "{{ KUBECONFIG_PATH }}" install "${INSTALLATION_NAME}" \
+          --namespace "${NAMESPACE}" \
+          --create-namespace \
+          --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+          --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+          oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+
+  rescue:
+
+    - name: upgrade arc-runner-set
+      shell: |
+        INSTALLATION_NAME="{{ INSTALLATION_NAME }}"
+        NAMESPACE="{{ NAMESPACE }}"
+        GITHUB_CONFIG_URL="{{ GITHUB_CONFIG_URL }}"
+        GITHUB_PAT="{{ GITHUB_PAT }}"
+        
+        helm --kubeconfig "{{ KUBECONFIG_PATH }}" upgrade "${INSTALLATION_NAME}" \
+            --namespace "${NAMESPACE}" \
+            --create-namespace \
+            --set githubConfigUrl="${GITHUB_CONFIG_URL}" \
+            --set githubConfigSecret.github_token="${GITHUB_PAT}" \
+            oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+
+- block:
+  - name: install arc-systems
+    shell: |
+      NAMESPACE="{{ NAMESPACE }}"
+      
+      helm --kubeconfig "{{ KUBECONFIG_PATH }}" install arc \
+      --namespace "${NAMESPACE}" \
+      --create-namespace \
+      oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+
+  rescue:
+    - name: install arc-systems
+      shell: |
+        NAMESPACE="{{ NAMESPACE }}"
+        
+        helm --kubeconfig "{{ KUBECONFIG_PATH }}" upgrade arc \
+        --namespace "${NAMESPACE}" \
+        --create-namespace \
+        oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller

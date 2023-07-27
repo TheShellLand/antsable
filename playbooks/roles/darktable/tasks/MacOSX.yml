@@ -1,2 +1,6 @@
 ---
 - include_role: name=brew-installer
+
+- name: fix "darktable.app" is damaged
+  shell: xattr -dr com.apple.quarantine /Applications/darktable.app
+  changed_when: false

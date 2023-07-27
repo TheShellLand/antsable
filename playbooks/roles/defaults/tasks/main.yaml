@@ -1,3 +1,4 @@
 ---
 - name: temp
   file: path={{ readyup }} state=directory
+  changed_when: false

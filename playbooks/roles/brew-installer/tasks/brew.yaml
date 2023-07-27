@@ -30,7 +30,6 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
-      changed_when: false
 
   rescue:
     - name: "{{ BREW }} install {{ package }}"
@@ -42,7 +41,6 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
-      changed_when: false
 
     - name: "{{ BREW }} upgrade {{ package }}"
       shell: "{{ BREW }} upgrade {{ package }}"

@@ -67,7 +67,6 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
-      changed_when: false
 
     - name: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
       shell: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"

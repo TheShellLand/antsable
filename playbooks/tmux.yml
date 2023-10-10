@@ -1,5 +1,4 @@
 ---
 - hosts: all
-  tasks:
-  - name: Install tmux
-    apt: update_cache=yes name=tmux state=latest
+  roles:
+    - tmux

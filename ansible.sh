@@ -13,9 +13,9 @@ if [ -f env.sh ]; then
 fi
 
 # Run playbook
-if type ansible-playbook >/dev/null; then
+if python3 -m ansible doc -h >/dev/null; then
 
-  ansible_eval=ansible-playbook
+  ansible_eval="python3 -m ansible playbook"
 
   if [ "$ANSIBLE_VAULT" != "" ]; then
     echo '#!/bin/bash' > vault-secret
@@ -36,6 +36,7 @@ if type ansible-playbook >/dev/null; then
 
   ansible_eval="${ansible_eval} ${@}"
 
+  set -x
   exec $ansible_eval
 
 else

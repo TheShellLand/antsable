@@ -1,5 +1,5 @@
 ---
-- name: install openssh-server
+- name: install tools
   shell: apt update && apt install -y vim tmux
   become: yes
   changed_when: false

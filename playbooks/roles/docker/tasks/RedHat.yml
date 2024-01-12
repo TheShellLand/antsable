@@ -16,6 +16,7 @@
         name: "{{item}}"
         state: latest
       become: yes
+      changed_when: false
       loop:
         - yum-utils
 

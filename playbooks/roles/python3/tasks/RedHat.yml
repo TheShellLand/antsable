@@ -3,3 +3,12 @@
     name: python3
     state: latest
   become: yes
+
+- name: install pip
+  shell: |
+    # Install pip or pip3
+    curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
+    python3 "get-pip.py"
+    python3 -m pip install -U pip
+  become: true
+  changed_when: false

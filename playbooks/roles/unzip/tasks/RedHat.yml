@@ -1,0 +1,4 @@
+---
+- name: install
+  yum: name={{ package }} state=latest
+  become: yes

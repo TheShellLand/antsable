@@ -1,53 +1,72 @@
 ---
 - name: apt-transport-https
   apt: update_cache=yes name=apt-transport-https state=latest
+  become: yes
+  changed_when: false
+  environment:
+    DEBIAN_FRONTEND: noninteractive
 
 - name: ca-certificates
   apt: update_cache=no name=ca-certificates state=latest
+  become: yes
+  changed_when: false
 
 - name: curl
   apt: update_cache=no name=curl state=latest
+  become: yes
+  changed_when: false
 
 - name: gnupg-agent
   apt: update_cache=no name=gnupg-agent state=latest
   ignore_errors: yes
+  become: yes
+  changed_when: false
 
 - name: software-properties-common
   apt: update_cache=no name=software-properties-common state=latest
+  become: yes
+  changed_when: false
 
 - name: Add docker repository key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
+  become: yes
+  changed_when: false
 
 - name: Add docker repo
   shell: apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   retries: 99
+  become: yes
+  changed_when: false
 
 - name: Install docker-ce
   #apt: update_cache=yes name=docker-ce state=absent
   apt: update_cache=yes name=docker-ce state=latest
+  become: yes
+  changed_when: false
 
 - name: Install docker-ce-cli
   apt: update_cache=no name=docker-ce-cli state=latest
+  become: yes
+  changed_when: false
 
 - name: Install containerd.io
   apt: update_cache=no name=containerd.io state=latest
+  changed_when: false
 
 - name: ubuntu
   shell: usermod -a -G docker ubuntu
   ignore_errors: yes
-
-- name: vagrant
-  shell: usermod -a -G docker vagrant
-  ignore_errors: yes
-
-- name: eric
-  shell: usermod -a -G docker eric
-  ignore_errors: yes
+  become: yes
+  changed_when: false
 
 - name: python3 docker
   shell: python3 -m pip install docker
+  become: yes
+  changed_when: false
 
 - name: python3 docker-compose
   shell: python3 -m pip install docker-compose
+  become: yes
+  changed_when: false

@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - docker-login
+  vars:
+    USERNAME:
+    PASSWORD_STDIN: not used
+    REMOTE_REGISTRY:

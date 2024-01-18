@@ -1,0 +1,7 @@
+---
+- name: login
+  shell: |
+    docker login --username {{ USERNAME }} --password-stdin {{ REMOTE_REGISTRY }}
+  when:
+    - USERNAME
+    - REMOTE_REGISTRY

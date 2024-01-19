@@ -7,3 +7,9 @@
     - USERNAME
     - REMOTE_REGISTRY
     - PASSWORD_STDIN
+  changed_when: false
+
+- name: show docker config
+  shell: cat /home/ubuntu/.docker/config.json
+  when: REMOTE_REGISTRY
+  changed_when: false

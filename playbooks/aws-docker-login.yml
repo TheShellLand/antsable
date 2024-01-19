@@ -3,6 +3,6 @@
   roles:
     - aws-docker-login
   vars:
-    - REGION:
-    - USERNAME:
+    - REGION: us-east-1
+    - USERNAME: AWS
     - REMOTE_REGISTRY:

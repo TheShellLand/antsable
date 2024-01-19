@@ -5,3 +5,4 @@
   when:
     - USERNAME
     - REMOTE_REGISTRY
+    - PASSWORD_STDIN

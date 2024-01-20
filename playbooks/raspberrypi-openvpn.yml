@@ -1,0 +1,6 @@
+---
+- hosts: raspberrypi
+  roles:
+    - raspberrypi-openvpn
+  vars:
+    - OPENVPN_CONNECTOR_SECRET:

@@ -1,0 +1,23 @@
+---
+- block:
+
+  - name: download
+    shell: |
+      curl -O https://network-gateway.openvpn.com/network-gate/api/v1/scripts/RGViaWFuIDEy/gateway/debian_12.sh
+      chmod +x debian_12.sh
+      #./debian_12.sh
+    changed_when: false
+
+#  - name: install
+#    shell: ./debian_12.sh
+#    change_when: false
+
+  - name: check
+    shell: openvpn3 sessions-list
+    become: yes
+    changed_when: false
+
+  - name: check
+    shell: openvpn3 configs-list -v
+    become: yes
+    changed_when: false

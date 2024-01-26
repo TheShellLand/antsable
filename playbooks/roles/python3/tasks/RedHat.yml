@@ -8,7 +8,7 @@
   shell: |
     # Install pip or pip3
     curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
-    python3 "get-pip.py"
-    python3 -m pip install -U pip
+    python3 "get-pip.py" --break-system-packages
+    python3 -m pip install -U pip --break-system-packages
   become: true
   changed_when: false

@@ -4,3 +4,4 @@ become_user:
 docker_registry: docker.io
 DOCKER_HOME:
 FORCE:
+DOCKER_USER: ubuntu

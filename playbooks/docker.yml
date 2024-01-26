@@ -5,3 +5,4 @@
   vars:
     DOCKER_HOME:
     FORCE:
+    DOCKER_USER: ubuntu

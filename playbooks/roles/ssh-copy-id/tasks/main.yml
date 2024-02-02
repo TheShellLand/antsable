@@ -15,9 +15,9 @@
     state: present
     key: '{{ item }}'
   with_file:
-    - "public_keys/{{ ansible_user_id }}/id_rsa.pub"
+    - "id_rsa.pub"
 
-- name: Update bash profile to start ssh-agent
-  copy:
-    src: files/.bash_profile
-    dest: "~/.bash_profile"
+#- name: Update bash profile to start ssh-agent
+#  copy:
+#    src: files/.bash_profile
+#    dest: "~/.bash_profile"

@@ -1,4 +1,8 @@
 ---
+- name: pre-run sudo
+  shell: sudo id
+  changed_when: false
+
 - name: deb
   block:
     - block:

@@ -45,3 +45,7 @@ RUN apt-get update \
 #     google-cloud-cli-minikube \
 #     google-cloud-cli-pubsub-emulator \
 #     google-cloud-cli-tests
+
+COPY entry.sh /
+
+ENTRYPOINT ["/bin/bash", "/entry.sh"]

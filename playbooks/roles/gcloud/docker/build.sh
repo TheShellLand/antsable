@@ -2,4 +2,4 @@
 
 # build gcloud
 
-docker build -t gcloud .
+docker build "$@" -t gcloud .

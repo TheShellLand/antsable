@@ -48,4 +48,8 @@ RUN apt-get update \
 
 COPY entry.sh /
 
+WORKDIR /root
+
+VOLUME /root
+
 ENTRYPOINT ["/bin/bash", "/entry.sh"]

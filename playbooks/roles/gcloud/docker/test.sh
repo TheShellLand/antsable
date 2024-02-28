@@ -5,4 +5,4 @@
 set -xe
 
 docker volume create gcloud || true
-docker run -it -v gcloud:/root gcloud "$@"
+docker run -it -v gcloud:/root --entrypoint bash gcloud "$@"

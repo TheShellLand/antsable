@@ -1,5 +1,5 @@
 ---
-- name: Apple Silicon
+- name: Apple M1
   include_tasks: "Apple Silicon.yml"
   when: |
     ansible_facts.processor == "Apple M1" or
@@ -8,8 +8,3 @@
 
 - name: "{{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"
-  when: not WORK
-
-- name: "{{ansible_facts.distribution}} dev"
-  include_tasks: "{{ansible_facts.distribution}}-dev.yml"
-  when: WORK

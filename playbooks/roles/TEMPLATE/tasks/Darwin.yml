@@ -1,5 +1,5 @@
 ---
-- name: Apple M1
+- name: Apple Silicon
   include_tasks: "Apple Silicon.yml"
   when: |
     ansible_facts.processor == "Apple M1" or

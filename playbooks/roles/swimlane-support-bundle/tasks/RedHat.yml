@@ -1,0 +1,41 @@
+---
+- name: download
+  shell: curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/support-bundle_linux_amd64.tar.gz -o support-bundle_linux_amd64.tar.gz
+  changed_when: false
+
+- name: extract
+  shell: mkdir -p support-bundle_linux_amd64 && tar -xzvf support-bundle_linux_amd64.tar.gz -C support-bundle_linux_amd64
+  changed_when: false
+
+- name: install
+  shell: mv -v support-bundle_linux_amd64/support-bundle /usr/local/bin/kubectl-support_bundle
+  become: yes
+  changed_when: false
+
+- name: check install
+  shell: ls -lh /usr/local/bin/kubectl-support_bundle
+  changed_when: false
+
+- name: gather support bundle
+  shell: KUBECONFIG=/etc/kubernetes/admin.conf /usr/local/bin/kubectl-support_bundle --interactive=false secret/default/kotsadm-swimlane-platform-supportbundle
+  become: yes
+  register: shell
+  changed_when: false
+
+- debug:
+    msg: "{{ shell.stdout | from_json | json_query('archivePath') }}"
+
+# support bundle location
+- set_fact:
+    archivePath: "/home/{{ ansible_user_id }}/{{ shell.stdout | from_json | json_query('archivePath') }}"
+
+- name: copy support bundle
+  fetch:
+    src: "{{ archivePath }}"
+    dest: "."
+  changed_when: false
+
+- name: cleanup
+  file:
+    src: "{{ archivePath }}"
+    state: absent

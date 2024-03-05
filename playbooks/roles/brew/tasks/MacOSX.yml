@@ -7,9 +7,9 @@
 
     - name: "current user must have ownership: {{ lookup('env', 'USER') }}"
       shell: | 
-        chown -R $(whoami) /usr/local/Homebrew
+        chown -R $(whoami) /opt/homebrew/bin/brew
         #chown -R $(whoami) /usr/local/share/aclocal /usr/local/share/locale /usr/local/share/man/man3 /usr/local/share/man/man7 /usr/local/share/zsh /usr/local/share/zsh/site-functions /usr/local/var/homebrew/locks
-        #chmod u+w /usr/local/Homebrew /usr/local/share/aclocal /usr/local/share/locale /usr/local/share/man/man3 /usr/local/share/man/man7 /usr/local/share/zsh /usr/local/share/zsh/site-functions /usr/local/var/homebrew/locks
+        #chmod u+w /opt/homebrew/bin/brew /usr/local/share/aclocal /usr/local/share/locale /usr/local/share/man/man3 /usr/local/share/man/man7 /usr/local/share/zsh /usr/local/share/zsh/site-functions /usr/local/var/homebrew/locks
         echo OK
       become: yes
       become_user: "{{ lookup('env', 'USER') }}"

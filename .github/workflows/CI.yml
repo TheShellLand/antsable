@@ -11,7 +11,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME_LOWERCASE: theshellland/automonisaur
+  IMAGE_NAME_LOWERCASE: theshellland/antsable
 
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: /bin/bash test.sh
+      - run: /bin/bash install-ansible.sh && /bin/bash test.sh
 
 
   docker-build:

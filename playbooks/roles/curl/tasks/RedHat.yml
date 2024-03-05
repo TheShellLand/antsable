@@ -2,3 +2,4 @@
 - name: install
   yum: name={{ package }} state=latest
   become: yes
+  changed_when: false

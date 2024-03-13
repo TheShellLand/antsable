@@ -1,3 +1,3 @@
 ---
-- set_fact: package=
+- set_fact: package=awscli
 - include_tasks: "{{ansible_facts.os_family}}.yml"

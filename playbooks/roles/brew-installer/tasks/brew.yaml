@@ -5,7 +5,8 @@
       register: shell
       changed_when: shell.rc != 0
 
-    - debug: var=shell
+    - debug:
+        msg: "{{shell.stdout_lines}}"
   when: BREW_TAP
 
 - block:

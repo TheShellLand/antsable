@@ -4,12 +4,19 @@
     host: 1.1.1.1
     port: 80
 
+- name: service nftables
+  service:
+    name: nftables
+    state: started
+  become: yes
+
 - name: service openvpn3-session@CloudConnexa.service
   service:
     name: openvpn3-session@CloudConnexa.service
     state: started
+  become: yes
 
-- name: logs
+- name: openvpn3-session@CloudConnexa.service logs
   shell: journalctl -b | grep openvpn3-session@CloudConnexa.service
   register: shell
   changed_when: false

@@ -1,7 +1,18 @@
 ---
-- ping:
-
 - name: 1.1.1.1
   wait_for:
     host: 1.1.1.1
     port: 80
+
+- name: service openvpn3-session@CloudConnexa.service
+  service:
+    name: openvpn3-session@CloudConnexa.service
+    state: started
+
+- name: logs
+  shell: journalctl -b | grep openvpn3-session@CloudConnexa.service
+  register: shell
+  changed_when: false
+
+- debug:
+    var: shell.stdout

@@ -1,0 +1,7 @@
+---
+- ping:
+
+- name: 1.1.1.1
+  wait_for:
+    host: 1.1.1.1
+    port: 80

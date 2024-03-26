@@ -1,0 +1,23 @@
+---
+- name: delete sessions
+  shell: | 
+    for path in $(sudo openvpn3 sessions-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 session-manage --path ${path} --disconnect; done
+  become: yes
+
+- name: delete configs
+  shell: |
+    for path in $(sudo openvpn3 configs-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 config-remove --path ${path} --force; done
+  become: yes
+
+#- name: install connector
+#  shell: |
+#    curl -O https://network-gateway.openvpn.com/network-gate/api/v1/scripts/VWJ1bnR1IDIyLjA0/gateway/ubuntu_22_04.sh
+#    chmod +x ubuntu_22_04.sh
+#    ./ubuntu_22_04.sh
+#  become: yes
+
+#- name: copy /usr/bin/openvpn-connector-setup
+#  copy:
+#    src: usr/bin/openvpn-connector-setup
+#    dest: /usr/bin/openvpn-connector-setup
+#  become: yes

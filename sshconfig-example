@@ -1,6 +1,7 @@
 # sshconfig
 ForwardAgent yes
 ServerAliveInterval 15
+StrictHostKeyChecking accept-new
 
 Host world0
   HostName world0

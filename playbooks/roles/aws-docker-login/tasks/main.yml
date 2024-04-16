@@ -48,3 +48,9 @@
     docker pull {{ REMOTE_REGISTRY }}
   when: REMOTE_REGISTRY
   changed_when: false
+
+- name: docker list
+  shell: |
+    docker image ls {{ REMOTE_REGISTRY }}
+  when: REMOTE_REGISTRY
+  changed_when: false

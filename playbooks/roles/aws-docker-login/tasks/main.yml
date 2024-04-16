@@ -1,5 +1,30 @@
 ---
-- name: login
+#- name: aws configure
+#  shell: |
+#    export AWS_ACCESS_KEY_ID={{ AWS_ACCESS_KEY_ID }}
+#    export AWS_SECRET_ACCESS_KEY={{ AWS_SECRET_ACCESS_KEY }}
+#    export AWS_DEFAULT_REGION={{ REGION }}
+#    #aws configure --region {{ REGION }}
+#  when:
+#    - REGION
+#  changed_when: false
+#  environment:
+#    AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+#    AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+#    AWS_DEFAULT_REGION: "{{ REGION }}"
+
+- name: aws login
+  shell: |
+    aws ecr get-login-password --region {{ REGION }}
+  when:
+    - REGION
+  changed_when: false
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+    AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+    AWS_DEFAULT_REGION: "{{ REGION }}"
+
+- name: docker login
   shell: |
     aws ecr get-login-password --region {{ REGION }} | docker login --username {{ USERNAME }} --password-stdin {{ REMOTE_REGISTRY }}
   when:
@@ -8,8 +33,18 @@
     - REMOTE_REGISTRY
     - PASSWORD_STDIN
   changed_when: false
+  environment:
+    AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+    AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+    AWS_DEFAULT_REGION: "{{ REGION }}"
 
-- name: show docker config
-  shell: cat /home/ubuntu/.docker/config.json
-  when: REMOTE_REGISTRY
+#- name: show docker config
+#  shell: cat /home/ubuntu/.docker/config.json
+#  when: REMOTE_REGISTRY
+#  changed_when: false
+
+- name: docker pull image
+  shell: |
+    docker pull {{ DOCKER_IMAGE }}
+  when: DOCKER_IMAGE
   changed_when: false

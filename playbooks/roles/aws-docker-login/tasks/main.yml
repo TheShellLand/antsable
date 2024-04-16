@@ -45,6 +45,6 @@
 
 - name: docker pull image
   shell: |
-    docker pull {{ DOCKER_IMAGE }}
-  when: DOCKER_IMAGE
+    docker pull {{ REMOTE_REGISTRY }}
+  when: REMOTE_REGISTRY
   changed_when: false

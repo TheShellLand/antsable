@@ -1,0 +1,42 @@
+---
+- name: python3 - Install python3
+  apt: update_cache=yes name=python3 state=latest
+  become: true
+  changed_when: false
+
+- name: python3 - Install python3-distutils
+  apt: update_cache=no name=python3-distutils state=latest
+  become: true
+  changed_when: false
+
+- name: python3 - Install python3-dev
+  apt: update_cache=no name=python3-dev state=latest
+  become: true
+  changed_when: false
+
+- name: python3 - Install curl
+  apt: update_cache=no name=curl state=latest
+  become: true
+  changed_when: false
+
+- name: python3 - install pip
+  shell: |
+    # Install pip or pip3
+    curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
+    python3 "get-pip.py" --break-system-packages
+    python3 -m pip install -U pip --break-system-packages
+  become: true
+  changed_when: false
+
+- name: set python3 as default
+  shell: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+  become: true
+  changed_when: false
+
+#- name: python3 - python3 - set as default python
+#  shell: ln -n /usr/bin/python3 /usr/bin/python
+#  ignore_errors: yes
+
+- name: show python version
+  shell: python3 --version
+  changed_when: false

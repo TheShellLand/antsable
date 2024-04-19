@@ -57,6 +57,7 @@
         - "'Linking' not in shell.stdout"
         - "'installed' not in shell.stderr"
         - '"Already linked" not in shell.stderr'
+      ignore_errors: yes
 
   when: not NO_QUARANTINE
 

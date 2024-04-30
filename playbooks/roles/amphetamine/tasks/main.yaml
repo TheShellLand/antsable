@@ -1,0 +1,9 @@
+---
+# risky
+- set_fact: MAS_PACKAGE=Amphetamine
+
+# optional
+- set_fact: MAS_ID=937984704
+
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+  when: MAS_ID or MAS_PACKAGE

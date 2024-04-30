@@ -7,6 +7,8 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
+      when: shell.stdout_lines
+
   when: BREW_TAP
 
 - block:
@@ -31,6 +33,7 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
+      when: shell.stdout_lines
 
   rescue:
     - name: "{{ BREW }} install {{ package }}"
@@ -42,6 +45,7 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
+      when: shell.stdout_lines
 
     - name: "{{ BREW }} upgrade {{ package }}"
       shell: "{{ BREW }} upgrade {{ package }}"
@@ -69,6 +73,7 @@
 
     - debug:
         msg: "{{shell.stdout_lines}}"
+      when: shell.stdout_lines
 
     - name: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
       shell: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"

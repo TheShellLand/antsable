@@ -1,0 +1,9 @@
+---
+# risky
+- set_fact: MAS_PACKAGE=
+
+# optional
+- set_fact: MAS_ID=
+
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+  when: MAS_ID or MAS_PACKAGE

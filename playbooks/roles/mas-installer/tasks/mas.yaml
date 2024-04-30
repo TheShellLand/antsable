@@ -1,0 +1,41 @@
+---
+- block:
+    - name: "mas search {{ MAS_PACKAGE }}"
+      shell: "mas search {{ MAS_PACKAGE }}"
+      register: shell
+      changed_when: false
+
+    - name: "mas lucky {{ MAS_PACKAGE }}"
+      shell: "mas lucky {{ MAS_PACKAGE }}"
+      register: shell
+      changed_when:
+        - "'installed' not in shell.stderr"
+
+    - name: "mas upgrade {{ MAS_PACKAGE }}"
+      shell: "mas upgrade {{ MAS_PACKAGE }}"
+      register: shell
+      changed_when: shell.stdout
+      when: "'is already installed' in shell.stderr"
+
+  when: MAS_PACKAGE and not MAS_ID
+
+
+- block:
+    - name: "mas search {{ MAS_ID }}"
+      shell: "mas search {{ MAS_ID }}"
+      register: shell
+      changed_when: false
+
+    - name: "mas install {{ MAS_ID }}"
+      shell: "mas install {{ MAS_ID }}"
+      register: shell
+      changed_when:
+        - "'installed' not in shell.stderr"
+
+    - name: "mas upgrade {{ MAS_ID }}"
+      shell: "mas upgrade {{ MAS_ID }}"
+      register: shell
+      changed_when: shell.stdout
+      when: "'is already installed' in shell.stderr"
+
+  when: MAS_ID

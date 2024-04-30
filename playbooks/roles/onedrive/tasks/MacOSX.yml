@@ -1,0 +1,5 @@
+---
+- include_role:
+    name: brew-installer
+    apply:
+      become_method: sudo

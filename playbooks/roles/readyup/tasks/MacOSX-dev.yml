@@ -4,7 +4,7 @@
 - include_role: name=tmux
 - include_role: name=wget
 - include_role: name=gpg
-- include_role: name=mas
+- include_role: name=amphetamine
 - include_role: name=rclone
 - include_role: name=veracrypt
 - include_role: name=pycharm

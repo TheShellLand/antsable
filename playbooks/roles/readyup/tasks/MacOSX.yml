@@ -21,14 +21,16 @@
 #- include_role: name=vmware-fusion
 
 # tools
-- include_role: name=caffeine
+#- include_role: name=caffeine
+- include_role: name=amphetamine
 - include_role: name=wget
 - include_role: name=rclone
 #- include_role: name=amazon-workspace
 - include_role: name=macfuse
 - include_role: name=nmap
 - include_role: name=wireshark
-- include_role: name=keepassx
+#- include_role: name=keepassx
+- include_role: name=keepassxc
 #- include_role: name=sshfs
 #- include_role: name=teamviewer
 #- include_role: name=fing
@@ -45,8 +47,8 @@
 
 # gaming
 - include_role: name=steam
-- include_role: name=streamlabs
-- include_role: name=geforcenow
+#- include_role: name=streamlabs
+#- include_role: name=geforcenow
 - include_role: name=crossover
 - include_role: name=dolphin
 - include_role: name=molten-vk

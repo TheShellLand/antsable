@@ -9,7 +9,9 @@
 - name: "python3 -m pip install -U {{ pip }}"
   shell: "python3 -m pip install -U {{ pip }}"
   register: shell
-  changed_when:
+  changed_when: false
+  failed_when:
     - "'installed' not in shell.stderr"
+    - "'installed' not in shell.stdout"
     - '"Requirement already satisfied" not in shell.stdout'
     - '"Requirement already up-to-date" not in shell.stdout'

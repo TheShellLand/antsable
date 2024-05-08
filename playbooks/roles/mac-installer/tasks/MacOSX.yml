@@ -15,6 +15,7 @@
           get_url:
             url: "{{ url }}"
             dest: "./{{ mac_deb }}"
+          changed_when: false
 
         - name: "installing {{ mac_deb }}"
           shell: |

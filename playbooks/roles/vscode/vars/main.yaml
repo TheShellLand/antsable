@@ -1,2 +1,3 @@
 ---
 # vars in here will overwrite master playbook
+BREW_INSTALL: true

@@ -29,4 +29,4 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent
 # Run openvpn-connector-setup to import ovpn profile and connect to VPN.
 # You will be asked to provide setup token, You can get it from the
 # Linux Connector configuration page in CloudConnexa Portal.
-#sudo openvpn-connector-setup
+sudo openvpn-connector-setup

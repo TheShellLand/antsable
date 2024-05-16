@@ -90,3 +90,7 @@
     job: '/bin/bash /root/openvpn-start-nftables.sh > reboot_startup.log 2>&1'
   become: yes
   changed_when: false
+
+- reboot:
+  become: yes
+  changed_when: false

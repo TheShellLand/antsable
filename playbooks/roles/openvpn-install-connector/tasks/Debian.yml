@@ -1,6 +1,6 @@
 ---
 - name: delete sessions
-  shell: | 
+  shell: |
     set -x
     for path in $(sudo openvpn3 sessions-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 session-manage --path ${path} --disconnect; done
   become: yes
@@ -13,7 +13,8 @@
     for path in $(sudo openvpn3 configs-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 config-remove --path ${path} --force; done
   become: yes
   register: shell
-  changed_when: shell.stdout
+  changed_when:
+    - "'Configuration removed' not in shell.stdout"
 
 #- name: install connector online
 #  shell: |
@@ -75,3 +76,18 @@
   become: yes
   register: shell
   changed_when: shell.stderr
+
+- name: copy openvpn-start-nftables.sh
+  copy:
+    src: openvpn-start-nftables.sh
+    dest: /root/openvpn-start-nftables.sh
+  become: yes
+  changed_when: false
+
+- name: "@reboot /bin/bash /root/openvpn-start-nftables.sh > reboot_startup.log 2>&1"
+  cron:
+    name: make sure nftables runs at startup
+    special_time: reboot
+    job: '/bin/bash /root/openvpn-start-nftables.sh > reboot_startup.log 2>&1'
+  become: yes
+  changed_when: false

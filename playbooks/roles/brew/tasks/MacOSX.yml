@@ -32,7 +32,9 @@
 
     - name: set up PATH
       shell: | 
-        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/{{ lookup('env', 'USER') }}/.zprofile
+        if ! grep /opt/homebrew/bin/brew .zprofile; then 
+          (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/{{ lookup('env', 'USER') }}/.zprofile
+        fi
         eval "$(/opt/homebrew/bin/brew shellenv)"
       register: shell
       changed_when: shell.stderr

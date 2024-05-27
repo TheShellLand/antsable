@@ -1,5 +1,6 @@
 ---
 - include_role: name=brew
+- include_role: name=git
 - include_role: name=keepassxc
 - include_role: name=tmux
 - include_role: name=wget
@@ -9,6 +10,6 @@
 - include_role: name=veracrypt
 - include_role: name=pycharm
 - include_role: name=nmap
-- include_role: name=vagrant
+- include_role: name=docker
 - include_role: name=chrome
 - include_role: name=wireshark

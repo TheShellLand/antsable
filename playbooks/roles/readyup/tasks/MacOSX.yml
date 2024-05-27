@@ -5,7 +5,8 @@
 
 # coding
 - include_role: name=brew
-#- include_role: name=pycharm
+- include_role: name=git
+- include_role: name=pycharm
 - include_role: name=tmux
 - include_role: name=xcode
 
@@ -13,7 +14,7 @@
 - include_role: name=gcc
 
 # virtualization
-#- include_role: name=docker
+- include_role: name=docker
 - include_role: name=parallels
 - include_role: name=utm
 #- include_role: name=vagrant

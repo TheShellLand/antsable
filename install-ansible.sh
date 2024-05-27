@@ -33,7 +33,7 @@ if ! python3 -m pip install -U ansible; then
   python3 -m pip install -U ansible
 fi
 
-if ! python3 -m anisble doc -h >/dev/null; then
+if ! python3 -m ansible doc -h >/dev/null; then
   echo "ansible still not found. please raise an issue"
   exit 1
 fi

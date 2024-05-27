@@ -7,3 +7,4 @@
     CONSOLE: false
     INSTALL_GNOME: false
     WORK: false
+    LIGHT: false

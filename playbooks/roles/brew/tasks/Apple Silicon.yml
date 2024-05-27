@@ -2,17 +2,11 @@
 - name: "{{ansible_facts.processor}} {{ansible_facts.machine}}"
   set_fact:
     ARM: arch -arm64
-    X86: arch -x86_64
 
 - name: arm64
   set_fact:
     ARCH: "{{ARM}}"
   when: ansible_facts.machine == "arm64"
-
-- name: x86_64
-  set_fact:
-    ARCH: "{{X86}}"
-  when: ansible_facts.machine == "x86_64"
 
 - name: "{{ARCH}} brew"
   set_fact:

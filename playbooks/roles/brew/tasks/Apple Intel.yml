@@ -1,0 +1,14 @@
+---
+- name: "{{ansible_facts.processor}} {{ansible_facts.machine}}"
+  set_fact:
+    X86: arch -x86_64
+
+- name: x86_64
+  set_fact:
+    ARCH: "{{X86}}"
+  when: ansible_facts.machine == "x86_64"
+
+- name: "brew"
+  set_fact:
+    ARCH: ""
+    BREW: "brew"

@@ -1,10 +1,11 @@
 ---
 - name: Apple Silicon
   include_tasks: "Apple Silicon.yml"
-  when: |
-    ansible_facts.processor == "Apple M1" or
-    ansible_facts.processor == "Apple M2" or
-    ansible_facts.processor == "Apple M3"
+  when: ansible_facts.machine == "arm64"
+
+- name: Apple Intel
+  include_tasks: "Apple Intel.yml"
+  when: ansible_facts.machine == "x86_64"
 
 - name: "{{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"

@@ -13,6 +13,10 @@ export DEBCONF_NONINTERACTIVE_SEEN=true
 if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi
 
+if python3 -m ansible doc -h; then
+  exit 0
+fi
+
 # fix centos7
 if type localedef; then
   if localedef -c -f UTF-8 -i en_US en_US.UTF-8; then
@@ -33,7 +37,7 @@ if ! python3 -m pip install -U ansible; then
   python3 -m pip install -U ansible
 fi
 
-if ! python3 -m ansible doc -h >/dev/null; then
+if ! python3 -m ansible doc -h; then
   echo "ansible still not found. please raise an issue"
   exit 1
 fi

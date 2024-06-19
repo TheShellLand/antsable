@@ -6,8 +6,8 @@
 - set_fact: pip="{{ pip }} -i {{ pip_index }}"
   when: pip_index
 
-- name: "python3 -m pip install -U {{ pip }}"
-  shell: "python3 -m pip install -U {{ pip }}"
+- name: "python3 -m pip install -U {{ pip }} --break-system-packages"
+  shell: "python3 -m pip install -U {{ pip }} --break-system-packages"
   register: shell
   changed_when: false
   failed_when:

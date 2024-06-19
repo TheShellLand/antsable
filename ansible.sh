@@ -12,6 +12,8 @@ if [ -f env.sh ]; then
   done
 fi
 
+if [ -f 'ansible/bin/activate' ]; then source ansible/bin/activate; fi
+
 # Run playbook
 if python3 -m ansible doc -h >/dev/null; then
 

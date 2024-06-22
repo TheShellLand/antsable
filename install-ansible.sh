@@ -13,7 +13,7 @@ export DEBCONF_NONINTERACTIVE_SEEN=true
 if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi
 
-if python3 -m ansible doc -h; then
+if python3 -m ansible doc -h >/dev/null 2>&1; then
   exit 0
 fi
 
@@ -37,7 +37,7 @@ if ! python3 -m pip install -U ansible; then
   python3 -m pip install -U ansible
 fi
 
-if ! python3 -m ansible doc -h; then
+if ! python3 -m ansible doc -h >/dev/null 2>&1; then
   echo "ansible still not found. please raise an issue"
   exit 1
 fi

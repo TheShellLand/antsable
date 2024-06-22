@@ -9,6 +9,7 @@
 - include_role: name=rclone
 - include_role: name=veracrypt
 - include_role: name=pycharm
+- include_role: name=vscode
 - include_role: name=nmap
 - include_role: name=docker
 - include_role: name=chrome

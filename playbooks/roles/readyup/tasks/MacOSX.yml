@@ -6,8 +6,9 @@
 # coding
 - include_role: name=brew
 - include_role: name=git
-- include_role: name=pycharm
 - include_role: name=tmux
+- include_role: name=pycharm
+- include_role: name=vscode
 - include_role: name=xcode
 
 # source code

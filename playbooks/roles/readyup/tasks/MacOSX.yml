@@ -36,6 +36,7 @@
 #- include_role: name=sshfs
 #- include_role: name=teamviewer
 #- include_role: name=fing
+- include_role: name=openvpn
 
 # editing
 - include_role: name=darktable

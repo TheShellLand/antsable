@@ -53,6 +53,7 @@
 - include_role: name=streamlabs
 #- include_role: name=geforcenow
 - include_role: name=crossover
+- include_role: name=whisky
 #- include_role: name=dolphin
 #- include_role: name=molten-vk
 #- include_role: name=wine

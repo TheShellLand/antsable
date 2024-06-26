@@ -17,7 +17,7 @@
 # virtualization
 - include_role: name=docker
 #- include_role: name=parallels
-- include_role: name=utm
+#- include_role: name=utm
 #- include_role: name=vagrant
 #- include_role: name=virtualbox
 #- include_role: name=vmware-fusion
@@ -50,9 +50,9 @@
 
 # gaming
 - include_role: name=steam
-#- include_role: name=streamlabs
+- include_role: name=streamlabs
 #- include_role: name=geforcenow
-#- include_role: name=crossover
+- include_role: name=crossover
 #- include_role: name=dolphin
 #- include_role: name=molten-vk
 #- include_role: name=wine

@@ -50,7 +50,7 @@
 
 # gaming
 - include_role: name=steam
-- include_role: name=streamlabs
+#- include_role: name=streamlabs
 #- include_role: name=geforcenow
 - include_role: name=crossover
 - include_role: name=whisky

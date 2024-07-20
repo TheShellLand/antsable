@@ -1,0 +1,32 @@
+---
+- include_tasks: "{{ansible_facts.os_family}}.yml"
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/TheShellLand/rust-docker.git'
+    dest: rust-docker
+    force: true
+  changed_when: false
+
+- name: build rust
+  shell: |
+    bash rust-docker/build.sh
+  changed_when: false
+
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/TheShellLand/veilid-node-docker.git'
+    dest: veilid-node-docker
+    force: true
+  changed_when: false
+
+- name: build veilid
+  shell: |
+    bash veilid-node-docker/build.sh
+  changed_when: false
+
+- name: run server
+  shell: |
+    bash veilid-node-docker/veilid-server -f
+    docker ps
+  changed_when: false

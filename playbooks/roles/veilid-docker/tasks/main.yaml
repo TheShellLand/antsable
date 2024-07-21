@@ -2,7 +2,7 @@
 - include_tasks: "{{ansible_facts.os_family}}.yml"
 
 
-- name: Git checkout
+- name: Git checkout https://github.com/TheShellLand/veilid-node-docker.git
   ansible.builtin.git:
     repo: 'https://github.com/TheShellLand/veilid-node-docker.git'
     dest: veilid-node-docker
@@ -11,7 +11,7 @@
 
 - name: when not x86_64
   block:
-    - name: Git checkout
+    - name: Git checkout https://github.com/TheShellLand/rust-docker.git
       ansible.builtin.git:
         repo: 'https://github.com/TheShellLand/rust-docker.git'
         dest: rust-docker

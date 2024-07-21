@@ -19,13 +19,13 @@
   shell: |
     bash rust-docker/build.sh
   changed_when: false
-  when: ansible_facts.architecture == x86_64
+  when: ansible_facts.architecture == "x86_64"
 
 - name: build veilid
   shell: |
     bash veilid-node-docker/build.sh
   changed_when: false
-  when: ansible_facts.architecture == x86_64
+  when: ansible_facts.architecture == "x86_64"
 
 - name: run server
   shell: |

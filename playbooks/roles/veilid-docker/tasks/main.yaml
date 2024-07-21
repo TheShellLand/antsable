@@ -8,11 +8,6 @@
     force: true
   changed_when: false
 
-- name: build rust
-  shell: |
-    bash rust-docker/build.sh
-  changed_when: false
-
 - name: Git checkout
   ansible.builtin.git:
     repo: 'https://github.com/TheShellLand/veilid-node-docker.git'
@@ -20,13 +15,35 @@
     force: true
   changed_when: false
 
+- name: build rust
+  shell: |
+    bash rust-docker/build.sh
+  changed_when: false
+  when: ansible_facts.architecture == x86_64
+
 - name: build veilid
   shell: |
     bash veilid-node-docker/build.sh
   changed_when: false
+  when: ansible_facts.architecture == x86_64
+
+- name: run server
+  shell: |
+    bash veilid-node-docker/veilid-server -f --password {VEILID_PASSWORD} --set-node-id {VEILID_NODE_ID} --network-key {VEILID_NETWORK_KEY}
+    docker ps
+  changed_when: false
+  when: VEILID_PASSWORD and VEILID_NODE_ID and VEILID_NETWORK_KEY
+
+- name: run server - VEILID_NETWORK_KEY
+  shell: |
+    bash veilid-node-docker/veilid-server -f --network-key {{VEILID_NETWORK_KEY}}
+    docker ps
+  changed_when: false
+  when: VEILID_NETWORK_KEY
 
 - name: run server
   shell: |
     bash veilid-node-docker/veilid-server -f
     docker ps
   changed_when: false
+  when: not VEILID_PASSWORD and not VEILID_NODE_ID and not VEILID_NETWORK_KEY

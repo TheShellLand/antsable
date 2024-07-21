@@ -2,3 +2,7 @@
 - hosts: all
   roles:
     - veilid-docker
+  vars:
+    VEILID_PASSWORD:
+    VEILID_NODE_ID:
+    VEILID_NETWORK_KEY:

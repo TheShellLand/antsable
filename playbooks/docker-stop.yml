@@ -1,7 +1,6 @@
 ---
-- hosts: localhost
-  connection: local
-  tasks:
+- hosts: all
 
+  tasks:
   - name: Reset Rancher and clean all docker containers
     shell: docker stop $(docker ps -aq) 

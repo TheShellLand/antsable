@@ -1,0 +1,4 @@
+---
+- shell: docker ps
+  changed_when: false
+  failed_when: false

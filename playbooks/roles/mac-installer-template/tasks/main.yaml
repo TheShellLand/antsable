@@ -1,5 +1,0 @@
----
-- include_tasks: "{{ansible_facts.os_family}}.yml"
-  when:
-    - not BREW_INSTALL
-    - ansible_facts.os_family == "Darwin"

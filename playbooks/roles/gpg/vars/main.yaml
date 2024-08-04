@@ -1,6 +1,6 @@
 ---
 url: https://releases.gpgtools.org/GPG_Suite-2020.2.dmg
-mac_deb: gpg.dmg
+mac_dmg: gpg.dmg
 mac_pkg: Install.pkg
 mac_zip:
 mac_folder: GPG Suite

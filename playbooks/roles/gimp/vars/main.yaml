@@ -1,6 +1,6 @@
 ---
 url: https://ftp.snt.utwente.nl/pub/software/gimp/gimp/v2.10/osx/gimp-2.10.22-x86_64-1.dmg
-mac_deb: gimp.dmg
+mac_dmg: gimp.dmg
 mac_pkg:
 mac_zip:
 mac_folder: GIMP 2.10 Install

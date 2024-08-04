@@ -2,7 +2,7 @@
 BREW_INSTALL: false
 
 url: https://slobs-cdn.streamlabs.com/Streamlabs+Desktop-1.16.7-arm64.dmg
-mac_deb: streamlabs.dmg
+mac_dmg: streamlabs.dmg
 mac_pkg:
 mac_zip:
 mac_folder: Streamlabs Desktop 1.16.7-arm64

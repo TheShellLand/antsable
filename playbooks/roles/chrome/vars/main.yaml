@@ -1,6 +1,6 @@
 ---
 url: https://dl.google.com/chrome/mac/universal/stable/CHFA/googlechrome.dmg
-mac_deb: chrome.dmg
+mac_dmg: chrome.dmg
 mac_folder: Google Chrome
 mac_app: Google Chrome.app
 

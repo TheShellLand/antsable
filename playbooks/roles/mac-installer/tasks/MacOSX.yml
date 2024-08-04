@@ -3,7 +3,7 @@
   shell: sudo id
   changed_when: false
 
-- name: deb
+- name: dmg
   block:
     - block:
         - name: "check {{ mac_app }}"
@@ -11,15 +11,15 @@
           changed_when: false
 
       rescue:
-        - name: "deb {{ url }}"
+        - name: "dmg {{ url }}"
           get_url:
             url: "{{ url }}"
-            dest: "./{{ mac_deb }}"
+            dest: "./{{ mac_dmg }}"
           changed_when: false
 
-        - name: "installing {{ mac_deb }}"
+        - name: "installing {{ mac_dmg }}"
           shell: |
-            url={{ mac_deb }}
+            url={{ mac_dmg }}
             
             folder="{{ mac_folder }}"
             app="{{ mac_app }}"
@@ -31,7 +31,7 @@
           register: shell
           become: yes
           changed_when: "'OK' not in shell.stdout"
-  when: mac_deb
+  when: mac_dmg
 
 - name: pkg
   block:

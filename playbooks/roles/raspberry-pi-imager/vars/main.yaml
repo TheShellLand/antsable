@@ -1,0 +1,10 @@
+---
+# vars in here will overwrite master playbook
+url: https://downloads.raspberrypi.org/imager/imager_latest.dmg
+mac_dmg: imager_1.8.5.dmg
+mac_pkg:
+mac_zip:
+mac_folder: Raspberry Pi Imager
+mac_app: Raspberry Pi Imager.app
+
+BREW_INSTALL: false

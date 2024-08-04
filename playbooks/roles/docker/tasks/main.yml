@@ -9,3 +9,10 @@
 - include_tasks: "{{ansible_facts.os_family}}.yml"
   when:
     - shell.rc != 0 or FORCE
+
+- name: check
+  shell: docker ps
+  register: shell
+  changed_when: false
+  failed_when:
+    - shell.rc != 0

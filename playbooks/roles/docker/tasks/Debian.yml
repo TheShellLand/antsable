@@ -1,92 +1,85 @@
 ---
 
 - block:
-    - name: apt-transport-https
-      apt: update_cache=yes name=apt-transport-https state=latest
-      become: yes
-      changed_when: false
-      environment:
-        DEBIAN_FRONTEND: noninteractive
+  - name: apt-transport-https
+    apt: update_cache=yes name=apt-transport-https state=latest
+    become: yes
+    changed_when: false
+    environment:
+      DEBIAN_FRONTEND: noninteractive
 
-    - name: ca-certificates
-      apt: update_cache=no name=ca-certificates state=latest
-      become: yes
-      changed_when: false
+  - name: ca-certificates
+    apt: update_cache=no name=ca-certificates state=latest
+    become: yes
+    changed_when: false
 
-    - name: curl
-      apt: update_cache=no name=curl state=latest
-      become: yes
-      changed_when: false
+  - name: gnupg-agent
+    apt: update_cache=no name=gnupg-agent state=latest
+    ignore_errors: yes
+    become: yes
+    changed_when: false
 
-    - name: gnupg-agent
-      apt: update_cache=no name=gnupg-agent state=latest
-      ignore_errors: yes
-      become: yes
-      changed_when: false
+  - name: software-properties-common
+    apt: update_cache=no name=software-properties-common state=latest
+    become: yes
+    changed_when: false
 
-    - name: software-properties-common
-      apt: update_cache=no name=software-properties-common state=latest
-      become: yes
-      changed_when: false
+  - name: setup apt
+    shell: |
+      apt-get update
+      apt-get install ca-certificates curl
+      install -m 0755 -d /etc/apt/keyrings
+      curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+      chmod a+r /etc/apt/keyrings/docker.asc
+      # Add the repository to Apt sources:
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      tee /etc/apt/sources.list.d/docker.list > /dev/null
+      apt-get update
+    become: yes
+    changed_when: false
 
-    - name: Add docker repository key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-      become: yes
-      changed_when: false
+  - name: install docker
+    apt: update_cache=yes name="{{ item }}" state=latest
+    become: yes
+    changed_when: false
+    loop:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
 
-    - name: Add docker repo
-      shell: apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-      retries: 99
-      become: yes
-      changed_when: false
-
-    - name: Install docker-ce
-      #apt: update_cache=yes name=docker-ce state=absent
-      apt: update_cache=yes name=docker-ce state=latest
-      become: yes
-      changed_when: false
-
-    - name: Install docker-ce-cli
-      apt: update_cache=no name=docker-ce-cli state=latest
-      become: yes
-      changed_when: false
-
-    - name: Install containerd.io
-      apt: update_cache=no name=containerd.io state=latest
-      become: yes
-      changed_when: false
-
-    - name: allow user to run docker
-      shell: usermod -a -G docker {{ DOCKER_USER }}
-      ignore_errors: yes
-      become: yes
-      changed_when: false
+  - name: allow user to run docker
+    shell: usermod -a -G docker {{ DOCKER_USER }}
+    ignore_errors: yes
+    become: yes
+    changed_when: false
 
   rescue:
 
+    - debug:
+
     # fix for raspberry pi
 
-    - name: download
-      shell: |
-        curl -fsSL https://get.docker.com -o get-docker.sh
-      changed_when: false
-
-    - name: install
-      shell: |
-        sh get-docker.sh --dry-run
-        sh get-docker.sh
-      become: yes
-      changed_when: false
-
-    - name: allow user
-      shell: |
-        apt-get install -y uidmap
-      become: yes
-      changed_when: false
-
-    - name: allow user
-      shell: |
-        bash dockerd-rootless-setuptool.sh install
-      changed_when: false
+#    - name: download
+#      shell: |
+#        curl -fsSL https://get.docker.com -o get-docker.sh
+#      changed_when: false
+#
+#    - name: install
+#      shell: |
+#        sh get-docker.sh --dry-run
+#        sh get-docker.sh
+#      become: yes
+#      changed_when: false
+#
+#    - name: allow user
+#      shell: |
+#        apt-get install -y uidmap
+#      become: yes
+#      changed_when: false
+#
+#    - name: allow user
+#      shell: |
+#        bash dockerd-rootless-setuptool.sh install
+#      changed_when: false

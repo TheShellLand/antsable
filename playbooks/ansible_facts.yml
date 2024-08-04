@@ -6,6 +6,14 @@
       debug:
         var: ansible_facts
 
+    - name: ansible_env
+      debug:
+        msg: "{{ ansible_env }}"
+
     - name: ansible_facts.machine
       debug:
         var: ansible_facts.machine
+
+    - name: ansible_fqdn "{{ ansible_fqdn }}"
+      debug:
+        msg: "{{ ansible_fqdn }}"

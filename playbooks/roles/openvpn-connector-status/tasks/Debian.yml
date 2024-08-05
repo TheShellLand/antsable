@@ -1,0 +1,7 @@
+---
+- name: status openvpn3-session@CloudConnexa.service
+  service:
+    name: openvpn3-session@CloudConnexa.service
+    enabled: yes
+  become: yes
+  changed_when: false

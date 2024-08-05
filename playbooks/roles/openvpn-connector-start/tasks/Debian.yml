@@ -1,0 +1,8 @@
+---
+- name: start openvpn3-session@CloudConnexa.service
+  service:
+    name: openvpn3-session@CloudConnexa.service
+    enabled: yes
+    state: started
+  become: yes
+  changed_when: false

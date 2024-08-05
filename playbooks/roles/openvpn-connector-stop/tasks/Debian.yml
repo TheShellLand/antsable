@@ -2,7 +2,7 @@
 - name: stop openvpn3-session@CloudConnexa.service
   service:
     name: openvpn3-session@CloudConnexa.service
-    enabled: yes
+    enabled: no
     state: stopped
   become: yes
   changed_when: false

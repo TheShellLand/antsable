@@ -1,0 +1,28 @@
+---
+- name: clone exo
+  git:
+    repo: https://github.com/TheShellLand/exo.git
+    dest: "exo"
+  changed_when: false
+
+- name: check exists
+  stat:
+    path: /home/user/exo/bash/ssh-reverse-proxy.sh
+  register: file
+
+- fail:
+  when: not file.stat.exists
+
+- name: enable reverse ssh proxy
+  ansible.builtin.cron:
+    name: "enable reverse ssh proxy"
+    special_time: reboot
+    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy.sh > ssh-reverse-proxy.log 2>&1"
+  changed_when: false
+
+- name: enable reverse ssh proxy hourly
+  ansible.builtin.cron:
+    name: "enable reverse ssh proxy hourly"
+    special_time: hourly
+    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy.sh > ssh-reverse-proxy.log 2>&1"
+  changed_when: false

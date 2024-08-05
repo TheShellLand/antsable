@@ -7,3 +7,4 @@
     runas: root
     commands: ALL
   become: yes
+  changed_when: false

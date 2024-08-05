@@ -7,24 +7,24 @@
 
 - name: check exists
   stat:
-    path: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh"
+    path: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh"
   register: file
 
 - name: file missing
   fail:
-    msg: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh"
+    msg: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh"
   when: not file.stat.exists
 
 - name: enable reverse ssh proxy
   ansible.builtin.cron:
     name: "enable reverse ssh proxy"
     special_time: reboot
-    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh > ssh-reverse-proxy.log 2>&1"
+    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false
 
 - name: enable reverse ssh proxy check
   ansible.builtin.cron:
     name: "enable reverse ssh proxy check"
-    minute: "*/5"
-    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh > ssh-reverse-proxy.log 2>&1"
+    minute: "*/1"
+    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false

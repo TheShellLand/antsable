@@ -1,0 +1,24 @@
+---
+- name: clone exo
+  git:
+    repo: https://github.com/TheShellLand/exo.git
+    dest: "/root/exo"
+  become: yes
+  changed_when: false
+
+- name: check exists
+  stat:
+    path: /root/exo/bash/openvpn-start-nftables.sh
+  register: file
+  become: yes
+
+- fail:
+  when: not file.stat.exists
+
+- name: enable firewall for openvpn
+  ansible.builtin.cron:
+    name: "enable firewall for openvpn"
+    special_time: reboot
+    job: "/bin/bash /root/exo/bash/openvpn-start-nftables.sh > openvpn-start-nftables.log 2>&1"
+  become: yes
+  changed_when: false

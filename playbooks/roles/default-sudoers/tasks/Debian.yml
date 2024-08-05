@@ -1,0 +1,9 @@
+---
+- name: Allow user to run any commands
+  community.general.sudoers:
+    name: user
+    state: present
+    user: user
+    runas: root
+    commands: ALL
+  become: yes

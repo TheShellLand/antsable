@@ -64,7 +64,7 @@
 
 - name: run server
   shell: |
-    bash veilid-node-docker/veilid-server {args}
+    bash veilid-node-docker/veilid-server {{ args }}
     docker ps
   changed_when: false
 

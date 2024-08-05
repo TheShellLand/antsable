@@ -22,9 +22,9 @@
     job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false
 
-- name: enable reverse ssh proxy hourly
+- name: enable reverse ssh proxy check
   ansible.builtin.cron:
-    name: "enable reverse ssh proxy hourly"
-    special_time: hourly
+    name: "enable reverse ssh proxy check"
+    minute: "*/5"
     job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_fqdn }}.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false

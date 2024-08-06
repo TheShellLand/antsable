@@ -5,7 +5,7 @@
     for path in $(sudo openvpn3 sessions-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 session-manage --path ${path} --disconnect; done
   become: yes
   register: shell
-  changed_when: shell.stdout
+  changed_when: false
 
 - name: delete configs
   shell: |
@@ -13,7 +13,7 @@
     for path in $(sudo openvpn3 configs-list | grep -o '\S*/net/openvpn/\S*'); do sudo openvpn3 config-remove --path ${path} --force; done
   become: yes
   register: shell
-  changed_when: shell.stdout
+  changed_when: false
 
 #- name: install connector online
 #  shell: |
@@ -94,3 +94,5 @@
 - reboot:
   become: yes
   changed_when: false
+
+- wait_for_connection:

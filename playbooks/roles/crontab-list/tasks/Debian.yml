@@ -1,0 +1,9 @@
+---
+- name: list crontab
+  shell: crontab -l
+  changed_when: false
+
+- name: list crontab root
+  shell: crontab -l
+  become: yes
+  changed_when: false

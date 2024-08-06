@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: veilid
   roles:
     - veilid-docker
   vars:

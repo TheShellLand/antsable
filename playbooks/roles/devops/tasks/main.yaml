@@ -8,10 +8,10 @@
 - import_tasks: tasks/nslookup.yml
 - import_tasks: tasks/netcat.yml
 - import_tasks: tasks/rsync.yml
-- import_tasks: tasks/s3fs.yml
+#- import_tasks: tasks/s3fs.yml
 - import_tasks: tasks/wget.yml
 - import_tasks: tasks/curl.yml
 - import_tasks: tasks/iproute2.yml
-- import_tasks: tasks/kernelmod.yml
+#- import_tasks: tasks/kernelmod.yml
 #- import_tasks: tasks/python3.yml
 #- import_tasks: tasks/radare.yml

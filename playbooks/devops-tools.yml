@@ -1,6 +1,5 @@
 ---
 - hosts: all
+  become: yes
   roles:
     - devops-tools
-  vars:
-    DEBUG: false

@@ -6,3 +6,16 @@
     state: started
   become: yes
   changed_when: false
+  register: status
+
+- name: enabled
+  debug:
+    var: status.enabled
+
+- name: state
+  debug:
+    var: status.state
+
+- name: ActiveState
+  debug:
+    var: status.status.ActiveState

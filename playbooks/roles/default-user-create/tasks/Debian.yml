@@ -3,7 +3,7 @@
   ansible.builtin.user:
     name: user
     shell: /bin/bash
-    groups: sudo,docker
+    groups: sudo
     append: yes
     generate_ssh_key: yes
     ssh_key_bits: 4096

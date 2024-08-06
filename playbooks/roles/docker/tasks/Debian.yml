@@ -58,6 +58,7 @@
   rescue:
 
     - debug:
+        msg: WIP
 
     # fix for raspberry pi
 

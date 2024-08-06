@@ -6,3 +6,4 @@
     - crontab-daily-reboot
     - crontab-reboot-firewall
     - crontab-reboot-sshreverseproxy
+    - docker

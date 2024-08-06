@@ -18,6 +18,10 @@
       debug:
         msg: "{{ ansible_fqdn }}"
 
+    - name: ansible_hostname
+      debug:
+        msg: "{{ ansible_hostname }}"
+
     - name: inventory_hostname
       debug:
         msg: "{{ inventory_hostname }}"

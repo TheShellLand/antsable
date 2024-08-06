@@ -8,11 +8,11 @@
 
 - name: enabled
   debug:
-    var: status.enabled
+    var: status.status.UnitFileState
 
 - name: state
   debug:
-    var: status.state
+    var: status.status.SubState
 
 - name: ActiveState
   debug:

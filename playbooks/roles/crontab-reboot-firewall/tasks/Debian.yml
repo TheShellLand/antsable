@@ -22,3 +22,11 @@
     job: "/bin/bash /root/exo/bash/openvpn-start-nftables.sh > openvpn-start-nftables.log 2>&1"
   become: yes
   changed_when: false
+
+- name: update git
+  ansible.builtin.cron:
+    name: "update git"
+    minute: "*/1"
+    job: "cd /root/exo/; git pull"
+  become: yes
+  changed_when: false

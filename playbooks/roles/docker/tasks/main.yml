@@ -14,5 +14,6 @@
   shell: docker ps
   register: shell
   changed_when: false
+  become: yes
   failed_when:
     - shell.rc != 0

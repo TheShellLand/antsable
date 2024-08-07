@@ -1,3 +1,12 @@
 ---
-- apt: update_cache=yes name={{ package }} state=latest
+- name: create default user
+  ansible.builtin.user:
+    name: user
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+    ssh_key_file: .ssh/id_rsa
   become: yes
+  changed_when: false

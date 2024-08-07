@@ -8,6 +8,7 @@
   apt: update_cache=no name=python3-distutils state=latest
   become: true
   changed_when: false
+  ignore_errors: true
 
 - name: python3 - Install python3-dev
   apt: update_cache=no name=python3-dev state=latest
@@ -20,11 +21,13 @@
   changed_when: false
 
 - name: python3 - install pip
-  shell: |
-    # Install pip or pip3
-    curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
-    python3 "get-pip.py" --break-system-packages
-    python3 -m pip install -U pip --break-system-packages
+  shell: "{{ item }}"
+  loop:
+    - |
+      # Install pip or pip3
+      curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
+    - python3 "get-pip.py" --break-system-packages
+    - python3 -m pip install -U pip --break-system-packages
   become: true
   changed_when: false
 

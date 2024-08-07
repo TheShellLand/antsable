@@ -9,11 +9,11 @@
 
 - name: desktop
   include_tasks: "Debian-desktop.yml"
-  when: INSTALL_TOOLS and ansible_facts['virtualiztion_role'] == "host"
+  when: ansible_facts['virtualiztion_role'] == "host"
 
 - name: LITE
   include_tasks: "Debian-lite.yml"
-  when: INSTALL_TOOLS and ansible_facts['virtualization_role'] == "guest"
+  when: ansible_facts['virtualization_role'] == "guest"
 
 - name: Ubuntu
   include_tasks: "Ubuntu.yml"

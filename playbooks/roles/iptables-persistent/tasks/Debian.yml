@@ -5,3 +5,4 @@
     name: iptables-persistent
     state: latest
   become: yes
+  changed_when: false

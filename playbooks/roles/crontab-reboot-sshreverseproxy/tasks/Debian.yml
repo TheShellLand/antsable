@@ -7,26 +7,26 @@
 
 - name: check exists
   stat:
-    path: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh"
+    path: "/home/user/exo/bash/ssh-reverse-proxy.sh"
   register: file
 
 - name: file missing
   fail:
-    msg: "/home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh"
+    msg: "/home/user/exo/bash/ssh-reverse-proxy.sh"
   when: not file.stat.exists
 
 - name: enable reverse ssh proxy
   ansible.builtin.cron:
     name: "enable reverse ssh proxy"
     special_time: reboot
-    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh > ssh-reverse-proxy.log 2>&1"
+    job: "REVERSE_PROXY_PORT={{ REVERSE_PROXY_PORT }} /bin/bash /home/user/exo/bash/ssh-reverse-proxy.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false
 
 - name: enable reverse ssh proxy check
   ansible.builtin.cron:
     name: "enable reverse ssh proxy check"
     minute: "*/1"
-    job: "/bin/bash /home/user/exo/bash/ssh-reverse-proxy-{{ ansible_hostname }}.sh > ssh-reverse-proxy.log 2>&1"
+    job: "REVERSE_PROXY_PORT={{ REVERSE_PROXY_PORT }} /bin/bash /home/user/exo/bash/ssh-reverse-proxy.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false
 
 - name: update git

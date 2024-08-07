@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - default-sudoers
+    - ssh-copy-id
+    - crontab-daily-reboot
+    - crontab-reboot-firewall
+    - docker

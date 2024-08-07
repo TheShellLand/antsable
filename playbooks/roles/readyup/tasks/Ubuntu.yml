@@ -1,0 +1,7 @@
+---
+- name: desktop
+  include_tasks: "Ubuntu-desktop.yml"
+
+- name: HiDPI
+  import_tasks: tasks/hidpi.yml
+  when: HIDPI

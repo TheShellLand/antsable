@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: server
   roles:
     - default-sudoers
     - ssh-copy-id

@@ -1,9 +1,9 @@
 ---
-- hosts: all
+- hosts: raspberrypi
   roles:
     - default-sudoers
     - ssh-copy-id
     - crontab-daily-reboot
     - crontab-reboot-firewall
     - crontab-reboot-sshreverseproxy
-#    - docker
+    - docker

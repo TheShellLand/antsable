@@ -54,7 +54,11 @@
       IF=$(ip route | grep -m 1 default | awk '{print $5}')
       sudo iptables -t nat -A POSTROUTING -o $IF -j MASQUERADE
       sudo ip6tables -t nat -A POSTROUTING -o $IF -j MASQUERADE
-      sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent      
+      sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent    
+      # Run openvpn-connector-setup to import ovpn profile and connect to VPN.
+      # You will be asked to provide setup token, You can get it from the
+      # Linux Connector configuration page in CloudConnexa Portal.
+      #sudo openvpn-connector-setup
 
 - name: openvpn-connector-setup --version
   shell: |
@@ -69,21 +73,6 @@
   become: yes
   register: shell
   changed_when: shell.stderr
-
-#- name: copy openvpn-start-nftables.sh
-#  copy:
-#    src: openvpn-start-nftables.sh
-#    dest: /root/openvpn-start-nftables.sh
-#  become: yes
-#  changed_when: false
-#
-#- name: "@reboot /bin/bash /root/openvpn-start-nftables.sh > reboot_startup.log 2>&1"
-#  cron:
-#    name: make sure nftables runs at startup
-#    special_time: reboot
-#    job: '/bin/bash /root/openvpn-start-nftables.sh > reboot_startup.log 2>&1'
-#  become: yes
-#  changed_when: false
 
 - reboot:
   become: yes

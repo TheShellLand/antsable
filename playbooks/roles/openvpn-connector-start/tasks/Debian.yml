@@ -8,6 +8,9 @@
   changed_when: false
   register: status
 
+- pause:
+    seconds: 5
+
 - name: enabled
   debug:
     var: status.enabled

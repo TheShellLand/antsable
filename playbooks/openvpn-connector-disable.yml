@@ -1,4 +1,4 @@
 ---
-- hosts: openvpn
+- hosts: openvpn_disabled
   roles:
     - openvpn-connector-stop

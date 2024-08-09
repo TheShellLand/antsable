@@ -10,10 +10,10 @@
   debug:
     var: status.status.UnitFileState
 
-- name: state
-  debug:
-    var: status.status.SubState
-
 - name: ActiveState
   debug:
     var: status.status.ActiveState
+
+- name: state
+  debug:
+    var: status.status.SubState

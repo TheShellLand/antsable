@@ -6,18 +6,16 @@
   become: yes
   changed_when: false
   register: status
-
-- pause:
-    seconds: 5
+  until: status.state == "started"
 
 - name: enabled
   debug:
-    var: status.enabled
-
-- name: state
-  debug:
-    var: status.state
+    var: status.UnitFileState
 
 - name: ActiveState
   debug:
     var: status.status.ActiveState
+
+- name: state
+  debug:
+    var: status.state

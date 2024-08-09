@@ -1,0 +1,10 @@
+---
+- name: openvpn support
+  shell: "{{ item }}"
+  become: yes
+  loop:
+    - iptables -t nat -L -n -v --line-numbers
+    - cat /etc/sysctl.conf | grep net.ipv4.ip_forward
+    - ip a
+    - getconf LONG_BIT
+    - cat /etc/*release

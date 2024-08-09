@@ -1,0 +1,4 @@
+---
+- hosts: dorapisrproxy
+  roles:
+    - openvpn-support

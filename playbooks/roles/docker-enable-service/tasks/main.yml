@@ -8,6 +8,4 @@
   until:
     - service.enabled
     - service.state == "started"
-  changed_when:
-    - not service.enabled
-    - not service.state == "started"
+  changed_when: false

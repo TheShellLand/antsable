@@ -1,0 +1,11 @@
+---
+- systemd:
+    name: docker
+    state: stopped
+    enabled: no
+  become: yes
+  register: service
+  until:
+    - not service.enabled
+    - service.state == "stopped"
+  changed_when: false

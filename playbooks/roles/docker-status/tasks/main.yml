@@ -3,9 +3,4 @@
     name: docker
   become: yes
   register: docker
-  until:
-    - docker.status.ActiveState == "active"
-  changed_when:
-    - not docker.status.ActiveState == "active"
-  failed_when:
-    - not docker.status.ActiveState == "active"
+  changed_when: false

@@ -1,4 +1,11 @@
 ---
-- hosts: dorapisrproxy
+- hosts: dorapisrproxy,dream
   roles:
     - openvpn-support
+  vars:
+    support1:
+    support2:
+    support3:
+    support4:
+    support5:
+    support6:

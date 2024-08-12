@@ -1,41 +1,103 @@
 ---
-- name: openvpn support
-  shell: "{{ item }}"
-  become: yes
-  loop:
-    - iptables -t nat -L -n -v --line-numbers
-    - cat /etc/sysctl.conf | grep net.ipv4.ip_forward
-    - ip a
-    - getconf LONG_BIT
-    - cat /etc/*release
+- name: support 1
+  block:
+    - name: openvpn support
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -t nat -L -n -v --line-numbers
+        - cat /etc/sysctl.conf | grep net.ipv4.ip_forward
+        - ip a
+        - getconf LONG_BIT
+        - cat /etc/*release
+  when: support1
 
-- name: disable docker
-  include_role: name=docker-disable-service
+
+
 
 - name: support 2
-  shell: "{{ item }}"
-  become: yes
-  loop:
-    - |
-      IF=$(ip route | grep -m 1 default | awk '{print $5}')
-      sudo iptables -t nat -A POSTROUTING -o $IF -j MASQUERADE
-      sudo ip6tables -t nat -A POSTROUTING -o $IF -j MASQUERADE
-    - sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent
+  block:
+    - name: disable docker
+      include_role: name=docker-disable-service
 
-- name: enable docker
-  include_role: name=docker-enable-service
+    - name: support 2
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - |
+          IF=$(ip route | grep -m 1 default | awk '{print $5}')
+          sudo iptables -t nat -A POSTROUTING -o $IF -j MASQUERADE
+          sudo ip6tables -t nat -A POSTROUTING -o $IF -j MASQUERADE
+        - sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent
 
-- name: iptables
-  shell: "{{ item }}"
-  become: yes
-  loop:
-    - iptables -t nat -L -n -v --line-numbers
+    - name: enable docker
+      include_role: name=docker-enable-service
 
-- name: reboot
-  include_role: name=reboot
+    - name: iptables
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -t nat -L -n -v --line-numbers
 
-- name: iptables
-  shell: "{{ item }}"
-  become: yes
-  loop:
-    - iptables -t nat -L -n -v --line-numbers
+    - name: reboot
+      include_role: name=reboot
+
+    - name: iptables
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -t nat -L -n -v --line-numbers
+  when: support2
+
+
+
+
+- name: support 3
+  block:
+    - name: iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+      shell: iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+      become: yes
+
+    - name: check
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -t nat -L -n -v --line-numbers
+        - cat /etc/sysctl.conf | grep net.ipv4.ip_forward
+        - ip a
+
+  when: support3
+
+
+
+- name: support 4
+  block:
+    - name: check iptables
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -L -n -v --line-numbers
+        - iptables -t nat -L -n -v --line-numbers
+
+  when: support4
+
+
+
+- name: support5
+  block:
+    - name: disable docker
+      include_role: name=docker-disable-service
+
+    - name: set iptables
+      shell: "{{ item }}"
+      become: yes
+      loop:
+        - iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
+
+    - name: enable docker
+      include_role: name=docker-enable-service
+
+  when: support5
+
+
+

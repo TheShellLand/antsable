@@ -4,3 +4,7 @@
   become: yes
   register: docker
   changed_when: false
+
+- name: state
+  debug:
+    var: docker.status.ActiveState

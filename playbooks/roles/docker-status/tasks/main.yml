@@ -8,3 +8,7 @@
 - name: state
   debug:
     var: docker.status.ActiveState
+
+- name: enabled
+  debug:
+    var: docker.status.UnitFileState

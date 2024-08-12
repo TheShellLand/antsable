@@ -12,23 +12,23 @@
 
 - name: configure iptables v4
   shell: |
-    if ! iptables-save | grep 'A POSTROUTING -o {{ interface }} -j MASQUERADE' >/dev/null; then 
+    if ! iptables-save | grep 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
       iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
       iptables-save > /etc/iptables/rules.v4
     fi
   become: yes
   register: shell
-  changed_when: shell.stdout
+  changed_when: not shell.stdout
 
 - name: configure iptables v6
   shell: |
-    if ! ip6tables-save | grep 'A POSTROUTING -o {{ interface }} -j MASQUERADE' >/dev/null; then 
+    if ! ip6tables-save | grep 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
       ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
       ip6tables-save > /etc/iptables/rules.v6
     fi
   become: yes
   register: shell
-  changed_when: shell.stdout
+  changed_when: not shell.stdout
 
 - name: show v4 rules
   shell: cat /etc/iptables/rules.v4
@@ -39,3 +39,4 @@
   shell: cat /etc/iptables/rules.v6
   become: yes
   changed_when: false
+

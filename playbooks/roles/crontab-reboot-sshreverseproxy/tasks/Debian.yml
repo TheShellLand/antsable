@@ -25,7 +25,7 @@
 - name: enable reverse ssh proxy check
   ansible.builtin.cron:
     name: "enable reverse ssh proxy check"
-    minute: "*/1"
+    minute: "*/5"
     job: "REVERSE_PROXY_PORT={{ REVERSE_PROXY_PORT }} /bin/bash /home/user/exo/bash/ssh-reverse-proxy.sh > ssh-reverse-proxy.log 2>&1"
   changed_when: false
 

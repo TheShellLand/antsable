@@ -7,7 +7,10 @@
   become: yes
   changed_when: false
   register: status
-  until: status.state == "stopped"
+  until:
+  - status.state == "stopped"
+  - status.status.ActiveState == "inactive"
+  - status.state == "stopped"
 
 - name: enabled
   debug:

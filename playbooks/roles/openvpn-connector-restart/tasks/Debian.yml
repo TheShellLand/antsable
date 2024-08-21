@@ -10,7 +10,8 @@
 
 - name: enabled
   debug:
-    var: status.UnitFileState
+    var: status.status.UnitFileState
+  failed_when: status.status.ActiveState == "disabled"
 
 - name: ActiveState
   debug:

@@ -2,6 +2,7 @@
 - name: restart openvpn3-session@CloudConnexa.service
   service:
     name: openvpn3-session@CloudConnexa.service
+    enabled: yes
     state: restarted
   become: yes
   changed_when: false

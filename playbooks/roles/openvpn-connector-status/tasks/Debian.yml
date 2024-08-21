@@ -6,7 +6,7 @@
   changed_when: false
   register: status
 
-- name: enabled
+- name: UnitFileState
   debug:
     var: status.status.UnitFileState
 
@@ -14,6 +14,6 @@
   debug:
     var: status.status.ActiveState
 
-- name: state
+- name: SubState
   debug:
     var: status.status.SubState

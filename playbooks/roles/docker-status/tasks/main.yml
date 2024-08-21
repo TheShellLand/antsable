@@ -5,10 +5,10 @@
   register: docker
   changed_when: false
 
-- name: state
+- name: ActiveState
   debug:
     var: docker.status.ActiveState
 
-- name: enabled
+- name: UnitFileState
   debug:
     var: docker.status.UnitFileState

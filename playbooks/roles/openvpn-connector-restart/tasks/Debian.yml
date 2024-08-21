@@ -6,12 +6,15 @@
   become: yes
   changed_when: false
   register: status
-  until: status.state == "started"
+  until:
+  - status.state == "started"
+  - status.status.UnitFileState == "enabled"
+  - status.status.ActiveState == "active"
 
-- name: enabled
+- name: UnitFileState
   debug:
     var: status.status.UnitFileState
-  failed_when: status.status.ActiveState == "disabled"
+  failed_when: status.status.UnitFileState == "disabled"
 
 - name: ActiveState
   debug:

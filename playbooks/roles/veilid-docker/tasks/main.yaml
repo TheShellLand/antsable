@@ -24,8 +24,8 @@
       changed_when: false
 
     - name: build veilid
-      shell: |
-        bash veilid-node-docker/build.sh
+      #shell: bash veilid-node-docker/build.sh
+      shell: bash veilid-node-docker/build-apt.sh
       changed_when: false
 
   when: ansible_facts.architecture != "x86_64"

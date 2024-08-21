@@ -7,16 +7,14 @@
   changed_when: false
   when: FORCE
 
-- name: Deploy Rancher
-  shell: docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --name {{ RANCHER_SERVER }} rancher/rancher:{{ DOCKER_VERSION }}
-  changed_when: false
-  when: not PRIVILEGED
-
 - name: Deploy Rancher PRIVILEGED
   shell: docker run -d --restart=unless-stopped -p 8080:80 -p 8443:443 --privileged --name {{ RANCHER_SERVER }} rancher/rancher:{{ DOCKER_VERSION }}
   changed_when: false
-  when: PRIVILEGED
 
 - name: docker ps
   shell: docker ps
+  changed_when: false
+
+- name: docker logs
+  shell: docker logs {{ RANCHER_SERVER }}
   changed_when: false

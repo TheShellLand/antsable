@@ -6,5 +6,4 @@
     ACME: true
     ACME_DOMAIN: "{{ ansible_fqdn }}"
     DOCKER_VERSION: latest
-    PRIVILEGED: no
     FORCE: no

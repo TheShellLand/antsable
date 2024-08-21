@@ -16,7 +16,9 @@
 - name: ActiveState
   debug:
     var: status.status.ActiveState
+  failed_when: status.status.ActiveState != "inactive"
 
 - name: state
   debug:
     var: status.state
+  failed_when: status.state != "stopped"

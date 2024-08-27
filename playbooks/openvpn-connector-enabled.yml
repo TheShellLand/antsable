@@ -1,4 +1,5 @@
 ---
 - hosts: openvpn_enabled
   roles:
-    - openvpn-connector-restart
+    - openvpn-connector-start
+    - openvpn-connector-config

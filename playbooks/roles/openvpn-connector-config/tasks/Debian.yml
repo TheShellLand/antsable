@@ -40,3 +40,28 @@
   become: yes
   changed_when: false
 
+- name: clone antsable
+  git:
+    repo: https://github.com/TheShellLand/antsable.git
+    dest: "antsable"
+  changed_when: false
+
+- name: check exists
+  stat:
+    path: "/home/user/antsable/playbooks/openvpn-connector-config.yml"
+  register: file
+  changed_when: false
+
+- name: enable openvpn iptables rules
+  ansible.builtin.cron:
+    name: "enable openvpn iptables rules"
+    special_time: reboot
+    job: "bash antsable/ansible-local.sh playbooks/openvpn-connector-config.yml -v > openvpn-connector-config.log 2>&1"
+  changed_when: false
+
+- name: enable openvpn iptables rules check
+  ansible.builtin.cron:
+    name: "enable openvpn iptables rules check"
+    special_time: hourly
+    job: "bash antsable/ansible-local.sh playbooks/openvpn-connector-config.yml -v > openvpn-connector-config.log 2>&1"
+  changed_when: false

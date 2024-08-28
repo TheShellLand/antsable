@@ -2,5 +2,6 @@
 - hosts: openvpn
   roles:
     - openvpn-connector-install
+    - openvpn-connector-config
   vars:
     OPENVPN_CONNECTOR_TOKEN:

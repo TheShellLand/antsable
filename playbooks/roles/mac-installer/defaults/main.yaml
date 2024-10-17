@@ -5,5 +5,3 @@ mac_pkg:
 mac_zip:
 mac_folder:
 mac_app:
-
-BREW_INSTALL: false

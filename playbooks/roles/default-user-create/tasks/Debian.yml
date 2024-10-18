@@ -10,3 +10,11 @@
     ssh_key_file: .ssh/id_rsa
   become: yes
   changed_when: false
+
+- name: copy ssh keys
+  copy:
+    src: .ssh/"{{ item }}"
+    dest: '.''
+  loop:
+    - id_rsa
+    - id_rsa.pub

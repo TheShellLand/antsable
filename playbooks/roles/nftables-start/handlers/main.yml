@@ -1,0 +1,21 @@
+---
+- name: Restart nftables
+  service:
+    name: nftables
+    state: restarted
+  become: yes
+
+- name: Start nftables
+  service:
+    name: nftables
+    state: started
+    enabled: true
+  become: yes
+
+- name: Disable nftables
+  service:
+    name: nftables
+    state: stopped
+    enabled: false
+  become: yes
+

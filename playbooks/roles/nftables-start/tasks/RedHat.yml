@@ -1,0 +1,7 @@
+---
+- name: Start nftables
+  service:
+    name: nftables
+    state: started
+    enabled: true
+  become: yes

@@ -1,0 +1,7 @@
+---
+- name: Disable nftables
+  service:
+    name: nftables
+    state: stopped
+    enabled: false
+  become: yes

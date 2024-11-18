@@ -11,12 +11,15 @@
 
 - name: Install Missing Packages
   shell: apt install -f -y
+  become: yes
 
 - name: software-properties-common
   apt: update_cache=no name=software-properties-common state=latest
+  become: yes
 
 - name: sudo
   apt: update_cache=no name=sudo state=latest
+  become: yes
 
 - include_role: name=git
 
@@ -24,33 +27,41 @@
 
 - name: make
   apt: update_cache=no name=make state=latest
+  become: yes
 
 - name: perl
   apt: update_cache=no name=perl state=latest
+  become: yes
 
 - include_role: name=curl
 
 - name: unzip
   apt: update_cache=no name=unzip state=latest
+  become: yes
 
 - include_role: name=rsync
 
 - name: chrome-gnome-shell
   apt: update_cache=no name=chrome-gnome-shell state=latest
+  become: yes
 
 - include_role: name=tmux
 
 - name: CIFS
   apt: update_cache=no name=cifs-utils state=latest
+  become: yes
 
 - name: sshfs
   apt: update_cache=no name=sshfs state=latest
+  become: yes
 
 - name: gnome-backup duplicity
   apt: update_cache=no name=duplicity state=latest
+  become: yes
 
 - name: cryptsetup
   apt: update_cache=no name=cryptsetup state=latest
+  become: yes
 
 - include_role: name=pass
 
@@ -60,6 +71,7 @@
   apt:
     deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   ignore_errors: yes
+  become: yes
 
 #- name: Chrome beta
 #  apt:
@@ -73,6 +85,7 @@
 
 - name: Install missing dependencies
   shell: apt install -f -y
+  become: yes
 
 #  - name: Brave
 #    shell: snap install brave
@@ -90,43 +103,55 @@
 
 - name: python3-pip
   apt: update_cache=no name=python3-pip state=latest
+  become: yes
 
 - name: python3-distutils
   apt: update_cache=no name=python3-distutils state=latest
+  become: yes
 
 - name: OpenVPN
   apt: update_cache=no name=openvpn state=latest
+  become: yes
 
 - name: Virt-Viewer
   apt: update_cache=no name=virt-viewer state=latest
+  become: yes
 
 - name: x11vnc
   apt: update_cache=no name=x11vnc state=latest
+  become: yes
 
 - name: x2go
   apt: update_cache=no name=x2goclient state=latest
+  become: yes
 
 - name: remmina
   apt: update_cache=no name=remmina state=latest
+  become: yes
 
 - name: Wine i386 architecture
   shell: dpkg --add-architecture i386
+  become: yes
 
 - name: Wine apt key
   apt_key:
     url: https://dl.winehq.org/wine-builds/winehq.key
     state: present
+  become: yes
 
 - name: Wine repo
   apt_repository:
     repo: deb https://dl.winehq.org/wine-builds/ubuntu/ focal main
     state: present
+  become: yes
 
 - name: wine32
   apt: update_cache=no name=wine32 state=latest
+  become: yes
 
 - name: wine64
   apt: update_cache=no name=wine64 state=latest
+  become: yes
 
 - name: Wine staging
   apt:
@@ -134,11 +159,13 @@
     state: latest
     install_recommends: yes
     update_cache: yes
+  become: yes
 
 - name: Wine fonts
   apt:
     name: fonts-wine
     state: latest
+  become: yes
 
 # - name: PlayOnLinux
 #   apt:
@@ -157,53 +184,70 @@
 
 - name: Lutris - repo
   apt_repository: repo='ppa:lutris-team/lutris'
+  become: yes
 
 - name: Lutris
   apt: update_cache=yes name=lutris state=latest
+  become: yes
 
 - name: nodejs
   apt: update_cache=no name=nodejs state=latest
+  become: yes
 
 - name: exfat
   apt: update_cache=no name=exfat-utils state=latest
+  become: yes
 
 - name: lm-sensors
   apt: update_cache=no name=lm-sensors state=latest
+  become: yes
 
 - name: QTQR
   apt: update_cache=no name=qtqr state=latest
+  become: yes
 
 - name: VLC
   apt: update_cache=no name=vlc state=latest
+  become: yes
 
 - name: Virtualbox
   apt: update_cache=no name=virtualbox state=latest
+  become: yes
 
 - name: kvm - qemu-kvm
   apt: update_cache=no name=qemu-kvm state=latest
+  become: yes
 
 - name: kvm - libvirt-clients
   apt: update_cache=no name=libvirt-clients state=latest
+  become: yes
 
 - name: kvm - libvirt-daemon-system
   apt: update_cache=no name=libvirt-daemon-system state=latest
+  become: yes
 
 - name: kvm - virtinst
   apt: update_cache=no name=virtinst state=latest
+  become: yes
 
 - name: kvm - bridge-utils
   apt: update_cache=no name=bridge-utils state=latest
+  become: yes
 
 - name: kvm - cpu-checker
   apt: update_cache=no name=cpu-checker state=latest
+  become: yes
 
 # Ideally don't use root account for virt-manager
 - name: kvm - virt-manager
   apt: update_cache=no name=virt-manager state=latest
+  become: yes
+  become: yes
 
 - name: Vagrant
   apt:
     deb: https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+  become: yes
 
 - name: Pycharm
   snap:
@@ -216,11 +260,13 @@
 
 - name: Vim
   apt: update_cache=no name=vim state=latest
+  become: yes
 
 - name: Atom
   apt:
     deb: https://atom-installer.github.com/v1.38.2/atom-amd64.deb?s=1560782772&ext=.deb
   ignore_errors: yes
+  become: yes
 
 - name: Visual Studio Code
   snap:
@@ -237,6 +283,7 @@
     executable: /bin/bash
 - name: Sublime 3
   apt: update_cache=yes name=sublime-text state=latest
+  become: yes
 
 #  - name: Skype
 #    shell: dpkg -s apt-transport-https > /dev/null || bash -c "apt-get update; apt-get install apt-transport-https -y"
@@ -253,44 +300,55 @@
   ignore_errors: yes
 - name: Discord
   shell: apt install -f -y
+  become: yes
 
 - name: nmap
   apt: update_cache=no name=nmap state=latest
+  become: yes
 
 - name: wireshark
   apt: update_cache=no name=wireshark state=latest
+  become: yes
 
 - name: macchanger
   apt: update_cache=no name=macchanger state=latest
+  become: yes
 
 - name: aircrack
   apt: update_cache=no name=aircrack-ng state=latest
+  become: yes
 
 - name: darktable
   apt: update_cache=no name=darktable state=latest
-
-
+  become: yes
 
 - name: audacity
   apt: update_cache=no name=audacity state=latest
+  become: yes
 
 - name: Veracrypt ppa
   apt_repository: repo='ppa:unit193/encryption'
+  become: yes
 - name: Veracrypt
   apt: update_cache=yes name=veracrypt state=latest
+  become: yes
 
 - name: kazam
   apt: update_cache=no name=kazam state=latest
+  become: yes
 
 - name: OBS-Studio ppa
   apt_repository: repo='ppa:obsproject/obs-studio'
+  become: yes
 - name: obs-studio
   apt: update_cache=yes name=obs-studio state=latest
+  become: yes
 
 - name: Peek screen recorder
   apt:
     deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
   ignore_errors: yes
+  become: yes
 
 - name: green-recorder
   snap:
@@ -298,13 +356,17 @@
     channel: latest/edge
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
+  become: yes
 - name: green recorder - ffmpeg
   apt: update_cache=no name=ffmpeg state=latest
+  become: yes
 
 - name: autoclean
   apt:
     autoclean: yes
+  become: yes
 
 - name: autoremove
   apt:
     autoremove: yes
+  become: yes

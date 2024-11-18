@@ -7,6 +7,7 @@
 
 - name: Update cache
   apt: update_cache=yes
+  become: yes
 
 - name: Install Missing Packages
   shell: apt install -f -y
@@ -17,11 +18,9 @@
 - name: sudo
   apt: update_cache=no name=sudo state=latest
 
-- name: git
-  apt: update_cache=no name=git state=latest
+- include_role: name=git
 
-- name: gcc
-  apt: update_cache=no name=gcc state=latest
+- include_role: name=gcc
 
 - name: make
   apt: update_cache=no name=make state=latest
@@ -29,20 +28,17 @@
 - name: perl
   apt: update_cache=no name=perl state=latest
 
-- name: curl
-  apt: update_cache=no name=curl state=latest
+- include_role: name=curl
 
 - name: unzip
   apt: update_cache=no name=unzip state=latest
 
-- name: rsync
-  apt: update_cache=no name=rsync state=latest
+- include_role: name=rsync
 
 - name: chrome-gnome-shell
   apt: update_cache=no name=chrome-gnome-shell state=latest
 
-- name: tmux
-  apt: update_cache=no name=tmux state=latest
+- include_role: name=tmux
 
 - name: CIFS
   apt: update_cache=no name=cifs-utils state=latest
@@ -56,12 +52,9 @@
 - name: cryptsetup
   apt: update_cache=no name=cryptsetup state=latest
 
-- name: pass
-  apt: update_cache=no name=pass state=latest
+- include_role: name=pass
 
-- name: rclone
-  shell: curl https://rclone.org/install.sh | sudo bash
-  ignore_errors: yes
+- include_role: name=rclone
 
 - name: Chrome
   apt:

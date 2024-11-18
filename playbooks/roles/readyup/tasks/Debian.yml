@@ -10,6 +10,7 @@
 - name: desktop
   include_tasks: "Debian-desktop.yml"
   when: ansible_facts['virtualization_role'] == "host"
+  become: yes
 
 - name: LITE
   include_tasks: "Debian-lite.yml"

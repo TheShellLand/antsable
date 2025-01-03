@@ -17,7 +17,7 @@
 # virtualization
 - include_role: name=docker
 #- include_role: name=parallels
-#- include_role: name=utm
+- include_role: name=utm
 #- include_role: name=vagrant
 #- include_role: name=virtualbox
 #- include_role: name=vmware-fusion

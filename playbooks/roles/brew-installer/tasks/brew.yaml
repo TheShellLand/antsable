@@ -12,8 +12,8 @@
   when: BREW_TAP
 
 - block:
-    - name: "{{ BREW }} install --cask {{ package }}"
-      shell: "{{ BREW }} install --cask {{ package }}"
+    - name: "{{ BREW }} install --force --cask {{ package }}"
+      shell: "{{ BREW }} install --force --cask {{ package }}"
       register: shell
       changed_when:
         - "'installed' not in shell.stderr"
@@ -36,8 +36,8 @@
       when: shell.stdout_lines is defined
 
   rescue:
-    - name: "{{ BREW }} install {{ package }}"
-      shell: "{{ BREW }} install {{ package }}"
+    - name: "{{ BREW }} install --force {{ package }}"
+      shell: "{{ BREW }} install --force {{ package }}"
       register: shell
       changed_when:
         - "'installed' not in shell.stderr"
@@ -66,8 +66,8 @@
   when: not NO_QUARANTINE
 
 - block:
-    - name: "{{ BREW }} install --cask --no-quarantine {{ package }}"
-      shell: "{{ BREW }} install --cask --no-quarantine {{ package }}"
+    - name: "{{ BREW }} install --force --cask --no-quarantine {{ package }}"
+      shell: "{{ BREW }} install --force --cask --no-quarantine {{ package }}"
       register: shell
       changed_when: "'installed' not in shell.stderr"
 

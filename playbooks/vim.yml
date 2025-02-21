@@ -1,6 +1,4 @@
 ---
 - hosts: all
-  tasks:
-
-  - name: Install vim
-    apt: update_cache=yes name=vim state=latest
+  roles:
+    - vim

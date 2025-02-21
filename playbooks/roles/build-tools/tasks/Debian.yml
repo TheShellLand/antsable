@@ -1,3 +1,9 @@
 ---
 - apt: update_cache=yes name=build-essential state=latest
   become: yes
+
+- apt: update_cache=yes name=cmake state=latest
+  become: yes
+
+- apt: update_cache=yes name=vim state=latest
+  become: yes

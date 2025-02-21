@@ -1,0 +1,7 @@
+---
+dependencies:
+  - defaults
+  - brew
+  - curl
+  - vim
+  - git

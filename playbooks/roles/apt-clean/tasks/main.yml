@@ -1,0 +1,20 @@
+---
+- name: apt - autoremove
+  shell: apt -y autoremove
+  become: yes
+  changed_when: false
+
+- name: apt - autoclean
+  shell: apt autoclean
+  become: yes
+  changed_when: false
+
+- name: apt - clean
+  shell: apt clean
+  become: yes
+  changed_when: false
+
+- name: delete apt paths
+  shell: rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  become: yes
+  changed_when: false

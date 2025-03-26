@@ -42,6 +42,7 @@
 - include_role: name=darktable
 - include_role: name=gimp
 - include_role: name=audacity
+- include_role: name=kdenlive
 #- include_role: name=blender
 
 # encryption

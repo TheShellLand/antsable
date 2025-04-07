@@ -10,6 +10,7 @@
 - include_role: name=pycharm
 - include_role: name=vscode
 - include_role: name=xcode
+- include_role: name=git-lfs
 
 # source code
 - include_role: name=gcc

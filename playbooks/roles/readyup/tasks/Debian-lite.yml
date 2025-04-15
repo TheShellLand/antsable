@@ -194,6 +194,7 @@
   apt:
     name: fonts-wine
     state: latest
+  become: yes
 
 - name: nodejs
   apt: update_cache=no name=nodejs state=latest
@@ -217,12 +218,14 @@
 
 - name: VLC
   apt: update_cache=no name=vlc state=latest
+  become: yes
 
 - name: Pycharm
   snap:
     name: pycharm-community
     classic: yes
     state: present
+  become: yes
 
 #  - name: Emacs
 #    apt: update_cache=no name=emacs state=latest
@@ -244,16 +247,19 @@
     name: code-insiders
     classic: yes
     state: present
+  become: yes
 
 - name: Sublime 3
   shell: |
     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     apt-get install -y apt-transport-https
     echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+  become: yes
   args:
     executable: /bin/bash
 - name: Sublime 3
   apt: update_cache=yes name=sublime-text state=latest
+  become: yes
 
 - name: nmap
   apt: update_cache=no name=nmap state=latest
@@ -297,6 +303,7 @@
 
 - name: kazam
   apt: update_cache=no name=kazam state=latest
+  become: yes
 
 - name: Peek screen recorder
   apt:

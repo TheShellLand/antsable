@@ -331,6 +331,7 @@
   snap:
     name: green-recorder
     channel: latest/edge
+  become: yes
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
   become: yes

@@ -16,6 +16,16 @@
   changed_when: '"Installing: 0" not in shell.stdout'
   become: yes
 
+- name: xorg
+  apt: update_cache=no name=xorg state=latest
+  become: yes
+  changed_when: false
+
+- name: openbox
+  apt: update_cache=no name=openbox state=latest
+  become: yes
+  changed_when: false
+
 - name: software-properties-common
   apt: update_cache=no name=software-properties-common state=latest
   become: yes

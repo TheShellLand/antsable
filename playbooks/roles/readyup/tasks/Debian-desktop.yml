@@ -332,6 +332,7 @@
     classic: yes
     state: present
   become: yes
+  changed_when: false
 
 - name: Sublime 3
   shell: |
@@ -339,6 +340,7 @@
     apt-get install -y apt-transport-https
     echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
   become: yes
+  changed_when: false
   args:
     executable: /bin/bash
 - name: Sublime 3
@@ -360,6 +362,7 @@
     deb: https://dl.discordapp.net/apps/linux/0.0.5/discord-0.0.5.deb
   ignore_errors: yes
   become: yes
+  changed_when: false
 - name: Discord
   shell: apt install -f -y
   become: yes
@@ -430,6 +433,7 @@
     name: green-recorder
     channel: latest/edge
   become: yes
+  changed_when: false
 - name: green recorder - libsdl1.2debian
   apt: update_cache=no name=libsdl1.2debian state=latest
   become: yes

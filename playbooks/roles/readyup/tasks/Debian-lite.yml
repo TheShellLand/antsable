@@ -229,6 +229,7 @@
 - name: VLC
   apt: update_cache=no name=vlc state=latest
   become: yes
+  changed_when: false
 
 - name: Pycharm
   snap:
@@ -236,6 +237,7 @@
     classic: yes
     state: present
   become: yes
+  changed_when: false
 
 #  - name: Emacs
 #    apt: update_cache=no name=emacs state=latest
@@ -258,6 +260,7 @@
     classic: yes
     state: present
   become: yes
+  changed_when: false
 
 - name: Sublime 3
   shell: |
@@ -265,11 +268,13 @@
     apt-get install -y apt-transport-https
     echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
   become: yes
+  changed_when: false
   args:
     executable: /bin/bash
 - name: Sublime 3
   apt: update_cache=yes name=sublime-text state=latest
   become: yes
+  changed_when: false
 
 - name: nmap
   apt: update_cache=no name=nmap state=latest

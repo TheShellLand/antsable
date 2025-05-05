@@ -91,16 +91,22 @@
   become: yes
   changed_when: false
 
-- name: Chrome
-  apt:
-    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  ignore_errors: yes
-  become: yes
-  changed_when: false
-- name: Install missing dependencies
-  shell: apt install -f -y
-  become: yes
-  changed_when: false
+- block:
+  - name: Chrome
+    apt:
+      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    become: yes
+    changed_when: false
+  - name: Install missing dependencies
+    shell: apt install -f -y
+    become: yes
+    changed_when: false
+
+  rescue:
+  - include_role:
+      name: apt-installer
+    vars:
+      package: chromium-browser
 
 #- name: Visual Studio Code
 #  snap:

@@ -1,5 +1,9 @@
 ---
-- include_tasks: apt.yaml
+- name: "apt install -y {{ package }}"
+  apt: update_cache=yes name={{ package }} state=latest
+  become: yes
+  register: apt
+  changed_when: false
   when:
     - APT_INSTALL
-    - ansible_facts.os_family == "Debian"
+    - ansible_facts

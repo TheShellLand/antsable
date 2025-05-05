@@ -12,8 +12,8 @@
 
 - name: "{{ansible_facts.distribution}} dev"
   include_tasks: "{{ansible_facts.distribution}}-dev.yml"
-  when: WORK
+  when: WORK and not LITE
 
-- name: "{{ansible_facts.distribution}} light"
-  include_tasks: "{{ansible_facts.distribution}}-light.yml"
-  when: WORK and LIGHT
+- name: "{{ansible_facts.distribution}} lite"
+  include_tasks: "{{ansible_facts.distribution}}-lite.yml"
+  when: WORK and LITE

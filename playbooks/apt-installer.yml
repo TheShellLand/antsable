@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - apt-installer
+  vars:
+    package:
+    APT_INSTALL: true

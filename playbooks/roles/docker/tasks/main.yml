@@ -1,14 +1,15 @@
 ---
-- name: check
-  shell: docker ps
-  register: shell
-  changed_when: false
-  failed_when: false
+- block:
+    - name: check
+      shell: docker ps
+      register: shell
+      changed_when: false
 
-- set_fact: package=docker
-- include_tasks: "{{ansible_facts.os_family}}.yml"
-  when:
-    - shell.rc != 0 or FORCE
+  rescue:
+    - set_fact: package=docker
+    - include_tasks: "{{ansible_facts.os_family}}.yml"
+      when:
+        - shell.rc != 0 or FORCE
 
 - name: check
   shell: docker ps

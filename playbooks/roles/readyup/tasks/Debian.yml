@@ -1,4 +1,7 @@
 ---
+- debug:
+    var: ansible_facts['virtualization_role']
+
 - name: LITE
   include_tasks: "Debian-lite.yml"
   when: LITE

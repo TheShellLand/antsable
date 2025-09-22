@@ -197,9 +197,10 @@
 
 - name: Pycharm
   snap:
-    name: pycharm-community
+    name: pycharm
     classic: yes
     state: present
+    channel: 2025.2.1.1/stable
   become: yes
   changed_when: false
 

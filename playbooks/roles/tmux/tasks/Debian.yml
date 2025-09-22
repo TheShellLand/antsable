@@ -4,4 +4,3 @@
 
 - include_role:
     name: apt-installer
-

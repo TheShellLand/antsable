@@ -128,7 +128,7 @@
 - include_role:
     name: apt-installer
   vars:
-    package: exfat-utils
+    package: exfat-fuse
 
 - include_role:
     name: apt-installer

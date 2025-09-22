@@ -118,17 +118,17 @@
 - include_role:
     name: apt-installer
   vars:
+    package: exfat-fuse
+
+- include_role:
+    name: apt-installer
+  vars:
     package: vlc
 
 - include_role:
     name: apt-installer
   vars:
     package: vim
-
-- include_role:
-    name: apt-installer
-  vars:
-    package: exfat-utils
 
 - include_role:
     name: apt-installer

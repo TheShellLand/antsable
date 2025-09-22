@@ -1,6 +1,6 @@
 ---
-- name: "apt install -y {{ package }}"
-  apt: update_cache=yes name={{ package }} state=latest
+- name: apt install -y "{{ package }}"
+  apt: update_cache=yes name="{{ package }}" state=latest
   become: yes
   register: apt
   changed_when: false

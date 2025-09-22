@@ -1,6 +1,10 @@
 ---
 #- apt: update_cache=no name={{package}} state=latest
 #  become: yes
+- debug:
+    msg: "apt install -y {{ package }}"
 
-- include_role: name=apt-installer
-  vars: package="{{package}}"
+- include_role:
+    name: apt-installer
+  vars:
+    package: "{{package}}"

@@ -22,6 +22,7 @@
 - include_role: name=rsync
 - include_role: name=rclone
 - include_role: name=tmux
+- include_role: name=nemo
 
 - include_role:
     name: apt-installer
@@ -158,10 +159,30 @@
   become: yes
   changed_when: false
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: chromium-browser
+- block:
+  - name: Chrome
+    apt:
+      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    become: yes
+    changed_when: false
+#  - name: Chrome beta
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
+#    ignore_errors: yes
+#  - name: Chrome dev
+#    apt:
+#      deb: https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+#    ignore_errors: yes
+  - name: Install missing dependencies
+    shell: apt install -f -y
+    become: yes
+    changed_when: false
+
+  rescue:
+  - include_role:
+      name: apt-installer
+    vars:
+      package: chromium-browser
 
 - include_role: name=kdenlive
 

@@ -23,6 +23,7 @@
 - include_role: name=pass
 - include_role: name=rclone
 - include_role: name=tmux
+- include_role: name=nemo
 
 - include_role:
     name: apt-installer

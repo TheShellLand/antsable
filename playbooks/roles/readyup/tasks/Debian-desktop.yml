@@ -229,6 +229,8 @@
     vars:
       package: chromium-browser
 
+- include_role: name=kdenlive
+
 #  - name: Brave
 #    shell: snap install brave
 #    args:

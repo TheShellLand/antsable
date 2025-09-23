@@ -163,6 +163,8 @@
   vars:
     package: chromium-browser
 
+- include_role: name=kdenlive
+
 - name: Visual Studio Code
   snap:
     name: code-insiders

@@ -13,7 +13,7 @@
 - name: Install Missing Packages
   shell: apt install -f -y
   register: shell
-  changed_when: '"Installing: 0" not in shell.stdout'
+  changed_when: false
   become: yes
 
 - include_role: name=git
@@ -197,10 +197,10 @@
 
 - name: Pycharm
   snap:
-    name: pycharm
+    name: pycharm-professional
     classic: yes
     state: present
-    channel: 2025.2.1.1/stable
+    channel: latest/stable
   become: yes
   changed_when: false
 

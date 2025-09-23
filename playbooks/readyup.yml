@@ -6,6 +6,6 @@
     HIDPI: false
     CONSOLE: false
     INSTALL_GNOME: false
-    WORK: false
+    WORK: true
     LITE: false
     RASPBERRYPI: false

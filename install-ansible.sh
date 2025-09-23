@@ -14,6 +14,7 @@ if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi
 
 if python3 -m ansible doc -h >/dev/null 2>&1; then
+  which ansible
   exit 0
 fi
 
@@ -27,9 +28,11 @@ fi
 
 if [ ! -f get-pip.py ]; then curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py; fi
 
-python3 "get-pip.py" --break-system-packages
-python3 -m pip install -U pip --break-system-packages
-python3 -m pip install -U virtualenv --break-system-packages
+python3 "get-pip.py"
+rm -v "get-pip.py"
+
+python3 -m pip install -U pip
+python3 -m pip install -U virtualenv
 
 if ! python3 -m pip install -U ansible; then
   python3 -m virtualenv ansible
@@ -41,3 +44,5 @@ if ! python3 -m ansible doc -h >/dev/null 2>&1; then
   echo "ansible still not found. please raise an issue"
   exit 1
 fi
+
+which ansible

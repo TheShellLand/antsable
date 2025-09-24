@@ -1,4 +1,10 @@
 ---
+- name: apt update -y
+  apt:
+    update_cache: yes
+  become: yes
+  changed_when: false
+
 - name: apt - upgrade
   apt: update_cache=yes upgrade=yes
   become: yes

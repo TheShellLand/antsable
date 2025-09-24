@@ -6,6 +6,10 @@
   include_tasks: "Debian-lite.yml"
   when: LITE
 
+- name: SERVER
+  include_tasks: "Debian-server.yml"
+  when: SERVER
+
 - name: RASPBERRYPI
   include_tasks: "Debian-raspberrypi.yml"
   when: RASPBERRYPI

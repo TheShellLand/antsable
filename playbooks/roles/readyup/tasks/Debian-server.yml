@@ -62,23 +62,12 @@
 - include_role:
     name: apt-installer
   vars:
-    package: chrome-gnome-shell
-
-- include_role:
-    name: apt-installer
-  vars:
     package: cifs-utils
 
 - include_role:
     name: apt-installer
   vars:
     package: sshfs
-
-# gnome-backup duplicity
-- include_role:
-    name: apt-installer
-  vars:
-    package: duplicity
 
 - include_role:
     name: apt-installer
@@ -123,32 +112,7 @@
 - include_role:
     name: apt-installer
   vars:
-    package: vlc
-
-- include_role:
-    name: apt-installer
-  vars:
     package: vim
-
-- include_role:
-    name: apt-installer
-  vars:
-    package: wireshark
-
-- include_role:
-    name: apt-installer
-  vars:
-    package: darktable
-
-- include_role:
-    name: apt-installer
-  vars:
-    package: gimp
-
-- include_role:
-    name: apt-installer
-  vars:
-    package: audacity
 
 - name: Pycharm
   snap:
@@ -179,25 +143,16 @@
     changed_when: false
 
   rescue:
-    - include_role:
-        name: apt-installer
-      vars:
-        package: chromium-browser
-
-- include_role: name=kdenlive
+  - include_role:
+      name: apt-installer
+    vars:
+      package: chromium-browser
 
 - name: Visual Studio Code
   snap:
     name: code-insiders
     classic: yes
     state: present
-  become: yes
-  changed_when: false
-
-- name: Peek screen recorder
-  apt:
-    deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
-  ignore_errors: yes
   become: yes
   changed_when: false
 

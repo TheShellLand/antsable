@@ -225,10 +225,10 @@
     changed_when: false
 
   rescue:
-  - include_role:
-      name: apt-installer
-    vars:
-      package: chromium-browser
+    - include_role:
+        name: apt-installer
+      vars:
+        package: chromium-browser
 
 - include_role: name=kdenlive
 

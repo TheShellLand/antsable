@@ -11,6 +11,7 @@
 - include_role: name=vscode
 - include_role: name=xcode
 - include_role: name=git-lfs
+- include_role: name=neovim
 
 # source code
 - include_role: name=gcc

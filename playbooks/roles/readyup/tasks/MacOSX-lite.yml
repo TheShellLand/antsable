@@ -12,3 +12,4 @@
 - include_role: name=pycharm
 - include_role: name=vscode
 - include_role: name=chrome
+- include_role: name=neovim

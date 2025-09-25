@@ -14,3 +14,4 @@
 - include_role: name=docker
 - include_role: name=chrome
 - include_role: name=wireshark
+- include_role: name=neovim

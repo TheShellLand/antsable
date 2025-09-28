@@ -45,15 +45,15 @@
   vars:
     package: sudo
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: make
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: make
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: perl
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: perl
 
 - include_role:
     name: apt-installer
@@ -76,15 +76,15 @@
     package: sshfs
 
 # gnome-backup duplicity
-- include_role:
-    name: apt-installer
-  vars:
-    package: duplicity
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: duplicity
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: cryptsetup
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: cryptsetup
 
 - include_role:
     name: apt-installer
@@ -96,64 +96,64 @@
   vars:
     package: python3-distutils
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: virt-viewer
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: virt-viewer
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: x11vnc
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: x11vnc
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: x2goclient
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: x2goclient
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: remmina
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: remmina
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: exfat-fuse
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: exfat-fuse
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: vlc
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: vlc
 
 - include_role:
     name: apt-installer
   vars:
     package: vim
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: wireshark
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: wireshark
 
 - include_role:
     name: apt-installer
   vars:
     package: darktable
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: gimp
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: gimp
 
-- include_role:
-    name: apt-installer
-  vars:
-    package: audacity
+#- include_role:
+#    name: apt-installer
+#  vars:
+#    package: audacity
 
 - name: Pycharm
   snap:
-    name: pycharm-professional
+    name: pycharm-community
     classic: yes
     state: present
     channel: latest/stable
@@ -185,7 +185,7 @@
       vars:
         package: chromium-browser
 
-- include_role: name=kdenlive
+#- include_role: name=kdenlive
 
 - name: Visual Studio Code
   snap:
@@ -195,12 +195,12 @@
   become: yes
   changed_when: false
 
-- name: Peek screen recorder
-  apt:
-    deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
-  ignore_errors: yes
-  become: yes
-  changed_when: false
+#- name: Peek screen recorder
+#  apt:
+#    deb: https://github.com/phw/peek/releases/download/v0.8.0/peek-0.8.0-Linux.deb
+#  ignore_errors: yes
+#  become: yes
+#  changed_when: false
 
 - name: autoclean
   apt:

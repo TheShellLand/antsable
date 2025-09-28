@@ -199,7 +199,7 @@
 
 - name: Pycharm
   snap:
-    name: pycharm-professional
+    name: pycharm-community
     classic: yes
     state: present
     channel: latest/stable

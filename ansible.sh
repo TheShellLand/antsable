@@ -38,6 +38,8 @@ if python3 -m ansible doc -h >/dev/null; then
 
   ansible_eval="${ansible_eval} ${@}"
 
+  export ANSIBLE_CONFIG=ansible.cfg
+
   set -x
   exec $ansible_eval
 

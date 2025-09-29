@@ -1,5 +1,6 @@
 # sshconfig
 ForwardAgent yes
+Compression yes
 ServerAliveInterval 15
 StrictHostKeyChecking accept-new
 

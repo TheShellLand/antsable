@@ -3,6 +3,7 @@
     - name: check
       shell: docker ps
       register: shell
+      become: true
       changed_when: false
 
   rescue:
@@ -15,5 +16,6 @@
   shell: docker ps
   register: shell
   changed_when: false
+  become: true
   failed_when:
     - shell.rc != 0

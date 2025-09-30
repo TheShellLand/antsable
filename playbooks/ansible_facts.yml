@@ -25,3 +25,8 @@
     - name: inventory_hostname
       debug:
         msg: "{{ inventory_hostname }}"
+
+    - name: ansible_user_id 
+      debug:
+        var: ansible_user_id
+

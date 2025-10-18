@@ -2,6 +2,7 @@
 # internet
 - include_role: name=google-drive
 - include_role: name=chrome
+- include_role: name=tailscale
 
 # coding
 - include_role: name=brew
@@ -25,20 +26,23 @@
 #- include_role: name=vmware-fusion
 
 # tools
-#- include_role: name=caffeine
-- include_role: name=amphetamine
 - include_role: name=wget
 - include_role: name=rclone
 #- include_role: name=amazon-workspace
 #- include_role: name=macfuse
-- include_role: name=nmap
-- include_role: name=wireshark
+#- include_role: name=nmap
+#- include_role: name=wireshark
 #- include_role: name=keepassx
 - include_role: name=keepassxc
 #- include_role: name=sshfs
 #- include_role: name=teamviewer
 #- include_role: name=fing
-- include_role: name=openvpn
+#- include_role: name=openvpn
+
+# personalize
+- include_role: name=hiddenbar
+- include_role: name=amphetamine
+#- include_role: name=caffeine
 
 # editing
 - include_role: name=darktable

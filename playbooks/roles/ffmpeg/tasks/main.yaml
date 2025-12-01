@@ -1,4 +1,4 @@
 ---
 - set_fact: package=ffmpeg
 - include_tasks: "{{ansible_facts.os_family}}.yml"
-  when: package
+  when: package | length > 0

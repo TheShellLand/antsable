@@ -1,9 +1,19 @@
 ---
+#- name: reboot nightly
+#  ansible.builtin.cron:
+#    name: "reboot daily at 6 am"
+#    minute: "0"
+#    hour: "5"
+#    job: "/usr/sbin/reboot"
+#    state: absent
+#  become: yes
+#  changed_when: false
+
 - name: reboot nightly
   ansible.builtin.cron:
-    name: "reboot daily at 6 am"
-    minute: "*"
-    hour: "6"
-    job: "/usr/sbin/reboot -h now"
+    name: "reboot daily at 5 am"
+    minute: "0"
+    hour: "5"
+    job: "/usr/sbin/reboot"
   become: yes
   changed_when: false

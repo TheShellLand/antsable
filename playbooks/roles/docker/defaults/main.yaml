@@ -1,6 +1,6 @@
 ---
 #ansible_python_interpreter: python3
-become_user:
+#become_user:
 docker_registry: docker.io
 DOCKER_HOME:
 FORCE:

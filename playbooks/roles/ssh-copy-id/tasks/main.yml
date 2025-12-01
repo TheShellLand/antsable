@@ -13,20 +13,18 @@
   ansible.posix.authorized_key:
     user: "{{ ansible_user_id }}"
     state: present
-    key: '{{ item }}'
+    key: "{{ lookup('file', item) }}"
   changed_when: false
-  with_file:
-    - "id_rsa.pub"
+  loop: "{{ lookup('fileglob', 'files/*', wantlist=True) }}"
 
 - name: Add ssh keys - user
   ansible.posix.authorized_key:
     user: user
     state: present
-    key: '{{ item }}'
+    key: "{{ lookup('file', item) }}"
   become: yes
   changed_when: false
-  with_file:
-    - "id_rsa.pub"
+  loop: "{{ lookup('fileglob', 'files/*', wantlist=True) }}"
 
 #- name: Update bash profile to start ssh-agent
 #  copy:

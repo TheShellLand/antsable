@@ -2,4 +2,4 @@
 readyup: /tmp/readyup
 
 role: "{{role_path}}"
-tasks: "{{role}}/tasks"
+#tasks: "{{role}}/tasks"

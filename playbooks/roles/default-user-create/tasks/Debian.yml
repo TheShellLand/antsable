@@ -11,12 +11,12 @@
   become: yes
   changed_when: false
 
-#- name: copy ssh keys
-#  fetch:
-#    src: ".ssh/{{ item }}"
-#    dest: "."
-#  become_user: user
-#  loop:
-#    - id_rsa
-#    - id_rsa.pub
-#  changed_when: false
+- name: fetch ssh keys from remote server
+  fetch:
+    src: ".ssh/{{ item }}"
+    dest: "."
+  become_user: user
+  loop:
+    - id_rsa
+    - id_rsa.pub
+  changed_when: false

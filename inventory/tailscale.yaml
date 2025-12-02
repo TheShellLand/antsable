@@ -1,0 +1,14 @@
+---
+tailscale:
+  children:
+    cloud:
+    raspberrypi:
+
+tailscale_enabled:
+  children:
+    cloud:
+    raspberrypi_sf:
+    raspberrypi_sr:
+
+tailscale_disabled:
+  children:

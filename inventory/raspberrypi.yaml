@@ -1,0 +1,41 @@
+---
+server:
+  children:
+    raspberrypi:
+
+local:
+  children:
+    dorapisf-local:
+    dorapisr-local:
+
+proxy:
+  children:
+    dorapisfproxy:
+    dorapisrproxy:
+
+raspberrypi:
+  children:
+    raspberrypi_sf:
+    raspberrypi_sr:
+
+raspberrypi_sf:
+  hosts:
+    dorapisf-local:
+    dorapisfproxy:
+    dorapisf.n7sa.com:
+  vars:
+    REVERSE_PROXY_PORT: 2223
+    TAILSCALE_TAGS:
+      - us-ca
+      - us-ca-sr
+
+raspberrypi_sr:
+  hosts:
+    dorapisr-local:
+    dorapisrproxy:
+    dorapisr.n7sa.com:
+  vars:
+    REVERSE_PROXY_PORT: 2224
+    TAILSCALE_TAGS:
+      - us-ca
+      - us-ca-sf

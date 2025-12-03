@@ -65,14 +65,14 @@
     openvpn-connector-setup --version
   become: yes
   register: shell
-  changed_when: shell.stderr
+  changed_when: shell.stderr | length > 0
 
 - name: openvpn-connector-setup --force --token
   shell: |
     openvpn-connector-setup --force --token {{ OPENVPN_CONNECTOR_TOKEN }}
   become: yes
   register: shell
-  changed_when: shell.stderr
+  changed_when: shell.stderr | length > 0
 
 - reboot:
   become: yes

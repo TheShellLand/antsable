@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - default-dns-servers

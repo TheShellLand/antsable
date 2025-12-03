@@ -1,0 +1,4 @@
+---
+- apt: update_cache=yes name={{ package }} state=latest
+  become: yes
+  changed_when: false

@@ -1,0 +1,6 @@
+---
+- name: Stop and disable the tailscaled service
+  ansible.builtin.systemd:
+    name: tailscaled
+    state: stopped
+    enabled: false

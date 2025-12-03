@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - iptables-enable-forwarding

@@ -48,7 +48,7 @@
 
 - name: check exists
   stat:
-    path: "/home/user/antsable/playbooks/openvpn-connector-config.yml"
+    path: "antsable/playbooks/openvpn-connector-config.yml"
   register: file
   changed_when: false
 

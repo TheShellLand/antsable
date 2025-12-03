@@ -5,7 +5,7 @@
     shell: /bin/bash
     groups: sudo
     append: yes
-    generate_ssh_key: yes
+    generate_ssh_key: no
     ssh_key_bits: 4096
     ssh_key_file: .ssh/id_rsa
   become: yes
@@ -15,7 +15,7 @@
   fetch:
     src: ".ssh/{{ item }}"
     dest: "."
-#  become_user: user
+  become_user: user
 #  become: yes
   loop:
     - id_rsa

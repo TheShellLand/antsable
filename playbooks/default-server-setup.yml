@@ -2,6 +2,7 @@
 - hosts: server
   roles:
     - default-create-user
+    - default-create-ssh-keys
     - default-sudoers
     - ssh-copy-id
     - crontab-daily-reboot

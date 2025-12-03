@@ -1,4 +1,4 @@
 ---
 dependencies:
   - defaults
-  - default-user-create
+  - default-create-user

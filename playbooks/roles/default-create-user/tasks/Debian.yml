@@ -15,7 +15,8 @@
   fetch:
     src: ".ssh/{{ item }}"
     dest: "."
-  become_user: user
+#  become_user: user
+#  become: yes
   loop:
     - id_rsa
     - id_rsa.pub

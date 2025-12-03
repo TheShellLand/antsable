@@ -1,4 +1,4 @@
 ---
 - hosts: tailscale
   roles:
-    - tailscale-stop
+    - tailscale-start

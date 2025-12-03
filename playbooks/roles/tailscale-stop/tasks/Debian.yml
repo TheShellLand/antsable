@@ -4,3 +4,4 @@
     name: tailscaled
     state: stopped
     enabled: false
+  become: yes

@@ -1,0 +1,40 @@
+---
+
+- name: Ensure .ssh directory exists for the remote user
+  ansible.builtin.file:
+    path: ".ssh"
+    state: directory
+    mode: '0700'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Generate an OpenSSH keypair on the *Ansible Controller*
+  community.crypto.openssh_keypair:
+    path: ".ssh/id_rsa" # Unique key name for each host
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0600'
+    type: ed25519 # Ed25519 is a modern, secure choice
+    state: present
+    force: false # Set to true to overwrite existing keys
+  register: generated_key # Store the output for the next task
+  changed_when: false
+
+- name: Add the *public* key to the target host's authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user }}"
+    key: "{{ generated_key.public_key }}" # Use the public key from the generated output
+    state: present
+    comment: "Ansible-generated key for {{ inventory_hostname }}"
+  changed_when: false
+
+- name: fetch ssh keys from remote server
+  fetch:
+    src: ".ssh/{{ item }}"
+    dest: "."
+#  become_user: user
+#  become: yes
+  loop:
+    - id_rsa
+    - id_rsa.pub
+  changed_when: false

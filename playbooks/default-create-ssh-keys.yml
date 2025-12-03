@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - default-create-ssh-keys

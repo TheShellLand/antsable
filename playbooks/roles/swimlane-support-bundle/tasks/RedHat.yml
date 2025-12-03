@@ -27,7 +27,7 @@
 
 # support bundle location
 - set_fact:
-    archivePath: "/home/{{ ansible_user_id }}/{{ shell.stdout | from_json | json_query('archivePath') }}"
+    archivePath: "/home/{{ ansible_facts['user_id'] }}/{{ shell.stdout | from_json | json_query('archivePath') }}"
 
 - name: copy support bundle
   fetch:

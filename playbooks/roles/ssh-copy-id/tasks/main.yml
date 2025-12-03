@@ -11,7 +11,7 @@
 
 - name: Add ssh keys
   ansible.posix.authorized_key:
-    user: "{{ ansible_user_id }}"
+    user: "{{ ansible_facts['user_id'] }}"
     state: present
     key: "{{ lookup('file', item) }}"
   changed_when: false

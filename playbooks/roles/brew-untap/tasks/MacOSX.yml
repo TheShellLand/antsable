@@ -12,7 +12,7 @@
       shell: '{{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"'
       register: shell
       become: yes
-      become_user: "{{ ansible_user_id }}"
+      become_user: "{{ ansible_facts['user_id'] }}"
       changed_when: "shell.rc != 0"
       failed_when:
         - '"find brew in PATH" not in shell.stderr'

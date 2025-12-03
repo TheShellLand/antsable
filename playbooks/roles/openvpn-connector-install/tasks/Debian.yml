@@ -23,7 +23,7 @@
 #  become: yes
 
 # https://network-gateway.openvpn.com/network-gate/api/v1/scripts/VWJ1bnR1IDIyLjA0/gateway/ubuntu_22_04.sh
-- name: run ubuntu_22_04.sh
+- name: run deconstructed install script
   shell: "{{ item }}"
   become: yes
   register: shell

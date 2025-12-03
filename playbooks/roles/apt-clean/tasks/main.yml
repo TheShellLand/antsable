@@ -15,6 +15,6 @@
   changed_when: false
 
 - name: delete apt paths
-  shell: rm -rfv /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  shell: rm -rfv /var/lib/apt/lists/* /var/tmp/*
   become: yes
   changed_when: false

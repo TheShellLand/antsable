@@ -27,5 +27,5 @@
   changed_when: false
   loop:
     - "{{ DOCKER_USER }}"
-    - "{{ ansible_user_id }}"
+    - "{{ ansible_facts['user_id'] }}"
 

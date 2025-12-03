@@ -2,5 +2,3 @@
 - hosts: tailscale
   roles:
     - tailscale
-  vars:
-    TAILSCALE_AUTH_KEY:

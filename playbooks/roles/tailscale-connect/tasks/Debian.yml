@@ -1,0 +1,12 @@
+---
+- name: install tailscale
+  shell: tailscale up --auth-key={{ TAILSCALE_AUTH_KEY }}
+  become: yes
+  changed_when: false
+  when: not TAILSCALE_ADVERTISE_EXIT_NODE
+
+- name: install tailscale
+  shell: tailscale up --auth-key={{ TAILSCALE_AUTH_KEY }} --advertise-exit-node
+  become: yes
+  changed_when: false
+  when: TAILSCALE_ADVERTISE_EXIT_NODE

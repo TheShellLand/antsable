@@ -1,0 +1,6 @@
+---
+- hosts: tailscale
+  roles:
+    - tailscale-connect
+  vars:
+    TAILSCALE_AUTH_KEY:

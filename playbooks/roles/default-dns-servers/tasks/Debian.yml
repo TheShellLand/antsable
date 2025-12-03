@@ -20,3 +20,8 @@
     backup: true # Create a backup of the original file
   become: true
   changed_when: false
+
+- name: show /etc/resolv.conf
+  shell: cat /etc/resolv.conf
+  changed_when: false
+

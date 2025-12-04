@@ -1,3 +1,4 @@
 ---
 dependencies:
-  - iptables-persistent
+  - iptables-enable-forwarding
+  - default-dns-servers

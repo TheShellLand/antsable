@@ -1,27 +1,40 @@
 ---
-- name: Add nameserver to /etc/resolv.conf
-  ansible.builtin.lineinfile:
-    path: /etc/resolv.conf
-    line: "nameserver 1.1.1.1"
-    state: present
-    create: true # Create the file if it doesn't exist
-    insertafter: EOF # Add the line at the end of the file
-    backup: true # Create a backup of the original file
-  become: true
-  changed_when: false
+#- name: Add nameserver to /etc/resolv.conf
+#  ansible.builtin.lineinfile:
+#    path: /etc/resolv.conf
+#    line: "nameserver 1.1.1.1"
+#    state: present
+#    create: true # Create the file if it doesn't exist
+#    insertafter: EOF # Add the line at the end of the file
+#    backup: true # Create a backup of the original file
+#  become: true
+#  changed_when: false
+#
+#- name: Add nameserver to /etc/resolv.conf
+#  ansible.builtin.lineinfile:
+#    path: /etc/resolv.conf
+#    line: "nameserver 8.8.8.8"
+#    state: present
+#    create: true # Create the file if it doesn't exist
+#    insertafter: EOF # Add the line at the end of the file
+#    backup: true # Create a backup of the original file
+#  become: true
+#  changed_when: false
 
-- name: Add nameserver to /etc/resolv.conf
-  ansible.builtin.lineinfile:
-    path: /etc/resolv.conf
-    line: "nameserver 8.8.8.8"
-    state: present
-    create: true # Create the file if it doesn't exist
-    insertafter: EOF # Add the line at the end of the file
-    backup: true # Create a backup of the original file
-  become: true
-  changed_when: false
+- name: Copy a single file from local to remote
+  ansible.builtin.copy:
+    src: etc/systemd/resolved.conf
+    dest: /etc/systemd/resolved.conf
+  become: yes
+  changed_when: no
+
+- name: Restart systemd-resolved service
+  ansible.builtin.systemd_service:
+    name: systemd-resolved
+    state: restarted
+  become: yes
+  changed_when: no
 
 - name: show /etc/resolv.conf
   shell: cat /etc/resolv.conf
   changed_when: false
-

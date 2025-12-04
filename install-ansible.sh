@@ -32,7 +32,7 @@ python3 "get-pip.py" || python3 "get-pip.py" --break-system-packages
 rm -v "get-pip.py"
 
 python3 -m pip install -U pip || python3 -m pip install --break-system-packages -U pip
-python3 -m pip install -U virtualenv
+python3 -m pip install -U virtualenv || python3 -m pip install --break-system-packages -U virtualenv
 
 if ! python3 -m pip install -U ansible; then
   python3 -m virtualenv ansible

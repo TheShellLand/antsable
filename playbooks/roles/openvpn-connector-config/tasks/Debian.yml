@@ -13,6 +13,11 @@
   register: file
   changed_when: false
 
+- name: install ansible
+  shell: bash antsable/install-ansible.sh
+  become: yes
+  changed_when: false
+
 - name: enable openvpn iptables rules
   ansible.builtin.cron:
     name: "enable openvpn iptables rules"

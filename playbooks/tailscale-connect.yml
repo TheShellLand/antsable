@@ -3,4 +3,4 @@
   roles:
     - tailscale-connect
   vars:
-    TAILSCALE_AUTH_KEY:
+    TAILSCALE_AUTH_KEY: tskey-auth-k8Vhvk2RUq11CNTRL-3zJK4Qq9VQ2rfi1vjHmpQ2LWJyiD8LMJ

@@ -3,4 +3,4 @@
   roles:
     - openvpn-connector-install
   vars:
-    OPENVPN_CONNECTOR_TOKEN:
+    OPENVPN_CONNECTOR_TOKEN: RBgSUSWrMFP/ovhbphseeTl4l6CVW21ZN7AZIWObXg8=f1d3161bc7ba486846044e3a04dc7b0bc3612283

@@ -35,13 +35,11 @@ python3 -m pip install -U pip || python3 -m pip install --break-system-packages 
 python3 -m pip install -U virtualenv || python3 -m pip install --break-system-packages -U virtualenv
 python3 -m pip install -U ansible || python3 -m pip install --break-system-packages -U ansible
 
-which ansible
-
-if ! python3 -m pip install -U ansible; then
-  python3 -m virtualenv ansible
-  source ansible/bin/activate
-  python3 -m pip install -U ansible
-fi
+#if ! python3 -m pip install -U ansible; then
+#  python3 -m virtualenv ansible
+#  source ansible/bin/activate
+#  python3 -m pip install -U ansible
+#fi
 
 if ! python3 -m ansible doc -h >/dev/null 2>&1; then
   echo "ansible still not found. please raise an issue"

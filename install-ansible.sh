@@ -31,7 +31,7 @@ if [ ! -f get-pip.py ]; then curl "https://bootstrap.pypa.io/get-pip.py" -o get-
 python3 "get-pip.py" || python3 "get-pip.py" --break-system-packages
 rm -v "get-pip.py"
 
-python3 -m pip install -U pip
+python3 -m pip install -U pip || python3 -m pip install --break-system-packages -U pip
 python3 -m pip install -U virtualenv
 
 if ! python3 -m pip install -U ansible; then

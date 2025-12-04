@@ -22,7 +22,7 @@ fi
 if type localedef; then
   if localedef -c -f UTF-8 -i en_US en_US.UTF-8; then
     export LC_ALL=en_US.UTF-8
-    curl "https://bootstrap.pypa.io/pip/3.6/get-pip.py" -o get-pip.py
+    curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py
   fi
 fi
 

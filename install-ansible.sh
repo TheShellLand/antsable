@@ -28,7 +28,7 @@ fi
 
 if [ ! -f get-pip.py ]; then curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py; fi
 
-python3 "get-pip.py"
+python3 "get-pip.py" || python3 --break-system-packages "get-pip.py"
 rm -v "get-pip.py"
 
 python3 -m pip install -U pip

@@ -5,3 +5,4 @@
     state: stopped
     enabled: false
   become: yes
+  changed_when: false

@@ -1,0 +1,38 @@
+---
+- name: udp throughput optimization
+  shell: |
+    NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
+    ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off
+  become: yes
+  changed_when: false
+
+- name: clone antsable
+  git:
+    repo: https://github.com/TheShellLand/antsable.git
+    dest: "antsable"
+  changed_when: false
+
+- name: check exists
+  stat:
+    path: "antsable/playbooks/udp-gro-forwarding.yml"
+  register: file
+  changed_when: false
+
+- name: install ansible
+  shell: bash antsable/install-ansible.sh
+  become: yes
+  changed_when: false
+
+- name: enable openvpn iptables rules
+  ansible.builtin.cron:
+    name: "enable udp throughput optimization"
+    special_time: reboot
+    job: "bash antsable/ansible-local.sh playbooks/udp-gro-forwarding.yml -v > udp-gro-forwarding 2>&1"
+  changed_when: false
+
+- name: enable openvpn iptables rules
+  ansible.builtin.cron:
+    name: "enable udp throughput optimization"
+    special_time: hourly
+    job: "bash antsable/ansible-local.sh playbooks/udp-gro-forwarding.yml -v > udp-gro-forwarding 2>&1"
+  changed_when: false

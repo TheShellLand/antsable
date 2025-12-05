@@ -10,10 +10,3 @@
   become: yes
   changed_when: false
   when: TAILSCALE_ADVERTISE_EXIT_NODE
-
-- name: udp throughput optimization
-  shell: |
-    NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
-    ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off
-  become: yes
-  changed_when: false

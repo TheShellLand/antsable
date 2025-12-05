@@ -2,4 +2,3 @@
 dependencies:
   - defaults
   - curl
-  - iptables-enable-forwarding

@@ -2,3 +2,5 @@
 dependencies:
   - defaults
   - tailscale
+  - iptables-enable-forwarding
+  - udp-gro-forwarding

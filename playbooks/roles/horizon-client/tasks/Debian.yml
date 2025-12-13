@@ -9,6 +9,7 @@
     - libatk1.0-0
     - libcairo2
     - libxss1
+    - libxkbfile1
     # Core Dependencies
     - libgtk-3-0
     - libxinerama1

@@ -8,6 +8,24 @@
     - libsecret-1-dev
     - libatk1.0-0
     - libcairo2
+    - libxss1
+    # Core Dependencies
+    - libgtk-3-0
+    - libxinerama1
+    - libxrandr2
+    - libsecret-1-0
+    - libudev1
+    # Optional Feature Dependencies Command
+    - libv4l-0
+    - libpulse0
+    - libuuid1
+    - libspeex1
+    - libtheora0
+    - libjpeg8-turbo
+    # RDP Support
+    - freerdp2-x2go
+
+
 
 - name: fix packages
   shell: |

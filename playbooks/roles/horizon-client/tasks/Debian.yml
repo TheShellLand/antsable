@@ -21,11 +21,9 @@
     - libuuid1
     - libspeex1
     - libtheora0
-    - libjpeg8-turbo
+#    - libjpeg8-turbo
     # RDP Support
-    - freerdp2-x2go
-
-
+#    - freerdp2-x2go
 
 - name: fix packages
   shell: |

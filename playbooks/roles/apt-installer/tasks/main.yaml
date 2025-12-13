@@ -1,12 +1,19 @@
 ---
-- name: apt install -y {{ package }}
+- name: check if package exists
+  ansible.builtin.shell: "dpkg -s {{ package }} | grep 'install ok installed'"
+  register: package_status_detailed
+  ignore_errors: true
+  changed_when: false
+
+- name: "apt install -y {{ package }}"
   apt:
-    update_cache: yes
     name: "{{ package }}"
     state: latest
+    update_cache: yes
   become: yes
   register: apt
   changed_when: false
   when:
     - APT_INSTALL
     - ansible_facts
+    - package_status_detailed.rc != 0

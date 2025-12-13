@@ -5,7 +5,7 @@
     shell: /bin/bash
     groups: sudo
     append: yes
-    generate_ssh_key: no
+    generate_ssh_key: yes
     ssh_key_bits: 4096
     ssh_key_file: .ssh/id_rsa
   become: yes

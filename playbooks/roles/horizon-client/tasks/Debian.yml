@@ -7,6 +7,7 @@
     - libsecret-1-0
     - libsecret-1-dev
     - libatk1.0-0
+    - libcairo2
 
 - name: fix packages
   shell: |

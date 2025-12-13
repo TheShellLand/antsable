@@ -1,0 +1,4 @@
+---
+- hosts: horizon-client
+  roles:
+    - horizon-client

@@ -1,3 +1,6 @@
 ---
-- yum: name={{ package }} state=latest
-  become: yes
+- yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    -

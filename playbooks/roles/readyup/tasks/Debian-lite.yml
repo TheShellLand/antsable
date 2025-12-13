@@ -29,7 +29,9 @@
 - include_role:
     name: apt-installer
   vars:
-    package: xorg
+    package: "{{ item }}"
+  loop:
+    - xorg
 
 - include_role:
     name: apt-installer

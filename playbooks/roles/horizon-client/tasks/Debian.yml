@@ -1,11 +1,12 @@
 ---
-- name: install libsecret
+- name: install dependencies
   apt: update_cache=yes name="{{ item }}" state=latest
   become: yes
   changed_when: false
   loop:
     - libsecret-1-0
     - libsecret-1-dev
+    - libatk1.0-0
 
 - name: fix packages
   shell: |

@@ -7,6 +7,13 @@
     - libsecret-1-0
     - libsecret-1-dev
 
+- name: fix packages
+  shell: |
+    dpkg --configure -a
+    apt --fix-broken install
+  become: yes
+  changed_when: false
+
 - name: install horizon client
   apt:
     deb: https://download3.omnissa.com/software/CART26FQ2_LIN64_DEBPKG_2506/Omnissa-Horizon-Client-2506-8.16.0-16536624989.x64.deb

@@ -15,5 +15,5 @@
   changed_when: false
   when:
     - APT_INSTALL
-    - ansible_facts
+    - ansible_facts is defined
     - package_status_detailed.rc != 0

@@ -30,7 +30,7 @@
 - name: fix packages
   shell: |
     dpkg --configure -a
-    apt --fix-broken install
+    apt --fix-broken -y install
   become: yes
   changed_when: false
 
@@ -47,6 +47,6 @@
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
     locale-gen en_US.UTF-8
-    dpkg-reconfigure locales
+    dpkg-reconfigure --frontend=noninteractive locales
   become: yes
   changed_when: false

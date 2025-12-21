@@ -7,7 +7,7 @@
     - shell: dpkg -i google-chrome-stable_current_amd64.deb
       become: yes
 
-    - shell: apt install -f -y
+    - shell: apt --fix-broken -y install
       become: yes
       changed_when: false
 

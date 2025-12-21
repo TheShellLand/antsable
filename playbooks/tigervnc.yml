@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - tigervnc
+  vars:
+    TIGERVNC_PASSWORD:

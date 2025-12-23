@@ -9,4 +9,6 @@
     WORK: false
     SERVER: false
     LITE: false
+    SUPERLITE: false
     RASPBERRYPI: false
+    TIGERVNC_PASSWORD:

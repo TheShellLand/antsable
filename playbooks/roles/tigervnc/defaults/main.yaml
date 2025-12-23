@@ -1,4 +1,6 @@
 ---
+TIGERVNC_PASSWORD:
+
 url:
 mac_dmg:
 mac_pkg:

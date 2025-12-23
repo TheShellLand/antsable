@@ -16,12 +16,20 @@
 
 - name: desktop
   include_tasks: "Debian-desktop.yml"
-  when: ansible_facts['virtualization_role'] == "host"
+  when:
+    - ansible_facts['virtualization_role'] == "host"
 
 - name: LITE
   include_tasks: "Debian-lite.yml"
-  when: ansible_facts['virtualization_role'] == "guest"
+  when:
+    - ansible_facts['virtualization_role'] == "guest"
+    - not SUPERLITE
 
 - name: Ubuntu
   include_tasks: "Ubuntu.yml"
   when: ansible_facts['distribution'] == "Ubuntu"
+
+- name: SUPERLITE
+  include_tasks: "Debian-superlite.yml"
+  when:
+    - SUPERLITE

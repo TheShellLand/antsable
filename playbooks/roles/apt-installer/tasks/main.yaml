@@ -1,11 +1,11 @@
 ---
-- name: check if package exists
+- name: "check {{ package }}"
   ansible.builtin.shell: "dpkg -s {{ package }} | grep 'install ok installed'"
   register: package_status_detailed
   ignore_errors: true
   changed_when: false
 
-- name: "apt install -y {{ package }}"
+- name: "install {{ package }}"
   apt:
     name: "{{ package }}"
     state: latest

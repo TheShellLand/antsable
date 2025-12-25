@@ -37,6 +37,7 @@
 
 - name: configure iptables v6
   shell: |
+    touch /etc/network/ip6tables.up.rules
     if ! ip6tables-save | grep -e 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
       ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
       ip6tables-save > /etc/iptables/rules.v6

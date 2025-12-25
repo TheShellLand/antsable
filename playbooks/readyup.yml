@@ -5,10 +5,11 @@
   vars:
     HIDPI: false
     CONSOLE: false
+    DESKTOP: false
     INSTALL_GNOME: false
-    WORK: false
-    SERVER: false
     LITE: false
-    SUPERLITE: false
     RASPBERRYPI: false
+    SERVER: false
+    SUPERLITE: false
+    WORK: false
     TIGERVNC_PASSWORD:

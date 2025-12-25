@@ -2,13 +2,15 @@
 - include_role:
     name: apt-installer
 
-- name: genearte password file
+- include_role: name=reboot
+
+- name: generate password file
   shell: | 
     mkdir -p ~/.vnc
     echo "{{ TIGERVNC_PASSWORD }}" | vncpasswd -f > ~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
   changed_when: false
-  failed_when: not TIGERVNC_PASSWORD
+  failed_when: TIGERVNC_PASSWORD is undefined
 
 - name: start vncserver
   shell: | 

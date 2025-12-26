@@ -1,0 +1,7 @@
+---
+- include_role:
+    name: apt-installer
+  vars:
+    package: "{{ item }}"
+  loop:
+    -

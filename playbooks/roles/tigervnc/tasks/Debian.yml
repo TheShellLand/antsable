@@ -1,6 +1,11 @@
 ---
 - include_role:
     name: apt-installer
+  vars:
+    package: "{{ item }}"
+  loop:
+    - tigervnc-standalone-server
+    - tigervnc-xorg-extension
 
 - include_role: name=reboot
 
@@ -10,7 +15,7 @@
     echo "{{ TIGERVNC_PASSWORD }}" | vncpasswd -f > ~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
   changed_when: false
-  failed_when: TIGERVNC_PASSWORD is undefined
+  failed_when: "TIGERVNC_PASSWORD | length == 0"
 
 - name: start vncserver
   shell: | 

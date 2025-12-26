@@ -1,0 +1,33 @@
+---
+- include_role:
+    name: apt-installer
+  vars:
+    package: "{{ item }}"
+  loop:
+#    - openbox
+#    - xorg
+    - dbus-x11
+#    - lightdm
+#    - lightdm-gtk-greeter
+    - xfce4
+    - xfce4-goodies
+
+#- name: enable
+#  shell: |
+#    systemctl enable --now lightdm
+#    dpkg-reconfigure lightdm
+#  become: yes
+
+- name: Ensure .vnc directory exists
+  ansible.builtin.file:
+    path: ~/.vnc
+    state: directory
+    mode: '0700'
+  changed_when: false
+
+- name: copy xstartup
+  copy:
+    src: .vnc/xstartup
+    dest: ~/.vnc/xstartup
+    mode: '0700'
+  changed_when: false

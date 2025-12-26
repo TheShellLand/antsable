@@ -1,0 +1,16 @@
+---
+- include_role:
+    name: apt-installer
+  vars:
+    package: "{{ item }}"
+  loop:
+    - dbus-x11
+    - xfce4
+    - xfce4-goodies
+
+- name: copy xstartup
+  copy:
+    src: .vnc/xstartup
+    dest: ~/.vnc/xstartup
+    mode: '0700'
+  changed_when: false

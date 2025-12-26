@@ -7,7 +7,12 @@
     - tigervnc-standalone-server
     - tigervnc-xorg-extension
 
-- include_role: name=reboot
+- name: Ensure .vnc directory exists
+  ansible.builtin.file:
+    path: ~/.vnc
+    state: directory
+    mode: '0700'
+  changed_when: false
 
 - name: generate password file
   shell: | 
@@ -16,6 +21,8 @@
     chmod 600 ~/.vnc/passwd
   changed_when: false
   failed_when: "TIGERVNC_PASSWORD | length == 0"
+
+- include_role: name=reboot
 
 - name: start vncserver
   shell: | 

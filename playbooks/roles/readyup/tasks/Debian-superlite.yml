@@ -20,7 +20,7 @@
 - include_role: name=curl
 - include_role: name=tmux
 - include_role: name=tigervnc
-- include_role: name=openbox
+- include_role: name=default-gui
 
 - include_role:
     name: apt-installer

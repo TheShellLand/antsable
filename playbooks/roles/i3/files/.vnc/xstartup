@@ -1,0 +1,10 @@
+#!/bin/sh
+set -xe
+
+# Fix to make some environments work properly
+export XKL_XMODMAP_DISABLE=1
+
+xsetroot -solid grey
+
+# Start i3
+exec i3

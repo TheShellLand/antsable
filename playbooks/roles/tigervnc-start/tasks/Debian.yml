@@ -3,5 +3,6 @@
   shell: | 
     vncserver -kill :1 || ::
     vncserver :1
-    vncconfig &
+    #vncserver :1 -AlwaysShared
+    #vncconfig &
   changed_when: false

@@ -1,5 +1,6 @@
 ---
-#TIGERVNC_PASSWORD:
+TIGERVNC_PASSWORD:
+REBOOT: false
 
 url:
 mac_dmg:

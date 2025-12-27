@@ -1,6 +1,7 @@
 ---
-- hosts: all
+- hosts: tigervnc
   roles:
     - tigervnc
   vars:
-    TIGERVNC_PASSWORD: default
+    TIGERVNC_PASSWORD:
+    REBOOT: false

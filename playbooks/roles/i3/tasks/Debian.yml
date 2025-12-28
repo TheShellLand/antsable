@@ -10,6 +10,20 @@
     - xterm
     - i3
 
+- name: Ensure i3 directory exists
+  ansible.builtin.file:
+    path: ~/.config/i3
+    state: directory
+    mode: '0700'
+  changed_when: false
+
+- name: copy i3 config
+  copy:
+    src: .config/i3/config
+    dest: ~/.config/i3/config
+    mode: '0700'
+  changed_when: false
+
 - name: Ensure .vnc directory exists
   ansible.builtin.file:
     path: ~/.vnc
@@ -21,19 +35,5 @@
   copy:
     src: .vnc/xstartup
     dest: ~/.vnc/xstartup
-    mode: '0700'
-  changed_when: false
-
-- name: Ensure i3 directory exists
-  ansible.builtin.file:
-    path: ~/.config/i3
-    state: directory
-    mode: '0700'
-  changed_when: false
-
-- name: copy vnc config
-  copy:
-    src: .config/i3/config
-    dest: ~/.config/i3/config
     mode: '0700'
   changed_when: false

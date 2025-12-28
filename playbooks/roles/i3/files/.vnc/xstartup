@@ -4,7 +4,7 @@ set -xe
 # Fix to make some environments work properly
 export XKL_XMODMAP_DISABLE=1
 
-xsetroot -solid darkGray
+xsetroot -solid "#282C34"
 
 # allow copy and paste
 autocutsel -fork

@@ -9,6 +9,7 @@
     - xinit
     - xterm
     - i3
+    - i3blocks
 
 - name: Ensure i3 directory exists
   ansible.builtin.file:
@@ -21,6 +22,20 @@
   copy:
     src: .config/i3/config
     dest: ~/.config/i3/config
+    mode: '0700'
+  changed_when: false
+
+- name: Ensure i3blocks directory exists
+  ansible.builtin.file:
+    path: ~/.config/i3blocks
+    state: directory
+    mode: '0700'
+  changed_when: false
+
+- name: copy i3blocks config
+  copy:
+    src: .config/i3blocks/config
+    dest: ~/.config/i3blocks/config
     mode: '0700'
   changed_when: false
 

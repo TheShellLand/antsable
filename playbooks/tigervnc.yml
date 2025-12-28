@@ -1,5 +1,5 @@
 ---
-- hosts: tigervnc
+- hosts: vnc
   roles:
     - tigervnc
   vars:

@@ -10,6 +10,13 @@
     - xterm
     - i3
 
+- name: Ensure .vnc directory exists
+  ansible.builtin.file:
+    path: ~/.vnc
+    state: directory
+    mode: '0700'
+  changed_when: false
+
 - name: copy vnc config
   copy:
     src: .vnc/xstartup

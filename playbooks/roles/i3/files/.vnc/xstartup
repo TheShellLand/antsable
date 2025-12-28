@@ -6,5 +6,8 @@ export XKL_XMODMAP_DISABLE=1
 
 xsetroot -solid grey
 
+# allow copy and paste
+autocutsel -fork
+
 # Start i3
 exec i3

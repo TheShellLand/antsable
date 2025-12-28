@@ -3,5 +3,5 @@
   roles:
     - tigervnc
   vars:
-    TIGERVNC_PASSWORD:
+    TIGERVNC_PASSWORD: default
     REBOOT: false

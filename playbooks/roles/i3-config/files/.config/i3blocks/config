@@ -1,0 +1,10 @@
+# Terminal Icon Block
+[terminal]
+full_text=shell
+color=#ffffff
+command=i3-msg exec i3-sensible-terminal
+
+# Pull in the rest of your system info from i3status
+[i3status]
+command=i3status
+interval=1

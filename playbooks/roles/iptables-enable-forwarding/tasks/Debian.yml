@@ -25,6 +25,7 @@
 
 - name: configure iptables v4
   shell: |
+    touch /etc/network/iptables.up.rules
     if ! iptables-save | grep -e 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
       iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
       iptables-save > /etc/iptables/rules.v4

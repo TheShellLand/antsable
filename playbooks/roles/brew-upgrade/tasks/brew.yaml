@@ -2,6 +2,6 @@
 - name: "{{ BREW }} upgrade"
   shell: "{{ BREW }} upgrade"
   register: shell
-  changed_when: shell.stdout
+  changed_when: shell.stdout | length > 0
 
 - debug: var=shell

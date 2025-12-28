@@ -1,13 +1,13 @@
 ---
 - shell: "{{ BREW }} cleanup 2>&1 | grep -v Warning"
   register: shell
-  changed_when: shell.stdout
+  changed_when: shell.stdout | length > 0
   failed_when: false
   when: not SCRUB
 
 - shell: "{{ BREW }} cleanup -s 2>&1 | grep -v Warning"
   register: shell
-  changed_when: shell.stdout
+  changed_when: shell.stdout | length > 0
   failed_when: false
   when: SCRUB
 

@@ -2,3 +2,5 @@
 - hosts: gui
   roles:
     - i3
+  vars:
+    I3_DEFAULT_WINDOW_MANAGER: true

@@ -11,5 +11,11 @@
     - i3
     - i3blocks
 
+- name: set i3 as default window manager
+  shell: update-alternatives --set x-session-manager /usr/bin/i3
+  become: yes
+  changed_when: false
+  when: I3_DEFAULT_WINDOW_MANAGER
+
 - include_role:
     name: i3-config

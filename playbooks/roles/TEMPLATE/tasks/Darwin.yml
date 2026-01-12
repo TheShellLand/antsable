@@ -4,7 +4,9 @@
   when: |
     ansible_facts.processor == "Apple M1" or
     ansible_facts.processor == "Apple M2" or
-    ansible_facts.processor == "Apple M3"
+    ansible_facts.processor == "Apple M3" or
+    ansible_facts.processor == "Apple M4" or
+    ansible_facts.processor == "Apple M4"
 
 - name: "{{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"

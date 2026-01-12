@@ -1,4 +1,5 @@
 ---
+REDSHIFT_TEMPERATURE: 3500
 REDSHIFT_RESET: false
 
 url:

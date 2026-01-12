@@ -1,0 +1,12 @@
+---
+- include_role:
+    name: apt-installer
+
+- name: set temperature
+  shell: redshift -P -O "{{ REDSHIFT_TEMPERATURE }}"
+  changed_when: false
+
+- name: reset temperature
+  shell: redshift -x
+  changed_when: false
+  when: REDSHIFT_RESET

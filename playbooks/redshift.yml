@@ -1,0 +1,7 @@
+---
+- hosts: gui
+  roles:
+    - redshift
+  vars:
+    REDSHIFT_TEMPERATURE: 3500
+    REDSHIFT_RESET: false

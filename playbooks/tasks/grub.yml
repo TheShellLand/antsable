@@ -1,37 +1,52 @@
 ---
-- name: set grub console resolution
-  lineinfile:
+- name: Get file information (stat)
+  ansible.builtin.stat:
     path: /etc/default/grub
-    regexp: '^GRUB_GFXMODE=.*$'
-    line: GRUB_GFXMODE=1024x768
-  become: yes
-  changed_when: false
+  register: file_status
 
-- name: set grub console mode to text
-  lineinfile:
-    path: /etc/default/grub
-    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT=.*$'
-    line: GRUB_CMDLINE_LINUX_DEFAULT="text"
-  become: yes
-  changed_when: false
+- block:
+  - name: set grub console resolution
+    lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_GFXMODE=.*$'
+      line: GRUB_GFXMODE=1024x768
+    become: yes
+    changed_when: false
 
-- name: update-grub
-  shell: update-grub
-  become: yes
-  changed_when: false
+  - name: set grub console mode to text
+    lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX_DEFAULT=.*$'
+      line: GRUB_CMDLINE_LINUX_DEFAULT="text"
+    become: yes
+    changed_when: false
 
-- name: set terminal font
-  lineinfile:
+  - name: update-grub
+    shell: update-grub
+    become: yes
+    changed_when: false
+  when: file_status.stat.exists
+
+
+- name: Get file information (stat)
+  ansible.builtin.stat:
     path: /etc/default/console-setup
-    regexp: '^FONTFACE=.*$'
-    line: FONTFACE="TER"
-  become: yes
-  changed_when: false
+  register: file_status
 
-- name: set terminal size
-  lineinfile:
-    path: /etc/default/console-setup
-    regexp: '^FONTSIZE=.*$'
-    line: FONTSIZE="16x32"
-  become: yes
-  changed_when: false
+- block:
+  - name: set terminal font
+    lineinfile:
+      path: /etc/default/console-setup
+      regexp: '^FONTFACE=.*$'
+      line: FONTFACE="TER"
+    become: yes
+    changed_when: false
+
+  - name: set terminal size
+    lineinfile:
+      path: /etc/default/console-setup
+      regexp: '^FONTSIZE=.*$'
+      line: FONTSIZE="16x32"
+    become: yes
+    changed_when: false
+  when: file_status.stat.exists

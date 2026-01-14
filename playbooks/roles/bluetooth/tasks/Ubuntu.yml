@@ -1,0 +1,8 @@
+---
+- name: Start bluetooth
+  service:
+    name: bluetooth
+    state: started
+    enabled: true
+  become: yes
+  changed_when: false

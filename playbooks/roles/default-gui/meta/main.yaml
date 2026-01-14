@@ -1,3 +1,7 @@
 ---
 dependencies:
   - defaults
+  - i3
+  - tigervnc
+  - redshift
+  - bluetooth

@@ -13,12 +13,9 @@
 
 - include_role: name=git
 - include_role: name=curl
-- include_role: name=wget
 - include_role: name=rsync
+- include_role: name=rclone
 - include_role: name=tmux
-- include_role: name=neovim
-- include_role: name=docker
-
 
 - include_role:
     name: apt-installer
@@ -33,7 +30,7 @@
 - include_role:
     name: apt-installer
   vars:
-    package: sshfs
+    package: cryptsetup
 
 - include_role:
     name: apt-installer

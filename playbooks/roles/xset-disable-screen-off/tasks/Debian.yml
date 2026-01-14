@@ -1,0 +1,12 @@
+---
+- name: disable screen saver blanking
+  shell: xset s off
+  changed_when: false
+
+- name: disable dpms power-saving features
+  shell: xset -dpms
+  changed_when: false
+
+- name: disable screen blanking
+  shell: xset s noblank
+  changed_when: false

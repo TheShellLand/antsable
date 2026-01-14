@@ -15,7 +15,7 @@
 - include_role: name=neovim
 
 # source code
-- include_role: name=gcc
+#- include_role: name=gcc
 
 # virtualization
 - include_role: name=docker

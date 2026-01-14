@@ -1,0 +1,4 @@
+---
+- hosts: gui
+  roles:
+    - xset-disable-screen-off

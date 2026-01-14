@@ -3,13 +3,16 @@
   roles:
     - readyup
   vars:
-    HIDPI: false
-    CONSOLE: false
+    GUI: true
+    CHROME: true
     DESKTOP: false
-    INSTALL_GNOME: false
-    LITE: false
+
     RASPBERRYPI: false
+
     SERVER: false
-    SUPERLITE: false
+    SERVER_LITE: false
+
     WORK: false
+    WORK_LITE: false
+
     TIGERVNC_PASSWORD:

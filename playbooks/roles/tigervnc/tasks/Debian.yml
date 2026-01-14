@@ -20,9 +20,7 @@
     echo "{{ TIGERVNC_PASSWORD }}" | vncpasswd -f > ~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
   changed_when: false
-  failed_when: "TIGERVNC_PASSWORD | length == 0"
+  when: "TIGERVNC_PASSWORD | length > 0"
 
 - include_role: name=reboot
   when: REBOOT
-
-- include_role: name=tigervnc-start

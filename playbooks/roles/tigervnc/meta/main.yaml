@@ -1,6 +1,4 @@
 ---
 dependencies:
   - defaults
-  - default-gui
-  - default-shell
   - autocutsel

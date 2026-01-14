@@ -1,9 +1,4 @@
 ---
-- set_fact:
-    install: /tmp/readyup
-
-- name: temp install
-  file: path={{ install }} state=directory
 
 - name: Update cache
   apt: update_cache=yes

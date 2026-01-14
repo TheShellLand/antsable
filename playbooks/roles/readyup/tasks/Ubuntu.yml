@@ -1,7 +1,6 @@
 ---
-- name: desktop
+- name: install desktop apps
   include_tasks: "Ubuntu-desktop.yml"
 
-- name: HiDPI
-  import_tasks: tasks/hidpi.yml
-  when: HIDPI
+- name: set grub resolution and console output
+  import_tasks: tasks/grub.yml

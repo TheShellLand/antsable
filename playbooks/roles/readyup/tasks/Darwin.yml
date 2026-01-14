@@ -9,12 +9,12 @@
 
 - name: "{{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"
-  when: not WORK
+  when: DESKTOP
 
 - name: "{{ansible_facts.distribution}} dev"
   include_tasks: "{{ansible_facts.distribution}}-dev.yml"
-  when: WORK and not LITE
+  when: WORK
 
 - name: "{{ansible_facts.distribution}} lite"
   include_tasks: "{{ansible_facts.distribution}}-lite.yml"
-  when: WORK and LITE
+  when: WORK_LITE

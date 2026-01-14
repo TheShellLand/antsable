@@ -1,0 +1,4 @@
+---
+- yum:
+    name: "{{ package }}"
+    state: latest

@@ -2,26 +2,41 @@
 - debug:
     var: ansible_facts['virtualization_role']
 
-- name: LITE
-  include_tasks: "Debian-lite.yml"
+- block:
+  - include_role: name=chrome
+  when: CHROME
+
+- block:
+    - include_role: name=default-gui
+    - include_role: name=default-shell
+    - import_tasks: tasks/grub.yml
+  when: GUI
+
+- block:
+    - name: LITE
+      include_tasks: "Debian-lite.yml"
   when: LITE
 
-- name: SERVER
-  include_tasks: "Debian-server.yml"
+- block:
+  - name: SERVER
+    include_tasks: "Debian-server.yml"
   when: SERVER
 
-- name: RASPBERRYPI
-  include_tasks: "Debian-raspberrypi.yml"
+- block:
+  - name: SERVER_LITE
+    include_tasks: "Debian-serverlite.yml"
+  when: SERVER_LITE
+
+- block:
+  - name: RASPBERRYPI
+    include_tasks: "Debian-raspberrypi.yml"
   when: RASPBERRYPI
 
-- name: desktop
-  include_tasks: "Debian-desktop.yml"
+- block:
+  - name: DESKTOP
+    include_tasks: "Debian-desktop.yml"
   when: DESKTOP
 
 #- name: Ubuntu
 #  include_tasks: "Ubuntu.yml"
 #  when: DESKTOP
-
-- name: SUPERLITE
-  include_tasks: "Debian-superlite.yml"
-  when: SUPERLITE

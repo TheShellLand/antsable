@@ -1,3 +1,2 @@
 ---
-- include_role:
-    name: xfce4
+- include_role: name=xset-disable-screen-off

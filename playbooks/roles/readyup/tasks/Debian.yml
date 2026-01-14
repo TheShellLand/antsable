@@ -13,11 +13,6 @@
   when: GUI
 
 - block:
-    - name: LITE
-      include_tasks: "Debian-lite.yml"
-  when: LITE
-
-- block:
   - name: SERVER
     include_tasks: "Debian-server.yml"
   when: SERVER

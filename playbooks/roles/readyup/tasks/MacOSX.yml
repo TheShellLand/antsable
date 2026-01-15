@@ -1,72 +1,90 @@
 ---
-# internet
-- include_role: name=google-drive
-- include_role: name=chrome
-- include_role: name=tailscale
 
-# coding
-- include_role: name=brew
-- include_role: name=git
-- include_role: name=tmux
-- include_role: name=pycharm
-- include_role: name=vscode
-- include_role: name=xcode
-- include_role: name=git-lfs
-- include_role: name=neovim
+- name: CHROME
+  block:
+    - include_role: name=chrome
+    - include_role: name=google-drive
+  when: CHROME
 
-# source code
-#- include_role: name=gcc
+- name: CODING
+  block:
+    - include_role: name=brew
+    - include_role: name=git
+    - include_role: name=tmux
+    - include_role: name=neovim
+    - include_role: name=pycharm
+    - include_role: name=vscode
+    - include_role: name=xcode
+#    - include_role: name=git-lfs
 
-# virtualization
-- include_role: name=docker
-#- include_role: name=parallels
-- include_role: name=utm
-- include_role: name=vagrant
-- include_role: name=virtualbox
-#- include_role: name=vmware-fusion
+    # source code
+    #- include_role: name=gcc
+  when: CODING
 
-# tools
-- include_role: name=wget
-- include_role: name=rclone
-#- include_role: name=amazon-workspace
-#- include_role: name=macfuse
-#- include_role: name=nmap
-#- include_role: name=wireshark
-#- include_role: name=keepassx
-- include_role: name=keepassxc
-#- include_role: name=sshfs
-#- include_role: name=teamviewer
-#- include_role: name=fing
-#- include_role: name=openvpn
+- name: PHOTOGRAPHY
+  block:
+    - include_role: name=darktable
+    - include_role: name=gimp
+    - include_role: name=audacity
+    - include_role: name=kdenlive
+  #- include_role: name=blender
+  when: PHOTOGRAPHY
 
-# personalize
-- include_role: name=hiddenbar
-- include_role: name=amphetamine
-#- include_role: name=caffeine
+- name: GAMING
+  block:
+    - include_role: name=steam
+    #- include_role: name=streamlabs
+    #- include_role: name=geforcenow
+#    - include_role: name=crossover
+#    - include_role: name=whisky
+    #- include_role: name=dolphin
+    #- include_role: name=molten-vk
+    #- include_role: name=wine
+    #- include_role: name=wine-devel
+    #- include_role: name=wine-staging
+    #- include_role: name=playonmac
+  when: GAMING
 
-# editing
-- include_role: name=darktable
-- include_role: name=gimp
-- include_role: name=audacity
-- include_role: name=kdenlive
-#- include_role: name=blender
+- name: MEDIA
+  block:
+    - include_role: name=vlc
+  when: MEDIA
 
-# encryption
-- include_role: name=veracrypt
-- include_role: name=gpg
+- name: everything else
+  block:
 
-# gaming
-- include_role: name=steam
-#- include_role: name=streamlabs
-#- include_role: name=geforcenow
-- include_role: name=crossover
-- include_role: name=whisky
-#- include_role: name=dolphin
-#- include_role: name=molten-vk
-#- include_role: name=wine
-#- include_role: name=wine-devel
-#- include_role: name=wine-staging
-#- include_role: name=playonmac
+    # internet
+    - include_role: name=tailscale
 
-# media
-- include_role: name=vlc
+    # virtualization
+    - include_role: name=docker
+    #- include_role: name=parallels
+    - include_role: name=utm
+    - include_role: name=vagrant
+    - include_role: name=virtualbox
+    #- include_role: name=vmware-fusion
+
+    # tools
+    - include_role: name=wget
+    - include_role: name=rclone
+    #- include_role: name=amazon-workspace
+    #- include_role: name=macfuse
+    #- include_role: name=nmap
+    #- include_role: name=wireshark
+    #- include_role: name=keepassx
+    - include_role: name=keepassxc
+    #- include_role: name=sshfs
+    #- include_role: name=teamviewer
+    #- include_role: name=fing
+    #- include_role: name=openvpn
+
+    # personalize
+    - include_role: name=hiddenbar
+    - include_role: name=amphetamine
+    #- include_role: name=caffeine
+
+    # encryption
+    - include_role: name=veracrypt
+    - include_role: name=gpg
+
+  when: DESKTOP

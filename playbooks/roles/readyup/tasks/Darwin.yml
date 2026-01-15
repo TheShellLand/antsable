@@ -7,14 +7,14 @@
     ansible_facts.processor == "Apple M3" or
     ansible_facts.processor == "Apple M4"
 
-- name: "{{ansible_facts.distribution}}"
+- name: "DESKTOP {{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}.yml"
   when: DESKTOP
 
-- name: "{{ansible_facts.distribution}} dev"
+- name: "WORK {{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}-dev.yml"
   when: WORK
 
-- name: "{{ansible_facts.distribution}} lite"
+- name: "WORK_LITE {{ansible_facts.distribution}}"
   include_tasks: "{{ansible_facts.distribution}}-lite.yml"
   when: WORK_LITE

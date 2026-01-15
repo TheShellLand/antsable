@@ -13,6 +13,7 @@
 - name: CHROME
   block:
     - include_role: name=chrome
+    - include_role: name=keepassxc
 
     #  - name: Brave
     #    shell: snap install brave

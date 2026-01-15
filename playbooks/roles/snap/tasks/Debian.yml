@@ -6,3 +6,11 @@
   loop:
     - snap
     - snapd
+
+- name: enable snapd service
+  systemd:
+    name: snapd
+    state: started
+    enabled: yes
+  become: yes
+  changed_when: false

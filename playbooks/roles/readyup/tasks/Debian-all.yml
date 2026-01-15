@@ -39,16 +39,7 @@
     - include_role: name=neovim
     - include_role: name=curl
     - include_role: name=rsync
-
-    - include_role:
-        name: apt-installer
-      vars:
-        package: python3-pip
-
-    - include_role:
-        name: apt-installer
-      vars:
-        package: python3-distutils
+    - include_role: name=python3
 
 #    - name: Atom
 #      apt:

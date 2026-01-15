@@ -1,4 +1,10 @@
 ---
+- name: check google-chrome-stable
+  ansible.builtin.shell: "dpkg -s google-chrome-stable | grep 'install ok installed'"
+  register: package_status_detailed
+  ignore_errors: true
+  changed_when: false
+
 - block:
     - get_url:
         url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -16,6 +22,7 @@
     - shell: apt --fix-broken -y install
       become: yes
       changed_when: false
+  when: package_status_detailed.rc != 0
 
   rescue:
     - apt: update_cache=yes name=chromium-browser state=latest

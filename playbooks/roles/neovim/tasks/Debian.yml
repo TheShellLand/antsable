@@ -1,9 +1,3 @@
 ---
-- name: Add repo
-  shell: add-apt-repository ppa:neovim-ppa/stable
-  become: yes
-  changed_when: false
-
-- apt: update_cache=yes name={{ package }} state=latest
-  become: yes
-  changed_when: false
+- include_role:
+    name: apt-installer

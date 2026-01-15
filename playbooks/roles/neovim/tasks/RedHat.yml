@@ -1,3 +1,4 @@
 ---
-- yum: name={{ package }} state=latest
-  become: yes
+- yum:
+    name: "{{ package }}"
+    state: latest

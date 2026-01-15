@@ -1,5 +1,5 @@
 ---
-I3_DEFAULT_WINDOW_MANAGER: false
+I3_DEFAULT_WINDOW_MANAGER: true
 
 url:
 mac_dmg:

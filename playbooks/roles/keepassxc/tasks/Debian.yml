@@ -1,3 +1,14 @@
 ---
-- include_role:
-    name: apt-installer
+- block:
+  - include_role:
+      name: apt-installer
+
+  rescue:
+
+    - name: add repo
+      shell: add-apt-repository ppa:phoerious/keepassxc
+      become: yes
+      changed_when: false
+
+    - include_role:
+        name: apt-installer

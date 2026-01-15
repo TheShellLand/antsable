@@ -144,12 +144,12 @@
       changed_when: false
     - include_role:
         name: apt-installer
-        vars:
-          package: wine32
+      vars:
+        package: wine32
     - include_role:
         name: apt-installer
-        vars:
-          package: wine64
+      vars:
+        package: wine64
     - name: Wine staging
       apt:
         name: winehq-staging
@@ -160,8 +160,8 @@
       changed_when: false
     - include_role:
         name: apt-installer
-        vars:
-          package: fonts-wine
+      vars:
+        package: fonts-wine
 
   when: GAMING or DESKTOP
 
@@ -316,12 +316,12 @@
       changed_when: false
     - include_role:
         name: apt-installer
-        vars:
-          package: libsdl1.2debian
+      vars:
+        package: libsdl1.2debian
     - include_role:
         name: apt-installer
-        vars:
-          package: ffmpeg
+      vars:
+        package: ffmpeg
 
     - name: Veracrypt ppa
       apt_repository: repo='ppa:unit193/encryption'

@@ -1,4 +1,13 @@
 ---
-- include_role:
-    name: apt-installer
-  ignore_errors: true
+- block:
+    - include_role:
+        name: apt-installer
+
+  rescue:
+    - name: keepassxc
+      snap:
+        name: keepassxc
+        state: present
+        channel: latest/stable
+      become: yes
+      changed_when: false

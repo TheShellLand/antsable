@@ -2,15 +2,12 @@
 - debug:
     var: ansible_facts['virtualization_role']
 
-- block:
-  - include_role: name=chrome
-  when: CHROME
-
-- block:
-    - include_role: name=default-gui
-    - include_role: name=default-shell
-    - import_tasks: tasks/grub.yml
-  when: GUI
+- name: run everything
+  include_tasks: "Debian-all.yml"
+  when:
+    - not SERVER
+    - not SERVER_LITE
+    - not RASPBERRYPI
 
 - block:
   - name: SERVER
@@ -26,12 +23,3 @@
   - name: RASPBERRYPI
     include_tasks: "Debian-raspberrypi.yml"
   when: RASPBERRYPI
-
-- block:
-  - name: DESKTOP
-    include_tasks: "Debian-desktop.yml"
-  when: DESKTOP
-
-#- name: Ubuntu
-#  include_tasks: "Ubuntu.yml"
-#  when: DESKTOP

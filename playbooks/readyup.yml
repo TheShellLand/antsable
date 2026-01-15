@@ -5,10 +5,14 @@
   vars:
     GUI: true
     CHROME: true
+
+    CODING: false
+    PHOTOGRAPHY: false
+    MEDIA: false
+    GAMING: false
     DESKTOP: false
 
     RASPBERRYPI: false
-
     SERVER: false
     SERVER_LITE: false
 

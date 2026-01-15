@@ -1,5 +1,9 @@
 ---
-- snap:
-    name: pycharm-community
+- name: Pycharm
+  snap:
+    name: pycharm
     classic: yes
     state: present
+    channel: latest/stable
+  become: yes
+  changed_when: false

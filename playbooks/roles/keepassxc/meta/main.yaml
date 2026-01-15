@@ -2,4 +2,3 @@
 dependencies:
   - defaults
   - brew
-  - add-apt-repository

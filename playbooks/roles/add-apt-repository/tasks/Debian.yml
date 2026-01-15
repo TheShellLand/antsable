@@ -1,3 +1,8 @@
 ---
 - include_role:
     name: apt-installer
+  vars:
+    package: "{{ item }}"
+  loop:
+    - software-properties-common
+    - python3-launchpadlib

@@ -2,3 +2,4 @@
 dependencies:
   - defaults
   - vim
+  - add-apt-repository

@@ -14,3 +14,8 @@
     enabled: yes
   become: yes
   changed_when: false
+
+- name: minimal retain previous versions
+  shell: snap set system refresh.retain=2
+  become: yes
+  changed_when: false

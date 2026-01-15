@@ -5,3 +5,4 @@ dependencies:
   - tigervnc
   - redshift
   - bluetooth
+  - pulseaudio

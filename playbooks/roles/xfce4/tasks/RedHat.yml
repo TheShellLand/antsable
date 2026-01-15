@@ -1,6 +1,4 @@
 ---
 - yum:
-    name: "{{ item }}"
+    name: "{{ package }}"
     state: latest
-  loop:
-    -

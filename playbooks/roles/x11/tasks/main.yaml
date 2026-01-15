@@ -1,4 +1,3 @@
 ---
 - set_fact: package=libx11
 - include_tasks: "{{ansible_facts.os_family}}.yml"
-  when: package | length > 0

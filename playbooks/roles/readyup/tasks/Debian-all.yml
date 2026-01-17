@@ -10,6 +10,14 @@
   changed_when: false
   become: yes
 
+- name: GUI
+  block:
+    - include_role: name=default-gui
+    - include_role: name=default-shell
+    - import_tasks: tasks/grub.yml
+  when: GUI or DESKTOP
+
+
 - name: CHROME
   block:
     - include_role: name=chrome
@@ -84,13 +92,6 @@
     - include_role: name=gimp
     - include_role: name=audacity
   when: MEDIA or DESKTOP
-
-- name: GUI
-  block:
-    - include_role: name=default-gui
-    - include_role: name=default-shell
-    - import_tasks: tasks/grub.yml
-  when: GUI or DESKTOP
 
 - name: GAMING
   block:

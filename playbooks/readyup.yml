@@ -6,6 +6,7 @@
     GUI: true
     CHROME: true
 
+    KEEPASS: false
     CODING: false
     PHOTOGRAPHY: false
     MEDIA: false

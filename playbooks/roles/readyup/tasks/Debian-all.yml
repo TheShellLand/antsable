@@ -17,11 +17,14 @@
     - import_tasks: tasks/grub.yml
   when: GUI or DESKTOP
 
+- name: KEEPASS
+  block:
+    - include_role: name=keepassxc
+  when: KEEPASS or DESKTOP
 
 - name: CHROME
   block:
     - include_role: name=chrome
-    - include_role: name=keepassxc
 
     #  - name: Brave
     #    shell: snap install brave

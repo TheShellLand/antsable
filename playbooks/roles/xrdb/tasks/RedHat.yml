@@ -1,0 +1,6 @@
+---
+- name: set dpi to 140
+  copy:
+    src: ".Xresources"
+    dest: "~/.Xresources"
+  changed_when: false

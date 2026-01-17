@@ -1,0 +1,6 @@
+---
+- hosts: gui
+  roles:
+    - xrdb
+  vars:
+    DPI: 140

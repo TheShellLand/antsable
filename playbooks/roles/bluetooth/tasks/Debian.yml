@@ -6,3 +6,4 @@
     enabled: true
   become: yes
   changed_when: false
+  ignore_errors: yes

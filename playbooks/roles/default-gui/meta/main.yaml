@@ -3,5 +3,4 @@ dependencies:
   - defaults
   - i3
   - tigervnc
-  - bluetooth
   - pulseaudio

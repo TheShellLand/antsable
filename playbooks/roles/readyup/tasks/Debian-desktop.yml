@@ -20,6 +20,7 @@
 - include_role: name=nemo
 - include_role: name=neovim
 - include_role: name=docker
+- include_role: name=bluetooth
 
 - include_role:
     name: apt-installer

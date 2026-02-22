@@ -1,4 +1,4 @@
 ---
-- apt: update_cache=yes name={{ package }} state=latest
+- shell: curl -fsS https://dl.brave.com/install.sh | sh
   become: yes
   changed_when: false

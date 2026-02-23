@@ -1,0 +1,7 @@
+---
+- block:
+    - include_role: name=xset-disable-screen-off
+    - include_role: name=xrdb
+  rescue:
+    - debug:
+        msg: "can't access X server. probably in a VM"

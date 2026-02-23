@@ -13,6 +13,7 @@
 - name: GUI
   block:
     - include_role: name=default-gui
+    - include_role: name=default-vnc
     - include_role: name=default-shell
     - import_tasks: tasks/grub.yml
   when: GUI or DESKTOP

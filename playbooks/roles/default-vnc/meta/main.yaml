@@ -1,0 +1,6 @@
+---
+dependencies:
+  - defaults
+  - i3
+  - tigervnc
+  - tigervnc-start

@@ -16,6 +16,8 @@
     - include_role: name=default-vnc
     - include_role: name=default-shell
     - import_tasks: tasks/grub.yml
+    - include_role: name=nemo
+    - include_role: name=gthumb
   when: GUI or DESKTOP
 
 - name: WORK

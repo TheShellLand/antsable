@@ -5,3 +5,5 @@
   rescue:
     - debug:
         msg: "can't access X server. probably in a VM"
+
+- include_role: name=nemo

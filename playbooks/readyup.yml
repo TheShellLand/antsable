@@ -5,6 +5,7 @@
   vars:
     GUI: true
     CHROME: true
+    BRAVE: true
 
     KEEPASS: false
     CODING: false

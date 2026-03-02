@@ -6,3 +6,4 @@
     #vncserver :1 -AlwaysShared
     #vncconfig &
   changed_when: false
+  ignore_errors: yes

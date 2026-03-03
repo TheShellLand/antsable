@@ -1,0 +1,179 @@
+---
+- name: RESET
+  shell: rm -rfv /etc/openvpn/easy-rsa
+  become: yes
+  changed_when: false
+  ignore_errors: yes
+  when: RESET
+
+- set_fact:
+    EXISTS: false
+
+- name: Check if directory exists
+  ansible.builtin.stat:
+    path: /etc/openvpn/easy-rsa
+  register: dir_info
+
+- name: Task to run only if directory exists
+  set_fact:
+    EXISTS: true
+  when: dir_info.stat.isdir is defined and dir_info.stat.isdir
+
+- name: make-cadir /etc/openvpn/easy-rsa
+  shell: make-cadir /etc/openvpn/easy-rsa
+  become: yes
+  changed_when: false
+  ignore_errors: yes
+
+
+- name: first initialization
+  block:
+
+    - name: Initialize and build the Certificate Authority (CA) init-pki
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        ./easyrsa init-pki
+      become: yes
+      changed_when: false
+
+    - name: Initialize and build the Certificate Authority (CA) build-ca
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        ./easyrsa --batch build-ca nopass
+      become: yes
+      changed_when: false
+
+    - name: Generate Server Certificate and Key gen-req
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        ./easyrsa --batch gen-req server nopass
+      become: yes
+      changed_when: false
+
+    - name: Generate Server Certificate and Key sign-req
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        ./easyrsa --batch sign-req server server
+      become: yes
+      changed_when: false
+
+    - name: Generate Diffie-Hellman Parameters
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        ./easyrsa --batch gen-dh
+      become: yes
+      changed_when: false
+
+    - name: Generate TLS Authentication Key
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        openvpn --genkey secret ta.key
+      become: yes
+      changed_when: false
+
+    - name: Copy Certificates and Keys to /etc/openvpn/
+      shell: |
+        cd /etc/openvpn/easy-rsa
+        cp pki/dh.pem pki/ca.crt pki/issued/server.crt pki/private/server.key /etc/openvpn/
+      become: yes
+      changed_when: false
+
+  when: not EXISTS
+
+- name: copy openvpn config
+  fetch:
+    src: /usr/share/doc/openvpn/examples/sample-config-files/server.conf
+    dest: "."
+  become: yes
+  changed_when: false
+  when: TEST_CONFIG
+
+- name: Configure the Server
+  copy:
+    src: etc/openvpn/server.conf
+    dest: /etc/openvpn/server.conf
+    backup: yes
+  become: yes
+  changed_when: false
+
+- name: validate server config
+  shell: openvpn --test-crypto --secret /etc/openvpn/easy-rsa/ta.key --cipher AES-256-GCM
+  become: yes
+  changed_when: false
+
+- name: Start and Enable the OpenVPN Service
+  shell: |
+    pkill -HUP openvpn
+    systemctl start openvpn@server
+    systemctl enable openvpn@server
+  become: yes
+  changed_when: false
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+
+- name: generate client keys
+  shell: |
+    cd /etc/openvpn/easy-rsa
+    ./easyrsa --batch gen-req "{{ CLIENT_NAME }}" nopass
+    ./easyrsa --batch sign-req client "{{ CLIENT_NAME }}"
+  become: yes
+  changed_when: false
+
+- name: "create client ovpn {{ CLIENT_NAME }}"
+  shell: |
+    cd /etc/openvpn/easy-rsa
+
+    # ca.crt, client1.crt, client1.key, ta.key required
+
+    # Configuration
+    CLIENT_NAME="{{ CLIENT_NAME }}"
+    OUTPUT_DIR="./clients"
+    KEY_DIR="./pki"
+    SERVER_IP="{{ SERVER_IP }}"
+    PORT="{{ SERVER_PORT }}"
+    PROTO="{{ SERVER_PROTO }}"
+
+    mkdir -p "$OUTPUT_DIR"
+
+    cat > "$OUTPUT_DIR/$CLIENT_NAME.ovpn" << EOF
+    client
+    dev tun
+    proto $PROTO
+    remote $SERVER_IP $PORT
+    resolv-retry infinite
+    nobind
+    persist-key
+    persist-tun
+    remote-cert-tls server
+    cipher AES-256-CBC
+    verb 3
+    compress lzo
+
+    <ca>
+    $(cat "$KEY_DIR/ca.crt")
+    </ca>
+
+    <cert>
+    $(awk '/BEGIN/,/END/' "$KEY_DIR/issued/$CLIENT_NAME.crt")
+    </cert>
+
+    <key>
+    $(cat "$KEY_DIR/private/$CLIENT_NAME.key")
+    </key>
+
+    <tls-auth>
+    $(cat "ta.key")
+    </tls-auth>
+    key-direction 1
+    EOF
+
+    echo "Client config generated: $OUTPUT_DIR/$CLIENT_NAME.ovpn"
+  become: yes
+  changed_when: false
+
+- name: copy client ovpn
+  fetch:
+    src: "/etc/openvpn/easy-rsa/clients/{{ CLIENT_NAME }}.ovpn"
+    dest: "."
+  become: yes
+  changed_when: false

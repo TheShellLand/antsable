@@ -4,7 +4,7 @@
     - readyup
   vars:
     GUI: true
-    CHROME: true
+    CHROME: false
     BRAVE: true
 
     KEEPASS: false

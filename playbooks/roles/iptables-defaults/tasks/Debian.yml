@@ -17,11 +17,13 @@
     iptables -P FORWARD DROP
     iptables -P OUTPUT ACCEPT
     
+    # Allow established/related sessions 
+    iptables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    
     # Allow loopback and established sessions
     iptables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -i lo -j ACCEPT
-    iptables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
-    iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
     
     # Allow SSH (TCP 22)
     iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
@@ -40,15 +42,21 @@
     ip6tables -P FORWARD DROP
     ip6tables -P OUTPUT ACCEPT
     
+    # Allow established/related sessions 
+    ip6tables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    
     # Allow loopback and established sessions
     ip6tables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -i lo -j ACCEPT
-    ip6tables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
-    ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
     
     # Allow SSH (TCP 22)
     ip6tables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
+    
+    # Allow ICMPv6
+    ip6tables -C INPUT -p icmpv6 -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -p icmpv6 -j ACCEPT
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0

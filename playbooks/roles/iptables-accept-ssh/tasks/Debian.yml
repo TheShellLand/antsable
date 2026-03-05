@@ -11,8 +11,8 @@
 - name: configure iptables v4
   shell: |
     touch /etc/network/iptables.up.rules
-    iptables -C INPUT -p udp --dport 22 -j ACCEPT 2>/dev/null || \
-    iptables -A INPUT -p udp --dport 22 -j ACCEPT
+    iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -p tcp --dport 22 -j ACCEPT
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0
@@ -21,8 +21,8 @@
 - name: configure iptables v6
   shell: |
     touch /etc/network/ip6tables.up.rules
-    ip6tables -C INPUT -p udp --dport 22 -j ACCEPT 2>/dev/null || \
-    ip6tables -A INPUT -p udp --dport 22 -j ACCEPT
+    ip6tables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0

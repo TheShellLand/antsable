@@ -17,8 +17,8 @@
     iptables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
-    iptables -C FORWARD -i tun+ -j ACCEPT 2>/dev/null || \
-    iptables -A FORWARD -i tun+ -j ACCEPT
+    iptables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
+    iptables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
     iptables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 

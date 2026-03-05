@@ -39,8 +39,8 @@
     ip6tables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
-    ip6tables -C FORWARD -i tun+ -j ACCEPT 2>/dev/null || \
-    ip6tables -A FORWARD -i tun+ -j ACCEPT
+    ip6tables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
+    ip6tables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
     ip6tables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     ip6tables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
     

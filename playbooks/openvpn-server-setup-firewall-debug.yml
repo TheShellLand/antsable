@@ -7,3 +7,5 @@
     - iptables-enable-forwarding
     - iptables-accept-ssh
     - iptables-accept-openvpn
+    - iptables-reset-counters
+    - iptables-show-rules

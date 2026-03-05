@@ -1,0 +1,16 @@
+---
+- name: configure iptables v4
+  shell: iptables -Z
+  become: yes
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- name: configure iptables v6
+  shell: ip6tables -Z
+  become: yes
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- include_role: name=iptables-show-rules

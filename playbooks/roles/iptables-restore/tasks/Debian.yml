@@ -1,8 +1,12 @@
 ---
 - name: restore iptables v4
-  shell: iptables-restore /etc/iptables/rules.v4
+  shell: |
+    iptables-restore --test < /etc/iptables/rules.v4 && \
+    iptables-restore /etc/iptables/rules.v4
   become: yes
 
 - name: restore iptables v6
-  shell: ip6tables-restore /etc/iptables/rules.v6
+  shell: |
+    ip6tables-restore --test < /etc/iptables/rules.v6 && \
+    ip6tables-restore /etc/iptables/rules.v6
   become: yes

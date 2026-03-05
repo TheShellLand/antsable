@@ -1,0 +1,58 @@
+---
+- name: get default interface
+  shell: ip route | grep -m 1 default | awk '{print $5}'
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- set_fact:
+    interface: "{{shell.stdout}}"
+
+- name: configure iptables v4
+  shell: |
+    touch /etc/network/iptables.up.rules
+    
+    # Set default policies
+    iptables -P INPUT DROP
+    iptables -P FORWARD DROP
+    iptables -P OUTPUT ACCEPT
+    
+    # Allow loopback and established sessions
+    iptables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -i lo -j ACCEPT
+    iptables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    
+    # Allow SSH (TCP 22)
+    iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+  become: yes
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- name: configure iptables v6
+  shell: |
+    touch /etc/network/ip6tables.up.rules
+    
+    # Set default policies
+    ip6tables -P INPUT DROP
+    ip6tables -P FORWARD DROP
+    ip6tables -P OUTPUT ACCEPT
+    
+    # Allow loopback and established sessions
+    ip6tables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -i lo -j ACCEPT
+    ip6tables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+    
+    # Allow SSH (TCP 22)
+    ip6tables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
+  become: yes
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- include_role: name=iptables-save
+- include_role: name=iptables-show-rules

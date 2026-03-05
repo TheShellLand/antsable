@@ -1,10 +1,14 @@
 ---
 - name: save iptables v4
-  shell: iptables-save > /etc/iptables/rules.v4
+  shell: |
+    iptables-save > /etc/iptables/rules.v4
+    iptables-restore --test < /etc/iptables/rules.v4
   become: yes
   changed_when: false
 
 - name: save iptables v6
-  shell: ip6tables-save > /etc/iptables/rules.v6
+  shell: |
+    ip6tables-save > /etc/iptables/rules.v6
+    ip6tables-restore --test < /etc/iptables/rules.v6
   become: yes
   changed_when: false

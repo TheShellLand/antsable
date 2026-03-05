@@ -1,0 +1,4 @@
+---
+dependencies:
+  - iptables-flush
+  - iptables-enable-forwarding

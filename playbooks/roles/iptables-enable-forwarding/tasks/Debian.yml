@@ -1,19 +1,21 @@
 ---
 - name: enable ipv4 ipv6 forwarding
   shell: |
-    echo "Enabling IPv4 forwarding"
+    # Enabling IPv4 forwarding
     echo "1" > /proc/sys/net/ipv4/ip_forward
+    sysctl -w net.ipv4.ip_forward=1
 
-    echo "Enabling IPv6 forwarding"
+    # Enabling IPv6 forwarding
     echo "1" > /proc/sys/net/ipv6/ip_forward
+    sysctl -w net.ipv6.conf.all.forwarding=1
     
     sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
     sed -i 's/#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/g' /etc/sysctl.conf
 
     sysctl -p
     
-    echo "net.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/50-enable-ipv4-forwarding.conf
-    sysctl -p /etc/sysctl.d/50-enable-ipv4-forwarding.conf
+    #echo "net.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/50-enable-ipv4-forwarding.conf
+    #sysctl -p /etc/sysctl.d/50-enable-ipv4-forwarding.conf
   become: yes
   changed_when: false
 
@@ -29,35 +31,22 @@
 - name: configure iptables v4
   shell: |
     touch /etc/network/iptables.up.rules
-    if ! iptables-save | grep -e 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
-      iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
-      iptables-save > /etc/iptables/rules.v4
-      iptables-apply
-    fi
+    iptables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE || \
+    iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
   become: yes
   register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
+#  failed_when: shell.stderr | default('', true) | length > 0
   changed_when: false
 
 - name: configure iptables v6
   shell: |
     touch /etc/network/ip6tables.up.rules
-    if ! ip6tables-save | grep -e 'A POSTROUTING -o {{ interface }} -j MASQUERADE'; then 
-      ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
-      ip6tables-save > /etc/iptables/rules.v6
-      ip6tables-apply
-    fi
+    ip6tables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE || \
+    ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
   become: yes
   register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
+#  failed_when: shell.stderr | default('', true) | length > 0
   changed_when: false
 
-- name: show v4 rules
-  shell: cat /etc/iptables/rules.v4
-  become: yes
-  changed_when: false
-
-- name: show v6 rules
-  shell: cat /etc/iptables/rules.v6
-  become: yes
-  changed_when: false
+- include_role: name=iptables-save
+- include_role: name=iptables-show-rules

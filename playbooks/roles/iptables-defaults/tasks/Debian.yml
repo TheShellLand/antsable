@@ -12,18 +12,13 @@
   shell: |
     touch /etc/network/iptables.up.rules
     
-    # Set default policies
-    iptables -P INPUT DROP
-    iptables -P FORWARD DROP
-    iptables -P OUTPUT ACCEPT
+    # Allow loopback and established sessions
+    iptables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -i lo -j ACCEPT
     
     # Allow established/related sessions 
     iptables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-    
-    # Allow loopback and established sessions
-    iptables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
-    iptables -A INPUT -i lo -j ACCEPT
     
     # Allow SSH (TCP 22)
     iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
@@ -32,6 +27,12 @@
     # Allow Ping (Optional but helpful for IPv4)
     #iptables -C INPUT -p icmp --icmp-type echo-request -j ACCEPT 2>/dev/null || \
     #iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+    
+    # Set default policies
+    iptables -P INPUT DROP
+    iptables -P FORWARD DROP
+    iptables -P OUTPUT ACCEPT
+
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0
@@ -41,18 +42,13 @@
   shell: |
     touch /etc/network/ip6tables.up.rules
     
-    # Set default policies
-    ip6tables -P INPUT DROP
-    ip6tables -P FORWARD DROP
-    ip6tables -P OUTPUT ACCEPT
+    # Allow loopback and established sessions
+    ip6tables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -i lo -j ACCEPT
     
     # Allow established/related sessions 
     ip6tables -C INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-    
-    # Allow loopback and established sessions
-    ip6tables -C INPUT -i lo -j ACCEPT 2>/dev/null || \
-    ip6tables -A INPUT -i lo -j ACCEPT
     
     # Allow SSH (TCP 22)
     ip6tables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
@@ -61,6 +57,12 @@
     # Allow ICMPv6
     ip6tables -C INPUT -p icmpv6 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -p icmpv6 -j ACCEPT
+    
+    # Set default policies
+    ip6tables -P INPUT DROP
+    ip6tables -P FORWARD DROP
+    ip6tables -P OUTPUT ACCEPT
+
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0

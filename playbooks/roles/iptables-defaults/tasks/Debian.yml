@@ -28,6 +28,10 @@
     # Allow SSH (TCP 22)
     iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+    
+    # Allow Ping (Optional but helpful for IPv4)
+    #iptables -C INPUT -p icmp --icmp-type echo-request -j ACCEPT 2>/dev/null || \
+    #iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
   become: yes
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0

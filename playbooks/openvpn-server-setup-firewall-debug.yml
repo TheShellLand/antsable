@@ -2,7 +2,7 @@
 - hosts: openvpn
   roles:
     - openvpn
-    #  - iptables-defaults
+    - iptables-defaults
     - iptables-flush
     - iptables-enable-forwarding
     - iptables-accept-ssh

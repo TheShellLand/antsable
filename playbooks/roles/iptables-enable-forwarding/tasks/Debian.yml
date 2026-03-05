@@ -19,34 +19,3 @@
   become: yes
   changed_when: false
 
-- name: get default interface
-  shell: ip route | grep -m 1 default | awk '{print $5}'
-  register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
-  changed_when: false
-
-- set_fact:
-    interface: "{{shell.stdout}}"
-
-- name: configure iptables v4
-  shell: |
-    touch /etc/network/iptables.up.rules
-    iptables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE || \
-    iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
-  become: yes
-  register: shell
-#  failed_when: shell.stderr | default('', true) | length > 0
-  changed_when: false
-
-- name: configure iptables v6
-  shell: |
-    touch /etc/network/ip6tables.up.rules
-    ip6tables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE || \
-    ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
-  become: yes
-  register: shell
-#  failed_when: shell.stderr | default('', true) | length > 0
-  changed_when: false
-
-- include_role: name=iptables-save
-- include_role: name=iptables-show-rules

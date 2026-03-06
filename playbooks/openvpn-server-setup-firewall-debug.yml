@@ -5,7 +5,8 @@
     - iptables-flush
     - iptables-defaults
     - iptables-enable-forwarding
-    - iptables-accept-ssh
-    - iptables-accept-openvpn
+    - iptables-rule-accept-ssh
+    - iptables-rule-accept-openvpn
+    - iptables-rule-drop-all
     - iptables-reset-counters
     - iptables-show-rules

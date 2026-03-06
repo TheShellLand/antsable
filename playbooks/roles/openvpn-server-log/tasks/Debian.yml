@@ -1,9 +1,12 @@
 ---
-- name: openvpn logs
-  shell: cat /var/log/openvpn/openvpn-status.log
+- name: server logs
+  shell: journalctl -u openvpn@server
   become: yes
   changed_when: false
   register: shell
 
-- debug:
-    var: shell.stdout
+- name: status logs
+  shell: cat /var/log/openvpn/openvpn-status.log
+  become: yes
+  changed_when: false
+  register: shell

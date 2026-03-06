@@ -1,0 +1,9 @@
+---
+- name: get default interface
+  shell: ip route | grep -m 1 default | awk '{print $5}'
+  register: shell
+  failed_when: shell.stderr | default('', true) | length > 0
+  changed_when: false
+
+- set_fact:
+    interface: "{{shell.stdout}}"

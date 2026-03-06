@@ -1,6 +1,6 @@
 ---
 - name: server logs
-  shell: journalctl -u openvpn@server
+  shell: journalctl -u openvpn@server --since "10 minutes ago" --no-pager
   become: yes
   changed_when: false
   register: shell

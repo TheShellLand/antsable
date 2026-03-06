@@ -1,6 +1,19 @@
 ---
-- set_fact:
-    EXISTS: false
+- fail:
+    msg: "missing CLIENT_NAME"
+  failed_when: CLIENT_NAME | default('', true) | length == 0
+
+- name: check for existing client
+  stat:
+    path: "/etc/openvpn/easy-rsa/clients/{{ CLIENT_NAME }}.ovpn"
+  become: yes
+  changed_when: false
+  register: file
+
+- name: client exists
+  fail:
+    msg: "{{ CLIENT_NAME }} exists /etc/openvpn/easy-rsa/clients/{{ CLIENT_NAME }}.ovpn"
+  when: file.stat.exists
 
 - name: Check if directory exists
   ansible.builtin.stat:

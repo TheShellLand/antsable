@@ -3,21 +3,27 @@
   shell: |
     touch /etc/network/iptables.up.rules
     
+    # Allow incoming OpenVPN handshake packets (UDP 1194)
     iptables -C INPUT -p udp --dport 1194 -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -p udp --dport 1194 -j ACCEPT
     
+    # Allow SSH (Port 22) only if the user is already inside the VPN tunnel (tun+)
     iptables -C INPUT -i tun+ -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -i tun+ -p tcp --dport 22 -j ACCEPT
-
+    
+    # Enable IP Masquerading so VPN clients share the servers public IPv4
     iptables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
+    # Permit traffic to flow from the VPN tunnel out to the Internet interface
     iptables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
     iptables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
-
+    
+    # Allow return traffic for established sessions 
     iptables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
     
+    # Adjust TCP MSS to prevent packet drops due to VPN overhead/fragmentation
     iptables -t mangle -C FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu 2>/dev/null || \
     iptables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 
@@ -29,22 +35,28 @@
 - name: configure iptables v6
   shell: |
     touch /etc/network/ip6tables.up.rules
-
+    
+    # Allow incoming OpenVPN handshake packets (UDP 1194)
     ip6tables -C INPUT -p udp --dport 1194 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -p udp --dport 1194 -j ACCEPT
     
+    # Allow SSH (Port 22) only if the user is already inside the VPN tunnel (tun+)
     ip6tables -C INPUT -i tun+ -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -i tun+ -p tcp --dport 22 -j ACCEPT
-
+    
+    # Enable IP Masquerading so VPN clients share the servers public IPv4
     ip6tables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
+    # Permit traffic to flow from the VPN tunnel out to the Internet interface
     ip6tables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
     ip6tables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
-
+    
+    # Allow return traffic for established sessions 
     ip6tables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     ip6tables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
     
+    # Adjust TCP MSS to prevent packet drops due to VPN overhead fragmentation
     ip6tables -t mangle -C FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu 2>/dev/null || \
     ip6tables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 

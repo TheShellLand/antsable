@@ -10,11 +10,3 @@
   become: yes
   changed_when: false
   register: v6
-
-- name: ipv6
-  debug:
-    var: v6.stdout
-
-- name: ipv4
-  debug:
-    var: v4.stdout

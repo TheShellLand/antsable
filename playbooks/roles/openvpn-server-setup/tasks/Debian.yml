@@ -19,15 +19,14 @@
     EXISTS: true
   when: dir_info.stat.isdir is defined and dir_info.stat.isdir
 
-- name: make-cadir /etc/openvpn/easy-rsa
-  shell: make-cadir /etc/openvpn/easy-rsa
-  become: yes
-  changed_when: false
-  ignore_errors: yes
-
-
 - name: first initialization
   block:
+
+    - name: make-cadir /etc/openvpn/easy-rsa
+      shell: make-cadir /etc/openvpn/easy-rsa
+      become: yes
+      changed_when: false
+      ignore_errors: yes
 
     - name: Initialize and build the Certificate Authority (CA) init-pki
       shell: |

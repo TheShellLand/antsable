@@ -3,3 +3,7 @@
   shell: cat /var/log/openvpn/openvpn-status.log
   become: yes
   changed_when: false
+  register: shell
+
+- debug:
+    var: shell.stdout

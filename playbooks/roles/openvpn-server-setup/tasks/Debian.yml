@@ -111,3 +111,5 @@
   changed_when: false
   register: shell
   failed_when: shell.stderr | default('', true) | length > 0
+
+- include_role: name=openvpn-server-log

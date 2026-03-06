@@ -1,10 +1,18 @@
 ---
-- name: show v6 rules
-  shell: cat /etc/iptables/rules.v6
-  become: yes
-  changed_when: false
-
 - name: show v4 rules
   shell: cat /etc/iptables/rules.v4
   become: yes
   changed_when: false
+  register: v4
+
+- name: show v6 rules
+  shell: cat /etc/iptables/rules.v6
+  become: yes
+  changed_when: false
+  register: v6
+
+- debug:
+    var: v6.stdout
+
+- debug:
+    var: v4.stdout

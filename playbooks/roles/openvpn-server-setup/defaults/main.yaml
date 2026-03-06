@@ -1,7 +1,6 @@
 ---
 RESET: false
 TEST_CONFIG: false
-CLIENT_NAME: client1
 
 url:
 mac_dmg:

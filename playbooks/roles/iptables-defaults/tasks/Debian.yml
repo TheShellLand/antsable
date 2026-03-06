@@ -18,11 +18,6 @@
     # Allow Ping (Optional but helpful for IPv4)
     #iptables -C INPUT -p icmp --icmp-type echo-request -j ACCEPT 2>/dev/null || \
     #iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-    
-    # Set default policies
-    iptables -P INPUT DROP
-    iptables -P FORWARD DROP
-    iptables -P OUTPUT ACCEPT
 
   become: yes
   register: shell
@@ -48,11 +43,6 @@
     # Allow ICMPv6
     ip6tables -C INPUT -p icmpv6 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -p icmpv6 -j ACCEPT
-    
-    # Set default policies
-    ip6tables -P INPUT DROP
-    ip6tables -P FORWARD DROP
-    ip6tables -P OUTPUT ACCEPT
 
   become: yes
   register: shell

@@ -1,0 +1,6 @@
+---
+- hosts: openvpn
+  roles:
+    - openvpn-server-client-generate
+  vars:
+    CLIENT_NAME:

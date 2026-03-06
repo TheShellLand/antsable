@@ -1,0 +1,5 @@
+---
+- name: openvpn logs
+  shell: cat /var/log/openvpn/openvpn-status.log
+  become: yes
+  changed_when: false

@@ -11,14 +11,19 @@
 - name: configure iptables v4
   shell: |
     touch /etc/network/iptables.up.rules
+    
     iptables -C INPUT -p udp --dport 1194 -j ACCEPT 2>/dev/null || \
     iptables -A INPUT -p udp --dport 1194 -j ACCEPT
     
+    iptables -C INPUT -i tun+ -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    iptables -A INPUT -i tun+ -p tcp --dport 22 -j ACCEPT
+
     iptables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
     iptables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
     iptables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
+
     iptables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
     
@@ -33,14 +38,19 @@
 - name: configure iptables v6
   shell: |
     touch /etc/network/ip6tables.up.rules
+
     ip6tables -C INPUT -p udp --dport 1194 -j ACCEPT 2>/dev/null || \
     ip6tables -A INPUT -p udp --dport 1194 -j ACCEPT
     
+    ip6tables -C INPUT -i tun+ -p tcp --dport 22 -j ACCEPT 2>/dev/null || \
+    ip6tables -A INPUT -i tun+ -p tcp --dport 22 -j ACCEPT
+
     ip6tables -t nat -C POSTROUTING -o {{ interface }} -j MASQUERADE 2>/dev/null || \
     ip6tables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
     
     ip6tables -C FORWARD -i tun+ -o {{ interface }} -j ACCEPT 2>/dev/null || \
     ip6tables -A FORWARD -i tun+ -o {{ interface }} -j ACCEPT
+
     ip6tables -C FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT 2>/dev/null || \
     ip6tables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
     

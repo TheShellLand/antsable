@@ -1,0 +1,5 @@
+---
+- name: server status
+  shell: service openvpn status
+  become: yes
+  changed_when: false

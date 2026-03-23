@@ -23,16 +23,16 @@
   become: yes
   changed_when: false
 
-- name: enable openvpn iptables rules
+- name: enable cron on reboot
   ansible.builtin.cron:
-    name: "enable udp throughput optimization"
+    name: "enable udp throughput optimization on reboot"
     special_time: reboot
     job: "bash antsable/ansible-local.sh playbooks/udp-gro-forwarding.yml -v > udp-gro-forwarding 2>&1"
   changed_when: false
 
-- name: enable openvpn iptables rules
+- name: enable cron on hourly
   ansible.builtin.cron:
-    name: "enable udp throughput optimization"
+    name: "enable udp throughput optimization hourly"
     special_time: hourly
     job: "bash antsable/ansible-local.sh playbooks/udp-gro-forwarding.yml -v > udp-gro-forwarding 2>&1"
   changed_when: false

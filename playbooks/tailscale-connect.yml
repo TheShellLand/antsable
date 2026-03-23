@@ -1,6 +1,8 @@
 ---
 - hosts: tailscale
   roles:
-    - tailscale-connect
+  - tailscale-connect
   vars:
     TAILSCALE_AUTH_KEY:
+    ADVERTISE_ROUTES: true
+    ROUTES: 192.168.86.0/24

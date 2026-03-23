@@ -9,4 +9,15 @@
   shell: tailscale up --auth-key={{ TAILSCALE_AUTH_KEY }} --advertise-exit-node
   become: yes
   changed_when: false
-  when: TAILSCALE_ADVERTISE_EXIT_NODE
+  when:
+    - TAILSCALE_ADVERTISE_EXIT_NODE
+    - not ADVERTISE_ROUTES
+
+- name: "connect with exit node and advertise local subnet {{ ROUTES }}"
+  shell: tailscale up --auth-key={{ TAILSCALE_AUTH_KEY }} --advertise-exit-node --advertise-routes {{ ROUTES }}
+  become: yes
+  changed_when: false
+  when:
+    - TAILSCALE_ADVERTISE_EXIT_NODE
+    - ADVERTISE_ROUTES
+

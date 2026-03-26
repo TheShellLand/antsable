@@ -2,3 +2,5 @@
 dependencies:
   - defaults
   - curl
+  - iptables-enable-forwarding
+  - udp-gro-forwarding

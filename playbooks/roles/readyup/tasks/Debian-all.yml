@@ -169,6 +169,7 @@
     - include_role: name=nemo
     - include_role: name=docker
     - include_role: name=redshift
+    - include_role: name=htop
 
     - include_role:
         name: apt-installer

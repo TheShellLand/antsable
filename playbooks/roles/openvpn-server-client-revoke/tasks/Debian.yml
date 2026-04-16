@@ -1,0 +1,23 @@
+---
+- fail:
+    msg: "missing CLIENT_NAME"
+  failed_when: CLIENT_NAME | default('', true) | length == 0
+
+- name: check for existing client
+  stat:
+    path: "/etc/openvpn/easy-rsa/clients/{{ CLIENT_NAME }}.ovpn"
+  become: yes
+  changed_when: false
+  register: file
+
+- name: client doesnt exist
+  fail:
+    msg: "{{ CLIENT_NAME }} doesnt exist /etc/openvpn/easy-rsa/clients/{{ CLIENT_NAME }}.ovpn"
+  when: not file.stat.exists
+
+- name: revoke client
+  shell: |
+    cd /etc/openvpn/easy-rsa
+    ./easyrsa --batch revoke "{{ CLIENT_NAME }}"
+  become: yes
+  changed_when: false

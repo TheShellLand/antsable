@@ -1,0 +1,6 @@
+---
+- hosts: openvpn
+  roles:
+    - openvpn-server-client-revoke
+  vars:
+    CLIENT_NAME:

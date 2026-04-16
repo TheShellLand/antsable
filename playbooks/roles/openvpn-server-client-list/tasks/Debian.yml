@@ -1,0 +1,6 @@
+---
+- name: list clients
+  shell: |
+    ls -l /etc/openvpn/easy-rsa/clients/
+  become: yes
+  changed_when: false

@@ -15,6 +15,7 @@
 - include_role: name=curl
 - include_role: name=rsync
 - include_role: name=rclone
+- include_role: name=htop
 - include_role: name=tmux
 
 - include_role:

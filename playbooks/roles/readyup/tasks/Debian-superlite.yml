@@ -19,6 +19,7 @@
 - include_role: name=git
 - include_role: name=curl
 - include_role: name=tmux
+- include_role: name=htop
 - include_role: name=docker
 
 - include_role:

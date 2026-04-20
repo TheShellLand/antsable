@@ -20,6 +20,11 @@
   when: SERVER_LITE
 
 - block:
+  - name: SERVER_SUPER_LITE
+    include_tasks: "Debian-superlite.yml"
+  when: SERVER_SUPER_LITE
+
+- block:
   - name: RASPBERRYPI
     include_tasks: "Debian-raspberrypi.yml"
   when: RASPBERRYPI

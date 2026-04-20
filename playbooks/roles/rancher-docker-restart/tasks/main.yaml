@@ -1,0 +1,15 @@
+---
+- name: restart docker
+  shell: docker restart {{ RANCHER_SERVER }}
+  changed_when: false
+
+- name: docker ps
+  shell: docker ps
+  changed_when: false
+
+- name: docker logs
+  shell: docker logs {{ RANCHER_SERVER }} 2>&1 | grep "Bootstrap Password:"
+  register: docker
+  until: ("Bootstrap Password" in docker.stdout)
+  changed_when: false
+  retries: 100

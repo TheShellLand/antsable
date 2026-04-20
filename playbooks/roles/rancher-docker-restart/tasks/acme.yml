@@ -1,0 +1,16 @@
+---
+- name: Delete {{ RANCHER_SERVER }}_old
+  shell: docker rm -f {{ RANCHER_SERVER }}_old
+  ignore_errors: yes
+
+- name: Stop {{ RANCHER_SERVER }}
+  shell: docker stop {{ RANCHER_SERVER }}
+  ignore_errors: yes
+
+- name: Rename {{ RANCHER_SERVER }} {{ RANCHER_SERVER }}_old
+  shell: docker rename {{ RANCHER_SERVER }} {{ RANCHER_SERVER }}_old
+  ignore_errors: yes
+
+- name: Deploy Rancher acme {{ RANCHER_SERVER }}
+  shell: docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --name {{ RANCHER_SERVER }} rancher/rancher:{{ DOCKER_VERSION }} --acme-domain {{ ACME_DOMAIN }}
+  failed_when: ACME_DOMAIN == ""

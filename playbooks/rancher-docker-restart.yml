@@ -1,0 +1,4 @@
+---
+- hosts: rancher
+  roles:
+    - rancher-docker-restart

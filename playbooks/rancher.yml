@@ -1,6 +1,5 @@
 ---
 - hosts: rancher
-  # become: true
   roles:
     - rancher
   vars:

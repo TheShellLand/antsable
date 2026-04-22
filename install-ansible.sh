@@ -10,6 +10,9 @@ export DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
 # required
+apt update
+apt install -y curl python3
+
 if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi
 

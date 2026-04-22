@@ -29,10 +29,12 @@ if type localedef; then
   fi
 fi
 
-if [ ! -f get-pip.py ]; then curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py; fi
 
-python3 "get-pip.py" || python3 "get-pip.py" --break-system-packages
-rm -v "get-pip.py"
+if ! python3 -m pip >/dev/null; then
+  curl "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py;
+  python3 "get-pip.py" || python3 "get-pip.py" --break-system-packages
+  rm -v "get-pip.py"
+fi
 
 python3 -m pip install -U pip || python3 -m pip install --break-system-packages -U pip
 python3 -m pip install -U virtualenv || python3 -m pip install --break-system-packages -U virtualenv

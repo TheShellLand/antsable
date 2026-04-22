@@ -11,7 +11,7 @@ export DEBCONF_NONINTERACTIVE_SEEN=true
 
 # required
 apt update
-apt install -y curl python3
+apt install -y curl python3 vim
 
 if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi

@@ -17,6 +17,7 @@
     RASPBERRYPI: false
     SERVER: false
     SERVER_LITE: false
+    SERVER_SUPER_LITE: false
 
     WORK: false
     WORK_LITE: false

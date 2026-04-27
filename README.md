@@ -7,6 +7,10 @@
 
 ## Get started
 ```
+apt update && apt install -y wget vim git && git clone https://github.com/TheShellLand/antsable/ && bash antsable/install-ansible.sh
+
+or
+
 wget -O - https://raw.githubusercontent.com/TheShellLand/antsable/master/install-ansible.sh | sudo bash
 ```
 

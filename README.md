@@ -26,12 +26,15 @@ Modify `inventory.yaml`
 
 Run
 ```
-./ansible.sh playbooks/readyup.yml 
+bash ansible.sh playbooks/readyup.yml 
 ```
 
 Run locally without SSH
 ```
-./ansible.sh playbooks/readyup.yml --connection local
+bash ansible-local.sh playbooks/readyup.yml
+```
+```
+bash ansible.sh playbooks/readyup.yml --connection local
 ```
 
 Limit to localhost:

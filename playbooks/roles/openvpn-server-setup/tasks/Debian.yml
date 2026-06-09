@@ -109,6 +109,6 @@
   become: yes
   changed_when: false
   register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
+  failed_when: "shell.stdout | regex_search('Initialization Sequence Completed') is none"
 
 - include_role: name=openvpn-server-log

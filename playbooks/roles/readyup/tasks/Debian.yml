@@ -2,6 +2,12 @@
 - debug:
     var: ansible_facts['virtualization_role']
 
+- name: Update cache
+  apt: update_cache=yes
+  become: yes
+  changed_when: false
+  ignore_errors: true
+
 - name: run everything
   include_tasks: "Debian-all.yml"
   when:

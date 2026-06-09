@@ -1,9 +1,4 @@
 ---
-- name: Update cache
-  apt: update_cache=yes
-  become: yes
-  changed_when: false
-
 - name: Install Missing Packages
   shell: apt install -f -y
   register: shell

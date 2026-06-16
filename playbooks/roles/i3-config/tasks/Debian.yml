@@ -1,7 +1,7 @@
 ---
 - name: Ensure i3 directory exists
   ansible.builtin.file:
-    path: ~/.config/i3
+    path: "{{ ansible_env.HOME }}/.config/i3"
     state: directory
     mode: '0700'
   changed_when: false
@@ -9,13 +9,13 @@
 - name: copy i3 config
   copy:
     src: .config/i3/config
-    dest: ~/.config/i3/config
+    dest: "{{ ansible_env.HOME }}/.config/i3/config"
     mode: '0700'
   changed_when: false
 
 - name: Ensure i3blocks directory exists
   ansible.builtin.file:
-    path: ~/.config/i3blocks
+    path: "{{ ansible_env.HOME }}/.config/i3blocks"
     state: directory
     mode: '0700'
   changed_when: false
@@ -23,13 +23,13 @@
 - name: copy i3blocks config
   copy:
     src: .config/i3blocks/config
-    dest: ~/.config/i3blocks/config
+    dest: "{{ ansible_env.HOME }}/.config/i3blocks/config"
     mode: '0700'
   changed_when: false
 
 - name: Ensure .vnc directory exists
   ansible.builtin.file:
-    path: ~/.vnc
+    path: "{{ ansible_env.HOME }}/.vnc"
     state: directory
     mode: '0700'
   changed_when: false
@@ -37,6 +37,6 @@
 - name: copy vnc config
   copy:
     src: .vnc/xstartup
-    dest: ~/.vnc/xstartup
+    dest: "{{ ansible_env.HOME }}/.vnc/xstartup"
     mode: '0700'
   changed_when: false

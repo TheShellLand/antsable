@@ -8,7 +8,7 @@
 
 - name: copy i3 config
   copy:
-    src: "{{ role_path }}/files/.config/i3/config"
+    src: .config/i3/config
     dest: ~/.config/i3/config
     mode: '0700'
   changed_when: false
@@ -22,7 +22,7 @@
 
 - name: copy i3blocks config
   copy:
-    src: "{{ role_path }}/files/.config/i3blocks/config"
+    src: .config/i3blocks/config
     dest: ~/.config/i3blocks/config
     mode: '0700'
   changed_when: false
@@ -36,7 +36,7 @@
 
 - name: copy vnc config
   copy:
-    src: "{{ role_path }}/files/.vnc/xstartup"
+    src: .vnc/xstartup
     dest: ~/.vnc/xstartup
     mode: '0700'
   changed_when: false

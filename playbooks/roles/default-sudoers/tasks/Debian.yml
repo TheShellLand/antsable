@@ -1,9 +1,9 @@
 ---
-- name: Allow user to run any commands
+- name: "Allow user to run any commands - {{ ansible_user_id }}"
   community.general.sudoers:
-    name: user
+    name: "{{ ansible_user_id }}"
     state: present
-    user: user
+    user: "{{ ansible_user_id }}"
     runas: root
     commands: ALL
   become: yes

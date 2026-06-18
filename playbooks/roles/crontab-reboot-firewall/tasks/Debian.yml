@@ -1,10 +1,11 @@
 ---
-- name: clone exo
-  git:
-    repo: https://github.com/TheShellLand/exo.git
-    dest: "/root/exo"
-  become: yes
-  changed_when: false
+- block:
+    - name: clone exo
+      git:
+        repo: https://github.com/TheShellLand/exo.git
+        dest: "/root/exo"
+      become: yes
+      changed_when: false
 
 - name: check exists
   stat:

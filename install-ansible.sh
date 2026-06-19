@@ -10,16 +10,13 @@ export DEBCONF_NONINTERACTIVE_SEEN=true
 #export TZ="America/New_York"
 
 # required
-apt update
-apt install -y curl python3 vim
+if type apt; then
+  apt update
+  apt install -y curl python3 vim
+fi
 
 if ! type curl; then echo "curl not found"; exit 1; fi
 if ! type python3; then echo "python3 not found"; exit 1; fi
-
-if python3 -m ansible doc -h >/dev/null 2>&1; then
-  which ansible
-  exit 0
-fi
 
 # fix centos7
 if type localedef; then

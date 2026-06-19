@@ -14,10 +14,9 @@
     mode: '0700'
   changed_when: false
 
-- name: missing TIGERVNC_PASSWORD
-  fail:
-    msg: missing TIGERVNC_PASSWORD
-  when: TIGERVNC_PASSWORD is not defined or TIGERVNC_PASSWORD | length == 0
+- fail:
+    msg: "missing TIGERVNC_PASSWORD"
+  when: TIGERVNC_PASSWORD is not defined
 
 - name: generate password file
   shell: |

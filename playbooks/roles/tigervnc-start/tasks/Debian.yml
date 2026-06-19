@@ -2,8 +2,8 @@
 - name: start vncserver
   shell: | 
     vncserver -kill :1 || ::
-    vncserver :1
-    #vncserver :1 -AlwaysShared
+    #vncserver :1
+    vncserver :1 -AlwaysShared
     #vncconfig &
   changed_when: false
   ignore_errors: yes

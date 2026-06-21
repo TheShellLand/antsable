@@ -15,6 +15,7 @@
     - not SERVER_LITE
     - not SERVER_SUPER_LITE
     - not RASPBERRYPI
+    - not AGENT
 
 - block:
   - name: AGENT

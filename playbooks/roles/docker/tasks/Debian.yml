@@ -27,6 +27,7 @@
         rm -fv /etc/apt/sources.list.d/docker.list
         apt update
         apt install -y ca-certificates docker.io
+      changed_when: false
 
 - name: allow user to run docker
   shell: usermod -a -G docker {{ item }}

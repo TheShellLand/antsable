@@ -1,7 +1,7 @@
 ---
 - block:
     - name: check
-      shell: docker ps
+      shell: which docker
       register: shell
       become: true
       changed_when: false

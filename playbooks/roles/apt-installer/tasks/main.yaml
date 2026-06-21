@@ -17,3 +17,8 @@
     - APT_INSTALL
     - ansible_facts is defined
     - package_status_detailed.rc != 0
+
+- name: apt clean
+  shell: apt clean
+  become: yes
+  changed_when: false

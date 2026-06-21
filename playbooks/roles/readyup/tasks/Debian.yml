@@ -17,6 +17,11 @@
     - not RASPBERRYPI
 
 - block:
+  - name: AGENT
+    include_tasks: "Debian-agent.yml"
+  when: AGENT
+
+- block:
   - name: SERVER
     include_tasks: "Debian-server.yml"
   when: SERVER

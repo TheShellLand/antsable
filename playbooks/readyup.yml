@@ -7,6 +7,8 @@
     CHROME: false
     BRAVE: true
 
+    AGENT: true
+
     KEEPASS: false
     CODING: false
     PHOTOGRAPHY: false

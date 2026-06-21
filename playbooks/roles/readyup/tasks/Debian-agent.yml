@@ -1,0 +1,108 @@
+---
+- name: Install Missing Packages
+  shell: apt install -f -y
+  register: shell
+  changed_when: false
+  become: yes
+
+- name: GUI
+  block:
+    - include_role: name=default-gui
+    - include_role: name=default-vnc
+    - include_role: name=default-shell
+    - import_tasks: tasks/grub.yml
+    - include_role: name=nemo
+    - include_role: name=gthumb
+  when: GUI or DESKTOP
+
+- name: KEEPASS
+  block:
+    - include_role: name=keepassxc
+  when: KEEPASS or DESKTOP
+
+- name: CHROME
+  block:
+    - include_role: name=chrome
+  when: CHROME or DESKTOP
+
+- name: CODING
+  block:
+    - include_role: name=git
+    - include_role: name=tmux
+    - include_role: name=vim
+    - include_role: name=neovim
+    - include_role: name=curl
+    - include_role: name=rsync
+    - include_role: name=python3
+  when: CODING or DESKTOP
+
+- name: everything else
+  block:
+
+    - include_role: name=gcc
+    - include_role: name=rclone
+    - include_role: name=docker
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: software-properties-common
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: sudo
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: make
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: unzip
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: cifs-utils
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: sshfs
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: virt-viewer
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: x11vnc
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: x2goclient
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: nodejs
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: nmap
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: ffmpeg
+
+  when: DESKTOP
+
+- include_role: name=apt-clean

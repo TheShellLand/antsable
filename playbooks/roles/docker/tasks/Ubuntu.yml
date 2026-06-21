@@ -34,5 +34,4 @@
   become: yes
   changed_when: false
   loop:
-    - "{{ DOCKER_USER }}"
     - "{{ ansible_user_id }}"

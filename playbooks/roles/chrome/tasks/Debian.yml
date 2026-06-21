@@ -8,6 +8,11 @@
   become: yes
   changed_when: false
 
+- include_role:
+    name: apt-installer
+  vars:
+    package: fonts-liberation
+
 - shell: |
     dpkg -i google-chrome-stable_current_amd64.deb
     rm -v google-chrome-stable_current_amd64.deb

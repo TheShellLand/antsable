@@ -9,8 +9,6 @@
   rescue:
     - set_fact: package=docker
     - include_tasks: "{{ansible_facts.os_family}}.yml"
-      when:
-        - shell.rc != 0 or FORCE
 
 - name: check
   shell: docker ps

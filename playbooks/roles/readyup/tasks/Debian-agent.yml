@@ -5,6 +5,11 @@
   changed_when: false
   become: yes
 
+- name: AGENT
+  block:
+    - include_role: name=docker
+  when: AGENT
+
 - name: GUI
   block:
     - include_role: name=default-gui
@@ -41,7 +46,6 @@
 
     - include_role: name=gcc
     - include_role: name=rclone
-    - include_role: name=docker
 
     - include_role:
         name: apt-installer

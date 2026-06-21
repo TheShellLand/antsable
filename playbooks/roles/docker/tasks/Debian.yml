@@ -28,4 +28,3 @@
   loop:
     - "{{ DOCKER_USER }}"
     - "{{ ansible_user_id }}"
-

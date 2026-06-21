@@ -5,14 +5,14 @@
     path: ".ssh"
     state: directory
     mode: '0700'
-    owner: "{{ ansible_facts["user_id"] }}"
-    group: "{{ ansible_facts["user_id"] }}"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_id'] }}"
 
 - name: Generate an OpenSSH keypair on the *Ansible Controller*
   community.crypto.openssh_keypair:
     path: ".ssh/id_rsa" # Unique key name for each host
-    owner: "{{ ansible_facts["user_id"] }}"
-    group: "{{ ansible_facts["user_id"] }}"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_id'] }}"
     mode: '0600'
     type: ed25519 # Ed25519 is a modern, secure choice
     state: present
@@ -22,7 +22,7 @@
 
 - name: Add the *public* key to the target host's authorized_keys
   ansible.posix.authorized_key:
-    user: "{{ ansible_facts["user_id"] }}"
+    user: "{{ ansible_facts['user_id'] }}"
     key: "{{ generated_key.public_key }}" # Use the public key from the generated output
     state: present
     comment: "Ansible-generated key for {{ inventory_hostname }}"

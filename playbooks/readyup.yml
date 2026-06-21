@@ -4,8 +4,8 @@
     - readyup
   vars:
     GUI: true
-    CHROME: false
-    BRAVE: true
+    CHROME: true
+    BRAVE: false
 
     AGENT: true
 

@@ -11,7 +11,7 @@
     - include_tasks: "{{ansible_facts.os_family}}.yml"
 
 - name: check
-  shell: docker ps
+  shell: which docker
   register: shell
   changed_when: false
   become: true

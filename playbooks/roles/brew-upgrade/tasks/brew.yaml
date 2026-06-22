@@ -1,6 +1,6 @@
 ---
-- name: "{{ BREW }} upgrade"
-  shell: "{{ BREW }} upgrade"
+- name: "{{ BREW }} upgrade -y"
+  shell: "{{ BREW }} upgrade -y"
   register: shell
   changed_when: false
 

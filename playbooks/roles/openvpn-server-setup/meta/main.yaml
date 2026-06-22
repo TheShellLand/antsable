@@ -6,3 +6,4 @@ dependencies:
   - iptables-rule-accept-ssh
   - iptables-rule-accept-openvpn
   - iptables-rule-drop-all
+  - iptables-save

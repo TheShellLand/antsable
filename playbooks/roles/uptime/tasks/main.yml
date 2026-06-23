@@ -1,6 +1,7 @@
 ---
 - shell: uptime
   register: uptime
+  changed_when: false
 
 - debug:
     var: uptime.stdout

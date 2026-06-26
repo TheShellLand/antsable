@@ -1,11 +1,11 @@
 ---
-- block:
-    - name: clone exo
-      git:
-        repo: https://github.com/TheShellLand/pi-agent
-        dest: "pi-agent"
-      changed_when: false
+- name: copy installer
+  copy:
+    src: install.sh
+    dest: /tmp/install.sh
+    mode: 0755
+  changed_when: false
 
 - name: install pi locally
-  shell: bash pi-agent/install-local.sh
+  shell: bash /tmp/install.sh
   changed_when: false

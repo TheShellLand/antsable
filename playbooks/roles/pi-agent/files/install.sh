@@ -133,9 +133,7 @@ install_node_npm_interactive() {
   exec 3<>/dev/tty
 
   printf 'Pi needs Node.js 22.19.0 or newer and npm. Install them now with %s? [Y/n] ' "$label" >&3
-  if ! IFS= read -r answer <&3; then
-    answer=
-  fi
+  answer="Y"
   exec 3>&-
   case "$answer" in
     n|N|no|NO) printf '\nInstall Node.js 22.19.0 or newer and npm, then run this installer again.\n'; return 1 ;;
@@ -614,11 +612,7 @@ choose_pi_action() {
   if ! ( : <>/dev/tty ) 2>/dev/null; then
     print_pi_action_menu "$existing_pi_path"
     printf 'No terminal detected; continuing without confirmation.\n'
-    if [ -n "$existing_pi_path" ]; then
-      PI_INSTALL_ACTION=reinstall
-    else
-      PI_INSTALL_ACTION=install
-    fi
+    PI_INSTALL_ACTION=install
     print_pi_action_selection "$PI_INSTALL_ACTION"
     return 0
   fi
@@ -626,41 +620,7 @@ choose_pi_action() {
   exec 3<>/dev/tty
   print_pi_action_menu "$existing_pi_path" >&3
 
-  while :; do
-    key=$(read_tty_key)
-
-    case "$key" in
-      ""|" "|"$PI_CR")
-        if [ -n "$existing_pi_path" ]; then
-          PI_INSTALL_ACTION=reinstall
-        else
-          PI_INSTALL_ACTION=install
-        fi
-        break
-        ;;
-      y|Y)
-        if [ -n "$existing_pi_path" ]; then
-          PI_INSTALL_ACTION=reinstall
-        else
-          PI_INSTALL_ACTION=install
-        fi
-        break
-        ;;
-      u|U)
-        if [ -n "$existing_pi_path" ]; then
-          PI_INSTALL_ACTION=uninstall
-          break
-        fi
-        ;;
-      n|N|"$PI_ESC")
-        PI_INSTALL_ACTION=none
-        break
-        ;;
-    esac
-
-    printf 'Please choose one of the listed keys.\n' >&3
-  done
-
+  PI_INSTALL_ACTION=install
   print_pi_action_selection "$PI_INSTALL_ACTION" >&3
   exec 3>&-
 }

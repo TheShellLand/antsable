@@ -569,9 +569,7 @@ prompt_add_path_to_profile() {
 
   exec 3<>/dev/tty
   printf 'Add %s to your PATH in %s now? [Y/n] ' "$bin_dir" "$config_file" >&3
-  if ! IFS= read -r answer <&3; then
-    answer=
-  fi
+  answer="Y"
   exec 3>&-
   case "$answer" in
     n|N|no|NO) return 1 ;;

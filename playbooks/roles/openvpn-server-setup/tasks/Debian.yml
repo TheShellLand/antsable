@@ -111,4 +111,28 @@
   register: shell
   failed_when: "shell.stdout | regex_search('Initialization Sequence Completed') is none"
 
+- block:
+    - name: clone repo
+      git:
+        repo: https://github.com/TheShellLand/antsable.git
+        dest: "/root/antsable"
+      become: yes
+      changed_when: false
+
+  rescue:
+    - name: update repo
+      shell: |
+        cd antsable
+        git pull
+      become: yes
+      changed_when: false
+
+- name: enable firewall for openvpn
+  ansible.builtin.cron:
+    name: "[antsable] enable firewall for openvpn"
+    special_time: reboot
+    job: "/bin/bash $HOME/antsable/antsable-local.sh $HOME/antsable/playbooks/openvpn-server-setup-firewall-debug.yml > openvpn-server-setup-firewall-debug.yml.log 2>&1"
+  become: yes
+  changed_when: false
+
 - include_role: name=openvpn-server-log

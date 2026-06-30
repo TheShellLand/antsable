@@ -1,9 +1,33 @@
 ---
 - name: start vncserver
-  shell: | 
+  shell: |
     vncserver -kill :1 || ::
     #vncserver :1
     vncserver :1 -AlwaysShared
     #vncconfig &
   changed_when: false
   ignore_errors: yes
+
+- block:
+    - name: clone repo
+      git:
+        repo: https://github.com/TheShellLand/antsable.git
+        dest: "/root/antsable"
+      become: yes
+      changed_when: false
+
+  rescue:
+    - name: update repo
+      shell: |
+        cd antsable
+        git pull
+      become: yes
+      changed_when: false
+
+- name: start tigervnc server
+  ansible.builtin.cron:
+    name: "[antsable] start tigervnc server"
+    special_time: reboot
+    job: "/bin/bash $HOME/antsable/antsable-local.sh $HOME/antsable/playbooks/tigervnc-start.yml > tigervnc-start.log 2>&1"
+  become: yes
+  changed_when: false

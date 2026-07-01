@@ -10,6 +10,13 @@
   shell: bash /tmp/install.sh
   changed_when: false
 
-- name: update pi
-  shell: pi update
+- name: copy models.json
+  copy:
+    src: models.json
+    dest: $HOME/.pi/agent/models.json
+    mode: 0755
+  changed_when: false
+
+- name: update npm
+  shell: npm update
   changed_when: false

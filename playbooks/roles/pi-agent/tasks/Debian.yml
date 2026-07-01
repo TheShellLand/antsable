@@ -10,11 +10,12 @@
   shell: bash /tmp/install.sh
   changed_when: false
 
+- name: clone https://github.com/TheShellLand/pi-agent.git
+  shell: git clone https://github.com/TheShellLand/pi-agent.git
+  changed_when: false
+
 - name: copy models.json
-  copy:
-    src: models.json
-    dest: $HOME/.pi/agent/models.json
-    mode: 0755
+  shell: cp -v pi-agent/models.json $HOME/.pi/agent/models.json
   changed_when: false
 
 - name: update npm

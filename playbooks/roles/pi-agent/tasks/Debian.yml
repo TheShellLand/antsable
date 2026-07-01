@@ -1,21 +1,24 @@
 ---
 - name: copy installer
   copy:
-    src: install.sh
-    dest: /tmp/install.sh
+    src: always-install-pi.sh
+    dest: /tmp/always-install-pi.sh
     mode: 0755
   changed_when: false
 
 - name: install pi locally
-  shell: bash /tmp/install.sh
+  shell: bash /tmp/always-install-pi.sh
   changed_when: false
 
 - name: clone https://github.com/TheShellLand/pi-agent.git
-  shell: git clone https://github.com/TheShellLand/pi-agent.git
+  shell: git clone https://github.com/TheShellLand/pi-agent.git || echo
   changed_when: false
 
 - name: copy models.json
-  shell: cp -v pi-agent/models.json $HOME/.pi/agent/models.json
+  shell: |
+    cd pi-agent
+    git pull 
+    cp -v models.json $HOME/.pi/agent/models.json
   changed_when: false
 
 - name: update npm

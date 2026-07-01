@@ -21,7 +21,3 @@
     mkdir -p $HOME/.pi/agent
     cp -v models.json $HOME/.pi/agent/models.json
   changed_when: false
-
-- name: update npm
-  shell: npm update
-  changed_when: false

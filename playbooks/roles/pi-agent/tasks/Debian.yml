@@ -1,13 +1,13 @@
 ---
 - name: copy installer
   copy:
-    src: force-install-pi.sh
-    dest: /tmp/force-install-pi.sh
+    src: pi-install-force.sh
+    dest: /tmp/pi-install-force.sh
     mode: 0755
   changed_when: false
 
 - name: install pi locally
-  shell: bash /tmp/force-install-pi.sh
+  shell: bash /tmp/pi-install-force.sh
   changed_when: false
 
 - name: clone https://github.com/TheShellLand/pi-agent.git

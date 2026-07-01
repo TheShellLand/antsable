@@ -9,3 +9,7 @@
 - name: install pi locally
   shell: bash /tmp/install.sh
   changed_when: false
+
+- name: update pi
+  shell: pi update
+  changed_when: false

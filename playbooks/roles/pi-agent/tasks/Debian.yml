@@ -18,6 +18,7 @@
   shell: |
     cd pi-agent
     git pull 
+    mkdir -p $HOME/.pi/agent
     cp -v models.json $HOME/.pi/agent/models.json
   changed_when: false
 

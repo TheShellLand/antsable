@@ -28,6 +28,6 @@
   ansible.builtin.cron:
     name: "[antsable] start tigervnc server"
     special_time: reboot
-    job: "/bin/bash $HOME/antsable/antsable-local.sh $HOME/antsable/playbooks/tigervnc-start.yml > tigervnc-start.log 2>&1"
+    job: "/bin/bash $HOME/antsable/ansible-local.sh $HOME/antsable/playbooks/tigervnc-start.yml > tigervnc-start.log 2>&1"
   become: yes
   changed_when: false

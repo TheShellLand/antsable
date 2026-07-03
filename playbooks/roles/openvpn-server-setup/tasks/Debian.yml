@@ -127,7 +127,7 @@
       become: yes
       changed_when: false
 
-- name: enable firewall for openvpn
+- name: enable cronjob firewall for openvpn
   ansible.builtin.cron:
     name: "[antsable] enable firewall for openvpn"
     special_time: reboot

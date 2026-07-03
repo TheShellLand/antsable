@@ -36,7 +36,6 @@ laptop:
 
 gaming:
   hosts:
-    localhost:
 
 gateway:
   hosts:

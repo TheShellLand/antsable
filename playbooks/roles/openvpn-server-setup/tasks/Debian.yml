@@ -131,7 +131,7 @@
   ansible.builtin.cron:
     name: "[antsable] enable firewall for openvpn"
     special_time: reboot
-    job: "/bin/bash $HOME/antsable/ansible-local.sh $HOME/antsable/playbooks/openvpn-server-setup-firewall-debug.yml > openvpn-server-setup-firewall-debug.log 2>&1"
+    job: "/bin/bash $HOME/antsable/ansible-local.sh $HOME/antsable/playbooks/openvpn-server-setup-firewall-local.yml > openvpn-server-setup-firewall-debug.log 2>&1"
   become: yes
   changed_when: false
 

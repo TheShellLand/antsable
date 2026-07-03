@@ -4,6 +4,4 @@
 
 cd $(dirname $0) && set -e
 
-
 bash ansible.sh -c local -l local ${@}
-

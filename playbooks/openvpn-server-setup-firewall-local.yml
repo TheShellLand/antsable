@@ -1,0 +1,12 @@
+---
+- hosts: local
+  roles:
+    - iptables-flush
+    - iptables-defaults
+    - iptables-enable-forwarding
+    - iptables-rule-accept-ssh
+    - iptables-rule-accept-openvpn
+    - iptables-rule-drop-all
+    - iptables-save
+    - iptables-reset-counters
+    - iptables-show-rules

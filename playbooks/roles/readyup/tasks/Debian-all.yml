@@ -28,6 +28,12 @@
 - name: CHROME
   block:
     - include_role: name=chrome
+
+    - include_role:
+        name: apt-installer
+      vars:
+        package: vlc
+
   when: CHROME or DESKTOP
 
 - name: BRAVE

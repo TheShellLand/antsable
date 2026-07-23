@@ -3,7 +3,7 @@
   roles:
     - readyup
   vars:
-    GUI: true
+    GUI: false
     CHROME: true
     BRAVE: false
 

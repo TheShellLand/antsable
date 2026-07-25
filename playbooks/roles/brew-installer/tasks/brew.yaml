@@ -27,8 +27,7 @@
     - name: "{{ BREW }} upgrade --cask {{ package }}"
       shell: "{{ BREW }} upgrade --cask {{ package }}"
       register: shell
-      failed_when: shell.stdout
-      changed_when: shell.stdout
+      changed_when: false
       when: "'installed' in shell.stderr"
 
     - debug:
@@ -50,8 +49,7 @@
     - name: "{{ BREW }} upgrade {{ package }}"
       shell: "{{ BREW }} upgrade {{ package }}"
       register: shell
-      failed_when: shell.stdout
-      changed_when: shell.stdout
+      changed_when: false
       when: "'installed' in shell.stderr"
 
     - name: "{{ BREW }} link --overwrite {{ package }}"
@@ -78,8 +76,7 @@
     - name: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
       shell: "{{ BREW }} upgrade --cask --no-quarantine {{ package }}"
       register: shell
-      failed_when: shell.stdout
-      changed_when: shell.stdout
+      changed_when: false
       when: "'installed' in shell.stderr"
 
   when: NO_QUARANTINE

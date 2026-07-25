@@ -1,6 +1,6 @@
 ---
 package:
 BREW_PACKAGE:
-BREW_TAP:
+BREW_TAP: false
 BREW_INSTALL: true
 NO_QUARANTINE: false

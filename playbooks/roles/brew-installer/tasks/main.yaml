@@ -3,3 +3,4 @@
   when:
     - BREW_INSTALL
     - ansible_facts.os_family == "Darwin"
+    - package | default('', true) | length > 0

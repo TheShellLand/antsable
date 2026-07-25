@@ -1,0 +1,4 @@
+---
+- name: check sudo
+  shell: sudo id
+  become: yes

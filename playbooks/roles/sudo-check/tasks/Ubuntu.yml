@@ -1,0 +1,7 @@
+---
+- include_role:
+    name: apt-installer
+
+- name: check sudo
+  shell: sudo id
+  become: yes

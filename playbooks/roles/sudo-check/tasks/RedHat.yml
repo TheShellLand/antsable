@@ -1,0 +1,8 @@
+---
+- yum:
+    name: "{{ package }}"
+    state: latest
+
+- name: check sudo
+  shell: sudo id
+  become: yes

@@ -1,0 +1,3 @@
+---
+- set_fact: package=sudo
+- include_tasks: "{{ansible_facts.os_family}}.yml"

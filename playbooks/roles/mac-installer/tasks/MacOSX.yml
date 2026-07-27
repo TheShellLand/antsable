@@ -1,8 +1,4 @@
 ---
-- name: pre-run sudo
-  shell: sudo id
-  changed_when: false
-
 - name: dmg
   block:
     - block:

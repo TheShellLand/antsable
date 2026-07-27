@@ -18,10 +18,6 @@
 
   rescue:
 
-    - name: pre-run sudo
-      shell: sudo id
-      changed_when: false
-
     - name: 'NONINTERACTIVE=1 {{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       shell: |
         NONINTERACTIVE=1 {{ ARCH }} /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

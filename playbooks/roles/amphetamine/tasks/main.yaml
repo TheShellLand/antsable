@@ -6,4 +6,4 @@
 - set_fact: MAS_ID=937984704
 
 - include_tasks: "{{ansible_facts.os_family}}.yml"
-  when: MAS_ID or MAS_PACKAGE
+  when: MAS_ID is defined or MAS_PACKAGE is defined

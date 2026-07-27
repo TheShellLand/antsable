@@ -8,6 +8,7 @@
 - name: AGENT
   block:
     - include_role: name=docker
+    - include_role: name=pi-agent
   when: AGENT
 
 - name: GUI

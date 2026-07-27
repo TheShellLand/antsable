@@ -9,12 +9,12 @@
 
     AGENT: true
 
-    KEEPASS: true
-    CODING: true
-    PHOTOGRAPHY: true
+    KEEPASS: false
+    CODING: false
+    PHOTOGRAPHY: false
     MEDIA: false
     GAMING: false
-    DESKTOP: true
+    DESKTOP: false
 
     RASPBERRYPI: false
     SERVER: false

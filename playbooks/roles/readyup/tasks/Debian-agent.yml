@@ -16,7 +16,6 @@
     - include_role: name=default-gui
     - include_role: name=default-vnc
     - include_role: name=default-shell
-    - import_tasks: tasks/grub.yml
     - include_role: name=nemo
     - include_role: name=gthumb
   when: GUI or DESKTOP
@@ -42,8 +41,10 @@
     - include_role: name=python3
   when: CODING or DESKTOP
 
-- name: everything else
+- name: DESKTOP
   block:
+
+    - import_tasks: tasks/grub.yml
 
     - include_role: name=gcc
     - include_role: name=rclone

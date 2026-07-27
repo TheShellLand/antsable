@@ -16,6 +16,7 @@
     - not SERVER_SUPER_LITE
     - not RASPBERRYPI
     - not AGENT
+    - DESKTOP
 
 - block:
   - name: AGENT

@@ -12,7 +12,7 @@
     KEEPASS: false
     CODING: false
     PHOTOGRAPHY: false
-    MEDIA: false
+    MEDIA: true
     GAMING: false
     DESKTOP: false
 

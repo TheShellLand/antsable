@@ -30,6 +30,14 @@
     - include_role: name=chrome
   when: CHROME or DESKTOP
 
+- name: MEDIA
+  block:
+    - include_role:
+        name: apt-installer
+      vars:
+        package: vlc
+  when: MEDIA
+
 - name: CODING
   block:
     - include_role: name=git

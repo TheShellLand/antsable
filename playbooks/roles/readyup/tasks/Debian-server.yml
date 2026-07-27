@@ -146,14 +146,4 @@
   become: yes
   changed_when: false
 
-- name: autoclean
-  apt:
-    autoclean: yes
-  become: yes
-  changed_when: false
-
-- name: autoremove
-  apt:
-    autoremove: yes
-  become: yes
-  changed_when: false
+- include_role: name=apt-clean

@@ -82,7 +82,7 @@
 
     # personalize
     - include_role: name=hiddenbar
-    - include_role: name=amphetamine
+    #- include_role: name=amphetamine   # Error: No apps found in the App Store for search term: 937984704
     #- include_role: name=caffeine
 
     # encryption

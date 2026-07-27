@@ -1,17 +1,24 @@
 ---
-- name: copy installer
-  copy:
-    src: pi-install-force.sh
-    dest: /tmp/pi-install-force.sh
-    mode: 0755
-  changed_when: false
-
-- name: install pi locally
-  shell: bash /tmp/pi-install-force.sh
-  changed_when: false
+#- name: copy installer
+#  copy:
+#    src: pi-install-force.sh
+#    dest: /tmp/pi-install-force.sh
+#    mode: 0755
+#  changed_when: false
+#
+#- name: install pi locally
+#  shell: bash /tmp/pi-install-force.sh
+#  changed_when: false
 
 - name: clone https://github.com/TheShellLand/pi-agent.git
   shell: git clone https://github.com/TheShellLand/pi-agent.git || echo
+  changed_when: false
+
+- name: install pi
+  shell: |
+    cd pi-agent
+    git pull
+    bash install/install-local-always.sh
   changed_when: false
 
 - name: copy models.json

@@ -27,7 +27,7 @@
           register: shell
           become: yes
           changed_when: "'OK' not in shell.stdout"
-  when: mac_dmg
+  when: mac_dmg is defined
 
 - name: pkg
   block:
@@ -44,7 +44,7 @@
       become: yes
       changed_when: "'OK' not in shell.stdout"
 
-  when: mac_pkg
+  when: mac_pkg is defined
 
 - name: zip
   block:
@@ -56,4 +56,4 @@
     - debug: msg="Not Implemented"
     - fail:
 
-  when: mac_zip
+  when: mac_zip is defined

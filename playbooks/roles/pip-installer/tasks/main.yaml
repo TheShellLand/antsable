@@ -1,5 +1,5 @@
 ---
 - include_tasks: pip.yaml
   when:
-    - PIP_INSTALL
-    - pip_package
+    - PIP_INSTALL is defined
+    - pip_package is defined

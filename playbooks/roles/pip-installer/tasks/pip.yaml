@@ -1,17 +1,16 @@
 ---
 - set_fact: pip="{{ pip_package }}"
-- set_fact: pip="{{ pip }} --user"
-  when: pip_user
+  when: pip_user is defined
 
 - set_fact: pip="{{ pip }} -i {{ pip_index }}"
   when: pip_index
 
-- name: "python3 -m pip install -U {{ pip }} --break-system-packages"
-  shell: "python3 -m pip install -U {{ pip }} --break-system-packages"
-  register: shell
-  changed_when: false
-  failed_when:
-    - "'installed' not in shell.stderr"
-    - "'installed' not in shell.stdout"
-    - '"Requirement already satisfied" not in shell.stdout'
-    - '"Requirement already up-to-date" not in shell.stdout'
+    - name: "python3 -m pip install -U {{ pip }} --break-system-packages"
+      shell: "python3 -m pip install -U {{ pip }} --break-system-packages"
+      register: shell
+      changed_when: false
+      failed_when:
+        - "'installed' not in shell.stderr"
+        - "'installed' not in shell.stdout"
+        - '"Requirement already satisfied" not in shell.stdout'
+        - '"Requirement already up-to-date" not in shell.stdout'

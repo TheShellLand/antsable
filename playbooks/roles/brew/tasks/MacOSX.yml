@@ -34,3 +34,10 @@
         eval "$(/opt/homebrew/bin/brew shellenv)"
       register: shell
       changed_when: shell.stderr
+
+- name: daily brew update
+  ansible.builtin.cron:
+    name: "[antsable] daily brew update"
+    special_time: daily
+    job: "{{ BREW }} update"
+  changed_when: false

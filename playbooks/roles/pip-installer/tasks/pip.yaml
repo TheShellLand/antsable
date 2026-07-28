@@ -1,9 +1,27 @@
 ---
+- name: "python3 -m pip install -U pip --break-system-packages"
+  shell: "python3 -m pip install -U pip --break-system-packages"
+  register: shell
+  changed_when: false
+
 - set_fact: pip="{{ pip_package }}"
   when: pip_user is defined
 
 - set_fact: pip="{{ pip }} -i {{ pip_index }}"
-  when: pip_index
+  when: pip_index | default('', true) | length > 0
+
+- block:
+  - name: "python3 -m pip install -U {{ pip }} --user --break-system-packages"
+    shell: "python3 -m pip install -U {{ pip }} --user --break-system-packages"
+    register: shell
+    changed_when: false
+    failed_when:
+      - "'installed' not in shell.stderr"
+      - "'installed' not in shell.stdout"
+      - '"Requirement already satisfied" not in shell.stdout'
+      - '"Requirement already up-to-date" not in shell.stdout'
+
+  rescue:
 
     - name: "python3 -m pip install -U {{ pip }} --break-system-packages"
       shell: "python3 -m pip install -U {{ pip }} --break-system-packages"

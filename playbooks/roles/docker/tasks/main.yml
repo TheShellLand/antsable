@@ -17,3 +17,10 @@
   become: true
   failed_when:
     - shell.rc != 0
+
+- name: daily docker cleanup
+  ansible.builtin.cron:
+    name: "[antsable] daily docker cleanup"
+    special_time: daily
+    job: "docker system prune -f"
+  changed_when: false

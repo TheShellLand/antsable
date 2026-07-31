@@ -41,3 +41,10 @@
     special_time: daily
     job: "{{ BREW }} update"
   changed_when: false
+
+- name: daily brew upgrade
+  ansible.builtin.cron:
+    name: "[antsable] daily brew upgrade"
+    special_time: daily
+    job: "{{ BREW }} upgrade -y"
+  changed_when: false

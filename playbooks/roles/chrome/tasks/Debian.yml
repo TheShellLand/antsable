@@ -1,5 +1,5 @@
 ---
-- shell: apt --fix-broken -y install
+- shell: apt update && apt --fix-broken -y install
   become: yes
   changed_when: false
 
@@ -11,6 +11,6 @@
   vars:
     package: fonts-liberation
 
-- shell: apt --fix-broken -y install
+- shell: apt update && apt --fix-broken -y install
   become: yes
   changed_when: false

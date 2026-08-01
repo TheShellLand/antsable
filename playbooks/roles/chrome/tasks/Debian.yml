@@ -6,11 +6,11 @@
 - name: "{{ansible_facts.architecture}}"
   include_tasks: "{{ansible_facts.architecture}}.yml"
 
+- shell: apt update && apt --fix-broken -y install
+  become: yes
+  changed_when: false
+
 - include_role:
     name: apt-installer
   vars:
     package: fonts-liberation
-
-- shell: apt update && apt --fix-broken -y install
-  become: yes
-  changed_when: false

@@ -1,23 +1,15 @@
 ---
-- get_url:
-    url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dest: .
-  changed_when: false
-
 - shell: apt --fix-broken -y install
   become: yes
   changed_when: false
+
+- name: "{{ansible_facts.architecture}}"
+  include_tasks: "{{ansible_facts.architecture}}.yml"
 
 - include_role:
     name: apt-installer
   vars:
     package: fonts-liberation
-
-- shell: |
-    dpkg -i google-chrome-stable_current_amd64.deb
-    rm -v google-chrome-stable_current_amd64.deb
-  become: yes
-  changed_when: false
 
 - shell: apt --fix-broken -y install
   become: yes

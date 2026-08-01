@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url:
+    url: https://dl.google.com/linux/direct/google-chrome-stable_current_arm64.deb
+    dest: .
+  changed_when: false
+
+- name: install
+  shell: |
+    dpkg -i google-chrome-stable_current_arm64.deb
+    rm -v google-chrome-stable_current_arm64.deb
+  become: yes
+  changed_when: false

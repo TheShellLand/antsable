@@ -1,7 +1,12 @@
 ---
-- name: "{{ BREW }} upgrade -y"
-  shell: "{{ BREW }} upgrade -y"
-  register: shell
-  changed_when: false
+- block:
+    - name: "{{ BREW }} upgrade -y"
+      shell: "{{ BREW }} upgrade -y"
+      register: shell
+      changed_when: false
+
+  rescue:
+    - fail:
+        msg: "need sudo. run manually: {{ BREW }} upgrade -y"
 
 - debug: var=shell

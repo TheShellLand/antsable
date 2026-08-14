@@ -5,3 +5,4 @@
 - name: check sudo
   shell: sudo id
   become: yes
+  changed_when: false

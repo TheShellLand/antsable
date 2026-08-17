@@ -6,6 +6,7 @@
     - iptables-defaults
     - iptables-enable-forwarding
     - iptables-rule-accept-ssh
+    - iptables-rule-accept-vnc
     - iptables-rule-accept-openvpn
     - iptables-rule-drop-all
     - iptables-save

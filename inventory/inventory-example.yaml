@@ -4,6 +4,9 @@ all:
 local:
   hosts:
     localhost:
+      TIGERVNC_PASSWORD:
+      TIGERVNC_LISTEN_HOST:
+      TIGERVNC_LISTEN_ALL: false
 
 serverless:
   hosts:

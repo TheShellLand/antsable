@@ -1,12 +1,23 @@
 ---
-- name: start vncserver
-  shell: |
-    vncserver -kill :1 || ::
-    #vncserver :1
-    vncserver :1 -AlwaysShared
-    #vncconfig &
-  changed_when: false
-  ignore_errors: yes
+- block:
+    - name: start vncserver
+      shell: |
+        vncserver -kill :1 || ::
+        #vncserver :1
+        vncserver :1 -AlwaysShared
+        #vncconfig &
+      changed_when: false
+      ignore_errors: yes
+  when: not TIGERVNC_LISTEN_ALL
+
+- block:
+    - name: start vncserver on all ports
+      shell: |
+        vncserver -kill :1 || ::
+        vncserver -localhost no :1 -AlwaysShared
+      changed_when: false
+      ignore_errors: yes
+  when: TIGERVNC_LISTEN_ALL
 
 - block:
     - name: clone repo

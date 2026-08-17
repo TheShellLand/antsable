@@ -7,3 +7,5 @@ mac_folder:
 mac_app:
 
 BREW_INSTALL: true
+
+TIGERVNC_LISTEN_ALL: false

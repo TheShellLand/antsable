@@ -1,5 +1,5 @@
 ---
-- name: clone and build ollama-agent
+- name: clone repo
   block:
     - name: clone repo
       git:
@@ -14,6 +14,11 @@
         git pull
       changed_when: false
 
+- name: build ollama
+  shell: |
+    bash $HOME/ollama-agent/build.sh
+  changed_when: false
+
 - name: build ollama nightly
   ansible.builtin.cron:
     name: "[antsable] build ollama nightly"
@@ -21,4 +26,3 @@
     hour: "5"
     job: "bash $HOME/ollama-agent/build.sh >$HOME/ollama-agent/build.log 2>&1"
   changed_when: false
-

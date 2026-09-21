@@ -10,6 +10,7 @@
     deb: "{{ deb }}"
   when:
     - deb is defined
+    - deb is not none
     - deb | length > 0
 
 - name: "install {{ package }}"
@@ -24,7 +25,7 @@
     - APT_INSTALL
     - ansible_facts is defined
     - package_status_detailed.rc != 0
-    - deb is undefined or deb | length == 0
+    - deb is undefined or deb is none or deb | length == 0
 
 - name: apt clean
   shell: apt clean

@@ -1,3 +1,4 @@
 ---
+deb:
 package:
 APT_INSTALL: yes

@@ -5,6 +5,13 @@
   ignore_errors: true
   changed_when: false
 
+- name: "install {{ deb }}"
+  apt:
+    deb: "{{ deb }}"
+  when:
+    - deb is defined
+    - deb | length > 0
+
 - name: "install {{ package }}"
   apt:
     name: "{{ package }}"
@@ -17,6 +24,7 @@
     - APT_INSTALL
     - ansible_facts is defined
     - package_status_detailed.rc != 0
+    - deb is undefined or deb | length == 0
 
 - name: apt clean
   shell: apt clean

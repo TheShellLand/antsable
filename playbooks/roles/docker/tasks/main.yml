@@ -22,5 +22,6 @@
   ansible.builtin.cron:
     name: "[antsable] daily docker cleanup"
     special_time: daily
-    job: "docker system prune -f"
+    job: "docker builder prune -f"
+
   changed_when: false

@@ -1,0 +1,10 @@
+---
+deb: https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-x86-64.deb
+url:
+mac_dmg:
+mac_pkg:
+mac_zip:
+mac_folder:
+mac_app:
+
+BREW_INSTALL: true

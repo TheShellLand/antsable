@@ -6,3 +6,4 @@
     extra_args: --break-system-packages
   with_items:
     - 'sqlite-vec'
+    - 'sentence-transformers'

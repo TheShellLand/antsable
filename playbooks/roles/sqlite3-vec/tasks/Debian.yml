@@ -1,0 +1,7 @@
+---
+- name: install sqlite-vec
+  pip:
+    state: latest
+    name: "{{ item }}"
+  with_items:
+    - 'sqlite-vec'

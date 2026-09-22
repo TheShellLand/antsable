@@ -9,6 +9,7 @@
   block:
     - include_role: name=docker
     - include_role: name=pi-agent
+    - include_role: name=sqlite3-vec
   when: AGENT
 
 - name: GUI

@@ -1,0 +1,5 @@
+---
+dependencies:
+  - defaults
+  - sqlite3
+  - python3

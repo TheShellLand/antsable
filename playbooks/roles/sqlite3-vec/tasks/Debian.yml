@@ -3,5 +3,6 @@
   pip:
     state: latest
     name: "{{ item }}"
+    extra_args: --break-system-packages
   with_items:
     - 'sqlite-vec'

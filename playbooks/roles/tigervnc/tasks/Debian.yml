@@ -16,7 +16,10 @@
 
 - fail:
     msg: "missing TIGERVNC_PASSWORD"
-  when: TIGERVNC_PASSWORD is not defined
+  when:
+    - TIGERVNC_PASSWORD is defined
+    - TIGERVNC_PASSWORD is not none
+    - TIGERVNC_PASSWORD | length > 0
 
 - name: generate password file
   shell: |
@@ -24,7 +27,10 @@
     echo "{{ TIGERVNC_PASSWORD }}" | vncpasswd -f > ~/.vnc/passwd
     chmod 600 ~/.vnc/passwd
   changed_when: false
-  when: TIGERVNC_PASSWORD | default('', true) | length > 0
+  when:
+    - TIGERVNC_PASSWORD is defined
+    - TIGERVNC_PASSWORD is not none
+    - TIGERVNC_PASSWORD | length > 0
 
 - include_role: name=reboot
   when: REBOOT

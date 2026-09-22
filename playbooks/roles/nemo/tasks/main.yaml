@@ -1,4 +1,7 @@
 ---
 - set_fact: package=nemo
 - include_tasks: "{{ansible_facts.os_family}}.yml"
-  when: package | default('', true) | length > 0
+  when: 
+    - package is defined
+    - package is not none
+    - package | length > 0

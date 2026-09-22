@@ -6,7 +6,10 @@
     iptables -A INPUT -p udp --dport 5901 -j ACCEPT
   become: yes
   register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
+  failed_when: 
+    - shell.stderr is defined
+    - shell.stderr is not none
+    - shell.stderr | length > 0
   changed_when: false
 
 - name: configure iptables v6
@@ -16,7 +19,10 @@
     ip6tables -A INPUT -p udp --dport 5901 -j ACCEPT
   become: yes
   register: shell
-  failed_when: shell.stderr | default('', true) | length > 0
+  failed_when: 
+    - shell.stderr is defined
+    - shell.stderr is not none
+    - shell.stderr | length > 0
   changed_when: false
 
 - include_role: name=iptables-save

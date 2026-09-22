@@ -8,7 +8,10 @@
   when: pip_user is defined
 
 - set_fact: pip="{{ pip }} -i {{ pip_index }}"
-  when: pip_index | default('', true) | length > 0
+  when:
+    - pip_index is defined
+    - pip_index is not none
+    - pip_index | length > 0
 
 - block:
   - name: "python3 -m pip install -U {{ pip }} --user --break-system-packages"

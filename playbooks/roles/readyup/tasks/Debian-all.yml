@@ -5,6 +5,18 @@
   changed_when: false
   become: yes
 
+- name: AGENT
+  block:
+    - include_role: name=docker
+    - include_role: name=pi-agent
+    - include_role: name=sqlite3-vec
+  when: AGENT
+
+- name: PLAYWRIGHT
+  block:
+    - include_role: name=playwright
+  when: PLAYWRIGHT
+
 - name: GUI
   block:
     - include_role: name=default-gui

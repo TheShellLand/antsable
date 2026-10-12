@@ -6,6 +6,7 @@
     GUI: false
     CHROME: true
     BRAVE: false
+    PLAYWRIGHT: false
 
     AGENT: true
 

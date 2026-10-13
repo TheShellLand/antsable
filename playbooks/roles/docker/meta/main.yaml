@@ -4,3 +4,4 @@ dependencies:
   - python3
   - brew
   - curl
+  - crontab

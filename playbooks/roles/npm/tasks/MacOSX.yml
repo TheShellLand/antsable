@@ -1,0 +1,15 @@
+---
+- include_role:
+    name: brew-installer
+
+- name: nodejs
+  # https://nodejs.org/dist/v14.17.6/node-v14.17.6.pkg
+  shell: |
+    folder="nodejs"
+    pkg=nodejs.pkg
+    volume="/Volumes/$folder"
+    url=https://nodejs.org/dist/v14.17.6/node-v14.17.6.pkg
+
+    curl -o $pkg "$url"
+    installer -pkg "$pkg" -target /
+  become: yes

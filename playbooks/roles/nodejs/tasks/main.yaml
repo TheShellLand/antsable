@@ -1,3 +1,3 @@
 ---
-- set_fact: package=node
+- set_fact: package=nodejs
 - include_tasks: "{{ansible_facts.os_family}}.yml"

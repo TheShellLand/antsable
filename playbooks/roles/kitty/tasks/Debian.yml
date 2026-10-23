@@ -3,6 +3,6 @@
     name: apt-installer
 
 - name: set kitty as default shell
-  shell: update-alternatives --set x-terminal-emulator /usr/bin/kitty
+  shell: update-alternatives --set x-terminal-emulator $(which kitty)
   become: yes
   changed_when: false

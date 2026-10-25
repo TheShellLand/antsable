@@ -1,17 +1,23 @@
 # AGENTS.md
 
-# Git Tasks when commiting changes
+## Commit messages
 
-- create a descriptive git commit using git diff
-- use the following specific format for all commits:
+When asked to create a commit, inspect `git diff` and write a descriptive message based on the actual changes.
+Use the Ansible role name as the scope; otherwise, choose the best-fitting scope for the changes.
 
-  [name of the ansible role otherwise use best guess] [Descriptive primary action/sentence]
+Use this format for every commit (angle brackets indicate placeholders and are not literal):
 
-  [A detailed description or paragraph explaining exactly what was changed and why.]
+```text
+[role name or best-fitting scope] Descriptive primary action/sentence
+
+A detailed paragraph explaining exactly what changed and why
+```
 
 # Shared Agent Instructions
 
-Before performing any task, select the shared skills directory:
+## Select the shared skills directory
+
+At the start of every task, select one shared skills directory:
 
 1. If `/SKILLS` exists, use `/SKILLS`.
 2. Otherwise, use `/tmp/SKILLS`. If it does not exist, run:
@@ -20,16 +26,27 @@ Before performing any task, select the shared skills directory:
    git clone https://github.com/TheShellLand/SKILLS.git /tmp/SKILLS
    ```
 
-Both paths are absolute and separate from this project. Reuse an existing directory; do not overwrite it or check
-for a `.git` folder before running Git commands against it.
+Both paths are absolute and separate from this project. Reuse an existing directory without overwriting it or
+checking for a `.git` folder before running Git commands against it. In the steps below, `<skills-directory>` means
+the selected path. Treat references to `/SKILLS` in shared instructions as references to that path, including update
+and discovery steps.
 
-Run `git -C <skills-directory> pull --rebase` against the selected directory before searching for or reading skills.
-Then read and follow its `AGENTS.md` in addition to this project's instructions. When using `/tmp/SKILLS`, treat
-references to `/SKILLS` in the shared instructions as references to `/tmp/SKILLS`, including update and discovery steps.
+## Prepare and execute each task
 
-Update the selected directory and discover and use relevant skills on every task, even if the instructions or skills
-were read during an earlier task. If an update changes `AGENTS.md`, read the updated file before continuing.
+Perform this workflow once per task, even if instructions or skills were read during an earlier task:
+
+1. Run `git -C <skills-directory> pull --rebase` before searching for or reading skills.
+2. Read and follow the selected directory's updated `AGENTS.md` in addition to this project's instructions.
+3. Recursively discover `SKILL.md` files in both the current project and the selected shared directory.
+4. Inspect skill names and descriptions, then read each applicable skill and its required references before
+   executing the task. Resolve relative references from the skill's directory.
+5. Execute the task using the applicable preparation, execution, and verification requirements. If no skill applies,
+   follow the project and shared instructions.
+6. Before reporting completion, verify that actual tool calls and results support compliance with those requirements.
+
+## Handle preparation failures
 
 If cloning or updating fails, report the failure and continue with available local skills unless the failure prevents
-completing the task correctly. If the selected directory's `AGENTS.md` is missing, report that and continue using this
-project's instructions and available tools.
+completing the task correctly. If the selected directory's `AGENTS.md` is missing, report that and continue using
+this project's instructions and available tools. Do not silently skip required steps or claim full compliance when
+a requirement could not be completed.
